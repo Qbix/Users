@@ -1,0 +1,193 @@
+{
+    "avatar": {
+        "Someone": "Mtu fulani"
+    },
+    "identifier": {
+        "types": {
+            "email": "Barua pepe",
+            "mobile": "Rununu",
+            "web3": "Wavuti3"
+        }
+    },
+    "clipboard": {
+        "Copied": "Imenakiliwa! Sasa unaweza kuibandika popote."
+    },
+    "analytics": {
+        "Title": "Uchanganuzi",
+        "Daily": "Kila siku",
+        "Weekly": "Kila wiki",
+        "Monthly": "Kila mwezi",
+        "Application": "Maombi",
+        "Pages": "Kurasa",
+        "Services": "Huduma",
+        "Faq": "Faq",
+        "WeekDays": "Siku za Wiki"
+    },
+    "actions": {
+        "LogIn": "Ingia",
+        "LogOut": "ingia nje"
+    },
+    "activate": {
+        "OneTimeCode": "Weka msimbo uliopokea:",
+        "SetAsPrimary": "Weka {{1}} kama {{2}} yangu ya msingi",
+        "ChoosePassPhrase": "Chagua <strong>neno la kupita<\/strong> ili kuingia nalo.<br> Maneno rahisi yenye maneno machache ambayo utakumbuka kwa urahisi.",
+        "ChoosePassPhraseSeeSuggestions": "Chagua <strong>kifungu kizuri cha pasi<\/strong> ili kulinda akaunti yako. Tazama mapendekezo kwa baadhi ya mawazo.",
+        "LogOutAndTryAgain": "Toka na Ujaribu Tena",
+        "IfYouFeel": "Ikiwa unahisi kuwa kuna kitu kimeenda vibaya, unaweza",
+        "SetIdentifierButtonTitle": "anza tena",
+        "ActivateMyAccount": "Washa Akaunti Yangu"
+    },
+    "session": {
+        "GetStarted": "Anza"
+    },
+    "authorize": {
+        "GetStarted": "Anza",
+        "Authorize": "Kuidhinisha",
+        "TermsLabel": "Nimesoma na kukubali<br> hadi {{link}}",
+        "TermsTitle": "Masharti",
+        "mustAgree": "Kwanza lazima ukubali masharti."
+    },
+    "register": {
+        "TermsLabel": "Ninakubali {{link}}",
+        "TermsTitle": "Masharti"
+    },
+    "notifications": {
+        "title": "Ruhusa",
+        "prompt": "Je, ungependa kuwezesha arifa? Utapokea taarifa za wakati halisi kuhusu mambo unayojali.",
+        "yes": "Ndiyo",
+        "no": "Hapana",
+        "WelcomePleaseVerifyEmail": "Karibu! Tafadhali thibitisha anwani yako ya barua pepe.",
+        "WelcomeVerifyEmail": "Karibu! Thibitisha anwani yako ya barua pepe.",
+        "ForgetPass": "Hujambo, umesahau neno lako la siri?",
+        "PassphraseSaved": "Neno lako la pasi limehifadhiwa.",
+        "IdentifierActivated": "{{type}} yako imewezeshwa.",
+        "CompletedActivation": "Umekamilisha kuwezesha mtumiaji.",
+        "CompletedActivationLogIn": "Umekamilisha kuwezesha mtumiaji. Jaribu kuingia sasa."
+    },
+    "contacts": {
+        "dialog": {
+            "title": "Chagua anwani",
+            "CreateAccount": "+ Anwani Mpya",
+            "CreateAccountNotFound": "Q.Users.Cordova.UI.create haijapatikana",
+            "SearchByName": "Tafuta kwa jina",
+            "EmptyContacts": "Anwani hazipatikani..."
+        },
+        "select": {
+            "title": "Chagua anwani ya {{displayName}}"
+        }
+    },
+    "usersContacts": {
+        "selectLabel": "Tafadhali chagua lebo.",
+        "inviteUser": "Alika Watumiaji",
+        "selectRole": "Chagua Jukumu",
+        "inviteRole": "Alika {{role}}"
+    },
+    "invalidLanguageSelected": "Lugha batili imechaguliwa",
+    "platforms": {
+        "wallet": "Mkoba",
+        "broadcast": "Tangaza"
+    },
+    "login": {
+        "title": "Karibu",
+        "directions": {
+            "GetStarted": "Unda akaunti, au ingia.",
+            "NoRegister": "Ingia ikiwa una akaunti.",
+            "WasInvited": "Ni ipi njia bora ya kukufikia?"
+        },
+        "directionsNoRegister": "Ingia ikiwa una akaunti.",
+        "goButton": "➔",
+        "passphrase": "Ingiza kifungu chako cha kupita:",
+        "loginButton": "Anza",
+        "registerButton": "Anza",
+        "resendButton": "Tuma Ujumbe wa Kuanzisha",
+        "forgot": "Umeisahau?",
+        "resendConfirm": "Je, ungependa kutuma ujumbe ili kuweka upya kaulisiri yako?",
+        "resendSuccess": "Angalia ujumbe ili kuweka upya kaulisiri yako",
+        "resendClose": "Funga",
+        "noPassphrase": "Kabla ya kuingia, lazima uweke neno la kupita kwa kubofya kiungo katika ujumbe wako wa kuwezesha.",
+        "notVerified": "Lazima ujitume ujumbe wa kuwezesha ili uingie.",
+        "emailExists": "Je, ulijaribu kujisajili kwa barua pepe hii hapo awali? Ikiwa ndivyo, angalia kisanduku pokezi chako ili kuamilisha akaunti yako. <a href='#resend' class='Q_button Users_activation_resend'>Bofya ili kutuma tena ujumbe<\/a>",
+        "mobileExists": "Je, ulijaribu kujisajili kwa nambari hii ya simu hapo awali? Ikiwa ndivyo, angalia SMS yako ili kuwezesha akaunti yako. <a href='#resend' class='Q_button Users_activation_resend'>Bofya ili kutuma tena ujumbe<\/a>",
+        "usingOther": "au unaweza",
+        "connectPlatforms": "au unganisha kwa kutumia:",
+        "prompt": "Chagua jina la mtumiaji:",
+        "newUser": "au fungua akaunti mpya hapa chini",
+        "placeholders": {
+            "identifier": "# yako ya simu au barua pepe",
+            "mobile": "ingiza nambari yako ya simu",
+            "email": "ingiza barua pepe yako",
+            "username": "tumia herufi na nambari pekee"
+        },
+        "confirmTerms": "Je, ukubali Sheria na Masharti?",
+        "facebookNoEmail": "Akaunti yako ya facebook haina barua pepe iliyothibitishwa. Ingia tu kwa njia ya asili.",
+        "picTooltip": "Unaweza kubadilisha picha hii baadaye",
+        "web3": {
+            "payload": "Ingia {{host}} kwa wakati {{timestamp}}",
+            "alert": {
+                "title": "Inaelekeza kwenye Wallet",
+                "content": "Mara tu ukifunga kidirisha hiki, utachukuliwa hadi kwenye mkoba wako. Baada ya kuingia, rudi kwenye ukurasa huu."
+            },
+            "ConnectWallet": "Unganisha Wallet"
+        }
+    },
+    "setIdentifier": {
+        "title": "Ongeza njia ya kuingia",
+        "sendMessage": "Tuma Ujumbe wa Kuanzisha",
+        "placeholders": {
+            "identifier": "weka nambari yako ya simu au barua pepe",
+            "mobile": "weka nambari yako ya simu",
+            "email": "ingiza barua pepe yako",
+            "username": "jina la mtumiaji"
+        }
+    },
+    "prompt": {
+        "title": "Akaunti ya {{Platform}}",
+        "areUsing": "Unatumia {{platform}} kama",
+        "noLongerUsing": "Hujaunganishwa tena kwa {{platform}} kama",
+        "doAuth": "Ingia kwa akaunti hii",
+        "doSwitch": "Badili utumie akaunti hii"
+    },
+    "roles": {
+        "Owner": "Mmiliki",
+        "Admin": "Msimamizi",
+        "Member": "Mwanachama",
+        "Guest": "Mgeni",
+        "Host": "Mwenyeji"
+    },
+    "web3": {
+        "WrongMethod": "Mbinu mbaya ya mkataba {{methodName}}",
+        "ChangeWallet": "Badilisha Wallet",
+        "ConnectWallet": "Unganisha Wallet",
+        "AfterWalletConnectedPleaseRefresh": "Baada ya mkoba kuunganishwa tafadhali onyesha upya ukurasa huu ili kutambua pochi"
+    },
+    "labels": {
+        "addToPhonebook": "Ongeza Kwenye Anwani Zangu za Simu",
+        "addLabel": "Uhusiano Mpya",
+        "prompt": "Ipe jina",
+        "titles": {
+            "Users\/owners": "Wamiliki",
+            "Users\/admins": "Wasimamizi",
+            "Users\/members": "Wanachama",
+            "Users\/guests": "Wageni",
+            "Users\/hosts": "Wenyeji",
+            "Users\/testers": "Wajaribu",
+            "Users\/speakers": "Wazungumzaji"
+        }
+    },
+    "people": {
+        "People": "Watu"
+    },
+    "external": {
+        "defaults": {
+            "title": "",
+            "bio": "Boti ya ushiriki wa jukwaa. Jipatie yako katika https:\/\/engageusers.ai",
+            "website": "https:\/\/engageusers.ai"
+        }
+    },
+    "errors": {
+        "NotEnoughPermissionsWallet": "Hakuna ruhusa za kutosha kusoma pochi ya mtumiaji huyu",
+        "ThisUserHaveNoWallet": "Mtumiaji huyu hajakabidhiwa pochi",
+        "TheWalletOfThisUserInvalid": "Pochi ya mtumiaji huyu ni batili",
+        "WalletInvalid": "Anwani ya Wallet si sahihi"
+    }
+}

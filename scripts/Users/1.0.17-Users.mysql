@@ -1,0 +1,2 @@
+ALTER TABLE {{prefix}}web3_transaction ADD COLUMN contractABIName varchar(255) NOT NULL DEFAULT "" AFTER contract;
+ALTER TABLE {{prefix}}web3_transaction MODIFY status enum('signed', 'pending', 'mined', 'rejected')  NOT NULL DEFAULT 'pending';

@@ -1,0 +1,193 @@
+{
+    "avatar": {
+        "Someone": "Người nào đó"
+    },
+    "identifier": {
+        "types": {
+            "email": "E-mail",
+            "mobile": "di động",
+            "web3": "Web3"
+        }
+    },
+    "clipboard": {
+        "Copied": "Đã sao chép! Bây giờ bạn có thể dán nó ở bất cứ đâu."
+    },
+    "analytics": {
+        "Title": "phân tích",
+        "Daily": "Hằng ngày",
+        "Weekly": "hàng tuần",
+        "Monthly": "hàng tháng",
+        "Application": "Ứng dụng",
+        "Pages": "trang",
+        "Services": "Dịch vụ",
+        "Faq": "câu hỏi thường gặp",
+        "WeekDays": "Ngày trong tuần"
+    },
+    "actions": {
+        "LogIn": "đăng nhập",
+        "LogOut": "đăng xuất"
+    },
+    "activate": {
+        "OneTimeCode": "Nhập mã bạn nhận được:",
+        "SetAsPrimary": "Đặt {{1}} làm {{2}} chính của tôi",
+        "ChoosePassPhrase": "Chọn một <strong>cụm mật khẩu<\/strong> để đăng nhập.<br> Một cụm từ đơn giản bao gồm một vài từ mà bạn sẽ dễ dàng ghi nhớ.",
+        "ChoosePassPhraseSeeSuggestions": "Chọn một <strong>cụm mật khẩu<\/strong> tốt để bảo vệ tài khoản của bạn. Xem những gợi ý cho một số ý tưởng.",
+        "LogOutAndTryAgain": "Đăng xuất và thử lại",
+        "IfYouFeel": "Nếu bạn cảm thấy có gì đó không ổn, bạn có thể",
+        "SetIdentifierButtonTitle": "bắt đầu lại",
+        "ActivateMyAccount": "Kích hoạt tài khoản của tôi"
+    },
+    "session": {
+        "GetStarted": "Bắt đầu"
+    },
+    "authorize": {
+        "GetStarted": "Bắt đầu",
+        "Authorize": "ủy quyền",
+        "TermsLabel": "tôi đã đọc và đồng ý<br> đến {{link}}",
+        "TermsTitle": "Điều kiện",
+        "mustAgree": "Đầu tiên bạn phải đồng ý với các điều khoản."
+    },
+    "register": {
+        "TermsLabel": "Tôi chấp nhận {{link}}",
+        "TermsTitle": "Điều kiện"
+    },
+    "notifications": {
+        "title": "Sự cho phép",
+        "prompt": "Bạn có muốn bật thông báo không? Bạn sẽ nhận được cập nhật theo thời gian thực về những điều bạn quan tâm.",
+        "yes": "Đúng",
+        "no": "KHÔNG",
+        "WelcomePleaseVerifyEmail": "Chào mừng! Vui lòng xác nhận địa chỉ email.",
+        "WelcomeVerifyEmail": "Chào mừng! Xác minh địa chỉ email của bạn.",
+        "ForgetPass": "Này, bạn đã quên cụm mật khẩu của mình?",
+        "PassphraseSaved": "Cụm mật khẩu của bạn đã được lưu.",
+        "IdentifierActivated": "{{type}} của bạn đã được kích hoạt.",
+        "CompletedActivation": "Bạn đã hoàn tất kích hoạt người dùng.",
+        "CompletedActivationLogIn": "Bạn đã hoàn tất kích hoạt người dùng. Hãy thử đăng nhập ngay bây giờ."
+    },
+    "contacts": {
+        "dialog": {
+            "title": "Chọn liên hệ",
+            "CreateAccount": "+ Liên hệ mới",
+            "CreateAccountNotFound": "Không tìm thấy Q.Users.Cordova.UI.create",
+            "SearchByName": "Tìm kiếm theo tên",
+            "EmptyContacts": "Không tìm thấy liên hệ..."
+        },
+        "select": {
+            "title": "Chọn số liên lạc của {{displayName}}"
+        }
+    },
+    "usersContacts": {
+        "selectLabel": "Vui lòng chọn nhãn.",
+        "inviteUser": "Mời người dùng",
+        "selectRole": "Chọn vai trò",
+        "inviteRole": "Mời {{role}}"
+    },
+    "invalidLanguageSelected": "Đã chọn ngôn ngữ không hợp lệ",
+    "platforms": {
+        "wallet": "Cái ví",
+        "broadcast": "Phát tin"
+    },
+    "login": {
+        "title": "Chào mừng",
+        "directions": {
+            "GetStarted": "Tạo một tài khoản, hoặc đăng nhập.",
+            "NoRegister": "Đăng nhập nếu bạn có tài khoản.",
+            "WasInvited": "Cách tốt nhất để tiếp cận bạn là gì?"
+        },
+        "directionsNoRegister": "Đăng nhập nếu bạn có tài khoản.",
+        "goButton": "➔",
+        "passphrase": "Nhập cụm mật khẩu của bạn:",
+        "loginButton": "Bắt đầu",
+        "registerButton": "Bắt đầu",
+        "resendButton": "Gửi tin nhắn kích hoạt",
+        "forgot": "Quên nó?",
+        "resendConfirm": "Bạn có muốn gửi tin nhắn để đặt lại cụm mật khẩu của mình không?",
+        "resendSuccess": "Kiểm tra tin nhắn để đặt lại cụm mật khẩu của bạn",
+        "resendClose": "Đóng",
+        "noPassphrase": "Trước khi bạn có thể đăng nhập, bạn phải đặt mật khẩu bằng cách nhấp vào liên kết trong thông báo kích hoạt của mình.",
+        "notVerified": "Bạn phải gửi cho mình một tin nhắn kích hoạt để đăng nhập.",
+        "emailExists": "Bạn đã thử đăng ký với email này trước đây chưa? Nếu vậy, hãy kiểm tra hộp thư đến của bạn để kích hoạt tài khoản của bạn. <a href='#resend' class='Q_button Users_activation_resend'>Bấm để gửi lại tin nhắn<\/a>",
+        "mobileExists": "Bạn đã thử đăng ký với số điện thoại di động này trước đây chưa? Nếu vậy, hãy kiểm tra SMS của bạn để kích hoạt tài khoản của bạn. <a href='#resend' class='Q_button Users_activation_resend'>Bấm để gửi lại tin nhắn<\/a>",
+        "usingOther": "hoặc bạn có thể",
+        "connectPlatforms": "hoặc kết nối bằng cách sử dụng:",
+        "prompt": "Chọn tên người dùng:",
+        "newUser": "hoặc tạo tài khoản mới bên dưới",
+        "placeholders": {
+            "identifier": "số di động hoặc email của bạn",
+            "mobile": "nhập số điện thoại di động của bạn",
+            "email": "nhập địa chỉ email của bạn",
+            "username": "chỉ sử dụng chữ và số"
+        },
+        "confirmTerms": "Chấp nhận Điều khoản dịch vụ?",
+        "facebookNoEmail": "Tài khoản facebook của bạn thiếu địa chỉ email đã xác nhận. Đơn giản chỉ cần đăng nhập theo cách bản địa.",
+        "picTooltip": "Bạn có thể thay đổi hình ảnh này sau",
+        "web3": {
+            "payload": "Đăng nhập {{host}} lúc {{timestamp}}",
+            "alert": {
+                "title": "Chuyển hướng đến Wallet",
+                "content": "Sau khi đóng hộp thoại này, bạn sẽ được đưa đến ví của mình. Sau khi bạn đăng nhập, quay lại trang này."
+            },
+            "ConnectWallet": "Kết nối ví"
+        }
+    },
+    "setIdentifier": {
+        "title": "Thêm một cách để đăng nhập",
+        "sendMessage": "Gửi tin nhắn kích hoạt",
+        "placeholders": {
+            "identifier": "nhập số điện thoại di động hoặc email của bạn",
+            "mobile": "Nhập sô điện thoại di động của bạn",
+            "email": "nhập địa chỉ email của bạn",
+            "username": "tên tài khoản"
+        }
+    },
+    "prompt": {
+        "title": "Tài khoản {{Platform}}",
+        "areUsing": "Bạn đang sử dụng {{platform}} như",
+        "noLongerUsing": "Bạn không còn được kết nối với {{platform}} như",
+        "doAuth": "Đăng nhập bằng tài khoản này",
+        "doSwitch": "Chuyển sang tài khoản này"
+    },
+    "roles": {
+        "Owner": "Người sở hữu",
+        "Admin": "Quản trị viên",
+        "Member": "Thành viên",
+        "Guest": "Khách mời",
+        "Host": "Chủ nhà"
+    },
+    "web3": {
+        "WrongMethod": "Hợp đồng sai phương thức {{methodName}}",
+        "ChangeWallet": "Thay đổi ví",
+        "ConnectWallet": "Kết nối ví",
+        "AfterWalletConnectedPleaseRefresh": "Sau khi kết nối ví, vui lòng làm mới trang này để nhận dạng ví"
+    },
+    "labels": {
+        "addToPhonebook": "Thêm vào danh bạ điện thoại của tôi",
+        "addLabel": "Mối quan hệ mơi",
+        "prompt": "Đặt cho nó một cái tên",
+        "titles": {
+            "Users\/owners": "Những chủ sở hữu",
+            "Users\/admins": "Quản trị viên",
+            "Users\/members": "Các thành viên",
+            "Users\/guests": "Khách",
+            "Users\/hosts": "Máy chủ",
+            "Users\/testers": "Người thử nghiệm",
+            "Users\/speakers": "Diễn giả"
+        }
+    },
+    "people": {
+        "People": "Mọi người"
+    },
+    "external": {
+        "defaults": {
+            "title": "",
+            "bio": "Bot tham gia diễn đàn. Nhận của riêng bạn tại https:\/\/engageusers.ai",
+            "website": "https:\/\/engageusers.ai"
+        }
+    },
+    "errors": {
+        "NotEnoughPermissionsWallet": "Không đủ quyền để đọc ví của người dùng này",
+        "ThisUserHaveNoWallet": "Người dùng này không có ví được chỉ định",
+        "TheWalletOfThisUserInvalid": "Ví của người dùng này không hợp lệ",
+        "WalletInvalid": "Địa chỉ ví không hợp lệ"
+    }
+}

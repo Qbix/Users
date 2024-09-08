@@ -1,0 +1,193 @@
+{
+    "avatar": {
+        "Someone": "Nogen"
+    },
+    "identifier": {
+        "types": {
+            "email": "E-mail",
+            "mobile": "Mobil",
+            "web3": "Web3"
+        }
+    },
+    "clipboard": {
+        "Copied": "Kopieret! Nu kan du indsætte det hvor som helst."
+    },
+    "analytics": {
+        "Title": "Analytics",
+        "Daily": "Daglige",
+        "Weekly": "Ugentlig",
+        "Monthly": "Månedlige",
+        "Application": "Ansøgning",
+        "Pages": "sider",
+        "Services": "Tjenester",
+        "Faq": "Faq",
+        "WeekDays": "Ugedage"
+    },
+    "actions": {
+        "LogIn": "Log på",
+        "LogOut": "Log ud"
+    },
+    "activate": {
+        "OneTimeCode": "Indtast koden du har modtaget:",
+        "SetAsPrimary": "Sæt {{1}} som min primære {{2}}",
+        "ChoosePassPhrase": "Vælg en <strong>adgangssætning<\/strong> at logge på med.<br> En simpel sætning bestående af nogle få ord, som du nemt vil huske.",
+        "ChoosePassPhraseSeeSuggestions": "Vælg en god <strong>adgangssætning<\/strong> for at beskytte din konto. Se forslagene til nogle ideer.",
+        "LogOutAndTryAgain": "Log ud og prøv igen",
+        "IfYouFeel": "Hvis du føler noget gik galt, kan du det",
+        "SetIdentifierButtonTitle": "start forfra",
+        "ActivateMyAccount": "Aktiver Min konto"
+    },
+    "session": {
+        "GetStarted": "Kom igang"
+    },
+    "authorize": {
+        "GetStarted": "Kom igang",
+        "Authorize": "Bemyndige",
+        "TermsLabel": "Jeg har læst og er enig<br> til {{link}}",
+        "TermsTitle": "Betingelser",
+        "mustAgree": "Først skal du acceptere vilkårene."
+    },
+    "register": {
+        "TermsLabel": "Jeg accepterer {{link}}",
+        "TermsTitle": "Betingelser"
+    },
+    "notifications": {
+        "title": "Tilladelse",
+        "prompt": "Vil du aktivere notifikationer? Du vil modtage opdateringer i realtid om ting, du holder af.",
+        "yes": "Ja",
+        "no": "Ingen",
+        "WelcomePleaseVerifyEmail": "Velkommen! Bekræft venligst din e-mailadresse.",
+        "WelcomeVerifyEmail": "Velkommen! Bekræft din e-mail-adresse.",
+        "ForgetPass": "Hej, har du glemt din adgangssætning?",
+        "PassphraseSaved": "Din adgangssætning er blevet gemt.",
+        "IdentifierActivated": "Din {{type}} er blevet aktiveret.",
+        "CompletedActivation": "Du har fuldført brugeraktivering.",
+        "CompletedActivationLogIn": "Du har fuldført brugeraktivering. Prøv at logge ind nu."
+    },
+    "contacts": {
+        "dialog": {
+            "title": "Vælg kontakt",
+            "CreateAccount": "+ Ny kontakt",
+            "CreateAccountNotFound": "Q.Users.Cordova.UI.create ikke fundet",
+            "SearchByName": "Søg efter navn",
+            "EmptyContacts": "Kontakter ikke fundet..."
+        },
+        "select": {
+            "title": "Vælg kontakt på {{displayName}}"
+        }
+    },
+    "usersContacts": {
+        "selectLabel": "Vælg venligst etiket.",
+        "inviteUser": "Inviter brugere",
+        "selectRole": "Vælg Rolle",
+        "inviteRole": "Inviter {{role}}"
+    },
+    "invalidLanguageSelected": "Ugyldigt sprog valgt",
+    "platforms": {
+        "wallet": "Pung",
+        "broadcast": "Udsende"
+    },
+    "login": {
+        "title": "Velkommen",
+        "directions": {
+            "GetStarted": "Opret en konto, eller log ind.",
+            "NoRegister": "Log ind, hvis du har en konto.",
+            "WasInvited": "Hvad er den bedste måde at nå dig på?"
+        },
+        "directionsNoRegister": "Log ind, hvis du har en konto.",
+        "goButton": "➔",
+        "passphrase": "Indtast din adgangssætning:",
+        "loginButton": "Kom igang",
+        "registerButton": "Kom igang",
+        "resendButton": "Send aktiveringsmeddelelse",
+        "forgot": "Glemte det?",
+        "resendConfirm": "Vil du sende en besked for at nulstille din adgangssætning?",
+        "resendSuccess": "Se efter en besked for at nulstille din adgangssætning",
+        "resendClose": "Tæt",
+        "noPassphrase": "Før du kan logge ind, skal du angive en adgangssætning ved at klikke på linket i din aktiveringsmeddelelse.",
+        "notVerified": "Du skal sende dig selv en aktiveringsbesked for at logge ind.",
+        "emailExists": "Har du prøvet at registrere dig med denne e-mail før? Hvis ja, tjek din indbakke for at aktivere din konto. <a href='#resend' class='Q_button Users_activation_resend'>Klik for at sende beskeden igen<\/a>",
+        "mobileExists": "Har du prøvet at registrere dig med dette mobilnummer før? Hvis ja, tjek din SMS for at aktivere din konto. <a href='#resend' class='Q_button Users_activation_resend'>Klik for at sende beskeden igen<\/a>",
+        "usingOther": "eller du kan",
+        "connectPlatforms": "eller tilslut ved hjælp af:",
+        "prompt": "Vælg et brugernavn:",
+        "newUser": "eller opret en ny konto nedenfor",
+        "placeholders": {
+            "identifier": "dit mobilnummer eller din e-mail",
+            "mobile": "indtast dit mobilnummer",
+            "email": "Indtast din e-mailadresse",
+            "username": "brug kun bogstaver og tal"
+        },
+        "confirmTerms": "Acceptere servicevilkårene?",
+        "facebookNoEmail": "Din facebook-konto mangler en bekræftet e-mailadresse. Du skal blot logge på den oprindelige måde.",
+        "picTooltip": "Du kan ændre dette billede senere",
+        "web3": {
+            "payload": "Log ind på {{host}} til tiden {{timestamp}}",
+            "alert": {
+                "title": "Omdirigerer til Wallet",
+                "content": "Når du lukker denne dialog, vil du blive ført til din tegnebog. Når du har logget ind, skal du vende tilbage til denne side."
+            },
+            "ConnectWallet": "Tilslut tegnebog"
+        }
+    },
+    "setIdentifier": {
+        "title": "Tilføj en måde at logge ind på",
+        "sendMessage": "Send aktiveringsmeddelelse",
+        "placeholders": {
+            "identifier": "indtast dit mobilnummer eller din e-mail",
+            "mobile": "Skriv dit telefonnummer",
+            "email": "Indtast din e-mailadresse",
+            "username": "brugernavn"
+        }
+    },
+    "prompt": {
+        "title": "{{Platform}} konto",
+        "areUsing": "Du bruger {{platform}} som",
+        "noLongerUsing": "Du er ikke længere forbundet til {{platform}} as",
+        "doAuth": "Log ind med denne konto",
+        "doSwitch": "Skift til denne konto"
+    },
+    "roles": {
+        "Owner": "Ejer",
+        "Admin": "Admin",
+        "Member": "Medlem",
+        "Guest": "Gæst",
+        "Host": "Vært"
+    },
+    "web3": {
+        "WrongMethod": "Forkert kontraktmetode {{methodName}}",
+        "ChangeWallet": "Skift tegnebog",
+        "ConnectWallet": "Tilslut tegnebog",
+        "AfterWalletConnectedPleaseRefresh": "Når tegnebogen er tilsluttet, skal du opdatere denne side for at genkende tegnebogen"
+    },
+    "labels": {
+        "addToPhonebook": "Føj til Min telefon-kontakter",
+        "addLabel": "Nyt forhold",
+        "prompt": "Giv det et navn",
+        "titles": {
+            "Users\/owners": "Ejere",
+            "Users\/admins": "administratorer",
+            "Users\/members": "Medlemmer",
+            "Users\/guests": "Gæster",
+            "Users\/hosts": "Værter",
+            "Users\/testers": "Testere",
+            "Users\/speakers": "Højttalere"
+        }
+    },
+    "people": {
+        "People": "Mennesker"
+    },
+    "external": {
+        "defaults": {
+            "title": "",
+            "bio": "Forum engagement bot. Få din egen på https:\/\/engageusers.ai",
+            "website": "https:\/\/engageusers.ai"
+        }
+    },
+    "errors": {
+        "NotEnoughPermissionsWallet": "Ikke nok tilladelser til at læse denne brugers tegnebog",
+        "ThisUserHaveNoWallet": "Denne bruger har ingen tegnebog tildelt",
+        "TheWalletOfThisUserInvalid": "Denne brugers tegnebog er ugyldig",
+        "WalletInvalid": "Wallet-adressen er ugyldig"
+    }
+}

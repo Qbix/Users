@@ -1,0 +1,193 @@
+{
+    "avatar": {
+        "Someone": "誰か"
+    },
+    "identifier": {
+        "types": {
+            "email": "Eメール",
+            "mobile": "モバイル",
+            "web3": "Web3"
+        }
+    },
+    "clipboard": {
+        "Copied": "コピーしました！これで、どこにでも貼り付けることができます。"
+    },
+    "analytics": {
+        "Title": "分析",
+        "Daily": "毎日",
+        "Weekly": "毎週",
+        "Monthly": "毎月",
+        "Application": "応用",
+        "Pages": "ページ",
+        "Services": "サービス",
+        "Faq": "よくある質問",
+        "WeekDays": "平日"
+    },
+    "actions": {
+        "LogIn": "ログイン",
+        "LogOut": "ログアウト"
+    },
+    "activate": {
+        "OneTimeCode": "受け取ったコードを入力してください:",
+        "SetAsPrimary": "{{1}}プライマリ{{2}}として設定",
+        "ChoosePassPhrase": "ログインに使用する<strong>パス フレーズ<\/strong>を選択します。<br>簡単に覚えられるいくつかの単語からなる簡単なフレーズ。",
+        "ChoosePassPhraseSeeSuggestions": "アカウントを保護するために適切な<strong>パスフレーズ<\/strong>を選択してください。いくつかのアイデアについては、提案を参照してください。",
+        "LogOutAndTryAgain": "ログアウトして再試行",
+        "IfYouFeel": "何かがおかしいと感じたら、次のことができます",
+        "SetIdentifierButtonTitle": "最初からやり直す",
+        "ActivateMyAccount": "マイアカウントを有効にする"
+    },
+    "session": {
+        "GetStarted": "始めましょう"
+    },
+    "authorize": {
+        "GetStarted": "始めましょう",
+        "Authorize": "承認する",
+        "TermsLabel": "私は読み、同意します<br>{{link}}まで",
+        "TermsTitle": "条項",
+        "mustAgree": "まず、条件に同意する必要があります。"
+    },
+    "register": {
+        "TermsLabel": "{{link}}受け入れる",
+        "TermsTitle": "条項"
+    },
+    "notifications": {
+        "title": "許可",
+        "prompt": "通知を有効にしますか?気になることに関するリアルタイムの最新情報を受け取ることができます。",
+        "yes": "はい",
+        "no": "いいえ",
+        "WelcomePleaseVerifyEmail": "いらっしゃいませ！メールアドレスを確認してください。",
+        "WelcomeVerifyEmail": "いらっしゃいませ！あなたのメールアドレスを確認してください。",
+        "ForgetPass": "おい、パスフレーズを忘れたのか？",
+        "PassphraseSaved": "パス フレーズが保存されました。",
+        "IdentifierActivated": "あなたの{{type}}有効になりました。",
+        "CompletedActivation": "ユーザーのアクティベーションが完了しました。",
+        "CompletedActivationLogIn": "ユーザーのアクティベーションが完了しました。今すぐログインしてみてください。"
+    },
+    "contacts": {
+        "dialog": {
+            "title": "連絡先を選択",
+            "CreateAccount": "+ 新しい連絡先",
+            "CreateAccountNotFound": "Q.Users.Cordova.UI.create が見つかりません",
+            "SearchByName": "名前で検索",
+            "EmptyContacts": "連絡先が見つかりません..."
+        },
+        "select": {
+            "title": "{{displayName}}の連絡先を選択"
+        }
+    },
+    "usersContacts": {
+        "selectLabel": "ラベルを選択してください。",
+        "inviteUser": "ユーザーを招待する",
+        "selectRole": "役割を選択",
+        "inviteRole": "{{role}}人招待"
+    },
+    "invalidLanguageSelected": "無効な言語が選択されました",
+    "platforms": {
+        "wallet": "財布",
+        "broadcast": "ブロードキャスト"
+    },
+    "login": {
+        "title": "いらっしゃいませ",
+        "directions": {
+            "GetStarted": "アカウントを作成するか、ログインします。",
+            "NoRegister": "アカウントをお持ちの場合はログインしてください。",
+            "WasInvited": "あなたに連絡する最善の方法は何ですか?"
+        },
+        "directionsNoRegister": "アカウントを持っている場合はログインします。",
+        "goButton": "➔",
+        "passphrase": "パスフレーズを入力してください:",
+        "loginButton": "始めましょう",
+        "registerButton": "始めましょう",
+        "resendButton": "アクティベーション メッセージを送信",
+        "forgot": "それを忘れてしまいました？",
+        "resendConfirm": "パスフレーズをリセットするメッセージを送信しますか?",
+        "resendSuccess": "パスフレーズをリセットするメッセージを確認します",
+        "resendClose": "近い",
+        "noPassphrase": "ログインする前に、アクティベーション メッセージのリンクをクリックしてパス フレーズを設定する必要があります。",
+        "notVerified": "ログインするには、自分自身にアクティベーション メッセージを送信する必要があります。",
+        "emailExists": "以前にこのメールで登録しようとしましたか?その場合は、受信トレイを確認してアカウントを有効にしてください。<a href='#resend' class='Q_button Users_activation_resend'>クリックしてメッセージを再送信します<\/a>",
+        "mobileExists": "以前にこの携帯電話番号で登録しようとしましたか?その場合は、SMS を確認してアカウントを有効にしてください。<a href='#resend' class='Q_button Users_activation_resend'>クリックしてメッセージを再送信します<\/a>",
+        "usingOther": "またはあなたができる",
+        "connectPlatforms": "または次を使用して接続します。",
+        "prompt": "ユーザー名を選択：",
+        "newUser": "または、以下で新しいアカウントを作成してください",
+        "placeholders": {
+            "identifier": "あなたの携帯番号または電子メール",
+            "mobile": "携帯番号を入力してください",
+            "email": "メールアドレスを入力してください",
+            "username": "文字と数字のみを使用する"
+        },
+        "confirmTerms": "利用規約に同意しますか?",
+        "facebookNoEmail": "Facebook アカウントに確認済みのメールアドレスがありません。ネイティブの方法でログインするだけです。",
+        "picTooltip": "この画像は後で変更できます",
+        "web3": {
+            "payload": "{{timestamp}}時に{{host}}にログインします。",
+            "alert": {
+                "title": "ウォレットへのリダイレクト",
+                "content": "このダイアログを閉じると、ウォレットが表示されます。サインインしたら、このページに戻ります。"
+            },
+            "ConnectWallet": "ウォレットを接続する"
+        }
+    },
+    "setIdentifier": {
+        "title": "ログイン方法を追加",
+        "sendMessage": "アクティベーション メッセージを送信",
+        "placeholders": {
+            "identifier": "携帯番号またはメールアドレスを入力してください",
+            "mobile": "携帯番号を入力してください",
+            "email": "メールアドレスを入力してください",
+            "username": "ユーザー名"
+        }
+    },
+    "prompt": {
+        "title": "{{Platform}}アカウント",
+        "areUsing": "として{{platform}}使用しています",
+        "noLongerUsing": "あなたはもう{{platform}}に接続していません",
+        "doAuth": "このアカウントでログイン",
+        "doSwitch": "このアカウントに切り替える"
+    },
+    "roles": {
+        "Owner": "オーナー",
+        "Admin": "管理者",
+        "Member": "メンバー",
+        "Guest": "ゲスト",
+        "Host": "ホスト"
+    },
+    "web3": {
+        "WrongMethod": "契約方法を間違えた{{methodName}}",
+        "ChangeWallet": "ウォレットの変更",
+        "ConnectWallet": "ウォレットを接続する",
+        "AfterWalletConnectedPleaseRefresh": "ウォレットに接続したら、このページを更新してウォレットを認識してください"
+    },
+    "labels": {
+        "addToPhonebook": "電話の連絡先に追加",
+        "addLabel": "新しい関係",
+        "prompt": "名前を付けてください",
+        "titles": {
+            "Users\/owners": "オーナー",
+            "Users\/admins": "管理者",
+            "Users\/members": "メンバー",
+            "Users\/guests": "ゲスト",
+            "Users\/hosts": "ホスト",
+            "Users\/testers": "テスター",
+            "Users\/speakers": "スピーカー"
+        }
+    },
+    "people": {
+        "People": "人々"
+    },
+    "external": {
+        "defaults": {
+            "title": "",
+            "bio": "フォーラム エンゲージメント ボット。 https:\/\/engageusers.ai で自分のものを入手してください",
+            "website": "https:\/\/engageusers.ai"
+        }
+    },
+    "errors": {
+        "NotEnoughPermissionsWallet": "このユーザーのウォレットを読み取るための十分な権限がありません",
+        "ThisUserHaveNoWallet": "このユーザーにはウォレットが割り当てられていません",
+        "TheWalletOfThisUserInvalid": "このユーザーのウォレットは無効です",
+        "WalletInvalid": "ウォレットアドレスが無効です"
+    }
+}

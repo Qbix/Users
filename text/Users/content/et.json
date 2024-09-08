@@ -1,0 +1,193 @@
+{
+    "avatar": {
+        "Someone": "keegi"
+    },
+    "identifier": {
+        "types": {
+            "email": "Meil",
+            "mobile": "Mobiilne",
+            "web3": "Veeb3"
+        }
+    },
+    "clipboard": {
+        "Copied": "Kopeeritud! Nüüd saate selle kõikjale kleepida."
+    },
+    "analytics": {
+        "Title": "Analüütika",
+        "Daily": "Igapäevane",
+        "Weekly": "Iganädalane",
+        "Monthly": "Igakuine",
+        "Application": "Rakendus",
+        "Pages": "Leheküljed",
+        "Services": "Teenused",
+        "Faq": "KKK",
+        "WeekDays": "Nädalapäevad"
+    },
+    "actions": {
+        "LogIn": "Logi sisse",
+        "LogOut": "Logi välja"
+    },
+    "activate": {
+        "OneTimeCode": "Sisesta saadud kood:",
+        "SetAsPrimary": "Määra {{1}} minu peamiseks {{2}}",
+        "ChoosePassPhrase": "Valige sisselogimiseks <strong>parool<\/strong> .<br> Lihtne fraas, mis koosneb mõnest sõnast, mis jääb kergesti meelde.",
+        "ChoosePassPhraseSeeSuggestions": "Valige oma konto kaitsmiseks hea <strong>parool<\/strong> . Vaadake mõnede ideede soovitusi.",
+        "LogOutAndTryAgain": "Logige välja ja proovige uuesti",
+        "IfYouFeel": "Kui tunnete, et midagi läks valesti, saate seda teha",
+        "SetIdentifierButtonTitle": "Alusta uuesti",
+        "ActivateMyAccount": "Aktiveeri Minu konto"
+    },
+    "session": {
+        "GetStarted": "Alustama"
+    },
+    "authorize": {
+        "GetStarted": "Alustama",
+        "Authorize": "Volita",
+        "TermsLabel": "Olen lugenud ja nõustun<br> {{link}} juurde",
+        "TermsTitle": "Tingimused",
+        "mustAgree": "Kõigepealt peate tingimustega nõustuma."
+    },
+    "register": {
+        "TermsLabel": "Nõustun {{link}} ga",
+        "TermsTitle": "Tingimused"
+    },
+    "notifications": {
+        "title": "Luba",
+        "prompt": "Kas soovite märguanded lubada? Saate reaalajas värskendusi teile oluliste asjade kohta.",
+        "yes": "Jah",
+        "no": "Ei",
+        "WelcomePleaseVerifyEmail": "Tere tulemast! Palun kinnitage oma e-posti aadress.",
+        "WelcomeVerifyEmail": "Tere tulemast! Kinnita oma e-posti aadress.",
+        "ForgetPass": "Hei, kas unustasite oma parooli?",
+        "PassphraseSaved": "Teie parool on salvestatud.",
+        "IdentifierActivated": "Teie {{type}} on aktiveeritud.",
+        "CompletedActivation": "Olete kasutaja aktiveerimise lõpetanud.",
+        "CompletedActivationLogIn": "Olete kasutaja aktiveerimise lõpetanud. Proovige kohe sisse logida."
+    },
+    "contacts": {
+        "dialog": {
+            "title": "Valige kontakt",
+            "CreateAccount": "+ Uus kontakt",
+            "CreateAccountNotFound": "Q.Users.Cordova.UI.create ei leitud",
+            "SearchByName": "Otsi nime järgi",
+            "EmptyContacts": "Kontakte ei leitud..."
+        },
+        "select": {
+            "title": "Valige {{displayName}} kontakt"
+        }
+    },
+    "usersContacts": {
+        "selectLabel": "Valige silt.",
+        "inviteUser": "Kutsuge kasutajaid",
+        "selectRole": "Valige Roll",
+        "inviteRole": "Kutsu {{role}}"
+    },
+    "invalidLanguageSelected": "Valitud keel",
+    "platforms": {
+        "wallet": "Rahakott",
+        "broadcast": "Saade"
+    },
+    "login": {
+        "title": "Tere tulemast",
+        "directions": {
+            "GetStarted": "Looge konto või logige sisse.",
+            "NoRegister": "Logige sisse, kui teil on konto.",
+            "WasInvited": "Milline on parim viis teieni jõudmiseks?"
+        },
+        "directionsNoRegister": "Logige sisse, kui teil on konto.",
+        "goButton": "➔",
+        "passphrase": "Sisestage oma paroolifraas:",
+        "loginButton": "Alustama",
+        "registerButton": "Alustama",
+        "resendButton": "Saada aktiveerimissõnum",
+        "forgot": "Unustasin?",
+        "resendConfirm": "Kas soovite saata parooli lähtestamiseks sõnumi?",
+        "resendSuccess": "Parooli lähtestamiseks otsige sõnumit",
+        "resendClose": "Sulge",
+        "noPassphrase": "Enne sisselogimist peate määrama parooli, klõpsates aktiveerimissõnumis olevat linki.",
+        "notVerified": "Sisselogimiseks peate saatma endale aktiveerimissõnumi.",
+        "emailExists": "Kas proovisite varem selle meiliga registreeruda? Kui jah, siis kontrollige oma konto aktiveerimiseks oma postkasti. <a href='#resend' class='Q_button Users_activation_resend'>Klõpsake sõnumi uuesti saatmiseks<\/a>",
+        "mobileExists": "Kas proovisite varem selle mobiilinumbriga registreeruda? Kui jah, kontrollige oma konto aktiveerimiseks SMS-i. <a href='#resend' class='Q_button Users_activation_resend'>Klõpsake sõnumi uuesti saatmiseks<\/a>",
+        "usingOther": "või saate",
+        "connectPlatforms": "või ühendage kasutades:",
+        "prompt": "Vali kasutajanimi:",
+        "newUser": "või looge allpool uus konto",
+        "placeholders": {
+            "identifier": "oma mobiilinumbrit või e-posti",
+            "mobile": "sisesta oma mobiili number",
+            "email": "Sisesta oma emaili aadress",
+            "username": "kasutage ainult tähti ja numbreid"
+        },
+        "confirmTerms": "Kas nõustute teenusetingimustega?",
+        "facebookNoEmail": "Teie Facebooki kontol puudub kinnitatud e-posti aadress. Logige lihtsalt sisse algsel viisil.",
+        "picTooltip": "Saate seda pilti hiljem muuta",
+        "web3": {
+            "payload": "Logige sisse numbrile {{host}} kell {{timestamp}}",
+            "alert": {
+                "title": "Ümbersuunamine Walleti",
+                "content": "Kui olete selle dialoogi sulgenud, suunatakse teid oma rahakotti. Pärast sisselogimist naaske sellele lehele."
+            },
+            "ConnectWallet": "Ühendage Wallet"
+        }
+    },
+    "setIdentifier": {
+        "title": "Lisage sisselogimisviis",
+        "sendMessage": "Saada aktiveerimissõnum",
+        "placeholders": {
+            "identifier": "sisestage oma mobiiltelefoni number või e-posti aadress",
+            "mobile": "Sisesta oma mobiilinumber",
+            "email": "Sisesta oma emaili aadress",
+            "username": "kasutajanimi"
+        }
+    },
+    "prompt": {
+        "title": "{{Platform}} konto",
+        "areUsing": "Kasutate {{platform}} as",
+        "noLongerUsing": "Te ei ole enam ühendatud numbriga {{platform}} as",
+        "doAuth": "Logige sisse selle kontoga",
+        "doSwitch": "Lülitu sellele kontole"
+    },
+    "roles": {
+        "Owner": "Omanik",
+        "Admin": "Admin",
+        "Member": "liige",
+        "Guest": "Külaline",
+        "Host": "Host"
+    },
+    "web3": {
+        "WrongMethod": "Vale lepingumeetod {{methodName}}",
+        "ChangeWallet": "Vahetage rahakotti",
+        "ConnectWallet": "Ühendage Wallet",
+        "AfterWalletConnectedPleaseRefresh": "Pärast rahakoti ühendamist värskendage seda lehte rahakoti tuvastamiseks"
+    },
+    "labels": {
+        "addToPhonebook": "Lisa minu telefoni kontaktidesse",
+        "addLabel": "Uus suhe",
+        "prompt": "Andke sellele nimi",
+        "titles": {
+            "Users\/owners": "Omanikud",
+            "Users\/admins": "Administraatorid",
+            "Users\/members": "liikmed",
+            "Users\/guests": "Külalised",
+            "Users\/hosts": "Saatejuhid",
+            "Users\/testers": "Testijad",
+            "Users\/speakers": "Kõlarid"
+        }
+    },
+    "people": {
+        "People": "Inimesed"
+    },
+    "external": {
+        "defaults": {
+            "title": "",
+            "bio": "Foorumi kaasamisbot. Hankige oma aadressil https:\/\/engageusers.ai",
+            "website": "https:\/\/engageusers.ai"
+        }
+    },
+    "errors": {
+        "NotEnoughPermissionsWallet": "Selle kasutaja rahakoti lugemiseks pole piisavalt õigusi",
+        "ThisUserHaveNoWallet": "Sellele kasutajale pole rahakotti määratud",
+        "TheWalletOfThisUserInvalid": "Selle kasutaja rahakott on kehtetu",
+        "WalletInvalid": "Rahakoti aadress on kehtetu"
+    }
+}

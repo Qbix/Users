@@ -1,0 +1,193 @@
+{
+    "avatar": {
+        "Someone": "कोई"
+    },
+    "identifier": {
+        "types": {
+            "email": "ईमेल",
+            "mobile": "गतिमान",
+            "web3": "वेब3"
+        }
+    },
+    "clipboard": {
+        "Copied": "कॉपी किया गया! अब आप इसे कहीं भी पेस्ट कर सकते हैं।"
+    },
+    "analytics": {
+        "Title": "एनालिटिक्स",
+        "Daily": "दैनिक",
+        "Weekly": "साप्ताहिक",
+        "Monthly": "महीने के",
+        "Application": "आवेदन",
+        "Pages": "पृष्ठों",
+        "Services": "सेवाएं",
+        "Faq": "सामान्य प्रश्न",
+        "WeekDays": "सप्ताह के दिन"
+    },
+    "actions": {
+        "LogIn": "लॉग इन करें",
+        "LogOut": "लॉग आउट"
+    },
+    "activate": {
+        "OneTimeCode": "आपको प्राप्त कोड दर्ज करें:",
+        "SetAsPrimary": "{{1}} मेरे प्राथमिक {{2}} के रूप में सेट करें",
+        "ChoosePassPhrase": "लॉग इन करने के लिए <strong>पास वाक्यांश<\/strong> चुनें।<br> एक सरल वाक्यांश जिसमें कुछ शब्द शामिल हैं जो आपको आसानी से याद रहेंगे।",
+        "ChoosePassPhraseSeeSuggestions": "अपने खाते की सुरक्षा के लिए एक अच्छा <strong>पदबंध<\/strong> चुनें। कुछ विचारों के लिए सुझाव देखें।",
+        "LogOutAndTryAgain": "लॉग आउट करें और पुनः प्रयास करें",
+        "IfYouFeel": "अगर आपको लगता है कि कुछ गलत हुआ है, तो आप कर सकते हैं",
+        "SetIdentifierButtonTitle": "प्रारंभ करें",
+        "ActivateMyAccount": "मेरा खाता सक्रिय करें"
+    },
+    "session": {
+        "GetStarted": "शुरू हो जाओ"
+    },
+    "authorize": {
+        "GetStarted": "शुरू हो जाओ",
+        "Authorize": "अधिकृत",
+        "TermsLabel": "मैंने पढ़ा है और इस बात से सहमत है<br> {{link}} तक",
+        "TermsTitle": "शर्तें",
+        "mustAgree": "पहले आपको शर्तों से सहमत होना होगा।"
+    },
+    "register": {
+        "TermsLabel": "मैं {{link}} स्वीकार करता हूं",
+        "TermsTitle": "शर्तें"
+    },
+    "notifications": {
+        "title": "अनुमति",
+        "prompt": "क्या आप सूचनाएं सक्षम करना चाहते हैं? आपको उन चीज़ों के बारे में रीयल-टाइम अपडेट प्राप्त होंगे जिनकी आप परवाह करते हैं।",
+        "yes": "हाँ",
+        "no": "नहीं",
+        "WelcomePleaseVerifyEmail": "स्वागत! अपना ईमेल का पता जांच कराये।",
+        "WelcomeVerifyEmail": "स्वागत! अपने ईमेल पते की पुष्टि करें।",
+        "ForgetPass": "हे, क्या आप अपना पदबंध भूल गए?",
+        "PassphraseSaved": "आपका पास वाक्यांश सहेजा गया है।",
+        "IdentifierActivated": "आपका {{type}} सक्रिय हो गया है।",
+        "CompletedActivation": "आपने उपयोगकर्ता सक्रियण पूरा कर लिया है।",
+        "CompletedActivationLogIn": "आपने उपयोगकर्ता सक्रियण पूरा कर लिया है। अभी लॉग इन करने का प्रयास करें।"
+    },
+    "contacts": {
+        "dialog": {
+            "title": "संपर्क चुनें",
+            "CreateAccount": "+ नया संपर्क",
+            "CreateAccountNotFound": "Q.Users.Cordova.UI.create नहीं मिला",
+            "SearchByName": "नाम से खोजें",
+            "EmptyContacts": "संपर्क नहीं मिले..."
+        },
+        "select": {
+            "title": "{{displayName}} के संपर्क का चयन करें"
+        }
+    },
+    "usersContacts": {
+        "selectLabel": "कृपया लेबल चुनें।",
+        "inviteUser": "उपयोगकर्ताओं को आमंत्रित करें",
+        "selectRole": "भूमिका का चयन करें",
+        "inviteRole": "{{role}} आमंत्रित करें"
+    },
+    "invalidLanguageSelected": "अमान्य भाषा चुनी गई",
+    "platforms": {
+        "wallet": "बटुआ",
+        "broadcast": "प्रसारण"
+    },
+    "login": {
+        "title": "स्वागत",
+        "directions": {
+            "GetStarted": "एक खाता बनाएं या लॉग - इन करें।",
+            "NoRegister": "यदि आपके पास खाता है तो लॉग इन करें।",
+            "WasInvited": "आप तक पहुंचने का सबसे अच्छा तरीका क्या है?"
+        },
+        "directionsNoRegister": "यदि आपके पास खाता है तो लॉग इन करें।",
+        "goButton": "➔",
+        "passphrase": "अपना पासफ्रेज दर्ज करें:",
+        "loginButton": "शुरू हो जाओ",
+        "registerButton": "शुरू हो जाओ",
+        "resendButton": "सक्रियण संदेश भेजें",
+        "forgot": "यह भूल गया?",
+        "resendConfirm": "क्या आप अपना पासफ़्रेज़ रीसेट करने के लिए संदेश भेजना चाहते हैं?",
+        "resendSuccess": "अपना पासफ़्रेज़ रीसेट करने के लिए संदेश की जाँच करें",
+        "resendClose": "बंद करना",
+        "noPassphrase": "इससे पहले कि आप लॉग इन कर सकें, आपको अपने सक्रियण संदेश में लिंक पर क्लिक करके पास वाक्यांश सेट करना होगा।",
+        "notVerified": "लॉग इन करने के लिए आपको स्वयं को एक सक्रियण संदेश भेजना होगा।",
+        "emailExists": "क्या आपने पहले इस ईमेल से पंजीकरण करने का प्रयास किया था? यदि ऐसा है, तो अपना खाता सक्रिय करने के लिए अपना इनबॉक्स देखें। <a href='#resend' class='Q_button Users_activation_resend'>संदेश फिर से भेजने के लिए क्लिक करें<\/a>",
+        "mobileExists": "क्या आपने पहले इस मोबाइल नंबर से पंजीकरण करने का प्रयास किया था? यदि ऐसा है, तो अपने खाते को सक्रिय करने के लिए अपने एसएमएस की जांच करें। <a href='#resend' class='Q_button Users_activation_resend'>संदेश फिर से भेजने के लिए क्लिक करें<\/a>",
+        "usingOther": "या आप कर सकते हैं",
+        "connectPlatforms": "या उपयोग करके कनेक्ट करें:",
+        "prompt": "एक उपयोगकर्ता नाम चुनें:",
+        "newUser": "या नीचे एक नया खाता बनाएँ",
+        "placeholders": {
+            "identifier": "आपका मोबाइल # या ईमेल",
+            "mobile": "अपना मोबाइल दर्ज करें #",
+            "email": "अपना ईमेल पता दर्ज करें",
+            "username": "अक्षरों और संख्याओं का ही उपयोग करें"
+        },
+        "confirmTerms": "सेवा की शर्तें स्वीकार करें?",
+        "facebookNoEmail": "आपके फेसबुक खाते में एक पुष्ट ईमेल पता नहीं है। बस नेटिव तरीके से लॉग इन करें।",
+        "picTooltip": "आप इस तस्वीर को बाद में बदल सकते हैं",
+        "web3": {
+            "payload": "{{timestamp}} के समय {{host}} में लॉग इन करें",
+            "alert": {
+                "title": "वॉलेट पर पुनर्निर्देशित किया जा रहा है",
+                "content": "एक बार जब आप इस डायलॉग को बंद कर देते हैं, तो आपको अपने वॉलेट में ले जाया जाएगा। साइन इन करने के बाद, इस पृष्ठ पर वापस लौटें।"
+            },
+            "ConnectWallet": "वॉलेट कनेक्ट करें"
+        }
+    },
+    "setIdentifier": {
+        "title": "लॉग इन करने का तरीका जोड़ें",
+        "sendMessage": "सक्रियण संदेश भेजें",
+        "placeholders": {
+            "identifier": "अपना मोबाइल # या ईमेल दर्ज करें",
+            "mobile": "अपना मोबाइल संख्या दर्ज करे",
+            "email": "अपना ईमेल पता दर्ज करें",
+            "username": "उपयोगकर्ता नाम"
+        }
+    },
+    "prompt": {
+        "title": "{{Platform}} खाता",
+        "areUsing": "आप {{platform}} उपयोग कर रहे हैं",
+        "noLongerUsing": "अब आप {{platform}} के रूप में कनेक्ट नहीं हैं",
+        "doAuth": "इस खाते से लॉग इन करें",
+        "doSwitch": "इस खाते में स्विच करें"
+    },
+    "roles": {
+        "Owner": "मालिक",
+        "Admin": "व्यवस्थापक",
+        "Member": "सदस्य",
+        "Guest": "अतिथि",
+        "Host": "मेज़बान"
+    },
+    "web3": {
+        "WrongMethod": "गलत अनुबंध विधि {{methodName}}",
+        "ChangeWallet": "बटुआ बदलें",
+        "ConnectWallet": "वॉलेट कनेक्ट करें",
+        "AfterWalletConnectedPleaseRefresh": "वॉलेट कनेक्ट होने के बाद कृपया वॉलेट को पहचानने के लिए इस पेज को रीफ्रेश करें"
+    },
+    "labels": {
+        "addToPhonebook": "मेरे फ़ोन संपर्कों में जोड़ें",
+        "addLabel": "नए रिश्ते",
+        "prompt": "उसे एक नाम दे दो",
+        "titles": {
+            "Users\/owners": "मालिकों",
+            "Users\/admins": "व्यवस्थापक",
+            "Users\/members": "सदस्यों",
+            "Users\/guests": "अतिथियों",
+            "Users\/hosts": "मेजबान",
+            "Users\/testers": "परीक्षक",
+            "Users\/speakers": "वक्ताओं"
+        }
+    },
+    "people": {
+        "People": "लोग"
+    },
+    "external": {
+        "defaults": {
+            "title": "",
+            "bio": "फोरम सगाई बॉट। https:\/\/engageusers.ai पर अपना प्राप्त करें",
+            "website": "https:\/\/engageusers.ai"
+        }
+    },
+    "errors": {
+        "NotEnoughPermissionsWallet": "इस उपयोगकर्ता के वॉलेट को पढ़ने के लिए पर्याप्त अनुमतियाँ नहीं हैं",
+        "ThisUserHaveNoWallet": "इस उपयोगकर्ता को कोई वॉलेट असाइन नहीं किया गया है",
+        "TheWalletOfThisUserInvalid": "इस उपयोगकर्ता का बटुआ अमान्य है",
+        "WalletInvalid": "बटुआ पता अमान्य"
+    }
+}

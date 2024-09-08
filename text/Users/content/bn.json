@@ -1,0 +1,193 @@
+{
+    "avatar": {
+        "Someone": "কেউ"
+    },
+    "identifier": {
+        "types": {
+            "email": "ইমেইল",
+            "mobile": "মুঠোফোন",
+            "web3": "ওয়েব 3"
+        }
+    },
+    "clipboard": {
+        "Copied": "অনুলিপি করা হয়েছে! এখন আপনি এটি যেকোনো জায়গায় পেস্ট করতে পারেন।"
+    },
+    "analytics": {
+        "Title": "বিশ্লেষণ",
+        "Daily": "দৈনিক",
+        "Weekly": "সাপ্তাহিক",
+        "Monthly": "মাসিক",
+        "Application": "আবেদন",
+        "Pages": "পাতা",
+        "Services": "সেবা",
+        "Faq": "প্রশ্ন",
+        "WeekDays": "সপ্তাহের দিন"
+    },
+    "actions": {
+        "LogIn": "প্রবেশ করুন",
+        "LogOut": "প্রস্থান"
+    },
+    "activate": {
+        "OneTimeCode": "আপনি যে কোডটি পেয়েছেন তা লিখুন:",
+        "SetAsPrimary": "আমার প্রাথমিক {{2}} হিসাবে {{1}} সেট করুন",
+        "ChoosePassPhrase": "লগ ইন করার জন্য একটি <strong>পাস বাক্যাংশ<\/strong> চয়ন করুন৷<br> কয়েকটি শব্দের সমন্বয়ে একটি সাধারণ বাক্যাংশ যা আপনি সহজেই মনে রাখবেন।",
+        "ChoosePassPhraseSeeSuggestions": "আপনার অ্যাকাউন্ট রক্ষা করার জন্য একটি ভাল <strong>পাস বাক্যাংশ<\/strong> চয়ন করুন। কিছু ধারণা জন্য পরামর্শ দেখুন.",
+        "LogOutAndTryAgain": "লগ আউট এবং আবার চেষ্টা করুন",
+        "IfYouFeel": "আপনি যদি মনে করেন কিছু ভুল হয়েছে, আপনি করতে পারেন",
+        "SetIdentifierButtonTitle": "নতুন করে শুরু কর",
+        "ActivateMyAccount": "আমার অ্যাকাউন্ট সক্রিয় করুন"
+    },
+    "session": {
+        "GetStarted": "এবার শুরু করা যাক"
+    },
+    "authorize": {
+        "GetStarted": "এবার শুরু করা যাক",
+        "Authorize": "অনুমোদন করা",
+        "TermsLabel": "আমি পড়েছি এবং একমত<br> {{link}} পর্যন্ত",
+        "TermsTitle": "শর্তাবলী",
+        "mustAgree": "প্রথমে আপনাকে শর্তাবলীতে সম্মত হতে হবে।"
+    },
+    "register": {
+        "TermsLabel": "আমি {{link}} গ্রহণ করি",
+        "TermsTitle": "শর্তাবলী"
+    },
+    "notifications": {
+        "title": "অনুমতি",
+        "prompt": "আপনি বিজ্ঞপ্তি সক্রিয় করতে চান? আপনি আপনার যত্নশীল জিনিস সম্পর্কে রিয়েল-টাইম আপডেট পাবেন।",
+        "yes": "হ্যাঁ",
+        "no": "না",
+        "WelcomePleaseVerifyEmail": "স্বাগত! আপনার ইমেল ঠিকানা যাচাই করুন.",
+        "WelcomeVerifyEmail": "স্বাগত! আপনার ইমেল ঠিকানা যাচাই করুন.",
+        "ForgetPass": "আরে, আপনি কি আপনার পাসফ্রেজ ভুলে গেছেন?",
+        "PassphraseSaved": "আপনার পাস বাক্যাংশ সংরক্ষণ করা হয়েছে.",
+        "IdentifierActivated": "আপনার {{type}} সক্রিয় করা হয়েছে.",
+        "CompletedActivation": "আপনি ব্যবহারকারী সক্রিয়করণ সম্পন্ন করেছেন।",
+        "CompletedActivationLogIn": "আপনি ব্যবহারকারী সক্রিয়করণ সম্পন্ন করেছেন। এখন লগ ইন করার চেষ্টা করুন."
+    },
+    "contacts": {
+        "dialog": {
+            "title": "যোগাযোগ নির্বাচন করুন",
+            "CreateAccount": "+ নতুন যোগাযোগ",
+            "CreateAccountNotFound": "Q.Users.Cordova.UI.create পাওয়া যায়নি",
+            "SearchByName": "নাম দ্বারা অনুসন্ধান",
+            "EmptyContacts": "পরিচিতি পাওয়া যায়নি..."
+        },
+        "select": {
+            "title": "{{displayName}} এর পরিচিতি নির্বাচন করুন"
+        }
+    },
+    "usersContacts": {
+        "selectLabel": "অনুগ্রহ করে লেবেল নির্বাচন করুন।",
+        "inviteUser": "ব্যবহারকারীদের আমন্ত্রণ",
+        "selectRole": "ভূমিকা নির্বাচন করুন",
+        "inviteRole": "{{role}} আমন্ত্রণ জানান"
+    },
+    "invalidLanguageSelected": "অবৈধ ভাষা নির্বাচন করা হয়েছে৷",
+    "platforms": {
+        "wallet": "ওয়ালেট",
+        "broadcast": "সম্প্রচার"
+    },
+    "login": {
+        "title": "স্বাগত",
+        "directions": {
+            "GetStarted": "একটি অ্যাকাউন্ট তৈরি করুন, বা লগ ইন করুন।",
+            "NoRegister": "আপনার যদি একটি অ্যাকাউন্ট থাকে লগ ইন করুন.",
+            "WasInvited": "আপনার কাছে পৌঁছানোর সেরা উপায় কী?"
+        },
+        "directionsNoRegister": "আপনার যদি একটি অ্যাকাউন্ট থাকে লগ ইন করুন.",
+        "goButton": "➔",
+        "passphrase": "আপনার পাস বাক্যাংশ লিখুন:",
+        "loginButton": "এবার শুরু করা যাক",
+        "registerButton": "এবার শুরু করা যাক",
+        "resendButton": "সক্রিয়করণ বার্তা পাঠান",
+        "forgot": "ভুলে গেছেন?",
+        "resendConfirm": "আপনি কি আপনার পাসফ্রেজ রিসেট করার জন্য একটি বার্তা পাঠাতে চান?",
+        "resendSuccess": "আপনার পাসফ্রেজ রিসেট করার জন্য একটি বার্তা চেক করুন",
+        "resendClose": "বন্ধ",
+        "noPassphrase": "আপনি লগ ইন করার আগে, আপনার সক্রিয়করণ বার্তার লিঙ্কটিতে ক্লিক করে আপনাকে অবশ্যই একটি পাস বাক্যাংশ সেট করতে হবে।",
+        "notVerified": "লগ ইন করার জন্য আপনাকে অবশ্যই একটি সক্রিয়করণ বার্তা পাঠাতে হবে৷",
+        "emailExists": "আপনি কি আগে এই ইমেল দিয়ে নিবন্ধন করার চেষ্টা করেছেন? যদি তাই হয়, আপনার অ্যাকাউন্ট সক্রিয় করতে আপনার ইনবক্স চেক করুন. <a href='#resend' class='Q_button Users_activation_resend'>বার্তাটি পুনরায় পাঠাতে ক্লিক করুন<\/a>",
+        "mobileExists": "আপনি কি আগে এই মোবাইল নম্বর দিয়ে নিবন্ধন করার চেষ্টা করেছিলেন? যদি তাই হয়, আপনার অ্যাকাউন্ট সক্রিয় করতে আপনার SMS চেক করুন. <a href='#resend' class='Q_button Users_activation_resend'>বার্তাটি পুনরায় পাঠাতে ক্লিক করুন<\/a>",
+        "usingOther": "অথবা আপনি পারেন",
+        "connectPlatforms": "অথবা ব্যবহার করে সংযোগ করুন:",
+        "prompt": "একটি ব্যবহারকারীর নাম চয়ন করুন:",
+        "newUser": "অথবা নীচে একটি নতুন অ্যাকাউন্ট তৈরি করুন",
+        "placeholders": {
+            "identifier": "আপনার মোবাইল # বা ইমেইল",
+            "mobile": "আপনার মোবাইল # লিখুন",
+            "email": "তোমার ই - মেইল ঠিকানা লেখো",
+            "username": "শুধুমাত্র অক্ষর এবং সংখ্যা ব্যবহার করুন"
+        },
+        "confirmTerms": "পরিষেবার শর্তাবলী স্বীকার করবেন?",
+        "facebookNoEmail": "আপনার ফেসবুক অ্যাকাউন্টে একটি নিশ্চিত ইমেল ঠিকানা অনুপস্থিত। শুধু নেটিভ ভাবে লগ ইন করুন.",
+        "picTooltip": "আপনি পরে এই ছবি পরিবর্তন করতে পারেন",
+        "web3": {
+            "payload": "{{timestamp}} সময়ে {{host}} এ লগ ইন করুন",
+            "alert": {
+                "title": "Wallet এ পুনঃনির্দেশ করা হচ্ছে",
+                "content": "একবার আপনি এই ডায়ালগটি বন্ধ করলে, আপনাকে আপনার ওয়ালেটে নিয়ে যাওয়া হবে৷ আপনি সাইন ইন করার পরে, এই পৃষ্ঠায় ফিরে যান।"
+            },
+            "ConnectWallet": "ওয়ালেট সংযুক্ত করুন"
+        }
+    },
+    "setIdentifier": {
+        "title": "লগ ইন করার একটি উপায় যোগ করুন",
+        "sendMessage": "সক্রিয়করণ বার্তা পাঠান",
+        "placeholders": {
+            "identifier": "আপনার মোবাইল # বা ইমেইল লিখুন",
+            "mobile": "আপনার মোবাইল নাম্বার প্রবেশ করুন",
+            "email": "তোমার ই - মেইল ঠিকানা লেখো",
+            "username": "ব্যবহারকারীর নাম"
+        }
+    },
+    "prompt": {
+        "title": "{{Platform}} অ্যাকাউন্ট",
+        "areUsing": "আপনি হিসাবে {{platform}} ব্যবহার করছেন",
+        "noLongerUsing": "আপনি আর {{platform}} এর সাথে সংযুক্ত নন",
+        "doAuth": "এই অ্যাকাউন্ট দিয়ে লগ ইন করুন",
+        "doSwitch": "এই অ্যাকাউন্টে স্যুইচ করুন"
+    },
+    "roles": {
+        "Owner": "মালিক",
+        "Admin": "অ্যাডমিন",
+        "Member": "সদস্য",
+        "Guest": "অতিথি",
+        "Host": "হোস্ট"
+    },
+    "web3": {
+        "WrongMethod": "ভুল চুক্তি পদ্ধতি {{methodName}}",
+        "ChangeWallet": "ওয়ালেট পরিবর্তন করুন",
+        "ConnectWallet": "ওয়ালেট সংযুক্ত করুন",
+        "AfterWalletConnectedPleaseRefresh": "ওয়ালেট সংযুক্ত হওয়ার পর মানিব্যাগটি চিনতে এই পৃষ্ঠাটি রিফ্রেশ করুন"
+    },
+    "labels": {
+        "addToPhonebook": "আমার ফোন পরিচিতি যোগ করুন",
+        "addLabel": "নতুন সম্পর্ক",
+        "prompt": "এটার একটি নাম দাও",
+        "titles": {
+            "Users\/owners": "মালিকদের",
+            "Users\/admins": "অ্যাডমিনস",
+            "Users\/members": "সদস্যরা",
+            "Users\/guests": "অতিথিরা",
+            "Users\/hosts": "হোস্ট",
+            "Users\/testers": "পরীক্ষক",
+            "Users\/speakers": "বক্তারা"
+        }
+    },
+    "people": {
+        "People": "মানুষ"
+    },
+    "external": {
+        "defaults": {
+            "title": "",
+            "bio": "ফোরাম ব্যস্ততা বট. https:\/\/engageusers.ai-এ আপনার নিজের পান",
+            "website": "https:\/\/engageusers.ai"
+        }
+    },
+    "errors": {
+        "NotEnoughPermissionsWallet": "এই ব্যবহারকারীর ওয়ালেট পড়ার জন্য পর্যাপ্ত অনুমতি নেই৷",
+        "ThisUserHaveNoWallet": "এই ব্যবহারকারীর কোনো ওয়ালেট বরাদ্দ নেই৷",
+        "TheWalletOfThisUserInvalid": "এই ব্যবহারকারীর ওয়ালেট অবৈধ৷",
+        "WalletInvalid": "ওয়ালেট ঠিকানা অবৈধ৷"
+    }
+}

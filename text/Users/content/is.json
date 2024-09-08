@@ -1,0 +1,193 @@
+{
+    "avatar": {
+        "Someone": "Einhver"
+    },
+    "identifier": {
+        "types": {
+            "email": "Tölvupóstur",
+            "mobile": "Farsími",
+            "web3": "Vef3"
+        }
+    },
+    "clipboard": {
+        "Copied": "Afritað! Nú geturðu límt það hvar sem er."
+    },
+    "analytics": {
+        "Title": "Greining",
+        "Daily": "Daglega",
+        "Weekly": "Vikulega",
+        "Monthly": "Mánaðarlega",
+        "Application": "Umsókn",
+        "Pages": "Síður",
+        "Services": "Þjónusta",
+        "Faq": "Algengar spurningar",
+        "WeekDays": "Vikudagar"
+    },
+    "actions": {
+        "LogIn": "skrá inn",
+        "LogOut": "að skrá þig út"
+    },
+    "activate": {
+        "OneTimeCode": "Sláðu inn kóðann sem þú fékkst:",
+        "SetAsPrimary": "Stilltu {{1}} sem aðal {{2}}",
+        "ChoosePassPhrase": "Veldu <strong>lykilorð<\/strong> til að skrá þig inn með.<br> Einföld setning sem samanstendur af nokkrum orðum sem þú munt auðveldlega muna.",
+        "ChoosePassPhraseSeeSuggestions": "Veldu góða <strong>lykilorð<\/strong> til að vernda reikninginn þinn. Sjá tillögur um nokkrar hugmyndir.",
+        "LogOutAndTryAgain": "Skráðu þig út og reyndu aftur",
+        "IfYouFeel": "Ef þér finnst eitthvað hafa farið úrskeiðis geturðu það",
+        "SetIdentifierButtonTitle": "byrja aftur",
+        "ActivateMyAccount": "Virkjaðu reikninginn minn"
+    },
+    "session": {
+        "GetStarted": "Byrja"
+    },
+    "authorize": {
+        "GetStarted": "Byrja",
+        "Authorize": "Heimild",
+        "TermsLabel": "Ég hef lesið og er sammála<br> í {{link}}",
+        "TermsTitle": "Skilmálar",
+        "mustAgree": "Fyrst verður þú að samþykkja skilmálana."
+    },
+    "register": {
+        "TermsLabel": "Ég samþykki {{link}}",
+        "TermsTitle": "Skilmálar"
+    },
+    "notifications": {
+        "title": "Leyfi",
+        "prompt": "Viltu virkja tilkynningar? Þú munt fá rauntímauppfærslur um hluti sem þér þykir vænt um.",
+        "yes": "Já",
+        "no": "Nei",
+        "WelcomePleaseVerifyEmail": "Velkominn! Vinsamlegast staðfestu netfangið þitt.",
+        "WelcomeVerifyEmail": "Velkominn! Staðfestu netfangið þitt.",
+        "ForgetPass": "Hæ, gleymdirðu lykilorðinu þínu?",
+        "PassphraseSaved": "Aðgangsorðið þitt hefur verið vistað.",
+        "IdentifierActivated": "{{type}} hefur verið virkjað.",
+        "CompletedActivation": "Þú hefur lokið virkjun notanda.",
+        "CompletedActivationLogIn": "Þú hefur lokið virkjun notanda. Prófaðu að skrá þig inn núna."
+    },
+    "contacts": {
+        "dialog": {
+            "title": "Veldu tengilið",
+            "CreateAccount": "+ Nýr tengiliður",
+            "CreateAccountNotFound": "Q.Users.Cordova.UI.create fannst ekki",
+            "SearchByName": "Leitaðu eftir nafni",
+            "EmptyContacts": "Tengiliðir fundust ekki..."
+        },
+        "select": {
+            "title": "Veldu tengilið {{displayName}}"
+        }
+    },
+    "usersContacts": {
+        "selectLabel": "Vinsamlegast veldu merki.",
+        "inviteUser": "Bjóða notendum",
+        "selectRole": "Veldu Hlutverk",
+        "inviteRole": "Bjóða {{role}}"
+    },
+    "invalidLanguageSelected": "Ógilt tungumál valið",
+    "platforms": {
+        "wallet": "Veski",
+        "broadcast": "Útsending"
+    },
+    "login": {
+        "title": "Velkominn",
+        "directions": {
+            "GetStarted": "Búðu til reikning eða skráðu þig inn.",
+            "NoRegister": "Skráðu þig inn ef þú ert með reikning.",
+            "WasInvited": "Hver er besta leiðin til að ná til þín?"
+        },
+        "directionsNoRegister": "Skráðu þig inn ef þú ert með reikning.",
+        "goButton": "➔",
+        "passphrase": "Sláðu inn lykilorðið þitt:",
+        "loginButton": "Byrja",
+        "registerButton": "Byrja",
+        "resendButton": "Sendu virkjunarskilaboð",
+        "forgot": "Gleymt því?",
+        "resendConfirm": "Viltu senda skilaboð til að endurstilla lykilorðið þitt?",
+        "resendSuccess": "Leitaðu að skilaboðum til að endurstilla lykilorðið þitt",
+        "resendClose": "Loka",
+        "noPassphrase": "Áður en þú getur skráð þig inn verður þú að setja lykilorð með því að smella á hlekkinn í virkjunarskilaboðunum þínum.",
+        "notVerified": "Þú verður að senda sjálfum þér virkjunarskilaboð til að skrá þig inn.",
+        "emailExists": "Hefur þú reynt að skrá þig með þessum tölvupósti áður? Ef svo er skaltu athuga pósthólfið þitt til að virkja reikninginn þinn. <a href='#resend' class='Q_button Users_activation_resend'>Smelltu til að endursenda skilaboðin<\/a>",
+        "mobileExists": "Hefur þú reynt að skrá þig með þessu farsímanúmeri áður? Ef svo er skaltu athuga SMS til að virkja reikninginn þinn. <a href='#resend' class='Q_button Users_activation_resend'>Smelltu til að endursenda skilaboðin<\/a>",
+        "usingOther": "eða þú getur",
+        "connectPlatforms": "eða tengdu með:",
+        "prompt": "Veldu notendanafn:",
+        "newUser": "eða stofnaðu nýjan reikning hér að neðan",
+        "placeholders": {
+            "identifier": "farsímanúmerið þitt eða tölvupóstinn þinn",
+            "mobile": "sláðu inn farsímanúmerið þitt",
+            "email": "sláðu inn netfangið þitt",
+            "username": "nota eingöngu bókstafi og tölustafi"
+        },
+        "confirmTerms": "Samþykkja þjónustuskilmálana?",
+        "facebookNoEmail": "Á Facebook reikningnum þínum vantar staðfest netfang. Skráðu þig einfaldlega á innfæddan hátt.",
+        "picTooltip": "Þú getur breytt þessari mynd síðar",
+        "web3": {
+            "payload": "Skráðu þig inn á {{host}} á tíma {{timestamp}}",
+            "alert": {
+                "title": "Beinir áfram í veski",
+                "content": "Þegar þú lokar þessum glugga verðurðu færður í veskið þitt. Eftir að þú hefur skráð þig inn skaltu fara aftur á þessa síðu."
+            },
+            "ConnectWallet": "Tengdu veski"
+        }
+    },
+    "setIdentifier": {
+        "title": "Bættu við leið til að skrá þig inn",
+        "sendMessage": "Sendu virkjunarskilaboð",
+        "placeholders": {
+            "identifier": "sláðu inn farsímanúmerið þitt eða tölvupóstinn þinn",
+            "mobile": "sláðu inn farsímanúmerið þitt",
+            "email": "sláðu inn netfangið þitt",
+            "username": "notendanafn"
+        }
+    },
+    "prompt": {
+        "title": "{{Platform}} Reikningur",
+        "areUsing": "Þú ert að nota {{platform}} as",
+        "noLongerUsing": "Þú ert ekki lengur tengdur við {{platform}} as",
+        "doAuth": "Skráðu þig inn með þessum reikningi",
+        "doSwitch": "Skiptu yfir á þennan reikning"
+    },
+    "roles": {
+        "Owner": "Eigandi",
+        "Admin": "Admin",
+        "Member": "Meðlimur",
+        "Guest": "Gestur",
+        "Host": "Gestgjafi"
+    },
+    "web3": {
+        "WrongMethod": "Röng samningsaðferð {{methodName}}",
+        "ChangeWallet": "Breyta veski",
+        "ConnectWallet": "Tengdu veski",
+        "AfterWalletConnectedPleaseRefresh": "Eftir að veskið hefur verið tengt skaltu endurnýja þessa síðu til að þekkja veskið"
+    },
+    "labels": {
+        "addToPhonebook": "Bæta við tengiliði í símanum mínum",
+        "addLabel": "Nýtt samband",
+        "prompt": "Gefðu því nafn",
+        "titles": {
+            "Users\/owners": "Eigendur",
+            "Users\/admins": "Stjórnendur",
+            "Users\/members": "Meðlimir",
+            "Users\/guests": "Gestir",
+            "Users\/hosts": "Gestgjafar",
+            "Users\/testers": "Prófunarmenn",
+            "Users\/speakers": "Hátalarar"
+        }
+    },
+    "people": {
+        "People": "Fólk"
+    },
+    "external": {
+        "defaults": {
+            "title": "",
+            "bio": "Spjallþátttökuvél á vettvangi. Fáðu þitt eigið á https:\/\/engageusers.ai",
+            "website": "https:\/\/engageusers.ai"
+        }
+    },
+    "errors": {
+        "NotEnoughPermissionsWallet": "Ekki nægar heimildir til að lesa veski þessa notanda",
+        "ThisUserHaveNoWallet": "Þessi notandi hefur ekkert veski úthlutað",
+        "TheWalletOfThisUserInvalid": "Veski þessa notanda ógilt",
+        "WalletInvalid": "Veski heimilisfang ógilt"
+    }
+}

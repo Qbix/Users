@@ -1,0 +1,193 @@
+{
+    "avatar": {
+        "Someone": "Kimsə"
+    },
+    "identifier": {
+        "types": {
+            "email": "E-poçt",
+            "mobile": "Mobil",
+            "web3": "Web3"
+        }
+    },
+    "clipboard": {
+        "Copied": "Kopyalandı! İndi onu istənilən yerə yapışdıra bilərsiniz."
+    },
+    "analytics": {
+        "Title": "Analitika",
+        "Daily": "Gündəlik",
+        "Weekly": "Həftəlik",
+        "Monthly": "Aylıq",
+        "Application": "Ərizə",
+        "Pages": "Səhifələr",
+        "Services": "Xidmətlər",
+        "Faq": "Faq",
+        "WeekDays": "Həftə içi"
+    },
+    "actions": {
+        "LogIn": "daxil ol",
+        "LogOut": "çıxış"
+    },
+    "activate": {
+        "OneTimeCode": "Aldığınız kodu daxil edin:",
+        "SetAsPrimary": "{{1}} əsas {{2}} olaraq təyin edin",
+        "ChoosePassPhrase": "Daxil olmaq üçün <strong>keçid ifadəsini<\/strong> seçin.<br> Asanlıqla xatırlayacağınız bir neçə sözdən ibarət sadə bir ifadə.",
+        "ChoosePassPhraseSeeSuggestions": "Hesabınızı qorumaq üçün yaxşı <strong>keçid ifadəsi<\/strong> seçin. Bəzi fikirlər üçün təkliflərə baxın.",
+        "LogOutAndTryAgain": "Çıxın və Yenidən cəhd edin",
+        "IfYouFeel": "Bir şeyin səhv getdiyini hiss edirsinizsə, edə bilərsiniz",
+        "SetIdentifierButtonTitle": "yenidən başlamaq",
+        "ActivateMyAccount": "Hesabımı Aktivləşdirin"
+    },
+    "session": {
+        "GetStarted": "Başlamaq"
+    },
+    "authorize": {
+        "GetStarted": "Başlamaq",
+        "Authorize": "Səlahiyyət verin",
+        "TermsLabel": "Oxudum və razıyam<br> {{link}} a qədər",
+        "TermsTitle": "Şərtlər",
+        "mustAgree": "Əvvəlcə şərtlərlə razılaşmalısınız."
+    },
+    "register": {
+        "TermsLabel": "{{link}} -u qəbul edirəm",
+        "TermsTitle": "Şərtlər"
+    },
+    "notifications": {
+        "title": "İcazə",
+        "prompt": "Bildirişləri aktiv etmək istəyirsiniz? Sizi maraqlandıran şeylər haqqında real vaxt yeniləmələri alacaqsınız.",
+        "yes": "Bəli",
+        "no": "Yox",
+        "WelcomePleaseVerifyEmail": "Xoş gəldiniz! Zəhmət olmasa e-poçt ünvanınızı yoxlayın.",
+        "WelcomeVerifyEmail": "Xoş gəldiniz! E-poçt ünvanınızı doğrulayın.",
+        "ForgetPass": "Hey, parol sözünü unutmusan?",
+        "PassphraseSaved": "Keçid ifadəniz yadda saxlanıldı.",
+        "IdentifierActivated": "{{type}} aktivləşdirildi.",
+        "CompletedActivation": "İstifadəçinin aktivləşdirilməsini tamamladınız.",
+        "CompletedActivationLogIn": "İstifadəçinin aktivləşdirilməsini tamamladınız. İndi daxil olmağa çalışın."
+    },
+    "contacts": {
+        "dialog": {
+            "title": "Əlaqə seçin",
+            "CreateAccount": "+ Yeni Əlaqə",
+            "CreateAccountNotFound": "Q.Users.Cordova.UI.create tapılmadı",
+            "SearchByName": "Ada görə axtarın",
+            "EmptyContacts": "Kontaktlar tapılmadı..."
+        },
+        "select": {
+            "title": "{{displayName}} kontaktını seçin"
+        }
+    },
+    "usersContacts": {
+        "selectLabel": "Lütfən etiket seçin.",
+        "inviteUser": "İstifadəçiləri dəvət edin",
+        "selectRole": "Rol seçin",
+        "inviteRole": "{{role}} dəvət et"
+    },
+    "invalidLanguageSelected": "Yanlış dil seçildi",
+    "platforms": {
+        "wallet": "Pul kisəsi",
+        "broadcast": "Yayım"
+    },
+    "login": {
+        "title": "Xoş gəldiniz",
+        "directions": {
+            "GetStarted": "Hesab yaradın və ya daxil olun.",
+            "NoRegister": "Hesabınız varsa daxil olun.",
+            "WasInvited": "Sizə çatmağın ən yaxşı yolu nədir?"
+        },
+        "directionsNoRegister": "Hesabınız varsa daxil olun.",
+        "goButton": "➔",
+        "passphrase": "Keçid ifadənizi daxil edin:",
+        "loginButton": "Başlamaq",
+        "registerButton": "Başlamaq",
+        "resendButton": "Aktivləşdirmə mesajı göndərin",
+        "forgot": "Unutmusan?",
+        "resendConfirm": "Parolu sıfırlamaq üçün mesaj göndərmək istəyirsiniz?",
+        "resendSuccess": "Parolunuzu sıfırlamaq üçün mesajı yoxlayın",
+        "resendClose": "Yaxın",
+        "noPassphrase": "Daxil etməzdən əvvəl aktivləşdirmə mesajınızdakı keçidə klikləməklə keçid ifadəsi təyin etməlisiniz.",
+        "notVerified": "Daxil olmaq üçün özünüzə aktivasiya mesajı göndərməlisiniz.",
+        "emailExists": "Daha əvvəl bu e-poçtla qeydiyyatdan keçməyə çalışmısınız? Əgər belədirsə, hesabınızı aktivləşdirmək üçün gələnlər qutusunu yoxlayın. <a href='#resend' class='Q_button Users_activation_resend'>Mesajı yenidən göndərmək üçün klikləyin<\/a>",
+        "mobileExists": "Daha əvvəl bu mobil nömrə ilə qeydiyyatdan keçməyə çalışmısınız? Əgər belədirsə, hesabınızı aktivləşdirmək üçün SMS-i yoxlayın. <a href='#resend' class='Q_button Users_activation_resend'>Mesajı yenidən göndərmək üçün klikləyin<\/a>",
+        "usingOther": "ya da bilərsən",
+        "connectPlatforms": "və ya istifadə edərək qoşulun:",
+        "prompt": "İstifadəçi adı seçin:",
+        "newUser": "və ya aşağıda yeni hesab yaradın",
+        "placeholders": {
+            "identifier": "mobil # və ya e-poçtunuz",
+            "mobile": "mobil nömrənizi daxil edin",
+            "email": "E-poçt ünvanınızı daxil edin",
+            "username": "yalnız hərf və rəqəmlərdən istifadə edin"
+        },
+        "confirmTerms": "Xidmət Şərtlərini qəbul edirsiniz?",
+        "facebookNoEmail": "Facebook hesabınızda təsdiqlənmiş e-poçt ünvanı yoxdur. Sadəcə yerli şəkildə daxil olun.",
+        "picTooltip": "Bu şəkli sonra dəyişə bilərsiniz",
+        "web3": {
+            "payload": "{{timestamp}} da {{host}} a daxil olun",
+            "alert": {
+                "title": "Pulqabıya yönləndirilir",
+                "content": "Bu dialoqu bağladıqdan sonra cüzdanınıza aparılacaqsınız. Daxil olduqdan sonra bu səhifəyə qayıdın."
+            },
+            "ConnectWallet": "Pul kisəsini birləşdirin"
+        }
+    },
+    "setIdentifier": {
+        "title": "Daxil olmaq üçün bir yol əlavə edin",
+        "sendMessage": "Aktivləşdirmə mesajı göndərin",
+        "placeholders": {
+            "identifier": "mobil nömrənizi və ya e-poçtunuzu daxil edin",
+            "mobile": "mobil nömrənizi daxil edin",
+            "email": "E-poçt ünvanınızı daxil edin",
+            "username": "istifadəçi adı"
+        }
+    },
+    "prompt": {
+        "title": "{{Platform}} Hesab",
+        "areUsing": "Siz {{platform}} kimi istifadə edirsiniz",
+        "noLongerUsing": "Siz artıq {{platform}} olaraq qoşulmusunuz",
+        "doAuth": "Bu hesabla daxil olun",
+        "doSwitch": "Bu hesaba keçin"
+    },
+    "roles": {
+        "Owner": "Sahib",
+        "Admin": "Admin",
+        "Member": "Üzv",
+        "Guest": "Qonaq",
+        "Host": "Ev sahibi"
+    },
+    "web3": {
+        "WrongMethod": "Yanlış müqavilə üsulu {{methodName}}",
+        "ChangeWallet": "Pul kisəsini dəyişdirin",
+        "ConnectWallet": "Pul kisəsini birləşdirin",
+        "AfterWalletConnectedPleaseRefresh": "Pul kisəsi qoşulduqdan sonra pul kisəsini tanımaq üçün bu səhifəni yeniləyin"
+    },
+    "labels": {
+        "addToPhonebook": "Telefon Əlaqələrimə əlavə et",
+        "addLabel": "Yeni Münasibət",
+        "prompt": "Bir ad verin",
+        "titles": {
+            "Users\/owners": "Sahiblər",
+            "Users\/admins": "Adminlər",
+            "Users\/members": "Üzvlər",
+            "Users\/guests": "Qonaqlar",
+            "Users\/hosts": "Ev sahibləri",
+            "Users\/testers": "Testçilər",
+            "Users\/speakers": "Dinamiklər"
+        }
+    },
+    "people": {
+        "People": "Xalq"
+    },
+    "external": {
+        "defaults": {
+            "title": "",
+            "bio": "Forum nişan botu. Https:\/\/engageusers.ai saytından özünüz əldə edin",
+            "website": "https:\/\/engageusers.ai"
+        }
+    },
+    "errors": {
+        "NotEnoughPermissionsWallet": "Bu istifadəçinin pul kisəsini oxumaq üçün kifayət qədər icazə yoxdur",
+        "ThisUserHaveNoWallet": "Bu istifadəçiyə pul kisəsi təyin edilməyib",
+        "TheWalletOfThisUserInvalid": "Bu istifadəçinin pul kisəsi etibarsızdır",
+        "WalletInvalid": "Pulqabı ünvanı yanlışdır"
+    }
+}

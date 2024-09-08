@@ -1,0 +1,193 @@
+{
+    "avatar": {
+        "Someone": "Birisi"
+    },
+    "identifier": {
+        "types": {
+            "email": "E-posta",
+            "mobile": "mobil",
+            "web3": "Web3"
+        }
+    },
+    "clipboard": {
+        "Copied": "kopyalandı! Artık herhangi bir yere yapıştırabilirsiniz."
+    },
+    "analytics": {
+        "Title": "Analitik",
+        "Daily": "Günlük",
+        "Weekly": "Haftalık",
+        "Monthly": "Aylık",
+        "Application": "Başvuru",
+        "Pages": "Sayfalar",
+        "Services": "Hizmetler",
+        "Faq": "SSS",
+        "WeekDays": "Hafta içi"
+    },
+    "actions": {
+        "LogIn": "giriş yapmak",
+        "LogOut": "çıkış Yap"
+    },
+    "activate": {
+        "OneTimeCode": "Aldığınız kodu girin:",
+        "SetAsPrimary": "{{1}} birincil {{2}} olarak ayarla",
+        "ChoosePassPhrase": "Oturum açmak için bir <strong>parola<\/strong> seçin.<br> Kolayca hatırlayacağınız birkaç kelimeden oluşan basit bir cümle.",
+        "ChoosePassPhraseSeeSuggestions": "Hesabınızı korumak için iyi bir <strong>parola<\/strong> seçin. Bazı fikirler için önerilere bakın.",
+        "LogOutAndTryAgain": "Oturumu Kapatın ve Tekrar Deneyin",
+        "IfYouFeel": "Bir şeylerin ters gittiğini hissederseniz,",
+        "SetIdentifierButtonTitle": "baştan başlamak",
+        "ActivateMyAccount": "Hesabımı Etkinleştir"
+    },
+    "session": {
+        "GetStarted": "Başlamak"
+    },
+    "authorize": {
+        "GetStarted": "Başlamak",
+        "Authorize": "Yetki vermek",
+        "TermsLabel": "okudum ve kabul ediyorum<br> {{link}}",
+        "TermsTitle": "şartlar",
+        "mustAgree": "Öncelikle şartları kabul etmelisiniz."
+    },
+    "register": {
+        "TermsLabel": "{{link}} kabul ediyorum",
+        "TermsTitle": "şartlar"
+    },
+    "notifications": {
+        "title": "İzin",
+        "prompt": "Bildirimleri etkinleştirmek istiyor musunuz? Önemsediğiniz şeyler hakkında gerçek zamanlı güncellemeler alacaksınız.",
+        "yes": "Evet",
+        "no": "HAYIR",
+        "WelcomePleaseVerifyEmail": "Hoş geldin! Lütfen email adresini doğrula.",
+        "WelcomeVerifyEmail": "Hoş geldin! Email adresinizi doğrulayın.",
+        "ForgetPass": "Hey, parolanı mı unuttun?",
+        "PassphraseSaved": "Parolanız kaydedildi.",
+        "IdentifierActivated": "{{type}} etkinleştirildi.",
+        "CompletedActivation": "Kullanıcı aktivasyonunu tamamladınız.",
+        "CompletedActivationLogIn": "Kullanıcı aktivasyonunu tamamladınız. Şimdi oturum açmayı deneyin."
+    },
+    "contacts": {
+        "dialog": {
+            "title": "Kişi seçin",
+            "CreateAccount": "+ Yeni Kişi",
+            "CreateAccountNotFound": "Q.Users.Cordova.UI.create bulunamadı",
+            "SearchByName": "Ada göre ara",
+            "EmptyContacts": "Kişiler bulunamadı..."
+        },
+        "select": {
+            "title": "{{displayName}} kişisini seçin"
+        }
+    },
+    "usersContacts": {
+        "selectLabel": "Lütfen etiketi seçin.",
+        "inviteUser": "Kullanıcıları Davet Et",
+        "selectRole": "Rol Seçin",
+        "inviteRole": "{{role}} davet et"
+    },
+    "invalidLanguageSelected": "Geçersiz dil seçildi",
+    "platforms": {
+        "wallet": "Cüzdan",
+        "broadcast": "Yayın"
+    },
+    "login": {
+        "title": "Hoş geldin",
+        "directions": {
+            "GetStarted": "Bir hesap oluşturun veya oturum açın.",
+            "NoRegister": "Hesabınız varsa giriş yapın.",
+            "WasInvited": "Size ulaşmanın en iyi yolu nedir?"
+        },
+        "directionsNoRegister": "Hesabınız varsa giriş yapın.",
+        "goButton": "➔",
+        "passphrase": "Parolanızı girin:",
+        "loginButton": "Başlamak",
+        "registerButton": "Başlamak",
+        "resendButton": "Aktivasyon Mesajı Gönder",
+        "forgot": "Onu unut?",
+        "resendConfirm": "Parolanızı sıfırlamak için bir mesaj göndermek ister misiniz?",
+        "resendSuccess": "Parolanızı sıfırlamak için bir mesaj olup olmadığını kontrol edin",
+        "resendClose": "Kapalı",
+        "noPassphrase": "Giriş yapmadan önce, aktivasyon mesajınızdaki bağlantıya tıklayarak bir şifre belirlemelisiniz.",
+        "notVerified": "Giriş yapabilmek için kendinize bir aktivasyon mesajı göndermelisiniz.",
+        "emailExists": "Daha önce bu e-posta ile kaydolmayı denediniz mi? Öyleyse, hesabınızı etkinleştirmek için gelen kutunuzu kontrol edin. <a href='#resend' class='Q_button Users_activation_resend'>Mesajı tekrar göndermek için tıklayın<\/a>",
+        "mobileExists": "Daha önce bu cep telefonu numarasıyla kayıt olmayı denediniz mi? Öyleyse, hesabınızı etkinleştirmek için SMS&#39;inizi kontrol edin. <a href='#resend' class='Q_button Users_activation_resend'>Mesajı tekrar göndermek için tıklayın<\/a>",
+        "usingOther": "ya da yapabilirsin",
+        "connectPlatforms": "veya şunu kullanarak bağlanın:",
+        "prompt": "Bir kullanıcı adı seçin:",
+        "newUser": "veya aşağıdan yeni bir hesap oluşturun",
+        "placeholders": {
+            "identifier": "cep numaranız veya e-postanız",
+            "mobile": "cep telefonunuzu girin",
+            "email": "E-posta adresinizi giriniz",
+            "username": "sadece harf ve rakam kullan"
+        },
+        "confirmTerms": "Hizmet Şartları&#39;nı kabul ediyor musunuz?",
+        "facebookNoEmail": "Facebook hesabınızda onaylanmış bir e-posta adresi eksik. Basitçe yerel şekilde oturum açın.",
+        "picTooltip": "Bu resmi daha sonra değiştirebilirsiniz.",
+        "web3": {
+            "payload": "{{timestamp}} zamanında {{host}} giriş yapın",
+            "alert": {
+                "title": "Wallet&#39;a Yönlendirme",
+                "content": "Bu iletişim kutusunu kapattığınızda, cüzdanınıza yönlendirileceksiniz. Giriş yaptıktan sonra bu sayfaya geri dönün."
+            },
+            "ConnectWallet": "Cüzdanı Bağla"
+        }
+    },
+    "setIdentifier": {
+        "title": "Giriş yapmak için bir yol ekleyin",
+        "sendMessage": "Aktivasyon Mesajı Gönder",
+        "placeholders": {
+            "identifier": "cep numaranızı veya e-postanızı girin",
+            "mobile": "telefon numaranızı girin",
+            "email": "E-posta adresinizi giriniz",
+            "username": "Kullanıcı adı"
+        }
+    },
+    "prompt": {
+        "title": "{{Platform}} Hesap",
+        "areUsing": "{{platform}} olarak kullanıyorsunuz",
+        "noLongerUsing": "Artık {{platform}} şu şekilde bağlı değilsiniz:",
+        "doAuth": "Bu hesapla giriş yap",
+        "doSwitch": "Bu hesaba geç"
+    },
+    "roles": {
+        "Owner": "Mal sahibi",
+        "Admin": "yönetici",
+        "Member": "Üye",
+        "Guest": "Misafir",
+        "Host": "Ev sahibi"
+    },
+    "web3": {
+        "WrongMethod": "Yanlış sözleşme yöntemi {{methodName}}",
+        "ChangeWallet": "Cüzdanı Değiştir",
+        "ConnectWallet": "Cüzdanı Bağla",
+        "AfterWalletConnectedPleaseRefresh": "Cüzdan bağlandıktan sonra cüzdanı tanımak için lütfen bu sayfayı yenileyin"
+    },
+    "labels": {
+        "addToPhonebook": "Telefon Kişilerime Ekle",
+        "addLabel": "Yeni ilişki",
+        "prompt": "Bir isim ver",
+        "titles": {
+            "Users\/owners": "Sahipler",
+            "Users\/admins": "Yöneticiler",
+            "Users\/members": "Üyeler",
+            "Users\/guests": "Misafirler",
+            "Users\/hosts": "Toplantı sahipleri",
+            "Users\/testers": "Test kullanıcıları",
+            "Users\/speakers": "Hoparlörler"
+        }
+    },
+    "people": {
+        "People": "İnsanlar"
+    },
+    "external": {
+        "defaults": {
+            "title": "",
+            "bio": "Forum katılım botu. https:\/\/engageusers.ai adresinde kendinizinkini edinin",
+            "website": "https:\/\/engageusers.ai"
+        }
+    },
+    "errors": {
+        "NotEnoughPermissionsWallet": "Bu kullanıcının cüzdanını okumak için yeterli izin yok",
+        "ThisUserHaveNoWallet": "Bu kullanıcıya atanmış cüzdan yok",
+        "TheWalletOfThisUserInvalid": "Bu kullanıcının cüzdanı geçersiz",
+        "WalletInvalid": "Cüzdan adresi geçersiz"
+    }
+}

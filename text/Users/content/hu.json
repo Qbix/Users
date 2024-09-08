@@ -1,0 +1,193 @@
+{
+    "avatar": {
+        "Someone": "Valaki"
+    },
+    "identifier": {
+        "types": {
+            "email": "Email",
+            "mobile": "Mobil",
+            "web3": "Web3"
+        }
+    },
+    "clipboard": {
+        "Copied": "Másolva! Most már bárhová beillesztheti."
+    },
+    "analytics": {
+        "Title": "Analitika",
+        "Daily": "Napi",
+        "Weekly": "Heti",
+        "Monthly": "Havi",
+        "Application": "Alkalmazás",
+        "Pages": "Oldalak",
+        "Services": "Szolgáltatások",
+        "Faq": "GYIK",
+        "WeekDays": "Heti Napok"
+    },
+    "actions": {
+        "LogIn": "Belépés",
+        "LogOut": "Kijelentkezés"
+    },
+    "activate": {
+        "OneTimeCode": "Írja be a kapott kódot:",
+        "SetAsPrimary": "Állítsa be {{1}} et elsődleges {{2}}",
+        "ChoosePassPhrase": "Válasszon <strong>jelszót<\/strong> a bejelentkezéshez.<br> Egy egyszerű kifejezés, amely néhány szóból áll, és könnyen emlékezni fog.",
+        "ChoosePassPhraseSeeSuggestions": "Válasszon egy jó <strong>jelszót fiókja<\/strong> védelméhez. Nézze meg a javaslatokat néhány ötletért.",
+        "LogOutAndTryAgain": "Jelentkezzen ki, és próbálja újra",
+        "IfYouFeel": "Ha úgy érzi, hogy valami elromlott, megteheti",
+        "SetIdentifierButtonTitle": "elölről kezdeni",
+        "ActivateMyAccount": "Aktiválja a Saját fiókot"
+    },
+    "session": {
+        "GetStarted": "Fogj neki"
+    },
+    "authorize": {
+        "GetStarted": "Fogj neki",
+        "Authorize": "Engedélyezze",
+        "TermsLabel": "Elolvastam és egyetértek<br> a {{link}} re",
+        "TermsTitle": "Feltételek",
+        "mustAgree": "Először el kell fogadnia a feltételeket."
+    },
+    "register": {
+        "TermsLabel": "Elfogadom a {{link}} et",
+        "TermsTitle": "Feltételek"
+    },
+    "notifications": {
+        "title": "Engedély",
+        "prompt": "Szeretné engedélyezni az értesítéseket? Valós idejű frissítéseket fog kapni az Önt érdeklő dolgokról.",
+        "yes": "Igen",
+        "no": "Nem",
+        "WelcomePleaseVerifyEmail": "Üdvözöljük! Kérem ellenőrizze az email címét.",
+        "WelcomeVerifyEmail": "Üdvözöljük! Erősítsd meg az e-mail címed.",
+        "ForgetPass": "Hé, elfelejtette a jelszavát?",
+        "PassphraseSaved": "Jelszó elmentve.",
+        "IdentifierActivated": "A {{type}} es számod aktiválva van.",
+        "CompletedActivation": "Befejezte a felhasználói aktiválást.",
+        "CompletedActivationLogIn": "Befejezte a felhasználói aktiválást. Próbálja meg most bejelentkezni."
+    },
+    "contacts": {
+        "dialog": {
+            "title": "Válasszon névjegyet",
+            "CreateAccount": "+ Új kapcsolat",
+            "CreateAccountNotFound": "A Q.Users.Cordova.UI.create nem található",
+            "SearchByName": "Keresés név szerint",
+            "EmptyContacts": "A névjegyek nem találhatók..."
+        },
+        "select": {
+            "title": "Válassza ki a {{displayName}} es elérhetőséget"
+        }
+    },
+    "usersContacts": {
+        "selectLabel": "Kérjük, válassza ki a címkét.",
+        "inviteUser": "Felhasználók meghívása",
+        "selectRole": "Válassza a Szerep lehetőséget",
+        "inviteRole": "Meghívás {{role}}"
+    },
+    "invalidLanguageSelected": "Érvénytelen nyelv van kiválasztva",
+    "platforms": {
+        "wallet": "Pénztárca",
+        "broadcast": "Adás"
+    },
+    "login": {
+        "title": "Üdvözöljük",
+        "directions": {
+            "GetStarted": "Hozzon létre egy fiókot, vagy jelentkezzen be.",
+            "NoRegister": "Jelentkezzen be, ha van fiókja.",
+            "WasInvited": "Hogyan lehet a legjobban elérni?"
+        },
+        "directionsNoRegister": "Jelentkezzen be, ha van fiókja.",
+        "goButton": "➔",
+        "passphrase": "Írja be jelmondatát:",
+        "loginButton": "Fogj neki",
+        "registerButton": "Fogj neki",
+        "resendButton": "Aktiváló üzenet küldése",
+        "forgot": "Felejtsd el?",
+        "resendConfirm": "Üzenetet szeretne küldeni a jelszó visszaállításához?",
+        "resendSuccess": "Keressen üzenetet a jelszó visszaállításához",
+        "resendClose": "Bezárás",
+        "noPassphrase": "Mielőtt bejelentkezne, be kell állítania egy jelszót az aktiváló üzenetben található hivatkozásra kattintva.",
+        "notVerified": "A bejelentkezéshez aktiváló üzenetet kell küldenie magának.",
+        "emailExists": "Próbáltál korábban regisztrálni ezzel az e-mail címmel? Ha igen, ellenőrizze a beérkezett üzeneteket a fiók aktiválásához. <a href='#resend' class='Q_button Users_activation_resend'>Kattintson az üzenet újbóli elküldéséhez<\/a>",
+        "mobileExists": "Próbáltál korábban regisztrálni ezzel a mobilszámmal? Ha igen, ellenőrizze az SMS-t a fiók aktiválásához. <a href='#resend' class='Q_button Users_activation_resend'>Kattintson az üzenet újbóli elküldéséhez<\/a>",
+        "usingOther": "vagy tudsz",
+        "connectPlatforms": "vagy csatlakoztassa a következőt:",
+        "prompt": "Válasszon felhasználói nevet:",
+        "newUser": "vagy hozzon létre egy új fiókot alább",
+        "placeholders": {
+            "identifier": "mobilszámát vagy e-mail címét",
+            "mobile": "írja be a mobilszámát",
+            "email": "írd be az email címed",
+            "username": "csak betűket és számokat használjon"
+        },
+        "confirmTerms": "Elfogadja a Szolgáltatási feltételeket?",
+        "facebookNoEmail": "A Facebook-fiókodból hiányzik egy megerősített e-mail cím. Egyszerűen jelentkezzen be natív módon.",
+        "picTooltip": "Ezt a képet később megváltoztathatja",
+        "web3": {
+            "payload": "Jelentkezzen be {{host}} {{timestamp}} időpontban",
+            "alert": {
+                "title": "Átirányítás a Walletba",
+                "content": "A párbeszédpanel bezárása után a pénztárcájához kerül. Bejelentkezés után térjen vissza erre az oldalra."
+            },
+            "ConnectWallet": "Wallet csatlakoztatása"
+        }
+    },
+    "setIdentifier": {
+        "title": "Adjon meg egy bejelentkezési módot",
+        "sendMessage": "Aktiváló üzenet küldése",
+        "placeholders": {
+            "identifier": "adja meg mobilszámát vagy e-mail címét",
+            "mobile": "írja be a mobilszámát",
+            "email": "írd be az email címed",
+            "username": "felhasználónév"
+        }
+    },
+    "prompt": {
+        "title": "{{Platform}} számla",
+        "areUsing": "Ön {{platform}} -et használ",
+        "noLongerUsing": "Már nem csatlakozik a {{platform}} hez",
+        "doAuth": "Jelentkezzen be ezzel a fiókkal",
+        "doSwitch": "Váltson erre a fiókra"
+    },
+    "roles": {
+        "Owner": "Tulajdonos",
+        "Admin": "Admin",
+        "Member": "Tag",
+        "Guest": "Vendég",
+        "Host": "Házigazda"
+    },
+    "web3": {
+        "WrongMethod": "Rossz szerződéskötési mód {{methodName}}",
+        "ChangeWallet": "Pénztárca módosítása",
+        "ConnectWallet": "Wallet csatlakoztatása",
+        "AfterWalletConnectedPleaseRefresh": "A pénztárca csatlakoztatása után frissítse ezt az oldalt a pénztárca felismeréséhez"
+    },
+    "labels": {
+        "addToPhonebook": "Hozzáadás a telefonhoz névjegyekhez",
+        "addLabel": "Új kapcsolat",
+        "prompt": "Adj neki nevet",
+        "titles": {
+            "Users\/owners": "Tulajdonosok",
+            "Users\/admins": "Adminok",
+            "Users\/members": "tagok",
+            "Users\/guests": "Vendégek",
+            "Users\/hosts": "Otthont ad",
+            "Users\/testers": "Tesztelők",
+            "Users\/speakers": "Hangszórók"
+        }
+    },
+    "people": {
+        "People": "Emberek"
+    },
+    "external": {
+        "defaults": {
+            "title": "",
+            "bio": "Fórum eljegyzési bot. Szerezze be a sajátját a https:\/\/engageusers.ai oldalon",
+            "website": "https:\/\/engageusers.ai"
+        }
+    },
+    "errors": {
+        "NotEnoughPermissionsWallet": "Nincs elegendő engedély a felhasználó pénztárcájának olvasásához",
+        "ThisUserHaveNoWallet": "Ehhez a felhasználóhoz nincs hozzárendelve pénztárca",
+        "TheWalletOfThisUserInvalid": "A felhasználó pénztárcája érvénytelen",
+        "WalletInvalid": "A Wallet-cím érvénytelen"
+    }
+}

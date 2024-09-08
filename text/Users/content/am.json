@@ -1,0 +1,193 @@
+{
+    "avatar": {
+        "Someone": "አንድ ሰው"
+    },
+    "identifier": {
+        "types": {
+            "email": "ኢሜይል",
+            "mobile": "ሞባይል",
+            "web3": "ድር3"
+        }
+    },
+    "clipboard": {
+        "Copied": "ተቀድቷል! አሁን በማንኛውም ቦታ መለጠፍ ይችላሉ."
+    },
+    "analytics": {
+        "Title": "ትንታኔ",
+        "Daily": "በየቀኑ",
+        "Weekly": "በየሳምንቱ",
+        "Monthly": "ወርሃዊ",
+        "Application": "መተግበሪያ",
+        "Pages": "ገፆች",
+        "Services": "አገልግሎቶች",
+        "Faq": "በየጥ",
+        "WeekDays": "የሳምንት ቀናት"
+    },
+    "actions": {
+        "LogIn": "ግባ",
+        "LogOut": "ውጣ"
+    },
+    "activate": {
+        "OneTimeCode": "የተቀበልከውን ኮድ አስገባ፡-",
+        "SetAsPrimary": "{{1}} እንደ አንደኛ ደረጃ {{2}} አዘጋጅ",
+        "ChoosePassPhrase": "<strong>ለመግባት የማለፊያ ሀረግ<\/strong> ይምረጡ።<br> በቀላሉ የሚያስታውሷቸው ጥቂት ቃላትን የያዘ ቀላል ሐረግ።",
+        "ChoosePassPhraseSeeSuggestions": "መለያዎን ለመጠበቅ ጥሩ <strong>ማለፊያ ሐረግ<\/strong> ይምረጡ። ለአንዳንድ ሀሳቦች ጥቆማዎችን ይመልከቱ።",
+        "LogOutAndTryAgain": "ይውጡ እና እንደገና ይሞክሩ",
+        "IfYouFeel": "የሆነ ችግር እንደተፈጠረ ከተሰማዎት ማድረግ ይችላሉ።",
+        "SetIdentifierButtonTitle": "እንደገና ጀምር",
+        "ActivateMyAccount": "መለያዬን አግብር"
+    },
+    "session": {
+        "GetStarted": "እንጀምር"
+    },
+    "authorize": {
+        "GetStarted": "እንጀምር",
+        "Authorize": "ፍቀድ",
+        "TermsLabel": "አንብቤ ተስማምቻለሁ<br> ወደ {{link}}",
+        "TermsTitle": "ውሎች",
+        "mustAgree": "በመጀመሪያ በውሉ መስማማት አለብዎት።"
+    },
+    "register": {
+        "TermsLabel": "{{link}} ተቀብያለሁ",
+        "TermsTitle": "ውሎች"
+    },
+    "notifications": {
+        "title": "ፍቃድ",
+        "prompt": "ማሳወቂያዎችን ማንቃት ይፈልጋሉ? ስለምትጨነቁላቸው ነገሮች የቅጽበታዊ ዝማኔዎችን ይደርስዎታል።",
+        "yes": "አዎ",
+        "no": "አይ",
+        "WelcomePleaseVerifyEmail": "እንኳን ደህና መጣህ! እባክህ የኢሜል አድራሻህን አረጋግጥ።",
+        "WelcomeVerifyEmail": "እንኳን ደህና መጣህ! የኢሜይል አድራሻህን አረጋግጥ.",
+        "ForgetPass": "ሄይ የይለፍ ሐረግህን ረሳኸው?",
+        "PassphraseSaved": "የማለፊያ ሐረግዎ ተቀምጧል።",
+        "IdentifierActivated": "የእርስዎ {{type}} ነቅቷል።",
+        "CompletedActivation": "የተጠቃሚ ማግበር ጨርሰሃል።",
+        "CompletedActivationLogIn": "የተጠቃሚ ማግበር ጨርሰሃል። አሁን ለመግባት ይሞክሩ።"
+    },
+    "contacts": {
+        "dialog": {
+            "title": "እውቂያን ይምረጡ",
+            "CreateAccount": "+ አዲስ እውቂያ",
+            "CreateAccountNotFound": "Q.Users.Cordova.UI.create አልተገኘም።",
+            "SearchByName": "በስም ፈልግ",
+            "EmptyContacts": "እውቂያዎች አልተገኙም..."
+        },
+        "select": {
+            "title": "የ {{displayName}} አድራሻ ይምረጡ"
+        }
+    },
+    "usersContacts": {
+        "selectLabel": "እባክዎ መለያ ይምረጡ።",
+        "inviteUser": "ተጠቃሚዎችን ይጋብዙ",
+        "selectRole": "ሚና ይምረጡ",
+        "inviteRole": "{{role}} ጋብዝ"
+    },
+    "invalidLanguageSelected": "ልክ ያልሆነ ቋንቋ ተመርጧል",
+    "platforms": {
+        "wallet": "የኪስ ቦርሳ",
+        "broadcast": "ስርጭት"
+    },
+    "login": {
+        "title": "እንኳን ደህና መጣህ",
+        "directions": {
+            "GetStarted": "መለያ ይፍጠሩ ወይም ይግቡ።",
+            "NoRegister": "መለያ ካለዎት ይግቡ።",
+            "WasInvited": "እርስዎን ለማግኘት ምርጡ መንገድ ምንድነው?"
+        },
+        "directionsNoRegister": "መለያ ካለዎት ይግቡ።",
+        "goButton": "➔",
+        "passphrase": "የማለፊያ ሐረግዎን ያስገቡ፡-",
+        "loginButton": "እንጀምር",
+        "registerButton": "እንጀምር",
+        "resendButton": "የማግበር መልእክት ላክ",
+        "forgot": "ረሳው?",
+        "resendConfirm": "የይለፍ ሐረግዎን እንደገና ለማስጀመር መልእክት መላክ ይፈልጋሉ?",
+        "resendSuccess": "የይለፍ ሐረግዎን እንደገና ለማስጀመር መልእክት ካለ ያረጋግጡ",
+        "resendClose": "ገጠመ",
+        "noPassphrase": "ከመግባትዎ በፊት በማግበር መልእክትዎ ውስጥ ያለውን ሊንክ በመጫን ማለፊያ ሀረግ ማዘጋጀት አለብዎት።",
+        "notVerified": "ለመግባት ለራስህ የማግበር መልእክት መላክ አለብህ።",
+        "emailExists": "ከዚህ በፊት በዚህ ኢሜይል ለመመዝገብ ሞክረዋል? ከሆነ መለያዎን ለማግበር የገቢ መልእክት ሳጥንዎን ያረጋግጡ። <a href='#resend' class='Q_button Users_activation_resend'>መልዕክቱን እንደገና ለመላክ ጠቅ ያድርጉ<\/a>",
+        "mobileExists": "ከዚህ በፊት በዚህ የሞባይል ቁጥር ለመመዝገብ ሞክረዋል? ከሆነ መለያዎን ለማግበር ኤስኤምኤስዎን ያረጋግጡ። <a href='#resend' class='Q_button Users_activation_resend'>መልዕክቱን እንደገና ለመላክ ጠቅ ያድርጉ<\/a>",
+        "usingOther": "ወይም ይችላሉ",
+        "connectPlatforms": "ወይም የሚከተሉትን በመጠቀም ይገናኙ:",
+        "prompt": "የመጠቀሚያ ስም ምረጥ:",
+        "newUser": "ወይም ከዚህ በታች አዲስ መለያ ይፍጠሩ",
+        "placeholders": {
+            "identifier": "የእርስዎ ሞባይል # ወይም ኢሜይል",
+            "mobile": "ሞባይልዎን # ያስገቡ",
+            "email": "የኢሜይል አድራሻዎን ያስገቡ",
+            "username": "ፊደሎችን እና ቁጥሮችን ብቻ ይጠቀሙ"
+        },
+        "confirmTerms": "የአገልግሎት ውሉን ይቀበሉ?",
+        "facebookNoEmail": "የፌስቡክ መለያህ የተረጋገጠ የኢሜይል አድራሻ ይጎድለዋል። በቀላሉ በአገርኛ መንገድ ይግቡ።",
+        "picTooltip": "ይህን ምስል በኋላ መቀየር ትችላለህ",
+        "web3": {
+            "payload": "በጊዜ {{timestamp}} ወደ {{host}} ይግቡ",
+            "alert": {
+                "title": "ወደ Wallet በማዞር ላይ",
+                "content": "ይህን ንግግር አንዴ ከዘጉ፣ ወደ ቦርሳዎ ይወሰዳሉ። ከገቡ በኋላ ወደዚህ ገጽ ይመለሱ።"
+            },
+            "ConnectWallet": "Walletን ያገናኙ"
+        }
+    },
+    "setIdentifier": {
+        "title": "የመግቢያ መንገድ ያክሉ",
+        "sendMessage": "የማግበር መልእክት ላክ",
+        "placeholders": {
+            "identifier": "ሞባይልዎን # ወይም ኢሜልዎን ያስገቡ",
+            "mobile": "የተንቀሳቃሽ ስልክ ቁጥርዎን ያስገቡ",
+            "email": "የኢሜይል አድራሻዎን ያስገቡ",
+            "username": "የተጠቃሚ ስም"
+        }
+    },
+    "prompt": {
+        "title": "{{Platform}} መለያ",
+        "areUsing": "{{platform}} እየተጠቀሙ ነው።",
+        "noLongerUsing": "ከ {{platform}} ጋር አልተገናኘህም።",
+        "doAuth": "በዚህ መለያ ይግቡ",
+        "doSwitch": "ወደዚህ መለያ ቀይር"
+    },
+    "roles": {
+        "Owner": "ባለቤት",
+        "Admin": "አስተዳዳሪ",
+        "Member": "አባል",
+        "Guest": "እንግዳ",
+        "Host": "አስተናጋጅ"
+    },
+    "web3": {
+        "WrongMethod": "የተሳሳተ የውል ዘዴ {{methodName}}",
+        "ChangeWallet": "Wallet ቀይር",
+        "ConnectWallet": "Walletን ያገናኙ",
+        "AfterWalletConnectedPleaseRefresh": "የኪስ ቦርሳ ከተገናኘ በኋላ የኪስ ቦርሳውን ለመለየት እባክዎ ይህን ገጽ ያድሱ"
+    },
+    "labels": {
+        "addToPhonebook": "ወደ ስልኬ እውቂያዎች አክል",
+        "addLabel": "አዲስ ግንኙነት",
+        "prompt": "ስም ስጠው",
+        "titles": {
+            "Users\/owners": "ባለቤቶች",
+            "Users\/admins": "አስተዳዳሪዎች",
+            "Users\/members": "አባላት",
+            "Users\/guests": "እንግዶች",
+            "Users\/hosts": "አስተናጋጆች",
+            "Users\/testers": "ሞካሪዎች",
+            "Users\/speakers": "ተናጋሪዎች"
+        }
+    },
+    "people": {
+        "People": "ሰዎች"
+    },
+    "external": {
+        "defaults": {
+            "title": "",
+            "bio": "መድረክ ተሳትፎ bot. https:\/\/engageusers.ai ላይ የራስዎን ያግኙ",
+            "website": "https:\/\/engageusers.ai"
+        }
+    },
+    "errors": {
+        "NotEnoughPermissionsWallet": "የዚህን ተጠቃሚ ቦርሳ ለማንበብ በቂ ፍቃዶች የሉም",
+        "ThisUserHaveNoWallet": "ይህ ተጠቃሚ የተመደበ የኪስ ቦርሳ የለውም",
+        "TheWalletOfThisUserInvalid": "የዚህ ተጠቃሚ የኪስ ቦርሳ ልክ ያልሆነ ነው።",
+        "WalletInvalid": "የኪስ ቦርሳ አድራሻ ልክ አይደለም።"
+    }
+}

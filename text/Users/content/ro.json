@@ -1,0 +1,193 @@
+{
+    "avatar": {
+        "Someone": "Cineva"
+    },
+    "identifier": {
+        "types": {
+            "email": "E-mail",
+            "mobile": "Mobil",
+            "web3": "Web3"
+        }
+    },
+    "clipboard": {
+        "Copied": "Copiat! Acum îl puteți lipi oriunde."
+    },
+    "analytics": {
+        "Title": "Analytics",
+        "Daily": "Zilnic",
+        "Weekly": "Săptămânal",
+        "Monthly": "Lunar",
+        "Application": "Aplicație",
+        "Pages": "Pagini",
+        "Services": "Servicii",
+        "Faq": "FAQ",
+        "WeekDays": "Zilele saptamanii"
+    },
+    "actions": {
+        "LogIn": "log in",
+        "LogOut": "deconectați-vă"
+    },
+    "activate": {
+        "OneTimeCode": "Introdu codul primit:",
+        "SetAsPrimary": "Setează {{1}} ca {{2}} principal",
+        "ChoosePassPhrase": "Alegeți o <strong>expresie de acces<\/strong> cu care să vă conectați.<br> O frază simplă constând din câteva cuvinte pe care le vei aminti cu ușurință.",
+        "ChoosePassPhraseSeeSuggestions": "Alegeți o <strong>expresie de acces<\/strong> bună pentru a vă proteja contul. Vedeți sugestiile pentru câteva idei.",
+        "LogOutAndTryAgain": "Deconectați-vă și încercați din nou",
+        "IfYouFeel": "Dacă simți că ceva nu a mers prost, poți",
+        "SetIdentifierButtonTitle": "ia de la capăt",
+        "ActivateMyAccount": "Activați contul meu"
+    },
+    "session": {
+        "GetStarted": "Incepe"
+    },
+    "authorize": {
+        "GetStarted": "Incepe",
+        "Authorize": "Autoriza",
+        "TermsLabel": "Am citit si sunt de acord<br> la {{link}}",
+        "TermsTitle": "Termeni",
+        "mustAgree": "Mai întâi trebuie să fii de acord cu termenii."
+    },
+    "register": {
+        "TermsLabel": "Accept {{link}}",
+        "TermsTitle": "Termeni"
+    },
+    "notifications": {
+        "title": "Permisiune",
+        "prompt": "Doriți să activați notificările? Veți primi actualizări în timp real despre lucrurile care vă interesează.",
+        "yes": "da",
+        "no": "Nu",
+        "WelcomePleaseVerifyEmail": "Bine ati venit! Vă rog să vă verificați adresa de email.",
+        "WelcomeVerifyEmail": "Bine ati venit! Verifică-ți adresa de email.",
+        "ForgetPass": "Hei, ți-ai uitat fraza de acces?",
+        "PassphraseSaved": "Fraza dvs. de acces a fost salvată.",
+        "IdentifierActivated": "{{type}} dvs. a fost activat.",
+        "CompletedActivation": "Ați finalizat activarea utilizatorului.",
+        "CompletedActivationLogIn": "Ați finalizat activarea utilizatorului. Încercați să vă conectați acum."
+    },
+    "contacts": {
+        "dialog": {
+            "title": "Alegeți contact",
+            "CreateAccount": "+ Contact nou",
+            "CreateAccountNotFound": "Q.Users.Cordova.UI.create nu a fost găsit",
+            "SearchByName": "Cauta dupa nume",
+            "EmptyContacts": "Persoane de contact nu au fost găsite..."
+        },
+        "select": {
+            "title": "Selectați contactul {{displayName}}"
+        }
+    },
+    "usersContacts": {
+        "selectLabel": "Vă rugăm să selectați eticheta.",
+        "inviteUser": "Invitați utilizatori",
+        "selectRole": "Selectați Rol",
+        "inviteRole": "Invitați {{role}}"
+    },
+    "invalidLanguageSelected": "Limbă nevalidă selectată",
+    "platforms": {
+        "wallet": "Portofel",
+        "broadcast": "Difuzare"
+    },
+    "login": {
+        "title": "Bine ati venit",
+        "directions": {
+            "GetStarted": "Creați un cont sau conectați-vă.",
+            "NoRegister": "Conectați-vă dacă aveți un cont.",
+            "WasInvited": "Care este cel mai bun mod de a ajunge la tine?"
+        },
+        "directionsNoRegister": "Conectați-vă dacă aveți un cont.",
+        "goButton": "➔",
+        "passphrase": "Introdu fraza ta de acces:",
+        "loginButton": "Incepe",
+        "registerButton": "Incepe",
+        "resendButton": "Trimiteți mesajul de activare",
+        "forgot": "Am uitat asta?",
+        "resendConfirm": "Doriți să trimiteți un mesaj pentru a vă reseta expresia de acces?",
+        "resendSuccess": "Verificați dacă există un mesaj pentru a vă reseta expresia de acces",
+        "resendClose": "Închide",
+        "noPassphrase": "Înainte de a vă putea conecta, trebuie să setați o expresie de acces făcând clic pe linkul din mesajul dvs. de activare.",
+        "notVerified": "Trebuie să vă trimiteți un mesaj de activare pentru a vă autentifica.",
+        "emailExists": "Ați încercat să vă înregistrați cu acest e-mail înainte? Dacă da, verificați căsuța de e-mail pentru a vă activa contul. <a href='#resend' class='Q_button Users_activation_resend'>Faceți clic pentru a retrimite mesajul<\/a>",
+        "mobileExists": "Ați încercat să vă înregistrați cu acest număr de mobil înainte? Dacă da, verificați SMS-ul pentru a vă activa contul. <a href='#resend' class='Q_button Users_activation_resend'>Faceți clic pentru a retrimite mesajul<\/a>",
+        "usingOther": "sau puteți",
+        "connectPlatforms": "sau conectați-vă folosind:",
+        "prompt": "Alegeți un nume de utilizator:",
+        "newUser": "sau creați un cont nou mai jos",
+        "placeholders": {
+            "identifier": "# de telefon mobil sau e-mail",
+            "mobile": "introduceți numărul dvs. de mobil",
+            "email": "introduceți adresa dvs. de e-mail",
+            "username": "utilizați numai litere și cifre"
+        },
+        "confirmTerms": "Acceptați Termenii și condițiile?",
+        "facebookNoEmail": "Contului tău de Facebook lipsește o adresă de e-mail confirmată. Conectați-vă pur și simplu în modul nativ.",
+        "picTooltip": "Puteți schimba această imagine mai târziu",
+        "web3": {
+            "payload": "Conectați-vă la {{host}} la ora {{timestamp}}",
+            "alert": {
+                "title": "Redirecționare către Wallet",
+                "content": "După ce închideți acest dialog, veți fi dus la portofel. După ce vă conectați, reveniți la această pagină."
+            },
+            "ConnectWallet": "Connect Wallet"
+        }
+    },
+    "setIdentifier": {
+        "title": "Adăugați o modalitate de a vă conecta",
+        "sendMessage": "Trimiteți mesajul de activare",
+        "placeholders": {
+            "identifier": "introduceți numărul dvs. de mobil sau e-mailul",
+            "mobile": "Introdu numărul tău de telefon",
+            "email": "introduceți adresa dvs. de e-mail",
+            "username": "nume de utilizator"
+        }
+    },
+    "prompt": {
+        "title": "{{Platform}} Cont",
+        "areUsing": "Folosești {{platform}} ca",
+        "noLongerUsing": "Nu mai sunteți conectat la {{platform}} ca",
+        "doAuth": "Conectați-vă cu acest cont",
+        "doSwitch": "Comutați la acest cont"
+    },
+    "roles": {
+        "Owner": "Proprietar",
+        "Admin": "Admin",
+        "Member": "Membru",
+        "Guest": "Oaspete",
+        "Host": "Gazdă"
+    },
+    "web3": {
+        "WrongMethod": "Metoda de contract greșită {{methodName}}",
+        "ChangeWallet": "Schimbați portofelul",
+        "ConnectWallet": "Connect Wallet",
+        "AfterWalletConnectedPleaseRefresh": "După conectarea portofelului, reîmprospătați această pagină pentru a recunoaște portofelul"
+    },
+    "labels": {
+        "addToPhonebook": "Adăugați la contactele mele din telefon",
+        "addLabel": "Noua Relatie",
+        "prompt": "Dă-i un nume",
+        "titles": {
+            "Users\/owners": "Proprietarii",
+            "Users\/admins": "Administratori",
+            "Users\/members": "Membrii",
+            "Users\/guests": "Vizitatori",
+            "Users\/hosts": "Gazde",
+            "Users\/testers": "Testeri",
+            "Users\/speakers": "Difuzoare"
+        }
+    },
+    "people": {
+        "People": "oameni"
+    },
+    "external": {
+        "defaults": {
+            "title": "",
+            "bio": "bot de implicare pe forum. Obțineți propriul dvs. la https:\/\/engageusers.ai",
+            "website": "https:\/\/engageusers.ai"
+        }
+    },
+    "errors": {
+        "NotEnoughPermissionsWallet": "Nu există suficiente permisiuni pentru a citi portofelul acestui utilizator",
+        "ThisUserHaveNoWallet": "Acest utilizator nu are portofel alocat",
+        "TheWalletOfThisUserInvalid": "Portofelul acestui utilizator este invalid",
+        "WalletInvalid": "Adresa portofel nevalidă"
+    }
+}

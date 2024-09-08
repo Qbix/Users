@@ -1,0 +1,193 @@
+{
+    "avatar": {
+        "Someone": "Някой"
+    },
+    "identifier": {
+        "types": {
+            "email": "електронна поща",
+            "mobile": "Подвижен",
+            "web3": "Web3"
+        }
+    },
+    "clipboard": {
+        "Copied": "Копирано! Сега можете да го поставите навсякъде."
+    },
+    "analytics": {
+        "Title": "Анализ",
+        "Daily": "Ежедневно",
+        "Weekly": "Ежеседмично",
+        "Monthly": "Месечно",
+        "Application": "Приложение",
+        "Pages": "Страници",
+        "Services": "Услуги",
+        "Faq": "ЧЗВ",
+        "WeekDays": "Дни от седмицата"
+    },
+    "actions": {
+        "LogIn": "Влизам",
+        "LogOut": "излез от профила си"
+    },
+    "activate": {
+        "OneTimeCode": "Въведете кода, който сте получили:",
+        "SetAsPrimary": "Задайте {{1}} като моите основни {{2}}",
+        "ChoosePassPhrase": "Изберете <strong>парола,<\/strong> с която да влезете.<br> Проста фраза, състояща се от няколко думи, които лесно ще запомните.",
+        "ChoosePassPhraseSeeSuggestions": "Изберете добра <strong>парола<\/strong> , за да защитите акаунта си. Вижте предложенията за някои идеи.",
+        "LogOutAndTryAgain": "Излезте и опитайте отново",
+        "IfYouFeel": "Ако чувствате, че нещо се е объркало, можете",
+        "SetIdentifierButtonTitle": "Започни отначало",
+        "ActivateMyAccount": "Активиране на моя акаунт"
+    },
+    "session": {
+        "GetStarted": "Първи стъпки"
+    },
+    "authorize": {
+        "GetStarted": "Първи стъпки",
+        "Authorize": "Упълномощаване",
+        "TermsLabel": "Прочетох и съм съгласен<br> до {{link}}",
+        "TermsTitle": "Условия",
+        "mustAgree": "Първо трябва да се съгласите с условията."
+    },
+    "register": {
+        "TermsLabel": "Приемам {{link}}",
+        "TermsTitle": "Условия"
+    },
+    "notifications": {
+        "title": "разрешение",
+        "prompt": "Искате ли да активирате известията? Ще получавате актуализации в реално време за неща, които ви интересуват.",
+        "yes": "да",
+        "no": "Не",
+        "WelcomePleaseVerifyEmail": "Добре дошли! Моля, потвърдете своя имейл адрес.",
+        "WelcomeVerifyEmail": "Добре дошли! Потвърдете имейл адреса си.",
+        "ForgetPass": "Хей, забравихте ли паролата си?",
+        "PassphraseSaved": "Вашата парола е запазена.",
+        "IdentifierActivated": "Вашият {{type}} е активиран.",
+        "CompletedActivation": "Завършихте потребителското активиране.",
+        "CompletedActivationLogIn": "Завършихте потребителското активиране. Опитайте да влезете сега."
+    },
+    "contacts": {
+        "dialog": {
+            "title": "Изберете контакт",
+            "CreateAccount": "+ Нов контакт",
+            "CreateAccountNotFound": "Q.Users.Cordova.UI.create не е намерен",
+            "SearchByName": "Търсене по име",
+            "EmptyContacts": "Контактите не са намерени..."
+        },
+        "select": {
+            "title": "Изберете контакт от {{displayName}}"
+        }
+    },
+    "usersContacts": {
+        "selectLabel": "Моля, изберете етикет.",
+        "inviteUser": "Поканете потребители",
+        "selectRole": "Изберете Роля",
+        "inviteRole": "Поканете {{role}}"
+    },
+    "invalidLanguageSelected": "Избран е невалиден език",
+    "platforms": {
+        "wallet": "Портфейл",
+        "broadcast": "Излъчване"
+    },
+    "login": {
+        "title": "Добре дошли",
+        "directions": {
+            "GetStarted": "Създайте акаунт или влезте.",
+            "NoRegister": "Влезте, ако имате акаунт.",
+            "WasInvited": "Кой е най-добрият начин да се свържа с вас?"
+        },
+        "directionsNoRegister": "Влезте, ако имате акаунт.",
+        "goButton": "➔",
+        "passphrase": "Въведете паролата си:",
+        "loginButton": "Първи стъпки",
+        "registerButton": "Първи стъпки",
+        "resendButton": "Изпратете съобщение за активиране",
+        "forgot": "Забравихте ли го?",
+        "resendConfirm": "Искате ли да изпратите съобщение за нулиране на вашата парола?",
+        "resendSuccess": "Проверете за съобщение за нулиране на вашата парола",
+        "resendClose": "Близо",
+        "noPassphrase": "Преди да можете да влезете, трябва да зададете парола, като щракнете върху връзката във вашето съобщение за активиране.",
+        "notVerified": "Трябва да си изпратите съобщение за активиране, за да влезете.",
+        "emailExists": "Опитвали ли сте да се регистрирате с този имейл преди? Ако е така, проверете входящата си кутия, за да активирате акаунта си. <a href='#resend' class='Q_button Users_activation_resend'>Кликнете, за да изпратите отново съобщението<\/a>",
+        "mobileExists": "Опитвали ли сте да се регистрирате с този мобилен номер преди? Ако е така, проверете своя SMS, за да активирате акаунта си. <a href='#resend' class='Q_button Users_activation_resend'>Кликнете, за да изпратите отново съобщението<\/a>",
+        "usingOther": "или можете",
+        "connectPlatforms": "или се свържете с:",
+        "prompt": "Изберете потребителско име:",
+        "newUser": "или създайте нов акаунт по-долу",
+        "placeholders": {
+            "identifier": "вашия мобилен # или имейл",
+            "mobile": "въведете мобилния си номер",
+            "email": "напишете своя емайл адрес",
+            "username": "използвайте само букви и цифри"
+        },
+        "confirmTerms": "Приемате ли условията за ползване?",
+        "facebookNoEmail": "Във вашия акаунт във facebook липсва потвърден имейл адрес. Просто влезте по естествения начин.",
+        "picTooltip": "Можете да промените тази снимка по-късно",
+        "web3": {
+            "payload": "Влезте в {{host}} в момент {{timestamp}}",
+            "alert": {
+                "title": "Пренасочване към Wallet",
+                "content": "След като затворите този диалогов прозорец, ще бъдете отведени до вашия портфейл. След като влезете, върнете се на тази страница."
+            },
+            "ConnectWallet": "Свържете Wallet"
+        }
+    },
+    "setIdentifier": {
+        "title": "Добавете начин за влизане",
+        "sendMessage": "Изпратете съобщение за активиране",
+        "placeholders": {
+            "identifier": "въведете мобилния си # или имейл",
+            "mobile": "Въведете вашия мобилен номер",
+            "email": "напишете своя емайл адрес",
+            "username": "потребителско име"
+        }
+    },
+    "prompt": {
+        "title": "{{Platform}} сметка",
+        "areUsing": "Използвате {{platform}} като",
+        "noLongerUsing": "Вече не сте свързани с {{platform}} as",
+        "doAuth": "Влезте с този акаунт",
+        "doSwitch": "Преминете към този акаунт"
+    },
+    "roles": {
+        "Owner": "Собственик",
+        "Admin": "Админ",
+        "Member": "Член",
+        "Guest": "Гост",
+        "Host": "Домакин"
+    },
+    "web3": {
+        "WrongMethod": "Грешен договорен метод {{methodName}}",
+        "ChangeWallet": "Промяна на портфейла",
+        "ConnectWallet": "Свържете Wallet",
+        "AfterWalletConnectedPleaseRefresh": "След свързване на портфейла, моля, опреснете тази страница, за да разпознаете портфейла"
+    },
+    "labels": {
+        "addToPhonebook": "Добавяне към контактите в моя телефон",
+        "addLabel": "Нова връзка",
+        "prompt": "Дайте му име",
+        "titles": {
+            "Users\/owners": "Собственици",
+            "Users\/admins": "Администратори",
+            "Users\/members": "Членове",
+            "Users\/guests": "гости",
+            "Users\/hosts": "Домакини",
+            "Users\/testers": "Тестери",
+            "Users\/speakers": "Високоговорители"
+        }
+    },
+    "people": {
+        "People": "хора"
+    },
+    "external": {
+        "defaults": {
+            "title": "",
+            "bio": "Форумен бот за ангажиране. Вземете своя на https:\/\/engageusers.ai",
+            "website": "https:\/\/engageusers.ai"
+        }
+    },
+    "errors": {
+        "NotEnoughPermissionsWallet": "Няма достатъчно разрешения за четене на портфейла на този потребител",
+        "ThisUserHaveNoWallet": "Този потребител няма присвоен портфейл",
+        "TheWalletOfThisUserInvalid": "Портфейлът на този потребител е невалиден",
+        "WalletInvalid": "Адресът на портфейла е невалиден"
+    }
+}

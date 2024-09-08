@@ -1,0 +1,35 @@
+<div class="Users_contacts_header">
+	<input name="query" value="" type="text" class="Users_contacts_input" placeholder="{{text.SearchByName}}">
+	{{#if isCordova}}
+		<button class="Users_contacts_create Q_button">{{text.CreateAccount}}</button>
+	{{/if}}
+</div>
+<div class="Users_contacts_sticky">
+{{#each contacts}}
+	<div>{{@key}}</div>
+{{/each}}
+</div>
+<div class="Users_contacts_dialog" data-cordova="{{isCordova}}">
+{{#each contacts}}
+	<div class="tr Users_contacts_dialog_letter">{{@key}}</div>
+        <div>
+        {{#each this}}
+            <div class="tr" data-rawId="{{this.id}}">
+                <div class="td Users_contacts_dialog_name">{{this.displayName}}</div>
+                <div class="td" data-phone='{{{json this.phoneNumbers}}}'>
+                    <div class="Users_contacts_dialog_buttons Users_contacts_dialog_phone">
+                        <i class="qp-communities-mobile"></i>
+                    </div>
+                </div>
+                <div class="td" data-email='{{{json this.emails}}}'>
+                    <div class="Users_contacts_dialog_buttons Users_contacts_dialog_email">
+                        <i class="qp-communities-email"></i>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+        </div>
+{{else}}
+	<div class="Users_contacts_dialog_empty">{{text.EmptyContacts}}</div>
+{{/each}}
+</div>

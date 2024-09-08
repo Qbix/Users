@@ -1,0 +1,3 @@
+[submodule "web/js/models"]
+	path = web/js/models
+	url = https://github.com/Qbix/Users-models

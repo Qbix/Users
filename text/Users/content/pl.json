@@ -1,0 +1,193 @@
+{
+    "avatar": {
+        "Someone": "Ktoś"
+    },
+    "identifier": {
+        "types": {
+            "email": "E-mail",
+            "mobile": "mobilny",
+            "web3": "Web3"
+        }
+    },
+    "clipboard": {
+        "Copied": "Skopiowane! Teraz możesz wkleić go w dowolnym miejscu."
+    },
+    "analytics": {
+        "Title": "Analityka",
+        "Daily": "Codziennie",
+        "Weekly": "Co tydzień",
+        "Monthly": "Miesięczny",
+        "Application": "Aplikacja",
+        "Pages": "Strony",
+        "Services": "Usługi",
+        "Faq": "Często zadawane pytania",
+        "WeekDays": "Dni tygodnia"
+    },
+    "actions": {
+        "LogIn": "Zaloguj sie",
+        "LogOut": "Wyloguj"
+    },
+    "activate": {
+        "OneTimeCode": "Wpisz otrzymany kod:",
+        "SetAsPrimary": "Ustaw {{1}} jako moje podstawowe {{2}}",
+        "ChoosePassPhrase": "Wybierz <strong>hasło<\/strong> , aby się zalogować.<br> Prosta fraza składająca się z kilku słów, które z łatwością zapamiętasz.",
+        "ChoosePassPhraseSeeSuggestions": "Wybierz dobre <strong>hasło<\/strong> , aby chronić swoje konto. Zobacz sugestie dotyczące niektórych pomysłów.",
+        "LogOutAndTryAgain": "Wyloguj się i spróbuj ponownie",
+        "IfYouFeel": "Jeśli czujesz, że coś poszło nie tak, możesz",
+        "SetIdentifierButtonTitle": "zacząć od nowa",
+        "ActivateMyAccount": "Aktywuj moje konto"
+    },
+    "session": {
+        "GetStarted": "Zaczynaj"
+    },
+    "authorize": {
+        "GetStarted": "Zaczynaj",
+        "Authorize": "Autoryzować",
+        "TermsLabel": "Przeczytałem i zgadzam się<br> do {{link}}",
+        "TermsTitle": "Warunki",
+        "mustAgree": "Najpierw musisz zaakceptować warunki."
+    },
+    "register": {
+        "TermsLabel": "Akceptuję {{link}}",
+        "TermsTitle": "Warunki"
+    },
+    "notifications": {
+        "title": "Pozwolenie",
+        "prompt": "Czy chcesz włączyć powiadomienia? Będziesz otrzymywać aktualizacje w czasie rzeczywistym o rzeczach, na których Ci zależy.",
+        "yes": "Tak",
+        "no": "NIE",
+        "WelcomePleaseVerifyEmail": "Powitanie! Proszę zweryfikować swój adres e-mail.",
+        "WelcomeVerifyEmail": "Powitanie! Zweryfikuj swój adres email.",
+        "ForgetPass": "Hej, zapomniałeś hasła?",
+        "PassphraseSaved": "Twoje hasło zostało zapisane.",
+        "IdentifierActivated": "Twoje {{type}} zostało aktywowane.",
+        "CompletedActivation": "Aktywacja użytkownika została zakończona.",
+        "CompletedActivationLogIn": "Aktywacja użytkownika została zakończona. Spróbuj zalogować się teraz."
+    },
+    "contacts": {
+        "dialog": {
+            "title": "Wybierz kontakt",
+            "CreateAccount": "+ Nowy kontakt",
+            "CreateAccountNotFound": "Nie znaleziono Q.Users.Cordova.UI.create",
+            "SearchByName": "Szukaj według nazwy",
+            "EmptyContacts": "Nie znaleziono kontaktów..."
+        },
+        "select": {
+            "title": "Wybierz kontakt {{displayName}}"
+        }
+    },
+    "usersContacts": {
+        "selectLabel": "Wybierz etykietę.",
+        "inviteUser": "Zaproś użytkowników",
+        "selectRole": "Wybierz rolę",
+        "inviteRole": "Zaproś {{role}}"
+    },
+    "invalidLanguageSelected": "Wybrano nieprawidłowy język",
+    "platforms": {
+        "wallet": "Portfel",
+        "broadcast": "Audycja"
+    },
+    "login": {
+        "title": "Powitanie",
+        "directions": {
+            "GetStarted": "Utwórz konto lub zaloguj się.",
+            "NoRegister": "Zaloguj się, jeśli masz konto.",
+            "WasInvited": "Jak najlepiej się z Tobą skontaktować?"
+        },
+        "directionsNoRegister": "Zaloguj się, jeśli masz konto.",
+        "goButton": "➔",
+        "passphrase": "Wpisz hasło:",
+        "loginButton": "Zaczynaj",
+        "registerButton": "Zaczynaj",
+        "resendButton": "Wyślij wiadomość aktywacyjną",
+        "forgot": "Zapomniałem?",
+        "resendConfirm": "Czy chcesz wysłać wiadomość, aby zresetować hasło?",
+        "resendSuccess": "Sprawdź, czy pojawiła się wiadomość, aby zresetować hasło",
+        "resendClose": "Zamknąć",
+        "noPassphrase": "Zanim będziesz mógł się zalogować, musisz ustawić hasło, klikając link w wiadomości aktywacyjnej.",
+        "notVerified": "Aby się zalogować, musisz wysłać do siebie wiadomość aktywacyjną.",
+        "emailExists": "Czy próbowałeś wcześniej zarejestrować się za pomocą tego adresu e-mail? Jeśli tak, sprawdź swoją skrzynkę odbiorczą, aby aktywować konto. <a href='#resend' class='Q_button Users_activation_resend'>Kliknij, aby ponownie wysłać wiadomość<\/a>",
+        "mobileExists": "Czy próbowałeś wcześniej zarejestrować się przy użyciu tego numeru telefonu komórkowego? Jeśli tak, sprawdź wiadomość SMS, aby aktywować konto. <a href='#resend' class='Q_button Users_activation_resend'>Kliknij, aby ponownie wysłać wiadomość<\/a>",
+        "usingOther": "albo możesz",
+        "connectPlatforms": "lub połącz za pomocą:",
+        "prompt": "Wybierz nazwę użytkownika:",
+        "newUser": "lub utwórz nowe konto poniżej",
+        "placeholders": {
+            "identifier": "numer telefonu komórkowego lub adres e-mail",
+            "mobile": "wprowadź swój numer telefonu komórkowego",
+            "email": "wprowadź swój adres e-mail",
+            "username": "używaj tylko liter i cyfr"
+        },
+        "confirmTerms": "Zaakceptować Warunki korzystania z usługi?",
+        "facebookNoEmail": "Twoje konto na Facebooku nie ma potwierdzonego adresu e-mail. Po prostu zaloguj się w natywny sposób.",
+        "picTooltip": "Możesz zmienić to zdjęcie później",
+        "web3": {
+            "payload": "Zaloguj się do {{host}} o godzinie {{timestamp}}",
+            "alert": {
+                "title": "Przekierowanie do Portfela",
+                "content": "Po zamknięciu tego okna dialogowego zostaniesz przeniesiony do swojego portfela. Po zalogowaniu wróć na tę stronę."
+            },
+            "ConnectWallet": "Połącz portfel"
+        }
+    },
+    "setIdentifier": {
+        "title": "Dodaj sposób logowania",
+        "sendMessage": "Wyślij wiadomość aktywacyjną",
+        "placeholders": {
+            "identifier": "wprowadź swój numer telefonu komórkowego lub adres e-mail",
+            "mobile": "Wprowadź swój numer telefonu komórkowego",
+            "email": "wprowadź swój adres e-mail",
+            "username": "nazwa użytkownika"
+        }
+    },
+    "prompt": {
+        "title": "Konto {{Platform}}",
+        "areUsing": "Używasz {{platform}} jako",
+        "noLongerUsing": "Nie jesteś już połączony z {{platform}} jako",
+        "doAuth": "Zaloguj się na to konto",
+        "doSwitch": "Przełącz się na to konto"
+    },
+    "roles": {
+        "Owner": "Właściciel",
+        "Admin": "Admin",
+        "Member": "Członek",
+        "Guest": "Gość",
+        "Host": "Gospodarz"
+    },
+    "web3": {
+        "WrongMethod": "Niewłaściwa metoda kontraktu {{methodName}}",
+        "ChangeWallet": "Zmień portfel",
+        "ConnectWallet": "Połącz portfel",
+        "AfterWalletConnectedPleaseRefresh": "Po podłączeniu portfela odśwież tę stronę, aby rozpoznać portfel"
+    },
+    "labels": {
+        "addToPhonebook": "Dodaj do moich kontaktów w telefonie",
+        "addLabel": "Nowy związek",
+        "prompt": "Daj temu imię",
+        "titles": {
+            "Users\/owners": "Właściciele",
+            "Users\/admins": "Administratorzy",
+            "Users\/members": "Członkowie",
+            "Users\/guests": "Goście",
+            "Users\/hosts": "Zastępy niebieskie",
+            "Users\/testers": "Testery",
+            "Users\/speakers": "Głośniki"
+        }
+    },
+    "people": {
+        "People": "Ludzie"
+    },
+    "external": {
+        "defaults": {
+            "title": "",
+            "bio": "Bot angażujący forum. Zdobądź własny na https:\/\/engageusers.ai",
+            "website": "https:\/\/engageusers.ai"
+        }
+    },
+    "errors": {
+        "NotEnoughPermissionsWallet": "Niewystarczające uprawnienia do odczytu portfela tego użytkownika",
+        "ThisUserHaveNoWallet": "Ten użytkownik nie ma przypisanego portfela",
+        "TheWalletOfThisUserInvalid": "Portfel tego użytkownika jest nieprawidłowy",
+        "WalletInvalid": "Adres portfela jest nieprawidłowy"
+    }
+}

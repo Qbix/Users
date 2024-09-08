@@ -1,0 +1,10 @@
+.form {
+    padding: 20px;
+    min-width:500px;
+}
+.fieldErrorBox {
+	border:1px solid #f00;
+}
+span.error {
+	color: #f00;
+}

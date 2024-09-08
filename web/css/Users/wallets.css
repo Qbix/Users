@@ -1,0 +1,19 @@
+.Users_connect_wallets ul li {
+    list-style-type: none;
+    margin-bottom: 10px;
+
+    display: block;
+    height: 40px;
+}
+.Users_connect_wallets ul li a {
+    display: inline-block;
+    padding-left: 50px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: left;
+    vertical-align: middle;
+    line-height: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}

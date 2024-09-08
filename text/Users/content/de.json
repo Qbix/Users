@@ -1,0 +1,193 @@
+{
+    "avatar": {
+        "Someone": "Jemand"
+    },
+    "identifier": {
+        "types": {
+            "email": "Email",
+            "mobile": "Handy, Mobiltelefon",
+            "web3": "Web3"
+        }
+    },
+    "clipboard": {
+        "Copied": "Kopiert! Jetzt können Sie es überall einfügen."
+    },
+    "analytics": {
+        "Title": "Analytik",
+        "Daily": "Täglich",
+        "Weekly": "Wöchentlich",
+        "Monthly": "Monatlich",
+        "Application": "Anwendung",
+        "Pages": "Seiten",
+        "Services": "Dienstleistungen",
+        "Faq": "FAQ",
+        "WeekDays": "Wochentage"
+    },
+    "actions": {
+        "LogIn": "Anmeldung",
+        "LogOut": "Ausloggen"
+    },
+    "activate": {
+        "OneTimeCode": "Geben Sie den erhaltenen Code ein:",
+        "SetAsPrimary": "Stellen Sie {{1}} als meine primäre {{2}} ein",
+        "ChoosePassPhrase": "Wählen Sie eine <strong>Passphrase,<\/strong> mit der Sie sich anmelden möchten.<br> Ein einfacher Satz, der aus wenigen Wörtern besteht, an die Sie sich leicht erinnern werden.",
+        "ChoosePassPhraseSeeSuggestions": "Wählen Sie eine gute <strong>Passphrase,<\/strong> um Ihr Konto zu schützen. Sehen Sie sich die Vorschläge für einige Ideen an.",
+        "LogOutAndTryAgain": "Melden Sie sich ab und versuchen Sie es erneut",
+        "IfYouFeel": "Wenn Sie das Gefühl haben, dass etwas schief gelaufen ist, können Sie das tun",
+        "SetIdentifierButtonTitle": "Von vorn anfangen",
+        "ActivateMyAccount": "Mein Konto aktivieren"
+    },
+    "session": {
+        "GetStarted": "Loslegen"
+    },
+    "authorize": {
+        "GetStarted": "Loslegen",
+        "Authorize": "Autorisieren",
+        "TermsLabel": "Ich habe gelesen und stimme zu<br> bis {{link}}",
+        "TermsTitle": "Bedingungen",
+        "mustAgree": "Zuerst müssen Sie den Bedingungen zustimmen."
+    },
+    "register": {
+        "TermsLabel": "Ich akzeptiere die {{link}}",
+        "TermsTitle": "Bedingungen"
+    },
+    "notifications": {
+        "title": "Erlaubnis",
+        "prompt": "Möchten Sie Benachrichtigungen aktivieren? Sie erhalten Echtzeit-Updates zu Dingen, die Ihnen wichtig sind.",
+        "yes": "Ja",
+        "no": "NEIN",
+        "WelcomePleaseVerifyEmail": "Willkommen! Bitte bestätige deine Email Adresse.",
+        "WelcomeVerifyEmail": "Willkommen! Bestätige deine Email-Adresse.",
+        "ForgetPass": "Hey, hast du deine Passphrase vergessen?",
+        "PassphraseSaved": "Ihre Passphrase wurde gespeichert.",
+        "IdentifierActivated": "Ihr {{type}} wurde aktiviert.",
+        "CompletedActivation": "Sie haben die Benutzeraktivierung abgeschlossen.",
+        "CompletedActivationLogIn": "Sie haben die Benutzeraktivierung abgeschlossen. Versuchen Sie sich jetzt anzumelden."
+    },
+    "contacts": {
+        "dialog": {
+            "title": "Kontakt auswählen",
+            "CreateAccount": "+ Neuer Kontakt",
+            "CreateAccountNotFound": "Q.Users.Cordova.UI.create nicht gefunden",
+            "SearchByName": "Suche mit Name",
+            "EmptyContacts": "Kontakte nicht gefunden..."
+        },
+        "select": {
+            "title": "Kontakt von {{displayName}} auswählen"
+        }
+    },
+    "usersContacts": {
+        "selectLabel": "Bitte Label auswählen.",
+        "inviteUser": "Benutzer einladen",
+        "selectRole": "Rolle auswählen",
+        "inviteRole": "{{role}} einladen"
+    },
+    "invalidLanguageSelected": "Ungültige Sprache ausgewählt",
+    "platforms": {
+        "wallet": "Geldbörse",
+        "broadcast": "Übertragen"
+    },
+    "login": {
+        "title": "Willkommen",
+        "directions": {
+            "GetStarted": "Erstellen Sie ein Konto oder melden Sie sich an.",
+            "NoRegister": "Melden Sie sich an, wenn Sie ein Konto haben.",
+            "WasInvited": "Wie kann ich Sie am besten erreichen?"
+        },
+        "directionsNoRegister": "Melden Sie sich an, wenn Sie ein Konto haben.",
+        "goButton": "➔",
+        "passphrase": "Geben Sie Ihre Passphrase ein:",
+        "loginButton": "Loslegen",
+        "registerButton": "Loslegen",
+        "resendButton": "Aktivierungsnachricht senden",
+        "forgot": "Hab&#39;s vergessen?",
+        "resendConfirm": "Möchten Sie eine Nachricht senden, um Ihre Passphrase zurückzusetzen?",
+        "resendSuccess": "Suchen Sie nach einer Nachricht zum Zurücksetzen Ihrer Passphrase",
+        "resendClose": "Schließen",
+        "noPassphrase": "Bevor Sie sich anmelden können, müssen Sie eine Passphrase festlegen, indem Sie auf den Link in Ihrer Aktivierungsnachricht klicken.",
+        "notVerified": "Sie müssen sich selbst eine Aktivierungsnachricht senden, um sich anzumelden.",
+        "emailExists": "Haben Sie schon einmal versucht, sich mit dieser E-Mail zu registrieren? Überprüfen Sie in diesem Fall Ihren Posteingang, um Ihr Konto zu aktivieren. <a href='#resend' class='Q_button Users_activation_resend'>Klicken Sie auf , um die Nachricht erneut zu senden<\/a>",
+        "mobileExists": "Haben Sie schon einmal versucht, sich mit dieser Handynummer zu registrieren? Überprüfen Sie in diesem Fall Ihre SMS, um Ihr Konto zu aktivieren. <a href='#resend' class='Q_button Users_activation_resend'>Klicken Sie auf , um die Nachricht erneut zu senden<\/a>",
+        "usingOther": "oder du kannst",
+        "connectPlatforms": "oder verbinden Sie sich mit:",
+        "prompt": "Wählen Sie einen Benutzernamen:",
+        "newUser": "oder erstellen Sie unten ein neues Konto",
+        "placeholders": {
+            "identifier": "Ihre Handynummer oder E-Mail",
+            "mobile": "Geben Sie Ihre Handynummer ein",
+            "email": "Geben sie ihre E-Mailadresse ein",
+            "username": "Verwenden Sie nur Buchstaben und Zahlen"
+        },
+        "confirmTerms": "Akzeptieren Sie die Nutzungsbedingungen?",
+        "facebookNoEmail": "Ihrem Facebook-Konto fehlt eine bestätigte E-Mail-Adresse. Melden Sie sich einfach auf native Weise an.",
+        "picTooltip": "Sie können dieses Bild später ändern",
+        "web3": {
+            "payload": "Melden Sie sich zur Zeit {{timestamp}} bei {{host}} an",
+            "alert": {
+                "title": "Weiterleitung an Wallet",
+                "content": "Sobald Sie diesen Dialog schließen, werden Sie zu Ihrer Brieftasche weitergeleitet. Kehren Sie nach der Anmeldung zu dieser Seite zurück."
+            },
+            "ConnectWallet": "Wallet verbinden"
+        }
+    },
+    "setIdentifier": {
+        "title": "Fügen Sie eine Möglichkeit hinzu, sich anzumelden",
+        "sendMessage": "Aktivierungsnachricht senden",
+        "placeholders": {
+            "identifier": "Geben Sie Ihre Handynummer oder E-Mail ein",
+            "mobile": "Geben Sie Ihre Mobiltelefonnummer ein",
+            "email": "Geben sie ihre E-Mailadresse ein",
+            "username": "Nutzername"
+        }
+    },
+    "prompt": {
+        "title": "{{Platform}} Konto",
+        "areUsing": "Sie verwenden {{platform}} als",
+        "noLongerUsing": "Sie sind nicht mehr mit {{platform}} as verbunden",
+        "doAuth": "Melden Sie sich mit diesem Konto an",
+        "doSwitch": "Wechseln Sie zu diesem Konto"
+    },
+    "roles": {
+        "Owner": "Eigentümer",
+        "Admin": "Administrator",
+        "Member": "Mitglied",
+        "Guest": "Gast",
+        "Host": "Gastgeber"
+    },
+    "web3": {
+        "WrongMethod": "Falsche Vertragsmethode {{methodName}}",
+        "ChangeWallet": "Geldbörse wechseln",
+        "ConnectWallet": "Wallet verbinden",
+        "AfterWalletConnectedPleaseRefresh": "Nachdem das Wallet verbunden ist, aktualisieren Sie bitte diese Seite, um das Wallet zu erkennen"
+    },
+    "labels": {
+        "addToPhonebook": "Zu meinen Telefonkontakten hinzufügen",
+        "addLabel": "Neue Beziehung",
+        "prompt": "Gib ihm einen Namen",
+        "titles": {
+            "Users\/owners": "Eigentümer",
+            "Users\/admins": "Admins",
+            "Users\/members": "Mitglieder",
+            "Users\/guests": "Gäste",
+            "Users\/hosts": "Gastgeber",
+            "Users\/testers": "Tester",
+            "Users\/speakers": "Lautsprecher"
+        }
+    },
+    "people": {
+        "People": "Menschen"
+    },
+    "external": {
+        "defaults": {
+            "title": "",
+            "bio": "Forum-Engagement-Bot. Holen Sie sich Ihre eigene unter https:\/\/engageusers.ai",
+            "website": "https:\/\/engageusers.ai"
+        }
+    },
+    "errors": {
+        "NotEnoughPermissionsWallet": "Nicht genügend Berechtigungen zum Lesen der Wallet dieses Benutzers",
+        "ThisUserHaveNoWallet": "Diesem Benutzer ist kein Wallet zugewiesen",
+        "TheWalletOfThisUserInvalid": "Das Wallet dieses Benutzers ist ungültig",
+        "WalletInvalid": "Wallet-Adresse ungültig"
+    }
+}

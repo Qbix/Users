@@ -1,0 +1,193 @@
+{
+    "avatar": {
+        "Someone": "netko"
+    },
+    "identifier": {
+        "types": {
+            "email": "E-mail",
+            "mobile": "Mobilni",
+            "web3": "Web3"
+        }
+    },
+    "clipboard": {
+        "Copied": "Kopirano! Sada ga možete zalijepiti bilo gdje."
+    },
+    "analytics": {
+        "Title": "Analitika",
+        "Daily": "Dnevno",
+        "Weekly": "Tjedni",
+        "Monthly": "Mjesečno",
+        "Application": "Primjena",
+        "Pages": "Stranice",
+        "Services": "Usluge",
+        "Faq": "Pitanja",
+        "WeekDays": "Dani u tjednu"
+    },
+    "actions": {
+        "LogIn": "prijaviti se",
+        "LogOut": "Odjavite se"
+    },
+    "activate": {
+        "OneTimeCode": "Unesite kod koji ste primili:",
+        "SetAsPrimary": "Postavi {{1}} kao moj primarni {{2}}",
+        "ChoosePassPhrase": "Odaberite <strong>lozinku<\/strong> za prijavu.<br> Jednostavna fraza koja se sastoji od nekoliko riječi koje ćete lako zapamtiti.",
+        "ChoosePassPhraseSeeSuggestions": "Odaberite dobru <strong>lozinku<\/strong> kako biste zaštitili svoj račun. Pogledajte prijedloge za neke ideje.",
+        "LogOutAndTryAgain": "Odjavite se i pokušajte ponovno",
+        "IfYouFeel": "Ako osjećate da je nešto pošlo po zlu, možete",
+        "SetIdentifierButtonTitle": "početi ispočetka",
+        "ActivateMyAccount": "Aktiviraj moj račun"
+    },
+    "session": {
+        "GetStarted": "Započnite"
+    },
+    "authorize": {
+        "GetStarted": "Započnite",
+        "Authorize": "Odobriti",
+        "TermsLabel": "Pročitao sam i slažem se<br> do {{link}}",
+        "TermsTitle": "Pojmovi",
+        "mustAgree": "Prvo se morate složiti s uvjetima."
+    },
+    "register": {
+        "TermsLabel": "Prihvaćam {{link}}",
+        "TermsTitle": "Pojmovi"
+    },
+    "notifications": {
+        "title": "Dopuštenje",
+        "prompt": "Želite li omogućiti obavijesti? Primat ćete ažuriranja u stvarnom vremenu o stvarima do kojih vam je stalo.",
+        "yes": "Da",
+        "no": "Ne",
+        "WelcomePleaseVerifyEmail": "Dobrodošli! Molimo potvrdite svoju adresu e-pošte.",
+        "WelcomeVerifyEmail": "Dobrodošli! Potvrdite svoju email adresu.",
+        "ForgetPass": "Hej, jesi li zaboravio svoju lozinku?",
+        "PassphraseSaved": "Vaša lozinka je spremljena.",
+        "IdentifierActivated": "Vaš {{type}} je aktiviran.",
+        "CompletedActivation": "Završili ste aktivaciju korisnika.",
+        "CompletedActivationLogIn": "Završili ste aktivaciju korisnika. Pokušajte se sada prijaviti."
+    },
+    "contacts": {
+        "dialog": {
+            "title": "Odaberite kontakt",
+            "CreateAccount": "+ Novi kontakt",
+            "CreateAccountNotFound": "Q.Users.Cordova.UI.create nije pronađen",
+            "SearchByName": "Traži po imenu",
+            "EmptyContacts": "Kontakti nisu pronađeni..."
+        },
+        "select": {
+            "title": "Odaberite kontakt od {{displayName}}"
+        }
+    },
+    "usersContacts": {
+        "selectLabel": "Odaberite oznaku.",
+        "inviteUser": "Pozovite korisnike",
+        "selectRole": "Odaberite Uloga",
+        "inviteRole": "Pozovi {{role}}"
+    },
+    "invalidLanguageSelected": "Odabran je nevažeći jezik",
+    "platforms": {
+        "wallet": "Novčanik",
+        "broadcast": "Emitiranje"
+    },
+    "login": {
+        "title": "Dobrodošli",
+        "directions": {
+            "GetStarted": "Napravite račun ili se prijavite.",
+            "NoRegister": "Prijavite se ako imate račun.",
+            "WasInvited": "Koji je najbolji način da dođemo do vas?"
+        },
+        "directionsNoRegister": "Prijavite se ako imate račun.",
+        "goButton": "➔",
+        "passphrase": "Unesite svoju lozinku:",
+        "loginButton": "Započnite",
+        "registerButton": "Započnite",
+        "resendButton": "Pošalji aktivacijsku poruku",
+        "forgot": "Zaboravio sam?",
+        "resendConfirm": "Želite li poslati poruku za ponovno postavljanje zaporke?",
+        "resendSuccess": "Provjerite poruku za poništavanje zaporke",
+        "resendClose": "Zatvoriti",
+        "noPassphrase": "Prije nego što se možete prijaviti, morate postaviti lozinku klikom na poveznicu u poruci za aktivaciju.",
+        "notVerified": "Morate poslati sebi aktivacijsku poruku kako biste se prijavili.",
+        "emailExists": "Jeste li se prije pokušali registrirati s ovom e-poštom? Ako je tako, provjerite svoju pristiglu poštu kako biste aktivirali svoj račun. <a href='#resend' class='Q_button Users_activation_resend'>Kliknite za ponovno slanje poruke<\/a>",
+        "mobileExists": "Jeste li se prije pokušali registrirati s ovim brojem mobitela? Ako je tako, provjerite svoj SMS da aktivirate svoj račun. <a href='#resend' class='Q_button Users_activation_resend'>Kliknite za ponovno slanje poruke<\/a>",
+        "usingOther": "ili možete",
+        "connectPlatforms": "ili se povežite koristeći:",
+        "prompt": "Izaberite korisničko ime:",
+        "newUser": "ili otvorite novi račun u nastavku",
+        "placeholders": {
+            "identifier": "broj mobitela ili e-mail",
+            "mobile": "unesite svoj broj mobitela",
+            "email": "Upisite svoju email adresu",
+            "username": "koristite samo slova i brojke"
+        },
+        "confirmTerms": "Prihvatiti Uvjete usluge?",
+        "facebookNoEmail": "Vašem facebook računu nedostaje potvrđena adresa e-pošte. Jednostavno se prijavite na izvorni način.",
+        "picTooltip": "Možete promijeniti ovu sliku kasnije",
+        "web3": {
+            "payload": "Prijavite se na {{host}} u vrijeme {{timestamp}}",
+            "alert": {
+                "title": "Preusmjeravanje na Novčanik",
+                "content": "Nakon što zatvorite ovaj dijaloški okvir, bit ćete preusmjereni u svoj novčanik. Nakon što se prijavite, vratite se na ovu stranicu."
+            },
+            "ConnectWallet": "Poveži novčanik"
+        }
+    },
+    "setIdentifier": {
+        "title": "Dodajte način prijave",
+        "sendMessage": "Pošalji aktivacijsku poruku",
+        "placeholders": {
+            "identifier": "unesite svoj broj mobitela ili e-mail",
+            "mobile": "unesite Vaš broj mobitela",
+            "email": "Upisite svoju email adresu",
+            "username": "Korisničko ime"
+        }
+    },
+    "prompt": {
+        "title": "Račun {{Platform}}",
+        "areUsing": "Vi koristite {{platform}} kao",
+        "noLongerUsing": "Niste više povezani s {{platform}} as",
+        "doAuth": "Prijavite se ovim računom",
+        "doSwitch": "Prijeđi na ovaj račun"
+    },
+    "roles": {
+        "Owner": "Vlasnik",
+        "Admin": "Administrator",
+        "Member": "Član",
+        "Guest": "Gost",
+        "Host": "Domaćin"
+    },
+    "web3": {
+        "WrongMethod": "Pogrešna metoda ugovora {{methodName}}",
+        "ChangeWallet": "Promjena novčanika",
+        "ConnectWallet": "Poveži novčanik",
+        "AfterWalletConnectedPleaseRefresh": "Nakon što se novčanik poveže, osvježite ovu stranicu kako biste prepoznali novčanik"
+    },
+    "labels": {
+        "addToPhonebook": "Dodaj u kontakte mog telefona",
+        "addLabel": "Nova veza",
+        "prompt": "Daj mu ime",
+        "titles": {
+            "Users\/owners": "Vlasnici",
+            "Users\/admins": "Administratori",
+            "Users\/members": "članovi",
+            "Users\/guests": "Gosti",
+            "Users\/hosts": "Domaćini",
+            "Users\/testers": "Testeri",
+            "Users\/speakers": "Zvučnici"
+        }
+    },
+    "people": {
+        "People": "narod"
+    },
+    "external": {
+        "defaults": {
+            "title": "",
+            "bio": "Forumski angažirani bot. Nabavite svoj na https:\/\/engageusers.ai",
+            "website": "https:\/\/engageusers.ai"
+        }
+    },
+    "errors": {
+        "NotEnoughPermissionsWallet": "Nema dovoljno dozvola za čitanje novčanika ovog korisnika",
+        "ThisUserHaveNoWallet": "Ovaj korisnik nema dodijeljen novčanik",
+        "TheWalletOfThisUserInvalid": "Novčanik ovog korisnika nije valjan",
+        "WalletInvalid": "Adresa novčanika nije važeća"
+    }
+}

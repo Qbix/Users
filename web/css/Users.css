@@ -1,0 +1,590 @@
+@import "icons.css";
+
+#dashboard .Users_dashboard_user { text-align: right; }
+#dashboard a.Users_login,
+#dashboard a.Users_logout { padding: 8px 12px 8px 12px; font-weight: bold; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px; color: white;  font-size: 14px; }
+
+.Users_profile_image
+{
+	width: 30px;
+}
+
+.Users_tools_throbber
+{
+  text-align: center;
+}
+
+.Users_friendSelector_tool_input_field
+{
+	margin: 15px 0;
+}
+
+.Users_friendSelector_tool_input_field input[type="text"]
+{
+	border: solid 1px #CCC;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	font: 12px Tahoma;
+	padding: 5px 23px 5px 5px;
+}
+
+.Users_friendSelector_search_icon
+{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 22px;
+	height: 19px;
+	background: url("../img/search-friends.png") no-repeat -81px 0;
+}
+
+.Users_friendSelector_tool ul
+{
+	font: 11px Tahoma;
+	list-style: none;
+	margin: 0;
+  padding-left: 0;
+	height: 580px;
+	overflow:auto;
+	border: solid 1px #333;
+}
+
+.Users_friendSelector_tool ul li
+{
+	height: 54px;
+}
+
+.Users_friendSelector_tool ul li
+{
+	height: 50px;
+	padding: 4px 5px;
+}
+
+.Users_friendSelector_tool ul li:hover
+{
+	background: url(../img/sel_friend_bg.png) repeat-x;
+  cursor: pointer;
+}
+
+.Users_friendSelector_tool_user_picture
+{
+	float: left;
+}
+
+.Users_friendSelector_tool_user_name
+{
+  margin: 5px 7px 0 57px;
+  font: bold 11px Tahoma;
+  text-decoration: none;
+  color: #3B5998;
+}
+
+.Users_friendSelector_tool ul li:hover .Users_friendSelector_tool_user_name
+{
+  color: white;
+}
+
+.Users_friendSelector_tool .Q_placeholder
+{
+  color: #999;
+}
+
+.Users_friendSelector_tool .Q_focus .Q_placeholder
+{
+  color: #CCC;
+}
+
+.Users_friendSelector_tool_title
+{
+  font-size: 20px;
+}
+
+.Users_friendSelector_tool_title::before
+{
+	content: '1.';
+	color: #FFA800;
+	margin-right: 5px;
+	font-size: 1.5em;
+	font-weight: bold;
+	vertical-align: baseline;
+}
+
+.Users_facebookDialog_shadow
+{
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.3;
+}
+
+.Users_facebookDialog
+{
+  position: absolute;
+  z-index: 9100;
+  width: 465px;
+  background-color: rgba(82, 82, 82, 0.7);
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px; 
+  padding: 10px;
+  font: 11px Tahoma;
+}
+
+.Users_facebookDialog_title
+{
+  padding: 5px 10px;
+  color: white;
+  background-color: #6D84B4;
+  font: bold 14px Tahoma;
+  border-top: solid 1px #3B5998;
+  border-left: solid 1px #3B5998;
+  border-right: solid 1px #3B5998;
+}
+
+.Users_facebookDialog_content
+{
+  background-color: white;
+  padding: 8px 10px;
+  line-height: 18px;
+  border-left: solid 1px #555;
+  border-right: solid 1px #555;
+  font-family: "Lucida Grande", Tahoma, Verdana, Arial, Sans-Serif;
+  font-size: 11px;
+  color: black;
+}
+
+.Users_facebookDialog_buttons
+{
+  background-color: #F2F2F2;
+  padding: 8px 10px;
+  border-top: solid 1px #ccc;
+  border-left: solid 1px #555;
+  border-right: solid 1px #555;
+  text-align: right;
+}
+
+.Users_facebookDialog_buttons button, .Users_facebookDialog_buttons button:hover,
+.Users_facebookDialog_buttons button:active, .Users_facebookDialog_buttons button:focus
+{
+	margin-left: 7px;
+  padding: 3px 5px;
+  background-color: #EEEEEE;
+  background-position: 0 -49px;
+  background-repeat: no-repeat;
+  border: solid 1px #999;
+  font: bold 13px Tahoma;
+  color: black;
+  cursor: pointer;
+  border-radius: 0;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+.Users_facebookDialog_buttons button.Users_facebookDialog_default_button
+{
+  color: white;
+  border: solid 1px #29447E;
+  background-color: #637BAD;
+  background-position: 0 -98px;
+}
+
+.Users_facebookDialog_buttons button.Users_facebookDialog_default_button:active
+{
+  background-image: none;
+  background-color: #4F6AA3;
+}
+
+#Users_prompt_overlay .Q_dialog_content {
+	padding: 10px;
+}
+
+#Users_prompt_overlay .Users_explanation { font-size: 12px; }
+#Users_prompt_overlay .fb_name { font-size: 18px; }
+#Users_prompt_overlay table td { padding: 10px; vertical-align: middle; }
+#Users_prompt_overlay .Users_actions { text-align: center; }
+
+.Users_activation_avatar
+{
+	width: 40px;
+	padding: 10px;
+}
+
+.Users_activation_username
+{
+	vertical-align: middle;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.Q_admin_pane #Q_activation_form
+{
+	text-align: center;
+}
+
+.Q_admin_pane #new-password {
+	width: 100%;
+	margin-bottom: 10px;
+}
+
+.Q_extra_pane #suggestions
+{
+	list-style-type: none;
+	padding: 0;
+}
+
+.Q_extra_pane #suggestions li
+{
+	list-style-type: none;
+	border-bottom: solid 1px #aaa;
+}
+
+.Q_admin_pane
+{
+	float: left;
+	padding: 10px 10px 0 10px;
+}
+
+.Q_extra_pane
+{
+	float: right;
+	background: rgba(0, 0, 0, 0.1);
+	border-radius: 5px;
+	padding: 20px;
+}
+
+.Q_mobile .Q_extra_pane
+{
+	text-align: center;
+	float: none;
+	margin: auto;
+    clear: both;
+    width: 75%;
+    padding: 20px;
+}
+
+.Users_avatar_icon, .Users_avatar_name
+{
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#Users_login_step2 td {
+	vertical-align: top;
+}
+
+.Users_login_picture img {
+	width: 60px;
+	height: 60px;
+	margin-right: 7px;
+}
+
+
+
+/* user login */
+
+#Users_login_step1_form { width: 100%; }
+#Users_login_identifier { width: 75%; padding: 2%; }
+#Users_login_username, #Users_login_password { width: 96%; padding: 2%; }
+#Users_setIdentifier_identifier { width: 100%; padding: 2%; }
+#Users_login_go { width: 23%; margin: 1%; text-align: center; vertical-align: middle; }
+#Users_login_noPassphrase { font-size: 14px; font-weight: bold; color: #a00; text-align: center; }
+#Users_login_notVerified { font-size: 14px; font-weight: bold; text-align: center; }
+#Users_login_identifierExists { font-size: 12px; color: green; text-align: center; font-weight: bold; }
+#Users_login_identifierExists div { padding: 10px; }
+#Users_login_explanation { font-size: 13px; color: #779; text-indent: 5px; }
+#Users_login_usingPlatforms { padding: 10px; font-size: 18px; text-indent: 5px; text-align: center; }
+#Users_login_passphrase_div #current-password { width: 100%; padding: 2%; }
+.Users_login_get_started { text-align: center; margin-top: 10px; }
+
+#Users_login_passphrase_div { position: relative; }
+#Users_login_passphrase_forgot { display: block; position: absolute; right: 5px; bottom: 10px; color: #888; padding: 4px; }
+#Users_login_passphrase_forgot:hover { color: #000; background: #eee; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }
+#Users_login_passphrase_forgot:active { color: #000; background: #ccc; -moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; }
+
+#Users_login_resend_success { text-align: center; }
+
+a.Users_activation_resend {
+	width: 100%;
+	padding: 0;
+}
+a.Users_activation_resend:link,
+a.Users_activation_resend:visited,
+a.Users_activation_resend:active {
+	display: block;
+	color: #fff;
+	background: green;
+}
+
+.Users_app_icon { vertical-align: middle; }
+
+.Users_authorize_scope_granted { font-style: italic; opacity: 0.5;  }
+.Users_authorize_scope_granted::before {
+	content: '✔';
+}
+#Users_authorize_what { padding: 10px; background: rgba(255, 255, 0, 0.2); }
+#Users_authorize_welcome { padding: 10px; }
+#Users_authorize_welcome * { font-size: 14px; line-height: 14px; text-align: center; }
+#Users_authorize_welcome h2 { margin: 10px; font-size: 36px; line-height: 36px; }
+#Users_authorize_act { text-align: center; }
+#Users_authorize_terms,
+#Users_authorize_terms * { font-size: 14px; }
+#Users_login_dialog #Users_register_terms {
+	margin: 10px auto;
+}
+#Users_login_dialog #Users_register_terms,
+#Users_login_dialog #Users_register_terms * { font-size: 14px; text-align: center; }
+#Users_authorize_buttons,
+#Users_session_buttons { padding: 10px; }
+#Users_authorize_buttons .Q_button,
+#Users_session_buttons .Q_button { font-size: 36px; line-height: 80px; }
+
+.Daycare_terms #content,
+.Users_authorize_terms .Q_dialog_content {
+	padding: 0 10px;
+}
+.Daycare_terms #content h1,
+.Users_authorize_terms .Q_dialog_content h1 {
+	text-align: center;
+}
+.Daycare_terms #content {}
+
+.Users_fromServer,
+.Users_fromYahoo { font-family: "Comic Sans MS"; font-weight: 100; }
+
+.Users_avatar_icon {
+	width: 40px;
+	height: 40px;
+}
+.Users_avatar_icon {
+	object-fit: cover;
+}
+.Users_avatar_icon.Users_avatar_icon_50 {
+	width: 50px;
+	height: 50px;
+}
+.Users_avatar_icon.Users_avatar_icon_80 {
+	width: 80px;
+	height: 80px;
+}
+.Users_avatar_icon.Users_avatar_icon_200 {
+	width: 200px;
+	height: 200px;
+}
+.Users_avatar_icon.Users_avatar_icon_400 {
+	width: 200px;
+	height: 200px;
+}
+
+.Users_avatar_icon_blank {
+	width: 40px;
+	height: 40px;
+	-moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px;
+	border: 1px dotted #ccc;
+}
+
+#Users_login_step1 *,
+#Users_login_step2 *,
+#Users_setIdentifier_step1 * {
+	box-sizing: border-box;
+}
+
+#Users_login_dialog input,
+#Users_setIdentifier_dialog input {
+	margin: 5px 0 5px 0;
+	vertical-align: middle;
+}
+#Users_setIdentifier_dialog .Users_identifier_web3 {
+	text-align: center;
+	cursor: pointer;
+	font-style: normal;
+	padding: 10px;
+	margin: 30px 0;
+	border: 2px dashed rgba(150, 150, 150, 0.5);
+	background: rgba(150, 150, 150, 0.1);
+	font-weight: bold;
+	font-size: 30px;
+	font-family: 'Courier New', Courier, monospace;
+
+}
+#Users_setIdentifier_dialog.Users_setIdentifier_web3 .Users_setIdentifier_go {
+	display: none;
+}
+#Users_setIdentifier_dialog .Q_button {
+    min-width: 80%;
+}
+
+#Users_login_dialog #Users_agree {
+	margin-right: 15px;
+	-webkit-appearance: checkbox;
+	-ms-transform: scale(2); /* IE */
+	-moz-transform: scale(2); /* FF */
+	-webkit-transform: scale(2); /* Safari and Chrome */
+	-o-transform: scale(2); /* Opera */
+	transform: scale(2);
+}
+
+.Q_notMobile .Q_overlay.Users_login_dialog,
+.Q_notMobile .Q_overlay.Users_setIdentifier_dialog { width: 350px; }
+
+.Q_notMobile .Users_login_dialog { min-width: 400px }
+
+.Users_login_dialog { display: none; }
+.Users_login_dialog.Q_overlay { display: block; }
+
+.Users_avatar_tool {
+	vertical-align: top;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.Users_avatar_tool>* {
+	vertical-align: middle;
+}
+
+.Users_getintouch_tool button {
+	background: transparent;
+	border: 1px solid #777;
+	font-size: 16px;
+	line-height: 32px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+button.Users_getintouch_email {
+	background: url(../img/email.png) no-repeat left 5px top;
+	text-indent: 40px;
+}
+
+button.Users_getintouch_text {
+	background: url(../img/text.png) no-repeat left 5px top;
+	text-indent: 40px;
+}
+
+button.Users_getintouch_call {
+	background: url(../img/call.png) no-repeat left 5px top;
+	text-indent: 40px;
+}
+
+.Users_aspect_communities,
+.Users_aspect_account { color: #394ad5; border-color: #394ad5; }
+
+.Q_button.Users_aspect_communities,
+.Q_button.Users_aspect_account {
+	background: #394ad5; /* for non-css3 browsers */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#394ad5', endColorstr='#2839c4'); /* for IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#394ad5), to(#2839c4)); /* for webkit browsers */
+	background: -moz-linear-gradient(top,  #394ad5,  #2839c4); /* for firefox 3.6+ */
+	color: white;
+}
+.Q_button.Users_aspect_communities:active,
+.Q_button.Users_aspect_communities:focus,
+.Q_button.Users_aspect_account:active,
+.Q_button.Users_aspect_account:focus {
+	background: #2839c4;
+	color: white;
+}
+
+html.Users_loggedOut .Users_whenLoggedIn,
+html.Users_loggedIn .Users_whenLoggedOut {
+	display: none !important;
+}
+
+.Users_status_tool .Users_avatar_tool img.Users_avatar_icon {
+	width: 40px;
+	height: 40px;
+}
+
+.Q_mobile .Users_status_tool .Users_avatar_tool img {
+	display: inline-block;
+}
+
+.Q_mobile .Q_tabs-Communities_tab .Q_tabs_title .Users_status_tool .Users_avatar_name {
+	display: none;
+}
+
+#Users_login_step1,
+#Users_login_step2 {
+	padding: 0;
+}
+
+#Users_login_dialog .Q_dialog_slot {
+	padding: 10px;
+	overflow: visible;
+}
+
+#Users_login_dialog.Users_login_expanded .Q_dialog_slot {
+	overflow: auto;
+}
+
+#notices_slot ul li .Q_tool.Users_avatar_tool {
+	height: 40px;
+	line-height: normal;
+	overflow: unset;
+}
+#notices_slot ul li .Q_tool.Users_avatar_tool[data-users-avatar*='"icon":false'] {
+	height: unset;
+}
+
+#notices_slot ul li {
+	white-space: nowrap;
+}
+
+#notices_slot ul li * {
+	line-height: normal;
+	vertical-align: baseline;
+}
+
+#Users_activate_set_emailAddress {
+	white-space: normal;
+}
+
+.Users_activate_container {
+	padding-top: 10px;
+}
+
+.Users_activate_container .Q_buttons {
+	padding: 10px;
+	margin-top: 10px;
+}
+
+.Q_notMobile .Users_activate_dialog {
+	min-width: 800px;
+	box-shadow: 0px 10px 50px rgba(255, 255, 255, 0.5)
+}
+
+.Users_activate_dialog_showing .Q_dialog_mask {
+	background: rgba(0, 0, 0, 0.8);
+}
+
+#WEB3_CONNECT_MODAL_ID {
+	position: absolute;
+	z-index: 99999999;
+}
+
+#Users_login_usingPlatforms img {
+	width: 80px;
+	height: 80px;
+}
+
+#Users_login_usingPlatforms a {
+	display: inline-block;
+	color: var(--dialog-color);
+	font-size: 18px;
+}
+
+.Users_login_connectPlatforms {
+	line-height: 40px;
+}
+
+@media (prefers-color-scheme: dark) {
+	#Users_login_identifierExists { color: inherit; }
+}

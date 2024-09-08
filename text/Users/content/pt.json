@@ -1,0 +1,193 @@
+{
+    "avatar": {
+        "Someone": "Alguém"
+    },
+    "identifier": {
+        "types": {
+            "email": "E-mail",
+            "mobile": "Móvel",
+            "web3": "Web3"
+        }
+    },
+    "clipboard": {
+        "Copied": "Copiado! Agora você pode colá-lo em qualquer lugar."
+    },
+    "analytics": {
+        "Title": "Análise",
+        "Daily": "Diário",
+        "Weekly": "Semanalmente",
+        "Monthly": "Por mês",
+        "Application": "Aplicativo",
+        "Pages": "Páginas",
+        "Services": "Serviços",
+        "Faq": "Perguntas frequentes",
+        "WeekDays": "Dias da semana"
+    },
+    "actions": {
+        "LogIn": "Conecte-se",
+        "LogOut": "sair"
+    },
+    "activate": {
+        "OneTimeCode": "Digite o código que você recebeu:",
+        "SetAsPrimary": "Defina {{1}} como meu {{2}} primário",
+        "ChoosePassPhrase": "Escolha uma <strong>frase secreta<\/strong> para fazer login.<br> Uma frase simples que consiste em algumas palavras que você lembrará facilmente.",
+        "ChoosePassPhraseSeeSuggestions": "Escolha uma boa <strong>frase secreta<\/strong> para proteger sua conta. Veja as sugestões para algumas ideias.",
+        "LogOutAndTryAgain": "Saia e tente novamente",
+        "IfYouFeel": "Se você sentir que algo deu errado, você pode",
+        "SetIdentifierButtonTitle": "recomeçar",
+        "ActivateMyAccount": "Ativar minha conta"
+    },
+    "session": {
+        "GetStarted": "Iniciar"
+    },
+    "authorize": {
+        "GetStarted": "Iniciar",
+        "Authorize": "Autorizar",
+        "TermsLabel": "eu li e concordo<br> para o {{link}}",
+        "TermsTitle": "Termos",
+        "mustAgree": "Primeiro você deve concordar com os termos."
+    },
+    "register": {
+        "TermsLabel": "eu aceito o {{link}}",
+        "TermsTitle": "Termos"
+    },
+    "notifications": {
+        "title": "Permissão",
+        "prompt": "Deseja ativar as notificações? Você receberá atualizações em tempo real sobre as coisas que lhe interessam.",
+        "yes": "Sim",
+        "no": "Não",
+        "WelcomePleaseVerifyEmail": "Bem-vindo! Por favor verifique seu endereço de email.",
+        "WelcomeVerifyEmail": "Bem-vindo! Verifique seu endereço de e-mail.",
+        "ForgetPass": "Ei, você esqueceu sua senha?",
+        "PassphraseSaved": "Sua frase secreta foi salva.",
+        "IdentifierActivated": "Seu {{type}} foi ativado.",
+        "CompletedActivation": "Você concluiu a ativação do usuário.",
+        "CompletedActivationLogIn": "Você concluiu a ativação do usuário. Tente fazer login agora."
+    },
+    "contacts": {
+        "dialog": {
+            "title": "Escolha o contato",
+            "CreateAccount": "+ Novo contato",
+            "CreateAccountNotFound": "Q.Users.Cordova.UI.create não encontrado",
+            "SearchByName": "Procura por nome",
+            "EmptyContacts": "Contatos não encontrados..."
+        },
+        "select": {
+            "title": "Selecione o contato do {{displayName}}"
+        }
+    },
+    "usersContacts": {
+        "selectLabel": "Selecione o rótulo.",
+        "inviteUser": "Convidar usuários",
+        "selectRole": "Selecione a Função",
+        "inviteRole": "Convidar {{role}}"
+    },
+    "invalidLanguageSelected": "Idioma inválido selecionado",
+    "platforms": {
+        "wallet": "Carteira",
+        "broadcast": "Transmissão"
+    },
+    "login": {
+        "title": "Bem-vindo",
+        "directions": {
+            "GetStarted": "Crie uma conta, ou faça login.",
+            "NoRegister": "Faça login se você tiver uma conta.",
+            "WasInvited": "Qual é a melhor maneira de chegar até você?"
+        },
+        "directionsNoRegister": "Faça login se você tiver uma conta.",
+        "goButton": "➔",
+        "passphrase": "Digite sua frase secreta:",
+        "loginButton": "Iniciar",
+        "registerButton": "Iniciar",
+        "resendButton": "Enviar mensagem de ativação",
+        "forgot": "Esqueci?",
+        "resendConfirm": "Deseja enviar uma mensagem para redefinir sua senha?",
+        "resendSuccess": "Verifique se há uma mensagem para redefinir sua senha",
+        "resendClose": "Fechar",
+        "noPassphrase": "Antes de fazer login, você deve definir uma frase secreta clicando no link em sua mensagem de ativação.",
+        "notVerified": "Você deve enviar a si mesmo uma mensagem de ativação para fazer login.",
+        "emailExists": "Você tentou se registrar com este e-mail antes? Nesse caso, verifique sua caixa de entrada para ativar sua conta. <a href='#resend' class='Q_button Users_activation_resend'>Clique para reenviar a mensagem<\/a>",
+        "mobileExists": "Você tentou se registrar com este número de celular antes? Nesse caso, verifique seu SMS para ativar sua conta. <a href='#resend' class='Q_button Users_activation_resend'>Clique para reenviar a mensagem<\/a>",
+        "usingOther": "ou você pode",
+        "connectPlatforms": "ou conecte usando:",
+        "prompt": "Escolha um nome de usuário:",
+        "newUser": "ou crie uma nova conta abaixo",
+        "placeholders": {
+            "identifier": "seu número de celular ou e-mail",
+            "mobile": "digite o número do seu celular",
+            "email": "Insira o seu endereço de email",
+            "username": "use apenas letras e números"
+        },
+        "confirmTerms": "Aceitar os Termos de Serviço?",
+        "facebookNoEmail": "Sua conta do Facebook está sem um endereço de e-mail confirmado. Basta fazer login da maneira nativa.",
+        "picTooltip": "Você pode alterar esta imagem mais tarde",
+        "web3": {
+            "payload": "Entre no {{host}} na hora {{timestamp}}",
+            "alert": {
+                "title": "Redirecionando para Wallet",
+                "content": "Depois de fechar esta caixa de diálogo, você será levado à sua carteira. Depois de entrar, retorne a esta página."
+            },
+            "ConnectWallet": "Conectar carteira"
+        }
+    },
+    "setIdentifier": {
+        "title": "Adicionar uma maneira de fazer login",
+        "sendMessage": "Enviar mensagem de ativação",
+        "placeholders": {
+            "identifier": "digite seu número de celular ou e-mail",
+            "mobile": "digite seu número de celular",
+            "email": "Insira o seu endereço de email",
+            "username": "nome de usuário"
+        }
+    },
+    "prompt": {
+        "title": "Conta {{Platform}}",
+        "areUsing": "Você está usando {{platform}} como",
+        "noLongerUsing": "Você não está mais conectado ao {{platform}} como",
+        "doAuth": "Entrar com esta conta",
+        "doSwitch": "Alternar para esta conta"
+    },
+    "roles": {
+        "Owner": "Proprietário",
+        "Admin": "Administrador",
+        "Member": "Membro",
+        "Guest": "Convidado",
+        "Host": "Hospedar"
+    },
+    "web3": {
+        "WrongMethod": "Método de contrato errado {{methodName}}",
+        "ChangeWallet": "Trocar Carteira",
+        "ConnectWallet": "Conectar carteira",
+        "AfterWalletConnectedPleaseRefresh": "Depois de conectar a carteira, atualize esta página para reconhecer a carteira"
+    },
+    "labels": {
+        "addToPhonebook": "Adicionar aos contatos do meu telefone",
+        "addLabel": "Novo relacionamento",
+        "prompt": "Dê um nome",
+        "titles": {
+            "Users\/owners": "os Proprietários",
+            "Users\/admins": "Administradores",
+            "Users\/members": "Membros",
+            "Users\/guests": "Convidados",
+            "Users\/hosts": "Anfitriões",
+            "Users\/testers": "Testadores",
+            "Users\/speakers": "caixas de som"
+        }
+    },
+    "people": {
+        "People": "Pessoas"
+    },
+    "external": {
+        "defaults": {
+            "title": "",
+            "bio": "Bot de engajamento do fórum. Obtenha o seu em https:\/\/engageusers.ai",
+            "website": "https:\/\/engageusers.ai"
+        }
+    },
+    "errors": {
+        "NotEnoughPermissionsWallet": "Não há permissões suficientes para ler a carteira deste usuário",
+        "ThisUserHaveNoWallet": "Este usuário não tem carteira atribuída",
+        "TheWalletOfThisUserInvalid": "A carteira deste usuário é inválida",
+        "WalletInvalid": "Endereço da carteira inválido"
+    }
+}
