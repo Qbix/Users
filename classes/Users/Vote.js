@@ -5,6 +5,7 @@
  */
 var Q = require('Q');
 var Db = Q.require('Db');
+var Users = Q.plugins.Users;
 
 /**
  * Class representing 'Vote' rows in the 'Users' database
