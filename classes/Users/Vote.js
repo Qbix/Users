@@ -5,6 +5,7 @@
  */
 var Q = require('Q');
 var Db = Q.require('Db');
+var Users = Q.require('Users');
 
 /**
  * Class representing 'Vote' rows in the 'Users' database
@@ -68,7 +69,6 @@ function Users_Vote (fields) {
 	 */
 	this.beforeSaveExecute = function (query, modifiedFields) {
 		var self = this;
-		var Users = Q.plugins.Users;
 		var total = new Users.Total({forId: this.forId});
 		total.retrieve('*', true, true, function(err, total_res) {
 			if (err) {
