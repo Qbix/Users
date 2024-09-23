@@ -47,7 +47,7 @@ function Users_activate_response_content()
 
 	// Generate 10 passphrase suggestions
 	$suggestions = array();
-	$arr = include(USERS_PLUGIN_FILES_DIR.DS.'Users'.DS.'passphrases.php');
+	$arr = include(USERS_PLUGIN_FILES_DIR.DS.'passphrases.php');
 	for ($i=0; $i<10; ++$i) {
 		$pre1 = $arr['pre'][random_int(0, count($arr['pre'])-1)];
 		$noun1 = $arr['nouns'][random_int(0, count($arr['nouns'])-1)];
