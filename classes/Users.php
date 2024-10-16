@@ -1743,7 +1743,8 @@ abstract class Users extends Base_Users
 	 * @param {string} $platform The platform or platform for the app
 	 * @param {string} [$appId=Q::app()] Can be either an internal or external app id
 	 * @param {boolean} [$throwIfMissing=false] Whether to throw an exception if missing
-	 * @return {array} Returns array($appId, $appInfo) where $appId is internal app id
+	 * @return {array} Returns array($appId, $appInfo) where $appId is internal app id,
+	 *   or if that is not found, then the originally passed $appId
 	 * @throws {Q_Exception_MissingConfig}
 	 */
 	static function appInfo($platform, $appId = null, $throwIfMissing = false)
@@ -1756,7 +1757,7 @@ abstract class Users extends Base_Users
 		if (isset($apps[$id])) {
 			$appInfo = $apps[$id];
 		} else {
-			$id = $appInfo = null;
+			$appInfo = null;
 			foreach ($apps as $k => $v) {
 				if (!empty($v['appId'])
 				&& $v['appId'] === $appId) {
@@ -2495,6 +2496,27 @@ abstract class Users extends Base_Users
 		Q::event('Users/updateUserIds', $params, 'after');
 		Users_User::commit($transactionKey)->execute();
 		return $errors;
+	}
+
+		/**
+	 * Get the secret token to send to telegram in secret_token parameter
+	 * of setWebhook()
+	 * @method secretToken
+	 * @static
+	 * @param {String} $platform The platform, found under config "Users"/"apps"
+	 * @param {String} $appId The external appId, found in local/app.json under config "Users"/"apps"/platform
+	 * @return {string}
+	 * @throws {Q_Exception_MissingConfig}
+	 */
+	static function secretToken($platform, $appId)
+	{
+		list($appId, $info) = Users::appInfo($platform, $appId);
+		$internalSecret = Q_Config::get(
+            'Q', 'internal', 'secret', $appId
+        );
+		return "$platform-$appId-" . Q::ifset($info, 'secret', Q_Utils::hmac(
+            'sha1', $platform, $internalSecret
+        ));
 	}
 
 	/**
