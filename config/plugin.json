@@ -562,6 +562,18 @@
 						"decimals": 18
 					}
 				},
+				"0xa4b1": {
+					"name": "Arbitrum",
+					"publicRPC": "https://arb1.arbitrum.io/rpc",
+					"publicWebsocket": "wss://arbitrum.callstaticrpc.com",
+					"blockExplorerUrl": "https://arbiscan.io/",
+					"rpcUrl": "https://optiarbitrummism-mainnet.infura.io/v3/{{infuraId}}",
+					"currency": {
+						"name": "Arbi Ethereum",
+						"symbol": "ETH",
+						"decimals": 18
+					}
+				},
 				"0xe708": {
 					"name": "Linea",
 					"publicRPC": "https://linea.decubate.com",

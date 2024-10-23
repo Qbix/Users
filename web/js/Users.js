@@ -1797,6 +1797,10 @@
 		onChainChanged: new Q.Event(),
 		onConnect: new Q.Event(),
 		onDisconnect: new Q.Event(),
+
+		toChecksumAddress(address) {
+			return ethers.utils.getAddress(address)
+		},
         
         getExplorerLink: function(address, chainId, partPrepend = 'token/') {
 			if (!Q.Users.Web3.chains[chainId]) {
@@ -2253,11 +2257,13 @@
 		},
 
 		/**
-		 * Switch provider to a different Web3 chain
+		 * Switch provider to a different Web3 chain, unless
+		 * the provider is already on that chain. Call the callback
+		 * in either case.
 		 * @method switchChain
 		 * @static
 		 * @param {String|Object} info Can be the chainId (e.g. "0x1")
-		 *   or an object with chain info to pass to the wwallet
+		 *   or an object with chain info to pass to the wallet
 		 * @param {String} info.chainId
 		 * @param {String} info.name
 		 * @param {String} info.currency
@@ -2268,7 +2274,7 @@
 		 * @param {Array} [info.rpcUrls] or rpcUrl
 		 * @param {String} [info.blockExplorerUrl] or blockExplorerUrls
 		 * @param {Array} [info.blockExplorerUrls] or blockExplorerUrl
-		 * @param {Function} callback receives (error, chainId)
+		 * @param {Function} callback receives (error, chainId, provider)
 		 * @return {Promise} to be used instead of callback
 		 */
 		switchChain: Q.promisify(function (info, callback) {
@@ -2281,6 +2287,10 @@
 			Web3.connect(function (err, provider) {
 				if (err) {
 					return Q.handle(callback, null, [err]);
+				}
+				
+				if (provider && provider.chainId == info.chainId) {
+					_continue();
 				}
 
 				Web3.switchChainOccuring = true;
@@ -2322,7 +2332,7 @@
 				});
 
 				function _continue() {
-					Q.handle(callback, null, [null, provider.chainId]);
+					Q.handle(callback, null, [null, provider.chainId, provider]);
 				}
 			});
 		}),
