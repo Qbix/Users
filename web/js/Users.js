@@ -2035,9 +2035,9 @@
 				provider.on("disconnect", function (error) {
 					console.log("provider.disconnect: ", error);
 
-					if (Users.logout.occurring || Web3.switchChainOccuring) {
-						if (Web3.switchChainOccuring === true) {
-							Web3.switchChainOccuring = false;
+					if (Users.logout.occurring || Web3.switchChainOccurring) {
+						if (Web3.switchChainOccurring === true) {
+							Web3.switchChainOccurring = false;
 						}
 
 						return;
@@ -2290,10 +2290,10 @@
 				}
 				
 				if (provider && provider.chainId == info.chainId) {
-					_continue();
+					return _continue();
 				}
 
-				Web3.switchChainOccuring = true;
+				Web3.switchChainOccurring = true;
 				
 				provider.request({
 					method: 'wallet_switchEthereumChain',
@@ -2332,6 +2332,7 @@
 				});
 
 				function _continue() {
+					Web3.switchChainOccurring = false;
 					Q.handle(callback, null, [null, provider.chainId, provider]);
 				}
 			});
