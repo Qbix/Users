@@ -82,7 +82,11 @@ function Users_Vote (fields) {
 				total = total_res[0];
 			}
 			var weightTotal = total.weightTotal;
-			var vote = new Users.Vote({userId: modifiedFields.userId, forId: modifiedFields.forId});
+			var vote = new Users.Vote({
+				userId: modifiedFields.userId,
+				forType: total.forType,
+				forId: modifiedFields.forId
+			});
 			vote.retrieve('*', true, function (err, vote_res) {
 				if (!err) {
 					return console.log(err);
