@@ -69,7 +69,10 @@ function Users_Vote (fields) {
 	 */
 	this.beforeSaveExecute = function (query, modifiedFields) {
 		var self = this;
-		var total = new Users.Total({forId: this.forId});
+		var total = new Users.Total({
+			forType: this.forType,
+			forId: this.forId
+		});
 		total.retrieve('*', true, true, function(err, total_res) {
 			if (err) {
 				return console.log(err);
