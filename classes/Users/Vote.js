@@ -117,8 +117,8 @@ function Users_Vote (fields) {
 				query.resume();
 			});
 		}).begin().lock().resume();
-		if (this.prototype.beforeSaveExecute) {
-			return this.prototype.beforeSaveExecute(query, modifiedFields);
+		if (this.constructor.prototype.beforeSaveExecute) {
+			return this.constructor.prototype.beforeSaveExecute(query, modifiedFields);
 		}
 	};
 	
