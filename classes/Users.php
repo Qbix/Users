@@ -2514,7 +2514,7 @@ abstract class Users extends Base_Users
 		$internalSecret = Q_Config::get(
             'Q', 'internal', 'secret', $appId
         );
-		return "$platform-$appId-" . Q::ifset($info, 'secret', Q_Utils::hmac(
+		return "$platform-$appId-" . Q::ifset($info, 'secret', hash_hmac(
             'sha1', $platform, $internalSecret
         ));
 	}
