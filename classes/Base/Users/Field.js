@@ -28,6 +28,7 @@ var Row = Q.require('Db/Row');
  * @param {String|Db.Expression} [fields.insertedTime] defaults to new Db.Expression("CURRENT_TIMESTAMP")
  * @param {String|Db.Expression} [fields.updatedTime] defaults to null
  * @param {String|Buffer} [fields.access] defaults to null
+ * @param {String} [fields.dialogId] defaults to null
  */
 function Base (fields) {
 	Base.constructors.apply(this, arguments);
@@ -76,6 +77,12 @@ Q.mixin(Base, Row);
  * @type String|Buffer
  * @default null
  * JSON with possible keys 'read' and 'write' and values being arrays of labels
+ */
+/**
+ * @property dialogId
+ * @type String
+ * @default null
+ * 
  */
 
 /**
@@ -266,8 +273,7 @@ Base.prototype.primaryKey = function () {
 	return [
 		"userId",
 		"name",
-		"type",
-		"content"
+		"type"
 	];
 };
 
@@ -294,7 +300,8 @@ Base.fieldNames = function () {
 		"content",
 		"insertedTime",
 		"updatedTime",
-		"access"
+		"access",
+		"dialogId"
 	];
 };
 
@@ -447,7 +454,7 @@ Base.prototype.maxSize_content = function () {
 	 */
 Base.column_content = function () {
 
-return [["varbinary","1023","",false],false,"PRI",""];
+return [["varbinary","1023","",false],false,"",""];
 };
 
 /**
@@ -536,6 +543,42 @@ Base.prototype.maxSize_access = function () {
 Base.column_access = function () {
 
 return [["varbinary","255","",false],true,"",null];
+};
+
+/**
+ * Method is called before setting the field and verifies if value is string of length within acceptable limit.
+ * Optionally accept numeric value which is converted to string
+ * @method beforeSet_dialogId
+ * @param {string} value
+ * @return {string} The value
+ * @throws {Error} An exception is thrown if 'value' is not string or is exceedingly long
+ */
+Base.prototype.beforeSet_dialogId = function (value) {
+		if (value == undefined) return value;
+		if (value instanceof Db.Expression) return value;
+		if (typeof value !== "string" && typeof value !== "number")
+			throw new Error('Must pass a String to '+this.table()+".dialogId");
+		if (typeof value === "string" && value.length > 255)
+			throw new Error('Exceedingly long value being assigned to '+this.table()+".dialogId");
+		return value;
+};
+
+	/**
+	 * Returns the maximum string length that can be assigned to the dialogId field
+	 * @return {integer}
+	 */
+Base.prototype.maxSize_dialogId = function () {
+
+		return 255;
+};
+
+	/**
+	 * Returns schema information for dialogId column
+	 * @return {array} [[typeName, displayRange, modifiers, unsigned], isNull, key, default]
+	 */
+Base.column_dialogId = function () {
+
+return [["varchar","255","",false],true,"MUL",null];
 };
 
 /**
