@@ -12,7 +12,7 @@ function Users_after_Users_filter_users($params, &$result)
         }
     }
     $userIds = $result;
-    $settings = Users_Setting::select(array('userId', 'content'))->where(array(
+    $settings = Users_Field::select(array('userId', 'content'))->where(array(
         'userId' => $userIds,
         'name' => 'Users/hidden'
     ))->fetchAll(PDO::FETCH_ASSOC);

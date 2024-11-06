@@ -88,9 +88,9 @@ class Users_Contact extends Base_Users_Contact
 			$contact->save(true);
 			$contacts[] = $contact;
 		}
-		// Update the Users_Setting table
+		// Update the Users_Field table
 		if (in_array('Users/hidden', $labels)) {
-			$s = new Users_Setting(array(
+			$s = new Users_Field(array(
 				'userId' => $contactUserId,
 				'name' => 'Users/hidden'
 			));
@@ -188,9 +188,9 @@ class Users_Contact extends Base_Users_Contact
 		$contact->contactUserId = $contactUserId;
 		$removed = $contact->remove();
 		if ($removed) {
-			// Update the Users_Setting table
+			// Update the Users_Field table
 			if ($label === 'Users/hidden') {
-				$s = new Users_Setting(array(
+				$s = new Users_Field(array(
 					'userId' => $contactUserId,
 					'name' => 'Users/hidden'
 				));
