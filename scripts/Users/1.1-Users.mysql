@@ -1,0 +1,9 @@
+ALTER TABLE {{prefix}}setting
+RENAME {{prefix}}field,
+ADD COLUMN `type` varchar(63) NOT NULL DEFAULT '' COMMENT '' AFTER name,
+MODIFY COLUMN content varbinary(1023) NOT NULL DEFAULT '' COMMENT '',
+MODIFY COLUMN access varbinary(255) NULL DEFAULT  NULL COMMENT 'JSON with possible keys ''read'' and ''write'' and values being arrays of labels',
+DROP PRIMARY KEY,
+ADD PRIMARY KEY (userId, name, `type`, content),
+DROP INDEX byNameContent,
+ADD INDEX byNameTypeContent (name, `type`, content);

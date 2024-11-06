@@ -32,6 +32,7 @@ Base.tableClasses = [
 	"Users_Email",
 	"Users_ExternalFrom",
 	"Users_ExternalTo",
+	"Users_Field",
 	"Users_Identify",
 	"Users_Label",
 	"Users_Link",
@@ -39,7 +40,6 @@ Base.tableClasses = [
 	"Users_Permission",
 	"Users_Quota",
 	"Users_Session",
-	"Users_Setting",
 	"Users_Total",
 	"Users_User",
 	"Users_Vote",
@@ -102,6 +102,13 @@ Base.ExternalFrom = Q.require('Users/ExternalFrom');
 Base.ExternalTo = Q.require('Users/ExternalTo');
 
 /**
+ * Link to Users.Field model
+ * @property Field
+ * @type Users.Field
+ */
+Base.Field = Q.require('Users/Field');
+
+/**
  * Link to Users.Identify model
  * @property Identify
  * @type Users.Identify
@@ -149,13 +156,6 @@ Base.Quota = Q.require('Users/Quota');
  * @type Users.Session
  */
 Base.Session = Q.require('Users/Session');
-
-/**
- * Link to Users.Setting model
- * @property Setting
- * @type Users.Setting
- */
-Base.Setting = Q.require('Users/Setting');
 
 /**
  * Link to Users.Total model
