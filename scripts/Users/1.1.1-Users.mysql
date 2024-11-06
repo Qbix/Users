@@ -2,6 +2,4 @@ ALTER TABLE {{prefix}}field
 ADD COLUMN dialogId VARCHAR(255) NULL DEFAULT NULL COMMENT "For tagging temporary fields with certain dialog IDs",
 DROP PRIMARY KEY,
 ADD PRIMARY KEY (userId, name, `type`),
-DROP INDEX byNameTypeContent,
-ADD INDEX byNameType (name, `type`),
 ADD INDEX byDialogId (dialogId, userId);

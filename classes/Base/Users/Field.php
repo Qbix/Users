@@ -365,7 +365,7 @@ return array (
 		}
 		if (!is_string($value) and !is_numeric($value))
 			throw new Exception('Must pass a string to '.$this->getTable().".name");
-		if (strlen($value) > 255)
+		if (strlen($value) > 63)
 			throw new Exception('Exceedingly long value being assigned to '.$this->getTable().".name");
 		return array('name', $value);			
 	}
@@ -377,7 +377,7 @@ return array (
 	function maxSize_name()
 	{
 
-		return 255;			
+		return 63;			
 	}
 
 	/**
@@ -390,8 +390,8 @@ return array (
 return array (
   0 => 
   array (
-    0 => 'varchar',
-    1 => '255',
+    0 => 'varbinary',
+    1 => '63',
     2 => '',
     3 => false,
   ),
