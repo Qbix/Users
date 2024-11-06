@@ -14,6 +14,18 @@
 class Users_Field extends Base_Users_Field
 {
 	/**
+	 * Method to remove all user fields pertaining to a specific dialog
+	 */
+	static function removeDialogUserFields($dialogId, $userId = null)
+	{
+		$criteria = compact('dialogId');
+		if (isset($userId)) {
+			$criteria['userId'] = $userId;
+		}
+		return Users_Field::delete()->where($criteria)->execute();
+	}
+
+	/**
 	 * The setUp() method is called the first time
 	 * an object of this class is constructed.
 	 * @method setUp

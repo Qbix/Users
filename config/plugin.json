@@ -189,6 +189,9 @@
 				"email", "first_name", "last_name",
 				"gender", "age_range", "verified",
 				"link", "picture", "cover"
+			],
+			"telegram": [
+				"first_name", "last_name", "username", "language_code"
 			]
 		},
 		"login": {
@@ -202,6 +205,9 @@
 			"alsoSendUnhashedPassphrase": false,
 			"setLanguage": true,
 			"useActivateDialog": true
+		},
+		"dialogs": {
+
 		},
 		"paths": {
 			"icons": "files/Users/icons",
