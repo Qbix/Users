@@ -113,11 +113,6 @@ class Users_Device_Ios extends Users_Device
 			));
 		}
 	}
-
-	function fetchXids(array $roleIds, array $options = array())
-    {
-        return array();
-    }
 	
 	static protected $push = null;
 }
