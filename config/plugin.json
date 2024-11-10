@@ -163,7 +163,8 @@
 		},
 		"capability": {
 			"permissions": {
-				"u": "Users/socket"
+				"u": "Users/socket",
+				"a": "Users/authenticate"
 			}
 		}
 	},
