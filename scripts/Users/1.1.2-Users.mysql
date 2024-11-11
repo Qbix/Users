@@ -1,0 +1,14 @@
+CREATE TABLE `{{prefix}}intent` (
+  `token` varbinary(255) NOT NULL,
+  `action` varbinary(31) NOT NULL,
+  `instructions` varbinary(255) NOT NULL,
+  `sessionId` varbinary(255) NULL,
+  `userId` varbinary(31) NULL,
+  `startTime` timestamp NULL DEFAULT NULL,
+  `endTime` timestamp NULL DEFAULT NULL,
+  `insertedTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedTime` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`token`),
+  INDEX (`userId`),
+  INDEX (`sessionId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Intent rows may hide secret instructions and sessionId from the user';

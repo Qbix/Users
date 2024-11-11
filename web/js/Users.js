@@ -360,7 +360,6 @@
 
     Users.authenticate = new Q.Method();
         
-    
 	Users.getPlatformAppId = function (platform, appId) {
 		return Q.getObject([platform, appId, 'appIdForAuth'], Users.apps)
 			|| Q.getObject([platform, '*', 'appIdForAuth'], Users.apps)
@@ -899,6 +898,24 @@
     Users.getPermissions = new Q.Method();
     
     Users.managePermissions = new Q.Method();
+
+	/**
+	 * Methods for setting up common user interface elements
+	 * @class Users.Interface
+	 */
+	Users.Intent = {
+		authenticate: function (callback) {
+			Q.req('Users/intent', 'token', function (err, response) {
+				var token = response && response.slots && response.slots.token;
+				Q.handle(callback, this, [err, token]);
+			}, {
+				method: 'post',
+				fields: {
+					action: 'Users/authenticate'
+				}}
+			);
+		}
+	};
 
 	/**
 	 * Methods for setting up common user interface elements

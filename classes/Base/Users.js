@@ -34,6 +34,7 @@ Base.tableClasses = [
 	"Users_ExternalTo",
 	"Users_Field",
 	"Users_Identify",
+	"Users_Intent",
 	"Users_Label",
 	"Users_Link",
 	"Users_Mobile",
@@ -114,6 +115,13 @@ Base.Field = Q.require('Users/Field');
  * @type Users.Identify
  */
 Base.Identify = Q.require('Users/Identify');
+
+/**
+ * Link to Users.Intent model
+ * @property Intent
+ * @type Users.Intent
+ */
+Base.Intent = Q.require('Users/Intent');
 
 /**
  * Link to Users.Label model
