@@ -25,7 +25,7 @@ class Users_Device extends Base_Users_Device
 	}
 	
 	/**
-	 * Adds a device to the system, after sending a test notification to it
+	 * Adds a device to the system, after sending an initial notification to it
 	 * @param {array} $device
 	 * @param {string} $device.userId the id of a user in the system
 	 * @param {string} $device.deviceId the id of the device on the external platform
@@ -34,7 +34,7 @@ class Users_Device extends Base_Users_Device
 	 * @param {string} $device.formFactor the form factor of the device
 	 * @param {string} $device.version the version of the platform
 	 * @param {string} [$device.sessionId=Q_Session::id()] the session id to associate to the device.
-	 * @param {boolean} [$skipNotification=true] if true, skips sending notification
+	 * @param {boolean} [$skipNotification=true] if true, skips sending the initial notification
 	 * @return {Users_Device}
 	 */
 	static function add($device, $skipNotification=true)

@@ -115,7 +115,7 @@ class Users_ExternalFrom_Facebook extends Users_ExternalFrom implements Users_Ex
 			$ef->expires = isset($result['expires']) && is_integer($result['expires'])
 				? $result['expires']
 				: Db::fromDateTime($result['expires']);
-			$ef->facebook = $facebook;
+			$ef->set('facebook', $facebook);
 			$ef->set('cookiesToClearOnLogout', $cookieNames);
 			return $ef;
 		}
@@ -166,11 +166,12 @@ class Users_ExternalFrom_Facebook extends Users_ExternalFrom implements Users_Ex
 			return array();
 		}
 		$xid = $this->xid;
-		$response = $this->facebook->get("/$xid?fields=".implode(',', $fieldNames));
+		$response = $this->get('facebook')->get("/$xid?fields=".implode(',', $fieldNames));
 		$userNode = $response->getGraphUser();
+		$result = $userNode->uncastItems();
 		Users::$cache['platformUserData'] = array(
-			'facebook' => $userNode->uncastItems()
+			'facebook' => $result
 		);
-		return $userNode->uncastItems();
+		return $result;
 	}
 }

@@ -14,6 +14,59 @@
 class Users_Intent extends Base_Users_Intent
 {
 	/**
+	 * Save a new intent in the database (and perhaps remove a few outdated ones)
+	 * @method newIntent
+	 * @static
+	 * @param {string} $action the action to take
+	 * @param {array} [$instructions=array()] any additional instructions to use with the action
+	 * @return {Users_Intent}
+	 * @throws {Q_Exception_SessionHijacked}
+	 */
+	static function newIntent($action, $instructions = array())
+	{
+		$info = Q_Config::get('Users', 'intents', 'actions', $action, false);
+		if (!$info) {
+			throw new Users_Exception_NotAuthorized();
+		}
+		if (!empty($instructions) && !Q::isAssociative($instructions)) {
+			throw new Q_Exception_WrongType(array(
+				'field' => 'instructions',
+				'type' => 'associative array'
+			));
+		}
+		foreach ($instructions as $k => $v) {
+			if (!isset($info['instructions'][$k])) {
+				throw new Q_Exception_MissingConfig(array('fieldpath' => "Users/intents/actions/\"$action\"/instructions/$k"));
+			}
+		}
+		$sessionId = Q_Session::requestedId();
+		if (!Q_Session::isValidId($sessionId)) {
+			throw new Q_Exception_SessionHijacked();
+		}
+		$durations = Q_Config::get('Users', 'intents', 'durations', array());
+		$debounce = Q::ifset($durations, 'debounce', 10); // no more than one per second
+		$intents = Users_Intent::select()
+			->where(array(
+				'sessionId' => $sessionId,
+				'action' => $action,
+				'insertedTime >' => new Db_Expression("CURRENT_TIMESTAMP - INTERVAL $debounce SECOND")
+			))->fetchDbRows();
+		if (count($intents)) {
+			$intent = reset($intents);
+		} else {
+			// insert this new intent
+			$instructions = Q::json_encode($instructions);
+			$intent = new Users_Intent(compact('action', 'instructions'));
+			$intent->startTime = new Db_Expression('CURRENT_TIMESTAMP');
+			if ($duration = Q::ifset($info, 'duration', 0)) {
+				$intent->endTime = new Db_Expression("CURRENT_TIMESTAMP + INTERVAL $duration SECOND");
+			}
+			$intent->save();
+		}
+		return $intent;
+	}
+
+	/**
 	 * Does necessary preparations for saving an intent in the database.
 	 * @method beforeSave
 	 * @param {array} $modifiedFields
@@ -31,23 +84,26 @@ class Users_Intent extends Base_Users_Intent
 		$options = array(),
 		$internal = array()
 	) {
-		// Save current sessionId in the intent
-		if (!isset($modifiedFields['instructions']) and !isset($this->instrucitons)) {
-			$this->instructions = $modifiedFields['instructions'] = '{}';
+		if (!isset($this->instructions)) {
+			$this->instructions = '{}';
 		}
-		if (!isset($modifiedFields['sessionId']) and !isset($this->sessionId)) {
+		// save current sessionId in the intent
+		if (!isset($this->sessionId)) {
 			$sessionId = Q_Session::requestedId();
 			if (Q_Session::isValidId($sessionId)) {
-				$this->sessionId = $modifiedFields['sessionId'] = $sessionId;
+				$this->sessionId = $sessionId;
 			}
 		}
+		// delete up to 10 previous intents with this sessionId, to save space
+		Users_Intent::delete()->where(array(
+			'endTime <' => new Db_Expression("CURRENT_TIMESTAMP")
+		))->limit(10)->execute();
 		// Generate a unique token for the intent
-		if (!isset($modifiedFields['token']) and !isset($this->token)) {
-			$this->token = $modifiedFields['token'] = Users::db()->uniqueId(
+		if (!isset($this->token)) {
+			$this->token = Users::db()->uniqueId(
 				Users_Intent::table(), 'token'
 			);
 		}
-		return parent::beforeSave($modifiedFields);
 	}
 
 	/**

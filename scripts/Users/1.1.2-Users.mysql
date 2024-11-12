@@ -10,5 +10,6 @@ CREATE TABLE `{{prefix}}intent` (
   `updatedTime` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`token`),
   INDEX (`userId`),
-  INDEX (`sessionId`)
+  INDEX (`sessionId`),
+  INDEX (`endTime`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Intent rows may hide secret instructions and sessionId from the user';

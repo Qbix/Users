@@ -309,6 +309,9 @@
 				"Users/authenticate": {
 					"duration": 300
 				}
+			},
+			"durations": {
+				"debounce": 10
 			}
 		},
 		"capability": {
