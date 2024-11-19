@@ -63,10 +63,10 @@ Users_Session.decodeId = function (id) {
 		result += id[i];
 	}
 	result = bin2hex(base64_decode(result));
-	a = result.substr(0, 32);
-	b = result.substr(32, 32);
+	a = result.substring(0, 32);
+	b = result.substring(32, 64);
 	c = secret !== undefined
-		? (b === Q.Utils.signature(a, secret).substr(0, 32))
+		? (b === Q.Utils.signature(a, secret).substring(0, 32))
 		: true;
 	return [c, a, b];
 };

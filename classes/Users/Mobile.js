@@ -108,10 +108,10 @@ Users_Mobile.sendMessage = function (to, view, fields, options, callback) {
 	});
 
 	for (platform in gateways) {
-		if (number.substr(0, 2) !== '+1') {
+		if (number.substring(0, 2) !== '+1') {
 			continue;
 		}
-		address.push(number.substr(2)+'@'+gateways[platform]);
+		address.push(number.substring(2)+'@'+gateways[platform]);
 	}
 	options.html = false;
 	Users.Email.sendMessage(address.join(','), null, view, fields, options, function(err, res) {

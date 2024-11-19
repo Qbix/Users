@@ -153,7 +153,7 @@ Users.iconUrl = function Users_iconUrl(icon, size) {
 	}
 	size = (String(size).indexOf('.') >= 0) ? size : size+'.png';
 	var src = Q.interpolateUrl(icon + '/' + size);
-	return src.isUrl() || icon.substr(0, 2) === '{{'
+	return src.isUrl() || icon.substring(0, 2) === '{{'
 		? Q.url(src)
 		: Q.url('{{Users}}/img/icons/'+src);
 };

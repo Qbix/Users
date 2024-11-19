@@ -485,7 +485,7 @@
 	};
 
 	function _registerServiceWorker (callback) {
-		if (Q.info.url.substr(0, 8) !== 'https://') {
+		if (Q.info.url.substring(0, 8) !== 'https://') {
 			Q.handle(callback, null, [new Error("Push notifications require HTTPS")]);
 			return;
 		}

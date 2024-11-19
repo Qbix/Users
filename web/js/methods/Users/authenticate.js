@@ -29,7 +29,7 @@ Q.exports(function (Users, priv) {
 		options = options || {};
 		var handler = Users.authenticate[platform];
 		if (!handler) {
-			var handlers = Object.keys(Users.authenticate).filter(function (k) {
+			var handlers = Object.keys(Q.Users.apps).filter(function (k) {
 				return Users.authenticate.hasOwnProperty(k);
 			});
 			throw new Q.Error(

@@ -4,3 +4,4 @@ node_modules/
 vendor/
 files/Users
 web/img/icons
+.DS_Store

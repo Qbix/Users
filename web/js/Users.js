@@ -709,7 +709,7 @@
 		}
 		size = (String(size).indexOf('.') >= 0) ? size : size + '.png';
 		var src = Q.interpolateUrl(icon + (size ? '/' + size : ''));
-		return src.isUrl() || icon.substr(0, 2) === '{{'
+		return src.isUrl() || icon.substring(0, 2) === '{{'
 			? Q.url(src)
 			: Q.url('{{Users}}/img/icons/' + src);
 	};
@@ -1842,7 +1842,7 @@
 		abbreviateAddress: function (address, len) {
 			len = len || 5;
 			return Users.Web3.validate.address(address)
-				? address.substr(0, 2+len) + '...' + address.substr(-len)
+				? address.substring(0, 2+len) + '...' + address.substring(-len)
 				: null;
 		},
 
@@ -2529,7 +2529,7 @@
 				chainId = chainId.chainId;
 			}
 			if (typeof chainId !== 'string'
-			|| chainId.substr(0, 2) !== '0x') {
+			|| chainId.substring(0, 2) !== '0x') {
 				if (!callback) {
 					callback = chainId;
 				}
