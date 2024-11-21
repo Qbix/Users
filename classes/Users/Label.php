@@ -158,44 +158,47 @@ class Users_Label extends Base_Users_Label
 		$l = new Users_Label();
 		$l->label = $label;
 		$l->userId = $userId;
-		if ($l->retrieve() and !$updateIfExists) {
+		$retrieved = $l->retrieve();
+		if ($retrieved and !$updateIfExists) {
 			return $l;
 		}
-		if (!$l->retrieve()) {
+
+		if (!$skipAccess) {
+			Users::canManageLabels($asUserId, $userId, $label, true);
+		}
+		if (!$retrieved) {
 			// update permissions if external 
 			// we've create similar structure as in platform\plugins\Users\config\plugin.json
 			if (strpos($label, self::$externalPrefix) !== false) {
 				$perm = new Users_Permission();
 				$perm->userId = $userId;
 				$perm->label = 'Users/owners';
-				$perm->permission = implode('/', array('Users', 'roles'));//Users/communities/roles
-				$result = $perm->retrieve();
-				// set extras
-				$perm->setExtra(array(
-					'canManageLabels' => array($label),
-					'canGrant' => array($label),
-					'canRevoke' => array($label)
-				));
-				$perm->save();
-				///
+				$perm->permission = 'Users/communities/roles';
+				$perm->retrieve(null, false, array('begin' => true));
+				$extras = $perm->getAllExtras();
+				$extras['canManageLabels'][] = $label;
+				$extras['canGrant'][] = $label;
+				$extras['canRevoke'][] = $label;
+				$extras['canManageLabels'] = array_unique($extras['canManageLabels']);
+				$extras['canGrant'] = array_unique($extras['canGrant']);
+				$extras['canRevoke'] = array_unique($extras['canRevoke']);
+				$perm->setExtra($extras);
+				$perm->save(false, true);
 				$perm = new Users_Permission();
 				$perm->userId = $userId;
 				$perm->label = 'Users/admins';
-				$perm->permission = implode('/', array('Users', 'roles'));//Users/communities/roles
-				$result = $perm->retrieve();
-				// set extras
-				$perm->setExtra(array(
-					'canManageLabels' => array($label),
-					'canGrant' => array($label),
-					'canRevoke' => array($label)
-				));
-				$perm->save();
+				$perm->permission = 'Users/communities/roles';
+				$perm->retrieve(null, false, array('begin' => true));
+				$extras = $perm->getAllExtras();
+				$extras['canManageLabels'][] = $label;
+				$extras['canGrant'][] = $label;
+				$extras['canRevoke'][] = $label;
+				$extras['canManageLabels'] = array_unique($extras['canManageLabels']);
+				$extras['canGrant'] = array_unique($extras['canGrant']);
+				$extras['canRevoke'] = array_unique($extras['canRevoke']);
+				$perm->setExtra($extras);
+				$perm->save(false, true);
 			}
-			// ---------------
-		}
-
-		if (!$skipAccess) {
-			Users::canManageLabels($asUserId, $userId, $label, true);
 		}
 		self::_icon($l, $icon, $userId);
 		$l->title = $title;
