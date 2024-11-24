@@ -909,7 +909,7 @@ abstract class Users extends Base_Users
 		}
 		$id = $_SESSION['Users']['loggedInUser']['id'];
 		$user = Users_User::fetch($id);
-		if (!$user) {
+		if (!$user && $throwIfNotLoggedIn) {
 			throw new Users_Exception_NotLoggedIn();
 		}
 
@@ -1092,6 +1092,8 @@ abstract class Users extends Base_Users
 			return $return;
 		}
 
+		Users_User::begin()->execute();
+
 		$during = 'register';
 		$platform = null;
 		$appId = null;
@@ -1253,9 +1255,16 @@ abstract class Users extends Base_Users
 		 */
 		Q::event('Users/insertUser', @compact('user', 'during'), 'before');
 
-		// the following code could throw exceptions
+		// Save the user with the id!
+		// NOTE: This will trigger Users/User/afterSaveExecute handlers
+		$user->save();
+
+		// Now that the user is saved and hooks have run,
+		// we can add email address and mobile number, and displayName should be ready.
+
+		// The following code could throw exceptions
 		if (empty($user->emailAddress) and empty($user->mobileNumber)
-			and ($signedUpWith === 'email' or $signedUpWith === 'mobile')) {
+		and ($signedUpWith === 'email' or $signedUpWith === 'mobile')) {
 			// Add an email address or mobile number to the user, that they'll have to verify
 			$activation = Q::ifset($options, 'activation', 'activation');
 			if ($activation) {
@@ -1285,10 +1294,6 @@ abstract class Users extends Base_Users
 			$device['userId'] = $user->id;
 			Users_Device::add($device);
 		}
-
-		// Save the user with the id!
-		// NOTE: This will trigger Users/User/afterSaveExecute handlers
-		$user->save();
 
 		/**
 		 * @event Users/insertUser {after}
@@ -1337,6 +1342,8 @@ abstract class Users extends Base_Users
 			self::importIcon($user, $icon, $directory);
 			$user->save();
 		}
+
+		Users_User::commit()->execute();
 
 		/**
 		 * @event Users/register {after}
