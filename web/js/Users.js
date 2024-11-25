@@ -546,6 +546,9 @@
 			Users.Session.getKey(_sign);
 		}
 		function _sign(err, key) {
+			if (!key) {
+				return Q.handle(callback, null, ["Users.signature: key not found"]);
+			}
 			crypto.subtle.sign(
 				{
 					name: 'ECDSA',

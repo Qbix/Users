@@ -8,7 +8,7 @@ function Users_key_post()
     $publicKey = $_REQUEST[$sigField]['publicKey'];
     $info = $_REQUEST['info'];
     if ($info['name'] === 'ECDSA'
-    and $info['namedCurve'] === 'P-384'
+    and $info['namedCurve'] === 'P-256'
     and $info['hash'] === 'SHA-256') {
         Q_Session::start(); // start session if not already started
         if (!empty($_SESSION['Users']['publicKey'])) {
