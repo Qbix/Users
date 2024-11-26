@@ -20,7 +20,7 @@ Q.exports(function (Users, priv) {
             var request = store.get('Users.Session');
             request.onsuccess = function (event) {
                 var key = Users.Session.key.loaded
-                = !event.target.result ? event.target.result.key : null;
+                = event.target.result ? event.target.result.key : null;
                 Q.handle(callback, null, [null, key]);
             };
             request.onerror = function (event) {
