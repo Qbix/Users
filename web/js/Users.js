@@ -968,7 +968,8 @@
 			hash: 'SHA-256'
 		},
 		getKey: new Q.Method(),
-		generateKey: new Q.Method()
+		generateKey: new Q.Method(),
+		clearKey: new Q.Method()
 	}, "{{Users}}/js/methods/Users/Session",
 	function() {
 		return [Users, priv];
@@ -1236,6 +1237,14 @@
 			_fetchUserData();
 		}
 		Q.request.options.onProcessed.set(_fetchUserData, 'Users');
+		if (!Users.Session.publicKey && Users.Session.key.generateOnLogin) {
+			Users.Session.getKey(function (err, key) {
+				if (key) {
+					return; // we had loaded a pre-rendered static page
+				}
+				Users.Session.generateKey();
+			})
+		}
 	}, 'Users');
 	
 	function _setSessionFromQueryString(querystring)
@@ -1391,8 +1400,6 @@
 		if (info) {
 			Q.Text.setLanguage.apply(Q.Text, info);
 		}
-
-		// generate a new session key, and tell the server
 		if (Users.Session.key.generateOnLogin) {
 			Users.Session.generateKey();
 		}
@@ -1402,6 +1409,7 @@
 	Users.onLogout = new Q.Event(function () {
 		Users.Session.key.loaded = null;
 		Users.Session.key.publicKey = null;
+		Users.Session.clearKey();
 		Users.loggedInUser = null;
 		Users.roles = {};
 		Users.hinted = [];
@@ -1416,6 +1424,7 @@
 		Q.Socket.reconnectAll(); // to trigger new onConnect
 	}, 'Users');
 	Users.onLoginLost = new Q.Event(function () {
+		Users.Session.clearKey();
 		Q.Socket.disconnectAll();
 		Q.Socket.reconnectAll(); // to trigger new onConnect
 		console.warn("Call to server was made which normally requires user login.");

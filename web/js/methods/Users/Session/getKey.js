@@ -12,7 +12,7 @@ Q.exports(function (Users, priv) {
      * @static
      * @param {Function} callback Receives (err, key)
      */
-    return function Users_Session_getKey(callback) {
+    return Q.getter(function Users_Session_getKey(callback) {
         Q.IndexedDB.open(Q.info.baseUrl, 'Q.Users.keys', 'id', function (err, store) {
             if (err) {
                 return Q.handle(callback, null, [err]);
@@ -24,8 +24,12 @@ Q.exports(function (Users, priv) {
                 Q.handle(callback, null, [null, key]);
             };
             request.onerror = function (event) {
-                Q.handle(callback, null, [event]);
+                var err = {
+                    classname: "Users_Session_getKeyIndexedDB",
+                    message: "Users.Session.getKey: could not get store in IndexedDB"
+                }
+                Q.handle(callback, null, [err]);
             };
         });
-    };
+    });
 });

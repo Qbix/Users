@@ -454,6 +454,10 @@ a.Users_activation_resend:active {
 	overflow: visible !important;
 }
 
+.Users_loggedOut .Assets_credits_badge {
+	display: none;
+}
+
 .Users_getintouch_tool button {
 	background: transparent;
 	border: 1px solid #777;
