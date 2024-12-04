@@ -631,7 +631,8 @@ Q.exports(function (Users, priv) {
 					 $('input', step2_form).eq(0).plugin('Q/clickfocus').select();
 					 _centerIt();
 				 } else {
-					 if (localStorage.getItem(priv._register_localStorageKey)) {
+					 if (localStorage.getItem(priv._register_localStorageKey)
+					&& !Users.login.options.dontDiscourageMultipleAccounts) {
 						 $('.Streams_login_fullname_block, .Streams_login_get_started', step2).hide();
 					 }
 					 step2.slideDown('fast', function () {

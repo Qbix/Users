@@ -195,6 +195,7 @@
 		"login": {
 			"identifierType": "email,mobile",
 			"using": "native,web3,facebook",
+			"dontDiscourageMultipleAccounts": false,
 			"userQueryUri": "Users/user",
 			"iconType": "wavatar",
 			"gravatar": true,
