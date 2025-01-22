@@ -1,6 +1,6 @@
 <?php
 
-require USERS_PLUGIN_DIR.DS.'vendor'.DS.'autoload.php';
+require_once USERS_PLUGIN_DIR.DS.'vendor'.DS.'autoload.php';
 
 use Minishlink\WebPush\WebPush;
 
