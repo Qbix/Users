@@ -207,10 +207,14 @@ class Users_Email extends Base_Users_Email
 		 * @param {array} fields
 		 * @param {array} options
 		 * @param {string} mail
+		 * @param {mixed} transport
 		 */
 		Q::event(
 			'Users/email/sendMessage', 
-			@compact('emailAddress', 'subject', 'body', 'view', 'fields', 'options', 'mail', 'app'),
+			@compact(
+				'emailAddress', 'subject', 'body', 'view', 'fields', 
+				'options', 'mail', 'app', 'transport'
+			),
 			'after'
 		);
 		return true;

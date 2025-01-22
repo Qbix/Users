@@ -93,8 +93,9 @@ class Users_Mobile extends Base_Users_Mobile
 			$sid = Q_Config::get('Users', 'mobile', 'twilio', 'sid', null);
 			$token = Q_Config::get('Users', 'mobile', 'twilio', 'token', null);
 
+			$transport = null;
 			if ($sid and $token) {
-				$client = new Twilio\Rest\Client($sid, $token);
+				$transport = $client = new Twilio\Rest\Client($sid, $token);
 				/**
 				 * @event Users/mobile/sendMessage/twilio {before}
 				 * @param {string} view
@@ -111,16 +112,10 @@ class Users_Mobile extends Base_Users_Mobile
 					$number, // Text this number
 					compact('body', 'from') // a valid Twilio number
 				);
+			} else if (!Q_Config::get('Users', 'email', 'smtp', null)){
+				$transport = null;
+				Q_Response::setNotice("Q/mobile", "Please set up transport in Users/mobile/twilio as in docs", false);
 			} else {
-				if(!Q_Config::get('Users', 'email', 'smtp', null)){
-					Q_Response::setNotice("Q/mobile", "Please set up transport in Users/mobile/twilio as in docs", false);
-					if ($key = Q_Config::get('Users', 'mobile', 'log', 'key', 'mobile')) {
-						$logMessage = "Would have sent message to $number:\n$body";
-						Q::log($logMessage, $key);
-					}
-					return true;
-				}
-
 				$from = Q::ifset($options, 'from', Q_Config::get('Users', 'email', 'from', null));
 				if (!isset($from)) {
 					// deduce from base url
@@ -150,12 +145,10 @@ class Users_Mobile extends Base_Users_Mobile
 				}
 				
 				if ($key = Q_Config::get('Users', 'mobile', 'log', 'key', 'mobile')) {
-					$logMessage = "Sent message to $number:\n$body";
 					if (!isset($transport)) {
 						Q_Response::setNotice("Q/mobile", "Please set up Twilio in Users/mobile/twilio as in docs.", false);
 						$logMessage = "Would have $logMessage";
 					}
-					Q::log($logMessage, $key);
 				}
 
 				if ($transport) {
@@ -202,7 +195,11 @@ class Users_Mobile extends Base_Users_Mobile
 		 */
 		Q::event(
 			'Users/mobile/sendMessage', 
-			@compact('view', 'fields', 'options', 'mail', 'app', 'message', 'mail', 'number', 'from', 'body'),
+			@compact(
+				'view', 'fields', 'options', 'mail', 
+				'app', 'message', 'mail', 'number', 
+				'from', 'body', 'transport'
+			),
 			'after'
 		);
 		return true;
