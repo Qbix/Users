@@ -5,7 +5,7 @@ Q.exports(function (Users, priv) {
 	 * @class Users.Dialogs
 	 */
     /**
-     * Show a dialog with contacts.
+     * Show a dialog to activate a user's email or mobile number
      * @static
      * @method activate
      * @param {String} activateLink
@@ -33,6 +33,10 @@ Q.exports(function (Users, priv) {
                         Q.handle(options && options.onSuccess, Users, [data]);
                     }
                     return false; // we handled it
+                });
+                $('#suggestions .Users_fromServer')
+                .on('click', function () {
+                    $('#new-password').val(this.textContent);
                 });
                 $('#new-password').plugin('Q/clickfocus');
                 document.documentElement.addClass('Users_activate_dialog_showing');

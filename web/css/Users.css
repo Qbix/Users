@@ -593,6 +593,10 @@ html.Users_loggedIn .Users_whenLoggedOut {
 	line-height: 40px;
 }
 
+#suggestions .Users_fromServer {
+	cursor: pointer;
+}
+
 @media (prefers-color-scheme: dark) {
 	#Users_login_identifierExists { color: inherit; }
 }

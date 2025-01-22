@@ -91,11 +91,17 @@ class Users_User extends Base_Users_User
 	 * Can also contain "messageTotals", "relatedToTotals" and "relatedFromTotals".
 	 * @method exportArray
 	 * @param {$array} [$options=null] can include the following:
-	 * @param {string} [$options.asAvatar] set to true if only the avatar fields should be exported
+	 * @param {string} [$options.asAvatar] set to true or false to indicate whether to export only the
+	 *   avatar fields (and not the more private fields that the user himself can see).
+	 *   Defaults to false if logged-in user is the user being exported, true otherwise.
 	 * @return {array}
 	 */
 	function exportArray($options = null)
 	{
+		$liu = Users::loggedInUser();
+		if (!isset($options['asAvatar'])) {
+			$options['asAvatar'] = $liu or ($liu->id !== $this->id);
+		}
 		$fields = empty($options['asAvatar'])
 			? Q_Config::expect('Users', 'exportFields')
 			: Q_Config::expect('Users', 'avatarFields');

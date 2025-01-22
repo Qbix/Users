@@ -170,7 +170,7 @@ Q.exports(function (Users, priv) {
 			if (priv.activateLink) {
 				Users.Dialogs.activate(priv.activateLink, {
 					onSuccess: function (data) {
-						_activationComplete(data, user);
+						_activationComplete(data, (data.slots && data.slots.user) || user);
 					}
 				});
 			} else {
