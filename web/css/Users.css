@@ -511,6 +511,11 @@ html.Users_loggedIn .Users_whenLoggedOut {
 	height: 40px;
 }
 
+.Q_mobile .Users_status_tool .Users_status_login::before {
+	width: var(--dashboard-mobile-height);
+	height: var(--dashboard-mobile-height);
+}
+
 .Q_mobile .Users_status_tool .Users_avatar_tool img {
 	display: inline-block;
 }
