@@ -670,6 +670,7 @@
 	 */
 	var User = Users.User = function (fields) {
 		Q.extend(this, fields);
+		this.xids = this.xids || {};
 		this.typename = 'Q.Users.User';
 	};
 

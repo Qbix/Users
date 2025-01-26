@@ -98,9 +98,9 @@ class Users_User extends Base_Users_User
 	 */
 	function exportArray($options = null)
 	{
-		$liu = Users::loggedInUser();
 		if (!isset($options['asAvatar'])) {
-			$options['asAvatar'] = $liu or ($liu->id !== $this->id);
+			$liu = Users::loggedInUser();
+			$options['asAvatar'] = !$liu or ($liu->id !== $this->id);
 		}
 		$fields = empty($options['asAvatar'])
 			? Q_Config::expect('Users', 'exportFields')
