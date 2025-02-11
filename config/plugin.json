@@ -166,6 +166,10 @@
 				"u": "Users/socket",
 				"a": "Users/authenticate"
 			}
+		},
+		"socket": {
+			"disconnectTimeout": 1500,
+			"permissions": ["u"]
 		}
 	},
 	"Users": {
@@ -320,10 +324,6 @@
 			"public": {
 				"permissions": {} /* route: [permission] pairs */
 			}
-		},
-		"socket": {
-			"disconnectTimeout": 1500,
-			"permissions": ["u"]
 		},
 		"passphrase": {
 			"hashFunction": "sha1",
