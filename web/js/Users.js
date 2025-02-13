@@ -255,7 +255,8 @@
 		Q.addScript(scriptsToLoad, function () {
 			Users.init.web3.complete = true;
 
-			if (Users.Web3.ethereumProvider || Q.getObject("ethereum.request", window)) {
+			if (Users.Web3.walletConnectProvider
+			|| Q.getObject("ethereum.request", window)) {
 				return callback && callback(null);
 			}
 			var projectId = Q.getObject(['web3', Users.communityId, 'providers', 'walletconnect', 'projectId'], Q.Users.apps);
@@ -289,8 +290,8 @@
 					url: Q.info.baseUrl,
 					icons: [Q.url("{{baseUrl}}/img/icon/icon.png")]
 				},
-			}).then(function (ethereumProvider) {
-				Users.Web3.ethereumProvider = ethereumProvider;
+			}).then(function (walletConnectProvider) {
+				Users.Web3.walletConnectProvider = walletConnectProvider;
 				callback && callback();
 			});
 		}, options);
@@ -1927,107 +1928,120 @@
 					position: "fixed",
 					"z-index": Q.zIndexTopmost() + 1
 				});
-				Web3.ethereumProvider.on("connect", function _w3mConnect (info) {
-					_getProvider(Web3.ethereumProvider);
-					_subscribeToEvents(Web3.ethereumProvider);
-					Q.handle(Web3.onConnect, Web3.ethereumProvider, [info]);
+				Web3.walletConnectProvider.on("connect", function _w3mConnect (info) {
+					_getProvider(Web3.walletConnectProvider);
+					_subscribeToEvents(Web3.walletConnectProvider);
+					Q.handle(Web3.onConnect, Web3.walletConnectProvider, [info]);
 				});
-				Web3.ethereumProvider.connect();
+				Web3.walletConnectProvider.connect();
 				return false;
 			};
 			Users.init.web3(function () {
 				var wallets = Q.getObject("web3.wallets", Users);
-				// Try with MetaMask-type connection first
-				if (window.ethereum && ethereum.request) {
-					_subscribeToEvents(ethereum);
-					_getProvider(ethereum);
-				} else if (wallets) {
-					delete wallets.walletconnect; // for now
-					Q.Template.set("Users/web3/connect/wallet", `<ul>
-						{{#each wallets}}
-							<li><a style="background-image: url({{img}})" {{#if url}}href="{{url}}"{{/if}} {{#if data-url}}data-url="{{data-url}}"{{/if}}>{{name}}</a></li>
-						{{/each}}
-					</ul>`);
-					var handOffTimeout;
-					Q.Dialogs.push({
-						title: Q.text.Users.login.web3.ConnectWallet,
-						className: "Users_connect_wallets",
-						content: "",
-						stylesheet: '{{Users}}/css/Users/wallets.css',
-						onActivate: function (dialog) {
-							Q.req("Users/session", ["payload"], function (err, response) {
-								if (err) {
-									return;
-								}
-
-								var payload = response.slots.payload.payload;
-								var querystring = ''.queryField(Q.extend({}, payload, {
-									'Q.Users.environment': 'web3'
-								}));
-								var u = new URL(location);
-								var url = u.protocol + "//" + u.host + u.pathname + '?' + querystring;
-								var urlParams = {
-									url: url,
-									urlEncoded: encodeURIComponent(url),
-									urlWithoutScheme: url.replace(/.+:\/\//, '')
-								};
-								var cWallets = Q.extend({}, wallets);
-
-								Q.each(cWallets, function (i, val) {
-									cWallets[i]["img"] = Q.url("{{Users}}/img/web3/wallet/"+i+".png");
-									if (val.url) {
-										cWallets[i]["url"] = val.url.interpolate(urlParams);
-									} else {
-										cWallets[i]["data-url"] = i;
+				if (Web3.provider && Web3.provider.request) {
+					return _continue();
+				}
+				var tout = setTimeout(_continue, 500);
+				window.addEventListener("eip6963:announceProvider", (event) => {
+					const provider = event.detail.provider
+					Users.Web3.provider = provider;
+					clearTimeout(tout);
+					_continue();
+				});
+				window.dispatchEvent(new Event('eip6963:requestProvider'));
+				function _continue() {
+					// Try with MetaMask-type connection first
+					if (Web3.provider && Web3.provider.request) {
+						_subscribeToEvents(Web3.provider);
+						_getProvider(Web3.provider);
+					} else if (wallets) {
+						delete wallets.walletconnect; // for now
+						Q.Template.set("Users/web3/connect/wallet", `<ul>
+							{{#each wallets}}
+								<li><a style="background-image: url({{img}})" {{#if url}}href="{{url}}"{{/if}} {{#if data-url}}data-url="{{data-url}}"{{/if}}>{{name}}</a></li>
+							{{/each}}
+						</ul>`);
+						var handOffTimeout;
+						Q.Dialogs.push({
+							title: Q.text.Users.login.web3.ConnectWallet,
+							className: "Users_connect_wallets",
+							content: "",
+							stylesheet: '{{Users}}/css/Users/wallets.css',
+							onActivate: function (dialog) {
+								Q.req("Users/session", ["payload"], function (err, response) {
+									if (err) {
+										return;
 									}
-								});
-								Q.Template.render("Users/web3/connect/wallet", {wallets: cWallets}, function (err, html) {
-									Q.replace($(".Q_dialog_content", dialog)[0], html);
 
-									$("a[href]", dialog).on(Q.Pointer.start, function (e) {
-										Q.req("Users/session", ["result"], function (err, response) {}, {
-											method: "post",
-											fields: payload
-										});
-									});
-									$("a[data-url]", dialog).on(Q.Pointer.fastclick, function (e) {
-										e.preventDefault();
-										var url = this.getAttribute("data-url");
-										if (url === "walletconnect") {
-											_w3m();
+									var payload = response.slots.payload.payload;
+									var querystring = ''.queryField(Q.extend({}, payload, {
+										'Q.Users.environment': 'web3'
+									}));
+									var u = new URL(location);
+									var url = u.protocol + "//" + u.host + u.pathname + '?' + querystring;
+									var urlParams = {
+										url: url,
+										urlEncoded: encodeURIComponent(url),
+										urlWithoutScheme: url.replace(/.+:\/\//, '')
+									};
+									var cWallets = Q.extend({}, wallets);
+
+									Q.each(cWallets, function (i, val) {
+										cWallets[i]["img"] = Q.url("{{Users}}/img/web3/wallet/"+i+".png");
+										if (val.url) {
+											cWallets[i]["url"] = val.url.interpolate(urlParams);
+										} else {
+											cWallets[i]["data-url"] = i;
 										}
 									});
-								});
+									Q.Template.render("Users/web3/connect/wallet", {wallets: cWallets}, function (err, html) {
+										Q.replace($(".Q_dialog_content", dialog)[0], html);
 
-								// close dialog on provider connected
-								Web3.onConnect.set(function () {
-									setTimeout(function () {
+										$("a[href]", dialog).on(Q.Pointer.start, function (e) {
+											Q.req("Users/session", ["result"], function (err, response) {}, {
+												method: "post",
+												fields: payload
+											});
+										});
+										$("a[data-url]", dialog).on(Q.Pointer.fastclick, function (e) {
+											e.preventDefault();
+											var url = this.getAttribute("data-url");
+											if (url === "walletconnect") {
+												_w3m();
+											}
+										});
+									});
+
+									// close dialog on provider connected
+									Web3.onConnect.set(function () {
+										setTimeout(function () {
+											Q.Dialogs.close(dialog);
+										}, 1000);
+									}, 'Users_connect_wallets');
+
+									// close dialog on timeout
+									handOffTimeout = setTimeout(function () {
 										Q.Dialogs.close(dialog);
-									}, 1000);
-								}, 'Users_connect_wallets');
-
-								// close dialog on timeout
-								handOffTimeout = setTimeout(function () {
-									Q.Dialogs.close(dialog);
-								}, payload['Q.timestamp']*1000 - Date.now());
-							}, {
-								fields: {
-									platform: "web3",
-									redirect: Q.info.baseUrl
-								}
-							});
-						},
-						onClose: function () {
-							Q.handle(callback, null, [true]);
-							handOffTimeout && clearTimeout(handOffTimeout);
+									}, payload['Q.timestamp']*1000 - Date.now());
+								}, {
+									fields: {
+										platform: "web3",
+										redirect: Q.info.baseUrl
+									}
+								});
+							},
+							onClose: function () {
+								Q.handle(callback, null, [true]);
+								handOffTimeout && clearTimeout(handOffTimeout);
+							}
+						});
+					} else if (Web3.walletConnectProvider) {
+						_subscribeToEvents(Web3.walletConnectProvider);
+						if (Web3.walletConnectProvider.session) {
+							_getProvider(Web3.walletConnectProvider);
+						} else {
+							_w3m();
 						}
-					});
-				} else if (Web3.ethereumProvider) {
-					_subscribeToEvents(Web3.ethereumProvider);
-					if (Web3.ethereumProvider.session) {
-						_getProvider(Web3.ethereumProvider);
-					} else {
-						_w3m();
 					}
 				}
 			});
@@ -2671,7 +2685,7 @@
 	Q.onReady.add(function () {
 		Users.urls.onComplete = Q.urls['Communities/home'];
 		Users.Facebook.construct();
-		_subscribeToEvents(window.ethereum || Web3.ethereumProvider);
+		_subscribeToEvents(Users.Web3.provider);
 	}, 'Users');
 
 	function _subscribeToEvents(provider) {
