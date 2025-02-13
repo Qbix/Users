@@ -31,11 +31,10 @@ class Users_ExternalFrom_Web3 extends Users_ExternalFrom implements Users_Extern
 		$appIdForAuth = !empty($appInfo['appIdForAuth'])
 			? $appInfo['appIdForAuth']
 			: $appInfo['appId'];
-		$platformAppId = Q::ifset($appInfo, 'appId', Q::ifset($_REQUEST, 'chainId', '(empty)'));
-		if (!$platformAppId or substr($platformAppId, 0, 2) !== '0x') {
+		if ($appIdForAuth !== 'all' and substr($appIdForAuth, 0, 2) !== '0x') {
 			throw new Q_Exception_BadValue(array(
 				'internal' => 'Users/apps config',
-				'problem' => "appId should be a string starting from 0x, not $platformAppId"
+				'problem' => "appId should be a string starting from 0x, not $appIdForAuth"
 			));
 		}
 		$xid = strtolower(Q::ifset($_REQUEST, 'xid', ''));
