@@ -8,7 +8,6 @@
 
 /* jshint -W014 */
 (function (Q, $) {
-    
 	var Users = Q.Users = Q.plugins.Users = {
 		info: {}, // this gets filled when a user logs in
 		apps: {}, // this info gets added by the server, on the page
@@ -1944,7 +1943,7 @@
 				var tout = setTimeout(_continue, 500);
 				window.addEventListener("eip6963:announceProvider", (event) => {
 					const provider = event.detail.provider
-					Users.Web3.provider = provider;
+					Web3.provider = provider;
 					clearTimeout(tout);
 					_continue();
 				});
@@ -2100,6 +2099,7 @@
 						var loginExpires = Q.cookie('Q_Users_web3_login_expires');
 						if (loginExpires > Date.now() / 1000) {
 							_proceed();
+							return;
 						}
 					}
 					if (provider.wc || provider.modal) {
@@ -2118,10 +2118,17 @@
 							}
 						});
 					} else {
-						var signer = new ethers.providers.Web3Provider(provider).getSigner();
-						  signer.signMessage(payload)
-						.then(_proceed)
+						var from = accounts[0];
+						var msg = '0x' + Buffer.from(payload, "utf8").toString("hex");
+						var sign = ethereum.request({
+							method: "personal_sign",
+							params: [msg, from],
+						}).then(_proceed)
 						.catch(_cancel);
+						// var signer = new ethers.providers.Web3Provider(provider).getSigner();
+						//   signer.signMessage(payload)
+						// .then(_proceed)
+						// .catch(_cancel);
 					}
 					function _proceed(signature) {
 						Web3.authResponse = {
@@ -2144,7 +2151,7 @@
 					}
 				}).catch(_cancel);
 			});
-			function _cancel() {
+			function _cancel(err) {
 				_restoreTitle();
 				Q.handle(cancelCallback, Users, [null]);
 			}
