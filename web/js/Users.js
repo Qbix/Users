@@ -2136,7 +2136,7 @@
 							payload: payload,
 							signature: signature,
 							platform: 'web3',
-							chainId: provider.chainId
+							chainId: (typeof provider.chainId === 'function') ? provider.chainId() : provider.chainId
 						}
 						if (Q.handle(signedCallback, null, [Web3.authResponse]) === false) {
 							return;
