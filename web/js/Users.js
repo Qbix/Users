@@ -907,24 +907,6 @@
 	 * Methods for setting up common user interface elements
 	 * @class Users.Interface
 	 */
-	Users.Intent = {
-		authenticate: function (callback) {
-			Q.req('Users/intent', 'token', function (err, response) {
-				var token = response && response.slots && response.slots.token;
-				Q.handle(callback, this, [err, token]);
-			}, {
-				method: 'post',
-				fields: {
-					action: 'Users/authenticate'
-				}}
-			);
-		}
-	};
-
-	/**
-	 * Methods for setting up common user interface elements
-	 * @class Users.Interface
-	 */
 	Users.Interface = {
 		/**
 		 * Set up cover photo editor
