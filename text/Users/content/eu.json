@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "Hautatu {{displayName}} kontaktua"
+        },
+        "require": {
+            "Instructions": "Hau funtziona dezan, kontaktu guztietarako sarbidea gaitu beharko duzu."
         }
     },
     "usersContacts": {

@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "Vælg kontakt på {{displayName}}"
+        },
+        "require": {
+            "Instructions": "Du skal aktivere adgang til alle kontakter, for at dette kan fungere."
         }
     },
     "usersContacts": {

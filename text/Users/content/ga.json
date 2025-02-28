@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "Roghnaigh teagmhálaí {{displayName}}"
+        },
+        "require": {
+            "Instructions": "Beidh ort rochtain ar gach teagmhálaí a chumasú le go n-oibreoidh sé seo."
         }
     },
     "usersContacts": {

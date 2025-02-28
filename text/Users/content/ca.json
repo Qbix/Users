@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "Seleccioneu el contacte del {{displayName}}"
+        },
+        "require": {
+            "Instructions": "Haureu d&#39;habilitar l&#39;accés a tots els contactes perquè això funcioni."
         }
     },
     "usersContacts": {

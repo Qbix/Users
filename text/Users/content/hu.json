@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "Válassza ki a {{displayName}} es elérhetőséget"
+        },
+        "require": {
+            "Instructions": "Ahhoz, hogy ez működjön, engedélyeznie kell a hozzáférést az összes névjegyhez."
         }
     },
     "usersContacts": {

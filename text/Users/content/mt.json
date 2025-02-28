@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "Agħżel kuntatt ta&#39; {{displayName}}"
+        },
+        "require": {
+            "Instructions": "Ikollok bżonn li tippermetti l-aċċess għall-kuntatti kollha sabiex dan jaħdem."
         }
     },
     "usersContacts": {

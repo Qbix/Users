@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "Selectați contactul {{displayName}}"
+        },
+        "require": {
+            "Instructions": "Va trebui să activați accesul la toate contactele pentru ca acest lucru să funcționeze."
         }
     },
     "usersContacts": {

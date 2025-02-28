@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "选择{{displayName}}联系人"
+        },
+        "require": {
+            "Instructions": "您需要启用所有联系人的访问权限才能使其正常工作。"
         }
     },
     "usersContacts": {

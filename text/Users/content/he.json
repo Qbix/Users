@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "בחר איש קשר של {{displayName}}"
+        },
+        "require": {
+            "Instructions": "תצטרך לאפשר גישה לכל אנשי הקשר כדי שזה יעבוד."
         }
     },
     "usersContacts": {

@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "Pumili ng contact ng {{displayName}}"
+        },
+        "require": {
+            "Instructions": "Kakailanganin mong paganahin ang access sa lahat ng mga contact upang gumana ito."
         }
     },
     "usersContacts": {

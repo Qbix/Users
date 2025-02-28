@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "Seleziona il contatto del {{displayName}}"
+        },
+        "require": {
+            "Instructions": "Affinché funzioni, è necessario abilitare l&#39;accesso a tutti i contatti."
         }
     },
     "usersContacts": {

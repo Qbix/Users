@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "Veldu tengilið {{displayName}}"
+        },
+        "require": {
+            "Instructions": "Þú verður að virkja aðgang að öllum tengiliðum til að þetta virki."
         }
     },
     "usersContacts": {

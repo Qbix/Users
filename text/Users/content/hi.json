@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "{{displayName}} के संपर्क का चयन करें"
+        },
+        "require": {
+            "Instructions": "इसके काम करने के लिए आपको सभी संपर्कों तक पहुंच सक्षम करनी होगी।"
         }
     },
     "usersContacts": {

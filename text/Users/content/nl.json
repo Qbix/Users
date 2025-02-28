@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "Selecteer contactpersoon van {{displayName}}"
+        },
+        "require": {
+            "Instructions": "Om dit te laten werken, moet u toegang tot alle contactpersonen inschakelen."
         }
     },
     "usersContacts": {

@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "Kies kontak van {{displayName}}"
+        },
+        "require": {
+            "Instructions": "Jy sal toegang tot alle kontakte moet aktiveer om dit te laat werk."
         }
     },
     "usersContacts": {

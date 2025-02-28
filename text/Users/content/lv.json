@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "Izvēlieties kontaktpersonu no {{displayName}}"
+        },
+        "require": {
+            "Instructions": "Lai tas darbotos, jums būs jāiespējo piekļuve visiem kontaktiem."
         }
     },
     "usersContacts": {

@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "{{displayName}} kişisini seçin"
+        },
+        "require": {
+            "Instructions": "Bunun çalışması için tüm kişilere erişimi etkinleştirmeniz gerekecektir."
         }
     },
     "usersContacts": {

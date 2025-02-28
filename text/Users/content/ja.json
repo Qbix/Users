@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "{{displayName}}の連絡先を選択"
+        },
+        "require": {
+            "Instructions": "これを機能させるには、すべての連絡先へのアクセスを有効にする必要があります。"
         }
     },
     "usersContacts": {

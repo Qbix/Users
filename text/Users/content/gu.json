@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "{{displayName}} નો સંપર્ક પસંદ કરો"
+        },
+        "require": {
+            "Instructions": "આ કાર્ય કરવા માટે તમારે બધા સંપર્કોની ઍક્સેસ સક્ષમ કરવાની જરૂર પડશે."
         }
     },
     "usersContacts": {

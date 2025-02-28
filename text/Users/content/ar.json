@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "حدد جهة اتصال {{displayName}}"
+        },
+        "require": {
+            "Instructions": "سوف تحتاج إلى تمكين الوصول إلى جميع جهات الاتصال حتى يعمل هذا."
         }
     },
     "usersContacts": {

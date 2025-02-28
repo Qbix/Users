@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "Pilih kenalan {{displayName}}"
+        },
+        "require": {
+            "Instructions": "Anda perlu mendayakan akses kepada semua kenalan agar ini berfungsi."
         }
     },
     "usersContacts": {

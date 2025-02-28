@@ -1301,7 +1301,9 @@
 
 	// handoff action
 	Q.onHandleOpenUrl.set(function (url) {
-		window.cordova.plugins.browsertabs.close();
+		if (Q.getObject('cordova.plugins.browsertabs')) {
+			cordova.plugins.browsertabs.close();
+		}
 		_setSessionFromQueryString(url.split('?')[1]);
 	}, 'Users.handoff');
 

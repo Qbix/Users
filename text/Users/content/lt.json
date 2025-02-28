@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "Pasirinkite kontaktą iš {{displayName}}"
+        },
+        "require": {
+            "Instructions": "Kad tai veiktų, turėsite įgalinti prieigą prie visų kontaktų."
         }
     },
     "usersContacts": {

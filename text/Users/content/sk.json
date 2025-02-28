@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "Vyberte kontakt {{displayName}}"
+        },
+        "require": {
+            "Instructions": "Aby to fungovalo, musíte povoliť prístup ku všetkým kontaktom."
         }
     },
     "usersContacts": {

@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "Odaberite kontakt od {{displayName}}"
+        },
+        "require": {
+            "Instructions": "Morat ćete omogućiti pristup svim kontaktima kako bi ovo radilo."
         }
     },
     "usersContacts": {

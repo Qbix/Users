@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "የ {{displayName}} አድራሻ ይምረጡ"
+        },
+        "require": {
+            "Instructions": "ይህ እንዲሰራ የሁሉም እውቂያዎች መዳረሻን ማንቃት ያስፈልግዎታል።"
         }
     },
     "usersContacts": {

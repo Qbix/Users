@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "Valitse yhteystieto numerosta {{displayName}}"
+        },
+        "require": {
+            "Instructions": "Sinun on sallittava pääsy kaikkiin yhteystietoihin, jotta tämä toimii."
         }
     },
     "usersContacts": {

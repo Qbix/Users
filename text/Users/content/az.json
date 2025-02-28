@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "{{displayName}} kontaktını seçin"
+        },
+        "require": {
+            "Instructions": "Bunun işləməsi üçün bütün kontaktlara girişi aktiv etməlisiniz."
         }
     },
     "usersContacts": {

@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "مخاطب {{displayName}} را انتخاب کنید"
+        },
+        "require": {
+            "Instructions": "برای این کار باید دسترسی به تمام مخاطبین را فعال کنید."
         }
     },
     "usersContacts": {

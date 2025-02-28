@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "Chọn số liên lạc của {{displayName}}"
+        },
+        "require": {
+            "Instructions": "Bạn sẽ cần phải cấp quyền truy cập cho tất cả danh bạ để tính năng này có thể hoạt động."
         }
     },
     "usersContacts": {

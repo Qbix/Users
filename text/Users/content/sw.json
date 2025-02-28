@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "Chagua anwani ya {{displayName}}"
+        },
+        "require": {
+            "Instructions": "Utahitaji kuwezesha ufikiaji wa anwani zote ili hii ifanye kazi."
         }
     },
     "usersContacts": {

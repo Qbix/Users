@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "Izberite kontakt {{displayName}}"
+        },
+        "require": {
+            "Instructions": "Da bo to delovalo, boste morali omogočiti dostop do vseh stikov."
         }
     },
     "usersContacts": {

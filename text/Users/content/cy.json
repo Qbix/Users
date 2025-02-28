@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "Dewiswch gyswllt {{displayName}}"
+        },
+        "require": {
+            "Instructions": "Bydd angen i chi alluogi mynediad i bob cyswllt er mwyn i hyn weithio."
         }
     },
     "usersContacts": {

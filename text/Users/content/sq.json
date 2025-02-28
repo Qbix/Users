@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "Zgjidh kontaktin e {{displayName}}"
+        },
+        "require": {
+            "Instructions": "Ju do të duhet të aktivizoni qasjen në të gjitha kontaktet në mënyrë që kjo të funksionojë."
         }
     },
     "usersContacts": {

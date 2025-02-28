@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "{{displayName}} 의 연락처 선택"
+        },
+        "require": {
+            "Instructions": "이 기능을 사용하려면 모든 연락처에 대한 액세스를 허용해야 합니다."
         }
     },
     "usersContacts": {

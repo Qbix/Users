@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "Pilih kontak {{displayName}}"
+        },
+        "require": {
+            "Instructions": "Anda perlu mengaktifkan akses ke semua kontak agar ini berfungsi."
         }
     },
     "usersContacts": {

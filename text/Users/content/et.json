@@ -74,6 +74,9 @@
         },
         "select": {
             "title": "Valige {{displayName}} kontakt"
+        },
+        "require": {
+            "Instructions": "Selle toimimiseks peate lubama juurdepääsu kõigile kontaktidele."
         }
     },
     "usersContacts": {
