@@ -975,7 +975,12 @@ abstract class Users extends Base_Users
 			if ($session->id and $session->retrieve()) {
 				$duration = $session->duration;
 			}
-			$sessionId = Q_Session::regenerateId(true, $duration, 'authenticated');
+			$internalSessionIdPrefix = Q_Config::get(
+				'Q', 'session', 'id', 'prefixes', 'internal', 'sessionId_internal_'
+			);
+			if (!Q::startsWith($session->id, $internalSessionIdPrefix)) {
+				$sessionId = Q_Session::regenerateId(true, $duration, 'authenticated');	
+			}
 		}
 
 		// Store the new information in the session
