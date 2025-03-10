@@ -44,6 +44,10 @@ class Users_ExternalFrom_Ios extends Users_ExternalFrom implements Users_Externa
 		// generate session with deterministic sessionID
 		$sessionId = self::sessionId($appId, $udid);
 
+		if ($deviceId = Q_Request::special('pushDeviceToken')) {
+			Users::$cache['session'][$sessionId]['deviceId'] = $deviceId;
+		}
+
 		$ef = new Users_ExternalFrom_Ios();
 		// note that $ef->userId was not set
 		$ef->platform = 'ios';
