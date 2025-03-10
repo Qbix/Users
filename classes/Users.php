@@ -387,6 +387,10 @@ abstract class Users extends Base_Users
 			$appId = Q::app();
 		}
 		list($appId, $appInfo) = Users::appInfo($platform, $appId);
+		if (empty($appInfo)) {
+			$authenticated = false;
+			return;
+		}
 		
 		$authenticated = null;
 		$during = 'authenticate';

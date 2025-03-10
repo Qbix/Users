@@ -30,9 +30,9 @@ class Users_ExternalFrom_Ios extends Users_ExternalFrom implements Users_Externa
 			? $appInfo['appId']
 			: '';
 
-		$udid = Q::getObject($_REQUEST, array(array('udid', 'Q_udid')), null);
+		$udid = Q_Request::special('udid', Q::ifset($_REQUEST['udid']));
 		if (!$udid) {
-			$udid = Q::ifset($_COOKIE, 'Q_udid', null);
+			$udid = Q::ifset($_COOKIE, 'Q.udid', 'Q_udid', null);
 			if (!$udid) {
 				return null;
 			}
