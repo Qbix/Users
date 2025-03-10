@@ -16,7 +16,7 @@ function Users_before_Q_session_save($params)
 		? Q::json_encode((object)$_SESSION)
 		: "{}";
 	if (Users::$cache['session'][$sessionId]['deviceId']) {
-		$row->deviceId = Users::cache['deviceId'];
+		$row->deviceId = Users::$cache['deviceId'];
 	}
 	if (!$row->wasRetrieved()) {
 		$row->deviceId = "";

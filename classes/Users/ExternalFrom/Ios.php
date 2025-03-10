@@ -42,9 +42,10 @@ class Users_ExternalFrom_Ios extends Users_ExternalFrom implements Users_Externa
 		}
 
 		// generate session with deterministic sessionID
-		$sessionId = self::sessionId($appId, $udid);
+		$sessionId = self::sessionId($appInfo['appId'], $udid);
 
-		if ($deviceId = Q_Request::special('pushDeviceToken')) {
+		$payload = Q_Request::special('payload');
+		if ($deviceId = Q::ifset($payload, 'deviceId', null)) {
 			Users::$cache['session'][$sessionId]['deviceId'] = $deviceId;
 		}
 
