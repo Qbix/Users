@@ -1002,7 +1002,7 @@ abstract class Users extends Base_Users
 		 */
 		Q::event('Users/setLoggedInUser/updateSessionId', @compact('user'), 'before');
 		
-		$user->sessionId = $sessionId;
+		$user->sessionId = Q_Session::id();
 		$user->save(); // update sessionId in user
 		
 		/**
