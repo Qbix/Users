@@ -93,7 +93,7 @@ class Users_ExternalFrom_Ios extends Users_ExternalFrom implements Users_Externa
 	 */
 	static function sessionId($appId, $udid)
 	{
-		$deterministicSeed = "telegram-$appId-$telegramUserId";
+		$deterministicSeed = "ios-$appId-$udid";
 		return Q_Session::generateId($deterministicSeed, 'internal');
 	}
 }
