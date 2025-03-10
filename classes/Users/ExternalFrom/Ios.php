@@ -30,7 +30,7 @@ class Users_ExternalFrom_Ios extends Users_ExternalFrom implements Users_Externa
 			? $appInfo['appId']
 			: '';
 
-		$udid = Q::ifset($_REQUEST, 'Q_udid', null);
+		$udid = Q::getObject($_REQUEST, array(array('udid', 'Q_udid')), null);
 		if (!$udid) {
 			$udid = Q::ifset($_COOKIE, 'Q_udid', null);
 			if (!$udid) {
@@ -40,6 +40,10 @@ class Users_ExternalFrom_Ios extends Users_ExternalFrom implements Users_Externa
 		if ($setCookie) {
 			Q_Response::setCookie("Q_udid", $udid, 0);
 		}
+
+		// generate session with deterministic sessionID
+		$sessionId = self::sessionId($appId, $udid);
+
 		$ef = new Users_ExternalFrom_Ios();
 		// note that $ef->userId was not set
 		$ef->platform = 'ios';
@@ -77,5 +81,19 @@ class Users_ExternalFrom_Ios extends Users_ExternalFrom implements Users_Externa
 		if (!$fieldNames) {
 			return array();
 		}
+	}
+	
+	/**
+	 * Get a deterministic session ID
+	 * @method sessionId
+	 * @static
+	 * @param {string} $appId The internal app ID
+	 * @param {string} $udid The user's UDID on our iOS app
+	 * @return {string}
+	 */
+	static function sessionId($appId, $udid)
+	{
+		$deterministicSeed = "telegram-$appId-$telegramUserId";
+		return Q_Session::generateId($deterministicSeed, 'internal');
 	}
 }

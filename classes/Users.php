@@ -146,7 +146,7 @@ abstract class Users extends Base_Users
 	 * Return an array of the user's roles relative to a publisher
 	 * @method roles
 	 * @static
-	 * @param string [$publisherId=Users::currentCommunityId()]
+	 * @param {string} [$publisherId=Users::currentCommunityId()]
 	 *  The id of the publisher relative to whom to calculate the roles.
 	 *  Defaults to the current community ID.
 	 * @param {string|array|Db_Expression} [$filter=null] 
@@ -248,7 +248,7 @@ abstract class Users extends Base_Users
 	 */
 	static function oAuth($platform, $appId = null)
 	{
-		return;
+		return null;
 		// TODO: REFACTOR TO USE oAuth 2
 		/*
 		$nativeuser = self::loggedInUser();
@@ -2121,7 +2121,7 @@ abstract class Users extends Base_Users
 	 * It will be signed and used in some requests.
 	 * @method capability
 	 * @static
-	 * @return Q_Capability
+	 * @return {Q_Capability}
 	 */
 	static function capability()
 	{
@@ -2191,7 +2191,7 @@ abstract class Users extends Base_Users
 	/**
 	 * Verifies a signed payload
 	 * @param {array} $payload Can be a multidimensional array
-	 * @param {boolean} [$options.lookInSession=false]
+	 * @param {boolean} [lookInSession=false]
 	 * @param {array} [$options]
 	 * @param {string} [$options.sigField] By default, uses config Users/signatures/sigField
 	 * @param {string} [$options.algorithm='sha256'] Indicates the hash algorithm. Later may also allow user to change the ECDSA curve, etc.
@@ -2505,7 +2505,7 @@ abstract class Users extends Base_Users
 		return $errors;
 	}
 
-		/**
+	/**
 	 * Get the secret token to send to telegram in secret_token parameter
 	 * of setWebhook()
 	 * @method secretToken
