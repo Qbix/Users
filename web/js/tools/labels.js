@@ -367,7 +367,6 @@ Q.Tool.define("Users/labels", function Users_labels_tool(options) {
                                     }),
                                     onClose: function (dialog2) {
                                         tool.element.addClass('Q_working');
-                                        //$dialog2.addClass('Q_working');
                                         var iChainId, 
                                             iRoleIndex,
                                             iLabel,
