@@ -140,11 +140,15 @@ class Users_Label extends Base_Users_Label
 			if (empty($title)) {
 				$title = ucfirst(end($parts));
 			}
-			$text = Q_Text::get("$module/content");
-			if (!empty($text['labels']['titles'][$label])) {
-				$title = $text['labels']['titles'][$label];
-			} else if (!empty($text['labels']['titles'][$title])) {
-				$title = $text['labels']['titles'][$title];
+			try {
+				$text = Q_Text::get("$module/content");
+				if (!empty($text['labels']['titles'][$label])) {
+					$title = $text['labels']['titles'][$label];
+				} else if (!empty($text['labels']['titles'][$title])) {
+					$title = $text['labels']['titles'][$title];
+				}
+			} catch (Exception $e) {
+				// maybe the file doesn't exist
 			}
 		}
 		if (!isset($userId)) {
