@@ -2149,9 +2149,9 @@ abstract class Users extends Base_Users
 		$identifier = trim($identifier);
 		if (substr($type, -7) === '_hashed') {
 			$hashed = $identifier;
-			$ui_type = $type;
+			$ui_type = Q_Utils::normalize($type);
 		} else {
-			$type = str_replace("\t", "_", $type); // backwards compatibility
+			$type = Q_Utils::normalize($type); // backwards compatibility
 			$parts = explode("_", $type);
 			switch ($parts[0]) {
 				case 'email':
