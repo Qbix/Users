@@ -1211,9 +1211,9 @@
 		}
 		OAuth.redirectUri = Q.action('Users/oauthed');
 
-		var sessionId = Q.cookie(Q.info.sessionName);
 		var prefix = Q.getObject('Q.info.sessionIdPrefixes.authenticated');
-		if (prefix && sessionId && sessionId.startsWith(prefix)
+		var nonce = Q.cookie('Q_nonce');
+		if (prefix && nonce && nonce.startsWith(prefix)
 		&& !Q.Users.loggedInUser) {
 			// happens for instance when webserver loads a pre-rendered
 			// static file instead of the latest result of a PHP script
