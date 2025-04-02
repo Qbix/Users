@@ -16,7 +16,7 @@ function Users_after_Q_reroute($params, &$stop_dispatch)
 		if ($user = Users::loggedInUser()) {
 			return; // user is already logged in
 		}
-	} else if ($requireLogin[$ma] !== true) {
+	} else {
 		if ($appUser = Users_ExternalFrom::authenticate($requireLogin[$ma])) {
 			return; // We don't have to require login here
 		}

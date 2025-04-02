@@ -49,7 +49,7 @@ class Users_Device extends Base_Users_Device
 		$deviceId = $device['deviceId'];
 		$platform = $device['platform'];
 		$platformAppId = $device['appId'];
-		$auth = !empty($device['auth']) ? $device['auth'] : null;
+		$auth = !empty($device['auth']) ? $device['auth'] : '';
 		$p256dh = !empty($device['p256dh']) ? $device['p256dh'] : null;
 		$apps = Q_Config::expect('Users', 'apps', $platform);
 		list($appId, $info) = Users::appInfo($platform, $platformAppId);
