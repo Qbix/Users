@@ -594,6 +594,16 @@ abstract class Users extends Base_Users
 				$user->username = "";
 				$user->icon = '{{Users}}/img/icons/default';
 				$user->signedUpWith = $platform;
+
+				// And also set their preferred language by default
+				$languages = Q_Request::languages();
+				if ($firstLanguage = reset($languages)) {
+					$language = reset($firstLanguage);
+					$list = array_keys(Q_Config::expect('Q', 'web', 'languages'));
+					if (in_array(reset($firstLanguage), $list)) {
+						$user->preferredLanguage = $language;
+					}
+				}
 				$user->save();
 
 				// Save the identifier in the quick lookup table
