@@ -152,6 +152,49 @@ function Users_Vote (fields) {
 Q.mixin(Users_Vote, Q.require('Base/Users/Vote'));
 
 /**
+ * Saves votes by a user
+ * @param {String} type the type of item being voted on
+ * @param {Array} ids an array of item IDs to vote for
+ * @param {Array} weights an array of item IDs to vote for
+ * @param {Array} values an array of item IDs to vote for
+ * @param {String} asUserId the ID of the user casting the votes
+ * @param {Function} callback - can be called after all the votes have been saved
+ * @returns {Array|false} Returns the array of vote objects saved, or false if asUserId is not provided
+ */
+Users_Vote.vote = function(
+	type, 
+	ids,
+	weights,
+	values,
+	asUserId, 
+	callback
+) {
+	if (!asUserId) {
+		return false;
+	}
+	ids = ids || [];
+	weights = weights || [];
+	values = values || [];
+	const votes = [];
+	var p = new Q.Pipe(ids, 1, function () {
+		callback && callback(ids);
+	});
+	for (var i=0; i<ids.length; ++i) {
+		var vote = new Users_Vote({
+			userId: asUserId,
+			forType: type,
+			forId: String(ids[i]),
+			value: values[i],
+			weight: weights[i]
+		});
+		vote.save(true, false, p.fill(id));
+		votes.push(vote);
+	}
+
+	return votes;
+};
+
+/**
  * The setUp() method is called the first time
  * an object of this class is constructed.
  * @method setUp

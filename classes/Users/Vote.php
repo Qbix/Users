@@ -219,11 +219,18 @@ class Users_Vote extends Base_Users_Vote
 	/**
 	 * Saves votes by a user
 	 * @static
-	 * @param {array} $ids an array of numbers or strings,
+	 * @param {array} $ids an array of numbers or strings
+	 * @param {array} $values an array of numbers
+	 * @param {array} $weights an array of numbers
 	 * @return {array|false} Returns the array of Users_Vote objects saved,
 	 *   or false if user was not logged in
 	 */
-	static function vote(string $type, array $ids, $user = null)
+	static function vote(
+		$type, 
+		array $ids, 
+		array $weights = array(), 
+		array $values = array(), 
+		$user = null)
 	{
 		if (!$user) {
 			$user = Users::loggedInUser(false, false);
@@ -240,7 +247,7 @@ class Users_Vote extends Base_Users_Vote
 			$vote->userId = $user->id;
 			$vote->forType = $type;
 			$vote->forId = (string)$id;
-			$vote->save();
+			$vote->save(true);
 		}
 		return $votes;
 	}
