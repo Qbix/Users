@@ -44,7 +44,7 @@ function Users_after_Q_image_save($params, &$return)
             if (!empty($invites)) {
                 $user = Users::fetch($invites[0]->userId);
                 if ($user and $user->icon != $subpath
-                    and !Users::isCustomIcon($user->icon)) {
+                and !Users::isCustomIcon($user->icon, true)) {
                     $user->icon = Q_Html::themedUrl("$path/$subpath", array(
 						'baseUrlPlaceholder' => true
 					));
