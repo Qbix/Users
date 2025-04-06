@@ -91,8 +91,8 @@ function Users_Vote (fields) {
 				forId: modifiedFields.forId
 			});
 			vote.retrieve('*', true, function (err, vote_res) {
-				if (!err) {
-					return console.log(err);
+				if (err) {
+					return console.warn(err);
 				}
 				if (!vote_res.length) {
 					total.weightTotal += modifiedFields.weight;
