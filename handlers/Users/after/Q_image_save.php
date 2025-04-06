@@ -1,6 +1,6 @@
 <?php
 
-function Users_after_Q_image_save($params, &$return)
+function Users_after_Q_image_save($params, &$authorized)
 {
     extract($params);
     /**
@@ -22,9 +22,7 @@ function Users_after_Q_image_save($params, &$return)
 
     if (Q::startsWith($fullpath, $prefix)) {
         $iconPrefix = "Q/uploads/Users/$splitId/icon";
-        $invitePrefix = "Q/uploads/Users/$splitId/invited";
         Q_Utils::normalizePath($iconPrefix);
-        Q_Utils::normalizePath($invitePrefix);
         if (Q::startsWith($fullpath,$iconPrefix)) {
             // modification of logged user icon
             if ($user->icon != $subpath) {
@@ -36,24 +34,9 @@ function Users_after_Q_image_save($params, &$return)
             } else {
                 Users::$cache['iconUrlWasChanged'] = false;
             }
-        } else if (Q::startsWith($fullpath, $invitePrefix)) {
-            $token = preg_replace('/.*\/invited\//', '', $subpath);
-            $invites = Streams_Invite::select()->where(
-                array('token' => $token, 'state' => 'accepted'
-                ))->fetchDbRows();
-            if (!empty($invites)) {
-                $user = Users::fetch($invites[0]->userId);
-                if ($user and $user->icon != $subpath
-                and !Users::isCustomIcon($user->icon, true)) {
-                    $user->icon = Q_Html::themedUrl("$path/$subpath", array(
-						'baseUrlPlaceholder' => true
-					));
-                    $user->save();
-                }
-            }
         }
     } else if (Q::startsWith($fullpath, implode(DS, array('Q', 'uploads', 'Users')))
-    and preg_match('/(\/a-zA-Z{2,3}){2,3}\/icon\//', $fullpath)) {
+    and preg_match('/(\/[a-zA-Z]{2,3}){2,3}\/icon\//', $fullpath)) {
         // modification of another user
         // trying to fetch userId from subpath
         $anotherUserId = preg_replace('/\/icon.*/', '', $subpath);
@@ -69,12 +52,9 @@ function Users_after_Q_image_save($params, &$return)
         $labelsCanManage = Q_Config::get("Users", "icon", "canManage", array());
 
         // whether logged user assigned as one of $labelsCanManage to $anotherUser
-		$permitted = (bool)Users::roles($anotherUserId, $labelsCanManage, array(), $user->id);
-		if (!$permitted) {
-			$permitted = (bool)Users::roles($anotherUserId, array("Streams/invitedMe"), array(), $user->id);
-		}
+		$authorized = (bool)Users::roles($anotherUserId, $labelsCanManage, array(), $user->id);
 
-        if ($permitted) {
+        if ($authorized) {
             if ($anotherUser->icon != $subpath) {
                 $anotherUser->icon = Q_Html::themedUrl("$path/$subpath", array(
 					'baseUrlPlaceholder' => true
