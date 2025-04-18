@@ -187,7 +187,7 @@ Users_Vote.vote = function(
 			value: values[i],
 			weight: weights[i]
 		});
-		vote.save(true, false, p.fill(id));
+		vote.save(true, false, p.fill(ids[i]));
 		votes.push(vote);
 	}
 
