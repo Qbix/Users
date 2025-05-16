@@ -2546,6 +2546,11 @@ abstract class Users extends Base_Users
 	}
 
 	/**
+	 * @property $logoutFetch
+	 * @type boolean
+	 */
+	public static $logoutFetch = array();
+	/**
 	 * @property $loggedOut
 	 * @type boolean
 	 */

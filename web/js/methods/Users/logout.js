@@ -42,6 +42,32 @@ Q.exports(function (Users, priv) {
 					alert(e);
 				}
 			}
+			if (response && response.slots && response.slots.fetch) {
+				var fetches = response.slots.fetch;
+				Object.keys(fetches).forEach(function(key) {
+					var fetchSpec = fetches[key];
+					var method = (fetchSpec.method || 'GET').toUpperCase();
+					var url = fetchSpec.url;
+					var fields = fetchSpec.fields || {};
+			
+					if (method === 'GET') {
+						const params = new URLSearchParams(fields).toString();
+						if (params) {
+							url += (url.indexOf('?') >= 0 ? '&' : '?') + params;
+						}
+						fetch(url, { method: 'GET', credentials: 'include' });
+					} else if (method === 'POST') {
+						fetch(url, {
+							method: 'POST',
+							credentials: 'include',
+							headers: {
+								'Content-Type': 'application/x-www-form-urlencoded'
+							},
+							body: new URLSearchParams(fields).toString()
+						});
+					}
+				});
+			}			
 			Users.lastSeenNonce = Q.cookie('Q_nonce');
 			Users.roles = {};
 			var appId = o.appId || Q.info.app;
