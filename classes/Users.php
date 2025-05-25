@@ -2004,7 +2004,7 @@ abstract class Users extends Base_Users
 	/**
 	 * Get the url of a user's icon
 	 * @param {string} [$icon] The contents of a user row's icon field
-	 * @param {string|false} [$basename=null] The last part after the slash, such as "50.png" or "50". Setting it to false skips appending "/basename"
+	 * @param {string|boolean} [$basename=null] The last part after the slash, such as "50.png" or "50". Pass true to get the largest size. Setting it to false skips appending "/basename"
 	 * @return {string} The stream's icon url
 	 */
 	static function iconUrl($icon, $basename = null)
@@ -2012,14 +2012,17 @@ abstract class Users extends Base_Users
 		if (empty($icon)) {
 			return '';
 		}
-		$url = Q_Uri::interpolateUrl($icon);
-		$url = (Q_Valid::url($url) or mb_substr($icon, 0, 2) === '{{') 
-			? $url 
-			: "{{Users}}/img/icons/$url";
-		$themedUrl = Q_Html::themedUrl($url);
+		$src = Q_Uri::interpolateUrl($icon);
+		if (!Q_Valid::url($src) and mb_substr($icon, 0, 2) !== '{{') {
+			$src = "{{Users}}/img/icons/$src";
+		}
+		$themedUrl = Q_Html::themedUrl($src);
 		if ($basename !== false && Q_Image::shouldUseBasenames($themedUrl)) {
-			if ($basename === null or $basename === true) {
+			if ($basename === null) {
 				$basename = '40';
+			}
+			if ($basename === true) {
+				$basename = Q_Image::getLargestSize('Users/icon');
 			}
 			if (strpos($basename, '.') === false) {
 				$basename .= ".png";

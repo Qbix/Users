@@ -140,22 +140,26 @@ Users.fetch = function (id, callback) {
  * Calculate the url of a user's icon
  * @method
  * @param {String} icon the value of the user's "icon" field
- * @param {Number} [size=40] the size of the icon to render.
+ * @param {Number|Boolean} [basename=40] The last part after the slash, such as "50.png" or "50". Pass true to get the largest size. Setting it to false skips appending "/basename"
  * @return {String} the url
  */
-Users.iconUrl = function Users_iconUrl(icon, size) {
+Users.iconUrl = function Users_iconUrl(icon, basename) {
 	if (!icon) {
 		console.warn("Users.iconUrl: icon is empty");
 		return '';
 	}
-	if (!size || size === true) {
-		size = '40';
+	if (!basename) {
+		basename = '40';
 	}
-	size = (String(size).indexOf('.') >= 0) ? size : size+'.png';
-	var src = Q.interpolateUrl(icon + '/' + size);
-	return src.isUrl() || icon.substring(0, 2) === '{{'
-		? Q.url(src)
-		: Q.url('{{Users}}/img/icons/'+src);
+	if (basename === true) {
+		basename = Q.Image.largestSize('Users/icon');
+	}
+	basename = (String(basename).indexOf('.') >= 0) ? basename : basename+'.png';
+	var src = Q.interpolateUrl(icon + '/' + basename);
+	if (!src.isUrl() && icon.substring(0, 2) !== '{{') {
+		src = '{{Users}}/img/icons/'+src;
+	}
+	return Q.url(src);
 };
 
 /**
