@@ -29,10 +29,10 @@ class Users_ExternalTo_Discourse extends Users_ExternalTo implements Users_Exter
             list($appId, $appInfo) = Users::appInfo($this->platform, $this->appId);
             if (empty($appInfo)) {
                 throw new Q_Exception_MissingConfig(array(
-                    'fieldpath' => 'Users/apps/'.$this->platform.'/'.$this->appId.'/keys/users'
+                    'fieldpath' => 'Users/apps/'.$this->platform.'/'.$this->appId.'/keys/system'
                 ));
             }
-            $this->apiKey = $appInfo['keys']['users'];
+            $this->apiKey = $appInfo['keys']['system'];
             $this->baseUrl = $appInfo['baseUrl'];
         }
 	}
