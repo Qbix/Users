@@ -140,7 +140,7 @@ Users.fetch = function (id, callback) {
  * Calculate the url of a user's icon
  * @method
  * @param {String} icon the value of the user's "icon" field
- * @param {Number|Boolean} [basename=40] The last part after the slash, such as "50.png" or "50". Pass true to get the largest size. Setting it to false skips appending "/basename"
+ * @param {String|Number|Boolean} [basename=40] The last part after the slash, such as "50.png" or "50". Pass true to get the largest size. Setting it to false skips appending "/basename"
  * @return {String} the url
  */
 Users.iconUrl = function Users_iconUrl(icon, basename) {
