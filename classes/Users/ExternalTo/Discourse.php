@@ -109,7 +109,10 @@ class Users_ExternalTo_Discourse extends Users_ExternalTo implements Users_Exter
         $displayName = $user->displayName();
         $email = isset($user->emailAddress) ? $user->emailAddress : $defaultEmailAddress;
         $password = Q_Utils::randomHexString(16);
-        $username = (!empty($user->username) ? $user->username : Q_Utils::normalize($displayName));
+        $baseUsername = !empty($user->username)
+            ? $user->username
+            : Q_Utils::normalize($displayName);
+        $username = $this->resolveAvailableUsername($baseUsername);
         $fields = array(
             'name' => $displayName,
             'email' => $email,
@@ -163,7 +166,7 @@ class Users_ExternalTo_Discourse extends Users_ExternalTo implements Users_Exter
         
         $url = sprintf("%s/admin/users/%d/trust_level", $this->baseUrl, $user_id);
         $response = Q_Utils::put($url, array(
-            'level' => 3
+            Q_Config::get('Users', 'discourse', 'defaultTrustLevel', 3)
         ), null,null, $headers);
 
         $this->setExtra('user_id', $user_id);
@@ -176,6 +179,36 @@ class Users_ExternalTo_Discourse extends Users_ExternalTo implements Users_Exter
         }
     }
 
+    protected function resolveAvailableUsername($base)
+    {
+        $this->_loadConfig();
+        $url = $this->baseUrl . '/users/check_username.json?username=' . urlencode($base);
+        $headers = array(
+            "Api-Key: " . $this->apiKey,
+            "Api-Username: system"
+        );
+        $response = Q_Utils::get($url, null, null, $headers);
+        $data = json_decode($response, true);
+
+        if (!empty($data['available']) && $data['available'] === true) {
+            return $base;
+        } elseif (!empty($data['suggested_usernames']) && is_array($data['suggested_usernames'])) {
+            return $data['suggested_usernames'][0];
+        } else {
+            // fallback — make up a new one
+            return $base . '_' . rand(1000, 9999);
+        }
+    }
+
+
+    /**
+     * Update the avatar of the user in Discourse
+     * @method updateAvatar
+     * @static
+     * @return {boolean}
+     * @throws {Q_Exception_MissingFile}
+     * @throws {Q_Exception_MissingConfig}
+     */
     function updateAvatar()
     {
         self::_loadConfig();
@@ -188,12 +221,22 @@ class Users_ExternalTo_Discourse extends Users_ExternalTo implements Users_Exter
         );
 
         $user = Users::fetch($this->userId, true);
-        $avatarUrl = $user->iconUrl('400.png');
+        $avatarUrl = $user->iconUrl(true);
         $baseUrl = Q_Request::baseUrl();
+        if (!Q::startsWith($avatarUrl, $baseUrl))  {
+            return false;
+        }
+        $tail = substr($avatarUrl, strlen($baseUrl)+1);
         $app = Q::app();
-        $head = APP_FILES_DIR.DS.$app.DS.'uploads';
-        $tail = str_replace($baseUrl . '/Q/uploads/', DS, $avatarUrl);
-        $filename = $head . $tail;
+        $filename = realpath(APP_WEB_DIR.DS.$tail);
+        if (!$filename || !file_exists($filename)) {
+            $head = APP_FILES_DIR . DS . $app . DS . 'uploads';
+            $tail = str_replace('/Q/uploads/', '', $avatarUrl);
+            $filename = $head . DS . $tail;
+            if (!file_exists($filename)) {
+                throw new Q_Exception_MissingFile(compact('filename'));
+            }
+        }
         if (!file_exists($filename)) {
             throw new Q_Exception_MissingFile(compact('filename'));
         }
@@ -235,15 +278,72 @@ class Users_ExternalTo_Discourse extends Users_ExternalTo implements Users_Exter
             $updateAvatarUrl = sprintf("%s/u/%s/preferences/avatar/pick.json", $this->baseUrl, $username);
 
             $data = array(
-                'upload_id' => $uploadId,
+                'upload_id' => intval($uploadId),
                 'type' => 'uploaded'
             );
 
-            array_pop($headers);
+            $headers = array(
+                'Api-Key' => $this->apiKey,
+                'Api-Username' => $username,
+                'Content-Type' => 'application/x-www-form-urlencoded'
+            );
+
             // $headers[2] = 'Content-Type: application/json';
-            $response = Q_Utils::put($updateAvatarUrl, $data, null, null, $headers);
+            $response = Q_Utils::put($updateAvatarUrl, $data, null, array(), $headers);
+
+            $refreshUrl = sprintf("%s/u/%s/refresh_avatar", $this->baseUrl, $username);
+            Q_Utils::put($refreshUrl, [], null, null, $headers);
         }
     }
+
+    /**
+     * @method updateUsername
+     * @static
+     * @return {boolean}
+     * @throws {Q_Exception_MissingFile}
+     * @throws {Q_Exception_MissingConfig}
+     * @throws {Q_Exception_MissingObject}
+     */
+    public function updateUsername($newUsername)
+    {
+        if (!$newUsername) {
+            $user = Users::fetch($this->userId, true);
+            $newUsername = $user->username;
+            if (!$newUsername) {
+                throw new Q_Exception_MissingObject(array('name' => 'username'));
+            }
+        }
+        $this->_loadConfig();
+        $currentUsername = $this->getExtra('username');
+        if (!$currentUsername || !$newUsername || $currentUsername === $newUsername) {
+            return false;  // Nothing to do
+        }
+
+        $url = sprintf("%s/u/%s.json", $this->baseUrl, $currentUsername);
+
+        $data = [
+            'username' => $newUsername
+        ];
+
+        $headers = [
+            "Api-Key" => $this->apiKey,
+            "Api-Username" => 'system',  // must be an admin
+            "Content-Type" => "application/x-www-form-urlencoded"
+        ];
+
+        $response = Q_Utils::put($url, $data, null, null, $headers);
+        $result = json_decode($response, true);
+
+        // Update local reference
+        if (!empty($result['user']) && $result['user']['username'] === $newUsername) {
+            $this->setExtra('username', $newUsername);
+            $this->save();
+            return true;
+        }
+
+        return false;
+    }
+
 
     function logout($userId) {
         self::_loadConfig();

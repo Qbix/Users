@@ -68,7 +68,7 @@ if (!$key) {
 	die($help . PHP_EOL . "Missing API key. See instructions above." . PHP_EOL);
 }
 $queryIndex = Q::ifset($info, 'import', 'queryIndex', null);
-if (!$discourseUrl) {
+if (!$queryIndex) {
 	die($help . PHP_EOL . "Missing Query Index. See instructions above." . PHP_EOL);
 }
 
@@ -84,9 +84,17 @@ $json = Q_Utils::post($endpoint, array(), null, array(), array(
 ));
 $results = Q::json_decode($json, true);
 
+
+
 $columns = $results['columns'];
 $rows = $results['rows'];
 $columnsFlipped = array_flip($columns);
+$requiredColumns = ['email', 'name', 'salt', 'password_hash', 'url'];
+foreach ($requiredColumns as $col) {
+	if (!isset($columnsFlipped[$col])) {
+		throw new Exception("Missing required column in query: $col");
+	}
+}
 $emailIndex = $columnsFlipped['email'];
 $userInfos = array();
 foreach ($rows as $r) {
@@ -125,6 +133,12 @@ foreach ($userInfos as $email => $userInfo) {
 	if (!$experience->subscription($user->id)) {
 		$experience->subscribe(array('userId' => $user->id));
 	}
+	// Create Users_ExternalTo_Discourse rows
+	Q::event('Users/discourse/post', array(
+		'userId' => $user->id,
+		'baseUrl' => $discourseUrl,
+		'apiKey' => $key
+	));
 }
 
 // var_dump($result);

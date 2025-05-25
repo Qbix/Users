@@ -43,7 +43,8 @@
 			"Q/analytics": ["Users/after/Q_analytics"],
 			"Users/transaction/mined/Users/templates/R1/Community/factory/produce": ["Users/after/Users_transaction_mined/Users_templates_R1_Community_factory/produce"],
 			"Users/email/sendMessage": ["Users/after/Users_email_sendMessage"],
-			"Users/mobile/sendMessage": ["Users/after/Users_mobile_sendMessage"]
+			"Users/mobile/sendMessage": ["Users/after/Users_mobile_sendMessage"],
+			"Db/Row/Users_User/saveExecute": ["Users/after/Users_User_saveExecute"],
 		},
 		"routes@start": {
 			"login/facebook": {"module": "Users", "action": "facebook"},

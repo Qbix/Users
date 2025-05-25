@@ -7,16 +7,18 @@ function Users_discourse_post($params)
         throw new Users_Exception_NotAuthorized();
     }
     $r = array_merge($_REQUEST, $params);
-    Q_Valid::requireFields(array('apiKey', 'userId', 'baseUrl'), $r, true);
+    Q_Valid::requireFields(array('userId', 'baseUrl'), $r, true);
     $userId = $r['userId'];
     $baseUrl = $r['baseUrl'];
-    $apiKey = $r['apiKey'];
+    if (isset($r['apiKey']))  {
+        $apiKey = $r['apiKey'];
+    }
     $uxt = new Users_ExternalTo_Discourse(array(
         'userId' => $userId,
         'platform' => 'discourse',
         'appId' => $baseUrl
     ));
-    $uxt->setExtra(compact('baseUrl', 'apiKey'));
+    $uxt->setExtra(@compact('baseUrl', 'apiKey'));
     $ret = $uxt->create();
 
     // Q_Request::requireFields(array(
