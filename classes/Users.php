@@ -2022,7 +2022,7 @@ abstract class Users extends Base_Users
 				$basename = '40';
 			}
 			if ($basename === true) {
-				$basename = Q_Image::getLargestSize('Users/icon');
+				$basename = Q_Image::largestSize('Users/icon');
 			}
 			if (strpos($basename, '.') === false) {
 				$basename .= ".png";
