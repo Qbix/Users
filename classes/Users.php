@@ -2027,8 +2027,8 @@ abstract class Users extends Base_Users
 			if (strpos($basename, '.') === false) {
 				$basename .= ".png";
 			}
-			$url .= "/$basename";
-			return Q_Html::themedUrl($url);
+			$src .= "/$basename";
+			return Q_Html::themedUrl($src);
 		}
 		return $themedUrl;
 	}

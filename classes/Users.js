@@ -148,16 +148,22 @@ Users.iconUrl = function Users_iconUrl(icon, basename) {
 		console.warn("Users.iconUrl: icon is empty");
 		return '';
 	}
-	if (!basename) {
-		basename = '40';
-	}
-	if (basename === true) {
-		basename = Q.Image.largestSize('Users/icon');
-	}
-	basename = (String(basename).indexOf('.') >= 0) ? basename : basename+'.png';
-	var src = Q.interpolateUrl(icon + '/' + basename);
+	var src = Q.interpolateUrl(icon);
 	if (!src.isUrl() && icon.substring(0, 2) !== '{{') {
 		src = '{{Users}}/img/icons/'+src;
+	}
+	if (basename !== false) {
+		if (basename === null || basename === undefined) {
+			basename = '40';
+		}
+		if (basename === true) {
+			basename = Q.Image.largestSize('Users/icon');
+		}
+		if (basename.indexOf('.') >= 0) {
+			basename += '.png';
+		}
+		basename = (String(basename).indexOf('.') >= 0) ? basename : basename+'.png';
+		src += '/' + basename;
 	}
 	return Q.url(src);
 };
