@@ -21,7 +21,7 @@ function Users_after_Users_User_saveExecute($params)
         $externalTos = Users_ExternalTo_Discourse::select()->where(array(
             'userId' => $user->id,
             'platform' => 'discourse'
-        ));
+        ))->fetchDbRows();
         foreach ($externalTos as $externalTo) {
             if (isset($updates['icon'])) {
                 $externalTo->updateAvatar();
