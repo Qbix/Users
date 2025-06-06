@@ -112,7 +112,8 @@ function Users_before_Q_objects(&$params)
 			$fieldsToClear = array('Q.Users.appId', 'Q.Users.newSessionId', 'Q.Users.signature', 'Q.Users.deviceId', 'Q.timestamp', 'Q.Users.platform');
 		}
 		$queryString = $_SERVER["QUERY_STRING"];
-		$request_uri = explode('?', $_SERVER[REQUEST_URI])[0];
+		$request_uri_parts = explode('?', $_SERVER['REQUEST_URI']);
+		$request_uri = $request_uri_parts[0];
 		foreach ($fieldsToClear as $key) {
 			$queryString = preg_replace("/$key=?[^\&]*\&?/", "", $queryString);
 		}
