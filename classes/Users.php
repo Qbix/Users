@@ -441,7 +441,7 @@ abstract class Users extends Base_Users
 			if (!$user_xid || $updateXid) {
 				// this is a logged-in user who was never authenticated with this platform.
 				// First, let's find any other user who has authenticated with the
-				// authenticated xid, and set their $field to 0.
+				// authenticated xid, and clear their xid
 				$authenticated = 'connected';
 				$ui = Users::identify($platformApp, $xid);
 				if ($ui) {
@@ -489,6 +489,7 @@ abstract class Users extends Base_Users
 				if (!$user->displayName()) {
 					// import some fields automatically from the platform
 					$imported = $externalFrom->import($import);
+					self::applyPreferredLanguage($user, $imported);
 				}
 				$user->setXid($platformApp, $xid);
 				$user->save();
@@ -540,6 +541,8 @@ abstract class Users extends Base_Users
 						$user = $ret;
 					}
 					$imported = $externalFrom->import($import);
+					self::applyPreferredLanguage($user, $imported);
+
 					$user->save();
 
 					$ui->state = 'verified';
@@ -564,6 +567,8 @@ abstract class Users extends Base_Users
 				$authenticated = 'registered';
 				
 				$imported = $externalFrom->import($import);
+				self::applyPreferredLanguage($user, $imported);
+
 				if (!empty($imported['email'])) {
 					$ui = Users::identify('email', $imported['email'], 'verified');
 					if ($ui) {
@@ -900,6 +905,7 @@ abstract class Users extends Base_Users
 	 *   Whether to throw a Users_Exception_NotLoggedIn if no user is logged in.
 	 * @param {boolean} [$startSession=true]
 	 *   Whether to start a PHP session if one doesn't already exist.
+	 *   But this only happens if Q_Dispatcher::$startedResponse is false.
 	 * @return {Users_User|null}
 	 * @throws {Users_Exception_NotLoggedIn} If user is not logged in and
 	 *   $throwIfNotLoggedIn is true
@@ -909,6 +915,9 @@ abstract class Users extends Base_Users
 		$startSession = true)
 	{
 		if ($startSession === false and !Q_Session::id()) {
+			return null;
+		}
+		if (Q_Dispatcher::$startedResponse) {
 			return null;
 		}
 		Q_Session::start(false, null, 'authenticated');
@@ -2547,6 +2556,14 @@ abstract class Users extends Base_Users
             'sha1', $platform, $internalSecret
         ));
 	}
+
+	private static function applyPreferredLanguage(Users_User $user, array $imported)
+	{
+		if (!empty($imported['preferredLanguage']) && empty($user->preferredLanguage)) {
+			$user->preferredLanguage = $imported['preferredLanguage'];
+		}
+	}
+
 
 	/**
 	 * @property $logoutFetch

@@ -78,7 +78,7 @@ class Users_ExternalFrom_Discourse extends Users_ExternalFrom implements Users_E
 	}
 
 	/**
-	 * Import some fields from facebook. Also fills Users::$cache['platformUserData'].
+	 * Import some fields from discourse. Also fills Users::$cache['platformUserData'].
 	 * @param {array} $fieldNames
 	 * @return {array}
 	 */

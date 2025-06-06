@@ -32,7 +32,7 @@ interface Users_ExternalFrom_Interface
 	function icon($sizes = null, $suffix = '');
 
 	/**
-	 * Import some fields from facebook. Also fills Users::$cache['platformUserData'].
+	 * Import some fields from the external platform. Also fills Users::$cache['platformUserData'].
 	 * @param {array} $fields
 	 * @return {array}
 	 */

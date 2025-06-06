@@ -64,7 +64,7 @@ class Users_ExternalFrom_Android extends Users_ExternalFrom implements Users_Ext
 	}
 
 	/**
-	 * Import some fields from the platform. Also fills Users::$cache['platformUserData'].
+	 * Import some fields from android. Also fills Users::$cache['platformUserData'].
 	 * @param {array} $fieldNames
 	 * @return {array}
 	 */
