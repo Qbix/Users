@@ -199,7 +199,7 @@
 		},
 		"login": {
 			"identifierType": "email,mobile",
-			"using": "native,web3,facebook",
+			"using": "native,web3,facebook,telegram",
 			"dontDiscourageMultipleAccounts": false,
 			"userQueryUri": "Users/user",
 			"iconType": "wavatar",

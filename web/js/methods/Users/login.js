@@ -25,7 +25,7 @@ Q.exports(function (Users, priv) {
 	 *  @param {Function} [options.onRequireComplete] function to call if the user logged in but account is incomplete.
 	 *  It is passed the user information as well as the response from hitting accountStatusURL
 	 *  @param {String|Element} [options.explanation] Explanation to prepend to the dialog, inside a container with class Users_login_explanation
-	 *  @param {String} [options.using] can be "native", "facebook" or "native,facebook"
+	 *  @param {String|Array} [options.using] can be "native", "facebook" or "native,facebook", or an array of strings
 	 *  @param {Boolean} [options.skipHint] pass true here to skip calling Users.Pointer.hint when login dialog appears without textbox focus
 	 *  @param {Boolean} [options.tryQuietly] if true, this is same as Users.authenticate, with platform = "using" option
 	 *  @param {Boolean} [options.unlessLoggedIn] if true, this only proceeds with the login flow if the user isn't already logged in. Can be combined with tryQuietly option.
@@ -74,12 +74,12 @@ Q.exports(function (Users, priv) {
 				var platform = (typeof o.tryQuietly === 'string') ? o.tryQuietly : '';
 				if (!platform) {
 					var using = (typeof o.using === 'string') ? [o.using] : o.using;
-					Q.each(['facebook', 'web3'], function (i, k) {
-						if (!using || using.indexOf(k) >= 0) {
-							platform = k;
+					for (var i=0; i<using.length; ++i) {
+						if (using[i] !== 'native') {
+							platform = using[i];
 							return;
 						}
-					});
+					}
 				}
 				Users.authenticate(platform, function (user) {
 					_onConnect(user);
@@ -97,12 +97,14 @@ Q.exports(function (Users, priv) {
 			// perform actual login
 			if (o.using.indexOf('native') >= 0) {
 				var usingPlatforms = {};
-				Q.each(['web3', 'facebook'], function (i, platform) {
-					var appId = (o.appIds && o.appIds[platform]) || Q.info.app;
-					if ((o.using.indexOf(platform) >= 0)) {
-						usingPlatforms[platform] = appId;	
+				var using = (typeof o.using === 'string') ? [o.using] : o.using;
+				for (var i=0; i<using.length; ++i) {
+					var platform = using[i];
+					if (platform !== 'native') {
+						var appId = (o.appIds && o.appIds[platform]) || Q.info.app;
+						usingPlatforms[platform] = appId;
 					}
-				});
+				}
 				// set up dialog
 				login_setupDialog(usingPlatforms, o);
 				priv.linkToken = null;
@@ -153,6 +155,9 @@ Q.exports(function (Users, priv) {
 						// _authenticate('web3');
 					}
 				});
+			} else {
+				var platform = o.using[0];
+				_authenticate(platform);
 			}
 
 			delete priv.login_connected; // if we connect, it will be filled
@@ -835,7 +840,30 @@ Q.exports(function (Users, priv) {
 								 });
 								 return false;
 							 });
-						 break;
+							break;
+					default:
+						var text = Q.text.Users.login[platform];
+						$button = $('<a href="#login_' + platform + '" id="Users_login_with_' + platform + '" />').append(
+							$('<img />').attr({
+								alt: (text && text.alt) || "login with " + platform,
+								src: (text && text.src) || Q.url('{{Users}}/img/platforms/' + platform + '.png')
+							}),
+							$('<div />').text(Q.text.Users.platforms[platform] || platform)
+						).attr('tabindex', 1000)
+						.css({'display': 'inline-block', 'vertical-align': 'middle'})
+						.click(function () {
+							if (location.search.includes('handoff=yes')) {
+								var scheme = Q.getObject([Q.info.platform, Q.info.app, 'scheme'], Users.apps);
+								location.href = scheme + '#' + platform + 'Login=1';
+							} else {
+								Users.authenticate(platform, _onConnect, _onCancel, {
+									scope: options.scope,
+									appId: appId
+								});
+							}
+							return false;
+						});
+
 				 }
 				 $buttons = $buttons.add($button);
 			 }
@@ -937,4 +965,14 @@ Q.exports(function (Users, priv) {
 			 }
 		 }
 	};
+
+	
+	function _authenticate(platform) {
+		Users.authenticate(platform, function (user) {
+			priv.login_onConnect(user);
+		}, function () {
+			priv.login_onCancel();
+		}, {"prompt": false});
+	}
+
 });

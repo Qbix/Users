@@ -139,6 +139,23 @@ class Users_Session extends Base_Users_Session
 		$qs = http_build_query($payload);
 		return Q_Uri::fixUrl("$redirect?$qs");
 	}
+
+	/**
+	 * Sets the content of the session to the given array.
+	 * This will also update the "php" field with the
+	 * serialized session data.
+	 * @method setContent
+	 * @param {array} $content The content to set in the session.
+	 */
+	function setContent(array $content)
+	{
+		$a = $_SESSION;
+		$_SESSION = $content;
+		$this->content = Q::json_encode($content);
+		$this->php = session_encode();
+		$_SESSION = $a;
+		return $this;
+	}
 	
 	/**
 	 * Saves a new Users_Session row with a copy of all the content from the current session.

@@ -362,7 +362,7 @@ abstract class Users extends Base_Users
 	 * @param {array} [$import=Q_Config::get('Users','import',$platform)]
 	 *  Array of things to import from platform if a new user is being inserted or displayName was not set.
 	 *  Can include various fields of the user on the external platform, such as
-	 *  "email", "first_name", "last_name", "gender" etc.
+	 *  "email", "first_name", "last_name", "gender", "icon" etc.
 	 *  If the email address is imported, it is set without requiring verification, and
 	 *  any email under Users/transactional/authenticated is sent.
 	 * @param {boolean} [$updateXid=false] If true and xid defined for logged in user, update xid for this user.
@@ -491,6 +491,13 @@ abstract class Users extends Base_Users
 					$imported = $externalFrom->import($import);
 					self::applyPreferredLanguage($user, $imported);
 				}
+				if (!Users::isCustomIcon($user->icon, true)) {
+					// If the user has no custom icon, set it to the platform icon
+					$sizes = array_keys(Q_Image::getSizes('Users/icon'));
+					$icon = $externalFrom->icon($sizes, '.png');
+					self::importIcon($user, $icon);
+				}
+				
 				$user->setXid($platformApp, $xid);
 				$user->save();
 
@@ -600,15 +607,6 @@ abstract class Users extends Base_Users
 				$user->icon = '{{Users}}/img/icons/default';
 				$user->signedUpWith = $platform;
 
-				// And also set their preferred language by default
-				$languages = Q_Request::languages();
-				if ($firstLanguage = reset($languages)) {
-					$language = reset($firstLanguage);
-					$list = array_keys(Q_Config::expect('Q', 'web', 'languages'));
-					if (in_array(reset($firstLanguage), $list)) {
-						$user->preferredLanguage = $language;
-					}
-				}
 				$user->save();
 
 				// Save the identifier in the quick lookup table
@@ -2563,8 +2561,20 @@ abstract class Users extends Base_Users
 
 	private static function applyPreferredLanguage(Users_User $user, array $imported)
 	{
-		if (!empty($imported['preferredLanguage']) && empty($user->preferredLanguage)) {
+		if (!empty($user->preferredLanguage)) {
+			return;
+		}
+		if (!empty($imported['preferredLanguage'])) {
 			$user->preferredLanguage = $imported['preferredLanguage'];
+			return;
+		}
+		$languages = Q_Request::languages();
+		if ($firstLanguage = reset($languages)) {
+			$language = reset($firstLanguage);
+			$list = array_keys(Q_Config::expect('Q', 'web', 'languages'));
+			if (in_array(reset($firstLanguage), $list)) {
+				$user->preferredLanguage = $language;
+			}
 		}
 	}
 

@@ -365,15 +365,6 @@
 			|| Q.getObject([platform, '*', 'appIdForAuth'], Users.apps)
 			|| Q.getObject([platform, appId, 'appId'], Users.apps);
 	};
-
-	
-	function _authenticate(platform) {
-		Users.authenticate(platform, function (user) {
-			priv.login_onConnect(user);
-		}, function () {
-			priv.login_onCancel();
-		}, {"prompt": false});
-	}
 	
 	priv.handleXid = function _handleXid(platform, platformAppId, xid, onSuccess, onCancel, options) {
 		var ignoreXid = Q.cookie('Users_ignorePlatformXids_'+platform+"_"+platformAppId);
