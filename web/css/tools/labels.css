@@ -11,11 +11,11 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     column-gap: 10px;
     row-gap: 10px;
     list-style-type: none;
-    padding: 0;
+    padding: 10px;
 }
 .Users_labels_tool .Users_labels_action,
 .Users_labels_tool .Users_labels_label {
