@@ -55,7 +55,7 @@ class Users_Intent extends Base_Users_Intent
 			$intent = reset($intents);
 		} else {
 			// insert this new intent
-			$instructions = Q::json_encode($instructions);
+			$instructions = Q::json_encode($instructions, Q::JSON_FORCE_OBJECT);
 			$intent = new Users_Intent(compact('action', 'instructions'));
 			$intent->startTime = new Db_Expression('CURRENT_TIMESTAMP');
 			if ($duration = Q::ifset($info, 'duration', 0)) {

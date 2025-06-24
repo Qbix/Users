@@ -426,12 +426,21 @@ abstract class Users extends Base_Users
 		$appIdForAuth = !empty($appInfo['appIdForAuth'])
 			? $appInfo['appIdForAuth']
 			: $appInfo['appId'];
+		$appId = $appInfo['appId'];
 
 		// Try authenticating the user with the specified platform
 		$externalFrom = Users_ExternalFrom::authenticate($platform, $appIdForAuth);
 		if (!$externalFrom) {
 			// no authentication happened
 			return $userWasLoggedIn ? $user : false;
+		}
+		if ($appIdForAuth !== $appId) {
+			// Add this appId into the extras, to be saved in row and info for session
+			$appIds = $externalFrom->getExtra('appIds', array());
+			if (!in_array($appId, $appIds)) {
+				$appIds[] = $appId;
+				$externalFrom->setExtra('appIds', $appIds);
+			}
 		}
 		$xid = $externalFrom->xid;
 		$authenticated = true;
@@ -668,24 +677,34 @@ abstract class Users extends Base_Users
 			Q::event('Users/insertUser', @compact('user', 'externalFrom', 'during'), 'after');
 		}
 
+		$savedEF = $externalFrom;
+
 		// Now make sure our master session contains the
 		// session info for the platform app.
 		$accessToken = $externalFrom->accessToken;
 		$sessionExpires = $externalFrom->expires;
+		$extra = $externalFrom->extra;
 		if (isset($_SESSION['Users']['externalFroms'][$platformApp])) {
 			// Platform app user exists. Do we need to update it? (Probably not!)
 			$pk = $_SESSION['Users']['externalFroms'][$platformApp];
+			unset($pk['@extra']);
 			$ef = new Users_ExternalFrom($pk);
 
-			if (!$ef->retrieve()) {
+			if (isset($ef->platform) and isset($ef->appId) and isset($ef->xid)
+			and !$ef->retrieve()) {
 				Q::event('Users/insertExternalFrom', @compact('user', 'during'), 'before');
 				$ef->userId = $externalFrom->userId;
 				$ef->save();
+				$savedEF = $ef;
 				Q::event('Users/authenticate/insertExternalFrom', @compact('user'), 'after');
 			}
 
-			if (!isset($ef->accessToken)
-			or ($ef->accessToken != $externalFrom->accessToken)) {
+			if ((!isset($ef->accessToken) and isset($accessToken))
+			or (!isset($ef->expires) and isset($sessionExpires)) 
+			or (!isset($ef->extra) and isset($extra)) 
+			or ($ef->expires != $sessionExpires)
+			or ($ef->accessToken != $accessToken)
+			or ($ef->accessToken != $extra)) {
 				/**
 				 * @event Users/authenticate/updateExternalFrom {before}
 				 * @param {Users_User} user
@@ -693,7 +712,9 @@ abstract class Users extends Base_Users
 				Q::event('Users/authenticate/updateExternalFrom', @compact('user', 'externalFrom'), 'before');
 				$ef->accessToken = $accessToken;
 				$ef->expires = $sessionExpires;
+				$ef->extra = $extra;
 				$ef->save(); // update accessToken in externalFrom
+				$savedEF = $ef;
 				/**
 				 * @event Users/authenticate/updateExternalFrom {after}
 				 * @param {Users_User} user
@@ -704,14 +725,20 @@ abstract class Users extends Base_Users
 			// We have to put the session info in
 			if ($externalFrom->retrieve(null, true)) {
 				// App user exists in database. Do we need to update it?
-				if (!isset($externalFrom->accessToken)
-				or $externalFrom->accessToken != $accessToken) {
+				if ((!isset($externalFrom->accessToken) and isset($accessToken))
+				or (!isset($externalFrom->expires) and isset($sessionExpires)) 
+				or (!isset($externalFrom->extra) and isset($extra)) 
+				or ($externalFrom->accessToken != $accessToken)
+				or ($externalFrom->expires != $sessionExpires)
+				or ($externalFrom->extra != $extra)) {
 					/**
 					 * @event Users/authenticate/updateExternalFrom {before}
 					 * @param {Users_User} user
 					 */
 					Q::event('Users/authenticate/updateExternalFrom', @compact('user', 'externalFrom'), 'before');
 					$externalFrom->accessToken = $accessToken;
+					$externalFrom->expires = $sessionExpires;
+					$externalFrom->extra = $extra;
 					$externalFrom->save(); // update accessToken in externalFrom
 					/**
 					 * @event Users/authenticate/updateExternalFrom {after}
@@ -744,7 +771,17 @@ abstract class Users extends Base_Users
 			}
 		}
 
-		$_SESSION['Users']['externalFroms'][$platformApp] = $externalFrom->getPkValue();
+		if ($appIdForAuth !== $appId) {
+			// also save a specific Users_ExternalFrom row,
+			// indicating that the user has authenticated with this appId on this platform
+			$specificEF = new Users_ExternalFrom($savedEF->fields);
+			$specificEF->appId = $appId;
+			$specificEF->save(true);
+		}
+
+		$infoForSession = $externalFrom->calculatePKValue(true);
+		$infoForSession['@extra'] = $externalFrom->getAllExtras();
+		$_SESSION['Users']['externalFroms'][$platformApp] = $infoForSession;
 
 		Users::$cache['authenticated'] = $authenticated;
 
