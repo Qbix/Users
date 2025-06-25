@@ -494,6 +494,17 @@ abstract class Users extends Base_Users
 					"userId" => $user->id
 				))->execute();
 
+				// also clear the quick lookup table for this xid
+				list($hashed, $ui_type) = self::hashing($xid, $platformApp);
+				Users_Identify::update()
+				->set(array(
+					'state' => 'unlinked',
+					'updatedTime' => new Db_Expression('CURRENT_TIMESTAMP')
+				))->where(array(
+					'identifier' => "$ui_type:$hashed"
+				))->limit(1)
+				->execute();
+
 				// Now, let's associate the current user's account with this platform xid.
 				if (!$user->displayName()) {
 					// import some fields automatically from the platform
@@ -511,7 +522,6 @@ abstract class Users extends Base_Users
 				$user->save();
 
 				// Save the identifier in the quick lookup table
-				list($hashed, $ui_type) = self::hashing($xid, $platformApp);
 				$ui = new Users_Identify();
 				$ui->identifier = "$ui_type:$hashed";
 				$ui->state = 'verified';
