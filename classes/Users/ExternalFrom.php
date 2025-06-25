@@ -33,10 +33,10 @@ interface Users_ExternalFrom_Interface
 
 	/**
 	 * Import some fields from the external platform. Also fills Users::$cache['platformUserData'].
-	 * @param {array} $fields
+	 * @param {array} $fieldNames 
 	 * @return {array}
 	 */
-	function import($fields);
+	function import($fieldNames );
 	
 }
 
@@ -83,6 +83,37 @@ class Users_ExternalFrom extends Base_Users_ExternalFrom
 			throw new Q_Exception_MissingClass(@compact('className'));
 		}
 		return $result[$platform][$appIdForAuth] = call_user_func(array($className, 'authenticate'), $appId);
+	}
+
+	/**
+	 * Gets a userId corresponding to an external platform xid.
+	 * Tries appId and also appIdForAuth when fetching Users_ExternalFrom row.
+	 * @method fetchUserId
+	 * @static
+	 * @param {string} $platform
+	 * @param {string} $appId
+	 * @param {string} $xid
+	 * @return {string|null} The user id, or null if not found
+	 */
+	static function fetchUserId($platform, $appId, $xid)
+	{
+		$appInfo = Users::appInfo($platform, $appId);
+		if (empty($appInfo)) {
+			return null;
+		}
+		$appIdForAuth = !empty($appInfo['appIdForAuth'])
+			? $appInfo['appIdForAuth']
+			: $appInfo['appId'];
+		$appId = $appInfo['appId'];
+		$rows = Users_ExternalFrom::select()->where(array(
+			'platform' => $platform,
+			'appId' => array($appId, $appIdForAuth),
+			'xid' => $xid
+		))->fetchAll();
+		foreach ($rows as $row) {
+			return $row->userId;
+		}
+		return null;
 	}
 
 	/**

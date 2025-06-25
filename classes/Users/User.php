@@ -364,8 +364,6 @@ class Users_User extends Base_Users_User
 		}
 
 		if (!empty($updatedFields['username'])) {
-			$app = Q::app();
-			$unique = Q_Config::get('Users', 'model', $app, 'uniqueUsername', true);
 			$username = $updatedFields['username'];
 			$criteria = @compact('username');
 			if (isset($this->id)) {
@@ -375,27 +373,35 @@ class Users_User extends Base_Users_User
 			if ($usernamePrev !== $username) {
 				if ($username) {
 					$username_hashed = Q_Utils::hash(Q_Utils::normalize($username));
-					$ui = new Users_Identify();
-					$ui->identifier = "username_hashed:$username_hashed";
-					if ($ui->retrieve()) {
-						if ($ui->userId !== $this->id) {
-							throw new Users_Exception_UsernameExists($criteria, 'username');
+					$identify = new Users_Identify();
+					$identify->identifier = "username_hashed:$username_hashed";
+					if ($identify->retrieve()) {
+						$originalUsername = $username;
+						for ($attemptIndex=0; $attemptIndex<10; ++$attemptIndex) {
+							if ($identify->userId === $this->id) {
+								break;
+							}
+							$attemptsRemaining = 10 - $attemptIndex;
+							$username = Q::event('Users/username/conflict', compact(
+								'user', 'identify', 'originalUsername',
+								'attemptIndex', 'attemptsRemaining'
+							), $username);
+							$username_hashed = Q_Utils::hash(Q_Utils::normalize($username));
 						}
 					} else {
-						$username_hashed = Q_Utils::hash(Q_Utils::normalize($username));
-						$ui = new Users_Identify();
-						$ui->identifier = "username_hashed:$username_hashed";
-						$ui->state = 'verified';
-						$ui->userId = $this->id;
-						$ui->save(true);
+						$identify = new Users_Identify();
+						$identify->identifier = "username_hashed:$username_hashed";
+						$identify->state = 'verified';
+						$identify->userId = $this->id;
+						$identify->save(true);
 					}
 				}
 				if ($usernamePrev) {
 					$usernamePrev_hashed = Q_Utils::hash(Q_Utils::normalize($usernamePrev));
 					if ($usernamePrev_hashed != $username_hashed) {
-						$uiPrev = new Users_Identify();
-						$uiPrev->identifier = "username_hashed:$usernamePrev_hashed";
-						$uiPrev->remove();
+						$identifyPrev = new Users_Identify();
+						$identifyPrev->identifier = "username_hashed:$usernamePrev_hashed";
+						$identifyPrev->remove();
 					}
 				}
 			}

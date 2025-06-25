@@ -1535,13 +1535,10 @@ abstract class Users extends Base_Users
 	 *  a string of the form $platform."_".$appId"
 	 *  or any of the above with optional "_hashed" suffix to indicate
 	 *  that the value has already been hashed.
-	 * @param {string} $value The value corresponding to the type. The type
-	 *  can be "email", "mobile", the name of a platform, or any of the above
-	 *  with optional "_hashed" suffix to indicate that the value has already been hashed.
 	 *  It can also be "none", in which case the type is ignored, no "identify" rows are
 	 *  inserted into the database at this time. Later, as the user adds an email address
 	 *  or platform xids, they will be inserted.
-	 * <br><br>
+	 * @param {string} $value The value corresponding to the type. 
 	 * NOTE: If the person we are representing here comes and registers the regular way,
 	 * and then later adds an email, mobile, or authenticates with a platform,
 	 * which happens to match the "future" mapping we inserted in users_identify table, 
@@ -1549,12 +1546,14 @@ abstract class Users extends Base_Users
 	 * a different user. Later on, we may have some sort function to merge users together. 
 	 *
 	 * @param {&string} [$status=null] The status of the user - 'verified' or 'future'
+	 * @param {&boolean} [$inserted=false] Whether a new user was inserted
 	 * @return {Users_User}
 	 * @throws {Q_Exception_WrongType} If $type is not supported
 	 * @throws {Q_Exception_MissingRow} If identity for user exists but user does not exists
 	 */
-	static function futureUser($type, $value, &$status = null)
+	static function futureUser($type, $value, &$status = null, &$inserted = false)
 	{
+		$inserted = false;
 		if ($type !== 'none') {
 			$ui = Users::identify($type, $value, null);
 			if ($ui && !empty($ui->userId)) {
@@ -1580,10 +1579,8 @@ abstract class Users extends Base_Users
 		$user->icon = '{{Users}}/img/icons/future';
 		if ($type === 'email') {
 			$user->emailAddressPending = $value;
-			$user->save();
 		} else if ($type === 'mobile') {
 			$user->mobileNumberPending = $value;
-			$user->save();
 		} else if (substr($type, -7) !== '_hashed') {
 			$user->setXid($type, $value, true);
 		}
@@ -1595,6 +1592,7 @@ abstract class Users extends Base_Users
 		 */
 		Q::event('Users/insertUser', @compact('user', 'during'), 'before');
 		$user->save(); // sets the user's id
+		$inserted = true;
 		/**
 		 * @event Users/insertUser {after}
 		 * @param {string} during

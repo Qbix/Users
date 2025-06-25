@@ -60,6 +60,13 @@
 			"Users/contractMetadata/:communityId.json": { "module": "Users", "action": "contractMetadata" },
             "URI/:userId/:chainId/:roleId.json": { "module": "Users", "action": "labels" }
 		},
+		"username": {
+			"unique": true,
+			"conflict": {
+				"increment": false,
+				"null": true
+			}
+		},
 		"session": {
 			"db": {
 				"connection": "Users",
@@ -196,6 +203,11 @@
 				"gender", "age_range", "verified",
 				"link", "picture", "cover"
 			]
+		},
+		"futureUser": {
+			"facebook": {
+				"icon": false
+			}
 		},
 		"login": {
 			"identifierType": "email,mobile",
