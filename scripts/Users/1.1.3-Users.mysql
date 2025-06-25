@@ -1,0 +1,1 @@
+ALTER TABLE `{{prefix}}identify` CHANGE `state` `state` enum('verified','future','unlinked')  NOT NULL COMMENT '"future" is a mapping to a user which may later be adopted by someone';

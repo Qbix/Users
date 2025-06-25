@@ -73,7 +73,7 @@ abstract class Base_Users_Field extends Db_Row
 	 * @property $dialogId
 	 * @type string
 	 * @default null
-	 * 
+	 * For tagging temporary fields with certain dialog IDs
 	 */
 	/**
 	 * The setUp() method is called the first time
@@ -397,7 +397,7 @@ return array (
   ),
   1 => false,
   2 => 'PRI',
-  3 => NULL,
+  3 => '',
 );			
 	}
 
@@ -732,7 +732,7 @@ return array (
 	{
 		if (!$this->retrieved) {
 			$table = $this->getTable();
-			foreach (array('userId','name') as $name) {
+			foreach (array('userId') as $name) {
 				if (!isset($value[$name])) {
 					throw new Exception("the field $table.$name needs a value, because it is NOT NULL, not auto_increment, and lacks a default value.");
 				}
