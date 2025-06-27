@@ -1613,8 +1613,9 @@ abstract class Users extends Base_Users
 		if ($type != 'email' and $type != 'mobile') {
 			if ($type !== 'none') {
 				// Save an identifier => user pair for this future user
+				list($hashed, $ui_type) = self::hashing($value, $type);
 				$ui = new Users_Identify();
-				$ui->identifier = "$type:$value";
+				$ui->identifier = "$ui_type:$hashed";
 				$ui->state = 'future';
 				if (!$ui->retrieve()) {
 					$ui->userId = $user->id;

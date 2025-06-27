@@ -868,6 +868,30 @@ return array (
 		}						
 		// convention: we'll have updatedTime = insertedTime if just created.
 		$this->updatedTime = $value['updatedTime'] = new Db_Expression('CURRENT_TIMESTAMP');
+		if (!isset($value["number"])) {
+			$this->number = $value["number"] = "";
+		}
+		if (!isset($value["userId"])) {
+			$this->userId = $value["userId"] = "";
+		}
+		if (!isset($value["extension"])) {
+			$this->extension = $value["extension"] = "";
+		}
+		if (!isset($value["carrier"])) {
+			$this->carrier = $value["carrier"] = "unverified";
+		}
+		if (!isset($value["state"])) {
+			$this->state = $value["state"] = "unverified";
+		}
+		if (!isset($value["capabilities"])) {
+			$this->capabilities = $value["capabilities"] = "unverified";
+		}
+		if (!isset($value["activationCode"])) {
+			$this->activationCode = $value["activationCode"] = "";
+		}
+		if (!isset($value["authCode"])) {
+			$this->authCode = $value["authCode"] = "";
+		}
 		return $value;			
 	}
 

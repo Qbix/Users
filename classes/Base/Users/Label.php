@@ -612,6 +612,18 @@ return array (
 		}						
 		// convention: we'll have updatedTime = insertedTime if just created.
 		$this->updatedTime = $value['updatedTime'] = new Db_Expression('CURRENT_TIMESTAMP');
+		if (!isset($value["userId"])) {
+			$this->userId = $value["userId"] = "";
+		}
+		if (!isset($value["label"])) {
+			$this->label = $value["label"] = "";
+		}
+		if (!isset($value["icon"])) {
+			$this->icon = $value["icon"] = "0x64656661756C74";
+		}
+		if (!isset($value["title"])) {
+			$this->title = $value["title"] = "";
+		}
 		return $value;			
 	}
 

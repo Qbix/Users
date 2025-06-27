@@ -787,6 +787,15 @@ return array (
 		}						
 		// convention: we'll have updatedTime = insertedTime if just created.
 		$this->updatedTime = $value['updatedTime'] = new Db_Expression('CURRENT_TIMESTAMP');
+		if (!isset($value["token"])) {
+			$this->token = $value["token"] = "";
+		}
+		if (!isset($value["action"])) {
+			$this->action = $value["action"] = "";
+		}
+		if (!isset($value["instructions"])) {
+			$this->instructions = $value["instructions"] = "";
+		}
 		return $value;			
 	}
 

@@ -534,6 +534,24 @@ return array (
 );			
 	}
 
+	function beforeSave($value)
+	{
+
+		if (!isset($value["userId"])) {
+			$this->userId = $value["userId"] = "";
+		}
+		if (!isset($value["resourceId"])) {
+			$this->resourceId = $value["resourceId"] = "";
+		}
+		if (!isset($value["name"])) {
+			$this->name = $value["name"] = "";
+		}
+		if (!isset($value["units"])) {
+			$this->units = $value["units"] = 1;
+		}
+			
+	}
+
 	/**
 	 * Retrieves field names for class table
 	 * @method fieldNames

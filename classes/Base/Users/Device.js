@@ -722,6 +722,21 @@ Base.prototype.beforeSave = function (value) {
 	}
 	// convention: we'll have updatedTime = insertedTime if just created.
 	this['updatedTime'] = value['updatedTime'] = new Db.Expression('CURRENT_TIMESTAMP');
+	if (this.fields["userId"] == undefined) {
+		this.fields["userId"] = value["userId"] = "";
+	}
+	if (this.fields["deviceId"] == undefined) {
+		this.fields["deviceId"] = value["deviceId"] = "";
+	}
+	if (this.fields["platform"] == undefined) {
+		this.fields["platform"] = value["platform"] = "";
+	}
+	if (this.fields["sessionId"] == undefined) {
+		this.fields["sessionId"] = value["sessionId"] = "";
+	}
+	if (this.fields["auth"] == undefined) {
+		this.fields["auth"] = value["auth"] = "";
+	}
 	return value;
 };
 

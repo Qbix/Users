@@ -814,6 +814,33 @@ Base.prototype.beforeSave = function (value) {
 	}
 	// convention: we'll have updatedTime = insertedTime if just created.
 	this['updatedTime'] = value['updatedTime'] = new Db.Expression('CURRENT_TIMESTAMP');
+	if (this.fields["chainId"] == undefined) {
+		this.fields["chainId"] = value["chainId"] = "";
+	}
+	if (this.fields["transactionId"] == undefined) {
+		this.fields["transactionId"] = value["transactionId"] = "";
+	}
+	if (this.fields["status"] == undefined) {
+		this.fields["status"] = value["status"] = "pending";
+	}
+	if (this.fields["contract"] == undefined) {
+		this.fields["contract"] = value["contract"] = "";
+	}
+	if (this.fields["contractABIName"] == undefined) {
+		this.fields["contractABIName"] = value["contractABIName"] = "";
+	}
+	if (this.fields["methodName"] == undefined) {
+		this.fields["methodName"] = value["methodName"] = "";
+	}
+	if (this.fields["params"] == undefined) {
+		this.fields["params"] = value["params"] = "";
+	}
+	if (this.fields["fromAddress"] == undefined) {
+		this.fields["fromAddress"] = value["fromAddress"] = "";
+	}
+	if (this.fields["userId"] == undefined) {
+		this.fields["userId"] = value["userId"] = "";
+	}
 	return value;
 };
 

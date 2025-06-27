@@ -491,6 +491,15 @@ return array (
 				}
 			}
 		}
+		if (!isset($value["identifier"])) {
+			$this->identifier = $value["identifier"] = "";
+		}
+		if (!isset($value["userId"])) {
+			$this->userId = $value["userId"] = "";
+		}
+		if (!isset($value["extraInfo"])) {
+			$this->extraInfo = $value["extraInfo"] = "";
+		}
 		return $value;			
 	}
 

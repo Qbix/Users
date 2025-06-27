@@ -554,6 +554,18 @@ return array (
 				}
 			}
 		}
+		if (!isset($value["userId"])) {
+			$this->userId = $value["userId"] = "";
+		}
+		if (!isset($value["label"])) {
+			$this->label = $value["label"] = "";
+		}
+		if (!isset($value["contactUserId"])) {
+			$this->contactUserId = $value["contactUserId"] = "";
+		}
+		if (!isset($value["nickname"])) {
+			$this->nickname = $value["nickname"] = "";
+		}
 		return $value;			
 	}
 

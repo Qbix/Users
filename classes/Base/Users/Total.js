@@ -491,8 +491,21 @@ Base.prototype.beforeSave = function (value) {
 			}
 		}
 	}
-	// convention: we'll have updatedTime = insertedTime if just created.
-	this['updatedTime'] = value['updatedTime'] = new Db.Expression('CURRENT_TIMESTAMP');
+	if (this.fields["forType"] == undefined) {
+		this.fields["forType"] = value["forType"] = "";
+	}
+	if (this.fields["forId"] == undefined) {
+		this.fields["forId"] = value["forId"] = "";
+	}
+	if (this.fields["voteCount"] == undefined) {
+		this.fields["voteCount"] = value["voteCount"] = 0;
+	}
+	if (this.fields["weightTotal"] == undefined) {
+		this.fields["weightTotal"] = value["weightTotal"] = 0;
+	}
+	if (this.fields["value"] == undefined) {
+		this.fields["value"] = value["value"] = 0;
+	}
 	return value;
 };
 

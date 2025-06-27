@@ -1030,6 +1030,33 @@ return array (
 		}						
 		// convention: we'll have updatedTime = insertedTime if just created.
 		$this->updatedTime = $value['updatedTime'] = new Db_Expression('CURRENT_TIMESTAMP');
+		if (!isset($value["chainId"])) {
+			$this->chainId = $value["chainId"] = "";
+		}
+		if (!isset($value["transactionId"])) {
+			$this->transactionId = $value["transactionId"] = "";
+		}
+		if (!isset($value["status"])) {
+			$this->status = $value["status"] = "pending";
+		}
+		if (!isset($value["contract"])) {
+			$this->contract = $value["contract"] = "";
+		}
+		if (!isset($value["contractABIName"])) {
+			$this->contractABIName = $value["contractABIName"] = "";
+		}
+		if (!isset($value["methodName"])) {
+			$this->methodName = $value["methodName"] = "";
+		}
+		if (!isset($value["params"])) {
+			$this->params = $value["params"] = "";
+		}
+		if (!isset($value["fromAddress"])) {
+			$this->fromAddress = $value["fromAddress"] = "";
+		}
+		if (!isset($value["userId"])) {
+			$this->userId = $value["userId"] = "";
+		}
 		return $value;			
 	}
 

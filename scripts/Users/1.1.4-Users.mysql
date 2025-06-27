@@ -1,0 +1,1 @@
+ALTER TABLE `{{prefix}}user` MODIFY signedUpWith varchar(31) NOT NULL DEFAULT 'none' COMMENT 'A platform like ios or android, or "none", "mobile", "email"';

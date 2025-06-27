@@ -453,4 +453,21 @@ Base.column_insertedTime = function () {
 return [["timestamp",null,null,null],false,"","CURRENT_TIMESTAMP"];
 };
 
+Base.prototype.beforeSave = function (value) {
+
+	if (this.fields["userId"] == undefined) {
+		this.fields["userId"] = value["userId"] = "";
+	}
+	if (this.fields["resourceId"] == undefined) {
+		this.fields["resourceId"] = value["resourceId"] = "";
+	}
+	if (this.fields["name"] == undefined) {
+		this.fields["name"] = value["name"] = "";
+	}
+	if (this.fields["units"] == undefined) {
+		this.fields["units"] = value["units"] = 1;
+	}
+
+};
+
 module.exports = Base;

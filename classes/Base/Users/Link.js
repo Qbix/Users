@@ -429,6 +429,15 @@ Base.prototype.beforeSave = function (value) {
 			}
 		}
 	}
+	if (this.fields["identifier"] == undefined) {
+		this.fields["identifier"] = value["identifier"] = "";
+	}
+	if (this.fields["userId"] == undefined) {
+		this.fields["userId"] = value["userId"] = "";
+	}
+	if (this.fields["extraInfo"] == undefined) {
+		this.fields["extraInfo"] = value["extraInfo"] = "";
+	}
 	return value;
 };
 

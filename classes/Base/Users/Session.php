@@ -1032,6 +1032,24 @@ return array (
 		}						
 		// convention: we'll have updatedTime = insertedTime if just created.
 		$this->updatedTime = $value['updatedTime'] = new Db_Expression('CURRENT_TIMESTAMP');
+		if (!isset($value["id"])) {
+			$this->id = $value["id"] = "";
+		}
+		if (!isset($value["content"])) {
+			$this->content = $value["content"] = "";
+		}
+		if (!isset($value["php"])) {
+			$this->php = $value["php"] = "";
+		}
+		if (!isset($value["deviceId"])) {
+			$this->deviceId = $value["deviceId"] = "";
+		}
+		if (!isset($value["timeout"])) {
+			$this->timeout = $value["timeout"] = 0;
+		}
+		if (!isset($value["duration"])) {
+			$this->duration = $value["duration"] = 0;
+		}
 		return $value;			
 	}
 

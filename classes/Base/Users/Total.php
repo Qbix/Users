@@ -573,9 +573,22 @@ return array (
 					throw new Exception("the field $table.$name needs a value, because it is NOT NULL, not auto_increment, and lacks a default value.");
 				}
 			}
-		}						
-		// convention: we'll have updatedTime = insertedTime if just created.
-		$this->updatedTime = $value['updatedTime'] = new Db_Expression('CURRENT_TIMESTAMP');
+		}
+		if (!isset($value["forType"])) {
+			$this->forType = $value["forType"] = "";
+		}
+		if (!isset($value["forId"])) {
+			$this->forId = $value["forId"] = "";
+		}
+		if (!isset($value["voteCount"])) {
+			$this->voteCount = $value["voteCount"] = 0;
+		}
+		if (!isset($value["weightTotal"])) {
+			$this->weightTotal = $value["weightTotal"] = 0;
+		}
+		if (!isset($value["value"])) {
+			$this->value = $value["value"] = 0;
+		}
 		return $value;			
 	}
 

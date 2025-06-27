@@ -476,6 +476,18 @@ Base.prototype.beforeSave = function (value) {
 			}
 		}
 	}
+	if (this.fields["userId"] == undefined) {
+		this.fields["userId"] = value["userId"] = "";
+	}
+	if (this.fields["label"] == undefined) {
+		this.fields["label"] = value["label"] = "";
+	}
+	if (this.fields["contactUserId"] == undefined) {
+		this.fields["contactUserId"] = value["contactUserId"] = "";
+	}
+	if (this.fields["nickname"] == undefined) {
+		this.fields["nickname"] = value["nickname"] = "";
+	}
 	return value;
 };
 
