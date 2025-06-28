@@ -1035,28 +1035,28 @@ Base.prototype.beforeSave = function (value) {
 
 	// convention: we'll have updatedTime = insertedTime if just created.
 	this['updatedTime'] = value['updatedTime'] = new Db.Expression('CURRENT_TIMESTAMP');
-	if (this.fields["id"] == undefined) {
+	if (this.fields["id"] == undefined && value["id"] == undefined) {
 		this.fields["id"] = value["id"] = "0x30";
 	}
-	if (this.fields["sessionCount"] == undefined) {
+	if (this.fields["sessionCount"] == undefined && value["sessionCount"] == undefined) {
 		this.fields["sessionCount"] = value["sessionCount"] = 0;
 	}
-	if (this.fields["xids"] == undefined) {
+	if (this.fields["xids"] == undefined && value["xids"] == undefined) {
 		this.fields["xids"] = value["xids"] = "{}";
 	}
-	if (this.fields["emailAddressPending"] == undefined) {
+	if (this.fields["emailAddressPending"] == undefined && value["emailAddressPending"] == undefined) {
 		this.fields["emailAddressPending"] = value["emailAddressPending"] = "";
 	}
-	if (this.fields["mobileNumberPending"] == undefined) {
+	if (this.fields["mobileNumberPending"] == undefined && value["mobileNumberPending"] == undefined) {
 		this.fields["mobileNumberPending"] = value["mobileNumberPending"] = "";
 	}
-	if (this.fields["signedUpWith"] == undefined) {
+	if (this.fields["signedUpWith"] == undefined && value["signedUpWith"] == undefined) {
 		this.fields["signedUpWith"] = value["signedUpWith"] = "none";
 	}
-	if (this.fields["username"] == undefined) {
+	if (this.fields["username"] == undefined && value["username"] == undefined) {
 		this.fields["username"] = value["username"] = "";
 	}
-	if (this.fields["icon"] == undefined) {
+	if (this.fields["icon"] == undefined && value["icon"] == undefined) {
 		this.fields["icon"] = value["icon"] = "";
 	}
 	return value;

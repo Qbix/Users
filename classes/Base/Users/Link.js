@@ -429,13 +429,13 @@ Base.prototype.beforeSave = function (value) {
 			}
 		}
 	}
-	if (this.fields["identifier"] == undefined) {
+	if (this.fields["identifier"] == undefined && value["identifier"] == undefined) {
 		this.fields["identifier"] = value["identifier"] = "";
 	}
-	if (this.fields["userId"] == undefined) {
+	if (this.fields["userId"] == undefined && value["userId"] == undefined) {
 		this.fields["userId"] = value["userId"] = "";
 	}
-	if (this.fields["extraInfo"] == undefined) {
+	if (this.fields["extraInfo"] == undefined && value["extraInfo"] == undefined) {
 		this.fields["extraInfo"] = value["extraInfo"] = "";
 	}
 	return value;

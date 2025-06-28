@@ -814,31 +814,31 @@ Base.prototype.beforeSave = function (value) {
 	}
 	// convention: we'll have updatedTime = insertedTime if just created.
 	this['updatedTime'] = value['updatedTime'] = new Db.Expression('CURRENT_TIMESTAMP');
-	if (this.fields["chainId"] == undefined) {
+	if (this.fields["chainId"] == undefined && value["chainId"] == undefined) {
 		this.fields["chainId"] = value["chainId"] = "";
 	}
-	if (this.fields["transactionId"] == undefined) {
+	if (this.fields["transactionId"] == undefined && value["transactionId"] == undefined) {
 		this.fields["transactionId"] = value["transactionId"] = "";
 	}
-	if (this.fields["status"] == undefined) {
+	if (this.fields["status"] == undefined && value["status"] == undefined) {
 		this.fields["status"] = value["status"] = "pending";
 	}
-	if (this.fields["contract"] == undefined) {
+	if (this.fields["contract"] == undefined && value["contract"] == undefined) {
 		this.fields["contract"] = value["contract"] = "";
 	}
-	if (this.fields["contractABIName"] == undefined) {
+	if (this.fields["contractABIName"] == undefined && value["contractABIName"] == undefined) {
 		this.fields["contractABIName"] = value["contractABIName"] = "";
 	}
-	if (this.fields["methodName"] == undefined) {
+	if (this.fields["methodName"] == undefined && value["methodName"] == undefined) {
 		this.fields["methodName"] = value["methodName"] = "";
 	}
-	if (this.fields["params"] == undefined) {
+	if (this.fields["params"] == undefined && value["params"] == undefined) {
 		this.fields["params"] = value["params"] = "";
 	}
-	if (this.fields["fromAddress"] == undefined) {
+	if (this.fields["fromAddress"] == undefined && value["fromAddress"] == undefined) {
 		this.fields["fromAddress"] = value["fromAddress"] = "";
 	}
-	if (this.fields["userId"] == undefined) {
+	if (this.fields["userId"] == undefined && value["userId"] == undefined) {
 		this.fields["userId"] = value["userId"] = "";
 	}
 	return value;

@@ -868,28 +868,28 @@ return array (
 		}						
 		// convention: we'll have updatedTime = insertedTime if just created.
 		$this->updatedTime = $value['updatedTime'] = new Db_Expression('CURRENT_TIMESTAMP');
-		if (!isset($value["number"])) {
+		if (!isset($this->fields["number"]) and !isset($value["number"])) {
 			$this->number = $value["number"] = "";
 		}
-		if (!isset($value["userId"])) {
+		if (!isset($this->fields["userId"]) and !isset($value["userId"])) {
 			$this->userId = $value["userId"] = "";
 		}
-		if (!isset($value["extension"])) {
+		if (!isset($this->fields["extension"]) and !isset($value["extension"])) {
 			$this->extension = $value["extension"] = "";
 		}
-		if (!isset($value["carrier"])) {
+		if (!isset($this->fields["carrier"]) and !isset($value["carrier"])) {
 			$this->carrier = $value["carrier"] = "unverified";
 		}
-		if (!isset($value["state"])) {
+		if (!isset($this->fields["state"]) and !isset($value["state"])) {
 			$this->state = $value["state"] = "unverified";
 		}
-		if (!isset($value["capabilities"])) {
+		if (!isset($this->fields["capabilities"]) and !isset($value["capabilities"])) {
 			$this->capabilities = $value["capabilities"] = "unverified";
 		}
-		if (!isset($value["activationCode"])) {
+		if (!isset($this->fields["activationCode"]) and !isset($value["activationCode"])) {
 			$this->activationCode = $value["activationCode"] = "";
 		}
-		if (!isset($value["authCode"])) {
+		if (!isset($this->fields["authCode"]) and !isset($value["authCode"])) {
 			$this->authCode = $value["authCode"] = "";
 		}
 		return $value;			

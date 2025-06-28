@@ -554,16 +554,16 @@ return array (
 				}
 			}
 		}
-		if (!isset($value["userId"])) {
+		if (!isset($this->fields["userId"]) and !isset($value["userId"])) {
 			$this->userId = $value["userId"] = "";
 		}
-		if (!isset($value["label"])) {
+		if (!isset($this->fields["label"]) and !isset($value["label"])) {
 			$this->label = $value["label"] = "";
 		}
-		if (!isset($value["contactUserId"])) {
+		if (!isset($this->fields["contactUserId"]) and !isset($value["contactUserId"])) {
 			$this->contactUserId = $value["contactUserId"] = "";
 		}
-		if (!isset($value["nickname"])) {
+		if (!isset($this->fields["nickname"]) and !isset($value["nickname"])) {
 			$this->nickname = $value["nickname"] = "";
 		}
 		return $value;			

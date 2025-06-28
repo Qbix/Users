@@ -910,19 +910,19 @@ return array (
 		}						
 		// convention: we'll have updatedTime = insertedTime if just created.
 		$this->updatedTime = $value['updatedTime'] = new Db_Expression('CURRENT_TIMESTAMP');
-		if (!isset($value["userId"])) {
+		if (!isset($this->fields["userId"]) and !isset($value["userId"])) {
 			$this->userId = $value["userId"] = "";
 		}
-		if (!isset($value["deviceId"])) {
+		if (!isset($this->fields["deviceId"]) and !isset($value["deviceId"])) {
 			$this->deviceId = $value["deviceId"] = "";
 		}
-		if (!isset($value["platform"])) {
+		if (!isset($this->fields["platform"]) and !isset($value["platform"])) {
 			$this->platform = $value["platform"] = "";
 		}
-		if (!isset($value["sessionId"])) {
+		if (!isset($this->fields["sessionId"]) and !isset($value["sessionId"])) {
 			$this->sessionId = $value["sessionId"] = "";
 		}
-		if (!isset($value["auth"])) {
+		if (!isset($this->fields["auth"]) and !isset($value["auth"])) {
 			$this->auth = $value["auth"] = "";
 		}
 		return $value;			

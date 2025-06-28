@@ -476,16 +476,16 @@ Base.prototype.beforeSave = function (value) {
 			}
 		}
 	}
-	if (this.fields["userId"] == undefined) {
+	if (this.fields["userId"] == undefined && value["userId"] == undefined) {
 		this.fields["userId"] = value["userId"] = "";
 	}
-	if (this.fields["label"] == undefined) {
+	if (this.fields["label"] == undefined && value["label"] == undefined) {
 		this.fields["label"] = value["label"] = "";
 	}
-	if (this.fields["contactUserId"] == undefined) {
+	if (this.fields["contactUserId"] == undefined && value["contactUserId"] == undefined) {
 		this.fields["contactUserId"] = value["contactUserId"] = "";
 	}
-	if (this.fields["nickname"] == undefined) {
+	if (this.fields["nickname"] == undefined && value["nickname"] == undefined) {
 		this.fields["nickname"] = value["nickname"] = "";
 	}
 	return value;

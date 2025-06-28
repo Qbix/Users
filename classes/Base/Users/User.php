@@ -1348,28 +1348,28 @@ return array (
 						
 		// convention: we'll have updatedTime = insertedTime if just created.
 		$this->updatedTime = $value['updatedTime'] = new Db_Expression('CURRENT_TIMESTAMP');
-		if (!isset($value["id"])) {
+		if (!isset($this->fields["id"]) and !isset($value["id"])) {
 			$this->id = $value["id"] = "0x30";
 		}
-		if (!isset($value["sessionCount"])) {
+		if (!isset($this->fields["sessionCount"]) and !isset($value["sessionCount"])) {
 			$this->sessionCount = $value["sessionCount"] = 0;
 		}
-		if (!isset($value["xids"])) {
+		if (!isset($this->fields["xids"]) and !isset($value["xids"])) {
 			$this->xids = $value["xids"] = "{}";
 		}
-		if (!isset($value["emailAddressPending"])) {
+		if (!isset($this->fields["emailAddressPending"]) and !isset($value["emailAddressPending"])) {
 			$this->emailAddressPending = $value["emailAddressPending"] = "";
 		}
-		if (!isset($value["mobileNumberPending"])) {
+		if (!isset($this->fields["mobileNumberPending"]) and !isset($value["mobileNumberPending"])) {
 			$this->mobileNumberPending = $value["mobileNumberPending"] = "";
 		}
-		if (!isset($value["signedUpWith"])) {
+		if (!isset($this->fields["signedUpWith"]) and !isset($value["signedUpWith"])) {
 			$this->signedUpWith = $value["signedUpWith"] = "none";
 		}
-		if (!isset($value["username"])) {
+		if (!isset($this->fields["username"]) and !isset($value["username"])) {
 			$this->username = $value["username"] = "";
 		}
-		if (!isset($value["icon"])) {
+		if (!isset($this->fields["icon"]) and !isset($value["icon"])) {
 			$this->icon = $value["icon"] = "";
 		}
 		return $value;			

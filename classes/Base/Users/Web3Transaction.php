@@ -1030,31 +1030,31 @@ return array (
 		}						
 		// convention: we'll have updatedTime = insertedTime if just created.
 		$this->updatedTime = $value['updatedTime'] = new Db_Expression('CURRENT_TIMESTAMP');
-		if (!isset($value["chainId"])) {
+		if (!isset($this->fields["chainId"]) and !isset($value["chainId"])) {
 			$this->chainId = $value["chainId"] = "";
 		}
-		if (!isset($value["transactionId"])) {
+		if (!isset($this->fields["transactionId"]) and !isset($value["transactionId"])) {
 			$this->transactionId = $value["transactionId"] = "";
 		}
-		if (!isset($value["status"])) {
+		if (!isset($this->fields["status"]) and !isset($value["status"])) {
 			$this->status = $value["status"] = "pending";
 		}
-		if (!isset($value["contract"])) {
+		if (!isset($this->fields["contract"]) and !isset($value["contract"])) {
 			$this->contract = $value["contract"] = "";
 		}
-		if (!isset($value["contractABIName"])) {
+		if (!isset($this->fields["contractABIName"]) and !isset($value["contractABIName"])) {
 			$this->contractABIName = $value["contractABIName"] = "";
 		}
-		if (!isset($value["methodName"])) {
+		if (!isset($this->fields["methodName"]) and !isset($value["methodName"])) {
 			$this->methodName = $value["methodName"] = "";
 		}
-		if (!isset($value["params"])) {
+		if (!isset($this->fields["params"]) and !isset($value["params"])) {
 			$this->params = $value["params"] = "";
 		}
-		if (!isset($value["fromAddress"])) {
+		if (!isset($this->fields["fromAddress"]) and !isset($value["fromAddress"])) {
 			$this->fromAddress = $value["fromAddress"] = "";
 		}
-		if (!isset($value["userId"])) {
+		if (!isset($this->fields["userId"]) and !isset($value["userId"])) {
 			$this->userId = $value["userId"] = "";
 		}
 		return $value;			

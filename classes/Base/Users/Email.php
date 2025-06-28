@@ -714,16 +714,16 @@ return array (
 		}						
 		// convention: we'll have updatedTime = insertedTime if just created.
 		$this->updatedTime = $value['updatedTime'] = new Db_Expression('CURRENT_TIMESTAMP');
-		if (!isset($value["address"])) {
+		if (!isset($this->fields["address"]) and !isset($value["address"])) {
 			$this->address = $value["address"] = "";
 		}
-		if (!isset($value["userId"])) {
+		if (!isset($this->fields["userId"]) and !isset($value["userId"])) {
 			$this->userId = $value["userId"] = "";
 		}
-		if (!isset($value["activationCode"])) {
+		if (!isset($this->fields["activationCode"]) and !isset($value["activationCode"])) {
 			$this->activationCode = $value["activationCode"] = "";
 		}
-		if (!isset($value["authCode"])) {
+		if (!isset($this->fields["authCode"]) and !isset($value["authCode"])) {
 			$this->authCode = $value["authCode"] = "";
 		}
 		return $value;			

@@ -637,19 +637,19 @@ return array (
 				}
 			}
 		}
-		if (!isset($value["userId"])) {
+		if (!isset($this->fields["userId"]) and !isset($value["userId"])) {
 			$this->userId = $value["userId"] = "";
 		}
-		if (!isset($value["forType"])) {
+		if (!isset($this->fields["forType"]) and !isset($value["forType"])) {
 			$this->forType = $value["forType"] = "";
 		}
-		if (!isset($value["forId"])) {
+		if (!isset($this->fields["forId"]) and !isset($value["forId"])) {
 			$this->forId = $value["forId"] = "";
 		}
-		if (!isset($value["value"])) {
+		if (!isset($this->fields["value"]) and !isset($value["value"])) {
 			$this->value = $value["value"] = 0;
 		}
-		if (!isset($value["weight"])) {
+		if (!isset($this->fields["weight"]) and !isset($value["weight"])) {
 			$this->weight = $value["weight"] = 1;
 		}
 		return $value;			

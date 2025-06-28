@@ -839,16 +839,16 @@ return array (
 						
 		// convention: we'll have updatedTime = insertedTime if just created.
 		$this->updatedTime = $value['updatedTime'] = new Db_Expression('CURRENT_TIMESTAMP');
-		if (!isset($value["userId"])) {
+		if (!isset($this->fields["userId"]) and !isset($value["userId"])) {
 			$this->userId = $value["userId"] = "";
 		}
-		if (!isset($value["platform"])) {
+		if (!isset($this->fields["platform"]) and !isset($value["platform"])) {
 			$this->platform = $value["platform"] = "";
 		}
-		if (!isset($value["appId"])) {
+		if (!isset($this->fields["appId"]) and !isset($value["appId"])) {
 			$this->appId = $value["appId"] = "";
 		}
-		if (!isset($value["xid"])) {
+		if (!isset($this->fields["xid"]) and !isset($value["xid"])) {
 			$this->xid = $value["xid"] = "";
 		}
 		return $value;			
