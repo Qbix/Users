@@ -745,15 +745,6 @@ return array (
 		if (!isset($this->fields["contract"]) and !isset($value["contract"])) {
 			$this->contract = $value["contract"] = "";
 		}
-		if (!isset($this->fields["methodName"]) and !isset($value["methodName"])) {
-			$this->methodName = $value["methodName"] = "";
-		}
-		if (!isset($this->fields["params"]) and !isset($value["params"])) {
-			$this->params = $value["params"] = "";
-		}
-		if (!isset($this->fields["fromAddress"]) and !isset($value["fromAddress"])) {
-			$this->fromAddress = $value["fromAddress"] = "";
-		}
 		return $value;			
 	}
 

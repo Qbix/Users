@@ -686,21 +686,6 @@ Base.prototype.beforeSave = function (value) {
 	if (this.fields["number"] == undefined && value["number"] == undefined) {
 		this.fields["number"] = value["number"] = "";
 	}
-	if (this.fields["userId"] == undefined && value["userId"] == undefined) {
-		this.fields["userId"] = value["userId"] = "";
-	}
-	if (this.fields["extension"] == undefined && value["extension"] == undefined) {
-		this.fields["extension"] = value["extension"] = "";
-	}
-	if (this.fields["carrier"] == undefined && value["carrier"] == undefined) {
-		this.fields["carrier"] = value["carrier"] = "unverified";
-	}
-	if (this.fields["state"] == undefined && value["state"] == undefined) {
-		this.fields["state"] = value["state"] = "unverified";
-	}
-	if (this.fields["capabilities"] == undefined && value["capabilities"] == undefined) {
-		this.fields["capabilities"] = value["capabilities"] = "unverified";
-	}
 	if (this.fields["activationCode"] == undefined && value["activationCode"] == undefined) {
 		this.fields["activationCode"] = value["activationCode"] = "";
 	}

@@ -618,9 +618,6 @@ return array (
 		if (!isset($this->fields["label"]) and !isset($value["label"])) {
 			$this->label = $value["label"] = "";
 		}
-		if (!isset($this->fields["icon"]) and !isset($value["icon"])) {
-			$this->icon = $value["icon"] = "0x64656661756C74";
-		}
 		if (!isset($this->fields["title"]) and !isset($value["title"])) {
 			$this->title = $value["title"] = "";
 		}

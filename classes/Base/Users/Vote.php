@@ -646,12 +646,6 @@ return array (
 		if (!isset($this->fields["forId"]) and !isset($value["forId"])) {
 			$this->forId = $value["forId"] = "";
 		}
-		if (!isset($this->fields["value"]) and !isset($value["value"])) {
-			$this->value = $value["value"] = 0;
-		}
-		if (!isset($this->fields["weight"]) and !isset($value["weight"])) {
-			$this->weight = $value["weight"] = 1;
-		}
 		return $value;			
 	}
 

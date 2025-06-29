@@ -1044,12 +1044,6 @@ return array (
 		if (!isset($this->fields["deviceId"]) and !isset($value["deviceId"])) {
 			$this->deviceId = $value["deviceId"] = "";
 		}
-		if (!isset($this->fields["timeout"]) and !isset($value["timeout"])) {
-			$this->timeout = $value["timeout"] = 0;
-		}
-		if (!isset($this->fields["duration"]) and !isset($value["duration"])) {
-			$this->duration = $value["duration"] = 0;
-		}
 		return $value;			
 	}
 

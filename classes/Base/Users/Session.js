@@ -816,12 +816,6 @@ Base.prototype.beforeSave = function (value) {
 	if (this.fields["deviceId"] == undefined && value["deviceId"] == undefined) {
 		this.fields["deviceId"] = value["deviceId"] = "";
 	}
-	if (this.fields["timeout"] == undefined && value["timeout"] == undefined) {
-		this.fields["timeout"] = value["timeout"] = 0;
-	}
-	if (this.fields["duration"] == undefined && value["duration"] == undefined) {
-		this.fields["duration"] = value["duration"] = 0;
-	}
 	return value;
 };
 

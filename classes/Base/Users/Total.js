@@ -497,15 +497,6 @@ Base.prototype.beforeSave = function (value) {
 	if (this.fields["forId"] == undefined && value["forId"] == undefined) {
 		this.fields["forId"] = value["forId"] = "";
 	}
-	if (this.fields["voteCount"] == undefined && value["voteCount"] == undefined) {
-		this.fields["voteCount"] = value["voteCount"] = 0;
-	}
-	if (this.fields["weightTotal"] == undefined && value["weightTotal"] == undefined) {
-		this.fields["weightTotal"] = value["weightTotal"] = 0;
-	}
-	if (this.fields["value"] == undefined && value["value"] == undefined) {
-		this.fields["value"] = value["value"] = 0;
-	}
 	return value;
 };
 

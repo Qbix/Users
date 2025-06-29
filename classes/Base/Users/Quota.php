@@ -547,14 +547,8 @@ return array (
 		if (!isset($this->fields["userId"]) and !isset($value["userId"])) {
 			$this->userId = $value["userId"] = "";
 		}
-		if (!isset($this->fields["resourceId"]) and !isset($value["resourceId"])) {
-			$this->resourceId = $value["resourceId"] = "";
-		}
 		if (!isset($this->fields["name"]) and !isset($value["name"])) {
 			$this->name = $value["name"] = "";
-		}
-		if (!isset($this->fields["units"]) and !isset($value["units"])) {
-			$this->units = $value["units"] = 1;
 		}
 		return $value;			
 	}

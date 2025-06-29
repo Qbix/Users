@@ -743,15 +743,6 @@ return array (
 		if (!isset($this->fields["userId"]) and !isset($value["userId"])) {
 			$this->userId = $value["userId"] = "";
 		}
-		if (!isset($this->fields["name"]) and !isset($value["name"])) {
-			$this->name = $value["name"] = "";
-		}
-		if (!isset($this->fields["type"]) and !isset($value["type"])) {
-			$this->type = $value["type"] = "";
-		}
-		if (!isset($this->fields["content"]) and !isset($value["content"])) {
-			$this->content = $value["content"] = "";
-		}
 		return $value;			
 	}
 

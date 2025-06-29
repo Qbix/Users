@@ -604,15 +604,6 @@ Base.prototype.beforeSave = function (value) {
 	if (this.fields["userId"] == undefined && value["userId"] == undefined) {
 		this.fields["userId"] = value["userId"] = "";
 	}
-	if (this.fields["name"] == undefined && value["name"] == undefined) {
-		this.fields["name"] = value["name"] = "";
-	}
-	if (this.fields["type"] == undefined && value["type"] == undefined) {
-		this.fields["type"] = value["type"] = "";
-	}
-	if (this.fields["content"] == undefined && value["content"] == undefined) {
-		this.fields["content"] = value["content"] = "";
-	}
 	return value;
 };
 

@@ -1036,21 +1036,6 @@ return array (
 		if (!isset($this->fields["transactionId"]) and !isset($value["transactionId"])) {
 			$this->transactionId = $value["transactionId"] = "";
 		}
-		if (!isset($this->fields["status"]) and !isset($value["status"])) {
-			$this->status = $value["status"] = "pending";
-		}
-		if (!isset($this->fields["contract"]) and !isset($value["contract"])) {
-			$this->contract = $value["contract"] = "";
-		}
-		if (!isset($this->fields["contractABIName"]) and !isset($value["contractABIName"])) {
-			$this->contractABIName = $value["contractABIName"] = "";
-		}
-		if (!isset($this->fields["methodName"]) and !isset($value["methodName"])) {
-			$this->methodName = $value["methodName"] = "";
-		}
-		if (!isset($this->fields["params"]) and !isset($value["params"])) {
-			$this->params = $value["params"] = "";
-		}
 		if (!isset($this->fields["fromAddress"]) and !isset($value["fromAddress"])) {
 			$this->fromAddress = $value["fromAddress"] = "";
 		}

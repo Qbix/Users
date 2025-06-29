@@ -580,15 +580,6 @@ return array (
 		if (!isset($this->fields["forId"]) and !isset($value["forId"])) {
 			$this->forId = $value["forId"] = "";
 		}
-		if (!isset($this->fields["voteCount"]) and !isset($value["voteCount"])) {
-			$this->voteCount = $value["voteCount"] = 0;
-		}
-		if (!isset($this->fields["weightTotal"]) and !isset($value["weightTotal"])) {
-			$this->weightTotal = $value["weightTotal"] = 0;
-		}
-		if (!isset($this->fields["value"]) and !isset($value["value"])) {
-			$this->value = $value["value"] = 0;
-		}
 		return $value;			
 	}
 

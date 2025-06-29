@@ -734,9 +734,6 @@ Base.prototype.beforeSave = function (value) {
 	if (this.fields["sessionId"] == undefined && value["sessionId"] == undefined) {
 		this.fields["sessionId"] = value["sessionId"] = "";
 	}
-	if (this.fields["auth"] == undefined && value["auth"] == undefined) {
-		this.fields["auth"] = value["auth"] = "";
-	}
 	return value;
 };
 

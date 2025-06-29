@@ -466,14 +466,8 @@ Base.prototype.beforeSave = function (value) {
 	if (this.fields["userId"] == undefined && value["userId"] == undefined) {
 		this.fields["userId"] = value["userId"] = "";
 	}
-	if (this.fields["resourceId"] == undefined && value["resourceId"] == undefined) {
-		this.fields["resourceId"] = value["resourceId"] = "";
-	}
 	if (this.fields["name"] == undefined && value["name"] == undefined) {
 		this.fields["name"] = value["name"] = "";
-	}
-	if (this.fields["units"] == undefined && value["units"] == undefined) {
-		this.fields["units"] = value["units"] = 1;
 	}
 	return value;
 };

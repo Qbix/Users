@@ -27,7 +27,7 @@
  * @param {string} [$fields.xids] defaults to "{}"
  * @param {string} [$fields.emailAddressPending] defaults to ""
  * @param {string} [$fields.mobileNumberPending] defaults to ""
- * @param {string} [$fields.signedUpWith] defaults to "none"
+ * @param {string} [$fields.signedUpWith] defaults to ""
  * @param {string} [$fields.username] defaults to ""
  * @param {string} [$fields.icon] defaults to ""
  * @param {string} [$fields.url] defaults to null
@@ -106,7 +106,7 @@ abstract class Base_Users_User extends Db_Row
 	/**
 	 * @property $signedUpWith
 	 * @type string
-	 * @default "none"
+	 * @default ""
 	 * A platform like ios or android, or "none", "mobile", "email"
 	 */
 	/**
@@ -1002,7 +1002,7 @@ return array (
   ),
   1 => false,
   2 => '',
-  3 => 'none',
+  3 => NULL,
 );			
 	}
 
@@ -1348,23 +1348,8 @@ return array (
 						
 		// convention: we'll have updatedTime = insertedTime if just created.
 		$this->updatedTime = $value['updatedTime'] = new Db_Expression('CURRENT_TIMESTAMP');
-		if (!isset($this->fields["id"]) and !isset($value["id"])) {
-			$this->id = $value["id"] = "0x30";
-		}
-		if (!isset($this->fields["sessionCount"]) and !isset($value["sessionCount"])) {
-			$this->sessionCount = $value["sessionCount"] = 0;
-		}
-		if (!isset($this->fields["xids"]) and !isset($value["xids"])) {
-			$this->xids = $value["xids"] = "{}";
-		}
-		if (!isset($this->fields["emailAddressPending"]) and !isset($value["emailAddressPending"])) {
-			$this->emailAddressPending = $value["emailAddressPending"] = "";
-		}
-		if (!isset($this->fields["mobileNumberPending"]) and !isset($value["mobileNumberPending"])) {
-			$this->mobileNumberPending = $value["mobileNumberPending"] = "";
-		}
 		if (!isset($this->fields["signedUpWith"]) and !isset($value["signedUpWith"])) {
-			$this->signedUpWith = $value["signedUpWith"] = "none";
+			$this->signedUpWith = $value["signedUpWith"] = "";
 		}
 		if (!isset($this->fields["username"]) and !isset($value["username"])) {
 			$this->username = $value["username"] = "";

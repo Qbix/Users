@@ -548,12 +548,6 @@ Base.prototype.beforeSave = function (value) {
 	if (this.fields["forId"] == undefined && value["forId"] == undefined) {
 		this.fields["forId"] = value["forId"] = "";
 	}
-	if (this.fields["value"] == undefined && value["value"] == undefined) {
-		this.fields["value"] = value["value"] = 0;
-	}
-	if (this.fields["weight"] == undefined && value["weight"] == undefined) {
-		this.fields["weight"] = value["weight"] = 1;
-	}
 	return value;
 };
 

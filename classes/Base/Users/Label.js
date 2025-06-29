@@ -517,9 +517,6 @@ Base.prototype.beforeSave = function (value) {
 	if (this.fields["label"] == undefined && value["label"] == undefined) {
 		this.fields["label"] = value["label"] = "";
 	}
-	if (this.fields["icon"] == undefined && value["icon"] == undefined) {
-		this.fields["icon"] = value["icon"] = "0x64656661756C74";
-	}
 	if (this.fields["title"] == undefined && value["title"] == undefined) {
 		this.fields["title"] = value["title"] = "";
 	}

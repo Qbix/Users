@@ -871,21 +871,6 @@ return array (
 		if (!isset($this->fields["number"]) and !isset($value["number"])) {
 			$this->number = $value["number"] = "";
 		}
-		if (!isset($this->fields["userId"]) and !isset($value["userId"])) {
-			$this->userId = $value["userId"] = "";
-		}
-		if (!isset($this->fields["extension"]) and !isset($value["extension"])) {
-			$this->extension = $value["extension"] = "";
-		}
-		if (!isset($this->fields["carrier"]) and !isset($value["carrier"])) {
-			$this->carrier = $value["carrier"] = "unverified";
-		}
-		if (!isset($this->fields["state"]) and !isset($value["state"])) {
-			$this->state = $value["state"] = "unverified";
-		}
-		if (!isset($this->fields["capabilities"]) and !isset($value["capabilities"])) {
-			$this->capabilities = $value["capabilities"] = "unverified";
-		}
 		if (!isset($this->fields["activationCode"]) and !isset($value["activationCode"])) {
 			$this->activationCode = $value["activationCode"] = "";
 		}

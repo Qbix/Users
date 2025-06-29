@@ -578,9 +578,6 @@ Base.prototype.beforeSave = function (value) {
 	if (this.fields["address"] == undefined && value["address"] == undefined) {
 		this.fields["address"] = value["address"] = "";
 	}
-	if (this.fields["userId"] == undefined && value["userId"] == undefined) {
-		this.fields["userId"] = value["userId"] = "";
-	}
 	if (this.fields["activationCode"] == undefined && value["activationCode"] == undefined) {
 		this.fields["activationCode"] = value["activationCode"] = "";
 	}

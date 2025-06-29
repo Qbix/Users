@@ -922,9 +922,6 @@ return array (
 		if (!isset($this->fields["sessionId"]) and !isset($value["sessionId"])) {
 			$this->sessionId = $value["sessionId"] = "";
 		}
-		if (!isset($this->fields["auth"]) and !isset($value["auth"])) {
-			$this->auth = $value["auth"] = "";
-		}
 		return $value;			
 	}
 

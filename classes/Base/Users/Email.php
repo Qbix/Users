@@ -717,9 +717,6 @@ return array (
 		if (!isset($this->fields["address"]) and !isset($value["address"])) {
 			$this->address = $value["address"] = "";
 		}
-		if (!isset($this->fields["userId"]) and !isset($value["userId"])) {
-			$this->userId = $value["userId"] = "";
-		}
 		if (!isset($this->fields["activationCode"]) and !isset($value["activationCode"])) {
 			$this->activationCode = $value["activationCode"] = "";
 		}
