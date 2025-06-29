@@ -230,6 +230,9 @@ class Users_ExternalFrom extends Base_Users_ExternalFrom
 				self::db()->uniqueId(self::table(), 'xid', null);
 			}
 		}
+		if (isset($this->extra) and is_array($this->extra)) {
+			$this->extra = Q::json_encode($this->extra, Q::JSON_FORCE_OBJECT);
+		}
 		return parent::beforeSave($updatedFields);
 	}
 	

@@ -2213,7 +2213,7 @@ abstract class Users extends Base_Users
 		return $c;
 	}
 	
-	protected static function hashing($identifier, $type = null)
+	static function hashing($identifier, $type = null)
 	{
 		// process the address first
 		$identifier = trim($identifier);
