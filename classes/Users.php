@@ -2639,14 +2639,18 @@ abstract class Users extends Base_Users
 		$text = Q_Text::get($communityId.'/content');
 		$uri = Q_Dispatcher::uri();
 		$action = $uri ? $uri->action : null;
+		$communityName = Users::communityName(true);
 		if (!isset($title)) {
-			$title = Q::ifset($text, $action, 'Title', Users::communityName(true));
+			$title = Q::ifset($text, $action, 'Title', $communityName);
+			$title = Q::text($title, array($communityName));
 		}
 		if (!isset($description)) {
-			$description = Q::ifset($text, $action, 'Description', null);	
+			$description = Q::ifset($text, $action, 'Description', null);
+			$description = Q::text($description, array($communityName));
 		}
 		if (!isset($keywords)) {
 			$keywords = Q::ifset($text, $action, 'Keywords', null);
+			$keywords = Q::text($keywords, array($communityName));
 		}
 		$communityIcon = Q_Uri::interpolateUrl($communityUser->icon.'/400.png');
 		$url = Q_Uri::url(Q_Dispatcher::uri());
