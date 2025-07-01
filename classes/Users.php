@@ -2667,7 +2667,7 @@ abstract class Users extends Base_Users
 			array('name' => 'property', 'value' => 'twitter:image', 'content' => $communityIcon),
 			array('name' => 'property', 'value' => 'og:url', 'content' => $url),
 			array('name' => 'property', 'value' => 'twitter:url', 'content' => $url),
-			array('name' => 'property', 'value' => 'twitter:card', 'content' => 'summary'),
+			array('name' => 'property', 'value' => 'twitter:card', 'content' => 'summary_large_image'),
 			array('name' => 'property', 'value' => 'og:type', 'content' => 'website'),
 		);
 		if ($fbApps = Q_Config::get('Users', 'apps', 'facebook', array())) {
