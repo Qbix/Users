@@ -2640,16 +2640,17 @@ abstract class Users extends Base_Users
 		$uri = Q_Dispatcher::uri();
 		$action = $uri ? $uri->action : null;
 		$communityName = Users::communityName(true);
+		$emoji = json_decode('"\\ud83c\\udfc1"');
 		if (!isset($title)) {
-			$title = Q::ifset($text, $action, 'Title', $communityName);
+			$title = Q::ifset($text, $action, 'Title', Q::ifset($text, '*', 'Title', "$emoji{{1}}"));
 			$title = Q::text($title, array($communityName));
 		}
 		if (!isset($description)) {
-			$description = Q::ifset($text, $action, 'Description', null);
+			$description = Q::ifset($text, $action, 'Description', Q::ifset($text, '*', 'Description', null));
 			$description = Q::text($description, array($communityName));
 		}
 		if (!isset($keywords)) {
-			$keywords = Q::ifset($text, $action, 'Keywords', null);
+			$keywords = Q::ifset($text, $action, 'Keywords', Q::ifset($text, '*', 'Keywords', null));
 			$keywords = Q::text($keywords, array($communityName));
 		}
 		$communityIcon = Q_Uri::interpolateUrl($communityUser->icon.'/400.png');
