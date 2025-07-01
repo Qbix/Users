@@ -2624,6 +2624,58 @@ abstract class Users extends Base_Users
 		}
 	}
 
+	/**
+	 * Call this method to return metas to pass to Q_Response::setMeta()
+	 * @param {string} [$title]
+	 * @param {string} [$description]
+	 * @param {string} [$keywords]
+	 * @return {array}
+	 */
+	static function metas($title = null, $description = null, $keywords = null)
+	{
+		$metas = array();
+		$communityId = Users::communityId();
+		$communityUser = Users_User::fetch($communityId);
+		$text = Q_Text::get($communityId.'/content');
+		$uri = Q_Dispatcher::uri();
+		$action = $uri ? $uri->action : null;
+		if (!isset($title)) {
+			$title = Q::ifset($text, $action, 'Title', Users::communityName(true));
+		}
+		if (!isset($description)) {
+			$description = Q::ifset($text, $action, 'Description', null);	
+		}
+		if (!isset($keywords)) {
+			$keywords = Q::ifset($text, $action, 'Keywords', null);
+		}
+		$communityIcon = Q_Uri::interpolateUrl($communityUser->icon.'/400.png');
+		$url = Q_Uri::url(Q_Dispatcher::uri());
+		$metas = array(
+			array('name' => 'name', 'value' => 'title', 'content' => $title),
+			array('name' => 'property', 'value' => 'og:title', 'content' => $title),
+			array('name' => 'property', 'value' => 'twitter:title', 'content' => $title),
+			array('name' => 'name', 'value' => 'description', 'content' => $description),
+			array('name' => 'property', 'value' => 'og:description', 'content' => $description),
+			array('name' => 'property', 'value' => 'twitter:description', 'content' => $description),
+			array('name' => 'name', 'value' => 'image', 'content' => $communityIcon),
+			array('name' => 'property', 'value' => 'og:image', 'content' => $communityIcon),
+			array('name' => 'property', 'value' => 'twitter:image', 'content' => $communityIcon),
+			array('name' => 'property', 'value' => 'og:url', 'content' => $url),
+			array('name' => 'property', 'value' => 'twitter:url', 'content' => $url),
+			array('name' => 'property', 'value' => 'twitter:card', 'content' => 'summary'),
+			array('name' => 'property', 'value' => 'og:type', 'content' => 'website'),
+		);
+		if ($fbApps = Q_Config::get('Users', 'apps', 'facebook', array())) {
+			$app = Q::app();
+			$fbApp = isset($fbApps[$app]) ? $fbApps[$app] : reset($fbApps);
+			if ($appId = $fbApp['appId']) {
+				$metas = array_merge($metas, array(
+					'name' => 'property', 'value' => 'fb:app_id', 'content' => $appId
+				));
+			}
+		}
+		return $metas;
+	}
 
 	/**
 	 * @property $logoutFetch
