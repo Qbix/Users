@@ -693,7 +693,7 @@ abstract class Users extends Base_Users
 		// session info for the platform app.
 		$accessToken = $externalFrom->accessToken;
 		$sessionExpires = $externalFrom->expires;
-		$extra = $externalFrom->extra;
+		$extra = isset($externalFrom->extra) ? $externalFrom->extra : null;
 		if (isset($_SESSION['Users']['externalFroms'][$platformApp])) {
 			// Platform app user exists. Do we need to update it? (Probably not!)
 			$pk = $_SESSION['Users']['externalFroms'][$platformApp];
