@@ -702,6 +702,8 @@
 		if (size === 'largestWidth' || size === 'largestHeight') {
 			size = Q.largestSize(Q.image.sizes['Users/icon'], size === 'largestHeight');
 		}
+		// todo: if userId, then use the default:
+		// web/Q/uploads/Users/cel/wlr/cr/icon/imported
 		size = (String(size).indexOf('.') >= 0) ? size : size + '.png';
 		var src = Q.interpolateUrl(icon + (size ? '/' + size : ''));
 		return src.isUrl() || icon.substring(0, 2) === '{{'

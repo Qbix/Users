@@ -13,10 +13,12 @@ Q.exports(function (Users, priv) {
      * @param {Function} callback Receives (err, key)
      */
     return Q.getter(function Users_Session_getKey(callback) {
-        Q.IndexedDB.open(Q.info.baseUrl, 'Q.Users.keys', 'id', function (err, store) {
+        var storeName = 'Q.Users.keys';
+        Q.IndexedDB.open(Q.info.baseUrl, storeName, 'id', function (err, db) {
             if (err) {
                 return Q.handle(callback, null, [err]);
             }
+            const store = db.transaction(storeName, 'readwrite').objectStore(storeName);
             var request = store.get('Users.Session');
             request.onsuccess = function (event) {
                 var key = Users.Session.key.loaded

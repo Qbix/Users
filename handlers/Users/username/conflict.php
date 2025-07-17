@@ -2,7 +2,7 @@
 
 function Users_username_conflict($params, $username)
 {
-    if (!Q_Config::get('Users', 'username', 'unique', true)) {
+    if (!Q_Config::get('Users', 'username', 'unique', false)) {
         $identify = $params['identify'];
         $identify->userId = '';
         return; // conflict is fine, but don't resolve identifier to a specific user anymore

@@ -23,7 +23,9 @@ Q.exports(function (Users, priv) {
             namedCurve: info.namedCurve
         }, false, ['sign', 'verify'])
         .then(function (key) {
-            Q.IndexedDB.open(Q.info.baseUrl, 'Q.Users.keys', 'id', function (err, store) {
+            var storeName = 'Q.Users.keys';
+            Q.IndexedDB.open(Q.info.baseUrl, storeName, 'id').then(function(db) {
+                const store = db.transaction(storeName, 'readwrite').objectStore(storeName);
                 var request = store.delete('Users.Session');
                 request.onsuccess = function (event) {
                     Q.handle(callback, null, [null, event, key]);
