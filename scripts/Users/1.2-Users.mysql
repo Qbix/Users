@@ -1,0 +1,13 @@
+CREATE TABLE `{{prefix}}referred` (
+  `userId` varbinary(31) NOT NULL,
+  `toCommunityId` varbinary(31) NOT NULL,
+  `referredByUserId` varbinary(31) NOT NULL,
+  `insertedTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedTime` timestamp NULL DEFAULT NULL,
+  `points` DECIMAL(4,2) DEFAULT NULL,
+  `qualifiedTime` timestamp NULL,
+  `extra` VARCHAR(1023) NOT NULL DEFAULT '{}',
+  PRIMARY KEY (`userId`,`toCommunityId`,`referredByUserId`),
+  KEY (`toCommunityId`,`referredByUserId`),
+  KEY (`referredByUserId`,`toCommunityId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Represents an accepted referral to a community';

@@ -40,6 +40,7 @@ Base.tableClasses = [
 	"Users_Mobile",
 	"Users_Permission",
 	"Users_Quota",
+	"Users_Referred",
 	"Users_Session",
 	"Users_Total",
 	"Users_User",
@@ -157,6 +158,13 @@ Base.Permission = Q.require('Users/Permission');
  * @type Users.Quota
  */
 Base.Quota = Q.require('Users/Quota');
+
+/**
+ * Link to Users.Referred model
+ * @property Referred
+ * @type Users.Referred
+ */
+Base.Referred = Q.require('Users/Referred');
 
 /**
  * Link to Users.Session model

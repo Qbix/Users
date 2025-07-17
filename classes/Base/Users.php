@@ -33,12 +33,13 @@ abstract class Base_Users
   10 => 'Users_Mobile',
   11 => 'Users_Permission',
   12 => 'Users_Quota',
-  13 => 'Users_Session',
-  14 => 'Users_Total',
-  15 => 'Users_User',
-  16 => 'Users_Vote',
-  17 => 'Users_Web3',
-  18 => 'Users_Web3Transaction',
+  13 => 'Users_Referred',
+  14 => 'Users_Session',
+  15 => 'Users_Total',
+  16 => 'Users_User',
+  17 => 'Users_Vote',
+  18 => 'Users_Web3',
+  19 => 'Users_Web3Transaction',
 );
 
 	/**
