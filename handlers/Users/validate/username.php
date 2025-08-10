@@ -20,6 +20,9 @@ function Users_validate_username($params)
 	if (strlen($username) < Q_Config::get("Users", "validate", "username", "min", 4)) {
 		throw new Users_Exception_UsernameTooShort(array('length' => 4), array('username'));
 	}
+	if (strlen($username) < Q_Config::get("Users", "validate", "username", "max", 20)) {
+		throw new Users_Exception_UsernameTooLong(array('length' => 20), array('username'));
+	}
 	$maxUserName = (new Users_User())->maxSize_username();
 	if (strlen($username) > $maxUserName) {
 		throw new Users_Exception_UsernameTooLong(array('length' => $maxUserName), array('username'));
