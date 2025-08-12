@@ -1,0 +1,3 @@
+UPDATE {{prefix}}session
+SET php = ''
+WHERE php != '';
