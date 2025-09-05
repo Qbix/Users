@@ -112,7 +112,7 @@ class Users_ExternalTo_Discourse extends Users_ExternalTo implements Users_Exter
         $baseUsername = !empty($user->username)
             ? $user->username
             : Q_Utils::normalize($displayName);
-        $username = $this->resolveAvailableUsername($baseUsername);
+        $username = $baseUsername;
         $fields = array(
             'name' => $displayName,
             'email' => $email,
@@ -126,12 +126,13 @@ class Users_ExternalTo_Discourse extends Users_ExternalTo implements Users_Exter
             "Api-Username: system"
         );
 
-        $response = Q_Utils::get($this->baseUrl."/u/$username.json", null, null, $headers);
+        $response = Q_Utils::get($this->baseUrl."/u/$baseUsername.json", null, null, $headers);
         $result = json_decode($response);
         if (Q::ifset($result, 'error_type', null) !== 'not_found') {
             $user_id = Q::ifset($result, 'user', 'id', null);
             $registered = false;
         } else {
+			$username = $fields['username'] = $this->resolveAvailableUsername($baseUsername);
             $response = Q_Utils::post($url, $fields, null,null, $headers);
             $result = json_decode($response);
             $user_id = Q::ifset($result, 'user_id', null);
@@ -231,10 +232,30 @@ class Users_ExternalTo_Discourse extends Users_ExternalTo implements Users_Exter
         $filename = realpath(APP_WEB_DIR.DS.$tail);
         if (!$filename || !file_exists($filename)) {
             $head = APP_FILES_DIR . DS . $app . DS . 'uploads';
-            $tail = str_replace('/Q/uploads/', '', $avatarUrl);
+            $tail = str_replace('/Q/uploads/', '', substr($avatarUrl, strlen($baseUrl)));
             $filename = $head . DS . $tail;
             if (!file_exists($filename)) {
-                throw new Q_Exception_MissingFile(compact('filename'));
+				$pattern = dirname($filename) . '/*.png';
+
+				// get all matching files
+				$files = glob($pattern);
+
+				$max = null;
+				$largestFile = null;
+
+				foreach ($files as $file) {
+				    $num = (int) pathinfo($file, PATHINFO_FILENAME);
+				    if ($max === null || $num > $max) {
+				        $max = $num;
+				        $largestFile = $file;
+				    }
+				}
+
+				// update $filename to the one with the largest number
+				$filename = $largestFile;
+				if (!file_exists($filename)) {
+					throw new Q_Exception_MissingFile(compact('filename'));
+				}
             }
         }
         if (!file_exists($filename)) {
