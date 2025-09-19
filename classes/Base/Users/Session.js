@@ -32,6 +32,8 @@ var Row = Q.require('Db/Row');
  * @param {String} [fields.appId] defaults to null
  * @param {String} [fields.version] defaults to null
  * @param {String} [fields.formFactor] defaults to null
+ * @param {String|Buffer} [fields.ipv4] defaults to null
+ * @param {String|Buffer} [fields.ipv6] defaults to null
  * @param {String|Db.Expression} [fields.insertedTime] defaults to new Db.Expression("CURRENT_TIMESTAMP")
  * @param {String|Db.Expression} [fields.updatedTime] defaults to null
  */
@@ -104,6 +106,18 @@ Q.mixin(Base, Row);
 /**
  * @property formFactor
  * @type String
+ * @default null
+ * 
+ */
+/**
+ * @property ipv4
+ * @type String|Buffer
+ * @default null
+ * 
+ */
+/**
+ * @property ipv6
+ * @type String|Buffer
  * @default null
  * 
  */
@@ -338,6 +352,8 @@ Base.fieldNames = function () {
 		"appId",
 		"version",
 		"formFactor",
+		"ipv4",
+		"ipv6",
 		"insertedTime",
 		"updatedTime"
 	];
@@ -731,6 +747,78 @@ Base.prototype.beforeSet_formFactor = function (value) {
 Base.column_formFactor = function () {
 
 return [["enum","'mobile','tablet','desktop'","",false],true,"",null];
+};
+
+/**
+ * Method is called before setting the field and verifies if value is string of length within acceptable limit.
+ * Optionally accept numeric value which is converted to string
+ * @method beforeSet_ipv4
+ * @param {string} value
+ * @return {string} The value
+ * @throws {Error} An exception is thrown if 'value' is not string or is exceedingly long
+ */
+Base.prototype.beforeSet_ipv4 = function (value) {
+		if (value == undefined) return value;
+		if (value instanceof Db.Expression) return value;
+		if (typeof value !== "string" && typeof value !== "number" && !(value instanceof Buffer))
+			throw new Error('Must pass a String or Buffer to '+this.table()+".ipv4");
+		if (typeof value === "string" && value.length > 16)
+			throw new Error('Exceedingly long value being assigned to '+this.table()+".ipv4");
+		return value;
+};
+
+	/**
+	 * Returns the maximum string length that can be assigned to the ipv4 field
+	 * @return {integer}
+	 */
+Base.prototype.maxSize_ipv4 = function () {
+
+		return 16;
+};
+
+	/**
+	 * Returns schema information for ipv4 column
+	 * @return {array} [[typeName, displayRange, modifiers, unsigned], isNull, key, default]
+	 */
+Base.column_ipv4 = function () {
+
+return [["varbinary","16","",false],true,"",null];
+};
+
+/**
+ * Method is called before setting the field and verifies if value is string of length within acceptable limit.
+ * Optionally accept numeric value which is converted to string
+ * @method beforeSet_ipv6
+ * @param {string} value
+ * @return {string} The value
+ * @throws {Error} An exception is thrown if 'value' is not string or is exceedingly long
+ */
+Base.prototype.beforeSet_ipv6 = function (value) {
+		if (value == undefined) return value;
+		if (value instanceof Db.Expression) return value;
+		if (typeof value !== "string" && typeof value !== "number" && !(value instanceof Buffer))
+			throw new Error('Must pass a String or Buffer to '+this.table()+".ipv6");
+		if (typeof value === "string" && value.length > 64)
+			throw new Error('Exceedingly long value being assigned to '+this.table()+".ipv6");
+		return value;
+};
+
+	/**
+	 * Returns the maximum string length that can be assigned to the ipv6 field
+	 * @return {integer}
+	 */
+Base.prototype.maxSize_ipv6 = function () {
+
+		return 64;
+};
+
+	/**
+	 * Returns schema information for ipv6 column
+	 * @return {array} [[typeName, displayRange, modifiers, unsigned], isNull, key, default]
+	 */
+Base.column_ipv6 = function () {
+
+return [["varbinary","64","",false],true,"",null];
 };
 
 /**

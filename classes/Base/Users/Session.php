@@ -27,6 +27,8 @@
  * @param {string} [$fields.appId] defaults to null
  * @param {string} [$fields.version] defaults to null
  * @param {string} [$fields.formFactor] defaults to null
+ * @param {string} [$fields.ipv4] defaults to null
+ * @param {string} [$fields.ipv6] defaults to null
  * @param {string|Db_Expression} [$fields.insertedTime] defaults to new Db_Expression("CURRENT_TIMESTAMP")
  * @param {string|Db_Expression} [$fields.updatedTime] defaults to null
  */
@@ -94,6 +96,18 @@ abstract class Base_Users_Session extends Db_Row
 	 */
 	/**
 	 * @property $formFactor
+	 * @type string
+	 * @default null
+	 * 
+	 */
+	/**
+	 * @property $ipv4
+	 * @type string
+	 * @default null
+	 * 
+	 */
+	/**
+	 * @property $ipv6
 	 * @type string
 	 * @default null
 	 * 
@@ -917,6 +931,116 @@ return array (
 	}
 
 	/**
+	 * Method is called before setting the field and verifies if value is string of length within acceptable limit.
+	 * Optionally accept numeric value which is converted to string
+	 * @method beforeSet_ipv4
+	 * @param {string} $value
+	 * @return {array} An array of field name and value
+	 * @throws {Exception} An exception is thrown if $value is not string or is exceedingly long
+	 */
+	function beforeSet_ipv4($value)
+	{
+		if (!isset($value)) {
+			return array('ipv4', $value);
+		}
+		if ($value instanceof Db_Expression
+               or $value instanceof Db_Range) {
+			return array('ipv4', $value);
+		}
+		if (!is_string($value) and !is_numeric($value))
+			throw new Exception('Must pass a string to '.$this->getTable().".ipv4");
+		if (strlen($value) > 16)
+			throw new Exception('Exceedingly long value being assigned to '.$this->getTable().".ipv4");
+		return array('ipv4', $value);			
+	}
+
+	/**
+	 * Returns the maximum string length that can be assigned to the ipv4 field
+	 * @return {integer}
+	 */
+	function maxSize_ipv4()
+	{
+
+		return 16;			
+	}
+
+	/**
+	 * Returns schema information for ipv4 column
+	 * @return {array} [[typeName, displayRange, modifiers, unsigned], isNull, key, default]
+	 */
+	static function column_ipv4()
+	{
+
+return array (
+  0 => 
+  array (
+    0 => 'varbinary',
+    1 => '16',
+    2 => '',
+    3 => false,
+  ),
+  1 => true,
+  2 => '',
+  3 => NULL,
+);			
+	}
+
+	/**
+	 * Method is called before setting the field and verifies if value is string of length within acceptable limit.
+	 * Optionally accept numeric value which is converted to string
+	 * @method beforeSet_ipv6
+	 * @param {string} $value
+	 * @return {array} An array of field name and value
+	 * @throws {Exception} An exception is thrown if $value is not string or is exceedingly long
+	 */
+	function beforeSet_ipv6($value)
+	{
+		if (!isset($value)) {
+			return array('ipv6', $value);
+		}
+		if ($value instanceof Db_Expression
+               or $value instanceof Db_Range) {
+			return array('ipv6', $value);
+		}
+		if (!is_string($value) and !is_numeric($value))
+			throw new Exception('Must pass a string to '.$this->getTable().".ipv6");
+		if (strlen($value) > 64)
+			throw new Exception('Exceedingly long value being assigned to '.$this->getTable().".ipv6");
+		return array('ipv6', $value);			
+	}
+
+	/**
+	 * Returns the maximum string length that can be assigned to the ipv6 field
+	 * @return {integer}
+	 */
+	function maxSize_ipv6()
+	{
+
+		return 64;			
+	}
+
+	/**
+	 * Returns schema information for ipv6 column
+	 * @return {array} [[typeName, displayRange, modifiers, unsigned], isNull, key, default]
+	 */
+	static function column_ipv6()
+	{
+
+return array (
+  0 => 
+  array (
+    0 => 'varbinary',
+    1 => '64',
+    2 => '',
+    3 => false,
+  ),
+  1 => true,
+  2 => '',
+  3 => NULL,
+);			
+	}
+
+	/**
 	 * Method is called before setting the field and normalize the DateTime string
 	 * @method beforeSet_insertedTime
 	 * @param {string} $value
@@ -1057,7 +1181,7 @@ return array (
 	 */
 	static function fieldNames($table_alias = null, $field_alias_prefix = null)
 	{
-		$field_names = array('id', 'content', 'php', 'userId', 'deviceId', 'timeout', 'duration', 'platform', 'appId', 'version', 'formFactor', 'insertedTime', 'updatedTime');
+		$field_names = array('id', 'content', 'php', 'userId', 'deviceId', 'timeout', 'duration', 'platform', 'appId', 'version', 'formFactor', 'ipv4', 'ipv6', 'insertedTime', 'updatedTime');
 		$result = $field_names;
 		if (!empty($table_alias)) {
 			$temp = array();
