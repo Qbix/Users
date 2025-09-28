@@ -158,7 +158,6 @@ abstract class Base_Users_Referred extends Db_Row
 			}
 			$fields = implode(',', $fieldNames);
 		}
-		$alias = isset($alias) ? ' '.$alias : '';
 		$q = self::db()->select($fields, self::table(true, $alias));
 		$q->className = 'Users_Referred';
 		return $q;
