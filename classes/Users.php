@@ -67,7 +67,7 @@ abstract class Users extends Base_Users
 		if (!$icon) {
 			return false;
 		}
-		return (!$unlessImported && strpos($icon, '/imported/') !== false)
+		return (!$unlessImported && strpos($icon, '/imported') !== false)
 		|| preg_match("/\/icon\/[0-9]+/", $icon)
 		|| strpos($icon, 'invited') !== false;
 	}
