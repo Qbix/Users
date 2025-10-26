@@ -109,7 +109,7 @@ class Users_ExternalTo extends Base_Users_ExternalTo
 	static function newRow($fields, $stripPrefix = null)
 	{
 		Q_Valid::requireFields(array('platform', 'appId'), $fields, true);
-		$platform = ucfirst(strtolower($fields['platform']));
+		$platform = ucfirst($fields['platform']);
 		$className = "Users_ExternalTo_$platform";
 		$row = new $className();
 		return $row->copyFrom($fields, $stripPrefix, false, false);
