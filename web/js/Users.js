@@ -603,18 +603,7 @@
 	});
 	Users.onComplete = new Q.Event();
 
-	Users.logout = new Q.Method({
-		options: {
-			url: Q.action('Users/logout'),
-			using: '*',
-			onSuccess: new Q.Event(function (options) {
-				var urls = Q.urls || {};
-				Q.handle(options.welcomeUrl
-					|| urls[Q.info.app + '/welcome']
-					|| Q.url(''));
-			}, 'Users')
-		}
-	});
+	Users.logout = function () { } // temporarily
 
 	/**
 	 * A shorthand way to get the id of the logged-in user, if any
@@ -1221,6 +1210,18 @@
 				Users.Session.generateKey();
 			})
 		}
+		Users.logout = new Q.Method({
+			options: {
+				url: Q.action('Users/logout'),
+				using: '*',
+				onSuccess: new Q.Event(function (options) {
+					var urls = Q.urls || {};
+					Q.handle(options.welcomeUrl
+						|| urls[Q.info.app + '/welcome']
+						|| Q.url(''));
+				}, 'Users')
+			}
+		}, 0);
 	}, 'Users');
 	
 	function _setSessionFromQueryString(querystring)
