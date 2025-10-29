@@ -352,7 +352,7 @@ class Users_Label extends Base_Users_Label
 		$rolesCanOperate = Q::ifset($roles, $label_1, $actionKey, array());
 
 		foreach ($label_2 as $label) {
-			if (in_array($label, $rolesCanOperate)) {
+			if (!in_array($label, $rolesCanOperate)) {
 				return false;
 			}
 		}
@@ -393,7 +393,7 @@ class Users_Label extends Base_Users_Label
 		);
         
         
-		foreach ($userCommunityRolesNames as $role) {
+		foreach ($userCommunityRoleNames as $role) {
 			$result["roles"][] = $role;
 			//foreach ($communityRoles as $keyLabel => $label) {
 			foreach ($communityLabels as $keyLabel => $label) {
