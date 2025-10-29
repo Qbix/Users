@@ -1149,6 +1149,27 @@
 		
 		Users.lastSeenNonce = Q.cookie('Q_nonce');
 
+		Users.logout = new Q.Method({
+			options: {
+				url: Q.action('Users/logout'),
+				using: '*',
+				onSuccess: new Q.Event(function (options) {
+					var urls = Q.urls || {};
+					Q.handle(options.welcomeUrl
+						|| urls[Q.info.app + '/welcome']
+						|| Q.url(''));
+				}, 'Users')
+			}
+		}, 0);
+		// define methods for Users to replace method stubs
+		Q.Method.define(
+			Users, 
+			'{{Users}}/js/methods/Users', 
+			function() {
+				return [Users, priv];
+			}
+		);
+
 		Q.extend(Users.login.options, Users.login.serverOptions);
 		Q.extend(Users.logout.options, Users.logout.serverOptions);
 		Q.extend(Users.setIdentifier.options, Users.setIdentifier.serverOptions);
@@ -1210,18 +1231,6 @@
 				Users.Session.generateKey();
 			})
 		}
-		Users.logout = new Q.Method({
-			options: {
-				url: Q.action('Users/logout'),
-				using: '*',
-				onSuccess: new Q.Event(function (options) {
-					var urls = Q.urls || {};
-					Q.handle(options.welcomeUrl
-						|| urls[Q.info.app + '/welcome']
-						|| Q.url(''));
-				}, 'Users')
-			}
-		}, 0);
 	}, 'Users');
 	
 	function _setSessionFromQueryString(querystring)
@@ -2709,15 +2718,6 @@
 	Users.cache = Users.cache || {};
 	
 	Q.ensure.loaders['Q.Users.Faces'] = '{{Users}}/js/Faces.js';
-    
-    // define methods for Users to replace method stubs
-    Q.Method.define(
-        Users, 
-        '{{Users}}/js/methods/Users', 
-        function() {
-            return [Users, priv];
-        }
-    );
 	
 
 })(Q, Q.jQuery);
