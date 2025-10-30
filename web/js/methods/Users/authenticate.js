@@ -26,7 +26,7 @@ Q.exports(function (Users, priv) {
 	 */
     function authenticate(platform, onSuccess, onCancel, options) {
 
-		options = Q.extend({}, options);
+		options = Q.extend(Q.Users.authenticate.options, options);
 		var handler = Users.authenticate[platform];
 		if (!handler) {
 			var handlers = Object.keys(Q.Users.apps).filter(function (k) {

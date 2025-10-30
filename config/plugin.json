@@ -216,6 +216,7 @@
 			"userQueryUri": "Users/user",
 			"iconType": "wavatar",
 			"gravatar": true,
+			"autoAuthenticatePlatform": null,
 			"noRegister": false,
 			"notice": "{{#if displayName}}You have been logged in as {{displayName}}{{else}}Logged into another account.{{/if}}",
 			"alsoSendUnhashedPassphrase": false,
