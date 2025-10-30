@@ -48,9 +48,9 @@ class Users_ExternalFrom_Facebook extends Users_ExternalFrom implements Users_Ex
 		$defaultAccessToken = null;
 		$fbsr = null;
 		$result = array();
-		if ($authResponse = Q_Request::special('Users.facebook.authResponse', null)) {
-			// Users.js sent along Users.facebook.authResponse in the request
-			$result = Q::take($authResponse, array(
+		if ($authPayload = Q_Request::special('Users.authPayload.facebook', null)) {
+			// Users.js sent along Users.authPayload.facebook in the request
+			$result = Q::take($authPayload, array(
 				'signedRequest', 'accessToken', 'expires', 'expiresIn', 'userID'
 			));
 			if (!isset($result['expires']) and isset($result['expiresIn'])) {
@@ -70,8 +70,8 @@ class Users_ExternalFrom_Facebook extends Users_ExternalFrom implements Users_Ex
 		}
 		if ($fbsr) {
 			$sr = new Facebook\SignedRequest($facebook->getApp(), $fbsr);
-			$accessToken = isset($authResponse['accessToken'])
-				? $authResponse['accessToken']
+			$accessToken = isset($authPayload['accessToken'])
+				? $authPayload['accessToken']
 				: $sr->get('oauth_token');
 			$result = array(
 				'signedRequest' => $fbsr,

@@ -20,7 +20,7 @@ class Users_ExternalFrom_Web3 extends Users_ExternalFrom implements Users_Extern
 	 * @method authenticate
 	 * @static
 	 * @param {string} [$appId=Q::app()] Can either be an internal appId or an Web3 appId.
-	 * @param {boolean} [$setCookie=true] Whether to set fbsr_$appId cookie
+	 * @param {boolean} [$setCookie=true] Whether to set w3sr_$appIdForAuth and w3sr_$appIdForAuth_expires cookie
 	 * @param {boolean} [$longLived=true] Get a long-lived access token, if necessary
 	 * @return {Users_ExternalFrom_Web3|null}
 	 *  May return null if no such user is authenticated.
@@ -41,7 +41,7 @@ class Users_ExternalFrom_Web3 extends Users_ExternalFrom implements Users_Extern
 		if (!is_callable('gmp_add') or !is_callable('gmp_mod')) {
 			throw new Q_Exception('Web3 authentication requires installing PHP gmp extensions');
 		}
-		$cookieName = "Q_Users_w3sr_$appIdForAuth";
+		$cookieName = "w3sr_$appIdForAuth";
 		$payload = Q::ifset($_REQUEST, 'payload', null);
 		$signature = Q::ifset($_REQUEST, 'signature', null);
 		if (!$payload or !$signature) {

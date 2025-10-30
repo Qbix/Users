@@ -579,7 +579,7 @@ Q.exports(function (Users, priv) {
 							 for (k in authResponse) {
 								 $register_form.append(
 									 $('<input type="hidden" />')
-										 .attr('name', 'Q.Users.facebook.authResponse[' + k + ']')
+										 .attr('name', 'Q.Users.authPayload.facebook[' + k + ']')
 										 .attr('value', authResponse[k])
 								 );
 							 }
