@@ -48,7 +48,8 @@ Q.exports(function (Users, priv) {
 				platform,
 				function (user) {
 					// success
-					Q.handle(o.onSuccess, this, [user, o, priv.result, platform]);
+					priv.result = 'authenticate';
+					Q.handle(o.onSuccess, this, [user, o, priv, platform]);
 					Users.login.occurring = false;
 				},
 				function (err) {
