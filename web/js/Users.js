@@ -18,7 +18,8 @@
 		},
 		roles: {},
 		urls: {},
-		authPayload: {}
+		authPayload: {},
+		beforeDefineAuthenticateMethods: new Q.Event()
 	};
     
 	var dc = Q.extend.dontCopy;

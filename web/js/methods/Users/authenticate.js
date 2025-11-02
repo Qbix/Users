@@ -65,6 +65,8 @@ Q.exports(function (Users, priv) {
    	
 	// authenticates by opening a wallet and asking user to sign a payload
 	authenticate.web3 = new Q.Method();
+
+	Q.handle(Users.beforeDefineAuthenticateMethods, Users, [authenticate]);
     
 	return Q.Method.define(
         authenticate, 
