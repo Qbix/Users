@@ -429,7 +429,7 @@ abstract class Users extends Base_Users
 		$appId = $appInfo['appId'];
 
 		// Try authenticating the user with the specified platform
-		$externalFrom = Users_ExternalFrom::authenticate($platform, $appIdForAuth);
+		$externalFrom = Users_ExternalFrom::authenticate($platform, $appId);
 		if (!$externalFrom) {
 			// no authentication happened
 			return $userWasLoggedIn ? $user : false;
