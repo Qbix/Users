@@ -159,10 +159,9 @@ Users.iconUrl = function Users_iconUrl(icon, basename) {
 		if (basename === true) {
 			basename = Q.Image.largestSize('Users/icon');
 		}
-		if (basename.indexOf('.') >= 0) {
+		if (String(basename).indexOf('.') < 0) {
 			basename += '.png';
 		}
-		basename = (String(basename).indexOf('.') >= 0) ? basename : basename+'.png';
 		src += '/' + basename;
 	}
 	return Q.url(src);
