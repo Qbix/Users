@@ -7,7 +7,7 @@ function Users_after_Users_filter_users($params, &$result)
     $roles = Users::roles($communityId);
     $config = Q_Config::get('Users', 'roles', array());
     foreach ($roles as $role) {
-        if (Users_Label::canSeeLabel($role, $hiddenRole, $config)) {
+        if (Users_Label::canSeeLabel($role->label, $hiddenRole, $config)) {
             return;
         }
     }

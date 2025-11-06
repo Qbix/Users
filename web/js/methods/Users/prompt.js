@@ -21,10 +21,6 @@ Q.exports(function (Users, priv) {
 	 *   @param {String} [options.appId=Q.info.app] Only needed if you have multiple apps on platform
 	 */
 	return function Users_prompt(platform, xid, authCallback, cancelCallback, options) {
-		if (platform !== 'facebook') {
-			throw new Q.Error("Users.authenticate prompt: The only supported platform for now is facebook");
-		}
-
 		var appId = (options && options.appId) || Q.info.app;
 		var platformAppId = Users.getPlatformAppId(appId);
 		var platformCapitalized = platform.toCapitalized();

@@ -243,7 +243,7 @@ class Users_Device extends Base_Users_Device
 	static function newRow($fields, $stripPrefix = null)
 	{
 		Q_Valid::requireFields(array('platform'), $fields, true);
-		$platform = ucfirst(strtolower($fields['platform']));
+		$platform = ucfirst($fields['platform']);
 		$className = "Users_Device_$platform";
 		$row = new $className();
 		return $row->copyFrom($fields, $stripPrefix, false, false);

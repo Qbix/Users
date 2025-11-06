@@ -17,7 +17,9 @@
 			defaultSize: 40 // might be overridden, but is required by some tools
 		},
 		roles: {},
-		urls: {}
+		urls: {},
+		authPayload: {},
+		beforeDefineAuthenticateMethods: new Q.Event()
 	};
     
 	var dc = Q.extend.dontCopy;
@@ -423,9 +425,9 @@
 				ar.expires = Math.floor(Date.now() / 1000) + ar.expiresIn;
 				ar.fbAppId = platformAppId;
 				ar.appId = appId;
-				fields['Q.Users.facebook.authResponse'] = ar;
-			} else if (platform === 'web3') {
-				Q.extend(fields, Web3.authResponse);
+				fields['Q.Users.authPayload.facebook'] = ar;
+			} else if (Q.Users.authPayload[platform]) {
+				Q.extend(fields, Q.Users.authPayload[platform]);
 				fields.updateXid = !!Q.getObject("updateXid", options);
 			}
 			priv._doAuthenticate(fields, platform, platformAppId, onSuccess, onCancel, options);
@@ -603,18 +605,7 @@
 	});
 	Users.onComplete = new Q.Event();
 
-	Users.logout = new Q.Method({
-		options: {
-			url: Q.action('Users/logout'),
-			using: '*',
-			onSuccess: new Q.Event(function (options) {
-				var urls = Q.urls || {};
-				Q.handle(options.welcomeUrl
-					|| urls[Q.info.app + '/welcome']
-					|| Q.url(''));
-			}, 'Users')
-		}
-	});
+	Users.logout = function () { } // temporarily
 
 	/**
 	 * A shorthand way to get the id of the logged-in user, if any
@@ -1160,6 +1151,27 @@
 		
 		Users.lastSeenNonce = Q.cookie('Q_nonce');
 
+		Users.logout = new Q.Method({
+			options: {
+				url: Q.action('Users/logout'),
+				using: '*',
+				onSuccess: new Q.Event(function (options) {
+					var urls = Q.urls || {};
+					Q.handle(options.welcomeUrl
+						|| urls[Q.info.app + '/welcome']
+						|| Q.url(''));
+				}, 'Users')
+			}
+		}, 0);
+		// define methods for Users to replace method stubs
+		Q.Method.define(
+			Users, 
+			'{{Users}}/js/methods/Users', 
+			function() {
+				return [Users, priv];
+			}
+		);
+
 		Q.extend(Users.login.options, Users.login.serverOptions);
 		Q.extend(Users.logout.options, Users.logout.serverOptions);
 		Q.extend(Users.setIdentifier.options, Users.setIdentifier.serverOptions);
@@ -1392,7 +1404,7 @@
 		Users.roles = {};
 		Users.hinted = [];
 		Q.Session.clear();
-		Web3.authResponse = null;
+		Users.authPayload.web3 = null;
 		Web3.getContract.cache.clear();
 		ddc.className = ddc.className.replace(' Users_loggedIn', '') + ' Users_loggedOut';
 		ddc.className = ddc.className.replace(/(Users_role-\w+s)+/g, '');
@@ -2108,14 +2120,14 @@
 						// .catch(_cancel);
 					}
 					function _proceed(signature) {
-						Web3.authResponse = {
+						Users.authPayload.web3 = {
 							xid: accounts[0],
 							payload: payload,
 							signature: signature,
 							platform: 'web3',
 							chainId: (typeof provider.chainId === 'function') ? provider.chainId() : provider.chainId
 						}
-						if (Q.handle(signedCallback, null, [Web3.authResponse]) === false) {
+						if (Q.handle(signedCallback, null, [Users.authPayload.web3]) === false) {
 							return;
 						}
 						Users.authenticate('web3', function (user) {
@@ -2708,15 +2720,6 @@
 	Users.cache = Users.cache || {};
 	
 	Q.ensure.loaders['Q.Users.Faces'] = '{{Users}}/js/Faces.js';
-    
-    // define methods for Users to replace method stubs
-    Q.Method.define(
-        Users, 
-        '{{Users}}/js/methods/Users', 
-        function() {
-            return [Users, priv];
-        }
-    );
 	
 
 })(Q, Q.jQuery);

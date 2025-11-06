@@ -22,7 +22,7 @@ Q.exports(function (Users, priv) {
         options = Q.extend(Q.Users.authenticate.web3.options, options);
 		Q.Users.Web3.connect(function () {
 			try {
-				var xid, w3sr_json = Q.cookie('Q_Users_w3sr_' + platformAppId);
+				var xid, w3sr_json = Q.cookie('w3sr_' + platformAppId);
 				if (w3sr_json) {
 					var w3sr = JSON.parse(w3sr_json);	
 					var hash = ethers.utils.hashMessage(w3sr[0]);
@@ -39,7 +39,7 @@ Q.exports(function (Users, priv) {
 					}
 				}
 
-				xid = xid || Q.getObject("Web3.authResponse.xid", Q.Users);
+				xid = xid || Q.getObject("authPayload.web3.xid", Q.Users);
 				if (xid) {
 					return priv.handleXid(
 						platform, platformAppId, xid,
@@ -50,7 +50,7 @@ Q.exports(function (Users, priv) {
 				console.warn(e);
 				// wasn't able to get the current authenticated xid from cookie
 				// so let's sign another authenticated message
-				Q.cookie('Q_Users_w3sr_' + platformAppId, null, {path: '/'});
+				Q.cookie('w3sr_' + platformAppId, null, {path: '/'});
 				priv._doCancel(platform, platformAppId, null, onSuccess, onCancel, options);
 				Q.Web3.authResponse = null;
 			}

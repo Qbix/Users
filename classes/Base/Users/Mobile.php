@@ -177,7 +177,6 @@ abstract class Base_Users_Mobile extends Db_Row
 			}
 			$fields = implode(',', $fieldNames);
 		}
-		$alias = isset($alias) ? ' '.$alias : '';
 		$q = self::db()->select($fields, self::table(true, $alias));
 		$q->className = 'Users_Mobile';
 		return $q;

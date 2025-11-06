@@ -2,7 +2,7 @@
 	"Q": {
 		"pluginInfo": {
 			"Users": {
-				"version": "1.3",
+				"version": "1.4",
 				"compatible": "1.0",
 				"requires": {"Q": "1.0"},
 				"permissions": ["Users/icons"],
@@ -216,6 +216,7 @@
 			"userQueryUri": "Users/user",
 			"iconType": "wavatar",
 			"gravatar": true,
+			"autoAuthenticatePlatform": null,
 			"noRegister": false,
 			"notice": "{{#if displayName}}You have been logged in as {{displayName}}{{else}}Logged into another account.{{/if}}",
 			"alsoSendUnhashedPassphrase": false,

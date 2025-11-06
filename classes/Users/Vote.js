@@ -38,6 +38,7 @@ function Users_Vote (fields) {
 						return query.rollback().execute();
 					};
 					_cache.retrieve(function () {
+						delete _cache.beforeRetrieveExecute;
 						_cache = null;
 						query.resume(err);
 					});
@@ -120,6 +121,7 @@ function Users_Vote (fields) {
 		if (this.constructor.prototype.beforeSaveExecute) {
 			return this.constructor.prototype.beforeSaveExecute(query, modifiedFields);
 		}
+		return false;
 	};
 	
 	/**

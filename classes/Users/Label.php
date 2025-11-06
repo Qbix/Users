@@ -352,7 +352,7 @@ class Users_Label extends Base_Users_Label
 		$rolesCanOperate = Q::ifset($roles, $label_1, $actionKey, array());
 
 		foreach ($label_2 as $label) {
-			if (in_array($label, $rolesCanOperate)) {
+			if (!in_array($label, $rolesCanOperate)) {
 				return false;
 			}
 		}
@@ -379,7 +379,8 @@ class Users_Label extends Base_Users_Label
 		if (!Users::isCommunityId($communityId)) {
 			throw new Users_Exception_NoSuchUser();
 		}
-		$userCommunityRoles = array_merge(array(""), array_keys(Users::roles($communityId, null, array(), $userId)));
+		$userCommunityRoles = Users::roles($communityId, null, array(), $userId);
+		$userCommunityRoleNames = array_merge(array(""), array_keys(Users::roles($communityId, null, array(), $userId)));
         $communityRoles = self::ofCommunity($communityId);
 		$communityLabels = Users_Label::fetch($communityId, "", array("skipAccess" => true));
 		$labelsCanManageIcon = Q_Config::get("Users", "icon", "canManage", array());
@@ -392,7 +393,7 @@ class Users_Label extends Base_Users_Label
 		);
         
         
-		foreach ($userCommunityRoles as $role) {
+		foreach ($userCommunityRoleNames as $role) {
 			$result["roles"][] = $role;
 			//foreach ($communityRoles as $keyLabel => $label) {
 			foreach ($communityLabels as $keyLabel => $label) {

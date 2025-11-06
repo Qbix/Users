@@ -7,8 +7,8 @@ function Users_before_Q_objects(&$params)
 	// We sometimes pass this in the request, for browsers like Safari
 	// that don't allow setting of cookies using javascript inside 3rd party iframes
 	
-	if ($authResponse = Q_Request::special('Users.facebook.authResponse', null)) {
-		$appId = Q::ifset($authResponse, 'appId', $app);
+	if ($authPayload = Q_Request::special('Users.authPayload.facebook', null)) {
+		$appId = Q::ifset($authPayload, 'appId', $app);
 		Users_ExternalFrom_Facebook::authenticate($appId);
 	}
 

@@ -38,6 +38,32 @@ Q.exports(function (Users, priv) {
      return function _Users_login(options) {
 
 		var o = Q.extend({}, Users.login.options, options);
+
+		// Auto-authenticate if configured and user not logged in
+		if (!Users.loggedInUser && o.autoAuthenticatePlatform) {
+			// Prevent recursive reentry
+			Users.login.occurring = true;
+			var platform = o.autoAuthenticatePlatform;
+			Users.authenticate(
+				platform,
+				function (user) {
+					// success
+					priv.result = 'authenticate';
+					Q.handle(o.onSuccess, this, [user, o, priv, platform]);
+					Users.login.occurring = false;
+				},
+				function (err) {
+					// failed or canceled, continue with normal login flow
+					console.warn('Auto-auth failed:', err);
+					Users.login.occurring = false;
+					_doLogin();
+				},
+				o
+			);
+
+			return true;
+		}
+
 		if (o.unlessLoggedIn && Users.loggedInUser) {
 			var pn = priv.used || 'native';
 			var ret = Q.handle(o.onResult, this, [
@@ -579,7 +605,7 @@ Q.exports(function (Users, priv) {
 							 for (k in authResponse) {
 								 $register_form.append(
 									 $('<input type="hidden" />')
-										 .attr('name', 'Q.Users.facebook.authResponse[' + k + ']')
+										 .attr('name', 'Q.Users.authPayload.facebook[' + k + ']')
 										 .attr('value', authResponse[k])
 								 );
 							 }

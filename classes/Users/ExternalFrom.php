@@ -78,7 +78,7 @@ class Users_ExternalFrom extends Base_Users_ExternalFrom
 		if (isset($result[$platform][$appIdForAuth])) {
 			return $result[$platform][$appIdForAuth];
 		}
-		$className = "Users_ExternalFrom_".ucfirst(strtolower($platform));
+		$className = "Users_ExternalFrom_".ucfirst($platform);
 		if (!class_exists($className, true)) {
 			throw new Q_Exception_MissingClass(@compact('className'));
 		}
@@ -200,7 +200,7 @@ class Users_ExternalFrom extends Base_Users_ExternalFrom
 	static function newRow($fields, $stripPrefix = null)
 	{
 		Q_Valid::requireFields(array('platform', 'appId'), $fields, true);
-		$platform = ucfirst(strtolower($fields['platform']));
+		$platform = ucfirst($fields['platform']);
 		$className = "Users_ExternalFrom_$platform";
 		$row = new $className();
 		return $row->copyFrom($fields, $stripPrefix, false, false);

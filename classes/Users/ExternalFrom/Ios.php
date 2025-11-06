@@ -18,7 +18,7 @@ class Users_ExternalFrom_Ios extends Users_ExternalFrom implements Users_Externa
 	 * @method authenticate
 	 * @static
 	 * @param {string} [$appId=Q::app()] Can either be an interal appId or an iOS appId.
-	 * @param {boolean} [$setCookie=true] Whether to set fbsr_$appId cookie
+	 * @param {boolean} [$setCookie=true] Whether to set Q_udid cookie
 	 * @param {boolean} [$longLived=true] Get a long-lived access token, if necessary
 	 * @return {Users_ExternalFrom_Ios|null}
 	 *  May return null if no such user is authenticated.

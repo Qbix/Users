@@ -26,7 +26,7 @@ Q.exports(function (Users, priv) {
 	 */
     function authenticate(platform, onSuccess, onCancel, options) {
 
-		options = options || {};
+		options = Q.extend(Q.Users.authenticate.options, options);
 		var handler = Users.authenticate[platform];
 		if (!handler) {
 			var handlers = Object.keys(Q.Users.apps).filter(function (k) {
@@ -47,6 +47,9 @@ Q.exports(function (Users, priv) {
 			return;
 		}
 		options.appId = appId;
+		Q.extend(options, Q.getObject(
+			[platform, appId, 'authenticate', 'options'], Q.Users.apps)
+		); // so config has a chance to add more options
 		return handler.call(this, platform, platformAppId, onSuccess, onCancel, options);
     }
     
@@ -62,6 +65,8 @@ Q.exports(function (Users, priv) {
    	
 	// authenticates by opening a wallet and asking user to sign a payload
 	authenticate.web3 = new Q.Method();
+
+	Q.handle(Users.beforeDefineAuthenticateMethods, Users, [authenticate]);
     
 	return Q.Method.define(
         authenticate, 
