@@ -32,7 +32,7 @@ var Row = Q.require('Db/Row');
  * @param {String} [fields.xids] defaults to "{}"
  * @param {String|Buffer} [fields.emailAddressPending] defaults to ""
  * @param {String|Buffer} [fields.mobileNumberPending] defaults to ""
- * @param {String} [fields.signedUpWith] defaults to ""
+ * @param {String} [fields.signedUpWith] defaults to "none"
  * @param {String} [fields.username] defaults to ""
  * @param {String|Buffer} [fields.icon] defaults to ""
  * @param {String|Buffer} [fields.url] defaults to null
@@ -115,7 +115,7 @@ Q.mixin(Base, Row);
 /**
  * @property signedUpWith
  * @type String
- * @default ""
+ * @default "none"
  * A platform like ios or android, or "none", "mobile", "email"
  */
 /**
@@ -800,7 +800,7 @@ Base.prototype.maxSize_signedUpWith = function () {
 	 */
 Base.column_signedUpWith = function () {
 
-return [["varchar","31","",false],false,"",null];
+return [["varchar","31","",false],false,"","none"];
 };
 
 /**
@@ -1035,9 +1035,6 @@ Base.prototype.beforeSave = function (value) {
 
 	// convention: we'll have updatedTime = insertedTime if just created.
 	this['updatedTime'] = value['updatedTime'] = new Db.Expression('CURRENT_TIMESTAMP');
-	if (this.fields["signedUpWith"] == undefined && value["signedUpWith"] == undefined) {
-		this.fields["signedUpWith"] = value["signedUpWith"] = "";
-	}
 	if (this.fields["username"] == undefined && value["username"] == undefined) {
 		this.fields["username"] = value["username"] = "";
 	}

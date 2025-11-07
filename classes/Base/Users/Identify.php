@@ -432,7 +432,7 @@ return array (
                or $value instanceof Db_Range) {
 			return array('state', $value);
 		}
-		if (!in_array($value, array('verified','future')))
+		if (!in_array($value, array('verified','future','unlinked')))
 			throw new Exception("Out-of-range value '$value' being assigned to ".$this->getTable().".state");
 		return array('state', $value);			
 	}
@@ -448,7 +448,7 @@ return array (
   0 => 
   array (
     0 => 'enum',
-    1 => '\'verified\',\'future\'',
+    1 => '\'verified\',\'future\',\'unlinked\'',
     2 => '',
     3 => false,
   ),

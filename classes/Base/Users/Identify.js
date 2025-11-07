@@ -377,7 +377,7 @@ return [["timestamp",null,null,null],true,"",null];
  */
 Base.prototype.beforeSet_state = function (value) {
 		if (value instanceof Db.Expression) return value;
-		if (['verified','future'].indexOf(value) < 0)
+		if (['verified','future','unlinked'].indexOf(value) < 0)
 			throw new Error("Out-of-range value "+JSON.stringify(value)+" being assigned to "+this.table()+".state");
 		return value;
 };
@@ -388,7 +388,7 @@ Base.prototype.beforeSet_state = function (value) {
 	 */
 Base.column_state = function () {
 
-return [["enum","'verified','future'","",false],false,"",null];
+return [["enum","'verified','future','unlinked'","",false],false,"",null];
 };
 
 /**

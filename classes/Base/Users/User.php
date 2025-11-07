@@ -27,7 +27,7 @@
  * @param {string} [$fields.xids] defaults to "{}"
  * @param {string} [$fields.emailAddressPending] defaults to ""
  * @param {string} [$fields.mobileNumberPending] defaults to ""
- * @param {string} [$fields.signedUpWith] defaults to ""
+ * @param {string} [$fields.signedUpWith] defaults to "none"
  * @param {string} [$fields.username] defaults to ""
  * @param {string} [$fields.icon] defaults to ""
  * @param {string} [$fields.url] defaults to null
@@ -106,7 +106,7 @@ abstract class Base_Users_User extends Db_Row
 	/**
 	 * @property $signedUpWith
 	 * @type string
-	 * @default ""
+	 * @default "none"
 	 * A platform like ios or android, or "none", "mobile", "email"
 	 */
 	/**
@@ -1001,7 +1001,7 @@ return array (
   ),
   1 => false,
   2 => '',
-  3 => NULL,
+  3 => 'none',
 );			
 	}
 
@@ -1347,9 +1347,6 @@ return array (
 						
 		// convention: we'll have updatedTime = insertedTime if just created.
 		$this->updatedTime = $value['updatedTime'] = new Db_Expression('CURRENT_TIMESTAMP');
-		if (!isset($this->fields["signedUpWith"]) and !isset($value["signedUpWith"])) {
-			$this->signedUpWith = $value["signedUpWith"] = "";
-		}
 		if (!isset($this->fields["username"]) and !isset($value["username"])) {
 			$this->username = $value["username"] = "";
 		}

@@ -546,7 +546,7 @@ Base.prototype.beforeSet_endTime = function (value) {
 	 */
 Base.column_endTime = function () {
 
-return [["timestamp",null,null,null],true,"",null];
+return [["timestamp",null,null,null],true,"MUL",null];
 };
 
 /**

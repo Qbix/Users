@@ -73,7 +73,7 @@ abstract class Base_Users_Field extends Db_Row
 	 * @property $dialogId
 	 * @type string
 	 * @default null
-	 * 
+	 * For tagging temporary fields with certain dialog IDs
 	 */
 	/**
 	 * The setUp() method is called the first time
@@ -88,6 +88,7 @@ abstract class Base_Users_Field extends Db_Row
 			array (
 			  0 => 'userId',
 			  1 => 'name',
+			  2 => 'type',
 			)
 		);
 	}
@@ -395,7 +396,7 @@ return array (
   ),
   1 => false,
   2 => 'PRI',
-  3 => NULL,
+  3 => '',
 );			
 	}
 
@@ -449,7 +450,7 @@ return array (
     3 => false,
   ),
   1 => false,
-  2 => '',
+  2 => 'PRI',
   3 => '',
 );			
 	}
@@ -730,7 +731,7 @@ return array (
 	{
 		if (!$this->retrieved) {
 			$table = $this->getTable();
-			foreach (array('userId','name') as $name) {
+			foreach (array('userId') as $name) {
 				if (!isset($value[$name])) {
 					throw new Exception("the field $table.$name needs a value, because it is NOT NULL, not auto_increment, and lacks a default value.");
 				}
@@ -740,9 +741,6 @@ return array (
 		$this->updatedTime = $value['updatedTime'] = new Db_Expression('CURRENT_TIMESTAMP');
 		if (!isset($this->fields["userId"]) and !isset($value["userId"])) {
 			$this->userId = $value["userId"] = "";
-		}
-		if (!isset($this->fields["name"]) and !isset($value["name"])) {
-			$this->name = $value["name"] = "";
 		}
 		return $value;			
 	}
