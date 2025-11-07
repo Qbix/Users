@@ -82,7 +82,7 @@ Q.mixin(Base, Row);
  * @property dialogId
  * @type String
  * @default null
- * For tagging temporary fields with certain dialog IDs
+ * 
  */
 
 /**
@@ -272,8 +272,7 @@ Base.prototype.table = function () {
 Base.prototype.primaryKey = function () {
 	return [
 		"userId",
-		"name",
-		"type"
+		"name"
 	];
 };
 
@@ -378,7 +377,7 @@ Base.prototype.maxSize_name = function () {
 	 */
 Base.column_name = function () {
 
-return [["varbinary","63","",false],false,"PRI",""];
+return [["varbinary","63","",false],false,"PRI",null];
 };
 
 /**
@@ -416,7 +415,7 @@ Base.prototype.maxSize_type = function () {
 	 */
 Base.column_type = function () {
 
-return [["varchar","63","",false],false,"PRI",""];
+return [["varchar","63","",false],false,"",""];
 };
 
 /**
@@ -590,7 +589,7 @@ return [["varchar","255","",false],true,"MUL",null];
  * @throws {Error} If e.g. mandatory field is not set or a bad values are supplied
  */
 Base.prototype.beforeSave = function (value) {
-	var fields = ['userId'], i;
+	var fields = ['userId','name'], i;
 	if (!this._retrieved) {
 		var table = this.table();
 		for (i=0; i<fields.length; i++) {
@@ -603,6 +602,9 @@ Base.prototype.beforeSave = function (value) {
 	this['updatedTime'] = value['updatedTime'] = new Db.Expression('CURRENT_TIMESTAMP');
 	if (this.fields["userId"] == undefined && value["userId"] == undefined) {
 		this.fields["userId"] = value["userId"] = "";
+	}
+	if (this.fields["name"] == undefined && value["name"] == undefined) {
+		this.fields["name"] = value["name"] = "";
 	}
 	return value;
 };

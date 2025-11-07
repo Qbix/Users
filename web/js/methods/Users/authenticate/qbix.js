@@ -18,30 +18,50 @@ Q.exports(function (Users, priv) {
 	 *   @param {Boolean} [options.force] forces the getLoginStatus to refresh its status
 	 *   @param {String} [options.appId=Q.info.app] Only needed if you have multiple apps on platform
 	 */
-    function qbix(platform, platformAppId, onSuccess, onCancel, options) {
+    return function qbix(platform, platformAppId, onSuccess, onCancel, options) {
 		Q.onReady.add(function () {
-			var browsertab = Q.getObject("cordova.plugins.browsertabs");
-			if (!browsertab) {
-				return console.warn('Users.authenticate: browsertab plugin not found!');
-			}
-			var appId = Q.cookie('Q_appId');
-			var redirect = Q.info.scheme;
-			var deviceId = Q.cookie('Q_udid');
-			if (!appId) {
-				return console.warn('Users.authenticate: appId undefined!');
-			}
-			var url = Q.action("Users/session", {
-				appId: appId,
-				redirect: redirect,
-				deviceId: deviceId,
-				handoff: 'yes'
+
+			// Step 1: ensure we have a valid session key
+			Users.Session.getKey(function (err, key) {
+				if (err) return onCancel(err);
+				if (!key) {
+					console.warn('Users.authenticate.qbix: no session key, generating...');
+					return Users.Session.generateKey(function (err2) {
+						if (err2) return onCancel(err2);
+						doAuth();
+					});
+				}
+				doAuth();
 			});
-			browsertab.openUrl(url, {scheme: Q.info.scheme, authSession: true}, function(returnUrl) {
-				location.href = returnUrl;
-			}, function(err) {
-				console.error(err);
-			});
+
+			function doAuth() {
+				var challenge = { timestamp: Date.now() };
+
+				// Step 2: sign the challenge with the user's private key
+				Users.signature(challenge, function (err, signature, keypair) {
+					if (err) {
+						console.error('Users.authenticate.qbix: signature failed', err);
+						return sendAuth(challenge, null);
+					}
+					sendAuth(challenge, signature);
+				});
+			}
+
+			// Step 3: call the existing Users/authenticate backend
+			function sendAuth(challenge, signature) {
+				Q.req('Users/authenticate', ['user'], function (err, response) {
+					if (err) return onCancel(err);
+					onSuccess(response && response.user);
+				}, {
+					method: 'post',
+					fields: {
+						platform: platform,
+						appId: Q.info.app,
+						challenge: challenge,
+						signature: signature
+					}
+				});
+			}
 		}, 'Users');
-	}
-    return qbix;
+	};
 });

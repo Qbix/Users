@@ -19,10 +19,10 @@
  * @param {string} [$fields.userId] defaults to ""
  * @param {string} [$fields.toCommunityId] defaults to ""
  * @param {string} [$fields.referredByUserId] defaults to ""
- * @param {float} [$fields.points] defaults to 0
- * @param {string|Db_Expression} [$fields.qualifiedTime] defaults to null
  * @param {string|Db_Expression} [$fields.insertedTime] defaults to new Db_Expression("CURRENT_TIMESTAMP")
  * @param {string|Db_Expression} [$fields.updatedTime] defaults to null
+ * @param {float} [$fields.points] defaults to 0
+ * @param {string|Db_Expression} [$fields.qualifiedTime] defaults to null
  * @param {string} [$fields.extra] defaults to "{}"
  */
 abstract class Base_Users_Referred extends Db_Row
@@ -46,18 +46,6 @@ abstract class Base_Users_Referred extends Db_Row
 	 * 
 	 */
 	/**
-	 * @property $points
-	 * @type float
-	 * @default 0
-	 * 
-	 */
-	/**
-	 * @property $qualifiedTime
-	 * @type string|Db_Expression
-	 * @default null
-	 * 
-	 */
-	/**
 	 * @property $insertedTime
 	 * @type string|Db_Expression
 	 * @default new Db_Expression("CURRENT_TIMESTAMP")
@@ -65,6 +53,18 @@ abstract class Base_Users_Referred extends Db_Row
 	 */
 	/**
 	 * @property $updatedTime
+	 * @type string|Db_Expression
+	 * @default null
+	 * 
+	 */
+	/**
+	 * @property $points
+	 * @type float
+	 * @default 0
+	 * 
+	 */
+	/**
+	 * @property $qualifiedTime
 	 * @type string|Db_Expression
 	 * @default null
 	 * 
@@ -455,92 +455,6 @@ return array (
 );			
 	}
 
-	function beforeSet_points($value)
-	{
-		if (!isset($value)) {
-			return array('points', $value);
-		}
-		if ($value instanceof Db_Expression
-               or $value instanceof Db_Range) {
-			return array('points', $value);
-		}
-		if (!is_numeric($value))
-			throw new Exception('Non-numeric value being assigned to '.$this->getTable().".points");
-		$value = floatval($value);
-		return array('points', $value);			
-	}
-
-	/**
-	 * Returns schema information for points column
-	 * @return {array} [[typeName, displayRange, modifiers, unsigned], isNull, key, default]
-	 */
-	static function column_points()
-	{
-
-return array (
-  0 => 
-  array (
-    0 => 'decimal',
-    1 => '4,2',
-    2 => '',
-    3 => false,
-  ),
-  1 => true,
-  2 => '',
-  3 => NULL,
-);			
-	}
-
-	/**
-	 * Method is called before setting the field and normalize the DateTime string
-	 * @method beforeSet_qualifiedTime
-	 * @param {string} $value
-	 * @return {array} An array of field name and value
-	 * @throws {Exception} An exception is thrown if $value does not represent valid DateTime
-	 */
-	function beforeSet_qualifiedTime($value)
-	{
-		if (!isset($value)) {
-			return array('qualifiedTime', $value);
-		}
-		if ($value instanceof Db_Expression
-               or $value instanceof Db_Range) {
-			return array('qualifiedTime', $value);
-		}
-		if ($value instanceof DateTime) {
-			$value = $value->getTimestamp();
-		}
-		if (is_numeric($value)) {
-			$newDateTime = new DateTime();
-			$datetime = $newDateTime->setTimestamp($value);
-		} else {
-			$datetime = new DateTime($value);
-		}
-		$value = $datetime->format("Y-m-d H:i:s");
-		return array('qualifiedTime', $value);			
-	}
-
-	/**
-	 * Returns schema information for qualifiedTime column
-	 * @return {array} [[typeName, displayRange, modifiers, unsigned], isNull, key, default]
-	 */
-	static function column_qualifiedTime()
-	{
-
-return array (
-  0 => 
-  array (
-    0 => 'timestamp',
-    1 => NULL,
-    2 => NULL,
-    3 => NULL,
-  ),
-  1 => true,
-  2 => '',
-  3 => NULL,
-);			
-	}
-
 	/**
 	 * Method is called before setting the field and normalize the DateTime string
 	 * @method beforeSet_insertedTime
@@ -622,6 +536,92 @@ return array (
 	 * @return {array} [[typeName, displayRange, modifiers, unsigned], isNull, key, default]
 	 */
 	static function column_updatedTime()
+	{
+
+return array (
+  0 => 
+  array (
+    0 => 'timestamp',
+    1 => NULL,
+    2 => NULL,
+    3 => NULL,
+  ),
+  1 => true,
+  2 => '',
+  3 => NULL,
+);			
+	}
+
+	function beforeSet_points($value)
+	{
+		if (!isset($value)) {
+			return array('points', $value);
+		}
+		if ($value instanceof Db_Expression
+               or $value instanceof Db_Range) {
+			return array('points', $value);
+		}
+		if (!is_numeric($value))
+			throw new Exception('Non-numeric value being assigned to '.$this->getTable().".points");
+		$value = floatval($value);
+		return array('points', $value);			
+	}
+
+	/**
+	 * Returns schema information for points column
+	 * @return {array} [[typeName, displayRange, modifiers, unsigned], isNull, key, default]
+	 */
+	static function column_points()
+	{
+
+return array (
+  0 => 
+  array (
+    0 => 'decimal',
+    1 => '4,2',
+    2 => '',
+    3 => false,
+  ),
+  1 => true,
+  2 => '',
+  3 => NULL,
+);			
+	}
+
+	/**
+	 * Method is called before setting the field and normalize the DateTime string
+	 * @method beforeSet_qualifiedTime
+	 * @param {string} $value
+	 * @return {array} An array of field name and value
+	 * @throws {Exception} An exception is thrown if $value does not represent valid DateTime
+	 */
+	function beforeSet_qualifiedTime($value)
+	{
+		if (!isset($value)) {
+			return array('qualifiedTime', $value);
+		}
+		if ($value instanceof Db_Expression
+               or $value instanceof Db_Range) {
+			return array('qualifiedTime', $value);
+		}
+		if ($value instanceof DateTime) {
+			$value = $value->getTimestamp();
+		}
+		if (is_numeric($value)) {
+			$newDateTime = new DateTime();
+			$datetime = $newDateTime->setTimestamp($value);
+		} else {
+			$datetime = new DateTime($value);
+		}
+		$value = $datetime->format("Y-m-d H:i:s");
+		return array('qualifiedTime', $value);			
+	}
+
+	/**
+	 * Returns schema information for qualifiedTime column
+	 * @return {array} [[typeName, displayRange, modifiers, unsigned], isNull, key, default]
+	 */
+	static function column_qualifiedTime()
 	{
 
 return array (
@@ -734,7 +734,7 @@ return array (
 	 */
 	static function fieldNames($table_alias = null, $field_alias_prefix = null)
 	{
-		$field_names = array('userId', 'toCommunityId', 'referredByUserId', 'points', 'qualifiedTime', 'insertedTime', 'updatedTime', 'extra');
+		$field_names = array('userId', 'toCommunityId', 'referredByUserId', 'insertedTime', 'updatedTime', 'points', 'qualifiedTime', 'extra');
 		$result = $field_names;
 		if (!empty($table_alias)) {
 			$temp = array();

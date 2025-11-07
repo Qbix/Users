@@ -24,10 +24,10 @@ var Row = Q.require('Db/Row');
  * @param {String|Buffer} [fields.userId] defaults to ""
  * @param {String|Buffer} [fields.toCommunityId] defaults to ""
  * @param {String|Buffer} [fields.referredByUserId] defaults to ""
- * @param {Number} [fields.points] defaults to 0
- * @param {String|Db.Expression} [fields.qualifiedTime] defaults to null
  * @param {String|Db.Expression} [fields.insertedTime] defaults to new Db.Expression("CURRENT_TIMESTAMP")
  * @param {String|Db.Expression} [fields.updatedTime] defaults to null
+ * @param {Number} [fields.points] defaults to 0
+ * @param {String|Db.Expression} [fields.qualifiedTime] defaults to null
  * @param {String} [fields.extra] defaults to "{}"
  */
 function Base (fields) {
@@ -55,18 +55,6 @@ Q.mixin(Base, Row);
  * 
  */
 /**
- * @property points
- * @type Number
- * @default 0
- * 
- */
-/**
- * @property qualifiedTime
- * @type String|Db.Expression
- * @default null
- * 
- */
-/**
  * @property insertedTime
  * @type String|Db.Expression
  * @default new Db.Expression("CURRENT_TIMESTAMP")
@@ -74,6 +62,18 @@ Q.mixin(Base, Row);
  */
 /**
  * @property updatedTime
+ * @type String|Db.Expression
+ * @default null
+ * 
+ */
+/**
+ * @property points
+ * @type Number
+ * @default 0
+ * 
+ */
+/**
+ * @property qualifiedTime
  * @type String|Db.Expression
  * @default null
  * 
@@ -297,10 +297,10 @@ Base.fieldNames = function () {
 		"userId",
 		"toCommunityId",
 		"referredByUserId",
-		"points",
-		"qualifiedTime",
 		"insertedTime",
 		"updatedTime",
+		"points",
+		"qualifiedTime",
 		"extra"
 	];
 };
@@ -420,57 +420,6 @@ return [["varbinary","31","",false],false,"PRI",null];
 };
 
 /**
- * Method is called before setting the field to verify if value is a number
- * @method beforeSet_points
- * @param {number} value
- * @return {number} The value
- * @throws {Error} If 'value' is not number
- */
-Base.prototype.beforeSet_points = function (value) {
-		if (value == undefined) return value;
-		if (value instanceof Db.Expression) return value;
-		value = Number(value);
-		if (isNaN(value))
-			throw new Error('Non-number value being assigned to '+this.table()+".points");
-		return value;
-};
-
-	/**
-	 * Returns schema information for points column
-	 * @return {array} [[typeName, displayRange, modifiers, unsigned], isNull, key, default]
-	 */
-Base.column_points = function () {
-
-return [["decimal","4,2","",false],true,"",null];
-};
-
-/**
- * Method is called before setting the field
- * @method beforeSet_qualifiedTime
- * @param {String} value
- * @return {Date|Db.Expression} If 'value' is not Db.Expression the current date is returned
- */
-Base.prototype.beforeSet_qualifiedTime = function (value) {
-		if (value == undefined) return value;
-		if (value instanceof Db.Expression) return value;
-		if (typeof value !== 'object' && !isNaN(value)) {
-			value = parseInt(value);
-			value = new Date(value < 10000000000 ? value * 1000 : value);
-		}
-		value = (value instanceof Date) ? Base.db().toDateTime(value) : value;
-		return value;
-};
-
-	/**
-	 * Returns schema information for qualifiedTime column
-	 * @return {array} [[typeName, displayRange, modifiers, unsigned], isNull, key, default]
-	 */
-Base.column_qualifiedTime = function () {
-
-return [["timestamp",null,null,null],true,"",null];
-};
-
-/**
  * Method is called before setting the field
  * @method beforeSet_insertedTime
  * @param {String} value
@@ -517,6 +466,57 @@ Base.prototype.beforeSet_updatedTime = function (value) {
 	 * @return {array} [[typeName, displayRange, modifiers, unsigned], isNull, key, default]
 	 */
 Base.column_updatedTime = function () {
+
+return [["timestamp",null,null,null],true,"",null];
+};
+
+/**
+ * Method is called before setting the field to verify if value is a number
+ * @method beforeSet_points
+ * @param {number} value
+ * @return {number} The value
+ * @throws {Error} If 'value' is not number
+ */
+Base.prototype.beforeSet_points = function (value) {
+		if (value == undefined) return value;
+		if (value instanceof Db.Expression) return value;
+		value = Number(value);
+		if (isNaN(value))
+			throw new Error('Non-number value being assigned to '+this.table()+".points");
+		return value;
+};
+
+	/**
+	 * Returns schema information for points column
+	 * @return {array} [[typeName, displayRange, modifiers, unsigned], isNull, key, default]
+	 */
+Base.column_points = function () {
+
+return [["decimal","4,2","",false],true,"",null];
+};
+
+/**
+ * Method is called before setting the field
+ * @method beforeSet_qualifiedTime
+ * @param {String} value
+ * @return {Date|Db.Expression} If 'value' is not Db.Expression the current date is returned
+ */
+Base.prototype.beforeSet_qualifiedTime = function (value) {
+		if (value == undefined) return value;
+		if (value instanceof Db.Expression) return value;
+		if (typeof value !== 'object' && !isNaN(value)) {
+			value = parseInt(value);
+			value = new Date(value < 10000000000 ? value * 1000 : value);
+		}
+		value = (value instanceof Date) ? Base.db().toDateTime(value) : value;
+		return value;
+};
+
+	/**
+	 * Returns schema information for qualifiedTime column
+	 * @return {array} [[typeName, displayRange, modifiers, unsigned], isNull, key, default]
+	 */
+Base.column_qualifiedTime = function () {
 
 return [["timestamp",null,null,null],true,"",null];
 };

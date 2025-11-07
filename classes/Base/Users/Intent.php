@@ -665,7 +665,7 @@ return array (
     3 => NULL,
   ),
   1 => true,
-  2 => 'MUL',
+  2 => '',
   3 => NULL,
 );			
 	}

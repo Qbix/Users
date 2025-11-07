@@ -487,7 +487,7 @@
 
 	Q.request.options.beforeRequest.push(
 	function (url, slotNames, options, callback) {
-		var fields = options.fields || {};
+		var fields = options.fields ? Q.copy(options.fields) : {};
 		var found = false;
 		Q.each(Users.requireLogin, function (u, v) {
 			if (url.split('?')[0] != u) {
