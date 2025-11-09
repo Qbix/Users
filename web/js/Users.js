@@ -1228,46 +1228,49 @@
 
 		var inIframe = (window.self !== window.top);
 
-		if (!Users.Session.publicKey && Users.Session.key.generateOnLogin) {
-			Users.Session.getKey(function (err, key) {
-				if (key) return; // key already exists
+		// Wait for Service Worker activation before running session key logic
+		Q.ServiceWorker.onActive.addOnce(function () {
+			if (!Users.Session.publicKey && Users.Session.key.generateOnLogin) {
+				Users.Session.getKey(function (err, key) {
+					if (key) return; // key already exists
 
-			// Always set up listener, even if not currently requesting
-			window.addEventListener('message', function (ev) {
-				var data = ev.data || {};
-				if (!data.type) return;
+					// Always set up listener, even if not currently requesting
+					window.addEventListener('message', function (ev) {
+						var data = ev.data || {};
+						if (!data.type) return;
 
-				// Accept from any origin; recovery key is non-extractable
-				if (data.type === 'Q.Users.recoveryKey.recover') {
-					Q.log('Users: received recoveryKey.recover from parent');
-					try {
-						clearTimeout(tmt);
-						Users.Session.recover();
-					} catch (e) {
-						Q.warn('Users.Session.recover() failed: ' + e);
+						// Accept from any origin; recovery key is non-extractable
+						if (data.type === 'Q.Users.recoveryKey.recover') {
+							Q.log('Users: received recoveryKey.recover from parent');
+							try {
+								clearTimeout(tmt);
+								Users.Session.recover();
+							} catch (e) {
+								Q.warn('Users.Session.recover() failed: ' + e);
+							}
+						}
+					}, false);
+
+					var tmt = setTimeout(function () {
+						Users.Session.generateKey();
+					}, 300);
+
+					if (inIframe) {
+						// Ask parent to provide recovery key, if it has one
+						try {
+							window.parent.postMessage(
+								{ type: 'Q.Users.recoveryKey.request' },
+								'*'
+							);
+							Q.log('Users: requested recovery key from parent');
+						} catch (e) {
+							Q.warn('Users: postMessage request to parent failed: ' + e);
+						}
 					}
-				}
-			}, false);
-
-				var tmt = setTimeout(function () {
-					Users.Session.generateKey();
-				}, 300);
-				if (inIframe) {
-					// Ask parent to provide recovery key, if it has one
-					try {
-						window.parent.postMessage(
-							{ type: 'Q.Users.recoveryKey.request' },
-							'*'
-						);
-						Q.log('Users: requested recovery key from parent');
-					} catch (e) {
-						Q.warn('Users: postMessage request to parent failed: ' + e);
-					}
-				}
-			});
-		}
+				});
+			}
+		});
 	}, 'Users');
-
 	
 	function _setSessionFromQueryString(querystring)
 	{

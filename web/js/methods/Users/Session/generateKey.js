@@ -5,13 +5,12 @@ Q.exports(function (Users, priv) {
 	 * @class Users.Session
 	 */
 
-	// Guard against overlapping concurrent calls
 	var _pendingGenerateKey = null;
 
 	/**
 	 * Generates a non-extractable session private key and a recovery key,
 	 * saves both in IndexedDB, and tells the server to store their public keys.
-	 * Handles Safari ITP by requesting Storage Access if needed.
+	 * If IndexedDB fails, marks the session key as ephemeral via publicKeyIsEphemeral.
 	 * Safe for concurrent or repeated calls — only one generation runs at a time.
 	 *
 	 * @method generateKey
@@ -21,7 +20,6 @@ Q.exports(function (Users, priv) {
 	 * or false if crypto.subtle is unavailable or key already exists.
 	 */
 	return Q.getter(function Users_Session_generateKey(callback) {
-		// Prevent overlapping calls
 		if (_pendingGenerateKey) {
 			return _pendingGenerateKey.then(function (result) {
 				Q.handle(callback, null, [null, null, result.sessionKey, result.response]);
@@ -30,13 +28,11 @@ Q.exports(function (Users, priv) {
 		}
 
 		_pendingGenerateKey = new Promise(function (resolveOuter, rejectOuter) {
-			// Abort early if crypto.subtle not available
 			if (!crypto || !crypto.subtle) {
 				resolveOuter(false);
 				return;
 			}
 
-			// Skip if already set on server
 			if (Users.Session.publicKey) {
 				Q.handle(callback, null, ["Users.Session.publicKey was already set on server"]);
 				resolveOuter(false);
@@ -44,30 +40,35 @@ Q.exports(function (Users, priv) {
 			}
 
 			var info = Users.Session.key;
-			var inIframe = (window.self !== window.top);
-			if (inIframe) {
-				Q.log("Users.Session: running inside iframe; keys may be transient unless Storage Access granted.");
-			}
+			var publicKeyIsEphemeral = false;
 
-			// Step 0 — check/request Storage Access if available (Safari ITP)
+			// Step 0 — check/request Storage Access (Safari ITP)
 			var accessPromise = Promise.resolve(true);
 			if (document.requestStorageAccess && document.hasStorageAccess) {
-				accessPromise = document.hasStorageAccess().then(function (already) {
-					if (already) {
-						Q.log("Users.Session: already has storage access");
-						return true;
-					}
-					return document.requestStorageAccess().then(function () {
-						Q.log("Users.Session: storage access granted");
-						return true;
+				accessPromise = Promise.race([
+					document.hasStorageAccess().then(function (already) {
+						if (already) {
+							Q.log("Users.Session: already has storage access");
+							return true;
+						}
+						return document.requestStorageAccess().then(function () {
+							Q.log("Users.Session: storage access granted");
+							return true;
+						}).catch(function (e) {
+							Q.warn("Users.Session: storage access denied or failed " + e);
+							return true;
+						});
 					}).catch(function (e) {
-						Q.warn("Users.Session: storage access denied or failed " + e);
+						Q.warn("Users.Session: hasStorageAccess check failed " + e);
 						return true;
-					});
-				}).catch(function (e) {
-					Q.warn("Users.Session: hasStorageAccess check failed " + e);
-					return true;
-				});
+					}),
+					new Promise(function (resolve) {
+						setTimeout(function () {
+							Q.warn("Users.Session: hasStorageAccess timed out, continuing");
+							resolve(true);
+						}, 500);
+					})
+				]);
 			}
 
 			// Step 1 — generate both session and recovery keys (non-extractable)
@@ -88,25 +89,44 @@ Q.exports(function (Users, priv) {
 				var sessionKey = keys[0];
 				var recoveryKey = keys[1];
 
-				// Step 2 — save both keys in IndexedDB
-				return new Promise(function (resolve, reject) {
+				// Step 2 — attempt to store keys in IndexedDB
+				return new Promise(function (resolve) {
 					var storeName = "Q.Users.keys";
 					Q.IndexedDB.open(Q.info.baseUrl, storeName, "id", function (err, db) {
-						if (err) {
-							reject(err);
+						if (err || !db) {
+							Q.warn("Users.Session: IndexedDB unavailable, marking key ephemeral");
+							publicKeyIsEphemeral = true;
+							resolve({ sessionKey: sessionKey, recoveryKey: recoveryKey });
 							return;
 						}
-						var tx = db.transaction(storeName, "readwrite");
-						var store = tx.objectStore(storeName);
-						store.put({ id: "Users.Session", key: sessionKey });
-						store.put({ id: "Users.Recovery", key: recoveryKey });
-						tx.oncomplete = function () { resolve({ sessionKey: sessionKey, recoveryKey: recoveryKey }); };
-						tx.onerror = reject;
+						try {
+							var tx = db.transaction(storeName, "readwrite");
+							var store = tx.objectStore(storeName);
+							store.put({ id: "Users.Session", key: sessionKey });
+							store.put({ id: "Users.Recovery", key: recoveryKey });
+							tx.oncomplete = function () {
+								Q.log("Users.Session: keys saved to IndexedDB successfully");
+								resolve({ sessionKey: sessionKey, recoveryKey: recoveryKey });
+							};
+							tx.onerror = function (e) {
+								Q.warn("Users.Session: IndexedDB write failed, marking key ephemeral");
+								publicKeyIsEphemeral = true;
+								resolve({ sessionKey: sessionKey, recoveryKey: recoveryKey });
+							};
+						} catch (e) {
+							Q.warn("Users.Session: IndexedDB exception, marking key ephemeral " + e);
+							publicKeyIsEphemeral = true;
+							resolve({ sessionKey: sessionKey, recoveryKey: recoveryKey });
+						}
 					});
+				}).then(function (result) {
+					result.publicKeyIsEphemeral = publicKeyIsEphemeral;
+					return result;
 				});
 			}).then(function (keysObj) {
 				var sessionKey = keysObj.sessionKey;
 				var recoveryKey = keysObj.recoveryKey;
+				var publicKeyIsEphemeral = keysObj.publicKeyIsEphemeral;
 
 				// Step 3 — export both public keys
 				return Promise.all([
@@ -117,37 +137,23 @@ Q.exports(function (Users, priv) {
 						sessionKey: sessionKey,
 						recoveryKey: recoveryKey,
 						sessionPub: exports[0],
-						recoveryPub: exports[1]
+						recoveryPub: exports[1],
+						publicKeyIsEphemeral: publicKeyIsEphemeral
 					};
 				});
 			}).then(function (bundle) {
 				var sessionKey = bundle.sessionKey;
 				var sessionPub = bundle.sessionPub;
 				var recoveryPub = bundle.recoveryPub;
+				var publicKeyIsEphemeral = bundle.publicKeyIsEphemeral;
 
-				// Step 4 — save on server
+				// Step 4 — send to server
 				return new Promise(function (resolveSave) {
-					_save(sessionKey, sessionPub, recoveryPub, function (err, resp) {
+					_save(sessionKey, sessionPub, recoveryPub, publicKeyIsEphemeral, function (err, resp) {
 						var errMsg = Q.firstErrorMessage(err, resp);
 						Q.handle(callback, null, [errMsg, null, sessionKey, resp]);
 						resolveSave({ sessionKey: sessionKey, response: resp });
 					});
-				}).then(function (result) {
-					// Step 5 — optionally post to parent
-					if (inIframe) {
-						try {
-							window.parent.postMessage({
-								type: "Q.Users.recoveryKey.generated",
-								payload: {
-									recoveryKey: recoveryPub
-								}
-							}, "*");
-							Q.log("Users.Session: posted recovery public key to parent via postMessage");
-						} catch (e) {
-							Q.warn("Users.Session: failed to postMessage keys to parent " + e);
-						}
-					}
-					return result;
 				});
 			}).then(function (result) {
 				_pendingGenerateKey = null;
@@ -159,12 +165,17 @@ Q.exports(function (Users, priv) {
 			});
 
 			// Helper: sign and send to backend
-			function _save(sessionKey, sessionPub, recoveryPub, callback) {
+			function _save(sessionKey, sessionPub, recoveryPub, publicKeyIsEphemeral, callback) {
 				var fields = {
 					info: info,
 					publicKey: sessionPub,
 					recoveryKey: recoveryPub
 				};
+				if (publicKeyIsEphemeral) {
+					fields.publicKeyIsEphemeral = true;
+					Q.log("Users.Session: sending key marked as ephemeral");
+				}
+
 				Q.Users.sign(fields, function (err, signedFields) {
 					Q.req("Users/key", ["saved"], function (err2) {
 						Q.handle(callback, this, arguments);

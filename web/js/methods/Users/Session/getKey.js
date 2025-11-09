@@ -34,38 +34,44 @@ Q.exports(function (Users, priv) {
 
 		_pendingGetKey = new Promise(function (resolve, reject) {
 			var storeName = "Q.Users.keys";
+
 			Q.IndexedDB.open(Q.info.baseUrl, storeName, "id", function (err, db) {
-				if (err) {
-					var e = { 
-						message: "Users.Session.getKey: failed to open IndexedDB", 
-						error: err 
-					};
-					Q.handle(callback, null, [e]);
-					reject(e);
-					return;
+				if (err || !db) {
+					Q.warn("Users.Session.getKey: IndexedDB unavailable, trying volatile or fallback sources");
+					return fallbackGetKey(err, callback, resolve, reject);
 				}
 
-				var tx = db.transaction(storeName, "readonly");
-				var store = tx.objectStore(storeName);
-				var request = store.get("Users.Session");
+				try {
+					var tx = db.transaction(storeName, "readonly");
+					var store = tx.objectStore(storeName);
+					var request = store.get("Users.Session");
 
-				request.onsuccess = function (event) {
-					var record = event.target.result;
-					var key = record ? record.key : null;
-					Users.Session.key.loaded = key || null;
-					Q.handle(callback, null, [null, key]);
-					resolve(key);
-				};
-
-				request.onerror = function (event) {
-					var e = {
-						classname: "Users_Session_getKeyIndexedDB",
-						message: "Users.Session.getKey: could not read from IndexedDB",
-						error: event
+					request.onsuccess = function (event) {
+						var record = event.target.result;
+						var key = record ? record.key : null;
+						if (key) {
+							Users.Session.key.loaded = key;
+							Q.handle(callback, null, [null, key]);
+							resolve(key);
+						} else {
+							Q.warn("Users.Session.getKey: no key in IndexedDB, trying volatile or fallback sources");
+							fallbackGetKey(null, callback, resolve, reject);
+						}
 					};
-					Q.handle(callback, null, [e]);
-					reject(e);
-				};
+
+					request.onerror = function (event) {
+						var e = {
+							classname: "Users_Session_getKeyIndexedDB",
+							message: "Users.Session.getKey: could not read from IndexedDB",
+							error: event
+						};
+						Q.warn(e.message);
+						fallbackGetKey(e, callback, resolve, reject);
+					};
+				} catch (e) {
+					Q.warn("Users.Session.getKey: IndexedDB exception, using fallback " + e);
+					fallbackGetKey(e, callback, resolve, reject);
+				}
 			});
 		});
 
@@ -76,5 +82,77 @@ Q.exports(function (Users, priv) {
 			_pendingGetKey = null;
 			throw e;
 		});
+
+		// --- Helper: fallback when IndexedDB is blocked/unavailable ---
+		function fallbackGetKey(err, callback, resolve, reject) {
+			var key = null;
+
+			// Try in-memory volatile cache
+			if (Users.Session._volatileKeys && Users.Session._volatileKeys.sessionKey) {
+				key = Users.Session._volatileKeys.sessionKey;
+				Q.log("Users.Session.getKey: recovered key from in-memory volatile cache");
+			}
+
+			// Try asking Service Worker (async)
+			if (!key && navigator.serviceWorker && navigator.serviceWorker.controller) {
+				try {
+					var channel = new MessageChannel();
+					channel.port1.onmessage = function (event) {
+						if (event.data && event.data.sessionKey) {
+							key = event.data.sessionKey;
+							Users.Session.key.loaded = key;
+							Q.log("Users.Session.getKey: recovered key from Service Worker");
+							Q.handle(callback, null, [null, key]);
+							resolve(key);
+						} else {
+							Q.warn("Users.Session.getKey: no key in Service Worker response");
+							finalize();
+						}
+					};
+					navigator.serviceWorker.controller.postMessage(
+						{ type: "Q.Users.sessionKeys.request" },
+						[channel.port2]
+					);
+					return;
+				} catch (e) {
+					Q.warn("Users.Session.getKey: failed contacting Service Worker " + e);
+				}
+			}
+
+			// Try parent window (if iframe)
+			if (!key && window.parent && window.self !== window.top) {
+				try {
+					var listener = function (ev) {
+						var data = ev.data || {};
+						if (data.type === "Q.Users.sessionKeys.provide" && data.sessionKey) {
+							window.removeEventListener("message", listener);
+							key = data.sessionKey;
+							Users.Session.key.loaded = key;
+							Q.log("Users.Session.getKey: recovered key from parent window");
+							Q.handle(callback, null, [null, key]);
+							resolve(key);
+						}
+					};
+					window.addEventListener("message", listener, false);
+					window.parent.postMessage({ type: "Q.Users.sessionKeys.request" }, "*");
+					return;
+				} catch (e) {
+					Q.warn("Users.Session.getKey: failed contacting parent " + e);
+				}
+			}
+
+			// If nothing found, fail cleanly
+			function finalize() {
+				if (key) {
+					Q.handle(callback, null, [null, key]);
+					resolve(key);
+				} else {
+					var e = err || { message: "Users.Session.getKey: no key found in any source" };
+					Q.handle(callback, null, [e]);
+					reject(e);
+				}
+			}
+			finalize();
+		}
 	});
 });
