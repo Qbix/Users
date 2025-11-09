@@ -1018,23 +1018,28 @@ abstract class Users extends Base_Users
 			// This user is already the logged-in user. Do nothing.
 			return false;
 		}
-
+		
 		/**
 		 * @event Users/setLoggedInUser {before}
 		 * @param {Users_User} user
 		 * @param {string} loggedInUserId
 		 */
 		Q::event('Users/setLoggedInUser', @compact('user', 'loggedInUserId'), 'before');
-
+		
 		if ($loggedInUserId) {
 			// Always log out existing user, so their session data isn't carried over.
+			// This also removes the devices for this session, stopping notifications.
 			Users::logout();
+		} else {
+			// Otherwise the session data of the logged-out user is merged
+			// into the logged-in user's session, so it can be used!
 		}
 		if (!$user) {
+			// nothing more to do, this is essentially a call to log out
 			return;
 		}
 
-		// Prevent session fixation attacks
+		// Change the session id to prevent session fixation attacks
 		if (empty($options['keepSessionId'])) {
 			$duration = null;
 			$session = new Users_Session();
@@ -1054,65 +1059,7 @@ abstract class Users extends Base_Users
 		$snf = Q_Config::get('Q', 'session', 'nonceField', 'nonce');
 		$_SESSION['Users']['loggedInUser']['id'] = $user->id;
 		Q_Session::setNonce();
-
-		// Optionally issue a signed capability for this login
-		$issueFor = Q_Config::get('Users', 'capability', 'issue', 'loggedInUser', false);
-		if ($issueFor) {
-			try {
-				$publicKey = Q::ifset($options, 'publicKey', '');
-				if ($publicKey) {
-					// Determine which permissions to include
-					$allPermissions = Q_Config::get('Users', 'capability', 'permissions', array());
-					if (is_array($issueFor)) {
-						// Keep only those permissions explicitly listed under loggedInUser
-						$permissions = array();
-						foreach ($allPermissions as $code => $handler) {
-							if (in_array($handler, $issueFor, true) || in_array($code, $issueFor, true)) {
-								$permissions[$code] = $handler;
-							}
-						}
-					} else {
-						// Backward compat: issue all permissions if boolean true
-						$permissions = $allPermissions;
-					}
-
-					if (empty($permissions)) {
-						Q::log('No matching capabilities to issue for loggedInUser', 'Users');
-						return;
-					}
-
-					// Build capability object
-					$ttlDays = Q_Config::get('Users', 'capability', 'expiryDays', 365);
-					$now = time();
-					$cap = new Q_Capability(array_keys($permissions), array(
-						'userId'    => $user->id,
-						'sessionId' => Q_Session::id(),
-						'issuer'    => Q::ifset($_SERVER, 'HTTP_HOST', Q::domain())
-					), $now, $now + $ttlDays * 86400);
-
-					$arr = $cap->exportArray();
-
-					// Persist it in Users_Capability
-					$uc = new Users_Capability(array(
-						'publicKeyHash' => hash('sha256', $publicKey),
-						'userId'        => $user->id,
-						'permissions'   => json_encode($cap->permissions),
-						'payload'       => json_encode($arr),
-						'signature'     => $arr['Q.sig'],
-						'origin'        => Q::ifset($_SERVER, 'HTTP_HOST', Q::domain()),
-						'appId'         => Q::ifset(Q::info(), 'app', null),
-						'startTime'     => Db::fromTime($cap->startTime),
-						'endTime'       => Db::fromTime($cap->endTime),
-						'capability'    => (string)$cap
-					));
-					$uc->save();
-				}
-			} catch (Exception $e) {
-				Q::log('Failed to issue capability: ' . $e->getMessage(), 'Users');
-			}
-		}
-
-		// Increment session count and persist user
+		
 		$user->sessionCount = isset($user->sessionCount)
 			? $user->sessionCount + 1
 			: 1;
@@ -1122,33 +1069,35 @@ abstract class Users extends Base_Users
 		 * @param {Users_User} user
 		 */
 		Q::event('Users/setLoggedInUser/updateSessionId', @compact('user'), 'before');
-
+		
 		$user->sessionId = Q_Session::id();
-		$user->save();
-
+		$user->save(); // update sessionId in user
+		
 		/**
 		 * @event Users/setLoggedInUser/updateSessionId {after}
 		 * @param {Users_User} user
 		 */
 		Q::event('Users/setLoggedInUser/updateSessionId', @compact('user'), 'after');
-
+		
 		$votes = Users_Vote::select()
 			->where(array(
 				'userId' => $user->id,
 				'forType' => 'Users/hinted'
 			))->fetchDbRows(null, null, 'forId');
-
+		
+		// Cache already shown hints in the session.
+		// The consistency of this mechanism across sessions is not perfect, i.e.
+		// the same hint may repeat in multiple concurrent sessions, but it's ok.
 		$_SESSION['Users']['hinted'] = array_keys($votes);
 
 		if (!empty($options['cookiesToClearOnLogout'])) {
 			foreach ($options['cookiesToClearOnLogout'] as $item) {
-				$_SESSION['Users']['cookiesToClearOnLogout'][] = is_array($item)
-					? $item
-					: array($item, null);
+				$_SESSION['Users']['cookiesToClearOnLogout'][] = is_array($item) ? $item : array($item, null);
 			}
 		}
-
+		
 		if ($loggedInUserId) {
+			// Set a notice for the user, to alert the user that the account has changed
 			$template = Q_Config::expect('Users', 'login', 'notice');
 			$displayName = $user->displayName();
 			$html = Q_Handlebars::renderSource($template, @compact(
@@ -1165,7 +1114,7 @@ abstract class Users extends Base_Users
 		 */
 		Q::event('Users/setLoggedInUser', @compact('user'), 'after');
 		self::$loggedOut = false;
-
+		
 		return true;
 	}
 
