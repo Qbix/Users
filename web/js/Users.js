@@ -936,7 +936,8 @@
 		},
 		getKey: new Q.Method(),
 		generateKey: new Q.Method(),
-		clearKey: new Q.Method()
+		clearKey: new Q.Method(),
+		recover: new Q.Method()
 	}, "{{Users}}/js/methods/Users/Session",
 	function() {
 		return [Users, priv];
@@ -1191,49 +1192,82 @@
 	};
 
 	Q.onInit.add(function () {
+		// Maintain backward-compatible behavior
 		if (Users.capability) {
-			Q.setObject('Q.Socket.connect.options.auth.capability', JSON.stringify(Users.capability));
+			Q.setObject('Q.Socket.connect.options.auth.capability',
+				JSON.stringify(Users.capability));
 		}
+
 		priv._register_localStorageKey = "Q.Users.register.success " + Q.info.baseUrl;
+
 		Q.Text.get('Users/content', function (err, text) {
-			if (!text) {
-				return;
-			}
-			Q.extend(Q.text.Users, 10, text);
+			if (text) Q.extend(Q.text.Users, 10, text);
 		});
-		if (Users.loggedInUser
-		&& Q.typeOf(Users.loggedInUser) !== 'Q.Users.User') {
+
+		if (Users.loggedInUser && Q.typeOf(Users.loggedInUser) !== 'Q.Users.User') {
 			Users.loggedInUser = new Users.User(Users.loggedInUser);
 			Q.nonce = Q.cookie('Q_nonce') || Q.nonce;
 		}
 
+		// Initialize per-platform handlers
 		var appId = Q.info.app;
 		for (var platform in Users.apps) {
 			var platformAppId = Users.getPlatformAppId(platform, appId);
-			if (platformAppId) {
-				Q.handle(Users.init[platform]);
-			}
+			if (platformAppId) Q.handle(Users.init[platform]);
 		}
 		OAuth.redirectUri = Q.action('Users/oauthed');
 
 		var prefix = Q.getObject('Q.info.sessionIdPrefixes.authenticated');
 		var nonce = Q.cookie('Q_nonce');
-		if (prefix && nonce && nonce.startsWith(prefix)
-		&& !Q.Users.loggedInUser) {
-			// happens for instance when webserver loads a pre-rendered
-			// static file instead of the latest result of a PHP script
+		if (prefix && nonce && nonce.startsWith(prefix) && !Q.Users.loggedInUser) {
 			_fetchUserData();
 		}
 		Q.request.options.onProcessed.set(_fetchUserData, 'Users');
+
+		// --- NEW IFRAME AWARENESS AND MESSAGE HANDLING ---
+
+		var inIframe = (window.self !== window.top);
+
 		if (!Users.Session.publicKey && Users.Session.key.generateOnLogin) {
 			Users.Session.getKey(function (err, key) {
-				if (key) {
-					return; // we had loaded a pre-rendered static page
+				if (key) return; // key already exists
+
+			// Always set up listener, even if not currently requesting
+			window.addEventListener('message', function (ev) {
+				var data = ev.data || {};
+				if (!data.type) return;
+
+				// Accept from any origin; recovery key is non-extractable
+				if (data.type === 'Q.Users.recoveryKey.recover') {
+					Q.log('Users: received recoveryKey.recover from parent');
+					try {
+						clearTimeout(tmt);
+						Users.Session.recover();
+					} catch (e) {
+						Q.warn('Users.Session.recover() failed: ' + e);
+					}
 				}
-				Users.Session.generateKey();
-			})
+			}, false);
+
+				var tmt = setTimeout(function () {
+					Users.Session.generateKey();
+				}, 300);
+				if (inIframe) {
+					// Ask parent to provide recovery key, if it has one
+					try {
+						window.parent.postMessage(
+							{ type: 'Q.Users.recoveryKey.request' },
+							'*'
+						);
+						Q.log('Users: requested recovery key from parent');
+					} catch (e) {
+						Q.warn('Users: postMessage request to parent failed: ' + e);
+					}
+				}
+			});
 		}
 	}, 'Users');
+
 	
 	function _setSessionFromQueryString(querystring)
 	{

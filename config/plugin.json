@@ -175,7 +175,7 @@
 				"a": "Users/authenticate"
 			},
 			"issue": {
-				"loggedInUser": true
+				"loggedInUser": ["Users/authenticate"]
 			}
 		},
 		"socket": {

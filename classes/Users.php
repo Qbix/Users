@@ -1056,13 +1056,32 @@ abstract class Users extends Base_Users
 		Q_Session::setNonce();
 
 		// Optionally issue a signed capability for this login
-		if (Q_Config::get('Users', 'capability', 'issue', 'loggedInUser', false)) {
+		$issueFor = Q_Config::get('Users', 'capability', 'issue', 'loggedInUser', false);
+		if ($issueFor) {
 			try {
 				$publicKey = Q::ifset($options, 'publicKey', '');
-				if (!$publicKey) {
-					Q::log('Skipping capability issuance: no publicKey provided', 'Users');
-				} else {
-					$permissions = Q_Config::get('Users', 'capability', 'permissions', array());
+				if ($publicKey) {
+					// Determine which permissions to include
+					$allPermissions = Q_Config::get('Users', 'capability', 'permissions', array());
+					if (is_array($issueFor)) {
+						// Keep only those permissions explicitly listed under loggedInUser
+						$permissions = array();
+						foreach ($allPermissions as $code => $handler) {
+							if (in_array($handler, $issueFor, true) || in_array($code, $issueFor, true)) {
+								$permissions[$code] = $handler;
+							}
+						}
+					} else {
+						// Backward compat: issue all permissions if boolean true
+						$permissions = $allPermissions;
+					}
+
+					if (empty($permissions)) {
+						Q::log('No matching capabilities to issue for loggedInUser', 'Users');
+						return;
+					}
+
+					// Build capability object
 					$ttlDays = Q_Config::get('Users', 'capability', 'expiryDays', 365);
 					$now = time();
 					$cap = new Q_Capability(array_keys($permissions), array(
@@ -1073,6 +1092,7 @@ abstract class Users extends Base_Users
 
 					$arr = $cap->exportArray();
 
+					// Persist it in Users_Capability
 					$uc = new Users_Capability(array(
 						'publicKeyHash' => hash('sha256', $publicKey),
 						'userId'        => $user->id,

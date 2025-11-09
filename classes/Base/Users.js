@@ -27,7 +27,6 @@ module.exports = Base;
  * @type array
  */
 Base.tableClasses = [
-	"Users_Capability",
 	"Users_Contact",
 	"Users_Device",
 	"Users_Email",

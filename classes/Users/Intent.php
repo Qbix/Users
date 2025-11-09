@@ -94,6 +94,17 @@ class Users_Intent extends Base_Users_Intent
 				$this->sessionId = $sessionId;
 			}
 		}
+		if (isset($this->attributes)
+		and !is_string($this->attributes)) {
+			if (is_array($this->attributes)) {
+				$this->attributes = Q::json_encode($this->attributes, Q::JSON_FORCE_OBJECT);
+			} else {
+				throw new Q_Exception_WrongType(array(
+					'field' => 'attributes',
+					'type' => 'string'
+				));
+			}
+		}
 		// delete up to 10 previous intents with this sessionId, to save space
 		Users_Intent::delete()->where(array(
 			'endTime <' => new Db_Expression("CURRENT_TIMESTAMP")
@@ -122,6 +133,54 @@ class Users_Intent extends Base_Users_Intent
 			return false;
 		}
 		return true;
+	}
+
+	/**
+	 * @method getAllinstructions
+	 * @return {array} The array of all instructions set in the message
+	 */
+	function getAllInstructions()
+	{
+		return empty($this->instructions) ? array() : json_decode($this->instructions, true);
+	}
+	
+	/**
+	 * @method getInstruction
+	 * @param {string} $instructionName The name of the instruction to get
+	 * @param {mixed} $default The value to return if the instruction is missing
+	 * @return {mixed} The value of the instruction, or the default value, or null
+	 */
+	function getInstruction($instructionName)
+	{
+		$instr = $this->getAllInstructions();
+		return isset($instr[$instructionName]) ? $instr[$instructionName] : null;
+	}
+	
+	/**
+	 * @method setInstruction
+	 * @param {string|array} $instructionName The name of the instruction to set,
+	 *  or an array of $instructionName => $value pairs
+	 * @param {mixed} $value The value to set the instruction to
+	 * @return Streams_Message
+	 */
+	function setInstruction($instructionName, $value)
+	{
+		$instr = $this->getAllInstructions();
+		$instr[$instructionName] = $value;
+		$this->instructions = Q::json_encode($instr);
+
+		return $this;
+	}
+	
+	/**
+	 * @method clearInstruction
+	 * @param {string} $instructionName The name of the instruction to remove
+	 */
+	function clearInstruction($instructionName)
+	{
+		$instr = $this->getAllInstructions();
+		unset($instr[$instructionName]);
+		$this->instructions = Q::json_encode($instr);
 	}
 
 	/**
