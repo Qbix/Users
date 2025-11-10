@@ -69,13 +69,6 @@ Base.connectionName = function() {
 };
 
 /**
- * Link to Users.Capability model
- * @property Capability
- * @type Users.Capability
- */
-Base.Capability = Q.require('Users/Capability');
-
-/**
  * Link to Users.Contact model
  * @property Contact
  * @type Users.Contact
