@@ -26,7 +26,7 @@ Q.exports(function (Users, priv) {
 	 */
     function authenticate(platform, onSuccess, onCancel, options) {
 
-		options = Q.extend(Q.Users.authenticate.options, options);
+		options = Q.extend({}, Q.Users.authenticate.options, options);
 		var handler = Users.authenticate[platform];
 		if (!handler) {
 			var handlers = Object.keys(Q.Users.apps).filter(function (k) {
@@ -52,6 +52,12 @@ Q.exports(function (Users, priv) {
 		); // so config has a chance to add more options
 		return handler.call(this, platform, platformAppId, onSuccess, onCancel, options);
     }
+
+	authenticate.options = {
+		prompt: null,
+		force: false,
+		app: Q.info.app
+	};
     
     // opens a browsertab and authenticates using AuthenticationSession
     authenticate.qbix = new Q.Method();

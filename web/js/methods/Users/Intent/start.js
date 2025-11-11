@@ -16,6 +16,8 @@ Q.exports(function (Users, priv) {
 	 * @param {Object} [options]
      * @param {String} [options.action] If capability is empty, specify this
      * @param {String} [options.platform] If capability is empty, specify this
+     * @param {String} [options.url] Can be used to override url
+     * @param {String} [options.interpolate] Any additional fields to interpolate into url
 	 * @param {Boolean} [options.skip]
 	 * @param {Boolean} [options.skip.redirect]
 	 * @param {Boolean} [options.skip.QR]
@@ -56,7 +58,7 @@ Q.exports(function (Users, priv) {
 		var fields = { capability: capability };
 		var action = capability.action;
 		var platform = capability.platform;
-		var appId = capability.appId;
+		var appId = capability.appId || Q.info.appId;
 
 		// Provision intent server-side (idempotent)
 		Q.req('Users/intent', function (err) {
@@ -71,7 +73,7 @@ Q.exports(function (Users, priv) {
 			return false;
 		}
 
-		var url = Q.getObject([action, platform, 'redirect'], Users.Intent.actions);
+		var url = options.url || Q.getObject([action, platform, 'redirect'], Users.Intent.actions);
 		if (!url) {
 			return false;
 		}

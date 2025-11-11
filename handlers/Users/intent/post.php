@@ -1,8 +1,30 @@
 <?php
-
 /**
- * Handles POST /Users/intent
- * Creates or reuses an intent based on a valid capability
+ * Used by HTTP clients to create (or reuse) an authentication intent.
+ * An "intent" represents a pending authentication or connection flow
+ * (e.g. via Telegram, Web3 wallet, or another external identity provider).
+ *
+ * Once created, the intent can be completed by PUT /Users/intent
+ * after verification by the external platform.
+ *
+ * @module Users
+ * @class HTTP Users intent
+ * @method post
+ * @param {array} [$params] Parameters that can come from the request
+ *   @param {string} [$params.capability] Optional. A capability token granting permission to create or reuse the intent.
+ *   @param {string} [$params.platform] Optional. Target platform for the authentication (e.g. "telegram", "web3").
+ *   @param {string} [$params.redirect] Optional. URL to redirect to after completing the external authentication.
+ *   @param {string} [$params.sessionId] Optional. A specific sessionId to attach this intent to (defaults to current session).
+ *   @param {string} [$params.userId] Optional. If provided, associates the intent with this user.
+ * @throws {Users_Exception_NotAuthorized}
+ * @throws {Q_Exception_MissingValue}
+ * @return {array} Returns the created intent in the "intent" slot:
+ *   {
+ *     "token": "...",
+ *     "sessionId": "...",
+ *     "platform": "...",
+ *     "createdTime": "..."
+ *   }
  */
 function Users_intent_post()
 {
