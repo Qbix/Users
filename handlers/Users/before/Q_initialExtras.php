@@ -6,6 +6,9 @@ function Users_before_Q_initialExtras()
 	Q_Response::setScriptData("Q.plugins.Users.signatures", 
 		Q_Config::get('Users', 'signatures', array())
 	);
+	Q_Response::setScriptData("Q.plugins.Users.Intent.actions", 
+		Q_Config::get('Users', 'intents', 'actions', array())
+	);
 	Q_Response::setScriptData(
 		'Q.plugins.Users.authenticate.expires',
 		Q_Config::get('Users', 'authenticate', 'expires', null)

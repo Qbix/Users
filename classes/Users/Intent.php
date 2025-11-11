@@ -14,6 +14,49 @@
 class Users_Intent extends Base_Users_Intent
 {
 	/**
+	 * Generate a unique token that can be used for intents
+	 * @method generateToken
+	 * @static
+	 * @return {string}
+	 */
+	static function generateToken()
+	{
+		return self::db()->uniqueId(
+			self::table(),
+			'token',
+			null,
+			array(
+				'length' => Q_Config::get('Users', 'intents', 'tokens', 'length', 16),
+				'characters' => Q_Config::get('Users', 'intents', 'tokens', 'characters', 'abcdefghijklmnopqrstuvwxyz')
+			)
+		);
+	}
+
+	/**
+	 * Generate a unique token that can be used for intents.
+	 * Then sign capability and return it.
+	 * Re-uses same capability if called multiple times.
+	 * @method capability
+	 * @param {array} $data Any additional data to include in the capability
+	 * @static
+	 * @return {Q_Capability}
+	 */
+	static function capability($data = array())
+	{
+		$data['token'] = self::generateToken();
+		static $c = null;
+		if (!isset($c)) {
+			$duration = Q_Config::expect('Users', 'capability', 'duration');
+			$time = floor(Q::millisecondsStarted() / 1000);
+			$c = new Q_Capability(
+				array('Users/intent/provision'), 
+				$data, $time, $time + $duration
+			);
+		}
+		return $c;
+	}
+
+	/**
 	 * Save a new intent in the database (and perhaps remove a few outdated ones)
 	 * @method newIntent
 	 * @static

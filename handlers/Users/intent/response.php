@@ -21,6 +21,16 @@
  */
 function Users_intent_response()
 {
+    if (Q_Request::isAjax()) {
+        Q_Request::requireOrigin(true);
+        $slotNames = Q_Request::slotNames();
+        if (in_array('token', $slotNames)) {
+            $capability = Users_Intent::capability();
+            Q_Request::setSlot('token', $capability->data['token']);
+            Q_Request::setSlot('capability', $capability->exportArray());
+        }
+        return true;
+    }
     Q_Request::requireFields(array('action', 'platform'), true);
     $action = $_REQUEST['action'];
     $platform = $_REQUEST['platform'];

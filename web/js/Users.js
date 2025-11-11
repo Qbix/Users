@@ -942,6 +942,20 @@
 	function() {
 		return [Users, priv];
 	});
+
+	/**
+	 * Methods for user intents
+	 * @class Users.Intent
+	 */
+	Users.Intent = Q.Method.define({
+		actions: {},
+		provision: new Q.Method(),
+		start: new Q.Method(),
+		onCompleted: Q.Event.factory({}, [""])
+	}, "{{Users}}/js/methods/Users/Session",
+	function() {
+		return [Users, priv];
+	});
 	
 	/**
 	 * Methods for OAuth

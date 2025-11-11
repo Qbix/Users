@@ -49,6 +49,7 @@
 		"routes@start": {
 			"login/facebook": {"module": "Users", "action": "facebook"},
 			"Users/session": {"module": "Users", "action": "session"},
+			"Users/intent": {"module": "Users", "action": "intent"},
 			"Users/analytics": {"module": "Users", "action": "analytics"},
 			"Users/authorize": {"module": "Users", "action": "authorize"},
 			"Users/unsubscribe": {"module": "Users", "action": "unsubscribe"},
@@ -172,10 +173,8 @@
 		"capability": {
 			"permissions": {
 				"u": "Users/socket",
-				"a": "Users/authenticate"
-			},
-			"issue": {
-				"loggedInUser": ["Users/authenticate"]
+				"a": "Users/authenticate",
+				"p": "Users/intent/provision"
 			}
 		},
 		"socket": {
@@ -334,6 +333,10 @@
 			},
 			"durations": {
 				"debounce": 10
+			},
+			"tokens": {
+				"length": 16,
+				"characters": "abcdefghijklmnopqrstuvwxyz"
 			}
 		},
 		"capability": {
