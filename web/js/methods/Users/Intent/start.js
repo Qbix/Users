@@ -6,69 +6,130 @@ Q.exports(function (Users, priv) {
 	 */
 
 	/**
-	 * Tells server to create a Users.Intent, then immediately
-     * opens corresponding URL using window.location
+	 * Starts or provisions a Users.Intent, optionally showing a QR or
+	 * performing a synchronous redirect when no capability is cached.
+	 *
 	 * @method start
 	 * @static
-     * @param {Object} capability the capability from Users.Intent.provision
-     * @param {Object} [options]
-     * @param {Boolean} [options.skip]
-     * @param {Boolean} [options.skip.redirect]
-     * @param {Boolean} [options.skip.QR]
+	 * @param {Object|String} capability the capability from Users.Intent.provision,
+	 *   or just an action name (e.g. "Users/authenticate") to trigger fallback
+	 * @param {Object} [options]
+     * @param {String} [options.action] If capability is empty, specify this
+     * @param {String} [options.platform] If capability is empty, specify this
+	 * @param {Boolean} [options.skip]
+	 * @param {Boolean} [options.skip.redirect]
+	 * @param {Boolean} [options.skip.QR]
 	 */
 	return function Users_Intent_start(capability, options) {
-        // insert this intent
-        var fields = {
-            capability: capability
-        }
-        var action = capability.action;
-        var platform = capability.platform;
-        var appName = capability.appName;
-        Q.req('Users/intent', function (err, response) {
+		options = Q.extend({skip: {}}, options);
 
-        }, {
-            method: 'post',
-            fields: fields
-        });
-        var apps = Users.apps[platform] || [];
-        if (!apps[appName]) {
-            return false;
+        if (!capability || !capability.sig) {
+            capability = Q.getObject(
+                [options.action, options.platform, 'capability'],
+                Users.Intent.provision
+            )
         }
-        var url = null;
-        if (Users.Intent.actions[action]) {
-            url = Users.Intent.actions[action][platform];
-        }
-        if (!url) {
-            return false;
-        }
-        if (!options.skip || !options.skip.QR) {
-            Q.addScript("{{Q}}/js/qrcode/qrcode.js", function () {
-                var element = Q.element("div");
-                element.style.textAlign = "center";
-                element.style.padding = "20px";
-
-                try {
-                    new QRCode(element, {
-                        text: Q.url("Users/intent", fields),
-                        width: 250,
-                        height: 250,
-                        colorDark: "#000000",
-                        colorLight: "#ffffff",
-                        correctLevel: QRCode.CorrectLevel.H
-                    });
-                } catch (e) {
-                    console.error("Error rendering QRCode:", e);
-                }
-
-                Q.Dialogs.push({
-                    title: "Scan this code to continue",
-                    content: element
-                });
+		if (!capability && options.action && options.platform
+        && !options.skip.redirect) {
+            // Just perform a synchronous redirect without provisioned capability
+            // NOTE: some apps may disallow this for security reasons
+            location.href = Q.action('Users/intent', {
+                action: options.action,
+                platform: options.platform,
+                interpolate: options.interpolate
             });
-        }
-        if (!options.skip || !options.skip.redirect) {
-            url = url.interpolate(apps[appName]);
-            window.location = url;
-        }
-    };
+            Q.onVisibilityChange.setOnce(function (isShown) {
+                if (!isShown) return;
+                Q.loadUrl(location.href, {
+                    slotNames: Q.info.slotNames,
+                    loadExtras: 'all',
+                    ignoreDialogs: true,
+                    ignorePage: false,
+                    ignoreHistory: true,
+                    quiet: true
+                });
+            }, 'Telegram');
+            return;
+		}
+
+		// At this point we have a valid capability object
+		var fields = { capability: capability };
+		var action = capability.action;
+		var platform = capability.platform;
+		var appId = capability.appId;
+
+		// Provision intent server-side (idempotent)
+		Q.req('Users/intent', function (err) {
+			if (err) console.warn('Intent provisioning failed:', err);
+		}, {
+			method: 'post',
+			fields: fields
+		});
+
+		var apps = Users.apps[platform] || [];
+		if (!apps[appId]) {
+			return false;
+		}
+
+		var url = Q.getObject([action, platform, 'redirect'], Users.Intent.actions);
+		if (!url) {
+			return false;
+		}
+
+		if (!options.skip.QR) {
+			var dialog = Q.Dialogs.push({
+				title: "Scan this code to continue",
+				onActivate: function () {
+					Q.addScript("{{Q}}/js/qrcode/qrcode.js", function () {
+						var element = Q.element("div");
+						element.style.textAlign = "center";
+						element.style.padding = "20px";
+
+						try {
+							new QRCode(element, {
+								text: Q.url("Users/intent", capability),
+								width: 250,
+								height: 250,
+								colorDark: "#000000",
+								colorLight: "#ffffff",
+								correctLevel: QRCode.CorrectLevel.H
+							});
+						} catch (e) {
+							console.error("Error rendering QRCode:", e);
+						}
+					});
+
+					Q.onVisibilityChange.setOnce(function (isShown) {
+						if (!isShown) return;
+
+						// Check if user changed before reload
+						Q.req('Users/loggedInUser', function (err, response) {
+							var user = Q.getObject('slots.user', response);
+							if (!user || Users.loggedInUserId() == user.id) {
+								return;
+							}
+							Users.loggedInUser = new Users.User(response.slots.user);
+							Q.loadUrl(location.href, {
+								slotNames: Q.info.slotNames,
+								loadExtras: 'all',
+								ignoreDialogs: true,
+								ignorePage: false,
+								ignoreHistory: true,
+								quiet: true
+							});
+						});
+
+						Q.Dialogs.close(dialog);
+					}, 'Telegram');
+				}
+			});
+		}
+
+		if (!options.skip.redirect) {
+			url = url.interpolate(apps[appId]);
+			window.location = url;
+		}
+
+        return url;
+	};
 });

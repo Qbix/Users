@@ -14,20 +14,18 @@ Q.exports(function (Users, priv) {
 	 * @static
      * @param {String} action for example "Users/authenticate"
      * @param {String} platform for example "telegram"
-     * @param {String} appName name of the app in the Users.apps[platform] object
-     * @param {String} token needed to interpolate into the URL to redirect to
+     * @param {String} appId key under the Users.apps[platform] object
 	 * @param {Function} callback Receives (err, token)
      * @param {Object} [options]
      * @param {Boolean} [options.skip]
      * @param {Boolean} [options.skip.redirect]
      * @param {Boolean} [options.skip.QR]
 	 */
-	return function Users_Intent_provision(action, platform, appName, token, callback, options) {
+	return function Users_Intent_provision(action, platform, appId, callback, options) {
         var fields = {
             action: action,
             platform: platform,
-            appName: appName,
-            token: token
+            appId: appId
         };
         Q.req(fields, 'Users/intent', ['token', 'capability'], function (err, response) {
             var fem = Q.firstErrorMessage(err, response);
@@ -36,6 +34,10 @@ Q.exports(function (Users, priv) {
                 callback && callback(null);
                 return;
             }
+            Q.setObject(['results', action, platform, appId], {
+                token: response.slots.token,
+                capability: response.slots.capability
+            }, Users.Intent.provision);
             callback && callback(response && response.slots);
         });
     };
