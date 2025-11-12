@@ -23,7 +23,7 @@ var Row = Q.require('Db/Row');
  * an associative array of {column: value} pairs
  * @param {String|Buffer} [fields.token] defaults to ""
  * @param {String|Buffer} [fields.action] defaults to ""
- * @param {String|Buffer} [fields.instructions] defaults to ""
+ * @param {String|Buffer} [fields.instructions] defaults to null
  * @param {String|Buffer} [fields.sessionId] defaults to null
  * @param {String|Buffer} [fields.userId] defaults to null
  * @param {String|Db.Expression} [fields.startTime] defaults to null
@@ -52,7 +52,7 @@ Q.mixin(Base, Row);
 /**
  * @property instructions
  * @type String|Buffer
- * @default ""
+ * @default null
  * 
  */
 /**
@@ -396,13 +396,11 @@ return [["varbinary","31","",false],false,"",null];
  * @throws {Error} An exception is thrown if 'value' is not string or is exceedingly long
  */
 Base.prototype.beforeSet_instructions = function (value) {
-		if (value == null) {
-			value='';
-		}
+		if (value == undefined) return value;
 		if (value instanceof Db.Expression) return value;
 		if (typeof value !== "string" && typeof value !== "number" && !(value instanceof Buffer))
 			throw new Error('Must pass a String or Buffer to '+this.table()+".instructions");
-		if (typeof value === "string" && value.length > 255)
+		if (typeof value === "string" && value.length > 2047)
 			throw new Error('Exceedingly long value being assigned to '+this.table()+".instructions");
 		return value;
 };
@@ -413,7 +411,7 @@ Base.prototype.beforeSet_instructions = function (value) {
 	 */
 Base.prototype.maxSize_instructions = function () {
 
-		return 255;
+		return 2047;
 };
 
 	/**
@@ -422,7 +420,7 @@ Base.prototype.maxSize_instructions = function () {
 	 */
 Base.column_instructions = function () {
 
-return [["varbinary","255","",false],false,"",null];
+return [["varbinary","2047","",false],true,"",null];
 };
 
 /**
@@ -625,9 +623,6 @@ Base.prototype.beforeSave = function (value) {
 	}
 	if (this.fields["action"] == undefined && value["action"] == undefined) {
 		this.fields["action"] = value["action"] = "";
-	}
-	if (this.fields["instructions"] == undefined && value["instructions"] == undefined) {
-		this.fields["instructions"] = value["instructions"] = "";
 	}
 	return value;
 };

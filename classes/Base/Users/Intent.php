@@ -18,7 +18,7 @@
  * an associative array of $column => $value pairs
  * @param {string} [$fields.token] defaults to ""
  * @param {string} [$fields.action] defaults to ""
- * @param {string} [$fields.instructions] defaults to ""
+ * @param {string} [$fields.instructions] defaults to null
  * @param {string} [$fields.sessionId] defaults to null
  * @param {string} [$fields.userId] defaults to null
  * @param {string|Db_Expression} [$fields.startTime] defaults to null
@@ -43,7 +43,7 @@ abstract class Base_Users_Intent extends Db_Row
 	/**
 	 * @property $instructions
 	 * @type string
-	 * @default ""
+	 * @default null
 	 * 
 	 */
 	/**
@@ -416,7 +416,7 @@ return array (
 	function beforeSet_instructions($value)
 	{
 		if (!isset($value)) {
-			$value='';
+			return array('instructions', $value);
 		}
 		if ($value instanceof Db_Expression
                or $value instanceof Db_Range) {
@@ -424,7 +424,7 @@ return array (
 		}
 		if (!is_string($value) and !is_numeric($value))
 			throw new Exception('Must pass a string to '.$this->getTable().".instructions");
-		if (strlen($value) > 255)
+		if (strlen($value) > 2047)
 			throw new Exception('Exceedingly long value being assigned to '.$this->getTable().".instructions");
 		return array('instructions', $value);			
 	}
@@ -436,7 +436,7 @@ return array (
 	function maxSize_instructions()
 	{
 
-		return 255;			
+		return 2047;			
 	}
 
 	/**
@@ -450,11 +450,11 @@ return array (
   0 => 
   array (
     0 => 'varbinary',
-    1 => '255',
+    1 => '2047',
     2 => '',
     3 => false,
   ),
-  1 => false,
+  1 => true,
   2 => '',
   3 => NULL,
 );			
@@ -791,9 +791,6 @@ return array (
 		}
 		if (!isset($this->fields["action"]) and !isset($value["action"])) {
 			$this->action = $value["action"] = "";
-		}
-		if (!isset($this->fields["instructions"]) and !isset($value["instructions"])) {
-			$this->instructions = $value["instructions"] = "";
 		}
 		return $value;			
 	}
