@@ -80,7 +80,8 @@ function Users_key_post()
 	}
 
 	// Start PHP + DB session
-	$sessionRow = Q_Session::start();
+	Q_Session::start();
+	$sessionRow = Q_Session::row();
 	if (!$sessionRow) {
 		throw new Q_Exception("Could not start session");
 	}
