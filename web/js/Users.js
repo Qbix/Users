@@ -257,10 +257,17 @@
 			Users.init.web3.complete = true;
 
 			if (Users.Web3.walletConnectProvider
-			|| Q.getObject("ethereum.request", window)) {
+			|| Q.getObject("ethereum.request", window)
+			|| Q.isEmpty(Q.Users.apps.web3)) {
 				return callback && callback(null);
 			}
-			var projectId = Q.getObject(['web3', Users.communityId, 'providers', 'walletconnect', 'projectId'], Q.Users.apps);
+			var projectId = null;
+			for (var appId in Q.Users.apps.web3) {
+				if (appId !== '*') {
+					projectId = Q.getObject([appId, 'providers', 'walletconnect', 'projectId'], Q.Users.apps.web3);
+					break;
+				}
+			}
 			if (!projectId) {
 				return callback && callback("Users.init.web3: Missing Q.Users.apps.web3." + Users.communityId + ".providers.walletconnect.projectId");
 			}
@@ -1207,7 +1214,8 @@
 
 	Q.onInit.add(function () {
 		// Maintain backward-compatible behavior
-		if (Users.capability) {
+		if (Users.capability && Users.capability.permissions
+		&& Users.capability.permissions.includes('u')) {
 			Q.setObject('Q.Socket.connect.options.auth.capability',
 				JSON.stringify(Users.capability));
 		}
