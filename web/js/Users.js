@@ -1381,6 +1381,7 @@
 		&& !Users.logout.occurring) {
 			Q.nonce = Q.cookie('Q_nonce') || Q.nonce;
 			Q.req("Users/login", 'data', function (err, res) {
+				var liu = Users.loggedInUser;
 				Q.Response.processScriptDataAndLines(res);
 				Users.lastSeenNonce = Q.nonce = Q.cookie('Q_nonce') || Q.nonce;
 				var msg = Q.firstErrorMessage(err, res && res.errors);
@@ -1389,11 +1390,11 @@
 				}
 				Q.setObject('Q.Socket.connect.options.auth.capability', JSON.stringify(Users.capability));
 				var user = res.slots.data.user;
-				if (!user && Users.loggedInUser) {
+				if (!user && liu) {
 					Users.loggedInUser = null;
 					Users.roles = {};
 					Users.onLogout.handle();
-				} else if (user && user.id !== Users.loggedInUserId()) {
+				} else if (user && (!liu || user.id !== liu.id)) {
 					Users.loggedInUser = new Users.User(user);
 					Users.roles = res.slots.data.roles || {};
 					Users.onLogin.handle(user);
