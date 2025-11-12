@@ -16,6 +16,7 @@ Q.exports(function (Users, priv) {
 	 * @param {Object} [options]
      * @param {String} [options.action] If capability is empty, specify this
      * @param {String} [options.platform] If capability is empty, specify this
+     * @param {String} [options.appId] If capability is empty, specify this
      * @param {String} [options.url] Can be used to override url
      * @param {String} [options.interpolate] Any additional fields to interpolate into url
 	 * @param {Boolean} [options.skip]
@@ -26,9 +27,10 @@ Q.exports(function (Users, priv) {
 		options = Q.extend({skip: {}}, options);
 
         if (!capability || !capability.sig) {
+            var appId = options.appId || Q.info.app;
             capability = Q.getObject(
-                [options.action, options.platform, 'capability'],
-                Users.Intent.provision
+                [options.action, options.platform, appId, 'capability'],
+                Users.Intent.provision.results
             )
         }
 		if (!capability && options.action && options.platform
