@@ -1214,12 +1214,21 @@
 
 	Q.onInit.add(function () {
 		// Maintain backward-compatible behavior
-		if (Users.capability && Users.capability.permissions
-		&& Users.capability.permissions.includes('u')) {
+		var permissions = Q.getObject('capability.permissions', Users);
+		var found = false;
+		if (Q.info.socket && Q.info.socket.permissions) {
+			for (var i=0; i<permissions.length; ++i) {
+				if (Q.info.socket.permissions.indexOf(permissions[i]) >= 0) {
+					found = true;
+					break;
+				}
+			}
+		}
+		if (found) {
+			// the capability enables socket connectivity
 			Q.setObject('Q.Socket.connect.options.auth.capability',
 				JSON.stringify(Users.capability));
 		}
-
 		priv._register_localStorageKey = "Q.Users.register.success " + Q.info.baseUrl;
 
 		Q.Text.get('Users/content', function (err, text) {
