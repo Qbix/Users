@@ -50,6 +50,7 @@ Q.exports(function (Users, priv) {
 		Q.extend(options, Q.getObject(
 			[platform, appId, 'authenticate', 'options'], Q.Users.apps)
 		); // so config has a chance to add more options
+
 		return handler.call(this, platform, platformAppId, onSuccess, onCancel, options);
     }
 

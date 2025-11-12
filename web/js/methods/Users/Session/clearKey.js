@@ -33,13 +33,13 @@ Q.exports(function (Users, priv) {
 				var request = store.delete('Users.Session');
 
 				request.onsuccess = function (event) {
-					Q.log("Users.Session.clearKey: deleted Users.Session from IndexedDB");
+					console.log("Users.Session.clearKey: deleted Users.Session from IndexedDB");
 					if (inIframe) {
 						try {
 							window.parent.postMessage({
 								type: "Q.Users.recoveryKey.cleared"
 							}, "*");
-							Q.log("Users.Session: posted clearKey notice to parent via postMessage");
+							console.log("Users.Session: posted clearKey notice to parent via postMessage");
 						} catch (e) {
 							Q.warn("Users.Session: failed to post clearKey to parent " + e);
 						}
@@ -64,7 +64,7 @@ Q.exports(function (Users, priv) {
 					window.parent.postMessage({
 						type: "Q.Users.recoveryKey.cleared"
 					}, "*");
-					Q.log("Users.Session: posted clearKey notice to parent (fallback)");
+					console.log("Users.Session: posted clearKey notice to parent (fallback)");
 				} catch (e) {
 					Q.warn("Users.Session: failed to post clearKey to parent " + e);
 				}

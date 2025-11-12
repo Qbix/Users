@@ -1377,7 +1377,7 @@
 		if (Users.lastSeenNonce 
 		&& Users.lastSeenNonce !== Q.nonce
 		&& !Users.login.occurring
-		&& !Users.authenticate.occurring
+		// && !Users.authenticate.occurring // events should happen during authenticating
 		&& !Users.logout.occurring) {
 			Q.nonce = Q.cookie('Q_nonce') || Q.nonce;
 			Q.req("Users/login", 'data', function (err, res) {
