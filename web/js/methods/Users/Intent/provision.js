@@ -16,16 +16,12 @@ Q.exports(function (Users, priv) {
      * @param {String} platform for example "telegram"
      * @param {String} appId key under the Users.apps[platform] object
 	 * @param {Function} callback Receives (err, token)
-     * @param {Object} [options]
-     * @param {Boolean} [options.skip]
-     * @param {Boolean} [options.skip.redirect]
-     * @param {Boolean} [options.skip.QR]
 	 */
-	return function Users_Intent_provision(action, platform, appId, callback, options) {
+	return function Users_Intent_provision(action, platform, appId, callback) {
         var fields = {
             action: action,
             platform: platform,
-            appId: appId
+            appId: appId || Q.info.app
         };
         Q.req(fields, 'Users/intent', ['token', 'capability'], function (err, response) {
             var fem = Q.firstErrorMessage(err, response);

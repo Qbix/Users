@@ -26,8 +26,8 @@ function Users_intent_response()
         $slotNames = Q_Request::slotNames();
         if (in_array('token', $slotNames)) {
             $capability = Users_Intent::capability();
-            Q_Request::setSlot('token', $capability->data['token']);
-            Q_Request::setSlot('capability', $capability->exportArray());
+            Q_Response::setSlot('token', $capability->data['token']);
+            Q_Response::setSlot('capability', $capability->exportArray());
         }
         return true;
     }
