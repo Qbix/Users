@@ -185,7 +185,7 @@ Q.exports(function (Users, priv) {
 					});
 				}, {
 					key: sessionKey,
-					fieldNames: ["info"]
+					fieldNames: ["info", "publicKey", "recoveryKey"]
 				});
 			}
 		});
