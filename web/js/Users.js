@@ -952,7 +952,7 @@
 		provision: new Q.Method(),
 		start: new Q.Method(),
 		onCompleted: Q.Event.factory({}, [""])
-	}, "{{Users}}/js/methods/Users/Session",
+	}, "{{Users}}/js/methods/Users/Intent",
 	function() {
 		return [Users, priv];
 	});
