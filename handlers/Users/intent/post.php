@@ -4,15 +4,12 @@
  * An "intent" represents a pending authentication or connection flow
  * (e.g. via Telegram, Web3 wallet, or another external identity provider).
  *
- * Once created, the intent can be completed by PUT /Users/intent
- * after verification by the external platform.
- *
  * @module Users
  * @class HTTP Users intent
  * @method post
  * @param {array} [$params] Parameters that can come from the request
  *   @param {string} [$params.capability] Optional. A capability token granting permission to create or reuse the intent.
- *   @param {string} [$params.platform] Optional. Target platform for the authentication (e.g. "telegram", "web3").
+ *   @param {string} [$params.platform] Optional. Target platform some the authentication (e.g. "telegram", "web3").
  *   @param {string} [$params.redirect] Optional. URL to redirect to after completing the external authentication.
  *   @param {string} [$params.sessionId] Optional. A specific sessionId to attach this intent to (defaults to current session).
  *   @param {string} [$params.userId] Optional. If provided, associates the intent with this user.
@@ -29,7 +26,7 @@
 function Users_intent_post()
 {
 	Q_Request::requireFields(array('capability'), true);
-	$capability = $_REQUEST['capability'];
+	$capability = new Q_Capability($_REQUEST['capability']);
 
 	// Validate capability signature and permission
 	if (!Q_Valid::capability($capability, 'Users/intent/provision')) {
@@ -38,12 +35,9 @@ function Users_intent_post()
 
 	// Extract relevant fields from capability data
 	$data = Q::ifset($capability, 'data', $capability);
-	$fields = Q::take($data, array(
-		'token'    => null,
-		'action'   => null,
-		'platform' => null,
-		'appName'  => null
-	));
+	$fieldNames = array('token', 'action', 'platform', 'appId');
+	$fields = Q::take($data, $fieldNames);
+	Q::take($_REQUEST, $fieldNames, $fields);
 
 	// Validate required fields
     if ($fields['action'] === 'Users/authenticate') {
@@ -57,7 +51,6 @@ function Users_intent_post()
 	// Attach user ID and timestamp
 	$user = Users::loggedInUser();
 	$fields['userId'] = $user ? $user->id : null;
-	$fields['createdTime'] = time();
 
 	// Idempotent insert: reuse existing intent if same token already exists
 	$intent = Users_Intent::select()
@@ -65,8 +58,13 @@ function Users_intent_post()
 		->fetchDbRow();
 
 	if (!$intent) {
-		$intent = new Users_Intent($fields);
-		$intent->save();
+		$instructions = $fields;
+		foreach (Users_Intent::fieldNames() as $f) {
+			unset($instructions[$f]);
+		}
+		$intent = Users_Intent::newIntent(
+			$fields['action'], $fields['userId'], $instructions, $fields['token']
+		);
 	}
 
 	// Return minimal info (AJAX-safe)

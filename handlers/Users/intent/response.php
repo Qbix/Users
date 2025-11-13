@@ -31,9 +31,29 @@ function Users_intent_response()
         }
         return true;
     }
-    Q_Request::requireFields(array('action', 'platform'), true);
-    $action = $_REQUEST['action'];
-    $platform = $_REQUEST['platform'];
+    $intent = null;
+    if (isset($_REQUEST['capability'])) {
+        $capability = new Q_Capability($_REQUEST['capability']);
+        if (isset($capability->data['token'])) {
+            $intent = (new Users_Intent(array('token' => $capability->data['token'])))->retrieve();
+            if ($intent) {
+                if (!empty($intent->action)) {
+                    $action = $intent->action;
+                }
+                if ($intent->getInstruction('platform')) {
+                    $platform = $intent->getInstruction('platform');
+                }
+            }
+        }
+    }
+    if (!isset($action)) {
+        Q_Request::requireFields(array('action'), true);
+        $action = $_REQUEST['action'];
+    }
+    if (!isset($platform)) {
+        Q_Request::requireFields(array('platform'), true);
+        $platform = $_REQUEST['platform'];
+    }
     $sessionId = Q_Session::requestedId();
     if (!$sessionId) {
         // no session ID, redirect back if we can
@@ -48,7 +68,9 @@ function Users_intent_response()
     $field = Q::ifset($_REQUEST, 'field', 'redirect');
     list($appId, $info) = Users::appInfo($platform, $appId);
     $interpolate = Q::ifset($_REQUEST, 'interpolate', array());
-    $intent = Users_Intent::newIntent($action);
+    if (!$intent) {
+        $intent = Users_Intent::newIntent($action);
+    }
     $params = array_merge($info, $interpolate, array('token' => $intent->token));
     $pattern = Q_Config::expect('Users', 'intents', 'actions', $action, $platform, $field);
     $url = Q::interpolate($pattern, $params);

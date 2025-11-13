@@ -328,7 +328,10 @@
 		"intents": {
 			"actions": {
 				"Users/authenticate": {
-					"duration": 300
+					"duration": 300,
+					"instructions": {
+						"platform": true
+					}
 				}
 			},
 			"durations": {

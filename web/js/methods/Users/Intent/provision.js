@@ -18,10 +18,11 @@ Q.exports(function (Users, priv) {
 	 * @param {Function} callback Receives (err, token)
 	 */
 	return function Users_Intent_provision(action, platform, appId, callback) {
+        appId = appId || Q.info.app;
         var fields = {
             action: action,
             platform: platform,
-            appId: appId || Q.info.app
+            appId: appId
         };
         Q.req(fields, 'Users/intent', ['token', 'capability'], function (err, response) {
             var fem = Q.firstErrorMessage(err, response);

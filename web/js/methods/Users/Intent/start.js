@@ -25,14 +25,17 @@ Q.exports(function (Users, priv) {
 	 */
 	return function Users_Intent_start(capability, options) {
 		options = Q.extend({skip: {}}, options);
+		var token = options.token;
 
-        if (!capability || !capability.sig) {
-            var appId = options.appId || Q.info.app;
-            capability = Q.getObject(
-                [options.action, options.platform, appId, 'capability'],
-                Users.Intent.provision.results
-            )
-        }
+		if (options.action && options.platform) {
+			var appId = options.appId || Q.info.app;
+			var info = Q.getObject(
+				[options.action, options.platform, appId],
+				Users.Intent.provision.results
+			);
+			capability = capability || info.capability;
+			token = token || info.token;
+		}
 		if (!capability && options.action && options.platform
         && !options.skip.redirect) {
             // Just perform a synchronous redirect without provisioned capability
@@ -57,10 +60,12 @@ Q.exports(function (Users, priv) {
 		}
 
 		// At this point we have a valid capability object
-		var fields = { capability: capability };
-		var action = capability.action;
-		var platform = capability.platform;
-		var appId = capability.appId || Q.info.appId;
+		var fields = {
+			capability: capability,
+			action: options.action || capability.action,
+			platform: options.platform || capability.platform,
+			appId: options.appId || capability.appId || Q.info.app
+		};
 
 		// Generate intent server-side (idempotent)
 		Q.req('Users/intent', function (err) {
@@ -70,12 +75,14 @@ Q.exports(function (Users, priv) {
 			fields: fields
 		});
 
-		var apps = Users.apps[platform] || [];
-		if (!apps[appId]) {
+		var apps = Users.apps[fields.platform] || {};
+		if (!apps[fields.appId]) {
 			return false;
 		}
 
-		var url = options.url || Q.getObject([action, platform, 'redirect'], Users.Intent.actions);
+		var url = options.url || Q.getObject([
+			fields.action, fields.platform, 'redirect'
+		], Users.Intent.actions);
 		if (!url) {
 			return false;
 		}
@@ -83,7 +90,7 @@ Q.exports(function (Users, priv) {
 		if (!options.skip.QR) {
 			var dialog = Q.Dialogs.push({
 				title: "Scan this code to continue",
-				onActivate: function () {
+				onActivate: function (container) {
 					Q.addScript("{{Q}}/js/qrcode/qrcode.js", function () {
 						var element = Q.element("div");
 						element.style.textAlign = "center";
@@ -91,7 +98,9 @@ Q.exports(function (Users, priv) {
 
 						try {
 							new QRCode(element, {
-								text: Q.url("Users/intent", capability),
+								text: Q.url("Users/intent", {
+									capability: capability
+								}),
 								width: 250,
 								height: 250,
 								colorDark: "#000000",
@@ -101,6 +110,9 @@ Q.exports(function (Users, priv) {
 						} catch (e) {
 							console.error("Error rendering QRCode:", e);
 						}
+						element.addClass('Q_QR_code');
+						container.querySelector('.Q_dialog_content')
+							.append(element);
 					});
 
 					Q.onVisibilityChange.setOnce(function (isShown) {
@@ -130,7 +142,10 @@ Q.exports(function (Users, priv) {
 		}
 
 		if (!options.skip.redirect) {
-			url = url.interpolate(apps[appId]);
+			var f = Q.extend({
+				token: token
+			}, options, apps[fields.appId]);
+			url = url.interpolate(f);
 			window.location = url;
 		}
 

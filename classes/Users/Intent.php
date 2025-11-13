@@ -61,11 +61,15 @@ class Users_Intent extends Base_Users_Intent
 	 * @method newIntent
 	 * @static
 	 * @param {string} $action the action to take
+	 * @param {string} [$userId] the userId for whom the intent is generated
 	 * @param {array} [$instructions=array()] any additional instructions to use with the action
+	 *   such as the platform to authenticate with, etc.
+	 * @param {string} [$token] optionally specify the exact token of the intent,
+	 *   this is mostly for use by internal handlers like Users/intent/post.php
 	 * @return {Users_Intent}
 	 * @throws {Q_Exception_SessionHijacked}
 	 */
-	static function newIntent($action, $instructions = array())
+	static function newIntent($action, $userId = null, $instructions = array(), $token = null)
 	{
 		$info = Q_Config::get('Users', 'intents', 'actions', $action, false);
 		if (!$info) {
@@ -77,11 +81,11 @@ class Users_Intent extends Base_Users_Intent
 				'type' => 'associative array'
 			));
 		}
-		foreach ($instructions as $k => $v) {
-			if (!isset($info['instructions'][$k])) {
-				throw new Q_Exception_MissingConfig(array('fieldpath' => "Users/intents/actions/\"$action\"/instructions/$k"));
-			}
-		}
+		// foreach ($instructions as $k => $v) {
+		// 	if (!isset($info['instructions'][$k])) {
+		// 		throw new Q_Exception_MissingConfig(array('fieldpath' => "Users/intents/actions/\"$action\"/instructions/$k"));
+		// 	}
+		// }
 		$sessionId = Q_Session::requestedId();
 		if (!Q_Session::isValidId($sessionId)) {
 			throw new Q_Exception_SessionHijacked();
@@ -100,11 +104,14 @@ class Users_Intent extends Base_Users_Intent
 			// insert this new intent
 			$instructions = Q::json_encode($instructions, Q::JSON_FORCE_OBJECT);
 			$intent = new Users_Intent(compact('action', 'instructions'));
+			if ($token) {
+				$intent->token = $token;
+			}
 			$intent->startTime = new Db_Expression('CURRENT_TIMESTAMP');
-			if ($duration = Q::ifset($info, 'duration', 0)) {
+			if ($duration = Q::ifset($info, 'duration', 600)) {
 				$intent->endTime = new Db_Expression("CURRENT_TIMESTAMP + INTERVAL $duration SECOND");
 			}
-			$intent->save();
+			$intent->save(true);
 		}
 		return $intent;
 	}

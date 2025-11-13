@@ -107,7 +107,7 @@ function Users_key_post()
 
 		$intent = new Users_Intent(array(
 			'token' => $token,
-			'action' => 'Users.registerRecoveryKey',
+			'action' => 'Users/registerRecoveryKey',
 			'instructions' => json_encode(array(
 				'info' => $info,
 				'publicKey' => $publicKey,
