@@ -62,7 +62,7 @@ Q.exports(function (Users, priv) {
 		var platform = capability.platform;
 		var appId = capability.appId || Q.info.appId;
 
-		// Provision intent server-side (idempotent)
+		// Generate intent server-side (idempotent)
 		Q.req('Users/intent', function (err) {
 			if (err) console.warn('Intent provisioning failed:', err);
 		}, {

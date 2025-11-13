@@ -33,7 +33,7 @@ function Users_intent_post()
 
 	// Validate capability signature and permission
 	if (!Q_Valid::capability($capability, 'Users/intent/provision')) {
-		throw new Q_Exception_PermissionDenied();
+		throw new Users_Exception_NotAuthorized();
 	}
 
 	// Extract relevant fields from capability data
