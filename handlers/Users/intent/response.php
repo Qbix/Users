@@ -11,7 +11,7 @@
  * @param {string} $_REQUEST.platform Required. The external platform to redirect to afterwards
  * @param {string} [$_REQUEST.appId] Optional. The external platform appId used to load info
   *   with fields to interpolate into the redirection URL
- * @param {string} [$_REQUEST.redirect="redirect"] Optional. Names a diffent config field under
+ * @param {string} [$_REQUEST.field="redirect"] Optional. Names a diffent config field under
  *    the config Users/intents/actions/$action/$platform, default is "redirect"
  * @param {array} [$_REQUEST.instructions] Any additional instructions for the action, 
  *   if listed under Users/intents/actions/$action/instructions config
@@ -71,7 +71,12 @@ function Users_intent_response()
     if (!$intent) {
         $intent = Users_Intent::newIntent($action);
     }
-    $params = array_merge($info, $interpolate, array('token' => $intent->token));
+    $params = array_merge(
+        $info, 
+        $interpolate,  
+        $intent->getAllInstructions(),
+        array('token' => $intent->token)
+    );
     $pattern = Q_Config::expect('Users', 'intents', 'actions', $action, $platform, $field);
     $url = Q::interpolate($pattern, $params);
     Q_Response::redirect($url);

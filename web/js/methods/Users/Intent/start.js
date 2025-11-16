@@ -59,12 +59,13 @@ Q.exports(function (Users, priv) {
             return;
 		}
 
-		// At this point we have a valid capability object
+		// At this point we have a valid capability object and redirect url
 		var fields = {
 			capability: capability,
 			action: options.action || capability.action,
 			platform: options.platform || capability.platform,
-			appId: options.appId || capability.appId || Q.info.app
+			appId: options.appId || capability.appId || Q.info.app,
+			interpolate: options.interpolate
 		};
 
 		// Generate intent server-side (idempotent)
@@ -86,6 +87,9 @@ Q.exports(function (Users, priv) {
 		if (!url) {
 			return false;
 		}
+		url = url.interpolate(Q.extend({
+			token: token
+		}, options.interpolate, apps[fields.appId]));
 
 		if (!options.skip.QR) {
 			var dialog = Q.Dialogs.push({
@@ -99,7 +103,8 @@ Q.exports(function (Users, priv) {
 						try {
 							new QRCode(element, {
 								text: Q.url("Users/intent", {
-									capability: capability
+									capability: capability,
+									interpolate: options.interpolate || {}
 								}),
 								width: 250,
 								height: 250,
@@ -142,10 +147,6 @@ Q.exports(function (Users, priv) {
 		}
 
 		if (!options.skip.redirect) {
-			var f = Q.extend({
-				token: token
-			}, options, apps[fields.appId]);
-			url = url.interpolate(f);
 			window.location = url;
 		}
 
