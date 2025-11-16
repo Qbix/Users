@@ -49,7 +49,7 @@ class Users_Intent extends Base_Users_Intent
 			$duration = Q_Config::expect('Users', 'capability', 'duration');
 			$time = floor(Q::millisecondsStarted() / 1000);
 			$c = new Q_Capability(
-				array('Users/intent/provision'), 
+				array('Users/intent'), 
 				$data, $time, $time + $duration
 			);
 		}

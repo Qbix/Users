@@ -29,7 +29,7 @@ function Users_intent_post()
 	$capability = new Q_Capability($_REQUEST['capability']);
 
 	// Validate capability signature and permission
-	if (!Q_Valid::capability($capability, 'Users/intent/provision')) {
+	if (!Q_Valid::capability($capability, 'Users/intent')) {
 		throw new Users_Exception_NotAuthorized();
 	}
 
