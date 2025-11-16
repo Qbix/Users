@@ -19,6 +19,7 @@ Q.exports(function (Users, priv) {
      * @param {String} [options.appId] If capability is empty, specify this
      * @param {String} [options.url] Can be used to override url
      * @param {String} [options.interpolate] Any additional fields to interpolate into url
+	 * @param {String} [options.interpolateQR] Optionally provide different fields to interpolate into QR code URL
 	 * @param {Boolean} [options.skip]
 	 * @param {Boolean} [options.skip.redirect]
 	 * @param {Boolean} [options.skip.QR]
@@ -55,7 +56,7 @@ Q.exports(function (Users, priv) {
                     ignoreHistory: true,
                     quiet: true
                 });
-            }, 'Telegram');
+            }, 'Users.Intent.start');
             return;
 		}
 
@@ -104,7 +105,9 @@ Q.exports(function (Users, priv) {
 							new QRCode(element, {
 								text: Q.url("Users/intent", {
 									capability: capability,
-									interpolate: options.interpolate || {}
+									action: fields.action,
+									platform: fields.platform,
+									interpolate: options.interpolateQR || options.interpolate || {}
 								}),
 								width: 250,
 								height: 250,
@@ -141,7 +144,7 @@ Q.exports(function (Users, priv) {
 						});
 
 						Q.Dialogs.close(dialog);
-					}, 'Telegram');
+					}, 'Q.Intent.start');
 				}
 			});
 		}

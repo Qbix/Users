@@ -7,8 +7,9 @@
  * @class HTTP Users intent
  * @method get
  * @param {array} $_REQUEST 
- * @param {string} $_REQUEST.action Required. The desired action, e.g. 'Users/authenticate'
- * @param {string} $_REQUEST.platform Required. The external platform to redirect to afterwards
+ * @param {string} $_REQUEST.capability May contain the required action and platform, otherwise you must specify them.
+ * @param {string} [$_REQUEST.action] Override desired action, e.g. 'Users/authenticate'
+ * @param {string} [$_REQUEST.platform] Override desired action. The external platform to redirect to afterwards
  * @param {string} [$_REQUEST.appId] Optional. The external platform appId used to load info
   *   with fields to interpolate into the redirection URL
  * @param {string} [$_REQUEST.field="redirect"] Optional. Names a diffent config field under
