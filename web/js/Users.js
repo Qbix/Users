@@ -653,35 +653,9 @@
 	Users.get.onError = new Q.Event();
 
 	/**
-	 * Constructs a user from fields, which are typically returned from the server.
-	 * @method User
-	 * @param {String} fields
-	 */
-	var User = Users.User = function (fields) {
-		Q.extend(this, fields);
-		this.xids = this.xids || {};
-		this.typename = 'Q.Users.User';
-	};
-
-	/**
 	 * Calculate the url of a user's icon
-	 * @method
-	 * @param {String|Number|false} [size=40] The last part after the slash, such as "50.png" or "50".
-	 *  Setting it to false skips appending "/size".
-	 *  Setting it to "largestWidth"or "largestHeight" gets the size with largest explicit width or height, respectively.
-	 * @return {String} the url
-	 */
-	Users.User.prototype.iconUrl = function Users_User_iconUrl(size) {
-		return Users.iconUrl(this.icon.interpolate({
-			userId: this.id.splitId()
-		}), size);
-	};
-
-	Users.User.get = Users.get;
-
-	/**
-	 * Calculate the url of a user's icon
-	 * @method
+	 * @method iconUrl
+	 * @static
 	 * @param {String} icon the value of the user's "icon" field
  	 * @param {String|Number|false} [size=40] The last part after the slash, such as "50.png" or "50".
 	 *  Setting it to false skips appending "/size".
@@ -708,6 +682,34 @@
 			? Q.url(src)
 			: Q.url('{{Users}}/img/icons/' + src);
 	};
+
+	/**
+	 * Constructs a user from fields, which are typically returned from the server.
+	 * @class User
+	 * @constructor
+	 * @param {String} fields
+	 */
+	var User = Users.User = function (fields) {
+		Q.extend(this, fields);
+		this.xids = this.xids || {};
+		this.typename = 'Q.Users.User';
+	};
+
+	/**
+	 * Calculate the url of a user's icon
+	 * @method iconUrl
+	 * @param {String|Number|false} [size=40] The last part after the slash, such as "50.png" or "50".
+	 *  Setting it to false skips appending "/size".
+	 *  Setting it to "largestWidth"or "largestHeight" gets the size with largest explicit width or height, respectively.
+	 * @return {String} the url
+	 */
+	Users.User.prototype.iconUrl = function Users_User_iconUrl(size) {
+		return Users.iconUrl(this.icon.interpolate({
+			userId: this.id.splitId()
+		}), size);
+	};
+
+	Users.User.get = Users.get.bind(Users);
 
 	function _constructUser(fields) {
 		var user = new Users.User(fields);
@@ -1149,7 +1151,7 @@
 		Q.Users.cacheWhere = Q.getObject("cache.where", Users) || 'document';
 
 		var preferredLanguage = Q.getObject("loggedInUser.preferredLanguage", Q.Users);
-		if (preferredLanguage) {
+		if (preferredLanguage && Q.getObject('login.serverOptions.setLanguage', Q.Users)) {
 			Q.Text.setLanguage.apply(Q.Text, [preferredLanguage]);
 		}
 

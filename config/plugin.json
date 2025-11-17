@@ -20,6 +20,7 @@
 			"Q/plugin/sql/replacements": ["Users/before/Q_plugin_sql_replacements"],
 			"Q/json_encode/toArrays": ["Users/before/Q_json_encode_toArrays"],
 			"Q/objects": ["Users/before/Q_objects"],
+			"Q/request/languages": ["Users/before/Q_request_languages"],
 			"Q/initialExtras": ["Users/before/Q_initialExtras"],
 			"Q/sessionExtras": ["Users/before/Q_sessionExtras"],
 			"Q/response/notices": ["Users/before/Q_response_notices"],
@@ -39,12 +40,11 @@
 			"Users/setEmailAddress": ["Users/after/Users_setEmailAddress"],
 			"Users/setMobileNumber": ["Users/after/Users_setMobileNumber"],
 			"Users/addIdentifier": ["Users/after/Users_addIdentifier"],
-			"Q/request/languages": ["Users/after/Q_request_languages"],
 			"Q/analytics": ["Users/after/Q_analytics"],
 			"Users/transaction/mined/Users/templates/R1/Community/factory/produce": ["Users/after/Users_transaction_mined/Users_templates_R1_Community_factory/produce"],
 			"Users/email/sendMessage": ["Users/after/Users_email_sendMessage"],
 			"Users/mobile/sendMessage": ["Users/after/Users_mobile_sendMessage"],
-			"Db/Row/Users_User/saveExecute": ["Users/after/Users_User_saveExecute"],
+			"Db/Row/Users_User/saveExecute": ["Users/after/Users_User_saveExecute"]
 		},
 		"routes@start": {
 			"login/facebook": {"module": "Users", "action": "facebook"},

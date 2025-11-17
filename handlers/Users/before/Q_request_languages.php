@@ -1,6 +1,6 @@
 <?php
 
-function Users_after_Q_request_languages($params, &$result)
+function Users_before_Q_request_languages($params, &$result)
 {
 	$user = Users::loggedInUser(false, false);
 	if ($user && $user->preferredLanguage) {

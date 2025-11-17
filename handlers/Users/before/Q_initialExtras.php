@@ -32,7 +32,8 @@ function Users_before_Q_initialExtras()
 			"identifierType" => 'email,mobile', 
 			"userQueryUri" => 'Users/user',
 			"using" => "native,web3,facebook",
-			"noRegister" => false
+			"noRegister" => false,
+			"setLanguage" => true
 		));
 		$loginOptions["afterActivate"] = Q_Uri::url($afterActivate);
 		$loginOptions["successUrl"] = Q_Uri::url($successUrl);
