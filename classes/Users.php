@@ -379,7 +379,8 @@ abstract class Users extends Base_Users
 		if (!in_array($platform, $platforms)) {
 			throw new Q_Exception_WrongValue(array(
 				'field' => 'platform',
-				'range' => 'One of the platforms named in Users/apps/platforms config'
+				'range' => 'One of the platforms named in Users/apps/platforms config',
+				'value' => $platform
 			));
 		}
 		
@@ -433,6 +434,14 @@ abstract class Users extends Base_Users
 		if (!$externalFrom) {
 			// no authentication happened
 			return $userWasLoggedIn ? $user : false;
+		}
+		if (!$userWasLoggedIn) {
+			if ($user = self::loggedInUser()) {
+				// user must have been logged in during authentication
+				// handler, e.g. through an intent from another session.
+				$userWasLoggedIn = true;
+				$retrieved = true;
+			}
 		}
 		if ($appIdForAuth !== $appId) {
 			// Add this appId into the extras, to be saved in row and info for session
@@ -506,7 +515,7 @@ abstract class Users extends Base_Users
 				->execute();
 
 				// Now, let's associate the current user's account with this platform xid.
-				if (!$user->displayName()) {
+				if (!$user->displayName(array('fallback' => ''))) {
 					// import some fields automatically from the platform
 					$imported = $externalFrom->import($import);
 					self::applyPreferredLanguage($user, $imported);
@@ -667,6 +676,11 @@ abstract class Users extends Base_Users
 		$cookiesToClearOnLogout = $externalFrom->get('cookiesToClearOnLogout', null);
 		if (!$userWasLoggedIn) {
 			self::setLoggedInUser($user, @compact('cookiesToClearOnLogout'));
+		}
+
+		if ($intent = $externalFrom->get('intent')) {
+			$results = $externalFrom->get('results', array());
+			$intent->complete($results);
 		}
 
 		if ($retrieved) {
@@ -2692,6 +2706,12 @@ abstract class Users extends Base_Users
 	 * @type boolean
 	 */
 	public static $loggedOut;
+	/**
+	 * @property $intent
+	 * @type Users_Intent
+	 * @default null
+	 */
+	public static $intent = null;
 	/**
 	 * @property $cache
 	 * @type array

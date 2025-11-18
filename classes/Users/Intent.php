@@ -14,6 +14,19 @@
 class Users_Intent extends Base_Users_Intent
 {
 	/**
+	 * Retrieve intent from database by its token
+	 * @method fromToken
+	 * @static
+	 * @param {string} $token
+	 * @return {Users_Intent}
+	 */
+	static function fromToken($token)
+	{
+		$intent = (new Users_Intent(compact('token')))->retrieve();
+		return $intent ? $intent : null;
+	}
+
+	/**
 	 * Generate a unique token that can be used for intents
 	 * @method generateToken
 	 * @static
@@ -114,6 +127,99 @@ class Users_Intent extends Base_Users_Intent
 			$intent->save(true);
 		}
 		return $intent;
+	}
+
+	/**
+	 * Accept the intent and set user from intent as the logged-in user
+	 * @method accept
+	 * @param {array} $copySessionFields Array of session fields to copy
+	 * 	from original session to current session
+	 * @return {boolean} true if successful, false otherwise
+	 */
+	function accept($copySessionFields = array())
+	{
+		$intent = $this;
+		if (false === Q::event('Users/intent/accept', compact('intent', 'copySessionFields'), 'before')) {
+			return false;
+		}
+		if ((!$intent->wasRetrieved and !$intent->retrieve())
+		or !empty($intent->completedTime)) {
+			return false;
+		}
+		$userId = $content = $session = null;
+		if ($intent->userId) {
+			// user was already logged in when intent was created
+			$userId = $intent->userId;
+		}
+		if ($intent->sessionId) {
+			// perhaps user logged in after intent was generated,
+			// although normally intent should have userId set
+			$session = new Users_Session();
+			$session->id = $intent->sessionId;
+			if ($session->retrieve()) {
+				$content = json_decode($session->content, true);
+				if (!$userId) {
+					$userId = Q::ifset($content, 'Users', 'loggedInUser', 'id', null);
+				}
+				$intent->set('sessionContent', $content);
+			}
+		}
+		if ($userId) {
+			// if user was logged into session that generated intent,
+			// set them as logged-in user here too, before connecting telegram user
+			Users::setLoggedInUser($userId, array('keepSessionId' => true));
+		}
+		if ($content and $copySessionFields) {
+			Q::take($content, $copySessionFields, $_SESSION);
+		}
+		Q::event('Users/intent/accept', compact('intent', 'session', 'userId'), 'after');
+		return true;
+	}
+
+	/**
+	 * Mark intent completed, and set logged-in user in original session
+	 * if no one was logged in there yet.
+	 * @method complete
+	 * @param {array} $results Any additional results to store in instructions
+	 * @return {boolean} true if successful, false otherwise
+	 */
+	function complete($results = array())
+	{
+		$intent = $this;
+		if (false === Q::event('Users/intent/complete', compact('intent', 'results'), 'before')) {
+			return false;
+		}
+		if ((!$intent->wasRetrieved and !$intent->retrieve())
+		or !empty($intent->completedTime)) {
+			return false;
+		}
+		$user = Users::loggedInUser(false, false);
+		if ($user and !$intent->userId) {
+			$intent->userId = $user->id;
+		}
+		if ($results) {
+			$intent->setInstruction('results', $results);
+		}
+		$intent->completedTime = Q::timestamp();
+		$intent->save();
+
+		$session = null;
+		if ($user and $intent->sessionId) {
+			$session = new Users_Session();
+			$session->id = $intent->sessionId;
+			if ($session->retrieve()) {
+				$content = json_decode($session->content, true);
+				if (empty($content['Users']['loggedInUser']['id'])) {
+					// user wasn't logged in on original session, so let's
+					// set current user as logged-in on the original session, too
+					$content['Users']['loggedInUser']['id'] = $user->id;
+					$session->setContent($content);
+					$session->save();
+				}
+			}
+		}
+		Q::event('Users/intent/complete', compact('intent', 'session', 'user'), 'after');
+		return true;
 	}
 
 	/**

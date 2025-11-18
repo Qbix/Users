@@ -65,6 +65,10 @@ function Users_intent_post()
 		$intent = Users_Intent::newIntent(
 			$fields['action'], $fields['userId'], $instructions, $fields['token']
 		);
+		Q_Session::start();
+		$intents = Q::ifset($_SESSION, 'Users', 'intents', array());
+		$intents[] = $intent->token;
+		$_SESSION['Users']['intents'] = $intents;
 	}
 
 	// Return minimal info (AJAX-safe)

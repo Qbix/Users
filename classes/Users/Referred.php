@@ -25,6 +25,40 @@ class Users_Referred extends Base_Users_Referred
 		// e.g. $this->hasMany(...) and stuff like that.
 	}
 
+	/**
+	 * Inserts or updates Users_Referred
+	 * @param {string} $userId
+	 * @param {string} $publisherId
+	 * @param {string} $referredToType
+	 * @param {string} $invitingUserId
+	 * @return {Users_Referred}
+	 */
+	static function handleReferral($userId, $publisherId, $referredToType, $invitingUserId)
+	{
+		$points = Q_Config::get('Users', 'referred', $referredToType, 'points', 10);
+		if (!$points) {
+			return;
+		}
+		$r = new Users_Referred(array(
+			'userId' => $userId,
+			'toCommunityId' => $publisherId,
+			'byUserId' => $invitingUserId
+		));
+		if ($r->retrieve()) {
+			$prevPoints = $r->points;
+			$r->points = max($r->points, $points);
+		} else {
+			$prevPoints = 0;
+			$r->points = $points;
+		}
+		$threshold = Q_Config::get('Users', 'referred', $referredToType, 'qualified', 10);
+		if ($prevPoints < $threshold and $points >= $threshold) {
+			$r->qualifiedTime = new Db_Expression("CURRENT_TIMESTAMP");
+		}
+		$r->save();
+		return $r;
+	}
+
 	/*
 	 * Add any Users_Referred methods here, whether public or not
 	 */

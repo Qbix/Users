@@ -191,7 +191,7 @@ class Users_Session extends Base_Users_Session
 
 		$loggedInUserId = Q::ifset($_SESSION, 'Users', 'loggedInUser', 'id', null);
 		$prefixType = $loggedInUserId ? 'authenticated' : '';
-		$sessionId = $sessionId ?: Q_Session::generateId(null, $prefixType);
+		$sessionId = $sessionId ? $sessionId : Q_Session::generateId(null, $prefixType);
 
 		$us = new Users_Session();
 		$us->id = $id;

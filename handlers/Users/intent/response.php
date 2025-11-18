@@ -23,6 +23,7 @@
 function Users_intent_response()
 {
     if (Q_Request::isAjax()) {
+        // just get a new token and capability
         Q_Request::requireOrigin(true);
         $slotNames = Q_Request::slotNames();
         if (in_array('token', $slotNames)) {
@@ -32,6 +33,8 @@ function Users_intent_response()
         }
         return true;
     }
+
+    // normal non-AJAX request, create new intent and redirect
     $intent = null;
     if (isset($_REQUEST['capability'])) {
         $capability = new Q_Capability($_REQUEST['capability']);
@@ -70,8 +73,17 @@ function Users_intent_response()
     list($appId, $info) = Users::appInfo($platform, $appId);
     $interpolate = Q::ifset($_REQUEST, 'interpolate', array());
     if (!$intent) {
-        $intent = Users_Intent::newIntent($action);
+        $user = Users::loggedInUser();
+        $userId = $user ? $user->id : null;
+        $intent = Users_Intent::newIntent($action, $userId, array(
+            'platform' => $platform,
+            'appId' => $appId
+        ));
     }
+    Q_Session::start();
+	$intents = Q::ifset($_SESSION, 'Users', 'intents', array());
+    $intents[] = $intent->token;
+    $_SESSION['Users']['intents'] = $intents;
     $params = array_merge(
         $info, 
         $interpolate,  
