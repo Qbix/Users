@@ -12,14 +12,6 @@ function Users_before_Q_objects(&$params)
 		Users_ExternalFrom_Facebook::authenticate($appId);
 	}
 
-	$switchToLoggedInUserId = Q::ifset($_SESSION, 'Users', 'switchToLoggedInUserId', null);
-	if ($switchToLoggedInUserId and !Users::loggedInUser()) {
-		Users::setLoggedInUserById($switchToLoggedInUserId);
-		unset($_SESSION['Users']['switchToLoggedInUserId']);
-		// session will probably be saved, unless transaction is rolled back
-		$user = Users::loggedInUser(false, false);
-	}
-
 	$uri = Q_Dispatcher::uri();
 	$actions = array('activate' => true);
 	if ($uri->module === 'Users' and isset($actions[$uri->action])) {

@@ -36,6 +36,7 @@
 			"Q/reroute": ["Users/after/Q_reroute"],
 			"Q/image/save": ["Users/after/Q_image_save"],
 			"Q/sessionExtras": ["Users/after/Q_sessionExtras"],
+			"Q/session/start": ["Users/after/Q_session_start"],
 			"Users/filter/users": ["Users/after/Users_filter_users"],
 			"Users/setEmailAddress": ["Users/after/Users_setEmailAddress"],
 			"Users/setMobileNumber": ["Users/after/Users_setMobileNumber"],
@@ -222,7 +223,7 @@
 			"noRegister": false,
 			"notice": "{{#if displayName}}You have been logged in as {{displayName}}{{else}}Logged into another account.{{/if}}",
 			"alsoSendUnhashedPassphrase": false,
-			"setLanguage": true,
+			"setLanguage": false,
 			"useActivateDialog": true
 		},
 		"dialogs": {

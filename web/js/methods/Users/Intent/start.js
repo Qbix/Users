@@ -39,6 +39,7 @@ Q.exports(function (Users, priv) {
 		}
 		if (!capability && options.action && options.platform
         && !options.skip.redirect) {
+			_waitAndReload();
             // Just perform a synchronous redirect without provisioned capability
             // NOTE: some apps may disallow this for security reasons
             location.href = Q.action('Users/intent', {
@@ -46,17 +47,6 @@ Q.exports(function (Users, priv) {
                 platform: options.platform,
                 interpolate: options.interpolate
             });
-            Q.onVisibilityChange.setOnce(function (isShown) {
-                if (!isShown) return;
-                Q.loadUrl(location.href, {
-                    slotNames: Q.info.slotNames,
-                    loadExtras: 'all',
-                    ignoreDialogs: true,
-                    ignorePage: false,
-                    ignoreHistory: true,
-                    quiet: true
-                });
-            }, 'Users.Intent.start');
             return;
 		}
 
@@ -91,6 +81,8 @@ Q.exports(function (Users, priv) {
 		url = url.interpolate(Q.extend({
 			token: token
 		}, options.interpolate, apps[fields.appId]));
+
+		var _reload = _waitAndReload();
 
 		if (!options.skip.QR) {
 			var dialog = Q.Dialogs.push({
@@ -145,7 +137,8 @@ Q.exports(function (Users, priv) {
 
 						Q.Dialogs.close(dialog);
 					}, 'Q.Intent.start');
-				}
+				},
+				onClose: _reload
 			});
 		}
 
@@ -155,4 +148,26 @@ Q.exports(function (Users, priv) {
 
         return url;
 	};
+
+	function _waitAndReload() {
+		var _reload = Q.debounce(function () {
+			if (Q.isDocumentHidden()) {
+				return;
+			}
+			Q.loadUrl(Q.url(location.href, {cacheBust: 500}), {
+				slotNames: Q.info.slotNames,
+				loadExtras: 'all',
+				ignoreDialogs: true,
+				ignorePage: false,
+				ignoreHistory: true,
+				quiet: true
+			}, {
+
+			});
+			window.removeEventListener('focus', _reload);
+		}, 500);
+		Q.onVisibilityChange.setOnce(_reload, 'Users.Intent.start');
+		window.addEventListener('focus', _reload);
+		return _reload;
+	}
 });
