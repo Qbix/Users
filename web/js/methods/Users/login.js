@@ -11,19 +11,20 @@ Q.exports(function (Users, priv) {
 	 * @method login
 	 * @static
 	 * @param {Object} [options] You can pass several options here
-	 *  @param {Q.Event} [options.onSuccess] event that occurs when login or authentication "using" a platform is successful. It is passed (user, options, result, used) where user is the Users.User object (null if it was unchanged),
+	 *  @param {Q.Event|Function} [options.onSuccess] event that occurs when login or authentication "using" a platform is successful. It is passed (user, options, result, used) where user is the Users.User object (null if it was unchanged),
 	 *   options were the options used in the call to Users.login, result is one of "registered", "adopted", "connected" or "authorized" (see Users::authenticate)
 	 *   and 'used' is "native", "web3", or the name of the platform used, such as "facebook".
 	 *   The default handler for this event, added under "Users" key, redirects to a URL.
 	 *   Any plugin or app can override it by replacing the handler under the "Users" key with
 	 *   their own handler. That handler is responsible for triggering Q.Users.onComplete event
 	 *   when the flow is completed.
-	 *  @param {Function} [options.onCancel] event that occurs when login or authentication "using" a platform was canceled.
-	 *  @param {Function} [options.onResult] event that occurs before either onSuccess, onCancel, or onRequireComplete
+	 *  @param {Q.Event|Function} [options.onCancel] event that occurs when login or authentication "using" a platform was canceled.
+	 *  @param {Q.Event|Function} [options.onResult] event that occurs before either onSuccess, onCancel, or onRequireComplete
 	 *  @param {String} [options.successUrl] If the default onSuccess implementation is used, the browser is redirected here. Defaults to Q.uris[Q.info.app+'/home']
 	 *  @param  {String} [options.accountStatusURL] if passed, this URL is hit to determine if the account is complete
 	 *  @param {Function} [options.onRequireComplete] function to call if the user logged in but account is incomplete.
 	 *  It is passed the user information as well as the response from hitting accountStatusURL
+	 *  @param {Q.Event|Function} [options.onDialog] often used for provisioning intents, etc.
 	 *  @param {String|Element} [options.explanation] Explanation to prepend to the dialog, inside a container with class Users_login_explanation
 	 *  @param {String|Array} [options.using] can be "native", "facebook" or "native,facebook", or an array of strings
 	 *  @param {Boolean} [options.skipHint] pass true here to skip calling Users.Pointer.hint when login dialog appears without textbox focus
@@ -123,7 +124,7 @@ Q.exports(function (Users, priv) {
 			// perform actual login
 			if (o.using.indexOf('native') >= 0) {
 				var usingPlatforms = {};
-				var using = (typeof o.using === 'string') ? [o.using] : o.using;
+				var using = (typeof o.using === 'string') ? o.using.split(',') : o.using;
 				for (var i=0; i<using.length; ++i) {
 					var platform = using[i];
 					if (platform !== 'native') {
@@ -878,6 +879,7 @@ Q.exports(function (Users, priv) {
 						).attr('tabindex', 1000)
 						.css({'display': 'inline-block', 'vertical-align': 'middle'})
 						.click(function () {
+							Q.Dialogs.close(login_setupDialog.dialog);
 							if (location.search.includes('handoff=yes')) {
 								var scheme = Q.getObject([Q.info.platform, Q.info.app, 'scheme'], Users.apps);
 								location.href = scheme + '#' + platform + 'Login=1';
@@ -910,6 +912,8 @@ Q.exports(function (Users, priv) {
 			 $('input', step1_form).add('select', step1_form).on('input', function () {
 				 step1_form.plugin('Q/validator', 'reset', this);
 			 });
+
+			 Q.handle(options.onDialog, this, [step1_form, step2_div]);
 
 			 var $explanation = options.explanation
 				 ? $('<div class="Users_login_explanation" />').append(options.explanation)

@@ -105,7 +105,7 @@ function Users_intent_put()
 	}
 
 	// Mark intent as completed
-	$intent->completedTime = Q::timestamp();
+	$intent->completedTime = new Db_Expression('CURRENT_TIMESTAMP');
 	$intent->userId = $user->id;
 	$intent->save();
 

@@ -142,7 +142,7 @@ class Users_Intent extends Base_Users_Intent
 		if (false === Q::event('Users/intent/accept', compact('intent', 'copySessionFields'), 'before')) {
 			return false;
 		}
-		if ((!$intent->wasRetrieved and !$intent->retrieve())
+		if ((!$intent->wasRetrieved() and !$intent->retrieve())
 		or !empty($intent->completedTime)) {
 			return false;
 		}
@@ -189,7 +189,7 @@ class Users_Intent extends Base_Users_Intent
 		if (false === Q::event('Users/intent/complete', compact('intent', 'results'), 'before')) {
 			return false;
 		}
-		if ((!$intent->wasRetrieved and !$intent->retrieve())
+		if ((!$intent->wasRetrieved() and !$intent->retrieve())
 		or !empty($intent->completedTime)) {
 			return false;
 		}
@@ -197,10 +197,8 @@ class Users_Intent extends Base_Users_Intent
 		if ($user and !$intent->userId) {
 			$intent->userId = $user->id;
 		}
-		if ($results) {
-			$intent->setInstruction('results', $results);
-		}
-		$intent->completedTime = Q::timestamp();
+		$intent->setInstruction('results', $results);
+		$intent->completedTime = new Db_Expression('CURRENT_TIMESTAMP');
 		$intent->save();
 
 		$session = null;
@@ -323,7 +321,7 @@ class Users_Intent extends Base_Users_Intent
 	{
 		$instr = $this->getAllInstructions();
 		$instr[$instructionName] = $value;
-		$this->instructions = Q::json_encode($instr);
+		$this->instructions = Q::json_encode($instr, Q::JSON_FORCE_OBJECT);
 
 		return $this;
 	}
@@ -336,7 +334,7 @@ class Users_Intent extends Base_Users_Intent
 	{
 		$instr = $this->getAllInstructions();
 		unset($instr[$instructionName]);
-		$this->instructions = Q::json_encode($instr);
+		$this->instructions = Q::json_encode($instr, Q::JSON_FORCE_OBJECT);
 	}
 
 	/**

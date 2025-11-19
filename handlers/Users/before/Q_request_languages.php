@@ -2,6 +2,9 @@
 
 function Users_before_Q_request_languages($params, &$result)
 {
+	if (!Q_Config::get('Users', 'login', 'setLanguage', false)) {
+		return;
+	}
 	$user = Users::loggedInUser(false, false);
 	if ($user && $user->preferredLanguage) {
 		if (!is_array($result)) {

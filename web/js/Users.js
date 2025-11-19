@@ -597,6 +597,7 @@
 			onResult: new Q.Event(),
 			onRequireComplete: new Q.Event(),
 			onComplete: new Q.Event(),
+			onDialog: new Q.Event(),
 			onboardingUrl: null,
 			successUrl: null,
 			accountStatusURL: null,

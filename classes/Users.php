@@ -708,6 +708,7 @@ abstract class Users extends Base_Users
 		$accessToken = $externalFrom->accessToken;
 		$sessionExpires = $externalFrom->expires;
 		$extra = isset($externalFrom->extra) ? $externalFrom->extra : null;
+		$changed = false;
 		if (isset($_SESSION['Users']['externalFroms'][$platformApp])) {
 			// Platform app user exists. Do we need to update it? (Probably not!)
 			$pk = $_SESSION['Users']['externalFroms'][$platformApp];
@@ -737,7 +738,7 @@ abstract class Users extends Base_Users
 				$ef->accessToken = $accessToken;
 				$ef->expires = $sessionExpires;
 				$ef->extra = $extra;
-				$ef->save(); // update accessToken in externalFrom
+				$changed = $ef->save(); // update accessToken in externalFrom
 				$savedEF = $ef;
 				/**
 				 * @event Users/authenticate/updateExternalFrom {after}
@@ -763,7 +764,7 @@ abstract class Users extends Base_Users
 					$externalFrom->accessToken = $accessToken;
 					$externalFrom->expires = $sessionExpires;
 					$externalFrom->extra = $extra;
-					$externalFrom->save(); // update accessToken in externalFrom
+					$changed = $externalFrom->save(); // update accessToken in externalFrom
 					/**
 					 * @event Users/authenticate/updateExternalFrom {after}
 					 * @param {Users_User} user
@@ -782,7 +783,7 @@ abstract class Users extends Base_Users
 				// platform account to two different accounts.
 				// A platform app user can only be tied to one native user, so the
 				// old connection will be dropped, and the new connection saved.
-				$externalFrom->save(true);
+				$changed = $externalFrom->save(true);
 				/**
 				 * @event Users/authenticate/insertExternalFrom {after}
 				 * @param {Users_User} user
@@ -795,7 +796,7 @@ abstract class Users extends Base_Users
 			}
 		}
 
-		if ($appIdForAuth !== $appId) {
+		if ($changed and $appIdForAuth !== $appId) {
 			// also save a specific Users_ExternalFrom row,
 			// indicating that the user has authenticated with this appId on this platform
 			$specificEF = new Users_ExternalFrom($savedEF->fields);
