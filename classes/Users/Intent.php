@@ -207,10 +207,10 @@ class Users_Intent extends Base_Users_Intent
 			$session->id = $intent->sessionId;
 			if ($session->retrieve()) {
 				$content = json_decode($session->content, true);
-				if (empty($content['Users']['loggedInUser']['id'])) {
+				if (empty($content['Users']['switchToLoggedInUserId'])) {
 					// user wasn't logged in on original session, so let's
 					// set current user as logged-in on the original session, too
-					$content['Users']['loggedInUser']['id'] = $user->id;
+					$content['Users']['switchToLoggedInUserId'] = $user->id;
 					$session->setContent($content);
 					$session->save();
 				}

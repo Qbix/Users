@@ -679,7 +679,10 @@ abstract class Users extends Base_Users
 		}
 
 		if ($intent = $externalFrom->get('intent')) {
-			$results = $externalFrom->get('results', array());
+			$results = array_merge(
+				$externalFrom->get('results', array()),
+				array('loggedInUserId' => $user->id)
+			);
 			$intent->complete($results);
 		}
 
