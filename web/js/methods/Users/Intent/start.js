@@ -154,7 +154,7 @@ Q.exports(function (Users, priv) {
 			if (Q.isDocumentHidden()) {
 				return;
 			}
-			Q.loadUrl(Q.url(location.href, {cacheBust: 500}), {
+			Q.loadUrl(Q.url(location.href, {}, {cacheBust: 500}), {
 				slotNames: Q.info.slotNames,
 				loadExtras: 'all',
 				ignoreDialogs: true,

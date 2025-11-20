@@ -436,9 +436,10 @@ abstract class Users extends Base_Users
 			return $userWasLoggedIn ? $user : false;
 		}
 		if (!$userWasLoggedIn) {
-			if ($user = self::loggedInUser()) {
+			if ($u = self::loggedInUser()) {
 				// user must have been logged in during authentication
 				// handler, e.g. through an intent from another session.
+				$user = $u;
 				$userWasLoggedIn = true;
 				$retrieved = true;
 			}
@@ -602,7 +603,6 @@ abstract class Users extends Base_Users
 				$authenticated = 'registered';
 				
 				$imported = $externalFrom->import($import);
-				self::applyPreferredLanguage($user, $imported);
 
 				if (!empty($imported['email'])) {
 					$ui = Users::identify('email', $imported['email'], 'verified');
@@ -616,6 +616,8 @@ abstract class Users extends Base_Users
 						->resume();
 					}
 				}
+
+				self::applyPreferredLanguage($user, $imported);
 
 				$platformApp = $platform . '_' . $appIdForAuth;
 				$user->setXid($platformApp, $xid);
@@ -1090,6 +1092,9 @@ abstract class Users extends Base_Users
 		
 		$user->sessionId = Q_Session::id();
 		$user->save(); // update sessionId in user
+
+		// update the language for this session
+		Q_Text::setLanguage($user->preferredLanguage);
 		
 		/**
 		 * @event Users/setLoggedInUser/updateSessionId {after}

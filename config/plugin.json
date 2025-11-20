@@ -75,6 +75,7 @@
 				"rowClass": "Users_Session",
 				"idField": "id",
 				"dataField": "php",
+				"contentField": "content",
 				"updatedField": "updatedTime",
 				"durationField": "duration",
 				"platformField": "platform"
@@ -341,7 +342,8 @@
 			"tokens": {
 				"length": 16,
 				"characters": "abcdefghijklmnopqrstuvwxyz"
-			}
+			},
+			"cleanupOnSave": 10
 		},
 		"capability": {
 			"duration": 86400,

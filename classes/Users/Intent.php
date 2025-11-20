@@ -207,7 +207,7 @@ class Users_Intent extends Base_Users_Intent
 			$session->id = $intent->sessionId;
 			if ($session->retrieve()) {
 				$content = json_decode($session->content, true);
-				if (empty($content['Users']['switchToLoggedInUserId'])) {
+				if (empty($content['Users']['loggedInUser']['id'])) {
 					// user wasn't logged in on original session, so let's
 					// set current user as logged-in on the original session, too
 					$content['Users']['switchToLoggedInUserId'] = $user->id;
@@ -259,10 +259,12 @@ class Users_Intent extends Base_Users_Intent
 				));
 			}
 		}
-		// delete up to 10 previous intents with this sessionId, to save space
-		Users_Intent::delete()->where(array(
-			'endTime <' => new Db_Expression("CURRENT_TIMESTAMP")
-		))->limit(10)->execute();
+		// delete a few previous intents with this sessionId, to save space
+		if ($cleanup = Q_Config::get('Users', 'intents', 'cleanupOnSave', 10)) {
+			Users_Intent::delete()->where(array(
+				'endTime <' => new Db_Expression("CURRENT_TIMESTAMP")
+			))->limit($cleanup)->execute();
+		}
 		// Generate a unique token for the intent
 		if (!isset($this->token)) {
 			$this->token = Users::db()->uniqueId(

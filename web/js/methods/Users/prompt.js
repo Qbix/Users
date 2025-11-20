@@ -43,35 +43,37 @@ Q.exports(function (Users, priv) {
 			var caption;
 			var tookAction = false;
 
-			var content_div = $('<div />');
-			var xid2 = Q.getObject(['loggedInUser', 'xids', platform], Users);
-			var queries = ['me'];
-			if (xid2) {
-				queries.push('xid')
-			}
-			var pipe = new Q.Pipe(queries, function (params, subjects) {
-				var meName = Q.getObject(['me', 0, 'name'], params);
-				var mePicture = Q.getObject(['me', 0, 'picture', 'data', 'url'], params);
-				var xidName = Q.getObject(['xid', 0, 'name'], params);
-				var xidPicture = Q.getObject(['xid', 0, 'picture', 'data', 'url'], params);
-				if (xidName) {
-					content_div.append(_usingInformation(xidPicture, xidName, noLongerUsing));
-					caption = Q.text.Users.prompt.doSwitch.interpolate({
-						'platform': platform,
-						'Platform': platformCapitalized
-					});
-				} else {
-					caption = Q.text.Users.prompt.doAuth.interpolate({
-						'platform': platform,
-						'Platform': platformCapitalized
-					});
+			if (platform === 'facebook' && window.FB) {
+				var content_div = $('<div />');
+				var xid2 = Q.getObject(['loggedInUser', 'xids', platform], Users);
+				var queries = ['me'];
+				if (xid2) {
+					queries.push('xid')
 				}
-				content_div.append(_usingInformation(mePicture, meName, areUsing))
-					.append(_authenticateActions(caption));
-			});
-			FB.api("/me?fields=name,picture.width(50).height(50)", pipe.fill('me'));
-			if (xid2) {
-				FB.api("/"+xid2+"?fields=name,picture.width(50).height(50)", pipe.fill('xid'));;
+				var pipe = new Q.Pipe(queries, function (params, subjects) {
+					var meName = Q.getObject(['me', 0, 'name'], params);
+					var mePicture = Q.getObject(['me', 0, 'picture', 'data', 'url'], params);
+					var xidName = Q.getObject(['xid', 0, 'name'], params);
+					var xidPicture = Q.getObject(['xid', 0, 'picture', 'data', 'url'], params);
+					if (xidName) {
+						content_div.append(_usingInformation(xidPicture, xidName, noLongerUsing));
+						caption = Q.text.Users.prompt.doSwitch.interpolate({
+							'platform': platform,
+							'Platform': platformCapitalized
+						});
+					} else {
+						caption = Q.text.Users.prompt.doAuth.interpolate({
+							'platform': platform,
+							'Platform': platformCapitalized
+						});
+					}
+					content_div.append(_usingInformation(mePicture, meName, areUsing))
+						.append(_authenticateActions(caption));
+				});
+				FB.api("/me?fields=name,picture.width(50).height(50)", pipe.fill('me'));
+				if (xid2) {
+					FB.api("/"+xid2+"?fields=name,picture.width(50).height(50)", pipe.fill('xid'));;
+				}
 			}
 
 			Users.prompt.overlay = $('<div id="Users_prompt_overlay" class="Users_prompt_overlay" />');
@@ -86,11 +88,13 @@ Q.exports(function (Users, priv) {
 			dialog: Users.prompt.overlay,
 			doNotRemove: true,
 			onActivate: function () {
-				Users.init.facebook(function () {
-					FB.XFBML.parse(content_div.get(0));
-				}, {
-					appId: appId
-				});
+				if (platform === 'facebook' && window.FB) {
+					Users.init.facebook(function () {
+						FB.XFBML.parse(content_div.get(0));
+					}, {
+						appId: appId
+					});
+				}
 			},
 			onClose: function () {
 				if (!tookAction) {

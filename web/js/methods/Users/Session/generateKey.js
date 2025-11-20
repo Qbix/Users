@@ -29,49 +29,43 @@ Q.exports(function (Users, priv) {
 
 		_pendingGenerateKey = new Promise(function (resolveOuter, rejectOuter) {
 			if (!crypto || !crypto.subtle) {
+				Q.handle(callback, null, [null, null, false, null]);
 				resolveOuter(false);
 				return;
 			}
 
 			if (Users.Session.publicKey) {
-				Q.handle(callback, null, ["Users.Session.publicKey was already set on server"]);
+				Q.handle(callback, null, [null, null, null, null]);
 				resolveOuter(false);
 				return;
 			}
 
-			var info = Users.Session.key;
+			var info = Object.assign({}, Users.Session.key);
 			var publicKeyIsEphemeral = false;
 
-			// Step 0 — check/request Storage Access (Safari ITP)
 			var accessPromise = Promise.resolve(true);
 			if (document.requestStorageAccess && document.hasStorageAccess) {
 				accessPromise = Promise.race([
 					document.hasStorageAccess().then(function (already) {
 						if (already) {
-							Q.log("Users.Session: already has storage access");
 							return true;
 						}
 						return document.requestStorageAccess().then(function () {
-							Q.log("Users.Session: storage access granted");
 							return true;
-						}).catch(function (e) {
-							Q.warn("Users.Session: storage access denied or failed " + e);
+						}).catch(function () {
 							return true;
 						});
-					}).catch(function (e) {
-						Q.warn("Users.Session: hasStorageAccess check failed " + e);
+					}).catch(function () {
 						return true;
 					}),
 					new Promise(function (resolve) {
 						setTimeout(function () {
-							Q.warn("Users.Session: hasStorageAccess timed out, continuing");
 							resolve(true);
 						}, 500);
 					})
 				]);
 			}
 
-			// Step 1 — generate both session and recovery keys (non-extractable)
 			accessPromise.then(function () {
 				return Promise.all([
 					crypto.subtle.generateKey(
@@ -89,12 +83,10 @@ Q.exports(function (Users, priv) {
 				var sessionKey = keys[0];
 				var recoveryKey = keys[1];
 
-				// Step 2 — attempt to store keys in IndexedDB
 				return new Promise(function (resolve) {
 					var storeName = "Q.Users.keys";
 					Q.IndexedDB.open(Q.info.baseUrl, storeName, "id", function (err, db) {
 						if (err || !db) {
-							Q.warn("Users.Session: IndexedDB unavailable, marking key ephemeral");
 							publicKeyIsEphemeral = true;
 							resolve({ sessionKey: sessionKey, recoveryKey: recoveryKey });
 							return;
@@ -105,66 +97,55 @@ Q.exports(function (Users, priv) {
 							store.put({ id: "Users.Session", key: sessionKey });
 							store.put({ id: "Users.Recovery", key: recoveryKey });
 							tx.oncomplete = function () {
-								Q.log("Users.Session: keys saved to IndexedDB successfully");
 								resolve({ sessionKey: sessionKey, recoveryKey: recoveryKey });
 							};
-							tx.onerror = function (e) {
-								Q.warn("Users.Session: IndexedDB write failed, marking key ephemeral");
+							tx.onerror = function () {
 								publicKeyIsEphemeral = true;
 								resolve({ sessionKey: sessionKey, recoveryKey: recoveryKey });
 							};
 						} catch (e) {
-							Q.warn("Users.Session: IndexedDB exception, marking key ephemeral " + e);
 							publicKeyIsEphemeral = true;
 							resolve({ sessionKey: sessionKey, recoveryKey: recoveryKey });
 						}
 					});
-				}).then(function (result) {
-					result.publicKeyIsEphemeral = publicKeyIsEphemeral;
-					return result;
+				}).then(function (obj) {
+					obj.publicKeyIsEphemeral = publicKeyIsEphemeral;
+					return obj;
 				});
-			}).then(function (keysObj) {
-				var sessionKey = keysObj.sessionKey;
-				var recoveryKey = keysObj.recoveryKey;
-				var publicKeyIsEphemeral = keysObj.publicKeyIsEphemeral;
-
-				// Step 3 — export both public keys
+			}).then(function (obj) {
 				return Promise.all([
-					crypto.subtle.exportKey("jwk", sessionKey.publicKey),
-					crypto.subtle.exportKey("jwk", recoveryKey.publicKey)
-				]).then(function (exports) {
+					crypto.subtle.exportKey("jwk", obj.sessionKey.publicKey),
+					crypto.subtle.exportKey("jwk", obj.recoveryKey.publicKey)
+				]).then(function (pubs) {
 					return {
-						sessionKey: sessionKey,
-						recoveryKey: recoveryKey,
-						sessionPub: exports[0],
-						recoveryPub: exports[1],
-						publicKeyIsEphemeral: publicKeyIsEphemeral
+						sessionKey: obj.sessionKey,
+						recoveryKey: obj.recoveryKey,
+						sessionPub: pubs[0],
+						recoveryPub: pubs[1],
+						publicKeyIsEphemeral: obj.publicKeyIsEphemeral
 					};
 				});
 			}).then(function (bundle) {
-				var sessionKey = bundle.sessionKey;
-				var sessionPub = bundle.sessionPub;
-				var recoveryPub = bundle.recoveryPub;
-				var publicKeyIsEphemeral = bundle.publicKeyIsEphemeral;
-
-				// Step 4 — send to server
 				return new Promise(function (resolveSave) {
-					_save(sessionKey, sessionPub, recoveryPub, publicKeyIsEphemeral, function (err, resp) {
-						var errMsg = Q.firstErrorMessage(err, resp);
-						Q.handle(callback, null, [errMsg, null, sessionKey, resp]);
-						resolveSave({ sessionKey: sessionKey, response: resp });
-					});
+					_save(
+						bundle.sessionKey,
+						bundle.sessionPub,
+						bundle.recoveryPub,
+						bundle.publicKeyIsEphemeral,
+						function (err2, resp2) {
+							Q.handle(callback, null, [err2, null, bundle.sessionKey, resp2]);
+							resolveSave({ sessionKey: bundle.sessionKey, response: resp2 });
+						}
+					);
 				});
 			}).then(function (result) {
 				_pendingGenerateKey = null;
 				resolveOuter(result);
 			}).catch(function (e) {
-				Q.warn("Users.Session.generateKey error: " + e);
 				_pendingGenerateKey = null;
 				rejectOuter(e);
 			});
 
-			// Helper: sign and send to backend
 			function _save(sessionKey, sessionPub, recoveryPub, publicKeyIsEphemeral, callback) {
 				var fields = {
 					info: info,
@@ -173,13 +154,10 @@ Q.exports(function (Users, priv) {
 				};
 				if (publicKeyIsEphemeral) {
 					fields.publicKeyIsEphemeral = true;
-					Q.log("Users.Session: sending key marked as ephemeral");
 				}
 
 				Q.Users.sign(fields, function (err, signedFields) {
-					Q.req("Users/key", ["saved"], function (err2) {
-						Q.handle(callback, this, arguments);
-					}, {
+					Q.req("Users/key", ["saved"], callback, {
 						method: "post",
 						fields: signedFields
 					});

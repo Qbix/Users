@@ -104,7 +104,7 @@ Q.exports(function (Users, priv) {
 					for (var i=0; i<using.length; ++i) {
 						if (using[i] !== 'native') {
 							platform = using[i];
-							return;
+							break;
 						}
 					}
 				}

@@ -12,9 +12,6 @@ function Users_before_Q_session_save($params)
 	if (Q::ifset($row, 'userId', null) !== $userId) {
 		$row->userId = $userId;
 	}
-	$row->content = isset($_SESSION)
-		? Q::json_encode((object)$_SESSION)
-		: "{}";
 	if (!empty(Users::$cache['session'][$sessionId]['deviceId'])) {
 		$row->deviceId = Users::$cache['session'][$sessionId]['deviceId'];
 	}
