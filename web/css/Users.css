@@ -369,18 +369,23 @@ a.Users_activation_resend:active {
 .Users_avatar_icon.Users_avatar_icon_50 {
 	width: 50px;
 	height: 50px;
+	filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.8));
 }
 .Users_avatar_icon.Users_avatar_icon_80 {
 	width: 80px;
 	height: 80px;
+	filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.8));
+}
 }
 .Users_avatar_icon.Users_avatar_icon_200 {
 	width: 200px;
 	height: 200px;
+	filter: drop-shadow(2px 3px 8px rgba(0, 0, 0, 0.8));
 }
 .Users_avatar_icon.Users_avatar_icon_400 {
 	width: 200px;
 	height: 200px;
+	filter: drop-shadow(2px 4px 10px rgba(0, 0, 0, 0.8));
 }
 
 .Users_avatar_icon_blank {
