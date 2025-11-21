@@ -25,6 +25,7 @@
  * @param {string|Db_Expression} [$fields.endTime] defaults to null
  * @param {string|Db_Expression} [$fields.insertedTime] defaults to new Db_Expression("CURRENT_TIMESTAMP")
  * @param {string|Db_Expression} [$fields.updatedTime] defaults to null
+ * @param {string|Db_Expression} [$fields.completedTime] defaults to null
  */
 abstract class Base_Users_Intent extends Db_Row
 {
@@ -78,6 +79,12 @@ abstract class Base_Users_Intent extends Db_Row
 	 */
 	/**
 	 * @property $updatedTime
+	 * @type string|Db_Expression
+	 * @default null
+	 * 
+	 */
+	/**
+	 * @property $completedTime
 	 * @type string|Db_Expression
 	 * @default null
 	 * 
@@ -768,6 +775,56 @@ return array (
 	}
 
 	/**
+	 * Method is called before setting the field and normalize the DateTime string
+	 * @method beforeSet_completedTime
+	 * @param {string} $value
+	 * @return {array} An array of field name and value
+	 * @throws {Exception} An exception is thrown if $value does not represent valid DateTime
+	 */
+	function beforeSet_completedTime($value)
+	{
+		if (!isset($value)) {
+			return array('completedTime', $value);
+		}
+		if ($value instanceof Db_Expression
+               or $value instanceof Db_Range) {
+			return array('completedTime', $value);
+		}
+		if ($value instanceof DateTime) {
+			$value = $value->getTimestamp();
+		}
+		if (is_numeric($value)) {
+			$newDateTime = new DateTime();
+			$datetime = $newDateTime->setTimestamp($value);
+		} else {
+			$datetime = new DateTime($value);
+		}
+		$value = $datetime->format("Y-m-d H:i:s");
+		return array('completedTime', $value);			
+	}
+
+	/**
+	 * Returns schema information for completedTime column
+	 * @return {array} [[typeName, displayRange, modifiers, unsigned], isNull, key, default]
+	 */
+	static function column_completedTime()
+	{
+
+return array (
+  0 => 
+  array (
+    0 => 'timestamp',
+    1 => NULL,
+    2 => NULL,
+    3 => NULL,
+  ),
+  1 => true,
+  2 => '',
+  3 => NULL,
+);			
+	}
+
+	/**
 	 * Check if mandatory fields are set and updates 'magic fields' with appropriate values
 	 * @method beforeSave
 	 * @param {array} $value The array of fields
@@ -805,7 +862,7 @@ return array (
 	 */
 	static function fieldNames($table_alias = null, $field_alias_prefix = null)
 	{
-		$field_names = array('token', 'action', 'instructions', 'sessionId', 'userId', 'startTime', 'endTime', 'insertedTime', 'updatedTime');
+		$field_names = array('token', 'action', 'instructions', 'sessionId', 'userId', 'startTime', 'endTime', 'insertedTime', 'updatedTime', 'completedTime');
 		$result = $field_names;
 		if (!empty($table_alias)) {
 			$temp = array();

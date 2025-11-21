@@ -27,10 +27,10 @@ class Users_Referred extends Base_Users_Referred
 
 	/**
 	 * Inserts or updates Users_Referred
-	 * @param {string} $userId
-	 * @param {string} $publisherId
-	 * @param {string} $referredToType
-	 * @param {string} $invitingUserId
+	 * @param {string} $userId The user that was referred
+	 * @param {string} $publisherId The community or publisher of content the user was referred to
+	 * @param {string} $referredToType The type of entity the user was referred to
+	 * @param {string} $invitingUserId The user that did the referring
 	 * @return {Users_Referred}
 	 */
 	static function handleReferral($userId, $publisherId, $referredToType, $invitingUserId)
@@ -53,6 +53,7 @@ class Users_Referred extends Base_Users_Referred
 		}
 		$threshold = Q_Config::get('Users', 'referred', $referredToType, 'qualified', 10);
 		if ($prevPoints < $threshold and $points >= $threshold) {
+			// the user passed the threshold and qualified for something, record the time
 			$r->qualifiedTime = new Db_Expression("CURRENT_TIMESTAMP");
 		}
 		$r->save();

@@ -30,6 +30,7 @@ var Row = Q.require('Db/Row');
  * @param {String|Db.Expression} [fields.endTime] defaults to null
  * @param {String|Db.Expression} [fields.insertedTime] defaults to new Db.Expression("CURRENT_TIMESTAMP")
  * @param {String|Db.Expression} [fields.updatedTime] defaults to null
+ * @param {String|Db.Expression} [fields.completedTime] defaults to null
  */
 function Base (fields) {
 	Base.constructors.apply(this, arguments);
@@ -87,6 +88,12 @@ Q.mixin(Base, Row);
  */
 /**
  * @property updatedTime
+ * @type String|Db.Expression
+ * @default null
+ * 
+ */
+/**
+ * @property completedTime
  * @type String|Db.Expression
  * @default null
  * 
@@ -307,7 +314,8 @@ Base.fieldNames = function () {
 		"startTime",
 		"endTime",
 		"insertedTime",
-		"updatedTime"
+		"updatedTime",
+		"completedTime"
 	];
 };
 
@@ -594,6 +602,32 @@ Base.prototype.beforeSet_updatedTime = function (value) {
 	 * @return {array} [[typeName, displayRange, modifiers, unsigned], isNull, key, default]
 	 */
 Base.column_updatedTime = function () {
+
+return [["timestamp",null,null,null],true,"",null];
+};
+
+/**
+ * Method is called before setting the field
+ * @method beforeSet_completedTime
+ * @param {String} value
+ * @return {Date|Db.Expression} If 'value' is not Db.Expression the current date is returned
+ */
+Base.prototype.beforeSet_completedTime = function (value) {
+		if (value == undefined) return value;
+		if (value instanceof Db.Expression) return value;
+		if (typeof value !== 'object' && !isNaN(value)) {
+			value = parseInt(value);
+			value = new Date(value < 10000000000 ? value * 1000 : value);
+		}
+		value = (value instanceof Date) ? Base.db().toDateTime(value) : value;
+		return value;
+};
+
+	/**
+	 * Returns schema information for completedTime column
+	 * @return {array} [[typeName, displayRange, modifiers, unsigned], isNull, key, default]
+	 */
+Base.column_completedTime = function () {
 
 return [["timestamp",null,null,null],true,"",null];
 };

@@ -411,7 +411,7 @@ abstract class Users extends Base_Users
 		Q_Session::start();
 
 		// First, see if we've already logged in somehow
-		if ($user = self::loggedInUser()) {
+			if ($user = self::loggedInUser()) {
 			// Get logged in user from session
 			$userWasLoggedIn = true;
 			$retrieved = true;
@@ -516,18 +516,6 @@ abstract class Users extends Base_Users
 				->execute();
 
 				// Now, let's associate the current user's account with this platform xid.
-				if (!$user->displayName(array('fallback' => ''))) {
-					// import some fields automatically from the platform
-					$imported = $externalFrom->import($import);
-					self::applyPreferredLanguage($user, $imported);
-				}
-				if (!Users::isCustomIcon($user->icon, true)) {
-					// If the user has no custom icon, set it to the platform icon
-					$sizes = array_keys(Q_Image::getSizes('Users/icon'));
-					$icon = $externalFrom->icon($sizes, '.png');
-					self::importIcon($user, $icon);
-				}
-				
 				$user->setXid($platformApp, $xid);
 				$user->save();
 
@@ -553,11 +541,11 @@ abstract class Users extends Base_Users
 		if (!$retrieved) {
 			$ui = Users::identify($platformApp, $xid, null);
 			if ($ui) {
+				// we found a user corresponding to this xid
 				Users::$cache['user'] = $user = new Users_User();
 				$user->id = $ui->userId;
 				$exists = $user->retrieve();
 				if (!$exists) {
-					
 					throw new Q_Exception("Users_Identify for $platform xid $xid exists but not user with id {$ui->userId}");
 				}
 				$retrieved = true;
@@ -663,6 +651,24 @@ abstract class Users extends Base_Users
 		Users::$cache['user'] = $user;
 		Users::$cache['externalFrom'] = $externalFrom;
 
+		if (!$user->displayName(array('fallback' => ''))) {
+			// import some fields automatically from the platform
+			$imported = $externalFrom->import($import);
+			self::applyPreferredLanguage($user, $imported);
+			// make sure the user will be saved to db and trigger hooks
+			$user->updatedTime = new Db_Expression('CURRENT_TIMESTAMP');
+			$user->set('processPlatformUserData', true);
+		}
+		if (!Users::isCustomIcon($user->icon, true)) {
+			// If the user has no custom icon, set it to the platform icon
+			$sizes = array_keys(Q_Image::getSizes('Users/icon'));
+			$icon = $externalFrom->icon($sizes, '.png');
+			self::importIcon($user, $icon);
+			// make sure the user will be saved to db and trigger hooks
+			$user->updatedTime = new Db_Expression('CURRENT_TIMESTAMP');
+			$user->set('processPlatformUserData', true);
+		}
+
 		if (!empty($imported['email']) and empty($user->emailAddress)) {
 			$emailAddress = $imported['email'];
 			// We automatically set their email as verified, without a confirmation message,
@@ -678,6 +684,8 @@ abstract class Users extends Base_Users
 		$cookiesToClearOnLogout = $externalFrom->get('cookiesToClearOnLogout', null);
 		if (!$userWasLoggedIn) {
 			self::setLoggedInUser($user, @compact('cookiesToClearOnLogout'));
+		} else {
+			$user->save(); // in case something changed, it will save the user 
 		}
 
 		if ($intent = $externalFrom->get('intent')) {
