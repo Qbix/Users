@@ -146,7 +146,7 @@ Q.Tool.define("Users/avatar", function Users_avatar_tool(options) {
 			src: Users.iconUrl('loading', state.icon.size)
 		});
 		Q.Template.render(state.templates.loading.name, fields, function (err, html) {
-			Q.replace(tool.element, html);;
+			Q.replace(tool.element, html);
 		});
 		tool.element.addClass('Q_loading');
 	
@@ -154,6 +154,7 @@ Q.Tool.define("Users/avatar", function Users_avatar_tool(options) {
 			var fields;
 			tool.element.removeClass('Q_loading');
 			if (!user) {
+				Q.handle(state.onRefresh, tool, []);
 				return Q.handle(state.onMissing, tool, [err]);
 			}
 			state.user = user;
@@ -161,14 +162,14 @@ Q.Tool.define("Users/avatar", function Users_avatar_tool(options) {
 				var icon = state.icon;
 				if (Q.isInteger(icon) && window.devicePixelRatio > 1) {
 					for (var k in Q.image.sizes['Users/icon']) {
-						if (k >= icon * window.devicPixelRatio) {
+						if (k >= icon * window.devicePixelRatio) {
 							icon = k;
 						}
 					}
 				}
 				var src = isNaN(state.icon)
 					? icon
-					: Q.url(avatar.iconUrl(icon), 40);
+					: Q.url(user.iconUrl(icon), 40);
 				fields = Q.extend({}, state.templates.icon.fields, {src: src});
 				Q.Template.render(state.templates.icon.name, fields, function (err, html) {
 					p.fill('icon')(html);
@@ -185,6 +186,39 @@ Q.Tool.define("Users/avatar", function Users_avatar_tool(options) {
 				Q.handle(state.onRefresh, tool, []);
 			}, state.templates.contents);
 		});
+
+		// optimistic: show temporary avatar info
+		var uid = state.userId || "@me";
+		Q.Optimistic.onBegin("avatar", uid).set(function (payload) {
+			tool.element.addClass("Q_optimistic");
+
+			// optimistic icon
+			if (payload.icon) {
+				var $img = tool.$('.Users_avatar_icon');
+				if ($img.length) {
+					$img.attr('src', payload.icon);
+				}
+			}
+
+			// optimistic username only
+			if (payload.username) {
+				var $name = tool.$('.Users_avatar_name');
+				if ($name.length) {
+					$name.text(payload.username);
+				}
+			}
+		}, tool);
+
+		// resolve: remove class
+		Q.Optimistic.onResolve("avatar", uid).set(function () {
+			tool.element.removeClass("Q_optimistic");
+		}, tool);
+
+		// reject: revert to default
+		Q.Optimistic.onReject("avatar", uid).set(function () {
+			tool.element.removeClass("Q_optimistic");
+			tool.refresh();
+		}, tool);
 	}
 }
 
