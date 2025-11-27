@@ -274,6 +274,7 @@
 {
 	display: inline-block;
 	vertical-align: middle;
+	overflow: hidden;
 }
 
 #Users_login_step2 td {
@@ -448,7 +449,6 @@ a.Users_activation_resend:active {
 	vertical-align: top;
 	white-space: nowrap;
 	text-overflow: ellipsis;
-	overflow: hidden;
 }
 
 .Users_avatar_tool>* {
