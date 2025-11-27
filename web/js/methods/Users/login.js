@@ -920,7 +920,7 @@ Q.exports(function (Users, priv) {
 				 : null;
 
 			 login_setupDialog.dialog = Q.Dialogs.push({
-				 title: Q.text.Users.login.title,
+				 title: options.title || Q.text.Users.login.title,
 				 content: $('<div />').append($explanation, step1_div, step2_div),
 				 elementId: 'Users_login_dialog',
 				 className: 'Users_login_dialog Q_scrollToBottom ' + options.className,
