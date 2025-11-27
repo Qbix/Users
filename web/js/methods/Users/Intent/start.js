@@ -67,6 +67,8 @@ Q.exports(function (Users, priv) {
 			fields: fields
 		});
 
+		Users.Intent.onStarted(fields.platform).handle.call(Users.Intent, fields);
+
 		var apps = Users.apps[fields.platform] || {};
 		if (!apps[fields.appId]) {
 			return false;
@@ -84,7 +86,7 @@ Q.exports(function (Users, priv) {
 
 		var _reload = _waitAndReload();
 
-		if (!options.skip.QR) {
+		if (!Q.info.isMobile && !options.skip.QR) {
 			var dialog = Q.Dialogs.push({
 				title: "Scan this code to continue",
 				onActivate: function (container) {
@@ -115,7 +117,7 @@ Q.exports(function (Users, priv) {
 							.append(element);
 					});
 
-					Q.onVisibilityChange.setOnce(function (isShown) {
+					Q.onVisibilityChange.set(function (isShown) {
 						if (!isShown) return;
 
 						// Check if user changed before reload
@@ -166,7 +168,7 @@ Q.exports(function (Users, priv) {
 			});
 			window.removeEventListener('focus', _reload);
 		}, 500);
-		Q.onVisibilityChange.setOnce(_reload, 'Users.Intent.start');
+		Q.onVisibilityChange.set(_reload, 'Users.Intent.start');
 		window.addEventListener('focus', _reload);
 		return _reload;
 	}

@@ -31,11 +31,18 @@ Q.exports(function (Users, priv) {
                 callback && callback(null);
                 return;
             }
-            Q.setObject(['results', action, platform, appId], {
+            var data = {
                 token: response.slots.token,
                 capability: response.slots.capability
-            }, Users.Intent.provision);
+            };
+            Q.setObject(['results', action, platform, appId], data, Users.Intent.provision);
             callback && callback(response && response.slots);
+            Users.Intent.onProvisioned(platform).handle.call(Users.Intent, {
+                platform: platform,
+                action: action,
+                appId: appId,
+                data: data
+            });
         });
     };
 });

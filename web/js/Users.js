@@ -705,9 +705,13 @@
 	 * @return {String} the url
 	 */
 	Users.User.prototype.iconUrl = function Users_User_iconUrl(size) {
-		return Users.iconUrl(this.icon.interpolate({
-			userId: this.id.splitId()
-		}), size);
+		var icon = this.icon;
+		if (this.id) {
+			icon = icon.interpolate({
+				userId: this.id.splitId()
+			});
+		}
+		return Users.iconUrl(icon, size);
 	};
 
 	Users.User.get = Users.get.bind(Users);
@@ -961,6 +965,8 @@
 		actions: {},
 		provision: new Q.Method(),
 		start: new Q.Method(),
+		onStarted: Q.Event.factory({}, [""]),
+		onProvisioned: Q.Event.factory({}, [""]),
 		onCompleted: Q.Event.factory({}, [""])
 	}, "{{Users}}/js/methods/Users/Intent",
 	function() {

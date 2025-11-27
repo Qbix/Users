@@ -92,7 +92,9 @@ Q.Tool.define("Users/status", function (options) {
 		// CASE 2: OPTIMISTIC PLACEHOLDER
 		// ===========================
 		if (!Q.isEmpty(state.optimisticPayload)) {
-			var avatarOpts = Q.extend({}, state.avatar, state.optimisticPayload);
+			var avatarOpts = Q.extend({}, state.avatar, {
+				optimisticPayload: state.optimisticPayload
+			});
 
 			var $avatar = $('<div />')
 				.tool('Users/avatar', avatarOpts)
