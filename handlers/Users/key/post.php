@@ -85,7 +85,7 @@ function Users_key_post()
 	if (!$sessionRow) {
 		throw new Q_Exception("Could not start session");
 	}
-	$sessionId = session_id();
+	$sessionId = Q_Session::id();
 
 	// Prevent overwriting a persistent key
 	if (!empty($_SESSION['Users']['publicKey']) && empty($_SESSION['Users']['publicKeyIsEphemeral'])) {

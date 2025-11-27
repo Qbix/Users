@@ -659,7 +659,7 @@ abstract class Users extends Base_Users
 			$user->updatedTime = new Db_Expression('CURRENT_TIMESTAMP');
 			$user->set('processPlatformUserData', true);
 		}
-		if (!Users::isCustomIcon($user->icon, true)) {
+		if (!Users::isCustomIcon($user->icon, false)) {
 			// If the user has no custom icon, set it to the platform icon
 			$sizes = array_keys(Q_Image::getSizes('Users/icon'));
 			$icon = $externalFrom->icon($sizes, '.png');
