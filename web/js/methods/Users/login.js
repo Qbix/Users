@@ -628,8 +628,7 @@ Q.exports(function (Users, priv) {
 						 data.emailExists ? Q.text.Users.login.emailExists : Q.text.Users.login.mobileExists
 					 )
 				 );
-				 $('a', $p).plugin('Q/clickable', {
-					 onInvoke: function () {
+				 $('a', $p).on('click', function () {
 						 $(this).addClass('Q_working');
 						 Q.request({identifier: identifier}, Q.action("Users/resend"), 'data',
 							 function (err, response) {
@@ -639,8 +638,9 @@ Q.exports(function (Users, priv) {
 								 Users.Dialogs.activate(activateUrl, {
 									 onSuccess: _activationComplete
 								 });
-							 }, {"method": "post"});
-					 }
+							 }, 
+							 {"method": "post"}
+						);
 				 }).attr('tabindex', 1002);
 				 if (Q.text.Users.login.newUser) {
 					 $p.append($('<div />').html(Q.text.Streams.login.newUser));
