@@ -905,9 +905,6 @@ Q.exports(function (Users, priv) {
 				 });
 				 step1_div.append(step1_usingPlatforms_div);
 			 }
-			 setTimeout(function () {
-				 $('img', step1_usingPlatforms_div).plugin('Q/clickable');
-			 }, 500);
 
 			 $('input', step1_form).add('select', step1_form).on('input', function () {
 				 step1_form.plugin('Q/validator', 'reset', this);
