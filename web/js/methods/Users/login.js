@@ -875,7 +875,7 @@ Q.exports(function (Users, priv) {
 								alt: (text && text.alt) || "login with " + platform,
 								src: (text && text.src) || Q.url('{{Users}}/img/platforms/' + platform + '.png')
 							}),
-							$('<div />').text(Q.text.Users.platforms[platform] || platform)
+							$('<div />').text((Q.text.Users.platforms[platform] || platform).toCapitalized())
 						).attr('tabindex', 1000)
 						.css({'display': 'inline-block', 'vertical-align': 'middle'})
 						.click(function () {
