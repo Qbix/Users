@@ -125,7 +125,12 @@ function Users_before_Q_objects(&$params)
 	if ($token = Q_Request::special('Users.intent')) {
 		$intent = new Users_Intent(compact('token'));
 		if ($intent->retrieve()) {
-			$intent->accept(); // authenticates this session, and logs user in
+			if (Users::db()->fromDateTime($intent->endTime) < time()) {
+				throw new Q_Exception_Expired();
+			}
+			$intent->accept(array(
+				'evenIfCompleted' => true
+			)); // authenticates this session, and logs user in
 		}
 	}
 }

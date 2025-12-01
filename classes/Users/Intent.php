@@ -133,18 +133,23 @@ class Users_Intent extends Base_Users_Intent
 	/**
 	 * Accept the intent and set user from intent as the logged-in user
 	 * @method accept
-	 * @param {array} $copySessionFields Array of session fields to copy
+	 * @param {array} [$options]
+	 * @param {array} [$options.copySessionFields] Array of session fields to copy
 	 * 	from original session to current session
+	 * @param {array} [$options.evenIfCompleted] Pass true to log user in even if intent
+	 *   was already completed before (e.g. into for authenticating yet another session),
+	 *   but the intent's endTime is still used to prevent attackers re-using old intents.
 	 * @return {boolean} true if successful, false otherwise
 	 */
-	function accept($copySessionFields = array())
+	function accept($options = array())
 	{
 		$intent = $this;
-		if (false === Q::event('Users/intent/accept', compact('intent', 'copySessionFields'), 'before')) {
+		if (false === Q::event('Users/intent/accept', compact('intent', 'options'), 'before')) {
 			return false;
 		}
 		if ((!$intent->wasRetrieved() and !$intent->retrieve())
-		or !empty($intent->completedTime)) {
+		or Users::db()->fromDateTime($intent->endTime) < time()
+		or (!$options['evenIfCompleted'] and !empty($intent->completedTime))) {
 			return false;
 		}
 		$userId = $content = $session = null;
@@ -170,10 +175,10 @@ class Users_Intent extends Base_Users_Intent
 			// set them as logged-in user here too, before connecting telegram user
 			Users::setLoggedInUser($userId, array('keepSessionId' => true));
 		}
-		if ($content and $copySessionFields) {
-			Q::take($content, $copySessionFields, $_SESSION);
+		if ($content and !empty($options['copySessionFields'])) {
+			Q::take($content, $options['copySessionFields'], $_SESSION);
 		}
-		Q::event('Users/intent/accept', compact('intent', 'session', 'userId'), 'after');
+		Q::event('Users/intent/accept', compact('intent', 'options', 'session', 'userId'), 'after');
 		return true;
 	}
 
