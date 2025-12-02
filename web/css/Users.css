@@ -384,10 +384,16 @@ a.Users_activation_resend:active {
 	filter: drop-shadow(2px 3px 8px rgba(0, 0, 0, 0.8));
 }
 .Users_avatar_icon.Users_avatar_icon_400 {
-	width: 200px;
-	height: 200px;
+	width: 400px;
+	height: 400px;
 	filter: drop-shadow(2px 4px 10px rgba(0, 0, 0, 0.8));
 }
+.Users_avatar_icon.Users_avatar_icon_1000 {
+	width: 1000px;
+	height: 1000px;
+	filter: drop-shadow(2px 4px 10px rgba(0, 0, 0, 0.8));
+}
+
 
 .Users_avatar_icon_blank {
 	width: 40px;
