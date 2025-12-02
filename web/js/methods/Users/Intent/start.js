@@ -135,6 +135,7 @@ Q.exports(function (Users, priv) {
 								ignoreHistory: true,
 								quiet: true
 							});
+							Q.onVisibilityChange.remove('Q.Intent.start');
 						});
 
 						Q.Dialogs.close(dialog);
@@ -166,6 +167,7 @@ Q.exports(function (Users, priv) {
 			}, {
 
 			});
+			Q.onVisibilityChange.remove('Users.Intent.start');
 			window.removeEventListener('focus', _reload);
 		}, 500);
 		Q.onVisibilityChange.set(_reload, 'Users.Intent.start');
