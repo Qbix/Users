@@ -1,5 +1,7 @@
 Q.exports(function (Users, priv) {
 
+	var Web3 = Users.Web3;
+
 	/**
 	 * Authenticate this session using a connected Web3 wallet.
 	 * Works via the intent-based flow (Users/intent → Users/authenticate/web3),
