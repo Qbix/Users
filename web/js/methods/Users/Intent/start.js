@@ -119,26 +119,9 @@ Q.exports(function (Users, priv) {
 
 					Q.onVisibilityChange.set(function (isShown) {
 						if (!isShown) return;
-
-						// Check if user changed before reload
-						Q.req('Users/loggedInUser', function (err, response) {
-							var user = Q.getObject('slots.user', response);
-							if (!user || Users.loggedInUserId() == user.id) {
-								return;
-							}
-							Users.loggedInUser = new Users.User(response.slots.user);
-							Q.loadUrl(location.href, {
-								slotNames: Q.info.slotNames,
-								loadExtras: 'all',
-								ignoreDialogs: true,
-								ignorePage: false,
-								ignoreHistory: true,
-								quiet: true
-							});
-							Q.onVisibilityChange.remove('Q.Intent.start');
-						});
-
 						Q.Dialogs.close(dialog);
+						_reload();
+						Q.onVisibilityChange.remove('Q.Intent.start');
 					}, 'Q.Intent.start');
 				},
 				onClose: _reload
@@ -153,24 +136,35 @@ Q.exports(function (Users, priv) {
 	};
 
 	function _waitAndReload() {
+		// make a debounced function just in case it's hit
+		// from more than one approach
 		var _reload = Q.debounce(function () {
 			if (Q.isDocumentHidden()) {
 				return;
 			}
-			Q.loadUrl(Q.url(location.href, {}, {cacheBust: 500}), {
-				slotNames: Q.info.slotNames,
-				loadExtras: 'all',
-				ignoreDialogs: true,
-				ignorePage: false,
-				ignoreHistory: true,
-				quiet: true
-			}, {
-
+			// Check if user changed before reload
+			Q.req('Users/loggedInUser', function (err, response) {
+				var user = Q.getObject('slots.user', response);
+				if (!user || Users.loggedInUserId() == user.id) {
+					return;
+				}
+				Users.loggedInUser = new Users.User(response.slots.user);
+				Q.loadUrl(location.href, {
+					slotNames: Q.info.slotNames,
+					loadExtras: 'all',
+					ignoreDialogs: true,
+					ignorePage: false,
+					ignoreHistory: true,
+					quiet: true
+				});
 			});
-			Q.onVisibilityChange.remove('Users.Intent.start');
 			window.removeEventListener('focus', _reload);
 		}, 500);
-		Q.onVisibilityChange.set(_reload, 'Users.Intent.start');
+		Q.onVisibilityChange.set(function (isShown) {
+			if (!isShown) return;
+			_reload();
+			Q.onVisibilityChange.remove('Q.Intent.start');
+		}, 'Q.Intent.start');
 		window.addEventListener('focus', _reload);
 		return _reload;
 	}
