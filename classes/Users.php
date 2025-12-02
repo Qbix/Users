@@ -2788,8 +2788,17 @@ abstract class Users extends Base_Users
 		if ($to === 'email') {
 			$defaultSubject = ucfirst($module) . ': ' . $event;
 			$subject = Q::ifset($text, $event, 'Subject', $defaultSubject);
-			$email = new Users_Email(array('address' => $email));
+			$email = new Users_Email(array('address' => $destination));
 			$email->sendMessage($subject, $view, $fields);
+		} else if ($to === 'mobile') {
+			$mobile = new Users_Mobile(array('mobile' => $destination));
+			$mobile->sendMessage($view, $fields);
+		} else if ($to === 'device') {
+			$alert = Q::view($view, $fields);
+			$device->pushNotification(compact('alert'));
+		} else if ($externalFrom) {
+			$alert = Q::view($view, $fields);
+			$externalFrom->pushNotification(compact('alert'));
 		}
 	}
 
