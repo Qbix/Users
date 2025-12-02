@@ -250,6 +250,93 @@ class Users_ExternalFrom extends Base_Users_ExternalFrom
 		return $result;
 	}
 
+/**
+	 * You can use this method to send push notifications.
+	 * It is far better, however, to use the Qbix Platform's offline notification
+	 * mechanisms using Node.js instead of PHP. That way, you can be sure of re-using
+	 * the same persistent connection.
+	 * @method pushNotification
+	 * @param {array} $notification
+	 * @param {string|array} [$notification.alert] Either the text of an alert to show,
+	 *  or an object with the following fields:
+	 * @param {string|array} [$notification.alert.title] The title of the notification
+	 * You can also pass an array($source, array($key1, ...)) to use Q_Text to obtain the title.
+	 * @param {string|array} [$notification.alert.body] The body of the notification
+	 * You can also pass an array($source, array($key1, ...)) to use Q_Text to obtain the body.
+	 * @param {string} [$notification.alert.titleLocKey] Apple-only
+	 * @param {string} [$notification.alert.titleLocArgs] Apple-only
+	 * @param {string} [$notification.alert.actionLocKey] Apple-only
+	 * @param {string} [$notification.alert.locKey] Apple-only
+	 * @param {string} [$notification.alert.locArgs] Apple-only
+	 * @param {string} [$notification.alert.launchImage] Apple-only
+	 * @param {string} [$notification.badge] The badge
+	 * @param {string} [$notification.sound] The name of the sound file in the app bundle or Library/Sounds folder
+	 * @param {string} [$notification.icon] Url of icon, can be png any square size
+	 * @param {string} [$notification.url] Url to which the notifiation will be linked
+	 * @param {array} [$notification.actions] Array of up to two arrays with keys 'action', 'title' and optionally 'icon'.
+	 * @param {string|array} [$notification.actions.title] Action title
+	 * You can also pass an array($source, array($key1, ...)) to use Q_Text to obtain the title.
+	 * @param {string} [$notification.category] Apple-only. The name of the category for actions registered on the client side.
+	 * @param {array} [$notification.payload] Put all your custom notification fields here
+	 * @param {integer} [$notification.expiry=null] Number of seconds until notification expires
+	 *    and does not need to be stored anymore on the device.
+	 *    Pass -1 to ask the device not to store it at all.
+	 * @param {string} [$notification.priority="high"] Can be set to "normal" to make it lower priority
+	 * @param {string} [$notification.collapseId] A string under 64 bytes for grouping and collapsing
+	 *    notifications, this is passed as "tag" in Web Push.
+	 * @param {string} [$notification.id] You can provide your own uuid for the notification
+	 * @param {array} [$options]
+	 * @param {boolean} [$options.scheduled=false] if true, doesn't send immediately.
+	 *  You should call Users_Device_{YourPlatform}::sendPushNotifications()
+	 *  to send all scheduled notifications in a batch.
+	 * @param {boolean} [$options.silent=false] Deliver a silent notification, may throw an exception
+	 */
+	function pushNotification($notification, $options = array())
+	{
+		// if title or body are arrays, get texts from lang files
+		foreach (array('alert', 'actions') as $item1) {
+			foreach (array('title', 'body') as $item2) {
+				$subject = Q::ifset($notification, $item1, $item2, null);
+				if (!is_array($subject)) {
+					continue;
+				}
+				$source = $subject[0];
+				$keys = $subject[1];
+				$texts = Q_Text::get($source, array('language' => $options['language']));
+				$tree = new Q_Tree($texts);
+				$keyPath = implode('/', $keys);
+				$args = array_merge($keys, array("Missing $keyPath in $source"));
+				$notification[$item1][$item2] = $tree->get($args);
+			}
+		}
+
+		$this->handlePushNotification($notification, $options);
+	}
+	
+	/**
+	 * Schedules a push notification.
+	 * This default implementation, just throws an error.
+	 * @method handlePushNotification
+	 */
+	protected function handlePushNotification($notifications, $options = array())
+	{
+		throw new Q_Exception_MethodNotSupported(array(
+			'method' => 'handlePushNotification'
+		));
+	}
+	
+	/**
+	 * Sends all scheduled push notifications
+	 * @method sendPushNotifications
+	 * Default implementation
+	 */
+	static function sendPushNotifications()
+	{
+		throw new Q_Exception_MethodNotSupported(array(
+			'method' => 'sendPushNotifications'
+		));
+	}
+
 	/* * * */
 	/**
 	 * Implements the __set_state method, so it can work with

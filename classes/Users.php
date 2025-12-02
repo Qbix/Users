@@ -2714,6 +2714,86 @@ abstract class Users extends Base_Users
 	}
 
 	/**
+	 * Deliver a message view template by rendering it with Q::view()
+	 * and then using various delivery methods from "Users"/"deliver" config.
+	 * Default text can be set in "Q"/"text"
+	 * @method deliver
+	 * @param {string} $module The module defining the view templates
+	 * @param {string} $event The event to search templates for
+	 * @param {array} [$fields] Any additional fields to pass to the template
+	 *   and use for the subjects of emails, etc.
+	 * @param {string} $text Override name of additional text to pass to the template.
+	 *   By default, it is "$module/deliver"
+	 * @param {boolean} [$usePending=false] Pass true to deliver to emails and mobile numbers
+	 *   even pending verification. Note that this can be abused to spam random people who never opted in.
+	 * @return {boolean} Whether it was sent
+	 */
+	static function deliver($userId, $module, $event, $fields = array(), $text = null, $usePending = false)
+	{
+		if (!isset($text)) {
+			$text = "$module/deliver";
+		}
+		if (is_string($text)) {
+			$text = Q_Text::get($text);
+		}
+		if (isset($text)) {
+			$fields = array_merge($fields, $text);
+		}
+		$user = $userId instanceof Users_User ? $userId : Users_User::fetch($userId, true);
+		$userId = $user->id;
+
+		// $xids = $user->getAllXids();
+		$externalFrom = null;
+		$rows = Users_ExternalFrom::select()->where(compact('userId'))->fetchDbRows();
+		foreach ($rows as $ef) {
+			if ($ef->platform === 'Qbix' or $ef->platform === 'Q') {
+				// TODO: check deliverability in the future
+				return;
+			}
+			$externalFrom = $ef;
+			break;
+		}
+
+		if ($externalFrom) {
+			$to = $externalFrom->platform;
+			$destination = $externalFrom;
+		} else {
+			$device = null;
+			$rows = Users_Device::select()->where(compact('userId'))->fetchDbRows();
+			foreach ($rows as $d) {
+				// TODO: check deliverability in the future
+				$device = $d;
+				break;
+			}
+			if ($device) {
+				$to = 'device';
+				$destination - $device;
+			} else if ($user->mobileNumber) {
+				$to = 'mobile';
+				$destination = $user->mobileNumber;
+			} else if ($usePending and $user->mobileNumberPending) {
+				$to = 'mobile';
+				$destination = $user->mobileNumberPending;
+			} else if ($user->emailAddress) {
+				$to = 'email';
+				$destination = $user->emailAddress;
+			} else if ($usePending and $user->emailAddressPending) {
+				$to = 'email';
+				$destination = $user->emailAddressPending;
+			}
+		}
+
+		$viewName = "$module/$to/$event";
+
+		if ($to === 'email') {
+			$defaultSubject = ucfirst($module) . ': ' . $event;
+			$subject = Q::ifset($text, $event, 'Subject', $defaultSubject);
+			$email = new Users_Email(array('address' => $email));
+			$email->sendMessage($subject, $view, $fields);
+		}
+	}
+
+	/**
 	 * @property $logoutFetch
 	 * @type boolean
 	 */

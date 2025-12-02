@@ -1340,6 +1340,25 @@ class Users_User extends Base_Users_User
 	}
 
 	/**
+	 * Deliver a message view template by rendering it with Q::view()
+	 * and then using various delivery methods from "Users"/"deliver" config.
+	 * Default text can be set in "Q"/"text"
+	 * @method deliver
+	 * @param {string} $module The module defining the view templates
+	 * @param {string} $eventName The event to search templates for
+	 * @param {array} [$fields] Any additional fields to pass to the template
+	 * @param {string} $text Override name of additional text to pass to the template.
+	 *   By default, it is "$module/deliver"
+	 * @param {boolean} [$usePending=false] Pass true to deliver to emails and mobile numbers even pending verification.
+	 *   Note that this can spam people who never opted in.
+	 * @return {boolean} Whether it was sent
+	 */
+	function deliver($module, $event, $fields = array(), $text = null, $usePending = false)
+	{
+		return Users_User::deliver($this->id, $module, $event, $fields, $text, $usePending);
+	}
+
+	/**
 	 * Get client IP address
 	 * @method getIP
 	 * @static
