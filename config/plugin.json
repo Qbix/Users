@@ -203,7 +203,7 @@
 		},
 		"import": {
 			"facebook": [
-				"email", "first_name", "last_name", "username",
+				"email", "first_name", "last_name",
 				"gender", "age_range", "verified",
 				"link", "picture", "cover"
 			]
