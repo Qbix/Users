@@ -2736,7 +2736,7 @@ abstract class Users extends Base_Users
 		if (is_string($text)) {
 			$text = Q_Text::get($text);
 		}
-		if (isset($text)) {
+		if (is_array($text)) {
 			$fields = array_merge($fields, $text);
 		}
 		$user = $userId instanceof Users_User ? $userId : Users_User::fetch($userId, true);
@@ -2748,17 +2748,17 @@ abstract class Users extends Base_Users
 		foreach ($rows as $ef) {
 			if ($ef->platform === 'Qbix' or $ef->platform === 'Q') {
 				// TODO: check deliverability in the future
-				return;
+				continue;
 			}
 			$externalFrom = $ef;
 			break;
 		}
 
+		$device = null;
 		if ($externalFrom) {
 			$to = $externalFrom->platform;
 			$destination = $externalFrom;
 		} else {
-			$device = null;
 			$rows = Users_Device::select()->where(compact('userId'))->fetchDbRows();
 			foreach ($rows as $d) {
 				// TODO: check deliverability in the future
@@ -2767,7 +2767,7 @@ abstract class Users extends Base_Users
 			}
 			if ($device) {
 				$to = 'device';
-				$destination - $device;
+				$destination = $device;
 			} else if ($user->mobileNumber) {
 				$to = 'mobile';
 				$destination = $user->mobileNumber;
@@ -2789,17 +2789,22 @@ abstract class Users extends Base_Users
 			$defaultSubject = ucfirst($module) . ': ' . $event;
 			$subject = Q::ifset($text, $event, 'Subject', $defaultSubject);
 			$email = new Users_Email(array('address' => $destination));
-			$email->sendMessage($subject, $view, $fields);
+			$email->sendMessage($subject, $viewName, $fields);
+			return true;
 		} else if ($to === 'mobile') {
 			$mobile = new Users_Mobile(array('mobile' => $destination));
-			$mobile->sendMessage($view, $fields);
+			$mobile->sendMessage($viewName, $fields);
+			return true;
 		} else if ($to === 'device') {
-			$alert = Q::view($view, $fields);
+			$alert = Q::view($viewName, $fields);
 			$device->pushNotification(compact('alert'));
+			return true;
 		} else if ($externalFrom) {
-			$alert = Q::view($view, $fields);
+			$alert = Q::view($viewName, $fields);
 			$externalFrom->pushNotification(compact('alert'));
+			return true;
 		}
+		return false;
 	}
 
 	/**
