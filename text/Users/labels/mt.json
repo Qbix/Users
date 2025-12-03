@@ -1,15 +1,15 @@
 {
-    "addToPhonebook": "Żid Mal-Kuntatti tat-Telefown Tiegħi",
-    "addLabel": "Relazzjoni Ġdida",
-    "newRole": "Rwol Ġdid",
-    "prompt": "Agħtiha isem",
-    "newLabel": "Tikketta Ġdida",
-    "editLabel": "Edit Tikketta",
-    "addBtn": "Żid",
-    "editBtn": "Ħlief",
-    "canManageDialogTitle": "Jista &#39;Jmexxi Rwoli",
-    "canManageBtn": "Jista &#39;Jmexxi...",
-    "titlePlaceholder": "Titolu",
-    "selectOptionTitle_web2": "Indiġeni",
-    "selectOptionTitle_web3": "Web3"
+	"addToPhonebook": "\u017bid Mal-Kuntatti tat-Telefown Tieg\u0127i",
+	"addLabel": "Relazzjoni \u0120dida",
+	"newRole": "Rwol \u0120did",
+	"prompt": "Ag\u0127tiha isem",
+	"newLabel": "Tikketta \u0120dida",
+	"editLabel": "Edit Tikketta",
+	"addBtn": "\u017bid",
+	"editBtn": "\u0126lief",
+	"canManageDialogTitle": "Jista &#39;Jmexxi Rwoli",
+	"canManageBtn": "Jista &#39;Jmexxi...",
+	"titlePlaceholder": "Titolu",
+	"selectOptionTitle_web2": "Indi\u0121eni",
+	"selectOptionTitle_web3": "Web3"
 }

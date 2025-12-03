@@ -1,51 +1,51 @@
 {
-    "title": {
-        "createCommunity": "کمیونٹی بنائیں"
-    },
-    "list": {
-        "table": {
-            "td0": "سلسلہ کا نام",
-            "td1": "زنجیر کی شناخت",
-            "td2": "کمیونٹی کا پتہ"
-        },
-        "btnTitle": "پیدا کرنا"
-    },
-    "form": {
-        "labels": {
-            "chain": "زنجیر",
-            "hook": "کانٹا",
-            "invitedHook": "InvitedHook",
-            "name": "نام",
-            "symbol": "علامت",
-            "contracturi": "معاہدہ یو آر آئی"
-        },
-        "placeholders": {
-            "hook": "0x00000000000000000000000000000000000000",
-            "invitedHook": "0x00000000000000000000000000000000000000",
-            "name": "ERC721 نام",
-            "symbol": "ERC721 علامت",
-            "contracturi": "معاہدہ URI"
-        },
-        "small": {
-            "hook": "کنٹریکٹ کا ہک ایڈریس لاگو ICommunityHook انٹرفیس۔ پتہ (0) ہو سکتا ہے",
-            "invitedHook": "ICommunityInvite انٹرفیس کو لاگو کیا گیا معاہدہ کا مدعو ہک ایڈریس۔ پتہ (0) ہو سکتا ہے",
-            "name": "ERC721 نام",
-            "symbol": "ERC721 علامت",
-            "contracturi": "معاہدہ URI"
-        },
-        "err": {
-            "hook": "<b>ہک<\/b> غلط ہے۔",
-            "invitedHook": "<b>مدعو ہک<\/b> غلط ہے۔",
-            "name": "<b>نام<\/b> غلط ہے۔",
-            "symbol": "<b>علامت<\/b> غلط ہے۔",
-            "contracturi": "<b>معاہدہ یو آر آئی<\/b> غلط ہے۔"
-        },
-        "btnTitle": "پیدا کرنا"
-    },
-    "err": {
-        "cantFindFactoryAddress": "فیکٹری کا پتہ نہیں مل سکا",
-        "transactionFailed": "لین دین ناکام ہو گیا۔",
-        "smthWentWrong": "کچھ غلط ہو گیا"
-    },
-    "foo": "بار"
+	"title": {
+		"createCommunity": "\u06a9\u0645\u06cc\u0648\u0646\u0679\u06cc \u0628\u0646\u0627\u0626\u06cc\u06ba"
+	},
+	"list": {
+		"table": {
+			"td0": "\u0633\u0644\u0633\u0644\u06c1 \u06a9\u0627 \u0646\u0627\u0645",
+			"td1": "\u0632\u0646\u062c\u06cc\u0631 \u06a9\u06cc \u0634\u0646\u0627\u062e\u062a",
+			"td2": "\u06a9\u0645\u06cc\u0648\u0646\u0679\u06cc \u06a9\u0627 \u067e\u062a\u06c1"
+		},
+		"btnTitle": "\u067e\u06cc\u062f\u0627 \u06a9\u0631\u0646\u0627"
+	},
+	"form": {
+		"labels": {
+			"chain": "\u0632\u0646\u062c\u06cc\u0631",
+			"hook": "\u06a9\u0627\u0646\u0679\u0627",
+			"invitedHook": "InvitedHook",
+			"name": "\u0646\u0627\u0645",
+			"symbol": "\u0639\u0644\u0627\u0645\u062a",
+			"contracturi": "\u0645\u0639\u0627\u06c1\u062f\u06c1 \u06cc\u0648 \u0622\u0631 \u0622\u0626\u06cc"
+		},
+		"placeholders": {
+			"hook": "0x00000000000000000000000000000000000000",
+			"invitedHook": "0x00000000000000000000000000000000000000",
+			"name": "ERC721 \u0646\u0627\u0645",
+			"symbol": "ERC721 \u0639\u0644\u0627\u0645\u062a",
+			"contracturi": "\u0645\u0639\u0627\u06c1\u062f\u06c1 URI"
+		},
+		"small": {
+			"hook": "\u06a9\u0646\u0679\u0631\u06cc\u06a9\u0679 \u06a9\u0627 \u06c1\u06a9 \u0627\u06cc\u0688\u0631\u06cc\u0633 \u0644\u0627\u06af\u0648 ICommunityHook \u0627\u0646\u0679\u0631\u0641\u06cc\u0633\u06d4 \u067e\u062a\u06c1 (0) \u06c1\u0648 \u0633\u06a9\u062a\u0627 \u06c1\u06d2",
+			"invitedHook": "ICommunityInvite \u0627\u0646\u0679\u0631\u0641\u06cc\u0633 \u06a9\u0648 \u0644\u0627\u06af\u0648 \u06a9\u06cc\u0627 \u06af\u06cc\u0627 \u0645\u0639\u0627\u06c1\u062f\u06c1 \u06a9\u0627 \u0645\u062f\u0639\u0648 \u06c1\u06a9 \u0627\u06cc\u0688\u0631\u06cc\u0633\u06d4 \u067e\u062a\u06c1 (0) \u06c1\u0648 \u0633\u06a9\u062a\u0627 \u06c1\u06d2",
+			"name": "ERC721 \u0646\u0627\u0645",
+			"symbol": "ERC721 \u0639\u0644\u0627\u0645\u062a",
+			"contracturi": "\u0645\u0639\u0627\u06c1\u062f\u06c1 URI"
+		},
+		"err": {
+			"hook": "<b>\u06c1\u06a9</b> \u063a\u0644\u0637 \u06c1\u06d2\u06d4",
+			"invitedHook": "<b>\u0645\u062f\u0639\u0648 \u06c1\u06a9</b> \u063a\u0644\u0637 \u06c1\u06d2\u06d4",
+			"name": "<b>\u0646\u0627\u0645</b> \u063a\u0644\u0637 \u06c1\u06d2\u06d4",
+			"symbol": "<b>\u0639\u0644\u0627\u0645\u062a</b> \u063a\u0644\u0637 \u06c1\u06d2\u06d4",
+			"contracturi": "<b>\u0645\u0639\u0627\u06c1\u062f\u06c1 \u06cc\u0648 \u0622\u0631 \u0622\u0626\u06cc</b> \u063a\u0644\u0637 \u06c1\u06d2\u06d4"
+		},
+		"btnTitle": "\u067e\u06cc\u062f\u0627 \u06a9\u0631\u0646\u0627"
+	},
+	"err": {
+		"cantFindFactoryAddress": "\u0641\u06cc\u06a9\u0679\u0631\u06cc \u06a9\u0627 \u067e\u062a\u06c1 \u0646\u06c1\u06cc\u06ba \u0645\u0644 \u0633\u06a9\u0627",
+		"transactionFailed": "\u0644\u06cc\u0646 \u062f\u06cc\u0646 \u0646\u0627\u06a9\u0627\u0645 \u06c1\u0648 \u06af\u06cc\u0627\u06d4",
+		"smthWentWrong": "\u06a9\u0686\u06be \u063a\u0644\u0637 \u06c1\u0648 \u06af\u06cc\u0627"
+	},
+	"foo": "\u0628\u0627\u0631"
 }

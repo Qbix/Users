@@ -1,14 +1,14 @@
 {
-    "activation": {
-        "Thanks": "Velkomin í {{1}}.",
-        "ClickHere": "Smelltu hér til að virkja reikninginn þinn: {{1}}"
-    },
-    "addMobile": {
-        "ClickHere": "Smelltu hér til að staðfesta farsímanúmerið þitt: {{1}}"
-    },
-    "resend": {
-        "DidYouWant": "Vildirðu endurstilla aðgangsorðið þitt í {{1}}?",
-        "ClickHere": "Smelltu síðan hér: {{1}}",
-        "OrEnterCode": "eða sláðu inn kóða:"
-    }
+	"activation": {
+		"Thanks": "Velkomin \u00ed {{1}}.",
+		"ClickHere": "Smelltu h\u00e9r til a\u00f0 virkja reikninginn \u00feinn: {{1}}"
+	},
+	"addMobile": {
+		"ClickHere": "Smelltu h\u00e9r til a\u00f0 sta\u00f0festa fars\u00edman\u00fameri\u00f0 \u00feitt: {{1}}"
+	},
+	"resend": {
+		"DidYouWant": "Vildir\u00f0u endurstilla a\u00f0gangsor\u00f0i\u00f0 \u00feitt \u00ed {{1}}?",
+		"ClickHere": "Smelltu s\u00ed\u00f0an h\u00e9r: {{1}}",
+		"OrEnterCode": "e\u00f0a sl\u00e1\u00f0u inn k\u00f3\u00f0a:"
+	}
 }

@@ -1,4 +1,4 @@
 {
-    "NotLoggedIn": "M&#39;intix dħalt. <a href='#login' data-users-login>Ikklikkja hawn biex tidħol<\/a>",
-    "InvalidLanguage": "Lingwa Invalida {{language}}"
+	"NotLoggedIn": "M&#39;intix d\u0127alt. <a href='#login' data-users-login>Ikklikkja hawn biex tid\u0127ol</a>",
+	"InvalidLanguage": "Lingwa Invalida {{language}}"
 }

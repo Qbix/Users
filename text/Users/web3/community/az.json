@@ -1,51 +1,51 @@
 {
-    "title": {
-        "createCommunity": "İcma yaradın"
-    },
-    "list": {
-        "table": {
-            "td0": "Zəncir adı",
-            "td1": "Zəncir İD",
-            "td2": "İcma ünvanı"
-        },
-        "btnTitle": "istehsal"
-    },
-    "form": {
-        "labels": {
-            "chain": "Zəncir",
-            "hook": "Qarmaq",
-            "invitedHook": "InvitedHook",
-            "name": "ad",
-            "symbol": "Simvol",
-            "contracturi": "müqaviləURI"
-        },
-        "placeholders": {
-            "hook": "0x0000000000000000000000000000000000000000",
-            "invitedHook": "0x0000000000000000000000000000000000000000",
-            "name": "ERC721 Adı",
-            "symbol": "ERC721 Simvol",
-            "contracturi": "müqavilə URI"
-        },
-        "small": {
-            "hook": "ICommunityHook interfeysi həyata keçirilən müqavilənin çəngəl ünvanı. Ünvan ola bilər(0)",
-            "invitedHook": "ICommunityInvite interfeysi həyata keçirilən müqavilənin dəvətli Hook ünvanı. Ünvan ola bilər(0)",
-            "name": "ERC721 Adı",
-            "symbol": "ERC721 Simvol",
-            "contracturi": "müqavilə URI"
-        },
-        "err": {
-            "hook": "<b>Qarmaq<\/b> etibarsızdır",
-            "invitedHook": "<b>dəvətli Hook<\/b> etibarsızdır",
-            "name": "<b>Ad<\/b> etibarsızdır",
-            "symbol": "<b>Simvol<\/b> etibarsızdır",
-            "contracturi": "<b>müqaviləURI<\/b> etibarsızdır"
-        },
-        "btnTitle": "istehsal"
-    },
-    "err": {
-        "cantFindFactoryAddress": "Fabrika Ünvanını tapmaq mümkün deyil",
-        "transactionFailed": "Tranzaksiya uğursuz oldu",
-        "smthWentWrong": "Nəsə xəta baş verdi"
-    },
-    "foo": "bar"
+	"title": {
+		"createCommunity": "\u0130cma yarad\u0131n"
+	},
+	"list": {
+		"table": {
+			"td0": "Z\u0259ncir ad\u0131",
+			"td1": "Z\u0259ncir \u0130D",
+			"td2": "\u0130cma \u00fcnvan\u0131"
+		},
+		"btnTitle": "istehsal"
+	},
+	"form": {
+		"labels": {
+			"chain": "Z\u0259ncir",
+			"hook": "Qarmaq",
+			"invitedHook": "InvitedHook",
+			"name": "ad",
+			"symbol": "Simvol",
+			"contracturi": "m\u00fcqavil\u0259URI"
+		},
+		"placeholders": {
+			"hook": "0x0000000000000000000000000000000000000000",
+			"invitedHook": "0x0000000000000000000000000000000000000000",
+			"name": "ERC721 Ad\u0131",
+			"symbol": "ERC721 Simvol",
+			"contracturi": "m\u00fcqavil\u0259 URI"
+		},
+		"small": {
+			"hook": "ICommunityHook interfeysi h\u0259yata ke\u00e7iril\u0259n m\u00fcqavil\u0259nin \u00e7\u0259ng\u0259l \u00fcnvan\u0131. \u00dcnvan ola bil\u0259r(0)",
+			"invitedHook": "ICommunityInvite interfeysi h\u0259yata ke\u00e7iril\u0259n m\u00fcqavil\u0259nin d\u0259v\u0259tli Hook \u00fcnvan\u0131. \u00dcnvan ola bil\u0259r(0)",
+			"name": "ERC721 Ad\u0131",
+			"symbol": "ERC721 Simvol",
+			"contracturi": "m\u00fcqavil\u0259 URI"
+		},
+		"err": {
+			"hook": "<b>Qarmaq</b> etibars\u0131zd\u0131r",
+			"invitedHook": "<b>d\u0259v\u0259tli Hook</b> etibars\u0131zd\u0131r",
+			"name": "<b>Ad</b> etibars\u0131zd\u0131r",
+			"symbol": "<b>Simvol</b> etibars\u0131zd\u0131r",
+			"contracturi": "<b>m\u00fcqavil\u0259URI</b> etibars\u0131zd\u0131r"
+		},
+		"btnTitle": "istehsal"
+	},
+	"err": {
+		"cantFindFactoryAddress": "Fabrika \u00dcnvan\u0131n\u0131 tapmaq m\u00fcmk\u00fcn deyil",
+		"transactionFailed": "Tranzaksiya u\u011fursuz oldu",
+		"smthWentWrong": "N\u0259s\u0259 x\u0259ta ba\u015f verdi"
+	},
+	"foo": "bar"
 }

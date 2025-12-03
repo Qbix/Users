@@ -1,22 +1,22 @@
 {
-    "activation": {
-        "Subject": "Välkommen! Vänligen verifiera din email adress.",
-        "Thanks": "Välkommen till {{1}}",
-        "ReallyYourEmail": "Är det här verkligen din e-postadress, {{1}}? Om så är fallet, klicka <a href='{{2}}'>här<\/a> för att ställa in din lösenfras och aktivera ditt konto.",
-        "SeeYou": "Vi ses på <a href='{{1}}'>{{2}}<\/a> !",
-        "OtherwiseClickLink": "Annars klickar du på <a href='{{1}}'>den här länken<\/a> ."
-    },
-    "identifier": {
-        "Subject": "Välkommen! Verifiera din e-postadress."
-    },
-    "resend": {
-        "Subject": "Hej, har du glömt din lösenfras?",
-        "Thanks": "Tack för ditt besök {{1}}",
-        "YouAreReceiving": "Du får det här e-postmeddelandet för att någon skrev in din e-postadress och klickade på &quot;glömt lösenordsfras&quot;. Om det inte var du, ignorera helt enkelt det här meddelandet.",
-        "Reset": "Om du vill återställa lösenfrasen klickar du på {{1}}",
-        "SetUpPassphrase": "Ställ in lösenordsfras",
-        "DomainCode": "Om webbsidan redan är öppen i din webbläsare kan du ange koden"
-    },
-    "SeeYou": "Vi ses på {{1}}!",
-    "LinkToUnsubscribe": "Här är en länk för att <a href='{{1}}'>avsluta prenumerationen<\/a> om du inte vill få fler mejl."
+	"activation": {
+		"Subject": "V\u00e4lkommen! V\u00e4nligen verifiera din email adress.",
+		"Thanks": "V\u00e4lkommen till {{1}}",
+		"ReallyYourEmail": "\u00c4r det h\u00e4r verkligen din e-postadress, {{1}}? Om s\u00e5 \u00e4r fallet, klicka <a href='{{2}}'>h\u00e4r</a> f\u00f6r att st\u00e4lla in din l\u00f6senfras och aktivera ditt konto.",
+		"SeeYou": "Vi ses p\u00e5 <a href='{{1}}'>{{2}}</a> !",
+		"OtherwiseClickLink": "Annars klickar du p\u00e5 <a href='{{1}}'>den h\u00e4r l\u00e4nken</a> ."
+	},
+	"identifier": {
+		"Subject": "V\u00e4lkommen! Verifiera din e-postadress."
+	},
+	"resend": {
+		"Subject": "Hej, har du gl\u00f6mt din l\u00f6senfras?",
+		"Thanks": "Tack f\u00f6r ditt bes\u00f6k {{1}}",
+		"YouAreReceiving": "Du f\u00e5r det h\u00e4r e-postmeddelandet f\u00f6r att n\u00e5gon skrev in din e-postadress och klickade p\u00e5 &quot;gl\u00f6mt l\u00f6senordsfras&quot;. Om det inte var du, ignorera helt enkelt det h\u00e4r meddelandet.",
+		"Reset": "Om du vill \u00e5terst\u00e4lla l\u00f6senfrasen klickar du p\u00e5 {{1}}",
+		"SetUpPassphrase": "St\u00e4ll in l\u00f6senordsfras",
+		"DomainCode": "Om webbsidan redan \u00e4r \u00f6ppen i din webbl\u00e4sare kan du ange koden"
+	},
+	"SeeYou": "Vi ses p\u00e5 {{1}}!",
+	"LinkToUnsubscribe": "H\u00e4r \u00e4r en l\u00e4nk f\u00f6r att <a href='{{1}}'>avsluta prenumerationen</a> om du inte vill f\u00e5 fler mejl."
 }

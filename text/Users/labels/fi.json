@@ -1,15 +1,15 @@
 {
-    "addToPhonebook": "Lisää puhelimeen yhteystietoihin",
-    "addLabel": "Uusi suhde",
-    "newRole": "Uusi rooli",
-    "prompt": "Anna sille nimi",
-    "newLabel": "Uusi etiketti",
-    "editLabel": "Muokkaa etikettiä",
-    "addBtn": "Lisätä",
-    "editBtn": "Tallentaa",
-    "canManageDialogTitle": "Voi hallita rooleja",
-    "canManageBtn": "Voi hallita...",
-    "titlePlaceholder": "Otsikko",
-    "selectOptionTitle_web2": "Alkuperäinen",
-    "selectOptionTitle_web3": "Web3"
+	"addToPhonebook": "Lis\u00e4\u00e4 puhelimeen yhteystietoihin",
+	"addLabel": "Uusi suhde",
+	"newRole": "Uusi rooli",
+	"prompt": "Anna sille nimi",
+	"newLabel": "Uusi etiketti",
+	"editLabel": "Muokkaa etiketti\u00e4",
+	"addBtn": "Lis\u00e4t\u00e4",
+	"editBtn": "Tallentaa",
+	"canManageDialogTitle": "Voi hallita rooleja",
+	"canManageBtn": "Voi hallita...",
+	"titlePlaceholder": "Otsikko",
+	"selectOptionTitle_web2": "Alkuper\u00e4inen",
+	"selectOptionTitle_web3": "Web3"
 }

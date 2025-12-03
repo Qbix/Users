@@ -1,15 +1,15 @@
 {
-    "addToPhonebook": "ወደ ስልኬ እውቂያዎች አክል",
-    "addLabel": "አዲስ ግንኙነት",
-    "newRole": "አዲስ ሚና",
-    "prompt": "ስም ስጠው",
-    "newLabel": "አዲስ መለያ",
-    "editLabel": "መለያ አርትዕ",
-    "addBtn": "አክል",
-    "editBtn": "አስቀምጥ",
-    "canManageDialogTitle": "ሚናዎችን ማስተዳደር ይችላል።",
-    "canManageBtn": "ማስተዳደር ይችላል...",
-    "titlePlaceholder": "ርዕስ",
-    "selectOptionTitle_web2": "ቤተኛ",
-    "selectOptionTitle_web3": "ድር3"
+	"addToPhonebook": "\u12c8\u12f0 \u1235\u120d\u12ac \u12a5\u12cd\u1242\u12eb\u12ce\u127d \u12a0\u12ad\u120d",
+	"addLabel": "\u12a0\u12f2\u1235 \u130d\u1295\u1299\u1290\u1275",
+	"newRole": "\u12a0\u12f2\u1235 \u121a\u1293",
+	"prompt": "\u1235\u121d \u1235\u1320\u12cd",
+	"newLabel": "\u12a0\u12f2\u1235 \u1218\u1208\u12eb",
+	"editLabel": "\u1218\u1208\u12eb \u12a0\u122d\u1275\u12d5",
+	"addBtn": "\u12a0\u12ad\u120d",
+	"editBtn": "\u12a0\u1235\u1240\u121d\u1325",
+	"canManageDialogTitle": "\u121a\u1293\u12ce\u127d\u1295 \u121b\u1235\u1270\u12f3\u12f0\u122d \u12ed\u127d\u120b\u120d\u1362",
+	"canManageBtn": "\u121b\u1235\u1270\u12f3\u12f0\u122d \u12ed\u127d\u120b\u120d...",
+	"titlePlaceholder": "\u122d\u12d5\u1235",
+	"selectOptionTitle_web2": "\u1264\u1270\u129b",
+	"selectOptionTitle_web3": "\u12f5\u122d3"
 }

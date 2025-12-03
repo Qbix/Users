@@ -1,196 +1,196 @@
 {
-    "avatar": {
-        "Someone": "누구"
-    },
-    "identifier": {
-        "types": {
-            "email": "이메일",
-            "mobile": "이동하는",
-            "web3": "웹3"
-        }
-    },
-    "clipboard": {
-        "Copied": "복사했습니다! 이제 아무 곳에나 붙여넣을 수 있습니다."
-    },
-    "analytics": {
-        "Title": "해석학",
-        "Daily": "일일",
-        "Weekly": "주간",
-        "Monthly": "월간 간행물",
-        "Application": "애플리케이션",
-        "Pages": "페이지",
-        "Services": "서비스",
-        "Faq": "자주하는 질문",
-        "WeekDays": "평일"
-    },
-    "actions": {
-        "LogIn": "로그인",
-        "LogOut": "로그 아웃"
-    },
-    "activate": {
-        "OneTimeCode": "받은 코드를 입력하세요:",
-        "SetAsPrimary": "{{1}} 내 기본 {{2}} 으로 설정",
-        "ChoosePassPhrase": "로그인에 사용할 <strong>암호 문구를<\/strong> 선택하십시오.<br> 쉽게 기억할 수 있는 몇 개의 단어로 구성된 간단한 문구입니다.",
-        "ChoosePassPhraseSeeSuggestions": "계정을 보호하기 위해 좋은 <strong>암호 문구를<\/strong> 선택하십시오. 몇 가지 아이디어에 대한 제안을 참조하십시오.",
-        "LogOutAndTryAgain": "로그아웃하고 다시 시도하십시오",
-        "IfYouFeel": "무언가 잘못되었다고 생각되면 다음을 수행할 수 있습니다.",
-        "SetIdentifierButtonTitle": "다시 시작하다",
-        "ActivateMyAccount": "내 계정 활성화"
-    },
-    "session": {
-        "GetStarted": "시작하다"
-    },
-    "authorize": {
-        "GetStarted": "시작하다",
-        "Authorize": "승인하다",
-        "TermsLabel": "읽었으며 동의합니다<br> {{link}} 에게",
-        "TermsTitle": "자귀",
-        "mustAgree": "먼저 약관에 동의해야 합니다."
-    },
-    "register": {
-        "TermsLabel": "{{link}} 받아들입니다",
-        "TermsTitle": "자귀"
-    },
-    "notifications": {
-        "title": "허가",
-        "prompt": "알림을 활성화하시겠습니까? 관심 있는 항목에 대한 실시간 업데이트를 받게 됩니다.",
-        "yes": "예",
-        "no": "아니요",
-        "WelcomePleaseVerifyEmail": "환영! 이메일 주소를 확인하십시오.",
-        "WelcomeVerifyEmail": "환영! 이메일 주소를 확인.",
-        "ForgetPass": "암호를 잊으셨나요?",
-        "PassphraseSaved": "암호 문구가 저장되었습니다.",
-        "IdentifierActivated": "{{type}} 가 활성화되었습니다.",
-        "CompletedActivation": "사용자 활성화를 완료했습니다.",
-        "CompletedActivationLogIn": "사용자 활성화를 완료했습니다. 지금 로그인해 보세요."
-    },
-    "contacts": {
-        "dialog": {
-            "title": "연락처 선택",
-            "CreateAccount": "+ 새 연락처",
-            "CreateAccountNotFound": "Q.Users.Cordova.UI.create를 찾을 수 없습니다.",
-            "SearchByName": "이름으로 검색",
-            "EmptyContacts": "연락처를 찾을 수 없습니다..."
-        },
-        "select": {
-            "title": "{{displayName}} 의 연락처 선택"
-        },
-        "require": {
-            "Instructions": "이 기능을 사용하려면 모든 연락처에 대한 액세스를 허용해야 합니다."
-        }
-    },
-    "usersContacts": {
-        "selectLabel": "라벨을 선택하세요.",
-        "inviteUser": "사용자 초대",
-        "selectRole": "역할 선택",
-        "inviteRole": "{{role}} 초대"
-    },
-    "invalidLanguageSelected": "잘못된 언어를 선택했습니다.",
-    "platforms": {
-        "wallet": "지갑",
-        "broadcast": "방송"
-    },
-    "login": {
-        "title": "환영",
-        "directions": {
-            "GetStarted": "계정을 만들거나 로그인하세요.",
-            "NoRegister": "계정이 있으면 로그인하십시오.",
-            "WasInvited": "귀하에게 연락하는 가장 좋은 방법은 무엇입니까?"
-        },
-        "directionsNoRegister": "계정이 있으면 로그인하십시오.",
-        "goButton": "➔",
-        "passphrase": "암호 문구를 입력하십시오.",
-        "loginButton": "시작하다",
-        "registerButton": "시작하다",
-        "resendButton": "활성화 메시지 보내기",
-        "forgot": "잊어 버려?",
-        "resendConfirm": "암호를 재설정하라는 메시지를 보내시겠습니까?",
-        "resendSuccess": "암호를 재설정하라는 메시지를 확인하십시오.",
-        "resendClose": "닫다",
-        "noPassphrase": "로그인하기 전에 활성화 메시지의 링크를 클릭하여 암호를 설정해야 합니다.",
-        "notVerified": "로그인하려면 자신에게 활성화 메시지를 보내야 합니다.",
-        "emailExists": "이전에 이 이메일로 등록을 시도하셨습니까? 그렇다면 받은 편지함을 확인하여 계정을 활성화하십시오. <a href='#resend' class='Q_button Users_activation_resend'>메시지를 다시 보내려면 클릭하십시오.<\/a>",
-        "mobileExists": "이전에 이 휴대폰 번호로 등록을 시도하셨나요? 그렇다면 SMS를 확인하여 계정을 활성화하십시오. <a href='#resend' class='Q_button Users_activation_resend'>메시지를 다시 보내려면 클릭하십시오.<\/a>",
-        "usingOther": "또는 당신은 할 수 있습니다",
-        "connectPlatforms": "또는 다음을 사용하여 연결합니다.",
-        "prompt": "사용자 이름 선택:",
-        "newUser": "또는 아래에서 새 계정을 만드십시오.",
-        "placeholders": {
-            "identifier": "모바일 번호 또는 이메일",
-            "mobile": "모바일 번호를 입력하세요",
-            "email": "당신의 이메일 주소를 입력 해주세요",
-            "username": "문자와 숫자만 사용"
-        },
-        "confirmTerms": "서비스 약관에 동의하시겠습니까?",
-        "facebookNoEmail": "귀하의 Facebook 계정에 확인된 이메일 주소가 없습니다. 기본 방식으로 로그인하기만 하면 됩니다.",
-        "picTooltip": "이 사진은 나중에 변경할 수 있습니다.",
-        "web3": {
-            "payload": "시간 {{timestamp}} 에 {{host}} 에 로그인",
-            "alert": {
-                "title": "월렛으로 리디렉션 중",
-                "content": "이 대화 상자를 닫으면 지갑으로 이동합니다. 로그인한 후 이 페이지로 돌아오십시오."
-            },
-            "ConnectWallet": "지갑 연결"
-        }
-    },
-    "setIdentifier": {
-        "title": "로그인 방법 추가",
-        "sendMessage": "활성화 메시지 보내기",
-        "placeholders": {
-            "identifier": "모바일 # 또는 이메일을 입력하십시오",
-            "mobile": "당신의 휴대폰 번호를 입력하십시오",
-            "email": "당신의 이메일 주소를 입력 해주세요",
-            "username": "사용자 이름"
-        }
-    },
-    "prompt": {
-        "title": "{{Platform}} 계정",
-        "areUsing": "{{platform}} 다음과 같이 사용하고 있습니다.",
-        "noLongerUsing": "더 이상 {{platform}} 에 다음과 같이 연결되어 있지 않습니다.",
-        "doAuth": "이 계정으로 로그인",
-        "doSwitch": "이 계정으로 전환"
-    },
-    "roles": {
-        "Owner": "소유자",
-        "Admin": "관리자",
-        "Member": "회원",
-        "Guest": "손님",
-        "Host": "주인"
-    },
-    "web3": {
-        "WrongMethod": "잘못된 계약 방식 {{methodName}}",
-        "ChangeWallet": "지갑 변경",
-        "ConnectWallet": "지갑 연결",
-        "AfterWalletConnectedPleaseRefresh": "지갑이 연결된 후 이 페이지를 새로 고쳐 지갑을 인식하세요."
-    },
-    "labels": {
-        "addToPhonebook": "내 전화 연락처에 추가",
-        "addLabel": "새로운 관계",
-        "prompt": "이름을 지어주세요",
-        "titles": {
-            "Users\/owners": "소유자",
-            "Users\/admins": "관리자",
-            "Users\/members": "회원",
-            "Users\/guests": "손님",
-            "Users\/hosts": "호스트",
-            "Users\/testers": "테스터",
-            "Users\/speakers": "스피커"
-        }
-    },
-    "people": {
-        "People": "사람들"
-    },
-    "external": {
-        "defaults": {
-            "title": "",
-            "bio": "포럼 참여 봇. https:\/\/engageusers.ai에서 나만의 것을 얻으십시오.",
-            "website": "https:\/\/engageusers.ai"
-        }
-    },
-    "errors": {
-        "NotEnoughPermissionsWallet": "이 사용자의 지갑을 읽을 수 있는 권한이 없습니다.",
-        "ThisUserHaveNoWallet": "이 사용자에게는 할당된 지갑이 없습니다.",
-        "TheWalletOfThisUserInvalid": "이 사용자의 지갑이 유효하지 않습니다",
-        "WalletInvalid": "지갑 주소가 잘못되었습니다."
-    }
+	"avatar": {
+		"Someone": "\ub204\uad6c"
+	},
+	"identifier": {
+		"types": {
+			"email": "\uc774\uba54\uc77c",
+			"mobile": "\uc774\ub3d9\ud558\ub294",
+			"web3": "\uc6f93"
+		}
+	},
+	"clipboard": {
+		"Copied": "\ubcf5\uc0ac\ud588\uc2b5\ub2c8\ub2e4! \uc774\uc81c \uc544\ubb34 \uacf3\uc5d0\ub098 \ubd99\uc5ec\ub123\uc744 \uc218 \uc788\uc2b5\ub2c8\ub2e4."
+	},
+	"analytics": {
+		"Title": "\ud574\uc11d\ud559",
+		"Daily": "\uc77c\uc77c",
+		"Weekly": "\uc8fc\uac04",
+		"Monthly": "\uc6d4\uac04 \uac04\ud589\ubb3c",
+		"Application": "\uc560\ud50c\ub9ac\ucf00\uc774\uc158",
+		"Pages": "\ud398\uc774\uc9c0",
+		"Services": "\uc11c\ube44\uc2a4",
+		"Faq": "\uc790\uc8fc\ud558\ub294 \uc9c8\ubb38",
+		"WeekDays": "\ud3c9\uc77c"
+	},
+	"actions": {
+		"LogIn": "\ub85c\uadf8\uc778",
+		"LogOut": "\ub85c\uadf8 \uc544\uc6c3"
+	},
+	"activate": {
+		"OneTimeCode": "\ubc1b\uc740 \ucf54\ub4dc\ub97c \uc785\ub825\ud558\uc138\uc694:",
+		"SetAsPrimary": "{{1}} \ub0b4 \uae30\ubcf8 {{2}} \uc73c\ub85c \uc124\uc815",
+		"ChoosePassPhrase": "\ub85c\uadf8\uc778\uc5d0 \uc0ac\uc6a9\ud560 <strong>\uc554\ud638 \ubb38\uad6c\ub97c</strong> \uc120\ud0dd\ud558\uc2ed\uc2dc\uc624.<br> \uc27d\uac8c \uae30\uc5b5\ud560 \uc218 \uc788\ub294 \uba87 \uac1c\uc758 \ub2e8\uc5b4\ub85c \uad6c\uc131\ub41c \uac04\ub2e8\ud55c \ubb38\uad6c\uc785\ub2c8\ub2e4.",
+		"ChoosePassPhraseSeeSuggestions": "\uacc4\uc815\uc744 \ubcf4\ud638\ud558\uae30 \uc704\ud574 \uc88b\uc740 <strong>\uc554\ud638 \ubb38\uad6c\ub97c</strong> \uc120\ud0dd\ud558\uc2ed\uc2dc\uc624. \uba87 \uac00\uc9c0 \uc544\uc774\ub514\uc5b4\uc5d0 \ub300\ud55c \uc81c\uc548\uc744 \ucc38\uc870\ud558\uc2ed\uc2dc\uc624.",
+		"LogOutAndTryAgain": "\ub85c\uadf8\uc544\uc6c3\ud558\uace0 \ub2e4\uc2dc \uc2dc\ub3c4\ud558\uc2ed\uc2dc\uc624",
+		"IfYouFeel": "\ubb34\uc5b8\uac00 \uc798\ubabb\ub418\uc5c8\ub2e4\uace0 \uc0dd\uac01\ub418\uba74 \ub2e4\uc74c\uc744 \uc218\ud589\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
+		"SetIdentifierButtonTitle": "\ub2e4\uc2dc \uc2dc\uc791\ud558\ub2e4",
+		"ActivateMyAccount": "\ub0b4 \uacc4\uc815 \ud65c\uc131\ud654"
+	},
+	"session": {
+		"GetStarted": "\uc2dc\uc791\ud558\ub2e4"
+	},
+	"authorize": {
+		"GetStarted": "\uc2dc\uc791\ud558\ub2e4",
+		"Authorize": "\uc2b9\uc778\ud558\ub2e4",
+		"TermsLabel": "\uc77d\uc5c8\uc73c\uba70 \ub3d9\uc758\ud569\ub2c8\ub2e4<br> {{link}} \uc5d0\uac8c",
+		"TermsTitle": "\uc790\uadc0",
+		"mustAgree": "\uba3c\uc800 \uc57d\uad00\uc5d0 \ub3d9\uc758\ud574\uc57c \ud569\ub2c8\ub2e4."
+	},
+	"register": {
+		"TermsLabel": "{{link}} \ubc1b\uc544\ub4e4\uc785\ub2c8\ub2e4",
+		"TermsTitle": "\uc790\uadc0"
+	},
+	"notifications": {
+		"title": "\ud5c8\uac00",
+		"prompt": "\uc54c\ub9bc\uc744 \ud65c\uc131\ud654\ud558\uc2dc\uaca0\uc2b5\ub2c8\uae4c? \uad00\uc2ec \uc788\ub294 \ud56d\ubaa9\uc5d0 \ub300\ud55c \uc2e4\uc2dc\uac04 \uc5c5\ub370\uc774\ud2b8\ub97c \ubc1b\uac8c \ub429\ub2c8\ub2e4.",
+		"yes": "\uc608",
+		"no": "\uc544\ub2c8\uc694",
+		"WelcomePleaseVerifyEmail": "\ud658\uc601! \uc774\uba54\uc77c \uc8fc\uc18c\ub97c \ud655\uc778\ud558\uc2ed\uc2dc\uc624.",
+		"WelcomeVerifyEmail": "\ud658\uc601! \uc774\uba54\uc77c \uc8fc\uc18c\ub97c \ud655\uc778.",
+		"ForgetPass": "\uc554\ud638\ub97c \uc78a\uc73c\uc168\ub098\uc694?",
+		"PassphraseSaved": "\uc554\ud638 \ubb38\uad6c\uac00 \uc800\uc7a5\ub418\uc5c8\uc2b5\ub2c8\ub2e4.",
+		"IdentifierActivated": "{{type}} \uac00 \ud65c\uc131\ud654\ub418\uc5c8\uc2b5\ub2c8\ub2e4.",
+		"CompletedActivation": "\uc0ac\uc6a9\uc790 \ud65c\uc131\ud654\ub97c \uc644\ub8cc\ud588\uc2b5\ub2c8\ub2e4.",
+		"CompletedActivationLogIn": "\uc0ac\uc6a9\uc790 \ud65c\uc131\ud654\ub97c \uc644\ub8cc\ud588\uc2b5\ub2c8\ub2e4. \uc9c0\uae08 \ub85c\uadf8\uc778\ud574 \ubcf4\uc138\uc694."
+	},
+	"contacts": {
+		"dialog": {
+			"title": "\uc5f0\ub77d\ucc98 \uc120\ud0dd",
+			"CreateAccount": "+ \uc0c8 \uc5f0\ub77d\ucc98",
+			"CreateAccountNotFound": "Q.Users.Cordova.UI.create\ub97c \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4.",
+			"SearchByName": "\uc774\ub984\uc73c\ub85c \uac80\uc0c9",
+			"EmptyContacts": "\uc5f0\ub77d\ucc98\ub97c \ucc3e\uc744 \uc218 \uc5c6\uc2b5\ub2c8\ub2e4..."
+		},
+		"select": {
+			"title": "{{displayName}} \uc758 \uc5f0\ub77d\ucc98 \uc120\ud0dd"
+		},
+		"require": {
+			"Instructions": "\uc774 \uae30\ub2a5\uc744 \uc0ac\uc6a9\ud558\ub824\uba74 \ubaa8\ub4e0 \uc5f0\ub77d\ucc98\uc5d0 \ub300\ud55c \uc561\uc138\uc2a4\ub97c \ud5c8\uc6a9\ud574\uc57c \ud569\ub2c8\ub2e4."
+		}
+	},
+	"usersContacts": {
+		"selectLabel": "\ub77c\ubca8\uc744 \uc120\ud0dd\ud558\uc138\uc694.",
+		"inviteUser": "\uc0ac\uc6a9\uc790 \ucd08\ub300",
+		"selectRole": "\uc5ed\ud560 \uc120\ud0dd",
+		"inviteRole": "{{role}} \ucd08\ub300"
+	},
+	"invalidLanguageSelected": "\uc798\ubabb\ub41c \uc5b8\uc5b4\ub97c \uc120\ud0dd\ud588\uc2b5\ub2c8\ub2e4.",
+	"platforms": {
+		"wallet": "\uc9c0\uac11",
+		"broadcast": "\ubc29\uc1a1"
+	},
+	"login": {
+		"title": "{{AppName}} \uc5d0 \uc624\uc2e0 \uac83\uc744 \ud658\uc601\ud569\ub2c8\ub2e4",
+		"directions": {
+			"GetStarted": "\uc54c\ub9bc\uc740 \uc5b4\ub514\ub85c \ubcf4\ub0b4\uc57c \ud558\ub098\uc694?",
+			"NoRegister": "\uacc4\uc815\uc774 \uc788\uc73c\uba74 \ub85c\uadf8\uc778\ud558\uc2ed\uc2dc\uc624.",
+			"WasInvited": "\uadc0\ud558\uc5d0\uac8c \uc5f0\ub77d\ud558\ub294 \uac00\uc7a5 \uc88b\uc740 \ubc29\ubc95\uc740 \ubb34\uc5c7\uc785\ub2c8\uae4c?"
+		},
+		"directionsNoRegister": "\uacc4\uc815\uc774 \uc788\uc73c\uba74 \ub85c\uadf8\uc778\ud558\uc2ed\uc2dc\uc624.",
+		"goButton": "\u2794",
+		"passphrase": "\uc554\ud638 \ubb38\uad6c\ub97c \uc785\ub825\ud558\uc2ed\uc2dc\uc624.",
+		"loginButton": "\uc2dc\uc791\ud558\ub2e4",
+		"registerButton": "\uc2dc\uc791\ud558\ub2e4",
+		"resendButton": "\ud65c\uc131\ud654 \uba54\uc2dc\uc9c0 \ubcf4\ub0b4\uae30",
+		"forgot": "\uc78a\uc5b4 \ubc84\ub824?",
+		"resendConfirm": "\uc554\ud638\ub97c \uc7ac\uc124\uc815\ud558\ub77c\ub294 \uba54\uc2dc\uc9c0\ub97c \ubcf4\ub0b4\uc2dc\uaca0\uc2b5\ub2c8\uae4c?",
+		"resendSuccess": "\uc554\ud638\ub97c \uc7ac\uc124\uc815\ud558\ub77c\ub294 \uba54\uc2dc\uc9c0\ub97c \ud655\uc778\ud558\uc2ed\uc2dc\uc624.",
+		"resendClose": "\ub2eb\ub2e4",
+		"noPassphrase": "\ub85c\uadf8\uc778\ud558\uae30 \uc804\uc5d0 \ud65c\uc131\ud654 \uba54\uc2dc\uc9c0\uc758 \ub9c1\ud06c\ub97c \ud074\ub9ad\ud558\uc5ec \uc554\ud638\ub97c \uc124\uc815\ud574\uc57c \ud569\ub2c8\ub2e4.",
+		"notVerified": "\ub85c\uadf8\uc778\ud558\ub824\uba74 \uc790\uc2e0\uc5d0\uac8c \ud65c\uc131\ud654 \uba54\uc2dc\uc9c0\ub97c \ubcf4\ub0b4\uc57c \ud569\ub2c8\ub2e4.",
+		"emailExists": "\uc774\uc804\uc5d0 \uc774 \uc774\uba54\uc77c\ub85c \ub4f1\ub85d\uc744 \uc2dc\ub3c4\ud558\uc168\uc2b5\ub2c8\uae4c? \uadf8\ub807\ub2e4\uba74 \ubc1b\uc740 \ud3b8\uc9c0\ud568\uc744 \ud655\uc778\ud558\uc5ec \uacc4\uc815\uc744 \ud65c\uc131\ud654\ud558\uc2ed\uc2dc\uc624. <a href='#resend' class='Q_button Users_activation_resend'>\uba54\uc2dc\uc9c0\ub97c \ub2e4\uc2dc \ubcf4\ub0b4\ub824\uba74 \ud074\ub9ad\ud558\uc2ed\uc2dc\uc624.</a>",
+		"mobileExists": "\uc774\uc804\uc5d0 \uc774 \ud734\ub300\ud3f0 \ubc88\ud638\ub85c \ub4f1\ub85d\uc744 \uc2dc\ub3c4\ud558\uc168\ub098\uc694? \uadf8\ub807\ub2e4\uba74 SMS\ub97c \ud655\uc778\ud558\uc5ec \uacc4\uc815\uc744 \ud65c\uc131\ud654\ud558\uc2ed\uc2dc\uc624. <a href='#resend' class='Q_button Users_activation_resend'>\uba54\uc2dc\uc9c0\ub97c \ub2e4\uc2dc \ubcf4\ub0b4\ub824\uba74 \ud074\ub9ad\ud558\uc2ed\uc2dc\uc624.</a>",
+		"usingOther": "\ub610\ub294 \ub2f9\uc2e0\uc740 \ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4",
+		"connectPlatforms": "\ub610\ub294 \ub2e4\uc74c\uc744 \uc0ac\uc6a9\ud558\uc5ec \uc5f0\uacb0\ud569\ub2c8\ub2e4.",
+		"prompt": "\uc0ac\uc6a9\uc790 \uc774\ub984 \uc120\ud0dd:",
+		"newUser": "\ub610\ub294 \uc544\ub798\uc5d0\uc11c \uc0c8 \uacc4\uc815\uc744 \ub9cc\ub4dc\uc2ed\uc2dc\uc624.",
+		"placeholders": {
+			"identifier": "\ubaa8\ubc14\uc77c \ubc88\ud638 \ub610\ub294 \uc774\uba54\uc77c",
+			"mobile": "\ubaa8\ubc14\uc77c \ubc88\ud638\ub97c \uc785\ub825\ud558\uc138\uc694",
+			"email": "\ub2f9\uc2e0\uc758 \uc774\uba54\uc77c \uc8fc\uc18c\ub97c \uc785\ub825 \ud574\uc8fc\uc138\uc694",
+			"username": "\ubb38\uc790\uc640 \uc22b\uc790\ub9cc \uc0ac\uc6a9"
+		},
+		"confirmTerms": "\uc11c\ube44\uc2a4 \uc57d\uad00\uc5d0 \ub3d9\uc758\ud558\uc2dc\uaca0\uc2b5\ub2c8\uae4c?",
+		"facebookNoEmail": "\uadc0\ud558\uc758 Facebook \uacc4\uc815\uc5d0 \ud655\uc778\ub41c \uc774\uba54\uc77c \uc8fc\uc18c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4. \uae30\ubcf8 \ubc29\uc2dd\uc73c\ub85c \ub85c\uadf8\uc778\ud558\uae30\ub9cc \ud558\uba74 \ub429\ub2c8\ub2e4.",
+		"picTooltip": "\uc774 \uc0ac\uc9c4\uc740 \ub098\uc911\uc5d0 \ubcc0\uacbd\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4.",
+		"web3": {
+			"payload": "\uc2dc\uac04 {{timestamp}} \uc5d0 {{host}} \uc5d0 \ub85c\uadf8\uc778",
+			"alert": {
+				"title": "\uc6d4\ub81b\uc73c\ub85c \ub9ac\ub514\ub809\uc158 \uc911",
+				"content": "\uc774 \ub300\ud654 \uc0c1\uc790\ub97c \ub2eb\uc73c\uba74 \uc9c0\uac11\uc73c\ub85c \uc774\ub3d9\ud569\ub2c8\ub2e4. \ub85c\uadf8\uc778\ud55c \ud6c4 \uc774 \ud398\uc774\uc9c0\ub85c \ub3cc\uc544\uc624\uc2ed\uc2dc\uc624."
+			},
+			"ConnectWallet": "\uc9c0\uac11 \uc5f0\uacb0"
+		}
+	},
+	"setIdentifier": {
+		"title": "\ub85c\uadf8\uc778 \ubc29\ubc95 \ucd94\uac00",
+		"sendMessage": "\ud65c\uc131\ud654 \uba54\uc2dc\uc9c0 \ubcf4\ub0b4\uae30",
+		"placeholders": {
+			"identifier": "\ubaa8\ubc14\uc77c # \ub610\ub294 \uc774\uba54\uc77c\uc744 \uc785\ub825\ud558\uc2ed\uc2dc\uc624",
+			"mobile": "\ub2f9\uc2e0\uc758 \ud734\ub300\ud3f0 \ubc88\ud638\ub97c \uc785\ub825\ud558\uc2ed\uc2dc\uc624",
+			"email": "\ub2f9\uc2e0\uc758 \uc774\uba54\uc77c \uc8fc\uc18c\ub97c \uc785\ub825 \ud574\uc8fc\uc138\uc694",
+			"username": "\uc0ac\uc6a9\uc790 \uc774\ub984"
+		}
+	},
+	"prompt": {
+		"title": "{{Platform}} \uacc4\uc815",
+		"areUsing": "{{platform}} \ub2e4\uc74c\uacfc \uac19\uc774 \uc0ac\uc6a9\ud558\uace0 \uc788\uc2b5\ub2c8\ub2e4.",
+		"noLongerUsing": "\ub354 \uc774\uc0c1 {{platform}} \uc5d0 \ub2e4\uc74c\uacfc \uac19\uc774 \uc5f0\uacb0\ub418\uc5b4 \uc788\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4.",
+		"doAuth": "\uc774 \uacc4\uc815\uc73c\ub85c \ub85c\uadf8\uc778",
+		"doSwitch": "\uc774 \uacc4\uc815\uc73c\ub85c \uc804\ud658"
+	},
+	"roles": {
+		"Owner": "\uc18c\uc720\uc790",
+		"Admin": "\uad00\ub9ac\uc790",
+		"Member": "\ud68c\uc6d0",
+		"Guest": "\uc190\ub2d8",
+		"Host": "\uc8fc\uc778"
+	},
+	"web3": {
+		"WrongMethod": "\uc798\ubabb\ub41c \uacc4\uc57d \ubc29\uc2dd {{methodName}}",
+		"ChangeWallet": "\uc9c0\uac11 \ubcc0\uacbd",
+		"ConnectWallet": "\uc9c0\uac11 \uc5f0\uacb0",
+		"AfterWalletConnectedPleaseRefresh": "\uc9c0\uac11\uc774 \uc5f0\uacb0\ub41c \ud6c4 \uc774 \ud398\uc774\uc9c0\ub97c \uc0c8\ub85c \uace0\uccd0 \uc9c0\uac11\uc744 \uc778\uc2dd\ud558\uc138\uc694."
+	},
+	"labels": {
+		"addToPhonebook": "\ub0b4 \uc804\ud654 \uc5f0\ub77d\ucc98\uc5d0 \ucd94\uac00",
+		"addLabel": "\uc0c8\ub85c\uc6b4 \uad00\uacc4",
+		"prompt": "\uc774\ub984\uc744 \uc9c0\uc5b4\uc8fc\uc138\uc694",
+		"titles": {
+			"Users/owners": "\uc18c\uc720\uc790",
+			"Users/admins": "\uad00\ub9ac\uc790",
+			"Users/members": "\ud68c\uc6d0",
+			"Users/guests": "\uc190\ub2d8",
+			"Users/hosts": "\ud638\uc2a4\ud2b8",
+			"Users/testers": "\ud14c\uc2a4\ud130",
+			"Users/speakers": "\uc2a4\ud53c\ucee4"
+		}
+	},
+	"people": {
+		"People": "\uc0ac\ub78c\ub4e4"
+	},
+	"external": {
+		"defaults": {
+			"title": "",
+			"bio": "\ud3ec\ub7fc \ucc38\uc5ec \ubd07. https://engageusers.ai\uc5d0\uc11c \ub098\ub9cc\uc758 \uac83\uc744 \uc5bb\uc73c\uc2ed\uc2dc\uc624.",
+			"website": "https://engageusers.ai"
+		}
+	},
+	"errors": {
+		"NotEnoughPermissionsWallet": "\uc774 \uc0ac\uc6a9\uc790\uc758 \uc9c0\uac11\uc744 \uc77d\uc744 \uc218 \uc788\ub294 \uad8c\ud55c\uc774 \uc5c6\uc2b5\ub2c8\ub2e4.",
+		"ThisUserHaveNoWallet": "\uc774 \uc0ac\uc6a9\uc790\uc5d0\uac8c\ub294 \ud560\ub2f9\ub41c \uc9c0\uac11\uc774 \uc5c6\uc2b5\ub2c8\ub2e4.",
+		"TheWalletOfThisUserInvalid": "\uc774 \uc0ac\uc6a9\uc790\uc758 \uc9c0\uac11\uc774 \uc720\ud6a8\ud558\uc9c0 \uc54a\uc2b5\ub2c8\ub2e4",
+		"WalletInvalid": "\uc9c0\uac11 \uc8fc\uc18c\uac00 \uc798\ubabb\ub418\uc5c8\uc2b5\ub2c8\ub2e4."
+	}
 }

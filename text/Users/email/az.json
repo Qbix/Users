@@ -1,22 +1,22 @@
 {
-    "activation": {
-        "Subject": "Xoş gəldiniz! Zəhmət olmasa e-poçt ünvanınızı yoxlayın.",
-        "Thanks": "{{1}}-a xoş gəlmisiniz",
-        "ReallyYourEmail": "Bu həqiqətən sizin e-poçt ünvanınızdır, {{1}}? Əgər belədirsə, parolunuzu təyin etmək və hesabınızı aktivləşdirmək üçün <a href='{{2}}'>bura<\/a> klikləyin.",
-        "SeeYou": "<a href='{{1}}'>{{2}}<\/a> ilə görüşənədək!",
-        "OtherwiseClickLink": "Əks halda, <a href='{{1}}'>bu linkə<\/a> klikləyin."
-    },
-    "identifier": {
-        "Subject": "Xoş gəldiniz! E-poçt ünvanınızı doğrulayın."
-    },
-    "resend": {
-        "Subject": "Hey, parol sözünü unutmusan?",
-        "Thanks": "{{1}} ziyarət etdiyiniz üçün təşəkkür edirik",
-        "YouAreReceiving": "Kimsə e-poçt ünvanınızı daxil edib &quot;parol sözünü unutdum&quot; kliklədiyi üçün bu e-məktubu alırsınız. Əgər siz deyildinizsə, sadəcə olaraq bu mesaja məhəl qoymayın.",
-        "Reset": "Parol ifadənizi sıfırlamaq üçün {{1}} klikləyin",
-        "SetUpPassphrase": "Parol sözünü quraşdırın",
-        "DomainCode": "Veb səhifə brauzerinizdə artıq açıqdırsa, kodu daxil edə bilərsiniz"
-    },
-    "SeeYou": "{{1}}-da görüşənədək!",
-    "LinkToUnsubscribe": "Budur, daha çox e-poçt almaq <a href='{{1}}'>istəmirsinizsə<\/a> , abunəni ləğv etmək üçün bir keçid."
+	"activation": {
+		"Subject": "Xo\u015f g\u0259ldiniz! Z\u0259hm\u0259t olmasa e-po\u00e7t \u00fcnvan\u0131n\u0131z\u0131 yoxlay\u0131n.",
+		"Thanks": "{{1}}-a xo\u015f g\u0259lmisiniz",
+		"ReallyYourEmail": "Bu h\u0259qiq\u0259t\u0259n sizin e-po\u00e7t \u00fcnvan\u0131n\u0131zd\u0131r, {{1}}? \u018fg\u0259r bel\u0259dirs\u0259, parolunuzu t\u0259yin etm\u0259k v\u0259 hesab\u0131n\u0131z\u0131 aktivl\u0259\u015fdirm\u0259k \u00fc\u00e7\u00fcn <a href='{{2}}'>bura</a> klikl\u0259yin.",
+		"SeeYou": "<a href='{{1}}'>{{2}}</a> il\u0259 g\u00f6r\u00fc\u015f\u0259n\u0259d\u0259k!",
+		"OtherwiseClickLink": "\u018fks halda, <a href='{{1}}'>bu link\u0259</a> klikl\u0259yin."
+	},
+	"identifier": {
+		"Subject": "Xo\u015f g\u0259ldiniz! E-po\u00e7t \u00fcnvan\u0131n\u0131z\u0131 do\u011frulay\u0131n."
+	},
+	"resend": {
+		"Subject": "Hey, parol s\u00f6z\u00fcn\u00fc unutmusan?",
+		"Thanks": "{{1}} ziyar\u0259t etdiyiniz \u00fc\u00e7\u00fcn t\u0259\u015f\u0259kk\u00fcr edirik",
+		"YouAreReceiving": "Kims\u0259 e-po\u00e7t \u00fcnvan\u0131n\u0131z\u0131 daxil edib &quot;parol s\u00f6z\u00fcn\u00fc unutdum&quot; klikl\u0259diyi \u00fc\u00e7\u00fcn bu e-m\u0259ktubu al\u0131rs\u0131n\u0131z. \u018fg\u0259r siz deyildinizs\u0259, sad\u0259c\u0259 olaraq bu mesaja m\u0259h\u0259l qoymay\u0131n.",
+		"Reset": "Parol ifad\u0259nizi s\u0131f\u0131rlamaq \u00fc\u00e7\u00fcn {{1}} klikl\u0259yin",
+		"SetUpPassphrase": "Parol s\u00f6z\u00fcn\u00fc qura\u015fd\u0131r\u0131n",
+		"DomainCode": "Veb s\u0259hif\u0259 brauzerinizd\u0259 art\u0131q a\u00e7\u0131qd\u0131rsa, kodu daxil ed\u0259 bil\u0259rsiniz"
+	},
+	"SeeYou": "{{1}}-da g\u00f6r\u00fc\u015f\u0259n\u0259d\u0259k!",
+	"LinkToUnsubscribe": "Budur, daha \u00e7ox e-po\u00e7t almaq <a href='{{1}}'>ist\u0259mirsinizs\u0259</a> , abun\u0259ni l\u0259\u011fv etm\u0259k \u00fc\u00e7\u00fcn bir ke\u00e7id."
 }

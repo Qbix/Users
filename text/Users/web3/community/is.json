@@ -1,51 +1,51 @@
 {
-    "title": {
-        "createCommunity": "Búðu til samfélag"
-    },
-    "list": {
-        "table": {
-            "td0": "Nafn keðju",
-            "td1": "Auðkenni keðju",
-            "td2": "Heimilisfang samfélagsins"
-        },
-        "btnTitle": "Framleiða"
-    },
-    "form": {
-        "labels": {
-            "chain": "Keðja",
-            "hook": "Krókur",
-            "invitedHook": "InvitedHook",
-            "name": "Nafn",
-            "symbol": "Tákn",
-            "contracturi": "samningURI"
-        },
-        "placeholders": {
-            "hook": "0x000000000000000000000000000000000000000000",
-            "invitedHook": "0x000000000000000000000000000000000000000000",
-            "name": "ERC721 Nafn",
-            "symbol": "ERC721 tákn",
-            "contracturi": "samnings URI"
-        },
-        "small": {
-            "hook": "krók heimilisfang samnings útfært ICommunityHook tengi. Getur verið heimilisfang (0)",
-            "invitedHook": "inviteHook heimilisfang samnings útfært ICommunityInvite tengi. Getur verið heimilisfang (0)",
-            "name": "ERC721 Nafn",
-            "symbol": "ERC721 tákn",
-            "contracturi": "samnings URI"
-        },
-        "err": {
-            "hook": "<b>Krókur<\/b> ógildur",
-            "invitedHook": "<b>inviteHook<\/b> ógildur",
-            "name": "<b>Nafn<\/b> ógilt",
-            "symbol": "<b>Tákn<\/b> ógilt",
-            "contracturi": "<b>contractURI<\/b> ógildur"
-        },
-        "btnTitle": "Framleiða"
-    },
-    "err": {
-        "cantFindFactoryAddress": "Finn ekki factoryAddress",
-        "transactionFailed": "Viðskipti mistókust",
-        "smthWentWrong": "Eitthvað fór úrskeiðis"
-    },
-    "foo": "bar"
+	"title": {
+		"createCommunity": "B\u00fa\u00f0u til samf\u00e9lag"
+	},
+	"list": {
+		"table": {
+			"td0": "Nafn ke\u00f0ju",
+			"td1": "Au\u00f0kenni ke\u00f0ju",
+			"td2": "Heimilisfang samf\u00e9lagsins"
+		},
+		"btnTitle": "Framlei\u00f0a"
+	},
+	"form": {
+		"labels": {
+			"chain": "Ke\u00f0ja",
+			"hook": "Kr\u00f3kur",
+			"invitedHook": "InvitedHook",
+			"name": "Nafn",
+			"symbol": "T\u00e1kn",
+			"contracturi": "samningURI"
+		},
+		"placeholders": {
+			"hook": "0x000000000000000000000000000000000000000000",
+			"invitedHook": "0x000000000000000000000000000000000000000000",
+			"name": "ERC721 Nafn",
+			"symbol": "ERC721 t\u00e1kn",
+			"contracturi": "samnings URI"
+		},
+		"small": {
+			"hook": "kr\u00f3k heimilisfang samnings \u00fatf\u00e6rt ICommunityHook tengi. Getur veri\u00f0 heimilisfang (0)",
+			"invitedHook": "inviteHook heimilisfang samnings \u00fatf\u00e6rt ICommunityInvite tengi. Getur veri\u00f0 heimilisfang (0)",
+			"name": "ERC721 Nafn",
+			"symbol": "ERC721 t\u00e1kn",
+			"contracturi": "samnings URI"
+		},
+		"err": {
+			"hook": "<b>Kr\u00f3kur</b> \u00f3gildur",
+			"invitedHook": "<b>inviteHook</b> \u00f3gildur",
+			"name": "<b>Nafn</b> \u00f3gilt",
+			"symbol": "<b>T\u00e1kn</b> \u00f3gilt",
+			"contracturi": "<b>contractURI</b> \u00f3gildur"
+		},
+		"btnTitle": "Framlei\u00f0a"
+	},
+	"err": {
+		"cantFindFactoryAddress": "Finn ekki factoryAddress",
+		"transactionFailed": "Vi\u00f0skipti mist\u00f3kust",
+		"smthWentWrong": "Eitthva\u00f0 f\u00f3r \u00farskei\u00f0is"
+	},
+	"foo": "bar"
 }

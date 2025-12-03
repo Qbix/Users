@@ -1,14 +1,14 @@
 {
-    "activation": {
-        "Thanks": "Sveiki atvykę į {{1}}.",
-        "ClickHere": "Spustelėkite čia, kad suaktyvintumėte paskyrą: {{1}}"
-    },
-    "addMobile": {
-        "ClickHere": "Spustelėkite čia, kad patvirtintumėte savo mobiliojo telefono numerį: {{1}}"
-    },
-    "resend": {
-        "DidYouWant": "Ar norėjote iš naujo nustatyti slaptafrazę {{1}}?",
-        "ClickHere": "Tada spustelėkite čia: {{1}}",
-        "OrEnterCode": "arba įveskite kodą:"
-    }
+	"activation": {
+		"Thanks": "Sveiki atvyk\u0119 \u012f {{1}}.",
+		"ClickHere": "Spustel\u0117kite \u010dia, kad suaktyvintum\u0117te paskyr\u0105: {{1}}"
+	},
+	"addMobile": {
+		"ClickHere": "Spustel\u0117kite \u010dia, kad patvirtintum\u0117te savo mobiliojo telefono numer\u012f: {{1}}"
+	},
+	"resend": {
+		"DidYouWant": "Ar nor\u0117jote i\u0161 naujo nustatyti slaptafraz\u0119 {{1}}?",
+		"ClickHere": "Tada spustel\u0117kite \u010dia: {{1}}",
+		"OrEnterCode": "arba \u012fveskite kod\u0105:"
+	}
 }

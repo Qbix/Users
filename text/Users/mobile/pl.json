@@ -1,14 +1,14 @@
 {
-    "activation": {
-        "Thanks": "Witamy w {{1}}.",
-        "ClickHere": "Kliknij tutaj, aby aktywować swoje konto: {{1}}"
-    },
-    "addMobile": {
-        "ClickHere": "Kliknij tutaj, aby zweryfikować swój numer telefonu komórkowego: {{1}}"
-    },
-    "resend": {
-        "DidYouWant": "Czy chcesz zresetować swoje hasło w {{1}}?",
-        "ClickHere": "Następnie kliknij tutaj: {{1}}",
-        "OrEnterCode": "lub wprowadź kod:"
-    }
+	"activation": {
+		"Thanks": "Witamy w {{1}}.",
+		"ClickHere": "Kliknij tutaj, aby aktywowa\u0107 swoje konto: {{1}}"
+	},
+	"addMobile": {
+		"ClickHere": "Kliknij tutaj, aby zweryfikowa\u0107 sw\u00f3j numer telefonu kom\u00f3rkowego: {{1}}"
+	},
+	"resend": {
+		"DidYouWant": "Czy chcesz zresetowa\u0107 swoje has\u0142o w {{1}}?",
+		"ClickHere": "Nast\u0119pnie kliknij tutaj: {{1}}",
+		"OrEnterCode": "lub wprowad\u017a kod:"
+	}
 }

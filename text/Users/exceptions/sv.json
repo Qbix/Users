@@ -1,4 +1,4 @@
 {
-    "NotLoggedIn": "Du är inte inloggad. <a href='#login' data-users-login>Klicka här för att logga in<\/a>",
-    "InvalidLanguage": "Ogiltigt språk {{language}}"
+	"NotLoggedIn": "Du \u00e4r inte inloggad. <a href='#login' data-users-login>Klicka h\u00e4r f\u00f6r att logga in</a>",
+	"InvalidLanguage": "Ogiltigt spr\u00e5k {{language}}"
 }

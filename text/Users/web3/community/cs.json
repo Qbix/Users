@@ -1,51 +1,51 @@
 {
-    "title": {
-        "createCommunity": "Vytvořit komunitu"
-    },
-    "list": {
-        "table": {
-            "td0": "Název řetězce",
-            "td1": "ID řetězce",
-            "td2": "Adresa komunity"
-        },
-        "btnTitle": "Vyrobit"
-    },
-    "form": {
-        "labels": {
-            "chain": "Řetěz",
-            "hook": "Háček",
-            "invitedHook": "InvitedHook",
-            "name": "název",
-            "symbol": "Symbol",
-            "contracturi": "contractURI"
-        },
-        "placeholders": {
-            "hook": "0x00000000000000000000000000000000000000",
-            "invitedHook": "0x00000000000000000000000000000000000000",
-            "name": "Název ERC721",
-            "symbol": "Symbol ERC721",
-            "contracturi": "URI smlouvy"
-        },
-        "small": {
-            "hook": "adresa háčku implementované smlouvy ICommunityHook rozhraní. Může být adresa(0)",
-            "invitedHook": "pozvalHook adresa implementované smlouvy rozhraní ICommunityInvite. Může být adresa(0)",
-            "name": "Název ERC721",
-            "symbol": "Symbol ERC721",
-            "contracturi": "URI smlouvy"
-        },
-        "err": {
-            "hook": "<b>Háček<\/b> je neplatný",
-            "invitedHook": "<b>pozvánka<\/b> je neplatná",
-            "name": "<b>Jméno je<\/b> neplatné",
-            "symbol": "<b>Symbol<\/b> je neplatný",
-            "contracturi": "<b>contractURI<\/b> neplatný"
-        },
-        "btnTitle": "Vyrobit"
-    },
-    "err": {
-        "cantFindFactoryAddress": "Nelze najít factoryAddress",
-        "transactionFailed": "Transakce selhala",
-        "smthWentWrong": "Něco se pokazilo"
-    },
-    "foo": "bar"
+	"title": {
+		"createCommunity": "Vytvo\u0159it komunitu"
+	},
+	"list": {
+		"table": {
+			"td0": "N\u00e1zev \u0159et\u011bzce",
+			"td1": "ID \u0159et\u011bzce",
+			"td2": "Adresa komunity"
+		},
+		"btnTitle": "Vyrobit"
+	},
+	"form": {
+		"labels": {
+			"chain": "\u0158et\u011bz",
+			"hook": "H\u00e1\u010dek",
+			"invitedHook": "InvitedHook",
+			"name": "n\u00e1zev",
+			"symbol": "Symbol",
+			"contracturi": "contractURI"
+		},
+		"placeholders": {
+			"hook": "0x00000000000000000000000000000000000000",
+			"invitedHook": "0x00000000000000000000000000000000000000",
+			"name": "N\u00e1zev ERC721",
+			"symbol": "Symbol ERC721",
+			"contracturi": "URI smlouvy"
+		},
+		"small": {
+			"hook": "adresa h\u00e1\u010dku implementovan\u00e9 smlouvy ICommunityHook rozhran\u00ed. M\u016f\u017ee b\u00fdt adresa(0)",
+			"invitedHook": "pozvalHook adresa implementovan\u00e9 smlouvy rozhran\u00ed ICommunityInvite. M\u016f\u017ee b\u00fdt adresa(0)",
+			"name": "N\u00e1zev ERC721",
+			"symbol": "Symbol ERC721",
+			"contracturi": "URI smlouvy"
+		},
+		"err": {
+			"hook": "<b>H\u00e1\u010dek</b> je neplatn\u00fd",
+			"invitedHook": "<b>pozv\u00e1nka</b> je neplatn\u00e1",
+			"name": "<b>Jm\u00e9no je</b> neplatn\u00e9",
+			"symbol": "<b>Symbol</b> je neplatn\u00fd",
+			"contracturi": "<b>contractURI</b> neplatn\u00fd"
+		},
+		"btnTitle": "Vyrobit"
+	},
+	"err": {
+		"cantFindFactoryAddress": "Nelze naj\u00edt factoryAddress",
+		"transactionFailed": "Transakce selhala",
+		"smthWentWrong": "N\u011bco se pokazilo"
+	},
+	"foo": "bar"
 }

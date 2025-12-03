@@ -1,4 +1,4 @@
 {
-    "NotLoggedIn": "Ви не ввійшли. <a href='#login' data-users-login>Натисніть тут, щоб увійти<\/a>",
-    "InvalidLanguage": "Недійсна мова {{language}}"
+	"NotLoggedIn": "\u0412\u0438 \u043d\u0435 \u0432\u0432\u0456\u0439\u0448\u043b\u0438. <a href='#login' data-users-login>\u041d\u0430\u0442\u0438\u0441\u043d\u0456\u0442\u044c \u0442\u0443\u0442, \u0449\u043e\u0431 \u0443\u0432\u0456\u0439\u0442\u0438</a>",
+	"InvalidLanguage": "\u041d\u0435\u0434\u0456\u0439\u0441\u043d\u0430 \u043c\u043e\u0432\u0430 {{language}}"
 }

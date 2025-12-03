@@ -1,196 +1,196 @@
 {
-    "avatar": {
-        "Someone": "Rhywun"
-    },
-    "identifier": {
-        "types": {
-            "email": "Ebost",
-            "mobile": "Symudol",
-            "web3": "Gwe3"
-        }
-    },
-    "clipboard": {
-        "Copied": "Wedi&#39;i gopïo! Nawr gallwch chi ei gludo yn unrhyw le."
-    },
-    "analytics": {
-        "Title": "Dadansoddeg",
-        "Daily": "Dyddiol",
-        "Weekly": "Wythnosol",
-        "Monthly": "Yn fisol",
-        "Application": "Cais",
-        "Pages": "Tudalennau",
-        "Services": "Gwasanaethau",
-        "Faq": "Cwestiynau Cyffredin",
-        "WeekDays": "Dyddiau Wythnos"
-    },
-    "actions": {
-        "LogIn": "Mewngofnodi",
-        "LogOut": "allgofnodi"
-    },
-    "activate": {
-        "OneTimeCode": "Rhowch y cod a gawsoch:",
-        "SetAsPrimary": "Gosod {{1}} fel fy {{2}} cynradd",
-        "ChoosePassPhrase": "Dewiswch <strong>ymadrodd pasio<\/strong> i fewngofnodi ag ef.<br> Ymadrodd syml yn cynnwys ychydig eiriau y byddwch chi&#39;n eu cofio&#39;n hawdd.",
-        "ChoosePassPhraseSeeSuggestions": "Dewiswch <strong>ymadrodd pasio<\/strong> da i amddiffyn eich cyfrif. Gweler yr awgrymiadau am rai syniadau.",
-        "LogOutAndTryAgain": "Allgofnodi a Ceisiwch Eto",
-        "IfYouFeel": "Os ydych chi&#39;n teimlo bod rhywbeth wedi mynd o&#39;i le, fe allwch chi",
-        "SetIdentifierButtonTitle": "dechrau eto",
-        "ActivateMyAccount": "Ysgogi Fy Nghyfrif"
-    },
-    "session": {
-        "GetStarted": "Dechrau"
-    },
-    "authorize": {
-        "GetStarted": "Dechrau",
-        "Authorize": "Awdurdodi",
-        "TermsLabel": "Rwyf wedi darllen ac yn cytuno<br> i&#39;r {{link}}",
-        "TermsTitle": "Termau",
-        "mustAgree": "Yn gyntaf rhaid i chi gytuno i&#39;r telerau."
-    },
-    "register": {
-        "TermsLabel": "Rwy&#39;n derbyn y {{link}}",
-        "TermsTitle": "Termau"
-    },
-    "notifications": {
-        "title": "Caniatâd",
-        "prompt": "Ydych chi am alluogi hysbysiadau? Byddwch yn derbyn diweddariadau amser real am bethau sy&#39;n bwysig i chi.",
-        "yes": "Oes",
-        "no": "Nac ydw",
-        "WelcomePleaseVerifyEmail": "Croeso! Gwiriwch eich cyfeiriad e-bost.",
-        "WelcomeVerifyEmail": "Croeso! Gwiriwch eich cyfeiriad e-bost.",
-        "ForgetPass": "Hei, a wnaethoch chi anghofio&#39;ch cyfrinair?",
-        "PassphraseSaved": "Mae eich ymadrodd pasio wedi&#39;i gadw.",
-        "IdentifierActivated": "Mae eich {{type}} wedi&#39;i actifadu.",
-        "CompletedActivation": "Rydych chi wedi cwblhau actifadu defnyddiwr.",
-        "CompletedActivationLogIn": "Rydych chi wedi cwblhau actifadu defnyddiwr. Ceisiwch fewngofnodi nawr."
-    },
-    "contacts": {
-        "dialog": {
-            "title": "Dewiswch cyswllt",
-            "CreateAccount": "+ Cyswllt Newydd",
-            "CreateAccountNotFound": "Q.Users.Cordova.UI.create heb ei ganfod",
-            "SearchByName": "Chwilio yn ôl enw",
-            "EmptyContacts": "Cysylltiadau heb eu canfod..."
-        },
-        "select": {
-            "title": "Dewiswch gyswllt {{displayName}}"
-        },
-        "require": {
-            "Instructions": "Bydd angen i chi alluogi mynediad i bob cyswllt er mwyn i hyn weithio."
-        }
-    },
-    "usersContacts": {
-        "selectLabel": "Dewiswch label.",
-        "inviteUser": "Gwahodd Defnyddwyr",
-        "selectRole": "Dewiswch Rôl",
-        "inviteRole": "Gwahodd {{role}}"
-    },
-    "invalidLanguageSelected": "Dewiswyd iaith annilys",
-    "platforms": {
-        "wallet": "Waled",
-        "broadcast": "Darllediad"
-    },
-    "login": {
-        "title": "Croeso",
-        "directions": {
-            "GetStarted": "Creu cyfrif, neu fewngofnodi.",
-            "NoRegister": "Mewngofnodwch os oes gennych gyfrif.",
-            "WasInvited": "Beth yw&#39;r ffordd orau i&#39;ch cyrraedd?"
-        },
-        "directionsNoRegister": "Mewngofnodwch os oes gennych gyfrif.",
-        "goButton": "➔",
-        "passphrase": "Rhowch eich ymadrodd pasio:",
-        "loginButton": "Dechrau",
-        "registerButton": "Dechrau",
-        "resendButton": "Anfon Neges Cychwyn",
-        "forgot": "Wedi anghofio fe?",
-        "resendConfirm": "Ydych chi am anfon neges i ailosod eich cyfrinair?",
-        "resendSuccess": "Gwiriwch am neges i ailosod eich cyfrinair",
-        "resendClose": "Cau",
-        "noPassphrase": "Cyn i chi allu mewngofnodi, rhaid i chi osod ymadrodd pasio trwy glicio ar y ddolen yn eich neges actifadu.",
-        "notVerified": "Rhaid i chi anfon neges actifadu eich hun er mwyn mewngofnodi.",
-        "emailExists": "A wnaethoch chi geisio cofrestru gyda&#39;r e-bost hwn o&#39;r blaen? Os felly, gwiriwch eich mewnflwch i actifadu eich cyfrif. <a href='#resend' class='Q_button Users_activation_resend'>Cliciwch i ail-anfon y neges<\/a>",
-        "mobileExists": "A wnaethoch chi geisio cofrestru gyda&#39;r rhif ffôn symudol hwn o&#39;r blaen? Os felly, gwiriwch eich SMS i actifadu eich cyfrif. <a href='#resend' class='Q_button Users_activation_resend'>Cliciwch i ail-anfon y neges<\/a>",
-        "usingOther": "neu gallwch chi",
-        "connectPlatforms": "neu gysylltu gan ddefnyddio:",
-        "prompt": "Dewiswch enw defnyddiwr:",
-        "newUser": "neu greu cyfrif newydd isod",
-        "placeholders": {
-            "identifier": "eich ffôn symudol # neu e-bost",
-            "mobile": "rhowch eich ffôn symudol #",
-            "email": "rhowch eich cyfeiriad e-bost",
-            "username": "defnyddio llythrennau a rhifau yn unig"
-        },
-        "confirmTerms": "Derbyn y Telerau Gwasanaeth?",
-        "facebookNoEmail": "Mae cyfeiriad e-bost wedi&#39;i gadarnhau ar goll o&#39;ch cyfrif facebook. Yn syml, mewngofnodwch yn y ffordd frodorol.",
-        "picTooltip": "Gallwch newid y llun hwn yn ddiweddarach",
-        "web3": {
-            "payload": "Mewngofnodwch i {{host}} ar amser {{timestamp}}",
-            "alert": {
-                "title": "Ailgyfeirio i Wallet",
-                "content": "Unwaith y byddwch chi&#39;n cau&#39;r deialog hwn, byddwch chi&#39;n cael eich tywys i&#39;ch waled. Ar ôl i chi fewngofnodi, dychwelwch i&#39;r dudalen hon."
-            },
-            "ConnectWallet": "Cyswllt Waled"
-        }
-    },
-    "setIdentifier": {
-        "title": "Ychwanegu ffordd i fewngofnodi",
-        "sendMessage": "Anfon Neges Cychwyn",
-        "placeholders": {
-            "identifier": "rhowch eich # ffôn symudol neu e-bost",
-            "mobile": "rhowch eich rhif ffôn symudol",
-            "email": "rhowch eich cyfeiriad e-bost",
-            "username": "enw defnyddiwr"
-        }
-    },
-    "prompt": {
-        "title": "{{Platform}} Cyfrif",
-        "areUsing": "Rydych yn defnyddio {{platform}} fel",
-        "noLongerUsing": "Nid ydych bellach yn gysylltiedig â {{platform}} fel",
-        "doAuth": "Mewngofnodwch gyda&#39;r cyfrif hwn",
-        "doSwitch": "Newid i&#39;r cyfrif hwn"
-    },
-    "roles": {
-        "Owner": "Perchennog",
-        "Admin": "Gweinyddol",
-        "Member": "Aelod",
-        "Guest": "Gwestai",
-        "Host": "Gwesteiwr"
-    },
-    "web3": {
-        "WrongMethod": "Dull contract anghywir {{methodName}}",
-        "ChangeWallet": "Newid Waled",
-        "ConnectWallet": "Cyswllt Waled",
-        "AfterWalletConnectedPleaseRefresh": "Ar ôl cysylltu waled, adnewyddwch y dudalen hon i adnabod y waled"
-    },
-    "labels": {
-        "addToPhonebook": "Ychwanegu at Fy Nghysylltiadau Ffôn",
-        "addLabel": "Perthynas Newydd",
-        "prompt": "Rhowch enw iddo",
-        "titles": {
-            "Users\/owners": "Perchenogion",
-            "Users\/admins": "Gweinyddwyr",
-            "Users\/members": "Aelodau",
-            "Users\/guests": "Gwesteion",
-            "Users\/hosts": "Gwesteiwyr",
-            "Users\/testers": "Profwyr",
-            "Users\/speakers": "Siaradwyr"
-        }
-    },
-    "people": {
-        "People": "Pobl"
-    },
-    "external": {
-        "defaults": {
-            "title": "",
-            "bio": "Bot ymgysylltu Fforwm. Mynnwch un eich hun yn https:\/\/engageusers.ai",
-            "website": "https:\/\/engageusers.ai"
-        }
-    },
-    "errors": {
-        "NotEnoughPermissionsWallet": "Dim digon o ganiatadau i ddarllen waled y defnyddiwr hwn",
-        "ThisUserHaveNoWallet": "Nid oes gan y defnyddiwr hwn waled wedi&#39;i neilltuo",
-        "TheWalletOfThisUserInvalid": "Mae waled y defnyddiwr hwn yn annilys",
-        "WalletInvalid": "Cyfeiriad waled yn annilys"
-    }
+	"avatar": {
+		"Someone": "Rhywun"
+	},
+	"identifier": {
+		"types": {
+			"email": "Ebost",
+			"mobile": "Symudol",
+			"web3": "Gwe3"
+		}
+	},
+	"clipboard": {
+		"Copied": "Wedi&#39;i gop\u00efo! Nawr gallwch chi ei gludo yn unrhyw le."
+	},
+	"analytics": {
+		"Title": "Dadansoddeg",
+		"Daily": "Dyddiol",
+		"Weekly": "Wythnosol",
+		"Monthly": "Yn fisol",
+		"Application": "Cais",
+		"Pages": "Tudalennau",
+		"Services": "Gwasanaethau",
+		"Faq": "Cwestiynau Cyffredin",
+		"WeekDays": "Dyddiau Wythnos"
+	},
+	"actions": {
+		"LogIn": "Mewngofnodi",
+		"LogOut": "allgofnodi"
+	},
+	"activate": {
+		"OneTimeCode": "Rhowch y cod a gawsoch:",
+		"SetAsPrimary": "Gosod {{1}} fel fy {{2}} cynradd",
+		"ChoosePassPhrase": "Dewiswch <strong>ymadrodd pasio</strong> i fewngofnodi ag ef.<br> Ymadrodd syml yn cynnwys ychydig eiriau y byddwch chi&#39;n eu cofio&#39;n hawdd.",
+		"ChoosePassPhraseSeeSuggestions": "Dewiswch <strong>ymadrodd pasio</strong> da i amddiffyn eich cyfrif. Gweler yr awgrymiadau am rai syniadau.",
+		"LogOutAndTryAgain": "Allgofnodi a Ceisiwch Eto",
+		"IfYouFeel": "Os ydych chi&#39;n teimlo bod rhywbeth wedi mynd o&#39;i le, fe allwch chi",
+		"SetIdentifierButtonTitle": "dechrau eto",
+		"ActivateMyAccount": "Ysgogi Fy Nghyfrif"
+	},
+	"session": {
+		"GetStarted": "Dechrau"
+	},
+	"authorize": {
+		"GetStarted": "Dechrau",
+		"Authorize": "Awdurdodi",
+		"TermsLabel": "Rwyf wedi darllen ac yn cytuno<br> i&#39;r {{link}}",
+		"TermsTitle": "Termau",
+		"mustAgree": "Yn gyntaf rhaid i chi gytuno i&#39;r telerau."
+	},
+	"register": {
+		"TermsLabel": "Rwy&#39;n derbyn y {{link}}",
+		"TermsTitle": "Termau"
+	},
+	"notifications": {
+		"title": "Caniat\u00e2d",
+		"prompt": "Ydych chi am alluogi hysbysiadau? Byddwch yn derbyn diweddariadau amser real am bethau sy&#39;n bwysig i chi.",
+		"yes": "Oes",
+		"no": "Nac ydw",
+		"WelcomePleaseVerifyEmail": "Croeso! Gwiriwch eich cyfeiriad e-bost.",
+		"WelcomeVerifyEmail": "Croeso! Gwiriwch eich cyfeiriad e-bost.",
+		"ForgetPass": "Hei, a wnaethoch chi anghofio&#39;ch cyfrinair?",
+		"PassphraseSaved": "Mae eich ymadrodd pasio wedi&#39;i gadw.",
+		"IdentifierActivated": "Mae eich {{type}} wedi&#39;i actifadu.",
+		"CompletedActivation": "Rydych chi wedi cwblhau actifadu defnyddiwr.",
+		"CompletedActivationLogIn": "Rydych chi wedi cwblhau actifadu defnyddiwr. Ceisiwch fewngofnodi nawr."
+	},
+	"contacts": {
+		"dialog": {
+			"title": "Dewiswch cyswllt",
+			"CreateAccount": "+ Cyswllt Newydd",
+			"CreateAccountNotFound": "Q.Users.Cordova.UI.create heb ei ganfod",
+			"SearchByName": "Chwilio yn \u00f4l enw",
+			"EmptyContacts": "Cysylltiadau heb eu canfod..."
+		},
+		"select": {
+			"title": "Dewiswch gyswllt {{displayName}}"
+		},
+		"require": {
+			"Instructions": "Bydd angen i chi alluogi mynediad i bob cyswllt er mwyn i hyn weithio."
+		}
+	},
+	"usersContacts": {
+		"selectLabel": "Dewiswch label.",
+		"inviteUser": "Gwahodd Defnyddwyr",
+		"selectRole": "Dewiswch R\u00f4l",
+		"inviteRole": "Gwahodd {{role}}"
+	},
+	"invalidLanguageSelected": "Dewiswyd iaith annilys",
+	"platforms": {
+		"wallet": "Waled",
+		"broadcast": "Darllediad"
+	},
+	"login": {
+		"title": "Croeso i {{AppName}}",
+		"directions": {
+			"GetStarted": "I ble ddylen ni anfon hysbysiadau?",
+			"NoRegister": "Mewngofnodwch os oes gennych gyfrif.",
+			"WasInvited": "Beth yw&#39;r ffordd orau i&#39;ch cyrraedd?"
+		},
+		"directionsNoRegister": "Mewngofnodwch os oes gennych gyfrif.",
+		"goButton": "\u2794",
+		"passphrase": "Rhowch eich ymadrodd pasio:",
+		"loginButton": "Dechrau",
+		"registerButton": "Dechrau",
+		"resendButton": "Anfon Neges Cychwyn",
+		"forgot": "Wedi anghofio fe?",
+		"resendConfirm": "Ydych chi am anfon neges i ailosod eich cyfrinair?",
+		"resendSuccess": "Gwiriwch am neges i ailosod eich cyfrinair",
+		"resendClose": "Cau",
+		"noPassphrase": "Cyn i chi allu mewngofnodi, rhaid i chi osod ymadrodd pasio trwy glicio ar y ddolen yn eich neges actifadu.",
+		"notVerified": "Rhaid i chi anfon neges actifadu eich hun er mwyn mewngofnodi.",
+		"emailExists": "A wnaethoch chi geisio cofrestru gyda&#39;r e-bost hwn o&#39;r blaen? Os felly, gwiriwch eich mewnflwch i actifadu eich cyfrif. <a href='#resend' class='Q_button Users_activation_resend'>Cliciwch i ail-anfon y neges</a>",
+		"mobileExists": "A wnaethoch chi geisio cofrestru gyda&#39;r rhif ff\u00f4n symudol hwn o&#39;r blaen? Os felly, gwiriwch eich SMS i actifadu eich cyfrif. <a href='#resend' class='Q_button Users_activation_resend'>Cliciwch i ail-anfon y neges</a>",
+		"usingOther": "neu gallwch chi",
+		"connectPlatforms": "neu gysylltu gan ddefnyddio:",
+		"prompt": "Dewiswch enw defnyddiwr:",
+		"newUser": "neu greu cyfrif newydd isod",
+		"placeholders": {
+			"identifier": "eich ff\u00f4n symudol # neu e-bost",
+			"mobile": "rhowch eich ff\u00f4n symudol #",
+			"email": "rhowch eich cyfeiriad e-bost",
+			"username": "defnyddio llythrennau a rhifau yn unig"
+		},
+		"confirmTerms": "Derbyn y Telerau Gwasanaeth?",
+		"facebookNoEmail": "Mae cyfeiriad e-bost wedi&#39;i gadarnhau ar goll o&#39;ch cyfrif facebook. Yn syml, mewngofnodwch yn y ffordd frodorol.",
+		"picTooltip": "Gallwch newid y llun hwn yn ddiweddarach",
+		"web3": {
+			"payload": "Mewngofnodwch i {{host}} ar amser {{timestamp}}",
+			"alert": {
+				"title": "Ailgyfeirio i Wallet",
+				"content": "Unwaith y byddwch chi&#39;n cau&#39;r deialog hwn, byddwch chi&#39;n cael eich tywys i&#39;ch waled. Ar \u00f4l i chi fewngofnodi, dychwelwch i&#39;r dudalen hon."
+			},
+			"ConnectWallet": "Cyswllt Waled"
+		}
+	},
+	"setIdentifier": {
+		"title": "Ychwanegu ffordd i fewngofnodi",
+		"sendMessage": "Anfon Neges Cychwyn",
+		"placeholders": {
+			"identifier": "rhowch eich # ff\u00f4n symudol neu e-bost",
+			"mobile": "rhowch eich rhif ff\u00f4n symudol",
+			"email": "rhowch eich cyfeiriad e-bost",
+			"username": "enw defnyddiwr"
+		}
+	},
+	"prompt": {
+		"title": "{{Platform}} Cyfrif",
+		"areUsing": "Rydych yn defnyddio {{platform}} fel",
+		"noLongerUsing": "Nid ydych bellach yn gysylltiedig \u00e2 {{platform}} fel",
+		"doAuth": "Mewngofnodwch gyda&#39;r cyfrif hwn",
+		"doSwitch": "Newid i&#39;r cyfrif hwn"
+	},
+	"roles": {
+		"Owner": "Perchennog",
+		"Admin": "Gweinyddol",
+		"Member": "Aelod",
+		"Guest": "Gwestai",
+		"Host": "Gwesteiwr"
+	},
+	"web3": {
+		"WrongMethod": "Dull contract anghywir {{methodName}}",
+		"ChangeWallet": "Newid Waled",
+		"ConnectWallet": "Cyswllt Waled",
+		"AfterWalletConnectedPleaseRefresh": "Ar \u00f4l cysylltu waled, adnewyddwch y dudalen hon i adnabod y waled"
+	},
+	"labels": {
+		"addToPhonebook": "Ychwanegu at Fy Nghysylltiadau Ff\u00f4n",
+		"addLabel": "Perthynas Newydd",
+		"prompt": "Rhowch enw iddo",
+		"titles": {
+			"Users/owners": "Perchenogion",
+			"Users/admins": "Gweinyddwyr",
+			"Users/members": "Aelodau",
+			"Users/guests": "Gwesteion",
+			"Users/hosts": "Gwesteiwyr",
+			"Users/testers": "Profwyr",
+			"Users/speakers": "Siaradwyr"
+		}
+	},
+	"people": {
+		"People": "Pobl"
+	},
+	"external": {
+		"defaults": {
+			"title": "",
+			"bio": "Bot ymgysylltu Fforwm. Mynnwch un eich hun yn https://engageusers.ai",
+			"website": "https://engageusers.ai"
+		}
+	},
+	"errors": {
+		"NotEnoughPermissionsWallet": "Dim digon o ganiatadau i ddarllen waled y defnyddiwr hwn",
+		"ThisUserHaveNoWallet": "Nid oes gan y defnyddiwr hwn waled wedi&#39;i neilltuo",
+		"TheWalletOfThisUserInvalid": "Mae waled y defnyddiwr hwn yn annilys",
+		"WalletInvalid": "Cyfeiriad waled yn annilys"
+	}
 }

@@ -1,15 +1,15 @@
 {
-    "addToPhonebook": "Ajouter aux contacts de mon téléphone",
-    "addLabel": "Nouvelle relation",
-    "newRole": "Nouveau rôle",
-    "prompt": "Donne lui un nom",
-    "newLabel": "Nouvelle étiquette",
-    "editLabel": "Modifier l&#39;étiquette",
-    "addBtn": "Ajouter",
-    "editBtn": "Sauvegarder",
-    "canManageDialogTitle": "Peut gérer les rôles",
-    "canManageBtn": "Peut gérer ...",
-    "titlePlaceholder": "Titre",
-    "selectOptionTitle_web2": "Indigène",
-    "selectOptionTitle_web3": "Web3"
+	"addToPhonebook": "Ajouter aux contacts de mon t\u00e9l\u00e9phone",
+	"addLabel": "Nouvelle relation",
+	"newRole": "Nouveau r\u00f4le",
+	"prompt": "Donne lui un nom",
+	"newLabel": "Nouvelle \u00e9tiquette",
+	"editLabel": "Modifier l&#39;\u00e9tiquette",
+	"addBtn": "Ajouter",
+	"editBtn": "Sauvegarder",
+	"canManageDialogTitle": "Peut g\u00e9rer les r\u00f4les",
+	"canManageBtn": "Peut g\u00e9rer ...",
+	"titlePlaceholder": "Titre",
+	"selectOptionTitle_web2": "Indig\u00e8ne",
+	"selectOptionTitle_web3": "Web3"
 }

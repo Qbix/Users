@@ -1,51 +1,51 @@
 {
-    "title": {
-        "createCommunity": "إنشاء مجتمع"
-    },
-    "list": {
-        "table": {
-            "td0": "اسم السلسلة",
-            "td1": "معرف السلسلة",
-            "td2": "عنوان المجتمع"
-        },
-        "btnTitle": "ينتج"
-    },
-    "form": {
-        "labels": {
-            "chain": "سلسلة",
-            "hook": "خطاف",
-            "invitedHook": "InvitedHook",
-            "name": "اسم",
-            "symbol": "رمز",
-            "contracturi": "com.contractURI"
-        },
-        "placeholders": {
-            "hook": "0x000000000000000000000000000000000",
-            "invitedHook": "0x000000000000000000000000000000000",
-            "name": "اسم ERC721",
-            "symbol": "رمز ERC721",
-            "contracturi": "URI للعقد"
-        },
-        "small": {
-            "hook": "عنوان ربط العقد المنفذ من واجهة ICommunityHook. يمكن أن يكون عنوان(0)",
-            "invitedHook": "تمت دعوة عنوان الخطاف للعقد من خلال واجهة ICommunityInvite. يمكن أن يكون عنوان(0)",
-            "name": "اسم ERC721",
-            "symbol": "رمز ERC721",
-            "contracturi": "URI للعقد"
-        },
-        "err": {
-            "hook": "<b>الخطاف<\/b> غير صالح",
-            "invitedHook": "<b>خطاف الدعوة<\/b> غير صالح",
-            "name": "<b>الاسم<\/b> غير صالح",
-            "symbol": "<b>الرمز<\/b> غير صالح",
-            "contracturi": "<b>ContractURI<\/b> غير صالح"
-        },
-        "btnTitle": "ينتج"
-    },
-    "err": {
-        "cantFindFactoryAddress": "لا يمكن العثور على عنوان المصنع",
-        "transactionFailed": "فشل الاجراء",
-        "smthWentWrong": "هناك خطأ ما"
-    },
-    "foo": "حاجِز"
+	"title": {
+		"createCommunity": "\u0625\u0646\u0634\u0627\u0621 \u0645\u062c\u062a\u0645\u0639"
+	},
+	"list": {
+		"table": {
+			"td0": "\u0627\u0633\u0645 \u0627\u0644\u0633\u0644\u0633\u0644\u0629",
+			"td1": "\u0645\u0639\u0631\u0641 \u0627\u0644\u0633\u0644\u0633\u0644\u0629",
+			"td2": "\u0639\u0646\u0648\u0627\u0646 \u0627\u0644\u0645\u062c\u062a\u0645\u0639"
+		},
+		"btnTitle": "\u064a\u0646\u062a\u062c"
+	},
+	"form": {
+		"labels": {
+			"chain": "\u0633\u0644\u0633\u0644\u0629",
+			"hook": "\u062e\u0637\u0627\u0641",
+			"invitedHook": "InvitedHook",
+			"name": "\u0627\u0633\u0645",
+			"symbol": "\u0631\u0645\u0632",
+			"contracturi": "com.contractURI"
+		},
+		"placeholders": {
+			"hook": "0x000000000000000000000000000000000",
+			"invitedHook": "0x000000000000000000000000000000000",
+			"name": "\u0627\u0633\u0645 ERC721",
+			"symbol": "\u0631\u0645\u0632 ERC721",
+			"contracturi": "URI \u0644\u0644\u0639\u0642\u062f"
+		},
+		"small": {
+			"hook": "\u0639\u0646\u0648\u0627\u0646 \u0631\u0628\u0637 \u0627\u0644\u0639\u0642\u062f \u0627\u0644\u0645\u0646\u0641\u0630 \u0645\u0646 \u0648\u0627\u062c\u0647\u0629 ICommunityHook. \u064a\u0645\u0643\u0646 \u0623\u0646 \u064a\u0643\u0648\u0646 \u0639\u0646\u0648\u0627\u0646(0)",
+			"invitedHook": "\u062a\u0645\u062a \u062f\u0639\u0648\u0629 \u0639\u0646\u0648\u0627\u0646 \u0627\u0644\u062e\u0637\u0627\u0641 \u0644\u0644\u0639\u0642\u062f \u0645\u0646 \u062e\u0644\u0627\u0644 \u0648\u0627\u062c\u0647\u0629 ICommunityInvite. \u064a\u0645\u0643\u0646 \u0623\u0646 \u064a\u0643\u0648\u0646 \u0639\u0646\u0648\u0627\u0646(0)",
+			"name": "\u0627\u0633\u0645 ERC721",
+			"symbol": "\u0631\u0645\u0632 ERC721",
+			"contracturi": "URI \u0644\u0644\u0639\u0642\u062f"
+		},
+		"err": {
+			"hook": "<b>\u0627\u0644\u062e\u0637\u0627\u0641</b> \u063a\u064a\u0631 \u0635\u0627\u0644\u062d",
+			"invitedHook": "<b>\u062e\u0637\u0627\u0641 \u0627\u0644\u062f\u0639\u0648\u0629</b> \u063a\u064a\u0631 \u0635\u0627\u0644\u062d",
+			"name": "<b>\u0627\u0644\u0627\u0633\u0645</b> \u063a\u064a\u0631 \u0635\u0627\u0644\u062d",
+			"symbol": "<b>\u0627\u0644\u0631\u0645\u0632</b> \u063a\u064a\u0631 \u0635\u0627\u0644\u062d",
+			"contracturi": "<b>ContractURI</b> \u063a\u064a\u0631 \u0635\u0627\u0644\u062d"
+		},
+		"btnTitle": "\u064a\u0646\u062a\u062c"
+	},
+	"err": {
+		"cantFindFactoryAddress": "\u0644\u0627 \u064a\u0645\u0643\u0646 \u0627\u0644\u0639\u062b\u0648\u0631 \u0639\u0644\u0649 \u0639\u0646\u0648\u0627\u0646 \u0627\u0644\u0645\u0635\u0646\u0639",
+		"transactionFailed": "\u0641\u0634\u0644 \u0627\u0644\u0627\u062c\u0631\u0627\u0621",
+		"smthWentWrong": "\u0647\u0646\u0627\u0643 \u062e\u0637\u0623 \u0645\u0627"
+	},
+	"foo": "\u062d\u0627\u062c\u0650\u0632"
 }

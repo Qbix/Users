@@ -1,22 +1,22 @@
 {
-    "activation": {
-        "Subject": "እንኳን ደህና መጣህ! እባክህ የኢሜል አድራሻህን አረጋግጥ።",
-        "Thanks": "እንኳን ወደ {{1}} በደህና መጡ",
-        "ReallyYourEmail": "ይህ በእርግጥ የእርስዎ ኢሜይል አድራሻ ነው, {{1}} ? ከሆነ የይለፍ ሐረግዎን ለማዘጋጀት እና መለያዎን ለማግበር <a href='<i translate='no'>እዚህ 1000 ን<\/a> ጠቅ ያድርጉ።",
-        "OtherwiseClickLink": "ያለበለዚያ <a href='<i translate='no'>999 &gt; ይህንን ሊንክ<\/a> ይጫኑ።",
-        "SeeYou": "እንገናኝ በ <a href='<i translate='no'>999› {{2}}<\/a> !"
-    },
-    "identifier": {
-        "Subject": "እንኳን ደህና መጣህ! የኢሜይል አድራሻህን አረጋግጥ."
-    },
-    "resend": {
-        "Subject": "ሄይ የይለፍ ሐረግህን ረሳኸው?",
-        "Thanks": "{{1}} ስለጎበኙ እናመሰግናለን",
-        "YouAreReceiving": "ይህ ኢሜይል የደረሰህ አንድ ሰው የኢሜል አድራሻህን አስገብቶ &quot;የይለፍ ቃል ረሳው&quot; ስላደረገ ነው። እርስዎ ካልነበሩ፣ በቀላሉ ይህን መልእክት ችላ ይበሉ።",
-        "Reset": "የይለፍ ሐረግዎን እንደገና ለማስጀመር {{1}} ጠቅ ያድርጉ",
-        "SetUpPassphrase": "የይለፍ ሐረግ አዘጋጅ",
-        "DomainCode": "ድረ-ገጹ ቀድሞውኑ በአሳሽዎ ውስጥ ክፍት ከሆነ, ኮዱን ማስገባት ይችላሉ"
-    },
-    "SeeYou": "በ {{1}} እንገናኝ!",
-    "LinkToUnsubscribe": "ተጨማሪ ኢሜይሎችን ማግኘት ካልፈለግክ ወደ <a href='<i translate='no'>999&#39;&gt; ከደንበኝነት ምዝገባ ለመውጣት የሚወስድ<\/a> አገናኝ አለ።"
+	"activation": {
+		"Subject": "\u12a5\u1295\u12b3\u1295 \u12f0\u1205\u1293 \u1218\u1323\u1205! \u12a5\u1263\u12ad\u1205 \u12e8\u12a2\u121c\u120d \u12a0\u12f5\u122b\u123b\u1205\u1295 \u12a0\u1228\u130b\u130d\u1325\u1362",
+		"Thanks": "\u12a5\u1295\u12b3\u1295 \u12c8\u12f0 {{1}} \u1260\u12f0\u1205\u1293 \u1218\u1321",
+		"ReallyYourEmail": "\u12ed\u1205 \u1260\u12a5\u122d\u130d\u1325 \u12e8\u12a5\u122d\u1235\u12ce \u12a2\u121c\u12ed\u120d \u12a0\u12f5\u122b\u123b \u1290\u12cd, {{1}} ? \u12a8\u1206\u1290 \u12e8\u12ed\u1208\u134d \u1210\u1228\u130d\u12ce\u1295 \u1208\u121b\u12d8\u130b\u1300\u1275 \u12a5\u1293 \u1218\u1208\u12eb\u12ce\u1295 \u1208\u121b\u130d\u1260\u122d <a href='<i translate='no'>\u12a5\u12da\u1205 1000 \u1295</a> \u1320\u1245 \u12eb\u12f5\u122d\u1309\u1362",
+		"OtherwiseClickLink": "\u12eb\u1208\u1260\u1208\u12da\u12eb <a href='<i translate='no'>999 &gt; \u12ed\u1205\u1295\u1295 \u120a\u1295\u12ad</a> \u12ed\u132b\u1291\u1362",
+		"SeeYou": "\u12a5\u1295\u1308\u1293\u129d \u1260 <a href='<i translate='no'>999\u203a {{2}}</a> !"
+	},
+	"identifier": {
+		"Subject": "\u12a5\u1295\u12b3\u1295 \u12f0\u1205\u1293 \u1218\u1323\u1205! \u12e8\u12a2\u121c\u12ed\u120d \u12a0\u12f5\u122b\u123b\u1205\u1295 \u12a0\u1228\u130b\u130d\u1325."
+	},
+	"resend": {
+		"Subject": "\u1204\u12ed \u12e8\u12ed\u1208\u134d \u1210\u1228\u130d\u1205\u1295 \u1228\u1233\u12b8\u12cd?",
+		"Thanks": "{{1}} \u1235\u1208\u130e\u1260\u1299 \u12a5\u1293\u1218\u1230\u130d\u1293\u1208\u1295",
+		"YouAreReceiving": "\u12ed\u1205 \u12a2\u121c\u12ed\u120d \u12e8\u12f0\u1228\u1230\u1205 \u12a0\u1295\u12f5 \u1230\u12cd \u12e8\u12a2\u121c\u120d \u12a0\u12f5\u122b\u123b\u1205\u1295 \u12a0\u1235\u1308\u1265\u1276 &quot;\u12e8\u12ed\u1208\u134d \u1243\u120d \u1228\u1233\u12cd&quot; \u1235\u120b\u12f0\u1228\u1308 \u1290\u12cd\u1362 \u12a5\u122d\u1235\u12ce \u12ab\u120d\u1290\u1260\u1229\u1363 \u1260\u1240\u120b\u1209 \u12ed\u1205\u1295 \u1218\u120d\u12a5\u12ad\u1275 \u127d\u120b \u12ed\u1260\u1209\u1362",
+		"Reset": "\u12e8\u12ed\u1208\u134d \u1210\u1228\u130d\u12ce\u1295 \u12a5\u1295\u12f0\u1308\u1293 \u1208\u121b\u1235\u1300\u1218\u122d {{1}} \u1320\u1245 \u12eb\u12f5\u122d\u1309",
+		"SetUpPassphrase": "\u12e8\u12ed\u1208\u134d \u1210\u1228\u130d \u12a0\u12d8\u130b\u1305",
+		"DomainCode": "\u12f5\u1228-\u1308\u1339 \u1240\u12f5\u121e\u12cd\u1291 \u1260\u12a0\u1233\u123d\u12ce \u12cd\u1235\u1325 \u12ad\u134d\u1275 \u12a8\u1206\u1290, \u12ae\u12f1\u1295 \u121b\u1235\u1308\u1263\u1275 \u12ed\u127d\u120b\u1209"
+	},
+	"SeeYou": "\u1260 {{1}} \u12a5\u1295\u1308\u1293\u129d!",
+	"LinkToUnsubscribe": "\u1270\u1328\u121b\u122a \u12a2\u121c\u12ed\u120e\u127d\u1295 \u121b\u130d\u1298\u1275 \u12ab\u120d\u1348\u1208\u130d\u12ad \u12c8\u12f0 <a href='<i translate='no'>999&#39;&gt; \u12a8\u12f0\u1295\u1260\u129d\u1290\u1275 \u121d\u12dd\u1308\u1263 \u1208\u1218\u12cd\u1323\u1275 \u12e8\u121a\u12c8\u1235\u12f5</a> \u12a0\u1308\u1293\u129d \u12a0\u1208\u1362"
 }

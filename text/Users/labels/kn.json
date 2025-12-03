@@ -1,15 +1,15 @@
 {
-    "addToPhonebook": "ನನ್ನ ಫೋನ್ ಸಂಪರ್ಕಗಳಿಗೆ ಸೇರಿಸಿ",
-    "addLabel": "ಹೊಸ ಸಂಬಂಧ",
-    "newRole": "ಹೊಸ ಪಾತ್ರ",
-    "prompt": "ಅದಕ್ಕೊಂದು ಹೆಸರು ಕೊಡಿ",
-    "newLabel": "ಹೊಸ ಲೇಬಲ್",
-    "editLabel": "ಲೇಬಲ್ ಸಂಪಾದಿಸಿ",
-    "addBtn": "ಸೇರಿಸಿ",
-    "editBtn": "ಉಳಿಸಿ",
-    "canManageDialogTitle": "ಪಾತ್ರಗಳನ್ನು ನಿರ್ವಹಿಸಬಹುದು",
-    "canManageBtn": "ನಿರ್ವಹಿಸಬಹುದು...",
-    "titlePlaceholder": "ಶೀರ್ಷಿಕೆ",
-    "selectOptionTitle_web2": "ಸ್ಥಳೀಯ",
-    "selectOptionTitle_web3": "ವೆಬ್3"
+	"addToPhonebook": "\u0ca8\u0ca8\u0ccd\u0ca8 \u0cab\u0ccb\u0ca8\u0ccd \u0cb8\u0c82\u0caa\u0cb0\u0ccd\u0c95\u0c97\u0cb3\u0cbf\u0c97\u0cc6 \u0cb8\u0cc7\u0cb0\u0cbf\u0cb8\u0cbf",
+	"addLabel": "\u0cb9\u0cca\u0cb8 \u0cb8\u0c82\u0cac\u0c82\u0ca7",
+	"newRole": "\u0cb9\u0cca\u0cb8 \u0caa\u0cbe\u0ca4\u0ccd\u0cb0",
+	"prompt": "\u0c85\u0ca6\u0c95\u0ccd\u0c95\u0cca\u0c82\u0ca6\u0cc1 \u0cb9\u0cc6\u0cb8\u0cb0\u0cc1 \u0c95\u0cca\u0ca1\u0cbf",
+	"newLabel": "\u0cb9\u0cca\u0cb8 \u0cb2\u0cc7\u0cac\u0cb2\u0ccd",
+	"editLabel": "\u0cb2\u0cc7\u0cac\u0cb2\u0ccd \u0cb8\u0c82\u0caa\u0cbe\u0ca6\u0cbf\u0cb8\u0cbf",
+	"addBtn": "\u0cb8\u0cc7\u0cb0\u0cbf\u0cb8\u0cbf",
+	"editBtn": "\u0c89\u0cb3\u0cbf\u0cb8\u0cbf",
+	"canManageDialogTitle": "\u0caa\u0cbe\u0ca4\u0ccd\u0cb0\u0c97\u0cb3\u0ca8\u0ccd\u0ca8\u0cc1 \u0ca8\u0cbf\u0cb0\u0ccd\u0cb5\u0cb9\u0cbf\u0cb8\u0cac\u0cb9\u0cc1\u0ca6\u0cc1",
+	"canManageBtn": "\u0ca8\u0cbf\u0cb0\u0ccd\u0cb5\u0cb9\u0cbf\u0cb8\u0cac\u0cb9\u0cc1\u0ca6\u0cc1...",
+	"titlePlaceholder": "\u0cb6\u0cc0\u0cb0\u0ccd\u0cb7\u0cbf\u0c95\u0cc6",
+	"selectOptionTitle_web2": "\u0cb8\u0ccd\u0ca5\u0cb3\u0cc0\u0caf",
+	"selectOptionTitle_web3": "\u0cb5\u0cc6\u0cac\u0ccd3"
 }

@@ -1,22 +1,22 @@
 {
-    "activation": {
-        "Subject": "Üdvözöljük! Kérem ellenőrizze az email címét.",
-        "Thanks": "Üdvözöljük itt: {{1}}",
-        "ReallyYourEmail": "Ez valóban az Ön e-mail címe, {{1}}? Ha igen, kattintson <a href='{{2}}'>ide<\/a> a jelszó beállításához és a fiók aktiválásához.",
-        "SeeYou": "Találkozunk itt: <a href='{{1}}'>{{2}}<\/a> !",
-        "OtherwiseClickLink": "Ellenkező esetben kattintson <a href='{{1}}'>erre a linkre<\/a> ."
-    },
-    "identifier": {
-        "Subject": "Üdvözöljük! Erősítsd meg az e-mail címed."
-    },
-    "resend": {
-        "Subject": "Hé, elfelejtette a jelszavát?",
-        "Thanks": "Köszönjük látogatását {{1}}",
-        "YouAreReceiving": "Azért kapta ezt az e-mailt, mert valaki megadta az e-mail címét, és rákattintott az &quot;elfelejtett jelszóra&quot;. Ha nem te voltál, egyszerűen hagyd figyelmen kívül ezt az üzenetet.",
-        "Reset": "Az összetett jelszó visszaállításához kattintson a {{1}}",
-        "SetUpPassphrase": "Jelszó beállítása",
-        "DomainCode": "Ha a weboldal már meg van nyitva a böngészőjében, megadhatja a kódot"
-    },
-    "SeeYou": "Találkozunk a {{1}}-on!",
-    "LinkToUnsubscribe": "Itt található egy link, amellyel <a href='{{1}}'>leiratkozhat<\/a> , ha nem szeretne több e-mailt kapni."
+	"activation": {
+		"Subject": "\u00dcdv\u00f6z\u00f6lj\u00fck! K\u00e9rem ellen\u0151rizze az email c\u00edm\u00e9t.",
+		"Thanks": "\u00dcdv\u00f6z\u00f6lj\u00fck itt: {{1}}",
+		"ReallyYourEmail": "Ez val\u00f3ban az \u00d6n e-mail c\u00edme, {{1}}? Ha igen, kattintson <a href='{{2}}'>ide</a> a jelsz\u00f3 be\u00e1ll\u00edt\u00e1s\u00e1hoz \u00e9s a fi\u00f3k aktiv\u00e1l\u00e1s\u00e1hoz.",
+		"SeeYou": "Tal\u00e1lkozunk itt: <a href='{{1}}'>{{2}}</a> !",
+		"OtherwiseClickLink": "Ellenkez\u0151 esetben kattintson <a href='{{1}}'>erre a linkre</a> ."
+	},
+	"identifier": {
+		"Subject": "\u00dcdv\u00f6z\u00f6lj\u00fck! Er\u0151s\u00edtsd meg az e-mail c\u00edmed."
+	},
+	"resend": {
+		"Subject": "H\u00e9, elfelejtette a jelszav\u00e1t?",
+		"Thanks": "K\u00f6sz\u00f6nj\u00fck l\u00e1togat\u00e1s\u00e1t {{1}}",
+		"YouAreReceiving": "Az\u00e9rt kapta ezt az e-mailt, mert valaki megadta az e-mail c\u00edm\u00e9t, \u00e9s r\u00e1kattintott az &quot;elfelejtett jelsz\u00f3ra&quot;. Ha nem te volt\u00e1l, egyszer\u0171en hagyd figyelmen k\u00edv\u00fcl ezt az \u00fczenetet.",
+		"Reset": "Az \u00f6sszetett jelsz\u00f3 vissza\u00e1ll\u00edt\u00e1s\u00e1hoz kattintson a {{1}}",
+		"SetUpPassphrase": "Jelsz\u00f3 be\u00e1ll\u00edt\u00e1sa",
+		"DomainCode": "Ha a weboldal m\u00e1r meg van nyitva a b\u00f6ng\u00e9sz\u0151j\u00e9ben, megadhatja a k\u00f3dot"
+	},
+	"SeeYou": "Tal\u00e1lkozunk a {{1}}-on!",
+	"LinkToUnsubscribe": "Itt tal\u00e1lhat\u00f3 egy link, amellyel <a href='{{1}}'>leiratkozhat</a> , ha nem szeretne t\u00f6bb e-mailt kapni."
 }

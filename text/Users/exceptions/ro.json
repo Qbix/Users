@@ -1,4 +1,4 @@
 {
-    "NotLoggedIn": "Nu sunteți autentificat. <a href='#login' data-users-login>Faceți clic aici pentru a vă autentifica<\/a>",
-    "InvalidLanguage": "Limbă nevalidă {{language}}"
+	"NotLoggedIn": "Nu sunte\u021bi autentificat. <a href='#login' data-users-login>Face\u021bi clic aici pentru a v\u0103 autentifica</a>",
+	"InvalidLanguage": "Limb\u0103 nevalid\u0103 {{language}}"
 }

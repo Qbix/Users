@@ -1,51 +1,51 @@
 {
-    "title": {
-        "createCommunity": "ማህበረሰብ ፍጠር"
-    },
-    "list": {
-        "table": {
-            "td0": "ሰንሰለት ስም",
-            "td1": "ሰንሰለት መታወቂያ",
-            "td2": "የማህበረሰብ አድራሻ"
-        },
-        "btnTitle": "ማምረት"
-    },
-    "form": {
-        "labels": {
-            "chain": "ሰንሰለት",
-            "hook": "መንጠቆ",
-            "invitedHook": "የተጋበዙት መንጠቆ",
-            "name": "ስም",
-            "symbol": "ምልክት",
-            "contracturi": "contractURI"
-        },
-        "placeholders": {
-            "hook": "0x000000000000000000000000000000",
-            "invitedHook": "0x000000000000000000000000000000",
-            "name": "ERC721 ስም",
-            "symbol": "ERC721 ምልክት",
-            "contracturi": "ውል URI"
-        },
-        "small": {
-            "hook": "የኮንትራት መንጠቆ አድራሻ የተተገበረ ICommunityHook በይነገጽ። አድራሻ (0) ሊሆን ይችላል",
-            "invitedHook": "የተጋበዘ የኮንትራት አድራሻ የተተገበረ ICommunityInvite በይነገጽ። አድራሻ (0) ሊሆን ይችላል",
-            "name": "ERC721 ስም",
-            "symbol": "ERC721 ምልክት",
-            "contracturi": "ውል URI"
-        },
-        "err": {
-            "hook": "<b>መንጠቆ<\/b> ልክ ያልሆነ",
-            "invitedHook": "<b>የተጋበዘ መንጠቆ<\/b> ልክ ያልሆነ",
-            "name": "<b>ስም<\/b> ልክ ያልሆነ",
-            "symbol": "<b>ምልክት<\/b> ልክ ያልሆነ",
-            "contracturi": "<b>contractURI<\/b> ልክ ያልሆነ"
-        },
-        "btnTitle": "ማምረት"
-    },
-    "err": {
-        "cantFindFactoryAddress": "የፋብሪካ አድራሻ ማግኘት አልተቻለም",
-        "transactionFailed": "ግብይት አልተሳካም።",
-        "smthWentWrong": "የሆነ ስህተት ተከስቷል"
-    },
-    "foo": "ባር"
+	"title": {
+		"createCommunity": "\u121b\u1205\u1260\u1228\u1230\u1265 \u134d\u1320\u122d"
+	},
+	"list": {
+		"table": {
+			"td0": "\u1230\u1295\u1230\u1208\u1275 \u1235\u121d",
+			"td1": "\u1230\u1295\u1230\u1208\u1275 \u1218\u1273\u12c8\u1242\u12eb",
+			"td2": "\u12e8\u121b\u1205\u1260\u1228\u1230\u1265 \u12a0\u12f5\u122b\u123b"
+		},
+		"btnTitle": "\u121b\u121d\u1228\u1275"
+	},
+	"form": {
+		"labels": {
+			"chain": "\u1230\u1295\u1230\u1208\u1275",
+			"hook": "\u1218\u1295\u1320\u1246",
+			"invitedHook": "\u12e8\u1270\u130b\u1260\u12d9\u1275 \u1218\u1295\u1320\u1246",
+			"name": "\u1235\u121d",
+			"symbol": "\u121d\u120d\u12ad\u1275",
+			"contracturi": "contractURI"
+		},
+		"placeholders": {
+			"hook": "0x000000000000000000000000000000",
+			"invitedHook": "0x000000000000000000000000000000",
+			"name": "ERC721 \u1235\u121d",
+			"symbol": "ERC721 \u121d\u120d\u12ad\u1275",
+			"contracturi": "\u12cd\u120d URI"
+		},
+		"small": {
+			"hook": "\u12e8\u12ae\u1295\u1275\u122b\u1275 \u1218\u1295\u1320\u1246 \u12a0\u12f5\u122b\u123b \u12e8\u1270\u1270\u1308\u1260\u1228 ICommunityHook \u1260\u12ed\u1290\u1308\u133d\u1362 \u12a0\u12f5\u122b\u123b (0) \u120a\u1206\u1295 \u12ed\u127d\u120b\u120d",
+			"invitedHook": "\u12e8\u1270\u130b\u1260\u12d8 \u12e8\u12ae\u1295\u1275\u122b\u1275 \u12a0\u12f5\u122b\u123b \u12e8\u1270\u1270\u1308\u1260\u1228 ICommunityInvite \u1260\u12ed\u1290\u1308\u133d\u1362 \u12a0\u12f5\u122b\u123b (0) \u120a\u1206\u1295 \u12ed\u127d\u120b\u120d",
+			"name": "ERC721 \u1235\u121d",
+			"symbol": "ERC721 \u121d\u120d\u12ad\u1275",
+			"contracturi": "\u12cd\u120d URI"
+		},
+		"err": {
+			"hook": "<b>\u1218\u1295\u1320\u1246</b> \u120d\u12ad \u12eb\u120d\u1206\u1290",
+			"invitedHook": "<b>\u12e8\u1270\u130b\u1260\u12d8 \u1218\u1295\u1320\u1246</b> \u120d\u12ad \u12eb\u120d\u1206\u1290",
+			"name": "<b>\u1235\u121d</b> \u120d\u12ad \u12eb\u120d\u1206\u1290",
+			"symbol": "<b>\u121d\u120d\u12ad\u1275</b> \u120d\u12ad \u12eb\u120d\u1206\u1290",
+			"contracturi": "<b>contractURI</b> \u120d\u12ad \u12eb\u120d\u1206\u1290"
+		},
+		"btnTitle": "\u121b\u121d\u1228\u1275"
+	},
+	"err": {
+		"cantFindFactoryAddress": "\u12e8\u134b\u1265\u122a\u12ab \u12a0\u12f5\u122b\u123b \u121b\u130d\u1298\u1275 \u12a0\u120d\u1270\u127b\u1208\u121d",
+		"transactionFailed": "\u130d\u1265\u12ed\u1275 \u12a0\u120d\u1270\u1233\u12ab\u121d\u1362",
+		"smthWentWrong": "\u12e8\u1206\u1290 \u1235\u1205\u1270\u1275 \u1270\u12a8\u1235\u1277\u120d"
+	},
+	"foo": "\u1263\u122d"
 }

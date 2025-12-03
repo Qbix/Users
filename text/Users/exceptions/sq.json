@@ -1,4 +1,4 @@
 {
-    "NotLoggedIn": "Ju nuk jeni identifikuar. <a href='#login' data-users-login>Klikoni këtu për t&#39;u identifikuar<\/a>",
-    "InvalidLanguage": "Gjuhë e pavlefshme {{language}}"
+	"NotLoggedIn": "Ju nuk jeni identifikuar. <a href='#login' data-users-login>Klikoni k\u00ebtu p\u00ebr t&#39;u identifikuar</a>",
+	"InvalidLanguage": "Gjuh\u00eb e pavlefshme {{language}}"
 }

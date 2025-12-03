@@ -1,22 +1,22 @@
 {
-    "activation": {
-        "Subject": "Accueillir! Veuillez vérifier votre adresse e-mail.",
-        "Thanks": "Bienvenue à {{1}}",
-        "ReallyYourEmail": "Est-ce vraiment votre adresse e-mail, {{1}} ? Si tel est le cas, cliquez <a href='{{2}}'>ici<\/a> pour définir votre phrase secrète et activer votre compte.",
-        "SeeYou": "Rendez-vous sur <a href='{{1}}'>{{2}}<\/a> !",
-        "OtherwiseClickLink": "Sinon, cliquez sur <a href='{{1}}'>ce lien<\/a> ."
-    },
-    "identifier": {
-        "Subject": "Accueillir! Vérifiez votre adresse e-mail."
-    },
-    "resend": {
-        "Subject": "Hey, avez-vous oublié votre mot de passe ?",
-        "Thanks": "Merci de votre visite {{1}}",
-        "YouAreReceiving": "Vous recevez cet e-mail parce que quelqu&#39;un a entré votre adresse e-mail et a cliqué sur &quot;mot de passe oublié&quot;. Si ce n&#39;était pas vous, ignorez simplement ce message.",
-        "Reset": "Pour réinitialiser votre phrase secrète, cliquez sur {{1}}",
-        "SetUpPassphrase": "Configurer la phrase secrète",
-        "DomainCode": "Si la page Web est déjà ouverte dans votre navigateur, vous pouvez entrer le code"
-    },
-    "SeeYou": "Rendez-vous sur {{1}} !",
-    "LinkToUnsubscribe": "Voici un lien pour vous <a href='{{1}}'>désabonner<\/a> si vous ne souhaitez plus recevoir d&#39;e-mails."
+	"activation": {
+		"Subject": "Accueillir! Veuillez v\u00e9rifier votre adresse e-mail.",
+		"Thanks": "Bienvenue \u00e0 {{1}}",
+		"ReallyYourEmail": "Est-ce vraiment votre adresse e-mail, {{1}}\u00a0? Si tel est le cas, cliquez <a href='{{2}}'>ici</a> pour d\u00e9finir votre phrase secr\u00e8te et activer votre compte.",
+		"SeeYou": "Rendez-vous sur <a href='{{1}}'>{{2}}</a>\u00a0!",
+		"OtherwiseClickLink": "Sinon, cliquez sur <a href='{{1}}'>ce lien</a> ."
+	},
+	"identifier": {
+		"Subject": "Accueillir! V\u00e9rifiez votre adresse e-mail."
+	},
+	"resend": {
+		"Subject": "Hey, avez-vous oubli\u00e9 votre mot de passe\u00a0?",
+		"Thanks": "Merci de votre visite {{1}}",
+		"YouAreReceiving": "Vous recevez cet e-mail parce que quelqu&#39;un a entr\u00e9 votre adresse e-mail et a cliqu\u00e9 sur &quot;mot de passe oubli\u00e9&quot;. Si ce n&#39;\u00e9tait pas vous, ignorez simplement ce message.",
+		"Reset": "Pour r\u00e9initialiser votre phrase secr\u00e8te, cliquez sur {{1}}",
+		"SetUpPassphrase": "Configurer la phrase secr\u00e8te",
+		"DomainCode": "Si la page Web est d\u00e9j\u00e0 ouverte dans votre navigateur, vous pouvez entrer le code"
+	},
+	"SeeYou": "Rendez-vous sur {{1}}\u00a0!",
+	"LinkToUnsubscribe": "Voici un lien pour vous <a href='{{1}}'>d\u00e9sabonner</a> si vous ne souhaitez plus recevoir d&#39;e-mails."
 }

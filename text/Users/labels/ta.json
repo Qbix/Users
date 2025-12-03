@@ -1,15 +1,15 @@
 {
-    "addToPhonebook": "எனது தொலைபேசி தொடர்புகளில் சேர்",
-    "addLabel": "புதிய உறவு",
-    "newRole": "புதிய பாத்திரம்",
-    "prompt": "அதற்கு ஒரு பெயர் கொடுங்கள்",
-    "newLabel": "புதிய லேபிள்",
-    "editLabel": "லேபிளைத் திருத்து",
-    "addBtn": "கூட்டு",
-    "editBtn": "சேமிக்கவும்",
-    "canManageDialogTitle": "பாத்திரங்களை நிர்வகிக்க முடியும்",
-    "canManageBtn": "நிர்வகிக்க முடியும்...",
-    "titlePlaceholder": "தலைப்பு",
-    "selectOptionTitle_web2": "பூர்வீகம்",
-    "selectOptionTitle_web3": "வலை3"
+	"addToPhonebook": "\u0b8e\u0ba9\u0ba4\u0bc1 \u0ba4\u0bca\u0bb2\u0bc8\u0baa\u0bc7\u0b9a\u0bbf \u0ba4\u0bca\u0b9f\u0bb0\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0b9a\u0bc7\u0bb0\u0bcd",
+	"addLabel": "\u0baa\u0bc1\u0ba4\u0bbf\u0baf \u0b89\u0bb1\u0bb5\u0bc1",
+	"newRole": "\u0baa\u0bc1\u0ba4\u0bbf\u0baf \u0baa\u0bbe\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0bae\u0bcd",
+	"prompt": "\u0b85\u0ba4\u0bb1\u0bcd\u0b95\u0bc1 \u0b92\u0bb0\u0bc1 \u0baa\u0bc6\u0baf\u0bb0\u0bcd \u0b95\u0bca\u0b9f\u0bc1\u0b99\u0bcd\u0b95\u0bb3\u0bcd",
+	"newLabel": "\u0baa\u0bc1\u0ba4\u0bbf\u0baf \u0bb2\u0bc7\u0baa\u0bbf\u0bb3\u0bcd",
+	"editLabel": "\u0bb2\u0bc7\u0baa\u0bbf\u0bb3\u0bc8\u0ba4\u0bcd \u0ba4\u0bbf\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1",
+	"addBtn": "\u0b95\u0bc2\u0b9f\u0bcd\u0b9f\u0bc1",
+	"editBtn": "\u0b9a\u0bc7\u0bae\u0bbf\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd",
+	"canManageDialogTitle": "\u0baa\u0bbe\u0ba4\u0bcd\u0ba4\u0bbf\u0bb0\u0b99\u0bcd\u0b95\u0bb3\u0bc8 \u0ba8\u0bbf\u0bb0\u0bcd\u0bb5\u0b95\u0bbf\u0b95\u0bcd\u0b95 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bc1\u0bae\u0bcd",
+	"canManageBtn": "\u0ba8\u0bbf\u0bb0\u0bcd\u0bb5\u0b95\u0bbf\u0b95\u0bcd\u0b95 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bc1\u0bae\u0bcd...",
+	"titlePlaceholder": "\u0ba4\u0bb2\u0bc8\u0baa\u0bcd\u0baa\u0bc1",
+	"selectOptionTitle_web2": "\u0baa\u0bc2\u0bb0\u0bcd\u0bb5\u0bc0\u0b95\u0bae\u0bcd",
+	"selectOptionTitle_web3": "\u0bb5\u0bb2\u0bc83"
 }

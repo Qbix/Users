@@ -1,14 +1,14 @@
 {
-    "activation": {
-        "Thanks": "Vítejte v {{1}}.",
-        "ClickHere": "Kliknutím sem aktivujte svůj účet: {{1}}"
-    },
-    "addMobile": {
-        "ClickHere": "Kliknutím sem ověřte své mobilní číslo: {{1}}"
-    },
-    "resend": {
-        "DidYouWant": "Chtěli jste resetovat svou přístupovou frázi v {{1}}?",
-        "ClickHere": "Pak klikněte sem: {{1}}",
-        "OrEnterCode": "nebo zadejte kód:"
-    }
+	"activation": {
+		"Thanks": "V\u00edtejte v {{1}}.",
+		"ClickHere": "Kliknut\u00edm sem aktivujte sv\u016fj \u00fa\u010det: {{1}}"
+	},
+	"addMobile": {
+		"ClickHere": "Kliknut\u00edm sem ov\u011b\u0159te sv\u00e9 mobiln\u00ed \u010d\u00edslo: {{1}}"
+	},
+	"resend": {
+		"DidYouWant": "Cht\u011bli jste resetovat svou p\u0159\u00edstupovou fr\u00e1zi v {{1}}?",
+		"ClickHere": "Pak klikn\u011bte sem: {{1}}",
+		"OrEnterCode": "nebo zadejte k\u00f3d:"
+	}
 }

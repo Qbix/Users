@@ -1,14 +1,14 @@
 {
-    "activation": {
-        "Thanks": "Laipni lūdzam pakalpojumā {{1}}.",
-        "ClickHere": "Noklikšķiniet šeit, lai aktivizētu savu kontu: {{1}}"
-    },
-    "addMobile": {
-        "ClickHere": "Noklikšķiniet šeit, lai verificētu savu mobilā tālruņa numuru: {{1}}"
-    },
-    "resend": {
-        "DidYouWant": "Vai vēlējāties atiestatīt ieejas frāzi šādā valodā: {{1}}?",
-        "ClickHere": "Pēc tam noklikšķiniet šeit: {{1}}",
-        "OrEnterCode": "vai ievadiet kodu:"
-    }
+	"activation": {
+		"Thanks": "Laipni l\u016bdzam pakalpojum\u0101 {{1}}.",
+		"ClickHere": "Noklik\u0161\u0137iniet \u0161eit, lai aktiviz\u0113tu savu kontu: {{1}}"
+	},
+	"addMobile": {
+		"ClickHere": "Noklik\u0161\u0137iniet \u0161eit, lai verific\u0113tu savu mobil\u0101 t\u0101lru\u0146a numuru: {{1}}"
+	},
+	"resend": {
+		"DidYouWant": "Vai v\u0113l\u0113j\u0101ties atiestat\u012bt ieejas fr\u0101zi \u0161\u0101d\u0101 valod\u0101: {{1}}?",
+		"ClickHere": "P\u0113c tam noklik\u0161\u0137iniet \u0161eit: {{1}}",
+		"OrEnterCode": "vai ievadiet kodu:"
+	}
 }

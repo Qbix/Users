@@ -1,14 +1,14 @@
 {
-    "activation": {
-        "Thanks": "Üdvözli a {{1}}.",
-        "ClickHere": "Kattintson ide fiókja aktiválásához: {{1}}"
-    },
-    "addMobile": {
-        "ClickHere": "Kattintson ide mobilszámának igazolásához: {{1}}"
-    },
-    "resend": {
-        "DidYouWant": "Vissza akarta állítani összetett jelszavát itt: {{1}}?",
-        "ClickHere": "Akkor kattintson ide: {{1}}",
-        "OrEnterCode": "vagy írja be a kódot:"
-    }
+	"activation": {
+		"Thanks": "\u00dcdv\u00f6zli a {{1}}.",
+		"ClickHere": "Kattintson ide fi\u00f3kja aktiv\u00e1l\u00e1s\u00e1hoz: {{1}}"
+	},
+	"addMobile": {
+		"ClickHere": "Kattintson ide mobilsz\u00e1m\u00e1nak igazol\u00e1s\u00e1hoz: {{1}}"
+	},
+	"resend": {
+		"DidYouWant": "Vissza akarta \u00e1ll\u00edtani \u00f6sszetett jelszav\u00e1t itt: {{1}}?",
+		"ClickHere": "Akkor kattintson ide: {{1}}",
+		"OrEnterCode": "vagy \u00edrja be a k\u00f3dot:"
+	}
 }

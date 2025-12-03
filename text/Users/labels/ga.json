@@ -1,15 +1,15 @@
 {
-    "addToPhonebook": "Cuir le Mo Theagmhálaithe Fón",
-    "addLabel": "Gaol Nua",
-    "newRole": "Ról Nua",
-    "prompt": "Tabhair ainm air",
-    "newLabel": "Lipéad Nua",
-    "editLabel": "Cuir Lipéad in Eagar",
-    "addBtn": "Cuir",
-    "editBtn": "Sábháil",
-    "canManageDialogTitle": "Is Féidir Róil a Bhainistiú",
-    "canManageBtn": "Is féidir a bhainistiú ...",
-    "titlePlaceholder": "Teideal",
-    "selectOptionTitle_web2": "Dúchasach",
-    "selectOptionTitle_web3": "Gréasán3"
+	"addToPhonebook": "Cuir le Mo Theagmh\u00e1laithe F\u00f3n",
+	"addLabel": "Gaol Nua",
+	"newRole": "R\u00f3l Nua",
+	"prompt": "Tabhair ainm air",
+	"newLabel": "Lip\u00e9ad Nua",
+	"editLabel": "Cuir Lip\u00e9ad in Eagar",
+	"addBtn": "Cuir",
+	"editBtn": "S\u00e1bh\u00e1il",
+	"canManageDialogTitle": "Is F\u00e9idir R\u00f3il a Bhainisti\u00fa",
+	"canManageBtn": "Is f\u00e9idir a bhainisti\u00fa ...",
+	"titlePlaceholder": "Teideal",
+	"selectOptionTitle_web2": "D\u00fachasach",
+	"selectOptionTitle_web3": "Gr\u00e9as\u00e1n3"
 }

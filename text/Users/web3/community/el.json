@@ -1,51 +1,51 @@
 {
-    "title": {
-        "createCommunity": "Δημιουργία Κοινότητας"
-    },
-    "list": {
-        "table": {
-            "td0": "Όνομα αλυσίδας",
-            "td1": "Αναγνωριστικό αλυσίδας",
-            "td2": "Διεύθυνση κοινότητας"
-        },
-        "btnTitle": "Παράγω"
-    },
-    "form": {
-        "labels": {
-            "chain": "Αλυσίδα",
-            "hook": "Αγκιστρο",
-            "invitedHook": "InvitedHook",
-            "name": "Ονομα",
-            "symbol": "Σύμβολο",
-            "contracturi": "contractURI"
-        },
-        "placeholders": {
-            "hook": "0x000000000000000000000000000000000000000000",
-            "invitedHook": "0x000000000000000000000000000000000000000000",
-            "name": "ERC721 Όνομα",
-            "symbol": "Σύμβολο ERC721",
-            "contracturi": "URI σύμβασης"
-        },
-        "small": {
-            "hook": "διεύθυνση αγκίστρου της διεπαφής ICommunityHook που υλοποιήθηκε με σύμβαση. Μπορεί να είναι διεύθυνση(0)",
-            "invitedHook": "Διεύθυνση guestsHook της σύμβασης που υλοποιήθηκε διεπαφή ICommunityInvite. Μπορεί να είναι διεύθυνση(0)",
-            "name": "ERC721 Όνομα",
-            "symbol": "Σύμβολο ERC721",
-            "contracturi": "URI σύμβασης"
-        },
-        "err": {
-            "hook": "Άκυρο <b>άγκιστρο<\/b>",
-            "invitedHook": "<b>προσκεκλημένοHook<\/b> μη έγκυρο",
-            "name": "Άκυρο <b>όνομα<\/b>",
-            "symbol": "<b>Το σύμβολο<\/b> δεν είναι έγκυρο",
-            "contracturi": "Μη έγκυρο <b>contractURI<\/b>"
-        },
-        "btnTitle": "Παράγω"
-    },
-    "err": {
-        "cantFindFactoryAddress": "Δεν είναι δυνατή η εύρεση της εργοστασιακής διεύθυνσης",
-        "transactionFailed": "η συναλλαγή απέτυχε",
-        "smthWentWrong": "Κάτι πήγε στραβά"
-    },
-    "foo": "μπαρ"
+	"title": {
+		"createCommunity": "\u0394\u03b7\u03bc\u03b9\u03bf\u03c5\u03c1\u03b3\u03af\u03b1 \u039a\u03bf\u03b9\u03bd\u03cc\u03c4\u03b7\u03c4\u03b1\u03c2"
+	},
+	"list": {
+		"table": {
+			"td0": "\u038c\u03bd\u03bf\u03bc\u03b1 \u03b1\u03bb\u03c5\u03c3\u03af\u03b4\u03b1\u03c2",
+			"td1": "\u0391\u03bd\u03b1\u03b3\u03bd\u03c9\u03c1\u03b9\u03c3\u03c4\u03b9\u03ba\u03cc \u03b1\u03bb\u03c5\u03c3\u03af\u03b4\u03b1\u03c2",
+			"td2": "\u0394\u03b9\u03b5\u03cd\u03b8\u03c5\u03bd\u03c3\u03b7 \u03ba\u03bf\u03b9\u03bd\u03cc\u03c4\u03b7\u03c4\u03b1\u03c2"
+		},
+		"btnTitle": "\u03a0\u03b1\u03c1\u03ac\u03b3\u03c9"
+	},
+	"form": {
+		"labels": {
+			"chain": "\u0391\u03bb\u03c5\u03c3\u03af\u03b4\u03b1",
+			"hook": "\u0391\u03b3\u03ba\u03b9\u03c3\u03c4\u03c1\u03bf",
+			"invitedHook": "InvitedHook",
+			"name": "\u039f\u03bd\u03bf\u03bc\u03b1",
+			"symbol": "\u03a3\u03cd\u03bc\u03b2\u03bf\u03bb\u03bf",
+			"contracturi": "contractURI"
+		},
+		"placeholders": {
+			"hook": "0x000000000000000000000000000000000000000000",
+			"invitedHook": "0x000000000000000000000000000000000000000000",
+			"name": "ERC721 \u038c\u03bd\u03bf\u03bc\u03b1",
+			"symbol": "\u03a3\u03cd\u03bc\u03b2\u03bf\u03bb\u03bf ERC721",
+			"contracturi": "URI \u03c3\u03cd\u03bc\u03b2\u03b1\u03c3\u03b7\u03c2"
+		},
+		"small": {
+			"hook": "\u03b4\u03b9\u03b5\u03cd\u03b8\u03c5\u03bd\u03c3\u03b7 \u03b1\u03b3\u03ba\u03af\u03c3\u03c4\u03c1\u03bf\u03c5 \u03c4\u03b7\u03c2 \u03b4\u03b9\u03b5\u03c0\u03b1\u03c6\u03ae\u03c2 ICommunityHook \u03c0\u03bf\u03c5 \u03c5\u03bb\u03bf\u03c0\u03bf\u03b9\u03ae\u03b8\u03b7\u03ba\u03b5 \u03bc\u03b5 \u03c3\u03cd\u03bc\u03b2\u03b1\u03c3\u03b7. \u039c\u03c0\u03bf\u03c1\u03b5\u03af \u03bd\u03b1 \u03b5\u03af\u03bd\u03b1\u03b9 \u03b4\u03b9\u03b5\u03cd\u03b8\u03c5\u03bd\u03c3\u03b7(0)",
+			"invitedHook": "\u0394\u03b9\u03b5\u03cd\u03b8\u03c5\u03bd\u03c3\u03b7 guestsHook \u03c4\u03b7\u03c2 \u03c3\u03cd\u03bc\u03b2\u03b1\u03c3\u03b7\u03c2 \u03c0\u03bf\u03c5 \u03c5\u03bb\u03bf\u03c0\u03bf\u03b9\u03ae\u03b8\u03b7\u03ba\u03b5 \u03b4\u03b9\u03b5\u03c0\u03b1\u03c6\u03ae ICommunityInvite. \u039c\u03c0\u03bf\u03c1\u03b5\u03af \u03bd\u03b1 \u03b5\u03af\u03bd\u03b1\u03b9 \u03b4\u03b9\u03b5\u03cd\u03b8\u03c5\u03bd\u03c3\u03b7(0)",
+			"name": "ERC721 \u038c\u03bd\u03bf\u03bc\u03b1",
+			"symbol": "\u03a3\u03cd\u03bc\u03b2\u03bf\u03bb\u03bf ERC721",
+			"contracturi": "URI \u03c3\u03cd\u03bc\u03b2\u03b1\u03c3\u03b7\u03c2"
+		},
+		"err": {
+			"hook": "\u0386\u03ba\u03c5\u03c1\u03bf <b>\u03ac\u03b3\u03ba\u03b9\u03c3\u03c4\u03c1\u03bf</b>",
+			"invitedHook": "<b>\u03c0\u03c1\u03bf\u03c3\u03ba\u03b5\u03ba\u03bb\u03b7\u03bc\u03ad\u03bd\u03bfHook</b> \u03bc\u03b7 \u03ad\u03b3\u03ba\u03c5\u03c1\u03bf",
+			"name": "\u0386\u03ba\u03c5\u03c1\u03bf <b>\u03cc\u03bd\u03bf\u03bc\u03b1</b>",
+			"symbol": "<b>\u03a4\u03bf \u03c3\u03cd\u03bc\u03b2\u03bf\u03bb\u03bf</b> \u03b4\u03b5\u03bd \u03b5\u03af\u03bd\u03b1\u03b9 \u03ad\u03b3\u03ba\u03c5\u03c1\u03bf",
+			"contracturi": "\u039c\u03b7 \u03ad\u03b3\u03ba\u03c5\u03c1\u03bf <b>contractURI</b>"
+		},
+		"btnTitle": "\u03a0\u03b1\u03c1\u03ac\u03b3\u03c9"
+	},
+	"err": {
+		"cantFindFactoryAddress": "\u0394\u03b5\u03bd \u03b5\u03af\u03bd\u03b1\u03b9 \u03b4\u03c5\u03bd\u03b1\u03c4\u03ae \u03b7 \u03b5\u03cd\u03c1\u03b5\u03c3\u03b7 \u03c4\u03b7\u03c2 \u03b5\u03c1\u03b3\u03bf\u03c3\u03c4\u03b1\u03c3\u03b9\u03b1\u03ba\u03ae\u03c2 \u03b4\u03b9\u03b5\u03cd\u03b8\u03c5\u03bd\u03c3\u03b7\u03c2",
+		"transactionFailed": "\u03b7 \u03c3\u03c5\u03bd\u03b1\u03bb\u03bb\u03b1\u03b3\u03ae \u03b1\u03c0\u03ad\u03c4\u03c5\u03c7\u03b5",
+		"smthWentWrong": "\u039a\u03ac\u03c4\u03b9 \u03c0\u03ae\u03b3\u03b5 \u03c3\u03c4\u03c1\u03b1\u03b2\u03ac"
+	},
+	"foo": "\u03bc\u03c0\u03b1\u03c1"
 }

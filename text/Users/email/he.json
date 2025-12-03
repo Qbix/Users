@@ -1,22 +1,22 @@
 {
-    "activation": {
-        "Subject": "ברוך הבא! נא לאמת את כתובת הדוא&quot;ל שלך.",
-        "Thanks": "ברוכים הבאים אל {{1}}",
-        "ReallyYourEmail": "האם זו באמת כתובת האימייל שלך, {{1}}? אם כן, לחץ <a href='{{2}}'>כאן<\/a> כדי להגדיר את ביטוי הסיסמה שלך ולהפעיל את חשבונך.",
-        "SeeYou": "נתראה ב <a href='{{1}}'>-{{2}}<\/a> !",
-        "OtherwiseClickLink": "אחרת, לחץ על <a href='{{1}}'>הקישור הזה<\/a> ."
-    },
-    "identifier": {
-        "Subject": "ברוך הבא! אמת את כתובת הדוא&quot;ל שלך."
-    },
-    "resend": {
-        "Subject": "היי, שכחת את משפט הסיסמה שלך?",
-        "Thanks": "תודה שביקרת ב-{{1}}",
-        "YouAreReceiving": "אתה מקבל דוא&quot;ל זה מכיוון שמישהו הזין את כתובת הדוא&quot;ל שלך ולחץ על &quot;שכחתי את משפט הסיסמה&quot;. אם זה לא היית אתה, פשוט התעלם מההודעה הזו.",
-        "Reset": "כדי לאפס את ביטוי הסיסמה, לחץ על {{1}}",
-        "SetUpPassphrase": "הגדר ביטוי סיסמה",
-        "DomainCode": "אם דף האינטרנט כבר פתוח בדפדפן שלך, תוכל להזין את הקוד"
-    },
-    "SeeYou": "נתראה ב-{{1}}!",
-    "LinkToUnsubscribe": "הנה קישור <a href='{{1}}'>לביטול הרשמה<\/a> אם אינך רוצה לקבל עוד מיילים."
+	"activation": {
+		"Subject": "\u05d1\u05e8\u05d5\u05da \u05d4\u05d1\u05d0! \u05e0\u05d0 \u05dc\u05d0\u05de\u05ea \u05d0\u05ea \u05db\u05ea\u05d5\u05d1\u05ea \u05d4\u05d3\u05d5\u05d0&quot;\u05dc \u05e9\u05dc\u05da.",
+		"Thanks": "\u05d1\u05e8\u05d5\u05db\u05d9\u05dd \u05d4\u05d1\u05d0\u05d9\u05dd \u05d0\u05dc {{1}}",
+		"ReallyYourEmail": "\u05d4\u05d0\u05dd \u05d6\u05d5 \u05d1\u05d0\u05de\u05ea \u05db\u05ea\u05d5\u05d1\u05ea \u05d4\u05d0\u05d9\u05de\u05d9\u05d9\u05dc \u05e9\u05dc\u05da, {{1}}? \u05d0\u05dd \u05db\u05df, \u05dc\u05d7\u05e5 <a href='{{2}}'>\u05db\u05d0\u05df</a> \u05db\u05d3\u05d9 \u05dc\u05d4\u05d2\u05d3\u05d9\u05e8 \u05d0\u05ea \u05d1\u05d9\u05d8\u05d5\u05d9 \u05d4\u05e1\u05d9\u05e1\u05de\u05d4 \u05e9\u05dc\u05da \u05d5\u05dc\u05d4\u05e4\u05e2\u05d9\u05dc \u05d0\u05ea \u05d7\u05e9\u05d1\u05d5\u05e0\u05da.",
+		"SeeYou": "\u05e0\u05ea\u05e8\u05d0\u05d4 \u05d1 <a href='{{1}}'>-{{2}}</a> !",
+		"OtherwiseClickLink": "\u05d0\u05d7\u05e8\u05ea, \u05dc\u05d7\u05e5 \u05e2\u05dc <a href='{{1}}'>\u05d4\u05e7\u05d9\u05e9\u05d5\u05e8 \u05d4\u05d6\u05d4</a> ."
+	},
+	"identifier": {
+		"Subject": "\u05d1\u05e8\u05d5\u05da \u05d4\u05d1\u05d0! \u05d0\u05de\u05ea \u05d0\u05ea \u05db\u05ea\u05d5\u05d1\u05ea \u05d4\u05d3\u05d5\u05d0&quot;\u05dc \u05e9\u05dc\u05da."
+	},
+	"resend": {
+		"Subject": "\u05d4\u05d9\u05d9, \u05e9\u05db\u05d7\u05ea \u05d0\u05ea \u05de\u05e9\u05e4\u05d8 \u05d4\u05e1\u05d9\u05e1\u05de\u05d4 \u05e9\u05dc\u05da?",
+		"Thanks": "\u05ea\u05d5\u05d3\u05d4 \u05e9\u05d1\u05d9\u05e7\u05e8\u05ea \u05d1-{{1}}",
+		"YouAreReceiving": "\u05d0\u05ea\u05d4 \u05de\u05e7\u05d1\u05dc \u05d3\u05d5\u05d0&quot;\u05dc \u05d6\u05d4 \u05de\u05db\u05d9\u05d5\u05d5\u05df \u05e9\u05de\u05d9\u05e9\u05d4\u05d5 \u05d4\u05d6\u05d9\u05df \u05d0\u05ea \u05db\u05ea\u05d5\u05d1\u05ea \u05d4\u05d3\u05d5\u05d0&quot;\u05dc \u05e9\u05dc\u05da \u05d5\u05dc\u05d7\u05e5 \u05e2\u05dc &quot;\u05e9\u05db\u05d7\u05ea\u05d9 \u05d0\u05ea \u05de\u05e9\u05e4\u05d8 \u05d4\u05e1\u05d9\u05e1\u05de\u05d4&quot;. \u05d0\u05dd \u05d6\u05d4 \u05dc\u05d0 \u05d4\u05d9\u05d9\u05ea \u05d0\u05ea\u05d4, \u05e4\u05e9\u05d5\u05d8 \u05d4\u05ea\u05e2\u05dc\u05dd \u05de\u05d4\u05d4\u05d5\u05d3\u05e2\u05d4 \u05d4\u05d6\u05d5.",
+		"Reset": "\u05db\u05d3\u05d9 \u05dc\u05d0\u05e4\u05e1 \u05d0\u05ea \u05d1\u05d9\u05d8\u05d5\u05d9 \u05d4\u05e1\u05d9\u05e1\u05de\u05d4, \u05dc\u05d7\u05e5 \u05e2\u05dc {{1}}",
+		"SetUpPassphrase": "\u05d4\u05d2\u05d3\u05e8 \u05d1\u05d9\u05d8\u05d5\u05d9 \u05e1\u05d9\u05e1\u05de\u05d4",
+		"DomainCode": "\u05d0\u05dd \u05d3\u05e3 \u05d4\u05d0\u05d9\u05e0\u05d8\u05e8\u05e0\u05d8 \u05db\u05d1\u05e8 \u05e4\u05ea\u05d5\u05d7 \u05d1\u05d3\u05e4\u05d3\u05e4\u05df \u05e9\u05dc\u05da, \u05ea\u05d5\u05db\u05dc \u05dc\u05d4\u05d6\u05d9\u05df \u05d0\u05ea \u05d4\u05e7\u05d5\u05d3"
+	},
+	"SeeYou": "\u05e0\u05ea\u05e8\u05d0\u05d4 \u05d1-{{1}}!",
+	"LinkToUnsubscribe": "\u05d4\u05e0\u05d4 \u05e7\u05d9\u05e9\u05d5\u05e8 <a href='{{1}}'>\u05dc\u05d1\u05d9\u05d8\u05d5\u05dc \u05d4\u05e8\u05e9\u05de\u05d4</a> \u05d0\u05dd \u05d0\u05d9\u05e0\u05da \u05e8\u05d5\u05e6\u05d4 \u05dc\u05e7\u05d1\u05dc \u05e2\u05d5\u05d3 \u05de\u05d9\u05d9\u05dc\u05d9\u05dd."
 }

@@ -1,15 +1,15 @@
 {
-    "addToPhonebook": "Føj til Min telefon-kontakter",
-    "addLabel": "Nyt forhold",
-    "newRole": "Ny rolle",
-    "prompt": "Giv det et navn",
-    "newLabel": "Ny etiket",
-    "editLabel": "Rediger etiket",
-    "addBtn": "Tilføje",
-    "editBtn": "Gemme",
-    "canManageDialogTitle": "Kan styre roller",
-    "canManageBtn": "Kan administrere...",
-    "titlePlaceholder": "Titel",
-    "selectOptionTitle_web2": "Hjemmehørende",
-    "selectOptionTitle_web3": "Web3"
+	"addToPhonebook": "F\u00f8j til Min telefon-kontakter",
+	"addLabel": "Nyt forhold",
+	"newRole": "Ny rolle",
+	"prompt": "Giv det et navn",
+	"newLabel": "Ny etiket",
+	"editLabel": "Rediger etiket",
+	"addBtn": "Tilf\u00f8je",
+	"editBtn": "Gemme",
+	"canManageDialogTitle": "Kan styre roller",
+	"canManageBtn": "Kan administrere...",
+	"titlePlaceholder": "Titel",
+	"selectOptionTitle_web2": "Hjemmeh\u00f8rende",
+	"selectOptionTitle_web3": "Web3"
 }

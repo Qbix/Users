@@ -1,196 +1,196 @@
 {
-    "avatar": {
-        "Someone": "Joku"
-    },
-    "identifier": {
-        "types": {
-            "email": "Sähköposti",
-            "mobile": "mobiili",
-            "web3": "Web3"
-        }
-    },
-    "clipboard": {
-        "Copied": "Kopioitu! Nyt voit liittää sen mihin tahansa."
-    },
-    "analytics": {
-        "Title": "Analytics",
-        "Daily": "Päivittäin",
-        "Weekly": "Viikoittain",
-        "Monthly": "Kuukausittain",
-        "Application": "Sovellus",
-        "Pages": "Sivut",
-        "Services": "Palvelut",
-        "Faq": "Faq",
-        "WeekDays": "Viikon päivät"
-    },
-    "actions": {
-        "LogIn": "Kirjaudu sisään",
-        "LogOut": "kirjautua ulos"
-    },
-    "activate": {
-        "OneTimeCode": "Syötä saamasi koodi:",
-        "SetAsPrimary": "Aseta {{1}} ensisijaiseksi {{2}}",
-        "ChoosePassPhrase": "Valitse <strong>salasana<\/strong> , jolla kirjaudut sisään.<br> Yksinkertainen lause, joka koostuu muutamasta sanasta, jonka muistat helposti.",
-        "ChoosePassPhraseSeeSuggestions": "Valitse hyvä <strong>tunnuslause<\/strong> tilisi suojaamiseksi. Katso ehdotuksista joitain ideoita.",
-        "LogOutAndTryAgain": "Kirjaudu ulos ja yritä uudelleen",
-        "IfYouFeel": "Jos sinusta tuntuu, että jokin meni pieleen, voit",
-        "SetIdentifierButtonTitle": "aloittaa alusta",
-        "ActivateMyAccount": "Aktivoi Oma tili"
-    },
-    "session": {
-        "GetStarted": "Aloittaa"
-    },
-    "authorize": {
-        "GetStarted": "Aloittaa",
-        "Authorize": "Valtuuta",
-        "TermsLabel": "Olen lukenut ja samaa mieltä<br> numeroon {{link}}",
-        "TermsTitle": "Ehdot",
-        "mustAgree": "Ensin sinun on hyväksyttävä ehdot."
-    },
-    "register": {
-        "TermsLabel": "Hyväksyn {{link}}",
-        "TermsTitle": "Ehdot"
-    },
-    "notifications": {
-        "title": "Lupa",
-        "prompt": "Haluatko ottaa ilmoitukset käyttöön? Saat reaaliaikaisia päivityksiä sinulle tärkeistä asioista.",
-        "yes": "Joo",
-        "no": "Ei",
-        "WelcomePleaseVerifyEmail": "Tervetuloa! Vahvista sähköpostiosoitteesi.",
-        "WelcomeVerifyEmail": "Tervetuloa! Vahvista sähköpostiosoitteesi.",
-        "ForgetPass": "Hei, unohditko salasanasi?",
-        "PassphraseSaved": "Salasanasi on tallennettu.",
-        "IdentifierActivated": "{{type}} on aktivoitu.",
-        "CompletedActivation": "Olet suorittanut käyttäjän aktivoinnin.",
-        "CompletedActivationLogIn": "Olet suorittanut käyttäjän aktivoinnin. Yritä kirjautua sisään nyt."
-    },
-    "contacts": {
-        "dialog": {
-            "title": "Valitse yhteystieto",
-            "CreateAccount": "+ Uusi yhteystieto",
-            "CreateAccountNotFound": "Q.Users.Cordova.UI.create ei löydy",
-            "SearchByName": "Hae nimellä",
-            "EmptyContacts": "Yhteystietoja ei löydy..."
-        },
-        "select": {
-            "title": "Valitse yhteystieto numerosta {{displayName}}"
-        },
-        "require": {
-            "Instructions": "Sinun on sallittava pääsy kaikkiin yhteystietoihin, jotta tämä toimii."
-        }
-    },
-    "usersContacts": {
-        "selectLabel": "Valitse tunniste.",
-        "inviteUser": "Kutsu käyttäjiä",
-        "selectRole": "Valitse Rooli",
-        "inviteRole": "Kutsu {{role}}"
-    },
-    "invalidLanguageSelected": "Virheellinen kieli valittu",
-    "platforms": {
-        "wallet": "Lompakko",
-        "broadcast": "Lähettää"
-    },
-    "login": {
-        "title": "Tervetuloa",
-        "directions": {
-            "GetStarted": "Luo tili tai kirjaudu sisään.",
-            "NoRegister": "Kirjaudu sisään, jos sinulla on tili.",
-            "WasInvited": "Mikä on paras tapa tavoittaa sinut?"
-        },
-        "directionsNoRegister": "Kirjaudu sisään, jos sinulla on tili.",
-        "goButton": "➔",
-        "passphrase": "Kirjoita salasanasi:",
-        "loginButton": "Aloittaa",
-        "registerButton": "Aloittaa",
-        "resendButton": "Lähetä aktivointiviesti",
-        "forgot": "Unohdin sen?",
-        "resendConfirm": "Haluatko lähettää viestin salasanan nollaamiseksi?",
-        "resendSuccess": "Tarkista salasanan nollausviesti",
-        "resendClose": "kiinni",
-        "noPassphrase": "Ennen kuin voit kirjautua sisään, sinun on asetettava tunnuslause napsauttamalla aktivointiviestissäsi olevaa linkkiä.",
-        "notVerified": "Sinun tulee lähettää itsellesi aktivointiviesti, jotta voit kirjautua sisään.",
-        "emailExists": "Yrititkö rekisteröityä tällä sähköpostilla aiemmin? Jos näin on, tarkista postilaatikkosi aktivoidaksesi tilisi. <a href='#resend' class='Q_button Users_activation_resend'>Napsauta lähettääksesi viestin uudelleen<\/a>",
-        "mobileExists": "Yrititkö rekisteröityä tällä matkapuhelinnumerolla aiemmin? Jos näin on, tarkista tekstiviestisi aktivoidaksesi tilisi. <a href='#resend' class='Q_button Users_activation_resend'>Napsauta lähettääksesi viestin uudelleen<\/a>",
-        "usingOther": "tai voit",
-        "connectPlatforms": "tai yhdistä käyttämällä:",
-        "prompt": "Valitse käyttäjänimi:",
-        "newUser": "tai luo uusi tili alla",
-        "placeholders": {
-            "identifier": "matkapuhelinnumerosi tai sähköpostisi",
-            "mobile": "syötä matkapuhelinnumerosi",
-            "email": "Syötä sähköpostiosoitteesi",
-            "username": "käytä vain kirjaimia ja numeroita"
-        },
-        "confirmTerms": "Hyväksytkö käyttöehdot?",
-        "facebookNoEmail": "Facebook-tililtäsi puuttuu vahvistettu sähköpostiosoite. Kirjaudu sisään alkuperäisellä tavalla.",
-        "picTooltip": "Voit muuttaa tätä kuvaa myöhemmin",
-        "web3": {
-            "payload": "Kirjaudu sisään {{host}} aikaan {{timestamp}}",
-            "alert": {
-                "title": "Uudelleenohjataan Walletiin",
-                "content": "Kun suljet tämän valintaikkunan, sinut ohjataan lompakkoosi. Kun olet kirjautunut sisään, palaa tälle sivulle."
-            },
-            "ConnectWallet": "Yhdistä lompakko"
-        }
-    },
-    "setIdentifier": {
-        "title": "Lisää sisäänkirjautumistapa",
-        "sendMessage": "Lähetä aktivointiviesti",
-        "placeholders": {
-            "identifier": "kirjoita matkapuhelinnumerosi tai sähköpostiosoitteesi",
-            "mobile": "Syötä matkapuhelinnumerosi",
-            "email": "Syötä sähköpostiosoitteesi",
-            "username": "käyttäjätunnus"
-        }
-    },
-    "prompt": {
-        "title": "{{Platform}} tili",
-        "areUsing": "Käytät {{platform}} as",
-        "noLongerUsing": "Et ole enää yhteydessä numeroon {{platform}} as",
-        "doAuth": "Kirjaudu sisään tällä tilillä",
-        "doSwitch": "Vaihda tälle tilille"
-    },
-    "roles": {
-        "Owner": "Omistaja",
-        "Admin": "Admin",
-        "Member": "Jäsen",
-        "Guest": "Vieras",
-        "Host": "Isäntä"
-    },
-    "web3": {
-        "WrongMethod": "Väärä sopimustapa {{methodName}}",
-        "ChangeWallet": "Vaihda lompakko",
-        "ConnectWallet": "Yhdistä lompakko",
-        "AfterWalletConnectedPleaseRefresh": "Kun lompakko on yhdistetty, päivitä tämä sivu tunnistaaksesi lompakon"
-    },
-    "labels": {
-        "addToPhonebook": "Lisää puhelimeen yhteystietoihin",
-        "addLabel": "Uusi suhde",
-        "prompt": "Anna sille nimi",
-        "titles": {
-            "Users\/owners": "Omistajat",
-            "Users\/admins": "Järjestelmänvalvojat",
-            "Users\/members": "Jäsenet",
-            "Users\/guests": "Vieraita",
-            "Users\/hosts": "Isännät",
-            "Users\/testers": "Testaajat",
-            "Users\/speakers": "Kaiuttimet"
-        }
-    },
-    "people": {
-        "People": "Ihmiset"
-    },
-    "external": {
-        "defaults": {
-            "title": "",
-            "bio": "Foorumin sitoutumisbotti. Hanki omasi osoitteessa https:\/\/engageusers.ai",
-            "website": "https:\/\/engageusers.ai"
-        }
-    },
-    "errors": {
-        "NotEnoughPermissionsWallet": "Ei tarpeeksi oikeuksia tämän käyttäjän lompakon lukemiseen",
-        "ThisUserHaveNoWallet": "Tälle käyttäjälle ei ole määritetty lompakkoa",
-        "TheWalletOfThisUserInvalid": "Tämän käyttäjän lompakko on virheellinen",
-        "WalletInvalid": "Lompakon osoite on virheellinen"
-    }
+	"avatar": {
+		"Someone": "Joku"
+	},
+	"identifier": {
+		"types": {
+			"email": "S\u00e4hk\u00f6posti",
+			"mobile": "mobiili",
+			"web3": "Web3"
+		}
+	},
+	"clipboard": {
+		"Copied": "Kopioitu! Nyt voit liitt\u00e4\u00e4 sen mihin tahansa."
+	},
+	"analytics": {
+		"Title": "Analytics",
+		"Daily": "P\u00e4ivitt\u00e4in",
+		"Weekly": "Viikoittain",
+		"Monthly": "Kuukausittain",
+		"Application": "Sovellus",
+		"Pages": "Sivut",
+		"Services": "Palvelut",
+		"Faq": "Faq",
+		"WeekDays": "Viikon p\u00e4iv\u00e4t"
+	},
+	"actions": {
+		"LogIn": "Kirjaudu sis\u00e4\u00e4n",
+		"LogOut": "kirjautua ulos"
+	},
+	"activate": {
+		"OneTimeCode": "Sy\u00f6t\u00e4 saamasi koodi:",
+		"SetAsPrimary": "Aseta {{1}} ensisijaiseksi {{2}}",
+		"ChoosePassPhrase": "Valitse <strong>salasana</strong> , jolla kirjaudut sis\u00e4\u00e4n.<br> Yksinkertainen lause, joka koostuu muutamasta sanasta, jonka muistat helposti.",
+		"ChoosePassPhraseSeeSuggestions": "Valitse hyv\u00e4 <strong>tunnuslause</strong> tilisi suojaamiseksi. Katso ehdotuksista joitain ideoita.",
+		"LogOutAndTryAgain": "Kirjaudu ulos ja yrit\u00e4 uudelleen",
+		"IfYouFeel": "Jos sinusta tuntuu, ett\u00e4 jokin meni pieleen, voit",
+		"SetIdentifierButtonTitle": "aloittaa alusta",
+		"ActivateMyAccount": "Aktivoi Oma tili"
+	},
+	"session": {
+		"GetStarted": "Aloittaa"
+	},
+	"authorize": {
+		"GetStarted": "Aloittaa",
+		"Authorize": "Valtuuta",
+		"TermsLabel": "Olen lukenut ja samaa mielt\u00e4<br> numeroon {{link}}",
+		"TermsTitle": "Ehdot",
+		"mustAgree": "Ensin sinun on hyv\u00e4ksytt\u00e4v\u00e4 ehdot."
+	},
+	"register": {
+		"TermsLabel": "Hyv\u00e4ksyn {{link}}",
+		"TermsTitle": "Ehdot"
+	},
+	"notifications": {
+		"title": "Lupa",
+		"prompt": "Haluatko ottaa ilmoitukset k\u00e4ytt\u00f6\u00f6n? Saat reaaliaikaisia p\u00e4ivityksi\u00e4 sinulle t\u00e4rkeist\u00e4 asioista.",
+		"yes": "Joo",
+		"no": "Ei",
+		"WelcomePleaseVerifyEmail": "Tervetuloa! Vahvista s\u00e4hk\u00f6postiosoitteesi.",
+		"WelcomeVerifyEmail": "Tervetuloa! Vahvista s\u00e4hk\u00f6postiosoitteesi.",
+		"ForgetPass": "Hei, unohditko salasanasi?",
+		"PassphraseSaved": "Salasanasi on tallennettu.",
+		"IdentifierActivated": "{{type}} on aktivoitu.",
+		"CompletedActivation": "Olet suorittanut k\u00e4ytt\u00e4j\u00e4n aktivoinnin.",
+		"CompletedActivationLogIn": "Olet suorittanut k\u00e4ytt\u00e4j\u00e4n aktivoinnin. Yrit\u00e4 kirjautua sis\u00e4\u00e4n nyt."
+	},
+	"contacts": {
+		"dialog": {
+			"title": "Valitse yhteystieto",
+			"CreateAccount": "+ Uusi yhteystieto",
+			"CreateAccountNotFound": "Q.Users.Cordova.UI.create ei l\u00f6ydy",
+			"SearchByName": "Hae nimell\u00e4",
+			"EmptyContacts": "Yhteystietoja ei l\u00f6ydy..."
+		},
+		"select": {
+			"title": "Valitse yhteystieto numerosta {{displayName}}"
+		},
+		"require": {
+			"Instructions": "Sinun on sallittava p\u00e4\u00e4sy kaikkiin yhteystietoihin, jotta t\u00e4m\u00e4 toimii."
+		}
+	},
+	"usersContacts": {
+		"selectLabel": "Valitse tunniste.",
+		"inviteUser": "Kutsu k\u00e4ytt\u00e4ji\u00e4",
+		"selectRole": "Valitse Rooli",
+		"inviteRole": "Kutsu {{role}}"
+	},
+	"invalidLanguageSelected": "Virheellinen kieli valittu",
+	"platforms": {
+		"wallet": "Lompakko",
+		"broadcast": "L\u00e4hett\u00e4\u00e4"
+	},
+	"login": {
+		"title": "Tervetuloa {{AppName}} \u00e4\u00e4n",
+		"directions": {
+			"GetStarted": "Minne meid\u00e4n pit\u00e4isi l\u00e4hett\u00e4\u00e4 ilmoitukset?",
+			"NoRegister": "Kirjaudu sis\u00e4\u00e4n, jos sinulla on tili.",
+			"WasInvited": "Mik\u00e4 on paras tapa tavoittaa sinut?"
+		},
+		"directionsNoRegister": "Kirjaudu sis\u00e4\u00e4n, jos sinulla on tili.",
+		"goButton": "\u2794",
+		"passphrase": "Kirjoita salasanasi:",
+		"loginButton": "Aloittaa",
+		"registerButton": "Aloittaa",
+		"resendButton": "L\u00e4het\u00e4 aktivointiviesti",
+		"forgot": "Unohdin sen?",
+		"resendConfirm": "Haluatko l\u00e4hett\u00e4\u00e4 viestin salasanan nollaamiseksi?",
+		"resendSuccess": "Tarkista salasanan nollausviesti",
+		"resendClose": "kiinni",
+		"noPassphrase": "Ennen kuin voit kirjautua sis\u00e4\u00e4n, sinun on asetettava tunnuslause napsauttamalla aktivointiviestiss\u00e4si olevaa linkki\u00e4.",
+		"notVerified": "Sinun tulee l\u00e4hett\u00e4\u00e4 itsellesi aktivointiviesti, jotta voit kirjautua sis\u00e4\u00e4n.",
+		"emailExists": "Yrititk\u00f6 rekister\u00f6ity\u00e4 t\u00e4ll\u00e4 s\u00e4hk\u00f6postilla aiemmin? Jos n\u00e4in on, tarkista postilaatikkosi aktivoidaksesi tilisi. <a href='#resend' class='Q_button Users_activation_resend'>Napsauta l\u00e4hett\u00e4\u00e4ksesi viestin uudelleen</a>",
+		"mobileExists": "Yrititk\u00f6 rekister\u00f6ity\u00e4 t\u00e4ll\u00e4 matkapuhelinnumerolla aiemmin? Jos n\u00e4in on, tarkista tekstiviestisi aktivoidaksesi tilisi. <a href='#resend' class='Q_button Users_activation_resend'>Napsauta l\u00e4hett\u00e4\u00e4ksesi viestin uudelleen</a>",
+		"usingOther": "tai voit",
+		"connectPlatforms": "tai yhdist\u00e4 k\u00e4ytt\u00e4m\u00e4ll\u00e4:",
+		"prompt": "Valitse k\u00e4ytt\u00e4j\u00e4nimi:",
+		"newUser": "tai luo uusi tili alla",
+		"placeholders": {
+			"identifier": "matkapuhelinnumerosi tai s\u00e4hk\u00f6postisi",
+			"mobile": "sy\u00f6t\u00e4 matkapuhelinnumerosi",
+			"email": "Sy\u00f6t\u00e4 s\u00e4hk\u00f6postiosoitteesi",
+			"username": "k\u00e4yt\u00e4 vain kirjaimia ja numeroita"
+		},
+		"confirmTerms": "Hyv\u00e4ksytk\u00f6 k\u00e4ytt\u00f6ehdot?",
+		"facebookNoEmail": "Facebook-tililt\u00e4si puuttuu vahvistettu s\u00e4hk\u00f6postiosoite. Kirjaudu sis\u00e4\u00e4n alkuper\u00e4isell\u00e4 tavalla.",
+		"picTooltip": "Voit muuttaa t\u00e4t\u00e4 kuvaa my\u00f6hemmin",
+		"web3": {
+			"payload": "Kirjaudu sis\u00e4\u00e4n {{host}} aikaan {{timestamp}}",
+			"alert": {
+				"title": "Uudelleenohjataan Walletiin",
+				"content": "Kun suljet t\u00e4m\u00e4n valintaikkunan, sinut ohjataan lompakkoosi. Kun olet kirjautunut sis\u00e4\u00e4n, palaa t\u00e4lle sivulle."
+			},
+			"ConnectWallet": "Yhdist\u00e4 lompakko"
+		}
+	},
+	"setIdentifier": {
+		"title": "Lis\u00e4\u00e4 sis\u00e4\u00e4nkirjautumistapa",
+		"sendMessage": "L\u00e4het\u00e4 aktivointiviesti",
+		"placeholders": {
+			"identifier": "kirjoita matkapuhelinnumerosi tai s\u00e4hk\u00f6postiosoitteesi",
+			"mobile": "Sy\u00f6t\u00e4 matkapuhelinnumerosi",
+			"email": "Sy\u00f6t\u00e4 s\u00e4hk\u00f6postiosoitteesi",
+			"username": "k\u00e4ytt\u00e4j\u00e4tunnus"
+		}
+	},
+	"prompt": {
+		"title": "{{Platform}} tili",
+		"areUsing": "K\u00e4yt\u00e4t {{platform}} as",
+		"noLongerUsing": "Et ole en\u00e4\u00e4 yhteydess\u00e4 numeroon {{platform}} as",
+		"doAuth": "Kirjaudu sis\u00e4\u00e4n t\u00e4ll\u00e4 tilill\u00e4",
+		"doSwitch": "Vaihda t\u00e4lle tilille"
+	},
+	"roles": {
+		"Owner": "Omistaja",
+		"Admin": "Admin",
+		"Member": "J\u00e4sen",
+		"Guest": "Vieras",
+		"Host": "Is\u00e4nt\u00e4"
+	},
+	"web3": {
+		"WrongMethod": "V\u00e4\u00e4r\u00e4 sopimustapa {{methodName}}",
+		"ChangeWallet": "Vaihda lompakko",
+		"ConnectWallet": "Yhdist\u00e4 lompakko",
+		"AfterWalletConnectedPleaseRefresh": "Kun lompakko on yhdistetty, p\u00e4ivit\u00e4 t\u00e4m\u00e4 sivu tunnistaaksesi lompakon"
+	},
+	"labels": {
+		"addToPhonebook": "Lis\u00e4\u00e4 puhelimeen yhteystietoihin",
+		"addLabel": "Uusi suhde",
+		"prompt": "Anna sille nimi",
+		"titles": {
+			"Users/owners": "Omistajat",
+			"Users/admins": "J\u00e4rjestelm\u00e4nvalvojat",
+			"Users/members": "J\u00e4senet",
+			"Users/guests": "Vieraita",
+			"Users/hosts": "Is\u00e4nn\u00e4t",
+			"Users/testers": "Testaajat",
+			"Users/speakers": "Kaiuttimet"
+		}
+	},
+	"people": {
+		"People": "Ihmiset"
+	},
+	"external": {
+		"defaults": {
+			"title": "",
+			"bio": "Foorumin sitoutumisbotti. Hanki omasi osoitteessa https://engageusers.ai",
+			"website": "https://engageusers.ai"
+		}
+	},
+	"errors": {
+		"NotEnoughPermissionsWallet": "Ei tarpeeksi oikeuksia t\u00e4m\u00e4n k\u00e4ytt\u00e4j\u00e4n lompakon lukemiseen",
+		"ThisUserHaveNoWallet": "T\u00e4lle k\u00e4ytt\u00e4j\u00e4lle ei ole m\u00e4\u00e4ritetty lompakkoa",
+		"TheWalletOfThisUserInvalid": "T\u00e4m\u00e4n k\u00e4ytt\u00e4j\u00e4n lompakko on virheellinen",
+		"WalletInvalid": "Lompakon osoite on virheellinen"
+	}
 }

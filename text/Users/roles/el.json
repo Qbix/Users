@@ -1,6 +1,6 @@
 {
-    "btns": {
-        "web2Role": "Ρόλος Web2",
-        "web3Role": "Ρόλος Web3"
-    }
+	"btns": {
+		"web2Role": "\u03a1\u03cc\u03bb\u03bf\u03c2 Web2",
+		"web3Role": "\u03a1\u03cc\u03bb\u03bf\u03c2 Web3"
+	}
 }

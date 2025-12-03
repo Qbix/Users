@@ -1,14 +1,14 @@
 {
-    "activation": {
-        "Thanks": "მოგესალმებით {{1}}-ში.",
-        "ClickHere": "დააწკაპუნეთ აქ თქვენი ანგარიშის გასააქტიურებლად: {{1}}"
-    },
-    "addMobile": {
-        "ClickHere": "დააწკაპუნეთ აქ თქვენი მობილური ნომრის დასადასტურებლად: {{1}}"
-    },
-    "resend": {
-        "DidYouWant": "გინდოდათ თქვენი საიდუმლო ფრაზის გადაყენება {{1}}-ში?",
-        "ClickHere": "შემდეგ დააწკაპუნეთ აქ: {{1}}",
-        "OrEnterCode": "ან შეიყვანეთ კოდი:"
-    }
+	"activation": {
+		"Thanks": "\u10db\u10dd\u10d2\u10d4\u10e1\u10d0\u10da\u10db\u10d4\u10d1\u10d8\u10d7 {{1}}-\u10e8\u10d8.",
+		"ClickHere": "\u10d3\u10d0\u10d0\u10ec\u10d9\u10d0\u10de\u10e3\u10dc\u10d4\u10d7 \u10d0\u10e5 \u10d7\u10e5\u10d5\u10d4\u10dc\u10d8 \u10d0\u10dc\u10d2\u10d0\u10e0\u10d8\u10e8\u10d8\u10e1 \u10d2\u10d0\u10e1\u10d0\u10d0\u10e5\u10e2\u10d8\u10e3\u10e0\u10d4\u10d1\u10da\u10d0\u10d3: {{1}}"
+	},
+	"addMobile": {
+		"ClickHere": "\u10d3\u10d0\u10d0\u10ec\u10d9\u10d0\u10de\u10e3\u10dc\u10d4\u10d7 \u10d0\u10e5 \u10d7\u10e5\u10d5\u10d4\u10dc\u10d8 \u10db\u10dd\u10d1\u10d8\u10da\u10e3\u10e0\u10d8 \u10dc\u10dd\u10db\u10e0\u10d8\u10e1 \u10d3\u10d0\u10e1\u10d0\u10d3\u10d0\u10e1\u10e2\u10e3\u10e0\u10d4\u10d1\u10da\u10d0\u10d3: {{1}}"
+	},
+	"resend": {
+		"DidYouWant": "\u10d2\u10d8\u10dc\u10d3\u10dd\u10d3\u10d0\u10d7 \u10d7\u10e5\u10d5\u10d4\u10dc\u10d8 \u10e1\u10d0\u10d8\u10d3\u10e3\u10db\u10da\u10dd \u10e4\u10e0\u10d0\u10d6\u10d8\u10e1 \u10d2\u10d0\u10d3\u10d0\u10e7\u10d4\u10dc\u10d4\u10d1\u10d0 {{1}}-\u10e8\u10d8?",
+		"ClickHere": "\u10e8\u10d4\u10db\u10d3\u10d4\u10d2 \u10d3\u10d0\u10d0\u10ec\u10d9\u10d0\u10de\u10e3\u10dc\u10d4\u10d7 \u10d0\u10e5: {{1}}",
+		"OrEnterCode": "\u10d0\u10dc \u10e8\u10d4\u10d8\u10e7\u10d5\u10d0\u10dc\u10d4\u10d7 \u10d9\u10dd\u10d3\u10d8:"
+	}
 }

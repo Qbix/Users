@@ -1,15 +1,15 @@
 {
-    "addToPhonebook": "내 휴대폰 연락처에 추가",
-    "addLabel": "새로운 관계",
-    "newRole": "새로운 역할",
-    "prompt": "이름을 지어주세요",
-    "newLabel": "새 라벨",
-    "editLabel": "라벨 편집",
-    "addBtn": "추가하다",
-    "editBtn": "구하다",
-    "canManageDialogTitle": "역할을 관리할 수 있음",
-    "canManageBtn": "관리할 수 있습니다...",
-    "titlePlaceholder": "제목",
-    "selectOptionTitle_web2": "토종의",
-    "selectOptionTitle_web3": "웹3"
+	"addToPhonebook": "\ub0b4 \ud734\ub300\ud3f0 \uc5f0\ub77d\ucc98\uc5d0 \ucd94\uac00",
+	"addLabel": "\uc0c8\ub85c\uc6b4 \uad00\uacc4",
+	"newRole": "\uc0c8\ub85c\uc6b4 \uc5ed\ud560",
+	"prompt": "\uc774\ub984\uc744 \uc9c0\uc5b4\uc8fc\uc138\uc694",
+	"newLabel": "\uc0c8 \ub77c\ubca8",
+	"editLabel": "\ub77c\ubca8 \ud3b8\uc9d1",
+	"addBtn": "\ucd94\uac00\ud558\ub2e4",
+	"editBtn": "\uad6c\ud558\ub2e4",
+	"canManageDialogTitle": "\uc5ed\ud560\uc744 \uad00\ub9ac\ud560 \uc218 \uc788\uc74c",
+	"canManageBtn": "\uad00\ub9ac\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4...",
+	"titlePlaceholder": "\uc81c\ubaa9",
+	"selectOptionTitle_web2": "\ud1a0\uc885\uc758",
+	"selectOptionTitle_web3": "\uc6f93"
 }

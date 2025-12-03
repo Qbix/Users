@@ -1,15 +1,15 @@
 {
-    "addToPhonebook": "मेरे फ़ोन संपर्कों में जोड़ें",
-    "addLabel": "नए रिश्ते",
-    "newRole": "नयी भूमिका",
-    "prompt": "उसे एक नाम दे दो",
-    "newLabel": "नया लेबल",
-    "editLabel": "लेबल संपादित करें",
-    "addBtn": "जोड़ना",
-    "editBtn": "बचाना",
-    "canManageDialogTitle": "भूमिकाएँ प्रबंधित कर सकते हैं",
-    "canManageBtn": "संभाल सकता है ...",
-    "titlePlaceholder": "शीर्षक",
-    "selectOptionTitle_web2": "देशी",
-    "selectOptionTitle_web3": "वेब3"
+	"addToPhonebook": "\u092e\u0947\u0930\u0947 \u092b\u093c\u094b\u0928 \u0938\u0902\u092a\u0930\u094d\u0915\u094b\u0902 \u092e\u0947\u0902 \u091c\u094b\u0921\u093c\u0947\u0902",
+	"addLabel": "\u0928\u090f \u0930\u093f\u0936\u094d\u0924\u0947",
+	"newRole": "\u0928\u092f\u0940 \u092d\u0942\u092e\u093f\u0915\u093e",
+	"prompt": "\u0909\u0938\u0947 \u090f\u0915 \u0928\u093e\u092e \u0926\u0947 \u0926\u094b",
+	"newLabel": "\u0928\u092f\u093e \u0932\u0947\u092c\u0932",
+	"editLabel": "\u0932\u0947\u092c\u0932 \u0938\u0902\u092a\u093e\u0926\u093f\u0924 \u0915\u0930\u0947\u0902",
+	"addBtn": "\u091c\u094b\u0921\u093c\u0928\u093e",
+	"editBtn": "\u092c\u091a\u093e\u0928\u093e",
+	"canManageDialogTitle": "\u092d\u0942\u092e\u093f\u0915\u093e\u090f\u0901 \u092a\u094d\u0930\u092c\u0902\u0927\u093f\u0924 \u0915\u0930 \u0938\u0915\u0924\u0947 \u0939\u0948\u0902",
+	"canManageBtn": "\u0938\u0902\u092d\u093e\u0932 \u0938\u0915\u0924\u093e \u0939\u0948 ...",
+	"titlePlaceholder": "\u0936\u0940\u0930\u094d\u0937\u0915",
+	"selectOptionTitle_web2": "\u0926\u0947\u0936\u0940",
+	"selectOptionTitle_web3": "\u0935\u0947\u092c3"
 }

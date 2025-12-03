@@ -1,22 +1,22 @@
 {
-    "activation": {
-        "Subject": "Tere tulemast! Palun kinnitage oma e-posti aadress.",
-        "Thanks": "Tere tulemast {{1}}",
-        "ReallyYourEmail": "Kas see on tõesti teie e-posti aadress, {{1}}? Kui jah, klõpsake parooli määramiseks ja konto aktiveerimiseks <a href='{{2}}'>siin<\/a> .",
-        "SeeYou": "Kohtumiseni <a href='{{1}}'>{{2}}<\/a> !",
-        "OtherwiseClickLink": "Vastasel juhul klõpsake <a href='{{1}}'>sellel lingil<\/a> ."
-    },
-    "identifier": {
-        "Subject": "Tere tulemast! Kinnita oma e-posti aadress."
-    },
-    "resend": {
-        "Subject": "Hei, kas unustasite oma parooli?",
-        "Thanks": "Täname, et külastasite {{1}}",
-        "YouAreReceiving": "Saite selle meili, kuna keegi sisestas teie e-posti aadressi ja klõpsas &quot;unustasin parooli&quot;. Kui see ei olnud teie, siis lihtsalt ignoreerige seda sõnumit.",
-        "Reset": "Parooli lähtestamiseks klõpsake {{1}}",
-        "SetUpPassphrase": "Seadistage parool",
-        "DomainCode": "Kui veebileht on teie brauseris juba avatud, saate koodi sisestada"
-    },
-    "SeeYou": "Kohtumiseni {{1}}!",
-    "LinkToUnsubscribe": "Siin on link <a href='{{1}}'>tellimusest loobumiseks<\/a> , kui te ei soovi enam meile saada."
+	"activation": {
+		"Subject": "Tere tulemast! Palun kinnitage oma e-posti aadress.",
+		"Thanks": "Tere tulemast {{1}}",
+		"ReallyYourEmail": "Kas see on t\u00f5esti teie e-posti aadress, {{1}}? Kui jah, kl\u00f5psake parooli m\u00e4\u00e4ramiseks ja konto aktiveerimiseks <a href='{{2}}'>siin</a> .",
+		"SeeYou": "Kohtumiseni <a href='{{1}}'>{{2}}</a> !",
+		"OtherwiseClickLink": "Vastasel juhul kl\u00f5psake <a href='{{1}}'>sellel lingil</a> ."
+	},
+	"identifier": {
+		"Subject": "Tere tulemast! Kinnita oma e-posti aadress."
+	},
+	"resend": {
+		"Subject": "Hei, kas unustasite oma parooli?",
+		"Thanks": "T\u00e4name, et k\u00fclastasite {{1}}",
+		"YouAreReceiving": "Saite selle meili, kuna keegi sisestas teie e-posti aadressi ja kl\u00f5psas &quot;unustasin parooli&quot;. Kui see ei olnud teie, siis lihtsalt ignoreerige seda s\u00f5numit.",
+		"Reset": "Parooli l\u00e4htestamiseks kl\u00f5psake {{1}}",
+		"SetUpPassphrase": "Seadistage parool",
+		"DomainCode": "Kui veebileht on teie brauseris juba avatud, saate koodi sisestada"
+	},
+	"SeeYou": "Kohtumiseni {{1}}!",
+	"LinkToUnsubscribe": "Siin on link <a href='{{1}}'>tellimusest loobumiseks</a> , kui te ei soovi enam meile saada."
 }

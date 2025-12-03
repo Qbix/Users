@@ -1,15 +1,15 @@
 {
-    "addToPhonebook": "Zu meinen Telefonkontakten hinzufügen",
-    "addLabel": "Neue Beziehung",
-    "newRole": "Neue Rolle",
-    "prompt": "Gib ihm einen Namen",
-    "newLabel": "Neues Label",
-    "editLabel": "Etikett bearbeiten",
-    "addBtn": "Hinzufügen",
-    "editBtn": "Speichern",
-    "canManageDialogTitle": "Kann Rollen verwalten",
-    "canManageBtn": "Kann verwalten ...",
-    "titlePlaceholder": "Titel",
-    "selectOptionTitle_web2": "Einheimisch",
-    "selectOptionTitle_web3": "Web3"
+	"addToPhonebook": "Zu meinen Telefonkontakten hinzuf\u00fcgen",
+	"addLabel": "Neue Beziehung",
+	"newRole": "Neue Rolle",
+	"prompt": "Gib ihm einen Namen",
+	"newLabel": "Neues Label",
+	"editLabel": "Etikett bearbeiten",
+	"addBtn": "Hinzuf\u00fcgen",
+	"editBtn": "Speichern",
+	"canManageDialogTitle": "Kann Rollen verwalten",
+	"canManageBtn": "Kann verwalten ...",
+	"titlePlaceholder": "Titel",
+	"selectOptionTitle_web2": "Einheimisch",
+	"selectOptionTitle_web3": "Web3"
 }

@@ -1,196 +1,196 @@
 {
-    "avatar": {
-        "Someone": "Valaki"
-    },
-    "identifier": {
-        "types": {
-            "email": "Email",
-            "mobile": "Mobil",
-            "web3": "Web3"
-        }
-    },
-    "clipboard": {
-        "Copied": "Másolva! Most már bárhová beillesztheti."
-    },
-    "analytics": {
-        "Title": "Analitika",
-        "Daily": "Napi",
-        "Weekly": "Heti",
-        "Monthly": "Havi",
-        "Application": "Alkalmazás",
-        "Pages": "Oldalak",
-        "Services": "Szolgáltatások",
-        "Faq": "GYIK",
-        "WeekDays": "Heti Napok"
-    },
-    "actions": {
-        "LogIn": "Belépés",
-        "LogOut": "Kijelentkezés"
-    },
-    "activate": {
-        "OneTimeCode": "Írja be a kapott kódot:",
-        "SetAsPrimary": "Állítsa be {{1}} et elsődleges {{2}}",
-        "ChoosePassPhrase": "Válasszon <strong>jelszót<\/strong> a bejelentkezéshez.<br> Egy egyszerű kifejezés, amely néhány szóból áll, és könnyen emlékezni fog.",
-        "ChoosePassPhraseSeeSuggestions": "Válasszon egy jó <strong>jelszót fiókja<\/strong> védelméhez. Nézze meg a javaslatokat néhány ötletért.",
-        "LogOutAndTryAgain": "Jelentkezzen ki, és próbálja újra",
-        "IfYouFeel": "Ha úgy érzi, hogy valami elromlott, megteheti",
-        "SetIdentifierButtonTitle": "elölről kezdeni",
-        "ActivateMyAccount": "Aktiválja a Saját fiókot"
-    },
-    "session": {
-        "GetStarted": "Fogj neki"
-    },
-    "authorize": {
-        "GetStarted": "Fogj neki",
-        "Authorize": "Engedélyezze",
-        "TermsLabel": "Elolvastam és egyetértek<br> a {{link}} re",
-        "TermsTitle": "Feltételek",
-        "mustAgree": "Először el kell fogadnia a feltételeket."
-    },
-    "register": {
-        "TermsLabel": "Elfogadom a {{link}} et",
-        "TermsTitle": "Feltételek"
-    },
-    "notifications": {
-        "title": "Engedély",
-        "prompt": "Szeretné engedélyezni az értesítéseket? Valós idejű frissítéseket fog kapni az Önt érdeklő dolgokról.",
-        "yes": "Igen",
-        "no": "Nem",
-        "WelcomePleaseVerifyEmail": "Üdvözöljük! Kérem ellenőrizze az email címét.",
-        "WelcomeVerifyEmail": "Üdvözöljük! Erősítsd meg az e-mail címed.",
-        "ForgetPass": "Hé, elfelejtette a jelszavát?",
-        "PassphraseSaved": "Jelszó elmentve.",
-        "IdentifierActivated": "A {{type}} es számod aktiválva van.",
-        "CompletedActivation": "Befejezte a felhasználói aktiválást.",
-        "CompletedActivationLogIn": "Befejezte a felhasználói aktiválást. Próbálja meg most bejelentkezni."
-    },
-    "contacts": {
-        "dialog": {
-            "title": "Válasszon névjegyet",
-            "CreateAccount": "+ Új kapcsolat",
-            "CreateAccountNotFound": "A Q.Users.Cordova.UI.create nem található",
-            "SearchByName": "Keresés név szerint",
-            "EmptyContacts": "A névjegyek nem találhatók..."
-        },
-        "select": {
-            "title": "Válassza ki a {{displayName}} es elérhetőséget"
-        },
-        "require": {
-            "Instructions": "Ahhoz, hogy ez működjön, engedélyeznie kell a hozzáférést az összes névjegyhez."
-        }
-    },
-    "usersContacts": {
-        "selectLabel": "Kérjük, válassza ki a címkét.",
-        "inviteUser": "Felhasználók meghívása",
-        "selectRole": "Válassza a Szerep lehetőséget",
-        "inviteRole": "Meghívás {{role}}"
-    },
-    "invalidLanguageSelected": "Érvénytelen nyelv van kiválasztva",
-    "platforms": {
-        "wallet": "Pénztárca",
-        "broadcast": "Adás"
-    },
-    "login": {
-        "title": "Üdvözöljük",
-        "directions": {
-            "GetStarted": "Hozzon létre egy fiókot, vagy jelentkezzen be.",
-            "NoRegister": "Jelentkezzen be, ha van fiókja.",
-            "WasInvited": "Hogyan lehet a legjobban elérni?"
-        },
-        "directionsNoRegister": "Jelentkezzen be, ha van fiókja.",
-        "goButton": "➔",
-        "passphrase": "Írja be jelmondatát:",
-        "loginButton": "Fogj neki",
-        "registerButton": "Fogj neki",
-        "resendButton": "Aktiváló üzenet küldése",
-        "forgot": "Felejtsd el?",
-        "resendConfirm": "Üzenetet szeretne küldeni a jelszó visszaállításához?",
-        "resendSuccess": "Keressen üzenetet a jelszó visszaállításához",
-        "resendClose": "Bezárás",
-        "noPassphrase": "Mielőtt bejelentkezne, be kell állítania egy jelszót az aktiváló üzenetben található hivatkozásra kattintva.",
-        "notVerified": "A bejelentkezéshez aktiváló üzenetet kell küldenie magának.",
-        "emailExists": "Próbáltál korábban regisztrálni ezzel az e-mail címmel? Ha igen, ellenőrizze a beérkezett üzeneteket a fiók aktiválásához. <a href='#resend' class='Q_button Users_activation_resend'>Kattintson az üzenet újbóli elküldéséhez<\/a>",
-        "mobileExists": "Próbáltál korábban regisztrálni ezzel a mobilszámmal? Ha igen, ellenőrizze az SMS-t a fiók aktiválásához. <a href='#resend' class='Q_button Users_activation_resend'>Kattintson az üzenet újbóli elküldéséhez<\/a>",
-        "usingOther": "vagy tudsz",
-        "connectPlatforms": "vagy csatlakoztassa a következőt:",
-        "prompt": "Válasszon felhasználói nevet:",
-        "newUser": "vagy hozzon létre egy új fiókot alább",
-        "placeholders": {
-            "identifier": "mobilszámát vagy e-mail címét",
-            "mobile": "írja be a mobilszámát",
-            "email": "írd be az email címed",
-            "username": "csak betűket és számokat használjon"
-        },
-        "confirmTerms": "Elfogadja a Szolgáltatási feltételeket?",
-        "facebookNoEmail": "A Facebook-fiókodból hiányzik egy megerősített e-mail cím. Egyszerűen jelentkezzen be natív módon.",
-        "picTooltip": "Ezt a képet később megváltoztathatja",
-        "web3": {
-            "payload": "Jelentkezzen be {{host}} {{timestamp}} időpontban",
-            "alert": {
-                "title": "Átirányítás a Walletba",
-                "content": "A párbeszédpanel bezárása után a pénztárcájához kerül. Bejelentkezés után térjen vissza erre az oldalra."
-            },
-            "ConnectWallet": "Wallet csatlakoztatása"
-        }
-    },
-    "setIdentifier": {
-        "title": "Adjon meg egy bejelentkezési módot",
-        "sendMessage": "Aktiváló üzenet küldése",
-        "placeholders": {
-            "identifier": "adja meg mobilszámát vagy e-mail címét",
-            "mobile": "írja be a mobilszámát",
-            "email": "írd be az email címed",
-            "username": "felhasználónév"
-        }
-    },
-    "prompt": {
-        "title": "{{Platform}} számla",
-        "areUsing": "Ön {{platform}} -et használ",
-        "noLongerUsing": "Már nem csatlakozik a {{platform}} hez",
-        "doAuth": "Jelentkezzen be ezzel a fiókkal",
-        "doSwitch": "Váltson erre a fiókra"
-    },
-    "roles": {
-        "Owner": "Tulajdonos",
-        "Admin": "Admin",
-        "Member": "Tag",
-        "Guest": "Vendég",
-        "Host": "Házigazda"
-    },
-    "web3": {
-        "WrongMethod": "Rossz szerződéskötési mód {{methodName}}",
-        "ChangeWallet": "Pénztárca módosítása",
-        "ConnectWallet": "Wallet csatlakoztatása",
-        "AfterWalletConnectedPleaseRefresh": "A pénztárca csatlakoztatása után frissítse ezt az oldalt a pénztárca felismeréséhez"
-    },
-    "labels": {
-        "addToPhonebook": "Hozzáadás a telefonhoz névjegyekhez",
-        "addLabel": "Új kapcsolat",
-        "prompt": "Adj neki nevet",
-        "titles": {
-            "Users\/owners": "Tulajdonosok",
-            "Users\/admins": "Adminok",
-            "Users\/members": "tagok",
-            "Users\/guests": "Vendégek",
-            "Users\/hosts": "Otthont ad",
-            "Users\/testers": "Tesztelők",
-            "Users\/speakers": "Hangszórók"
-        }
-    },
-    "people": {
-        "People": "Emberek"
-    },
-    "external": {
-        "defaults": {
-            "title": "",
-            "bio": "Fórum eljegyzési bot. Szerezze be a sajátját a https:\/\/engageusers.ai oldalon",
-            "website": "https:\/\/engageusers.ai"
-        }
-    },
-    "errors": {
-        "NotEnoughPermissionsWallet": "Nincs elegendő engedély a felhasználó pénztárcájának olvasásához",
-        "ThisUserHaveNoWallet": "Ehhez a felhasználóhoz nincs hozzárendelve pénztárca",
-        "TheWalletOfThisUserInvalid": "A felhasználó pénztárcája érvénytelen",
-        "WalletInvalid": "A Wallet-cím érvénytelen"
-    }
+	"avatar": {
+		"Someone": "Valaki"
+	},
+	"identifier": {
+		"types": {
+			"email": "Email",
+			"mobile": "Mobil",
+			"web3": "Web3"
+		}
+	},
+	"clipboard": {
+		"Copied": "M\u00e1solva! Most m\u00e1r b\u00e1rhov\u00e1 beillesztheti."
+	},
+	"analytics": {
+		"Title": "Analitika",
+		"Daily": "Napi",
+		"Weekly": "Heti",
+		"Monthly": "Havi",
+		"Application": "Alkalmaz\u00e1s",
+		"Pages": "Oldalak",
+		"Services": "Szolg\u00e1ltat\u00e1sok",
+		"Faq": "GYIK",
+		"WeekDays": "Heti Napok"
+	},
+	"actions": {
+		"LogIn": "Bel\u00e9p\u00e9s",
+		"LogOut": "Kijelentkez\u00e9s"
+	},
+	"activate": {
+		"OneTimeCode": "\u00cdrja be a kapott k\u00f3dot:",
+		"SetAsPrimary": "\u00c1ll\u00edtsa be {{1}} et els\u0151dleges {{2}}",
+		"ChoosePassPhrase": "V\u00e1lasszon <strong>jelsz\u00f3t</strong> a bejelentkez\u00e9shez.<br> Egy egyszer\u0171 kifejez\u00e9s, amely n\u00e9h\u00e1ny sz\u00f3b\u00f3l \u00e1ll, \u00e9s k\u00f6nnyen eml\u00e9kezni fog.",
+		"ChoosePassPhraseSeeSuggestions": "V\u00e1lasszon egy j\u00f3 <strong>jelsz\u00f3t fi\u00f3kja</strong> v\u00e9delm\u00e9hez. N\u00e9zze meg a javaslatokat n\u00e9h\u00e1ny \u00f6tlet\u00e9rt.",
+		"LogOutAndTryAgain": "Jelentkezzen ki, \u00e9s pr\u00f3b\u00e1lja \u00fajra",
+		"IfYouFeel": "Ha \u00fagy \u00e9rzi, hogy valami elromlott, megteheti",
+		"SetIdentifierButtonTitle": "el\u00f6lr\u0151l kezdeni",
+		"ActivateMyAccount": "Aktiv\u00e1lja a Saj\u00e1t fi\u00f3kot"
+	},
+	"session": {
+		"GetStarted": "Fogj neki"
+	},
+	"authorize": {
+		"GetStarted": "Fogj neki",
+		"Authorize": "Enged\u00e9lyezze",
+		"TermsLabel": "Elolvastam \u00e9s egyet\u00e9rtek<br> a {{link}} re",
+		"TermsTitle": "Felt\u00e9telek",
+		"mustAgree": "El\u0151sz\u00f6r el kell fogadnia a felt\u00e9teleket."
+	},
+	"register": {
+		"TermsLabel": "Elfogadom a {{link}} et",
+		"TermsTitle": "Felt\u00e9telek"
+	},
+	"notifications": {
+		"title": "Enged\u00e9ly",
+		"prompt": "Szeretn\u00e9 enged\u00e9lyezni az \u00e9rtes\u00edt\u00e9seket? Val\u00f3s idej\u0171 friss\u00edt\u00e9seket fog kapni az \u00d6nt \u00e9rdekl\u0151 dolgokr\u00f3l.",
+		"yes": "Igen",
+		"no": "Nem",
+		"WelcomePleaseVerifyEmail": "\u00dcdv\u00f6z\u00f6lj\u00fck! K\u00e9rem ellen\u0151rizze az email c\u00edm\u00e9t.",
+		"WelcomeVerifyEmail": "\u00dcdv\u00f6z\u00f6lj\u00fck! Er\u0151s\u00edtsd meg az e-mail c\u00edmed.",
+		"ForgetPass": "H\u00e9, elfelejtette a jelszav\u00e1t?",
+		"PassphraseSaved": "Jelsz\u00f3 elmentve.",
+		"IdentifierActivated": "A {{type}} es sz\u00e1mod aktiv\u00e1lva van.",
+		"CompletedActivation": "Befejezte a felhaszn\u00e1l\u00f3i aktiv\u00e1l\u00e1st.",
+		"CompletedActivationLogIn": "Befejezte a felhaszn\u00e1l\u00f3i aktiv\u00e1l\u00e1st. Pr\u00f3b\u00e1lja meg most bejelentkezni."
+	},
+	"contacts": {
+		"dialog": {
+			"title": "V\u00e1lasszon n\u00e9vjegyet",
+			"CreateAccount": "+ \u00daj kapcsolat",
+			"CreateAccountNotFound": "A Q.Users.Cordova.UI.create nem tal\u00e1lhat\u00f3",
+			"SearchByName": "Keres\u00e9s n\u00e9v szerint",
+			"EmptyContacts": "A n\u00e9vjegyek nem tal\u00e1lhat\u00f3k..."
+		},
+		"select": {
+			"title": "V\u00e1lassza ki a {{displayName}} es el\u00e9rhet\u0151s\u00e9get"
+		},
+		"require": {
+			"Instructions": "Ahhoz, hogy ez m\u0171k\u00f6dj\u00f6n, enged\u00e9lyeznie kell a hozz\u00e1f\u00e9r\u00e9st az \u00f6sszes n\u00e9vjegyhez."
+		}
+	},
+	"usersContacts": {
+		"selectLabel": "K\u00e9rj\u00fck, v\u00e1lassza ki a c\u00edmk\u00e9t.",
+		"inviteUser": "Felhaszn\u00e1l\u00f3k megh\u00edv\u00e1sa",
+		"selectRole": "V\u00e1lassza a Szerep lehet\u0151s\u00e9get",
+		"inviteRole": "Megh\u00edv\u00e1s {{role}}"
+	},
+	"invalidLanguageSelected": "\u00c9rv\u00e9nytelen nyelv van kiv\u00e1lasztva",
+	"platforms": {
+		"wallet": "P\u00e9nzt\u00e1rca",
+		"broadcast": "Ad\u00e1s"
+	},
+	"login": {
+		"title": "\u00dcdv\u00f6z\u00f6lj\u00fck {{AppName}} n\u00e9l",
+		"directions": {
+			"GetStarted": "Hov\u00e1 k\u00fcldj\u00fcnk \u00e9rtes\u00edt\u00e9seket?",
+			"NoRegister": "Jelentkezzen be, ha van fi\u00f3kja.",
+			"WasInvited": "Hogyan lehet a legjobban el\u00e9rni?"
+		},
+		"directionsNoRegister": "Jelentkezzen be, ha van fi\u00f3kja.",
+		"goButton": "\u2794",
+		"passphrase": "\u00cdrja be jelmondat\u00e1t:",
+		"loginButton": "Fogj neki",
+		"registerButton": "Fogj neki",
+		"resendButton": "Aktiv\u00e1l\u00f3 \u00fczenet k\u00fcld\u00e9se",
+		"forgot": "Felejtsd el?",
+		"resendConfirm": "\u00dczenetet szeretne k\u00fcldeni a jelsz\u00f3 vissza\u00e1ll\u00edt\u00e1s\u00e1hoz?",
+		"resendSuccess": "Keressen \u00fczenetet a jelsz\u00f3 vissza\u00e1ll\u00edt\u00e1s\u00e1hoz",
+		"resendClose": "Bez\u00e1r\u00e1s",
+		"noPassphrase": "Miel\u0151tt bejelentkezne, be kell \u00e1ll\u00edtania egy jelsz\u00f3t az aktiv\u00e1l\u00f3 \u00fczenetben tal\u00e1lhat\u00f3 hivatkoz\u00e1sra kattintva.",
+		"notVerified": "A bejelentkez\u00e9shez aktiv\u00e1l\u00f3 \u00fczenetet kell k\u00fcldenie mag\u00e1nak.",
+		"emailExists": "Pr\u00f3b\u00e1lt\u00e1l kor\u00e1bban regisztr\u00e1lni ezzel az e-mail c\u00edmmel? Ha igen, ellen\u0151rizze a be\u00e9rkezett \u00fczeneteket a fi\u00f3k aktiv\u00e1l\u00e1s\u00e1hoz. <a href='#resend' class='Q_button Users_activation_resend'>Kattintson az \u00fczenet \u00fajb\u00f3li elk\u00fcld\u00e9s\u00e9hez</a>",
+		"mobileExists": "Pr\u00f3b\u00e1lt\u00e1l kor\u00e1bban regisztr\u00e1lni ezzel a mobilsz\u00e1mmal? Ha igen, ellen\u0151rizze az SMS-t a fi\u00f3k aktiv\u00e1l\u00e1s\u00e1hoz. <a href='#resend' class='Q_button Users_activation_resend'>Kattintson az \u00fczenet \u00fajb\u00f3li elk\u00fcld\u00e9s\u00e9hez</a>",
+		"usingOther": "vagy tudsz",
+		"connectPlatforms": "vagy csatlakoztassa a k\u00f6vetkez\u0151t:",
+		"prompt": "V\u00e1lasszon felhaszn\u00e1l\u00f3i nevet:",
+		"newUser": "vagy hozzon l\u00e9tre egy \u00faj fi\u00f3kot al\u00e1bb",
+		"placeholders": {
+			"identifier": "mobilsz\u00e1m\u00e1t vagy e-mail c\u00edm\u00e9t",
+			"mobile": "\u00edrja be a mobilsz\u00e1m\u00e1t",
+			"email": "\u00edrd be az email c\u00edmed",
+			"username": "csak bet\u0171ket \u00e9s sz\u00e1mokat haszn\u00e1ljon"
+		},
+		"confirmTerms": "Elfogadja a Szolg\u00e1ltat\u00e1si felt\u00e9teleket?",
+		"facebookNoEmail": "A Facebook-fi\u00f3kodb\u00f3l hi\u00e1nyzik egy meger\u0151s\u00edtett e-mail c\u00edm. Egyszer\u0171en jelentkezzen be nat\u00edv m\u00f3don.",
+		"picTooltip": "Ezt a k\u00e9pet k\u00e9s\u0151bb megv\u00e1ltoztathatja",
+		"web3": {
+			"payload": "Jelentkezzen be {{host}} {{timestamp}} id\u0151pontban",
+			"alert": {
+				"title": "\u00c1tir\u00e1ny\u00edt\u00e1s a Walletba",
+				"content": "A p\u00e1rbesz\u00e9dpanel bez\u00e1r\u00e1sa ut\u00e1n a p\u00e9nzt\u00e1rc\u00e1j\u00e1hoz ker\u00fcl. Bejelentkez\u00e9s ut\u00e1n t\u00e9rjen vissza erre az oldalra."
+			},
+			"ConnectWallet": "Wallet csatlakoztat\u00e1sa"
+		}
+	},
+	"setIdentifier": {
+		"title": "Adjon meg egy bejelentkez\u00e9si m\u00f3dot",
+		"sendMessage": "Aktiv\u00e1l\u00f3 \u00fczenet k\u00fcld\u00e9se",
+		"placeholders": {
+			"identifier": "adja meg mobilsz\u00e1m\u00e1t vagy e-mail c\u00edm\u00e9t",
+			"mobile": "\u00edrja be a mobilsz\u00e1m\u00e1t",
+			"email": "\u00edrd be az email c\u00edmed",
+			"username": "felhaszn\u00e1l\u00f3n\u00e9v"
+		}
+	},
+	"prompt": {
+		"title": "{{Platform}} sz\u00e1mla",
+		"areUsing": "\u00d6n {{platform}} -et haszn\u00e1l",
+		"noLongerUsing": "M\u00e1r nem csatlakozik a {{platform}} hez",
+		"doAuth": "Jelentkezzen be ezzel a fi\u00f3kkal",
+		"doSwitch": "V\u00e1ltson erre a fi\u00f3kra"
+	},
+	"roles": {
+		"Owner": "Tulajdonos",
+		"Admin": "Admin",
+		"Member": "Tag",
+		"Guest": "Vend\u00e9g",
+		"Host": "H\u00e1zigazda"
+	},
+	"web3": {
+		"WrongMethod": "Rossz szerz\u0151d\u00e9sk\u00f6t\u00e9si m\u00f3d {{methodName}}",
+		"ChangeWallet": "P\u00e9nzt\u00e1rca m\u00f3dos\u00edt\u00e1sa",
+		"ConnectWallet": "Wallet csatlakoztat\u00e1sa",
+		"AfterWalletConnectedPleaseRefresh": "A p\u00e9nzt\u00e1rca csatlakoztat\u00e1sa ut\u00e1n friss\u00edtse ezt az oldalt a p\u00e9nzt\u00e1rca felismer\u00e9s\u00e9hez"
+	},
+	"labels": {
+		"addToPhonebook": "Hozz\u00e1ad\u00e1s a telefonhoz n\u00e9vjegyekhez",
+		"addLabel": "\u00daj kapcsolat",
+		"prompt": "Adj neki nevet",
+		"titles": {
+			"Users/owners": "Tulajdonosok",
+			"Users/admins": "Adminok",
+			"Users/members": "tagok",
+			"Users/guests": "Vend\u00e9gek",
+			"Users/hosts": "Otthont ad",
+			"Users/testers": "Tesztel\u0151k",
+			"Users/speakers": "Hangsz\u00f3r\u00f3k"
+		}
+	},
+	"people": {
+		"People": "Emberek"
+	},
+	"external": {
+		"defaults": {
+			"title": "",
+			"bio": "F\u00f3rum eljegyz\u00e9si bot. Szerezze be a saj\u00e1tj\u00e1t a https://engageusers.ai oldalon",
+			"website": "https://engageusers.ai"
+		}
+	},
+	"errors": {
+		"NotEnoughPermissionsWallet": "Nincs elegend\u0151 enged\u00e9ly a felhaszn\u00e1l\u00f3 p\u00e9nzt\u00e1rc\u00e1j\u00e1nak olvas\u00e1s\u00e1hoz",
+		"ThisUserHaveNoWallet": "Ehhez a felhaszn\u00e1l\u00f3hoz nincs hozz\u00e1rendelve p\u00e9nzt\u00e1rca",
+		"TheWalletOfThisUserInvalid": "A felhaszn\u00e1l\u00f3 p\u00e9nzt\u00e1rc\u00e1ja \u00e9rv\u00e9nytelen",
+		"WalletInvalid": "A Wallet-c\u00edm \u00e9rv\u00e9nytelen"
+	}
 }

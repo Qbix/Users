@@ -1,14 +1,14 @@
 {
-    "activation": {
-        "Thanks": "Tervetuloa {{1}}.",
-        "ClickHere": "Napsauta tätä aktivoidaksesi tilisi: {{1}}"
-    },
-    "addMobile": {
-        "ClickHere": "Napsauta tätä vahvistaaksesi matkapuhelinnumerosi: {{1}}"
-    },
-    "resend": {
-        "DidYouWant": "Halusitko nollata tunnuslauseesi kohteessa {{1}}?",
-        "ClickHere": "Napsauta sitten tätä: {{1}}",
-        "OrEnterCode": "tai syötä koodi:"
-    }
+	"activation": {
+		"Thanks": "Tervetuloa {{1}}.",
+		"ClickHere": "Napsauta t\u00e4t\u00e4 aktivoidaksesi tilisi: {{1}}"
+	},
+	"addMobile": {
+		"ClickHere": "Napsauta t\u00e4t\u00e4 vahvistaaksesi matkapuhelinnumerosi: {{1}}"
+	},
+	"resend": {
+		"DidYouWant": "Halusitko nollata tunnuslauseesi kohteessa {{1}}?",
+		"ClickHere": "Napsauta sitten t\u00e4t\u00e4: {{1}}",
+		"OrEnterCode": "tai sy\u00f6t\u00e4 koodi:"
+	}
 }

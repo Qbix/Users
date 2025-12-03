@@ -1,22 +1,22 @@
 {
-    "activation": {
-        "Subject": "Dobrodošli! Prosimo, preverite svoj e-poštni naslov.",
-        "Thanks": "Dobrodošli v {{1}}",
-        "ReallyYourEmail": "Je to res tvoj e-poštni naslov, {{1}}? Če je tako, kliknite <a href='{{2}}'>tukaj<\/a> , da nastavite svoje geslo in aktivirate svoj račun.",
-        "SeeYou": "Se vidimo na <a href='{{1}}'>{{2}}<\/a> !",
-        "OtherwiseClickLink": "V nasprotnem primeru kliknite <a href='{{1}}'>to povezavo<\/a> ."
-    },
-    "identifier": {
-        "Subject": "Dobrodošli! Preverite svoj e-poštni naslov."
-    },
-    "resend": {
-        "Subject": "Hej, si pozabil svoje geslo?",
-        "Thanks": "Hvala za obisk {{1}}",
-        "YouAreReceiving": "To e-poštno sporočilo ste prejeli, ker je nekdo vnesel vaš e-poštni naslov in kliknil »pozabil sem geslo«. Če niste bili vi, preprosto prezrite to sporočilo.",
-        "Reset": "Za ponastavitev gesla kliknite {{1}}",
-        "SetUpPassphrase": "Nastavite geslo",
-        "DomainCode": "Če je spletna stran že odprta v vašem brskalniku, lahko vnesete kodo"
-    },
-    "SeeYou": "Se vidimo na {{1}}!",
-    "LinkToUnsubscribe": "Tukaj je povezava za <a href='{{1}}'>odjavo<\/a> , če ne želite več prejemati e-poštnih sporočil."
+	"activation": {
+		"Subject": "Dobrodo\u0161li! Prosimo, preverite svoj e-po\u0161tni naslov.",
+		"Thanks": "Dobrodo\u0161li v {{1}}",
+		"ReallyYourEmail": "Je to res tvoj e-po\u0161tni naslov, {{1}}? \u010ce je tako, kliknite <a href='{{2}}'>tukaj</a> , da nastavite svoje geslo in aktivirate svoj ra\u010dun.",
+		"SeeYou": "Se vidimo na <a href='{{1}}'>{{2}}</a> !",
+		"OtherwiseClickLink": "V nasprotnem primeru kliknite <a href='{{1}}'>to povezavo</a> ."
+	},
+	"identifier": {
+		"Subject": "Dobrodo\u0161li! Preverite svoj e-po\u0161tni naslov."
+	},
+	"resend": {
+		"Subject": "Hej, si pozabil svoje geslo?",
+		"Thanks": "Hvala za obisk {{1}}",
+		"YouAreReceiving": "To e-po\u0161tno sporo\u010dilo ste prejeli, ker je nekdo vnesel va\u0161 e-po\u0161tni naslov in kliknil \u00bbpozabil sem geslo\u00ab. \u010ce niste bili vi, preprosto prezrite to sporo\u010dilo.",
+		"Reset": "Za ponastavitev gesla kliknite {{1}}",
+		"SetUpPassphrase": "Nastavite geslo",
+		"DomainCode": "\u010ce je spletna stran \u017ee odprta v va\u0161em brskalniku, lahko vnesete kodo"
+	},
+	"SeeYou": "Se vidimo na {{1}}!",
+	"LinkToUnsubscribe": "Tukaj je povezava za <a href='{{1}}'>odjavo</a> , \u010de ne \u017eelite ve\u010d prejemati e-po\u0161tnih sporo\u010dil."
 }

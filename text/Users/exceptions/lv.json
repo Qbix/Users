@@ -1,4 +1,4 @@
 {
-    "NotLoggedIn": "Jūs neesat pieteicies. <a href='#login' data-users-login>Noklikšķiniet šeit, lai pieteiktos<\/a>",
-    "InvalidLanguage": "Nederīga valoda {{language}}"
+	"NotLoggedIn": "J\u016bs neesat pieteicies. <a href='#login' data-users-login>Noklik\u0161\u0137iniet \u0161eit, lai pieteiktos</a>",
+	"InvalidLanguage": "Neder\u012bga valoda {{language}}"
 }

@@ -1,22 +1,22 @@
 {
-    "activation": {
-        "Subject": "Merħba! Jekk jogħġbok ivverifika l-indirizz elettroniku tiegħek.",
-        "Thanks": "Merħba għal {{1}}",
-        "ReallyYourEmail": "Dan huwa verament l-indirizz elettroniku tiegħek, {{1}}? Jekk iva, ikklikkja <a href='{{2}}'>hawn<\/a> biex issettja l-passphrase tiegħek u tattiva l-kont tiegħek.",
-        "SeeYou": "Narawkom fuq <a href='{{1}}'>{{2}}<\/a> !",
-        "OtherwiseClickLink": "Inkella, ikklikkja <a href='{{1}}'>din il-link<\/a> ."
-    },
-    "identifier": {
-        "Subject": "Merħba! Ivverifika l-indirizz elettroniku tiegħek."
-    },
-    "resend": {
-        "Subject": "Ħej, insejt il-passphrase tiegħek?",
-        "Thanks": "Grazzi talli żort {{1}}",
-        "YouAreReceiving": "Qed tirċievi din l-email għax xi ħadd daħħal l-indirizz tal-email tiegħek u kklikkja &quot;forgot passphrase&quot;. Jekk ma kontx int, sempliċement injora dan il-messaġġ.",
-        "Reset": "Biex tirrisettja l-passphrase tiegħek, ikklikkja {{1}}",
-        "SetUpPassphrase": "Stabbilixxi passphrase",
-        "DomainCode": "Jekk il-paġna web hija diġà miftuħa fil-browser tiegħek, tista&#39; ddaħħal il-kodiċi"
-    },
-    "SeeYou": "Narawkom fuq {{1}}!",
-    "LinkToUnsubscribe": "Hawnhekk hawn link biex tneħħi l- <a href='{{1}}'>abbonament<\/a> jekk ma tridx tirċievi aktar emails."
+	"activation": {
+		"Subject": "Mer\u0127ba! Jekk jog\u0127\u0121bok ivverifika l-indirizz elettroniku tieg\u0127ek.",
+		"Thanks": "Mer\u0127ba g\u0127al {{1}}",
+		"ReallyYourEmail": "Dan huwa verament l-indirizz elettroniku tieg\u0127ek, {{1}}? Jekk iva, ikklikkja <a href='{{2}}'>hawn</a> biex issettja l-passphrase tieg\u0127ek u tattiva l-kont tieg\u0127ek.",
+		"SeeYou": "Narawkom fuq <a href='{{1}}'>{{2}}</a> !",
+		"OtherwiseClickLink": "Inkella, ikklikkja <a href='{{1}}'>din il-link</a> ."
+	},
+	"identifier": {
+		"Subject": "Mer\u0127ba! Ivverifika l-indirizz elettroniku tieg\u0127ek."
+	},
+	"resend": {
+		"Subject": "\u0126ej, insejt il-passphrase tieg\u0127ek?",
+		"Thanks": "Grazzi talli \u017cort {{1}}",
+		"YouAreReceiving": "Qed tir\u010bievi din l-email g\u0127ax xi \u0127add da\u0127\u0127al l-indirizz tal-email tieg\u0127ek u kklikkja &quot;forgot passphrase&quot;. Jekk ma kontx int, sempli\u010bement injora dan il-messa\u0121\u0121.",
+		"Reset": "Biex tirrisettja l-passphrase tieg\u0127ek, ikklikkja {{1}}",
+		"SetUpPassphrase": "Stabbilixxi passphrase",
+		"DomainCode": "Jekk il-pa\u0121na web hija di\u0121\u00e0 miftu\u0127a fil-browser tieg\u0127ek, tista&#39; dda\u0127\u0127al il-kodi\u010bi"
+	},
+	"SeeYou": "Narawkom fuq {{1}}!",
+	"LinkToUnsubscribe": "Hawnhekk hawn link biex tne\u0127\u0127i l- <a href='{{1}}'>abbonament</a> jekk ma tridx tir\u010bievi aktar emails."
 }

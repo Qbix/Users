@@ -1,196 +1,196 @@
 {
-    "avatar": {
-        "Someone": "Einhver"
-    },
-    "identifier": {
-        "types": {
-            "email": "Tölvupóstur",
-            "mobile": "Farsími",
-            "web3": "Vef3"
-        }
-    },
-    "clipboard": {
-        "Copied": "Afritað! Nú geturðu límt það hvar sem er."
-    },
-    "analytics": {
-        "Title": "Greining",
-        "Daily": "Daglega",
-        "Weekly": "Vikulega",
-        "Monthly": "Mánaðarlega",
-        "Application": "Umsókn",
-        "Pages": "Síður",
-        "Services": "Þjónusta",
-        "Faq": "Algengar spurningar",
-        "WeekDays": "Vikudagar"
-    },
-    "actions": {
-        "LogIn": "skrá inn",
-        "LogOut": "að skrá þig út"
-    },
-    "activate": {
-        "OneTimeCode": "Sláðu inn kóðann sem þú fékkst:",
-        "SetAsPrimary": "Stilltu {{1}} sem aðal {{2}}",
-        "ChoosePassPhrase": "Veldu <strong>lykilorð<\/strong> til að skrá þig inn með.<br> Einföld setning sem samanstendur af nokkrum orðum sem þú munt auðveldlega muna.",
-        "ChoosePassPhraseSeeSuggestions": "Veldu góða <strong>lykilorð<\/strong> til að vernda reikninginn þinn. Sjá tillögur um nokkrar hugmyndir.",
-        "LogOutAndTryAgain": "Skráðu þig út og reyndu aftur",
-        "IfYouFeel": "Ef þér finnst eitthvað hafa farið úrskeiðis geturðu það",
-        "SetIdentifierButtonTitle": "byrja aftur",
-        "ActivateMyAccount": "Virkjaðu reikninginn minn"
-    },
-    "session": {
-        "GetStarted": "Byrja"
-    },
-    "authorize": {
-        "GetStarted": "Byrja",
-        "Authorize": "Heimild",
-        "TermsLabel": "Ég hef lesið og er sammála<br> í {{link}}",
-        "TermsTitle": "Skilmálar",
-        "mustAgree": "Fyrst verður þú að samþykkja skilmálana."
-    },
-    "register": {
-        "TermsLabel": "Ég samþykki {{link}}",
-        "TermsTitle": "Skilmálar"
-    },
-    "notifications": {
-        "title": "Leyfi",
-        "prompt": "Viltu virkja tilkynningar? Þú munt fá rauntímauppfærslur um hluti sem þér þykir vænt um.",
-        "yes": "Já",
-        "no": "Nei",
-        "WelcomePleaseVerifyEmail": "Velkominn! Vinsamlegast staðfestu netfangið þitt.",
-        "WelcomeVerifyEmail": "Velkominn! Staðfestu netfangið þitt.",
-        "ForgetPass": "Hæ, gleymdirðu lykilorðinu þínu?",
-        "PassphraseSaved": "Aðgangsorðið þitt hefur verið vistað.",
-        "IdentifierActivated": "{{type}} hefur verið virkjað.",
-        "CompletedActivation": "Þú hefur lokið virkjun notanda.",
-        "CompletedActivationLogIn": "Þú hefur lokið virkjun notanda. Prófaðu að skrá þig inn núna."
-    },
-    "contacts": {
-        "dialog": {
-            "title": "Veldu tengilið",
-            "CreateAccount": "+ Nýr tengiliður",
-            "CreateAccountNotFound": "Q.Users.Cordova.UI.create fannst ekki",
-            "SearchByName": "Leitaðu eftir nafni",
-            "EmptyContacts": "Tengiliðir fundust ekki..."
-        },
-        "select": {
-            "title": "Veldu tengilið {{displayName}}"
-        },
-        "require": {
-            "Instructions": "Þú verður að virkja aðgang að öllum tengiliðum til að þetta virki."
-        }
-    },
-    "usersContacts": {
-        "selectLabel": "Vinsamlegast veldu merki.",
-        "inviteUser": "Bjóða notendum",
-        "selectRole": "Veldu Hlutverk",
-        "inviteRole": "Bjóða {{role}}"
-    },
-    "invalidLanguageSelected": "Ógilt tungumál valið",
-    "platforms": {
-        "wallet": "Veski",
-        "broadcast": "Útsending"
-    },
-    "login": {
-        "title": "Velkominn",
-        "directions": {
-            "GetStarted": "Búðu til reikning eða skráðu þig inn.",
-            "NoRegister": "Skráðu þig inn ef þú ert með reikning.",
-            "WasInvited": "Hver er besta leiðin til að ná til þín?"
-        },
-        "directionsNoRegister": "Skráðu þig inn ef þú ert með reikning.",
-        "goButton": "➔",
-        "passphrase": "Sláðu inn lykilorðið þitt:",
-        "loginButton": "Byrja",
-        "registerButton": "Byrja",
-        "resendButton": "Sendu virkjunarskilaboð",
-        "forgot": "Gleymt því?",
-        "resendConfirm": "Viltu senda skilaboð til að endurstilla lykilorðið þitt?",
-        "resendSuccess": "Leitaðu að skilaboðum til að endurstilla lykilorðið þitt",
-        "resendClose": "Loka",
-        "noPassphrase": "Áður en þú getur skráð þig inn verður þú að setja lykilorð með því að smella á hlekkinn í virkjunarskilaboðunum þínum.",
-        "notVerified": "Þú verður að senda sjálfum þér virkjunarskilaboð til að skrá þig inn.",
-        "emailExists": "Hefur þú reynt að skrá þig með þessum tölvupósti áður? Ef svo er skaltu athuga pósthólfið þitt til að virkja reikninginn þinn. <a href='#resend' class='Q_button Users_activation_resend'>Smelltu til að endursenda skilaboðin<\/a>",
-        "mobileExists": "Hefur þú reynt að skrá þig með þessu farsímanúmeri áður? Ef svo er skaltu athuga SMS til að virkja reikninginn þinn. <a href='#resend' class='Q_button Users_activation_resend'>Smelltu til að endursenda skilaboðin<\/a>",
-        "usingOther": "eða þú getur",
-        "connectPlatforms": "eða tengdu með:",
-        "prompt": "Veldu notendanafn:",
-        "newUser": "eða stofnaðu nýjan reikning hér að neðan",
-        "placeholders": {
-            "identifier": "farsímanúmerið þitt eða tölvupóstinn þinn",
-            "mobile": "sláðu inn farsímanúmerið þitt",
-            "email": "sláðu inn netfangið þitt",
-            "username": "nota eingöngu bókstafi og tölustafi"
-        },
-        "confirmTerms": "Samþykkja þjónustuskilmálana?",
-        "facebookNoEmail": "Á Facebook reikningnum þínum vantar staðfest netfang. Skráðu þig einfaldlega á innfæddan hátt.",
-        "picTooltip": "Þú getur breytt þessari mynd síðar",
-        "web3": {
-            "payload": "Skráðu þig inn á {{host}} á tíma {{timestamp}}",
-            "alert": {
-                "title": "Beinir áfram í veski",
-                "content": "Þegar þú lokar þessum glugga verðurðu færður í veskið þitt. Eftir að þú hefur skráð þig inn skaltu fara aftur á þessa síðu."
-            },
-            "ConnectWallet": "Tengdu veski"
-        }
-    },
-    "setIdentifier": {
-        "title": "Bættu við leið til að skrá þig inn",
-        "sendMessage": "Sendu virkjunarskilaboð",
-        "placeholders": {
-            "identifier": "sláðu inn farsímanúmerið þitt eða tölvupóstinn þinn",
-            "mobile": "sláðu inn farsímanúmerið þitt",
-            "email": "sláðu inn netfangið þitt",
-            "username": "notendanafn"
-        }
-    },
-    "prompt": {
-        "title": "{{Platform}} Reikningur",
-        "areUsing": "Þú ert að nota {{platform}} as",
-        "noLongerUsing": "Þú ert ekki lengur tengdur við {{platform}} as",
-        "doAuth": "Skráðu þig inn með þessum reikningi",
-        "doSwitch": "Skiptu yfir á þennan reikning"
-    },
-    "roles": {
-        "Owner": "Eigandi",
-        "Admin": "Admin",
-        "Member": "Meðlimur",
-        "Guest": "Gestur",
-        "Host": "Gestgjafi"
-    },
-    "web3": {
-        "WrongMethod": "Röng samningsaðferð {{methodName}}",
-        "ChangeWallet": "Breyta veski",
-        "ConnectWallet": "Tengdu veski",
-        "AfterWalletConnectedPleaseRefresh": "Eftir að veskið hefur verið tengt skaltu endurnýja þessa síðu til að þekkja veskið"
-    },
-    "labels": {
-        "addToPhonebook": "Bæta við tengiliði í símanum mínum",
-        "addLabel": "Nýtt samband",
-        "prompt": "Gefðu því nafn",
-        "titles": {
-            "Users\/owners": "Eigendur",
-            "Users\/admins": "Stjórnendur",
-            "Users\/members": "Meðlimir",
-            "Users\/guests": "Gestir",
-            "Users\/hosts": "Gestgjafar",
-            "Users\/testers": "Prófunarmenn",
-            "Users\/speakers": "Hátalarar"
-        }
-    },
-    "people": {
-        "People": "Fólk"
-    },
-    "external": {
-        "defaults": {
-            "title": "",
-            "bio": "Spjallþátttökuvél á vettvangi. Fáðu þitt eigið á https:\/\/engageusers.ai",
-            "website": "https:\/\/engageusers.ai"
-        }
-    },
-    "errors": {
-        "NotEnoughPermissionsWallet": "Ekki nægar heimildir til að lesa veski þessa notanda",
-        "ThisUserHaveNoWallet": "Þessi notandi hefur ekkert veski úthlutað",
-        "TheWalletOfThisUserInvalid": "Veski þessa notanda ógilt",
-        "WalletInvalid": "Veski heimilisfang ógilt"
-    }
+	"avatar": {
+		"Someone": "Einhver"
+	},
+	"identifier": {
+		"types": {
+			"email": "T\u00f6lvup\u00f3stur",
+			"mobile": "Fars\u00edmi",
+			"web3": "Vef3"
+		}
+	},
+	"clipboard": {
+		"Copied": "Afrita\u00f0! N\u00fa getur\u00f0u l\u00edmt \u00fea\u00f0 hvar sem er."
+	},
+	"analytics": {
+		"Title": "Greining",
+		"Daily": "Daglega",
+		"Weekly": "Vikulega",
+		"Monthly": "M\u00e1na\u00f0arlega",
+		"Application": "Ums\u00f3kn",
+		"Pages": "S\u00ed\u00f0ur",
+		"Services": "\u00dej\u00f3nusta",
+		"Faq": "Algengar spurningar",
+		"WeekDays": "Vikudagar"
+	},
+	"actions": {
+		"LogIn": "skr\u00e1 inn",
+		"LogOut": "a\u00f0 skr\u00e1 \u00feig \u00fat"
+	},
+	"activate": {
+		"OneTimeCode": "Sl\u00e1\u00f0u inn k\u00f3\u00f0ann sem \u00fe\u00fa f\u00e9kkst:",
+		"SetAsPrimary": "Stilltu {{1}} sem a\u00f0al {{2}}",
+		"ChoosePassPhrase": "Veldu <strong>lykilor\u00f0</strong> til a\u00f0 skr\u00e1 \u00feig inn me\u00f0.<br> Einf\u00f6ld setning sem samanstendur af nokkrum or\u00f0um sem \u00fe\u00fa munt au\u00f0veldlega muna.",
+		"ChoosePassPhraseSeeSuggestions": "Veldu g\u00f3\u00f0a <strong>lykilor\u00f0</strong> til a\u00f0 vernda reikninginn \u00feinn. Sj\u00e1 till\u00f6gur um nokkrar hugmyndir.",
+		"LogOutAndTryAgain": "Skr\u00e1\u00f0u \u00feig \u00fat og reyndu aftur",
+		"IfYouFeel": "Ef \u00fe\u00e9r finnst eitthva\u00f0 hafa fari\u00f0 \u00farskei\u00f0is getur\u00f0u \u00fea\u00f0",
+		"SetIdentifierButtonTitle": "byrja aftur",
+		"ActivateMyAccount": "Virkja\u00f0u reikninginn minn"
+	},
+	"session": {
+		"GetStarted": "Byrja"
+	},
+	"authorize": {
+		"GetStarted": "Byrja",
+		"Authorize": "Heimild",
+		"TermsLabel": "\u00c9g hef lesi\u00f0 og er samm\u00e1la<br> \u00ed {{link}}",
+		"TermsTitle": "Skilm\u00e1lar",
+		"mustAgree": "Fyrst ver\u00f0ur \u00fe\u00fa a\u00f0 sam\u00feykkja skilm\u00e1lana."
+	},
+	"register": {
+		"TermsLabel": "\u00c9g sam\u00feykki {{link}}",
+		"TermsTitle": "Skilm\u00e1lar"
+	},
+	"notifications": {
+		"title": "Leyfi",
+		"prompt": "Viltu virkja tilkynningar? \u00de\u00fa munt f\u00e1 raunt\u00edmauppf\u00e6rslur um hluti sem \u00fe\u00e9r \u00feykir v\u00e6nt um.",
+		"yes": "J\u00e1",
+		"no": "Nei",
+		"WelcomePleaseVerifyEmail": "Velkominn! Vinsamlegast sta\u00f0festu netfangi\u00f0 \u00feitt.",
+		"WelcomeVerifyEmail": "Velkominn! Sta\u00f0festu netfangi\u00f0 \u00feitt.",
+		"ForgetPass": "H\u00e6, gleymdir\u00f0u lykilor\u00f0inu \u00fe\u00ednu?",
+		"PassphraseSaved": "A\u00f0gangsor\u00f0i\u00f0 \u00feitt hefur veri\u00f0 vista\u00f0.",
+		"IdentifierActivated": "{{type}} hefur veri\u00f0 virkja\u00f0.",
+		"CompletedActivation": "\u00de\u00fa hefur loki\u00f0 virkjun notanda.",
+		"CompletedActivationLogIn": "\u00de\u00fa hefur loki\u00f0 virkjun notanda. Pr\u00f3fa\u00f0u a\u00f0 skr\u00e1 \u00feig inn n\u00fana."
+	},
+	"contacts": {
+		"dialog": {
+			"title": "Veldu tengili\u00f0",
+			"CreateAccount": "+ N\u00fdr tengili\u00f0ur",
+			"CreateAccountNotFound": "Q.Users.Cordova.UI.create fannst ekki",
+			"SearchByName": "Leita\u00f0u eftir nafni",
+			"EmptyContacts": "Tengili\u00f0ir fundust ekki..."
+		},
+		"select": {
+			"title": "Veldu tengili\u00f0 {{displayName}}"
+		},
+		"require": {
+			"Instructions": "\u00de\u00fa ver\u00f0ur a\u00f0 virkja a\u00f0gang a\u00f0 \u00f6llum tengili\u00f0um til a\u00f0 \u00feetta virki."
+		}
+	},
+	"usersContacts": {
+		"selectLabel": "Vinsamlegast veldu merki.",
+		"inviteUser": "Bj\u00f3\u00f0a notendum",
+		"selectRole": "Veldu Hlutverk",
+		"inviteRole": "Bj\u00f3\u00f0a {{role}}"
+	},
+	"invalidLanguageSelected": "\u00d3gilt tungum\u00e1l vali\u00f0",
+	"platforms": {
+		"wallet": "Veski",
+		"broadcast": "\u00datsending"
+	},
+	"login": {
+		"title": "Velkomin(n) \u00ed {{AppName}}",
+		"directions": {
+			"GetStarted": "Hvert eigum vi\u00f0 a\u00f0 senda tilkynningar?",
+			"NoRegister": "Skr\u00e1\u00f0u \u00feig inn ef \u00fe\u00fa ert me\u00f0 reikning.",
+			"WasInvited": "Hver er besta lei\u00f0in til a\u00f0 n\u00e1 til \u00fe\u00edn?"
+		},
+		"directionsNoRegister": "Skr\u00e1\u00f0u \u00feig inn ef \u00fe\u00fa ert me\u00f0 reikning.",
+		"goButton": "\u2794",
+		"passphrase": "Sl\u00e1\u00f0u inn lykilor\u00f0i\u00f0 \u00feitt:",
+		"loginButton": "Byrja",
+		"registerButton": "Byrja",
+		"resendButton": "Sendu virkjunarskilabo\u00f0",
+		"forgot": "Gleymt \u00fev\u00ed?",
+		"resendConfirm": "Viltu senda skilabo\u00f0 til a\u00f0 endurstilla lykilor\u00f0i\u00f0 \u00feitt?",
+		"resendSuccess": "Leita\u00f0u a\u00f0 skilabo\u00f0um til a\u00f0 endurstilla lykilor\u00f0i\u00f0 \u00feitt",
+		"resendClose": "Loka",
+		"noPassphrase": "\u00c1\u00f0ur en \u00fe\u00fa getur skr\u00e1\u00f0 \u00feig inn ver\u00f0ur \u00fe\u00fa a\u00f0 setja lykilor\u00f0 me\u00f0 \u00fev\u00ed a\u00f0 smella \u00e1 hlekkinn \u00ed virkjunarskilabo\u00f0unum \u00fe\u00ednum.",
+		"notVerified": "\u00de\u00fa ver\u00f0ur a\u00f0 senda sj\u00e1lfum \u00fe\u00e9r virkjunarskilabo\u00f0 til a\u00f0 skr\u00e1 \u00feig inn.",
+		"emailExists": "Hefur \u00fe\u00fa reynt a\u00f0 skr\u00e1 \u00feig me\u00f0 \u00feessum t\u00f6lvup\u00f3sti \u00e1\u00f0ur? Ef svo er skaltu athuga p\u00f3sth\u00f3lfi\u00f0 \u00feitt til a\u00f0 virkja reikninginn \u00feinn. <a href='#resend' class='Q_button Users_activation_resend'>Smelltu til a\u00f0 endursenda skilabo\u00f0in</a>",
+		"mobileExists": "Hefur \u00fe\u00fa reynt a\u00f0 skr\u00e1 \u00feig me\u00f0 \u00feessu fars\u00edman\u00fameri \u00e1\u00f0ur? Ef svo er skaltu athuga SMS til a\u00f0 virkja reikninginn \u00feinn. <a href='#resend' class='Q_button Users_activation_resend'>Smelltu til a\u00f0 endursenda skilabo\u00f0in</a>",
+		"usingOther": "e\u00f0a \u00fe\u00fa getur",
+		"connectPlatforms": "e\u00f0a tengdu me\u00f0:",
+		"prompt": "Veldu notendanafn:",
+		"newUser": "e\u00f0a stofna\u00f0u n\u00fdjan reikning h\u00e9r a\u00f0 ne\u00f0an",
+		"placeholders": {
+			"identifier": "fars\u00edman\u00fameri\u00f0 \u00feitt e\u00f0a t\u00f6lvup\u00f3stinn \u00feinn",
+			"mobile": "sl\u00e1\u00f0u inn fars\u00edman\u00fameri\u00f0 \u00feitt",
+			"email": "sl\u00e1\u00f0u inn netfangi\u00f0 \u00feitt",
+			"username": "nota eing\u00f6ngu b\u00f3kstafi og t\u00f6lustafi"
+		},
+		"confirmTerms": "Sam\u00feykkja \u00fej\u00f3nustuskilm\u00e1lana?",
+		"facebookNoEmail": "\u00c1 Facebook reikningnum \u00fe\u00ednum vantar sta\u00f0fest netfang. Skr\u00e1\u00f0u \u00feig einfaldlega \u00e1 innf\u00e6ddan h\u00e1tt.",
+		"picTooltip": "\u00de\u00fa getur breytt \u00feessari mynd s\u00ed\u00f0ar",
+		"web3": {
+			"payload": "Skr\u00e1\u00f0u \u00feig inn \u00e1 {{host}} \u00e1 t\u00edma {{timestamp}}",
+			"alert": {
+				"title": "Beinir \u00e1fram \u00ed veski",
+				"content": "\u00deegar \u00fe\u00fa lokar \u00feessum glugga ver\u00f0ur\u00f0u f\u00e6r\u00f0ur \u00ed veski\u00f0 \u00feitt. Eftir a\u00f0 \u00fe\u00fa hefur skr\u00e1\u00f0 \u00feig inn skaltu fara aftur \u00e1 \u00feessa s\u00ed\u00f0u."
+			},
+			"ConnectWallet": "Tengdu veski"
+		}
+	},
+	"setIdentifier": {
+		"title": "B\u00e6ttu vi\u00f0 lei\u00f0 til a\u00f0 skr\u00e1 \u00feig inn",
+		"sendMessage": "Sendu virkjunarskilabo\u00f0",
+		"placeholders": {
+			"identifier": "sl\u00e1\u00f0u inn fars\u00edman\u00fameri\u00f0 \u00feitt e\u00f0a t\u00f6lvup\u00f3stinn \u00feinn",
+			"mobile": "sl\u00e1\u00f0u inn fars\u00edman\u00fameri\u00f0 \u00feitt",
+			"email": "sl\u00e1\u00f0u inn netfangi\u00f0 \u00feitt",
+			"username": "notendanafn"
+		}
+	},
+	"prompt": {
+		"title": "{{Platform}} Reikningur",
+		"areUsing": "\u00de\u00fa ert a\u00f0 nota {{platform}} as",
+		"noLongerUsing": "\u00de\u00fa ert ekki lengur tengdur vi\u00f0 {{platform}} as",
+		"doAuth": "Skr\u00e1\u00f0u \u00feig inn me\u00f0 \u00feessum reikningi",
+		"doSwitch": "Skiptu yfir \u00e1 \u00feennan reikning"
+	},
+	"roles": {
+		"Owner": "Eigandi",
+		"Admin": "Admin",
+		"Member": "Me\u00f0limur",
+		"Guest": "Gestur",
+		"Host": "Gestgjafi"
+	},
+	"web3": {
+		"WrongMethod": "R\u00f6ng samningsa\u00f0fer\u00f0 {{methodName}}",
+		"ChangeWallet": "Breyta veski",
+		"ConnectWallet": "Tengdu veski",
+		"AfterWalletConnectedPleaseRefresh": "Eftir a\u00f0 veski\u00f0 hefur veri\u00f0 tengt skaltu endurn\u00fdja \u00feessa s\u00ed\u00f0u til a\u00f0 \u00feekkja veski\u00f0"
+	},
+	"labels": {
+		"addToPhonebook": "B\u00e6ta vi\u00f0 tengili\u00f0i \u00ed s\u00edmanum m\u00ednum",
+		"addLabel": "N\u00fdtt samband",
+		"prompt": "Gef\u00f0u \u00fev\u00ed nafn",
+		"titles": {
+			"Users/owners": "Eigendur",
+			"Users/admins": "Stj\u00f3rnendur",
+			"Users/members": "Me\u00f0limir",
+			"Users/guests": "Gestir",
+			"Users/hosts": "Gestgjafar",
+			"Users/testers": "Pr\u00f3funarmenn",
+			"Users/speakers": "H\u00e1talarar"
+		}
+	},
+	"people": {
+		"People": "F\u00f3lk"
+	},
+	"external": {
+		"defaults": {
+			"title": "",
+			"bio": "Spjall\u00fe\u00e1ttt\u00f6kuv\u00e9l \u00e1 vettvangi. F\u00e1\u00f0u \u00feitt eigi\u00f0 \u00e1 https://engageusers.ai",
+			"website": "https://engageusers.ai"
+		}
+	},
+	"errors": {
+		"NotEnoughPermissionsWallet": "Ekki n\u00e6gar heimildir til a\u00f0 lesa veski \u00feessa notanda",
+		"ThisUserHaveNoWallet": "\u00deessi notandi hefur ekkert veski \u00fathluta\u00f0",
+		"TheWalletOfThisUserInvalid": "Veski \u00feessa notanda \u00f3gilt",
+		"WalletInvalid": "Veski heimilisfang \u00f3gilt"
+	}
 }

@@ -1,4 +1,4 @@
 {
-    "NotLoggedIn": "Et ole kirjautunut sisään. <a href='#login' data-users-login>Kirjaudu sisään napsauttamalla tätä<\/a>",
-    "InvalidLanguage": "Virheellinen kieli {{language}}"
+	"NotLoggedIn": "Et ole kirjautunut sis\u00e4\u00e4n. <a href='#login' data-users-login>Kirjaudu sis\u00e4\u00e4n napsauttamalla t\u00e4t\u00e4</a>",
+	"InvalidLanguage": "Virheellinen kieli {{language}}"
 }

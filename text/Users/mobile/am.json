@@ -1,14 +1,14 @@
 {
-    "activation": {
-        "Thanks": "እንኳን ወደ {{1}} በደህና መጡ።",
-        "ClickHere": "መለያህን ለማንቃት እዚህ ጠቅ አድርግ {{1}}"
-    },
-    "resend": {
-        "DidYouWant": "የይለፍ ሐረግዎን በ {{1}} ውስጥ ዳግም ማስጀመር ፈልገዋል?",
-        "ClickHere": "ከዚያ እዚህ ጠቅ ያድርጉ: {{1}}",
-        "OrEnterCode": "ወይም ኮድ አስገባ፡"
-    },
-    "addMobile": {
-        "ClickHere": "የሞባይል ቁጥርህን ለማረጋገጥ እዚህ ጠቅ አድርግ {{1}}"
-    }
+	"activation": {
+		"Thanks": "\u12a5\u1295\u12b3\u1295 \u12c8\u12f0 {{1}} \u1260\u12f0\u1205\u1293 \u1218\u1321\u1362",
+		"ClickHere": "\u1218\u1208\u12eb\u1205\u1295 \u1208\u121b\u1295\u1243\u1275 \u12a5\u12da\u1205 \u1320\u1245 \u12a0\u12f5\u122d\u130d {{1}}"
+	},
+	"resend": {
+		"DidYouWant": "\u12e8\u12ed\u1208\u134d \u1210\u1228\u130d\u12ce\u1295 \u1260 {{1}} \u12cd\u1235\u1325 \u12f3\u130d\u121d \u121b\u1235\u1300\u1218\u122d \u1348\u120d\u1308\u12cb\u120d?",
+		"ClickHere": "\u12a8\u12da\u12eb \u12a5\u12da\u1205 \u1320\u1245 \u12eb\u12f5\u122d\u1309: {{1}}",
+		"OrEnterCode": "\u12c8\u12ed\u121d \u12ae\u12f5 \u12a0\u1235\u1308\u1263\u1361"
+	},
+	"addMobile": {
+		"ClickHere": "\u12e8\u121e\u1263\u12ed\u120d \u1241\u1325\u122d\u1205\u1295 \u1208\u121b\u1228\u130b\u1308\u1325 \u12a5\u12da\u1205 \u1320\u1245 \u12a0\u12f5\u122d\u130d {{1}}"
+	}
 }

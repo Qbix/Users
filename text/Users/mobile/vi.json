@@ -1,14 +1,14 @@
 {
-    "activation": {
-        "Thanks": "Chào mừng bạn đến với {{1}}.",
-        "ClickHere": "Nhấp vào đây để kích hoạt tài khoản của bạn: {{1}}"
-    },
-    "addMobile": {
-        "ClickHere": "Nhấp vào đây để xác minh số điện thoại di động của bạn: {{1}}"
-    },
-    "resend": {
-        "DidYouWant": "Bạn có muốn đặt lại cụm mật khẩu của mình trong {{1}} không?",
-        "ClickHere": "Sau đó nhấp vào đây: {{1}}",
-        "OrEnterCode": "hoặc nhập mã:"
-    }
+	"activation": {
+		"Thanks": "Ch\u00e0o m\u1eebng b\u1ea1n \u0111\u1ebfn v\u1edbi {{1}}.",
+		"ClickHere": "Nh\u1ea5p v\u00e0o \u0111\u00e2y \u0111\u1ec3 k\u00edch ho\u1ea1t t\u00e0i kho\u1ea3n c\u1ee7a b\u1ea1n: {{1}}"
+	},
+	"addMobile": {
+		"ClickHere": "Nh\u1ea5p v\u00e0o \u0111\u00e2y \u0111\u1ec3 x\u00e1c minh s\u1ed1 \u0111i\u1ec7n tho\u1ea1i di \u0111\u1ed9ng c\u1ee7a b\u1ea1n: {{1}}"
+	},
+	"resend": {
+		"DidYouWant": "B\u1ea1n c\u00f3 mu\u1ed1n \u0111\u1eb7t l\u1ea1i c\u1ee5m m\u1eadt kh\u1ea9u c\u1ee7a m\u00ecnh trong {{1}} kh\u00f4ng?",
+		"ClickHere": "Sau \u0111\u00f3 nh\u1ea5p v\u00e0o \u0111\u00e2y: {{1}}",
+		"OrEnterCode": "ho\u1eb7c nh\u1eadp m\u00e3:"
+	}
 }

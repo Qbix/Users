@@ -1,6 +1,6 @@
 {
-    "btns": {
-        "web2Role": "תפקיד Web2",
-        "web3Role": "תפקיד Web3"
-    }
+	"btns": {
+		"web2Role": "\u05ea\u05e4\u05e7\u05d9\u05d3 Web2",
+		"web3Role": "\u05ea\u05e4\u05e7\u05d9\u05d3 Web3"
+	}
 }

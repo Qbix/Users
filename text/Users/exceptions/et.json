@@ -1,4 +1,4 @@
 {
-    "NotLoggedIn": "Te pole sisse logitud. <a href='#login' data-users-login>Sisselogimiseks klõpsake siin<\/a>",
-    "InvalidLanguage": "Kehtetu keel {{language}}"
+	"NotLoggedIn": "Te pole sisse logitud. <a href='#login' data-users-login>Sisselogimiseks kl\u00f5psake siin</a>",
+	"InvalidLanguage": "Kehtetu keel {{language}}"
 }

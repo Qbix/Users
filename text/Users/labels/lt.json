@@ -1,15 +1,15 @@
 {
-    "addToPhonebook": "Pridėti prie mano telefono kontaktų",
-    "addLabel": "Nauji santykiai",
-    "newRole": "Naujas vaidmuo",
-    "prompt": "Duok jam pavadinimą",
-    "newLabel": "Nauja etiketė",
-    "editLabel": "Redaguoti etiketę",
-    "addBtn": "Papildyti",
-    "editBtn": "Sutaupyti",
-    "canManageDialogTitle": "Gali valdyti vaidmenis",
-    "canManageBtn": "Gali valdyti...",
-    "titlePlaceholder": "Pavadinimas",
-    "selectOptionTitle_web2": "Gimtoji",
-    "selectOptionTitle_web3": "Web3"
+	"addToPhonebook": "Prid\u0117ti prie mano telefono kontakt\u0173",
+	"addLabel": "Nauji santykiai",
+	"newRole": "Naujas vaidmuo",
+	"prompt": "Duok jam pavadinim\u0105",
+	"newLabel": "Nauja etiket\u0117",
+	"editLabel": "Redaguoti etiket\u0119",
+	"addBtn": "Papildyti",
+	"editBtn": "Sutaupyti",
+	"canManageDialogTitle": "Gali valdyti vaidmenis",
+	"canManageBtn": "Gali valdyti...",
+	"titlePlaceholder": "Pavadinimas",
+	"selectOptionTitle_web2": "Gimtoji",
+	"selectOptionTitle_web3": "Web3"
 }

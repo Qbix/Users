@@ -1,14 +1,14 @@
 {
-    "activation": {
-        "Thanks": "Mirë se vini në {{1}}.",
-        "ClickHere": "Klikoni këtu për të aktivizuar llogarinë tuaj: {{1}}"
-    },
-    "addMobile": {
-        "ClickHere": "Klikoni këtu për të verifikuar numrin tuaj celular: {{1}}"
-    },
-    "resend": {
-        "DidYouWant": "Dëshironi të rivendosni frazën tuaj të kalimit në {{1}}?",
-        "ClickHere": "Pastaj klikoni këtu: {{1}}",
-        "OrEnterCode": "ose shkruani kodin:"
-    }
+	"activation": {
+		"Thanks": "Mir\u00eb se vini n\u00eb {{1}}.",
+		"ClickHere": "Klikoni k\u00ebtu p\u00ebr t\u00eb aktivizuar llogarin\u00eb tuaj: {{1}}"
+	},
+	"addMobile": {
+		"ClickHere": "Klikoni k\u00ebtu p\u00ebr t\u00eb verifikuar numrin tuaj celular: {{1}}"
+	},
+	"resend": {
+		"DidYouWant": "D\u00ebshironi t\u00eb rivendosni fraz\u00ebn tuaj t\u00eb kalimit n\u00eb {{1}}?",
+		"ClickHere": "Pastaj klikoni k\u00ebtu: {{1}}",
+		"OrEnterCode": "ose shkruani kodin:"
+	}
 }

@@ -1,14 +1,14 @@
 {
-    "activation": {
-        "Thanks": "Bem-vindo a {{1}}.",
-        "ClickHere": "Clique aqui para ativar sua conta: {{1}}"
-    },
-    "addMobile": {
-        "ClickHere": "Clique aqui para verificar seu número de celular: {{1}}"
-    },
-    "resend": {
-        "DidYouWant": "Você deseja redefinir sua senha em {{1}}?",
-        "ClickHere": "Então clique aqui: {{1}}",
-        "OrEnterCode": "ou digite o código:"
-    }
+	"activation": {
+		"Thanks": "Bem-vindo a {{1}}.",
+		"ClickHere": "Clique aqui para ativar sua conta: {{1}}"
+	},
+	"addMobile": {
+		"ClickHere": "Clique aqui para verificar seu n\u00famero de celular: {{1}}"
+	},
+	"resend": {
+		"DidYouWant": "Voc\u00ea deseja redefinir sua senha em {{1}}?",
+		"ClickHere": "Ent\u00e3o clique aqui: {{1}}",
+		"OrEnterCode": "ou digite o c\u00f3digo:"
+	}
 }

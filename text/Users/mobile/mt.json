@@ -1,14 +1,14 @@
 {
-    "activation": {
-        "Thanks": "Merħba għal {{1}}.",
-        "ClickHere": "Ikklikkja hawn biex tattiva l-kont tiegħek: {{1}}"
-    },
-    "addMobile": {
-        "ClickHere": "Ikklikkja hawn biex tivverifika n-numru tal-mowbajl tiegħek: {{1}}"
-    },
-    "resend": {
-        "DidYouWant": "Ridt tirrisettja l-passphrase tiegħek fi {{1}}?",
-        "ClickHere": "Imbagħad ikklikkja hawn: {{1}}",
-        "OrEnterCode": "jew daħħal il-kodiċi:"
-    }
+	"activation": {
+		"Thanks": "Mer\u0127ba g\u0127al {{1}}.",
+		"ClickHere": "Ikklikkja hawn biex tattiva l-kont tieg\u0127ek: {{1}}"
+	},
+	"addMobile": {
+		"ClickHere": "Ikklikkja hawn biex tivverifika n-numru tal-mowbajl tieg\u0127ek: {{1}}"
+	},
+	"resend": {
+		"DidYouWant": "Ridt tirrisettja l-passphrase tieg\u0127ek fi {{1}}?",
+		"ClickHere": "Imbag\u0127ad ikklikkja hawn: {{1}}",
+		"OrEnterCode": "jew da\u0127\u0127al il-kodi\u010bi:"
+	}
 }

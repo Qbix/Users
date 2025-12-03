@@ -1,15 +1,15 @@
 {
-    "addToPhonebook": "ჩემი ტელეფონის კონტაქტებში დამატება",
-    "addLabel": "ახალი ურთიერთობა",
-    "newRole": "ახალი როლი",
-    "prompt": "დაარქვით სახელი",
-    "newLabel": "ახალი ლეიბლი",
-    "editLabel": "ლეიბლის რედაქტირება",
-    "addBtn": "დამატება",
-    "editBtn": "Გადარჩენა",
-    "canManageDialogTitle": "შეუძლია როლების მართვა",
-    "canManageBtn": "შეუძლია მართვა...",
-    "titlePlaceholder": "სათაური",
-    "selectOptionTitle_web2": "მშობლიური",
-    "selectOptionTitle_web3": "ვებ3"
+	"addToPhonebook": "\u10e9\u10d4\u10db\u10d8 \u10e2\u10d4\u10da\u10d4\u10e4\u10dd\u10dc\u10d8\u10e1 \u10d9\u10dd\u10dc\u10e2\u10d0\u10e5\u10e2\u10d4\u10d1\u10e8\u10d8 \u10d3\u10d0\u10db\u10d0\u10e2\u10d4\u10d1\u10d0",
+	"addLabel": "\u10d0\u10ee\u10d0\u10da\u10d8 \u10e3\u10e0\u10d7\u10d8\u10d4\u10e0\u10d7\u10dd\u10d1\u10d0",
+	"newRole": "\u10d0\u10ee\u10d0\u10da\u10d8 \u10e0\u10dd\u10da\u10d8",
+	"prompt": "\u10d3\u10d0\u10d0\u10e0\u10e5\u10d5\u10d8\u10d7 \u10e1\u10d0\u10ee\u10d4\u10da\u10d8",
+	"newLabel": "\u10d0\u10ee\u10d0\u10da\u10d8 \u10da\u10d4\u10d8\u10d1\u10da\u10d8",
+	"editLabel": "\u10da\u10d4\u10d8\u10d1\u10da\u10d8\u10e1 \u10e0\u10d4\u10d3\u10d0\u10e5\u10e2\u10d8\u10e0\u10d4\u10d1\u10d0",
+	"addBtn": "\u10d3\u10d0\u10db\u10d0\u10e2\u10d4\u10d1\u10d0",
+	"editBtn": "\u1c92\u10d0\u10d3\u10d0\u10e0\u10e9\u10d4\u10dc\u10d0",
+	"canManageDialogTitle": "\u10e8\u10d4\u10e3\u10eb\u10da\u10d8\u10d0 \u10e0\u10dd\u10da\u10d4\u10d1\u10d8\u10e1 \u10db\u10d0\u10e0\u10d7\u10d5\u10d0",
+	"canManageBtn": "\u10e8\u10d4\u10e3\u10eb\u10da\u10d8\u10d0 \u10db\u10d0\u10e0\u10d7\u10d5\u10d0...",
+	"titlePlaceholder": "\u10e1\u10d0\u10d7\u10d0\u10e3\u10e0\u10d8",
+	"selectOptionTitle_web2": "\u10db\u10e8\u10dd\u10d1\u10da\u10d8\u10e3\u10e0\u10d8",
+	"selectOptionTitle_web3": "\u10d5\u10d4\u10d13"
 }

@@ -1,15 +1,15 @@
 {
-    "addToPhonebook": "Bæta við tengiliði í símanum mínum",
-    "addLabel": "Nýtt samband",
-    "newRole": "Nýtt hlutverk",
-    "prompt": "Gefðu því nafn",
-    "newLabel": "Nýtt merki",
-    "editLabel": "Breyta merkimiða",
-    "addBtn": "Bæta við",
-    "editBtn": "Vista",
-    "canManageDialogTitle": "Getur stjórnað hlutverkum",
-    "canManageBtn": "Getur stjórnað...",
-    "titlePlaceholder": "Titill",
-    "selectOptionTitle_web2": "Innfæddur",
-    "selectOptionTitle_web3": "Vef3"
+	"addToPhonebook": "B\u00e6ta vi\u00f0 tengili\u00f0i \u00ed s\u00edmanum m\u00ednum",
+	"addLabel": "N\u00fdtt samband",
+	"newRole": "N\u00fdtt hlutverk",
+	"prompt": "Gef\u00f0u \u00fev\u00ed nafn",
+	"newLabel": "N\u00fdtt merki",
+	"editLabel": "Breyta merkimi\u00f0a",
+	"addBtn": "B\u00e6ta vi\u00f0",
+	"editBtn": "Vista",
+	"canManageDialogTitle": "Getur stj\u00f3rna\u00f0 hlutverkum",
+	"canManageBtn": "Getur stj\u00f3rna\u00f0...",
+	"titlePlaceholder": "Titill",
+	"selectOptionTitle_web2": "Innf\u00e6ddur",
+	"selectOptionTitle_web3": "Vef3"
 }

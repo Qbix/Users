@@ -1,22 +1,22 @@
 {
-    "activation": {
-        "Subject": "Benvingut! Verifiqueu la vostra adreça de correu electrònic.",
-        "Thanks": "Benvingut a {{1}}",
-        "ReallyYourEmail": "És realment aquesta la teva adreça electrònica, {{1}}? Si és així, feu clic <a href='{{2}}'>aquí<\/a> per configurar la vostra frase de contrasenya i activar el vostre compte.",
-        "SeeYou": "Ens veiem a <a href='{{1}}'>{{2}}<\/a> !",
-        "OtherwiseClickLink": "En cas contrari, feu clic <a href='{{1}}'>a aquest enllaç<\/a> ."
-    },
-    "identifier": {
-        "Subject": "Benvingut! Comproveu la vostra adreça de correu electrònic."
-    },
-    "resend": {
-        "Subject": "Ei, has oblidat la teva frase de contrasenya?",
-        "Thanks": "Gràcies per visitar {{1}}",
-        "YouAreReceiving": "Heu rebut aquest correu electrònic perquè algú ha introduït la vostra adreça de correu electrònic i ha fet clic a &quot;he oblidat la contrasenya&quot;. Si no has estat tu, simplement ignora aquest missatge.",
-        "Reset": "Per restablir la frase de contrasenya, feu clic a {{1}}",
-        "SetUpPassphrase": "Configura la frase de contrasenya",
-        "DomainCode": "Si la pàgina web ja està oberta al vostre navegador, podeu introduir el codi"
-    },
-    "SeeYou": "Ens veiem a {{1}}!",
-    "LinkToUnsubscribe": "Aquí teniu un enllaç per donar-vos de <a href='{{1}}'>baixa<\/a> si no voleu rebre més correus electrònics."
+	"activation": {
+		"Subject": "Benvingut! Verifiqueu la vostra adre\u00e7a de correu electr\u00f2nic.",
+		"Thanks": "Benvingut a {{1}}",
+		"ReallyYourEmail": "\u00c9s realment aquesta la teva adre\u00e7a electr\u00f2nica, {{1}}? Si \u00e9s aix\u00ed, feu clic <a href='{{2}}'>aqu\u00ed</a> per configurar la vostra frase de contrasenya i activar el vostre compte.",
+		"SeeYou": "Ens veiem a <a href='{{1}}'>{{2}}</a> !",
+		"OtherwiseClickLink": "En cas contrari, feu clic <a href='{{1}}'>a aquest enlla\u00e7</a> ."
+	},
+	"identifier": {
+		"Subject": "Benvingut! Comproveu la vostra adre\u00e7a de correu electr\u00f2nic."
+	},
+	"resend": {
+		"Subject": "Ei, has oblidat la teva frase de contrasenya?",
+		"Thanks": "Gr\u00e0cies per visitar {{1}}",
+		"YouAreReceiving": "Heu rebut aquest correu electr\u00f2nic perqu\u00e8 alg\u00fa ha introdu\u00eft la vostra adre\u00e7a de correu electr\u00f2nic i ha fet clic a &quot;he oblidat la contrasenya&quot;. Si no has estat tu, simplement ignora aquest missatge.",
+		"Reset": "Per restablir la frase de contrasenya, feu clic a {{1}}",
+		"SetUpPassphrase": "Configura la frase de contrasenya",
+		"DomainCode": "Si la p\u00e0gina web ja est\u00e0 oberta al vostre navegador, podeu introduir el codi"
+	},
+	"SeeYou": "Ens veiem a {{1}}!",
+	"LinkToUnsubscribe": "Aqu\u00ed teniu un enlla\u00e7 per donar-vos de <a href='{{1}}'>baixa</a> si no voleu rebre m\u00e9s correus electr\u00f2nics."
 }

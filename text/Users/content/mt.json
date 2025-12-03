@@ -1,196 +1,196 @@
 {
-    "avatar": {
-        "Someone": "Xi ħadd"
-    },
-    "identifier": {
-        "types": {
-            "email": "Email",
-            "mobile": "Mobbli",
-            "web3": "Web3"
-        }
-    },
-    "clipboard": {
-        "Copied": "Ikkopjati! Issa inti tista paste kullimkien."
-    },
-    "analytics": {
-        "Title": "Analytics",
-        "Daily": "Kuljum",
-        "Weekly": "Kull ġimgħa",
-        "Monthly": "Kull xahar",
-        "Application": "Applikazzjoni",
-        "Pages": "Paġni",
-        "Services": "Servizzi",
-        "Faq": "FAQ",
-        "WeekDays": "Ġranet tal-Ġimgħa"
-    },
-    "actions": {
-        "LogIn": "Idħol",
-        "LogOut": "Oħroġ"
-    },
-    "activate": {
-        "OneTimeCode": "Daħħal il-kodiċi li rċevejt:",
-        "SetAsPrimary": "Issettja {{1}} bħala l {{2}} primarju tiegħi",
-        "ChoosePassPhrase": "Agħżel <strong>pass phrase<\/strong> biex tidħol magħha.<br> Frażi sempliċi li tikkonsisti fi ftit kliem li faċilment tiftakar.",
-        "ChoosePassPhraseSeeSuggestions": "Agħżel <strong>pass phrase<\/strong> tajba biex tipproteġi l-kont tiegħek. Ara s-suġġerimenti għal xi ideat.",
-        "LogOutAndTryAgain": "Log Out u Erġa Ipprova",
-        "IfYouFeel": "Jekk tħoss li xi ħaġa marret ħażin, tista’",
-        "SetIdentifierButtonTitle": "Ibda mill-bidu",
-        "ActivateMyAccount": "Attiva l-Kont Tiegħi"
-    },
-    "session": {
-        "GetStarted": "Ibda"
-    },
-    "authorize": {
-        "GetStarted": "Ibda",
-        "Authorize": "Awtorizza",
-        "TermsLabel": "Qrajt u naqbel<br> sal- {{link}}",
-        "TermsTitle": "Termini",
-        "mustAgree": "L-ewwel trid taqbel mat-termini."
-    },
-    "register": {
-        "TermsLabel": "Naċċetta l- {{link}}",
-        "TermsTitle": "Termini"
-    },
-    "notifications": {
-        "title": "Permess",
-        "prompt": "Trid tattiva n-notifiki? Int ser tirċievi aġġornamenti f&#39;ħin reali dwar affarijiet li jimpurtak minnhom.",
-        "yes": "Iva",
-        "no": "Nru",
-        "WelcomePleaseVerifyEmail": "Merħba! Jekk jogħġbok ivverifika l-indirizz elettroniku tiegħek.",
-        "WelcomeVerifyEmail": "Merħba! Ivverifika l-indirizz elettroniku tiegħek.",
-        "ForgetPass": "Ħej, insejt il-passphrase tiegħek?",
-        "PassphraseSaved": "Il-frażi tal-pass tiegħek ġiet salvata.",
-        "IdentifierActivated": "{{type}} tiegħek ġie attivat.",
-        "CompletedActivation": "Int lestejt l-attivazzjoni tal-utent.",
-        "CompletedActivationLogIn": "Int lestejt l-attivazzjoni tal-utent. Ipprova illoggja issa."
-    },
-    "contacts": {
-        "dialog": {
-            "title": "Agħżel kuntatt",
-            "CreateAccount": "+ Kuntatt Ġdid",
-            "CreateAccountNotFound": "Q.Users.Cordova.UI.create ma nstabx",
-            "SearchByName": "Fittex bl-isem",
-            "EmptyContacts": "Kuntatti mhux misjuba..."
-        },
-        "select": {
-            "title": "Agħżel kuntatt ta&#39; {{displayName}}"
-        },
-        "require": {
-            "Instructions": "Ikollok bżonn li tippermetti l-aċċess għall-kuntatti kollha sabiex dan jaħdem."
-        }
-    },
-    "usersContacts": {
-        "selectLabel": "Jekk jogħġbok agħżel it-tikketta.",
-        "inviteUser": "Stieden lill-Utenti",
-        "selectRole": "Agħżel Rwol",
-        "inviteRole": "Stieden {{role}}"
-    },
-    "invalidLanguageSelected": "Lingwa mhux valida magħżula",
-    "platforms": {
-        "wallet": "Kartiera",
-        "broadcast": "Xandira"
-    },
-    "login": {
-        "title": "Merħba",
-        "directions": {
-            "GetStarted": "Oħloq kont, jew idħol.",
-            "NoRegister": "Idħol jekk għandek kont.",
-            "WasInvited": "X&#39;inhu l-aħjar mod biex nilħqu miegħek?"
-        },
-        "directionsNoRegister": "Idħol jekk għandek kont.",
-        "goButton": "➔",
-        "passphrase": "Daħħal il-frażi tal-pass tiegħek:",
-        "loginButton": "Ibda",
-        "registerButton": "Ibda",
-        "resendButton": "Ibgħat Messaġġ ta &#39;Attivazzjoni",
-        "forgot": "Insejt?",
-        "resendConfirm": "Trid tibgħat messaġġ biex tirrisettja l-passphrase tiegħek?",
-        "resendSuccess": "Iċċekkja għal messaġġ biex tirrisettja l-passphrase tiegħek",
-        "resendClose": "Agħlaq",
-        "noPassphrase": "Qabel ma tkun tista&#39; tidħol, trid tissettja pass phrase billi tikklikkja l-link fil-messaġġ ta&#39; attivazzjoni tiegħek.",
-        "notVerified": "Trid tibgħat lilek innifsek messaġġ ta&#39; attivazzjoni sabiex tidħol.",
-        "emailExists": "Ippruvajt tirreġistra b&#39;din l-email qabel? Jekk iva, iċċekkja l-inbox tiegħek biex tattiva l-kont tiegħek. <a href='#resend' class='Q_button Users_activation_resend'>Ikklikkja biex terġa&#39; tibgħat il-messaġġ<\/a>",
-        "mobileExists": "Ippruvajt tirreġistra ma&#39; dan in-numru tal-mobile qabel? Jekk iva, iċċekkja l-SMS tiegħek biex tattiva l-kont tiegħek. <a href='#resend' class='Q_button Users_activation_resend'>Ikklikkja biex terġa&#39; tibgħat il-messaġġ<\/a>",
-        "usingOther": "jew tista&#39;",
-        "connectPlatforms": "jew qabbad billi tuża:",
-        "prompt": "Għażel Username:",
-        "newUser": "jew oħloq kont ġdid hawn taħt",
-        "placeholders": {
-            "identifier": "# tal-mowbajl tiegħek jew l-email",
-            "mobile": "daħħal il-mowbajl tiegħek #",
-            "email": "daħħal l-indirizz elettroniku tiegħek",
-            "username": "uża ittri u numri biss"
-        },
-        "confirmTerms": "Taċċetta t-Termini tas-Servizz?",
-        "facebookNoEmail": "Il-kont tal-facebook tiegħek nieqes indirizz tal-email ikkonfermat. Sempliċement log fil-mod nattiv.",
-        "picTooltip": "Tista&#39; tibdel din l-istampa aktar tard",
-        "web3": {
-            "payload": "Idħol {{host}} fil-ħin {{timestamp}}",
-            "alert": {
-                "title": "Direzzjoni mill-ġdid lejn Wallet",
-                "content": "Ladarba tagħlaq dan id-djalogu, tittieħed fil-kartiera tiegħek. Wara li tidħol, erġa&#39; lura għal din il-paġna."
-            },
-            "ConnectWallet": "Qabbad Kartiera"
-        }
-    },
-    "setIdentifier": {
-        "title": "Żid mod biex tidħol",
-        "sendMessage": "Ibgħat Messaġġ ta &#39;Attivazzjoni",
-        "placeholders": {
-            "identifier": "daħħal # tal-mowbajl jew email tiegħek",
-            "mobile": "daħħal in-numru tal-mowbajl tiegħek",
-            "email": "daħħal l-indirizz elettroniku tiegħek",
-            "username": "username"
-        }
-    },
-    "prompt": {
-        "title": "{{Platform}} Kont",
-        "areUsing": "Qed tuża {{platform}} bħala",
-        "noLongerUsing": "M&#39;għadekx konness ma&#39; {{platform}} bħala",
-        "doAuth": "Idħol ma&#39; dan il-kont",
-        "doSwitch": "Aqleb għal dan il-kont"
-    },
-    "roles": {
-        "Owner": "Sid",
-        "Admin": "Amministratur",
-        "Member": "Membru",
-        "Guest": "Mistieden",
-        "Host": "Ospitanti"
-    },
-    "web3": {
-        "WrongMethod": "Metodu kuntrattwali ħażin {{methodName}}",
-        "ChangeWallet": "Bidla Kartiera",
-        "ConnectWallet": "Qabbad Kartiera",
-        "AfterWalletConnectedPleaseRefresh": "Wara li l-kartiera tkun imqabbda jekk jogħġbok aġġorna din il-paġna biex tagħraf il-kartiera"
-    },
-    "labels": {
-        "addToPhonebook": "Żid Mal-Kuntatti tat-Telefown Tiegħi",
-        "addLabel": "Relazzjoni Ġdida",
-        "prompt": "Agħtiha isem",
-        "titles": {
-            "Users\/owners": "Sidien",
-            "Users\/admins": "Amministraturi",
-            "Users\/members": "Membri",
-            "Users\/guests": "Mistednin",
-            "Users\/hosts": "Ospitanti",
-            "Users\/testers": "Testers",
-            "Users\/speakers": "Kelliema"
-        }
-    },
-    "people": {
-        "People": "Nies"
-    },
-    "external": {
-        "defaults": {
-            "title": "",
-            "bio": "bot ingaġġ tal-forum. Ikseb tiegħek fuq https:\/\/engageusers.ai",
-            "website": "https:\/\/engageusers.ai"
-        }
-    },
-    "errors": {
-        "NotEnoughPermissionsWallet": "Mhux biżżejjed permessi biex taqra l-kartiera ta&#39; dan l-utent",
-        "ThisUserHaveNoWallet": "Dan l-utent m&#39;għandux kartiera assenjat",
-        "TheWalletOfThisUserInvalid": "Il-kartiera ta&#39; dan l-utent invalida",
-        "WalletInvalid": "Indirizz tal-kartiera mhux validu"
-    }
+	"avatar": {
+		"Someone": "Xi \u0127add"
+	},
+	"identifier": {
+		"types": {
+			"email": "Email",
+			"mobile": "Mobbli",
+			"web3": "Web3"
+		}
+	},
+	"clipboard": {
+		"Copied": "Ikkopjati! Issa inti tista paste kullimkien."
+	},
+	"analytics": {
+		"Title": "Analytics",
+		"Daily": "Kuljum",
+		"Weekly": "Kull \u0121img\u0127a",
+		"Monthly": "Kull xahar",
+		"Application": "Applikazzjoni",
+		"Pages": "Pa\u0121ni",
+		"Services": "Servizzi",
+		"Faq": "FAQ",
+		"WeekDays": "\u0120ranet tal-\u0120img\u0127a"
+	},
+	"actions": {
+		"LogIn": "Id\u0127ol",
+		"LogOut": "O\u0127ro\u0121"
+	},
+	"activate": {
+		"OneTimeCode": "Da\u0127\u0127al il-kodi\u010bi li r\u010bevejt:",
+		"SetAsPrimary": "Issettja {{1}} b\u0127ala l {{2}} primarju tieg\u0127i",
+		"ChoosePassPhrase": "Ag\u0127\u017cel <strong>pass phrase</strong> biex tid\u0127ol mag\u0127ha.<br> Fra\u017ci sempli\u010bi li tikkonsisti fi ftit kliem li fa\u010bilment tiftakar.",
+		"ChoosePassPhraseSeeSuggestions": "Ag\u0127\u017cel <strong>pass phrase</strong> tajba biex tipprote\u0121i l-kont tieg\u0127ek. Ara s-su\u0121\u0121erimenti g\u0127al xi ideat.",
+		"LogOutAndTryAgain": "Log Out u Er\u0121a Ipprova",
+		"IfYouFeel": "Jekk t\u0127oss li xi \u0127a\u0121a marret \u0127a\u017cin, tista\u2019",
+		"SetIdentifierButtonTitle": "Ibda mill-bidu",
+		"ActivateMyAccount": "Attiva l-Kont Tieg\u0127i"
+	},
+	"session": {
+		"GetStarted": "Ibda"
+	},
+	"authorize": {
+		"GetStarted": "Ibda",
+		"Authorize": "Awtorizza",
+		"TermsLabel": "Qrajt u naqbel<br> sal- {{link}}",
+		"TermsTitle": "Termini",
+		"mustAgree": "L-ewwel trid taqbel mat-termini."
+	},
+	"register": {
+		"TermsLabel": "Na\u010b\u010betta l- {{link}}",
+		"TermsTitle": "Termini"
+	},
+	"notifications": {
+		"title": "Permess",
+		"prompt": "Trid tattiva n-notifiki? Int ser tir\u010bievi a\u0121\u0121ornamenti f&#39;\u0127in reali dwar affarijiet li jimpurtak minnhom.",
+		"yes": "Iva",
+		"no": "Nru",
+		"WelcomePleaseVerifyEmail": "Mer\u0127ba! Jekk jog\u0127\u0121bok ivverifika l-indirizz elettroniku tieg\u0127ek.",
+		"WelcomeVerifyEmail": "Mer\u0127ba! Ivverifika l-indirizz elettroniku tieg\u0127ek.",
+		"ForgetPass": "\u0126ej, insejt il-passphrase tieg\u0127ek?",
+		"PassphraseSaved": "Il-fra\u017ci tal-pass tieg\u0127ek \u0121iet salvata.",
+		"IdentifierActivated": "{{type}} tieg\u0127ek \u0121ie attivat.",
+		"CompletedActivation": "Int lestejt l-attivazzjoni tal-utent.",
+		"CompletedActivationLogIn": "Int lestejt l-attivazzjoni tal-utent. Ipprova illoggja issa."
+	},
+	"contacts": {
+		"dialog": {
+			"title": "Ag\u0127\u017cel kuntatt",
+			"CreateAccount": "+ Kuntatt \u0120did",
+			"CreateAccountNotFound": "Q.Users.Cordova.UI.create ma nstabx",
+			"SearchByName": "Fittex bl-isem",
+			"EmptyContacts": "Kuntatti mhux misjuba..."
+		},
+		"select": {
+			"title": "Ag\u0127\u017cel kuntatt ta&#39; {{displayName}}"
+		},
+		"require": {
+			"Instructions": "Ikollok b\u017conn li tippermetti l-a\u010b\u010bess g\u0127all-kuntatti kollha sabiex dan ja\u0127dem."
+		}
+	},
+	"usersContacts": {
+		"selectLabel": "Jekk jog\u0127\u0121bok ag\u0127\u017cel it-tikketta.",
+		"inviteUser": "Stieden lill-Utenti",
+		"selectRole": "Ag\u0127\u017cel Rwol",
+		"inviteRole": "Stieden {{role}}"
+	},
+	"invalidLanguageSelected": "Lingwa mhux valida mag\u0127\u017cula",
+	"platforms": {
+		"wallet": "Kartiera",
+		"broadcast": "Xandira"
+	},
+	"login": {
+		"title": "Mer\u0127ba {{AppName}}",
+		"directions": {
+			"GetStarted": "Fejn g\u0127andna nibag\u0127tu n-notifiki?",
+			"NoRegister": "Id\u0127ol jekk g\u0127andek kont.",
+			"WasInvited": "X&#39;inhu l-a\u0127jar mod biex nil\u0127qu mieg\u0127ek?"
+		},
+		"directionsNoRegister": "Id\u0127ol jekk g\u0127andek kont.",
+		"goButton": "\u2794",
+		"passphrase": "Da\u0127\u0127al il-fra\u017ci tal-pass tieg\u0127ek:",
+		"loginButton": "Ibda",
+		"registerButton": "Ibda",
+		"resendButton": "Ibg\u0127at Messa\u0121\u0121 ta &#39;Attivazzjoni",
+		"forgot": "Insejt?",
+		"resendConfirm": "Trid tibg\u0127at messa\u0121\u0121 biex tirrisettja l-passphrase tieg\u0127ek?",
+		"resendSuccess": "I\u010b\u010bekkja g\u0127al messa\u0121\u0121 biex tirrisettja l-passphrase tieg\u0127ek",
+		"resendClose": "Ag\u0127laq",
+		"noPassphrase": "Qabel ma tkun tista&#39; tid\u0127ol, trid tissettja pass phrase billi tikklikkja l-link fil-messa\u0121\u0121 ta&#39; attivazzjoni tieg\u0127ek.",
+		"notVerified": "Trid tibg\u0127at lilek innifsek messa\u0121\u0121 ta&#39; attivazzjoni sabiex tid\u0127ol.",
+		"emailExists": "Ippruvajt tirre\u0121istra b&#39;din l-email qabel? Jekk iva, i\u010b\u010bekkja l-inbox tieg\u0127ek biex tattiva l-kont tieg\u0127ek. <a href='#resend' class='Q_button Users_activation_resend'>Ikklikkja biex ter\u0121a&#39; tibg\u0127at il-messa\u0121\u0121</a>",
+		"mobileExists": "Ippruvajt tirre\u0121istra ma&#39; dan in-numru tal-mobile qabel? Jekk iva, i\u010b\u010bekkja l-SMS tieg\u0127ek biex tattiva l-kont tieg\u0127ek. <a href='#resend' class='Q_button Users_activation_resend'>Ikklikkja biex ter\u0121a&#39; tibg\u0127at il-messa\u0121\u0121</a>",
+		"usingOther": "jew tista&#39;",
+		"connectPlatforms": "jew qabbad billi tu\u017ca:",
+		"prompt": "G\u0127a\u017cel Username:",
+		"newUser": "jew o\u0127loq kont \u0121did hawn ta\u0127t",
+		"placeholders": {
+			"identifier": "# tal-mowbajl tieg\u0127ek jew l-email",
+			"mobile": "da\u0127\u0127al il-mowbajl tieg\u0127ek #",
+			"email": "da\u0127\u0127al l-indirizz elettroniku tieg\u0127ek",
+			"username": "u\u017ca ittri u numri biss"
+		},
+		"confirmTerms": "Ta\u010b\u010betta t-Termini tas-Servizz?",
+		"facebookNoEmail": "Il-kont tal-facebook tieg\u0127ek nieqes indirizz tal-email ikkonfermat. Sempli\u010bement log fil-mod nattiv.",
+		"picTooltip": "Tista&#39; tibdel din l-istampa aktar tard",
+		"web3": {
+			"payload": "Id\u0127ol {{host}} fil-\u0127in {{timestamp}}",
+			"alert": {
+				"title": "Direzzjoni mill-\u0121did lejn Wallet",
+				"content": "Ladarba tag\u0127laq dan id-djalogu, tittie\u0127ed fil-kartiera tieg\u0127ek. Wara li tid\u0127ol, er\u0121a&#39; lura g\u0127al din il-pa\u0121na."
+			},
+			"ConnectWallet": "Qabbad Kartiera"
+		}
+	},
+	"setIdentifier": {
+		"title": "\u017bid mod biex tid\u0127ol",
+		"sendMessage": "Ibg\u0127at Messa\u0121\u0121 ta &#39;Attivazzjoni",
+		"placeholders": {
+			"identifier": "da\u0127\u0127al # tal-mowbajl jew email tieg\u0127ek",
+			"mobile": "da\u0127\u0127al in-numru tal-mowbajl tieg\u0127ek",
+			"email": "da\u0127\u0127al l-indirizz elettroniku tieg\u0127ek",
+			"username": "username"
+		}
+	},
+	"prompt": {
+		"title": "{{Platform}} Kont",
+		"areUsing": "Qed tu\u017ca {{platform}} b\u0127ala",
+		"noLongerUsing": "M&#39;g\u0127adekx konness ma&#39; {{platform}} b\u0127ala",
+		"doAuth": "Id\u0127ol ma&#39; dan il-kont",
+		"doSwitch": "Aqleb g\u0127al dan il-kont"
+	},
+	"roles": {
+		"Owner": "Sid",
+		"Admin": "Amministratur",
+		"Member": "Membru",
+		"Guest": "Mistieden",
+		"Host": "Ospitanti"
+	},
+	"web3": {
+		"WrongMethod": "Metodu kuntrattwali \u0127a\u017cin {{methodName}}",
+		"ChangeWallet": "Bidla Kartiera",
+		"ConnectWallet": "Qabbad Kartiera",
+		"AfterWalletConnectedPleaseRefresh": "Wara li l-kartiera tkun imqabbda jekk jog\u0127\u0121bok a\u0121\u0121orna din il-pa\u0121na biex tag\u0127raf il-kartiera"
+	},
+	"labels": {
+		"addToPhonebook": "\u017bid Mal-Kuntatti tat-Telefown Tieg\u0127i",
+		"addLabel": "Relazzjoni \u0120dida",
+		"prompt": "Ag\u0127tiha isem",
+		"titles": {
+			"Users/owners": "Sidien",
+			"Users/admins": "Amministraturi",
+			"Users/members": "Membri",
+			"Users/guests": "Mistednin",
+			"Users/hosts": "Ospitanti",
+			"Users/testers": "Testers",
+			"Users/speakers": "Kelliema"
+		}
+	},
+	"people": {
+		"People": "Nies"
+	},
+	"external": {
+		"defaults": {
+			"title": "",
+			"bio": "bot inga\u0121\u0121 tal-forum. Ikseb tieg\u0127ek fuq https://engageusers.ai",
+			"website": "https://engageusers.ai"
+		}
+	},
+	"errors": {
+		"NotEnoughPermissionsWallet": "Mhux bi\u017c\u017cejjed permessi biex taqra l-kartiera ta&#39; dan l-utent",
+		"ThisUserHaveNoWallet": "Dan l-utent m&#39;g\u0127andux kartiera assenjat",
+		"TheWalletOfThisUserInvalid": "Il-kartiera ta&#39; dan l-utent invalida",
+		"WalletInvalid": "Indirizz tal-kartiera mhux validu"
+	}
 }

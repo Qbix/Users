@@ -1,6 +1,6 @@
 {
-    "btns": {
-        "web2Role": "Web2 ロール",
-        "web3Role": "Web3 の役割"
-    }
+	"btns": {
+		"web2Role": "Web2 \u30ed\u30fc\u30eb",
+		"web3Role": "Web3 \u306e\u5f79\u5272"
+	}
 }

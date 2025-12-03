@@ -1,22 +1,22 @@
 {
-    "activation": {
-        "Subject": "Benvido! Verifique o seu enderezo de correo electrónico.",
-        "Thanks": "Benvido a {{1}}",
-        "ReallyYourEmail": "Este é realmente o teu enderezo de correo electrónico, {{1}}? Se é así, fai clic <a href='{{2}}'>aquí<\/a> para configurar o teu contrasinal e activar a túa conta.",
-        "SeeYou": "Vémonos en <a href='{{1}}'>{{2}}<\/a> !",
-        "OtherwiseClickLink": "En caso contrario, fai clic <a href='{{1}}'>nesta ligazón<\/a> ."
-    },
-    "identifier": {
-        "Subject": "Benvido! Verifica o teu enderezo de correo electrónico."
-    },
-    "resend": {
-        "Subject": "Ei, esqueciches o teu contrasinal?",
-        "Thanks": "Grazas por visitar {{1}}",
-        "YouAreReceiving": "Recibiches este correo electrónico porque alguén introduciu o teu enderezo de correo electrónico e fixo clic en &quot;esquecín a frase de acceso&quot;. Se non fuches ti, simplemente ignora esta mensaxe.",
-        "Reset": "Para restablecer o teu contrasinal, fai clic en {{1}}",
-        "SetUpPassphrase": "Configurar frase de paso",
-        "DomainCode": "Se a páxina web xa está aberta no teu navegador, podes introducir o código"
-    },
-    "SeeYou": "Vémonos en {{1}}!",
-    "LinkToUnsubscribe": "Aquí tes unha ligazón para cancelar a <a href='{{1}}'>subscrición<\/a> se non queres recibir máis correos electrónicos."
+	"activation": {
+		"Subject": "Benvido! Verifique o seu enderezo de correo electr\u00f3nico.",
+		"Thanks": "Benvido a {{1}}",
+		"ReallyYourEmail": "Este \u00e9 realmente o teu enderezo de correo electr\u00f3nico, {{1}}? Se \u00e9 as\u00ed, fai clic <a href='{{2}}'>aqu\u00ed</a> para configurar o teu contrasinal e activar a t\u00faa conta.",
+		"SeeYou": "V\u00e9monos en <a href='{{1}}'>{{2}}</a> !",
+		"OtherwiseClickLink": "En caso contrario, fai clic <a href='{{1}}'>nesta ligaz\u00f3n</a> ."
+	},
+	"identifier": {
+		"Subject": "Benvido! Verifica o teu enderezo de correo electr\u00f3nico."
+	},
+	"resend": {
+		"Subject": "Ei, esqueciches o teu contrasinal?",
+		"Thanks": "Grazas por visitar {{1}}",
+		"YouAreReceiving": "Recibiches este correo electr\u00f3nico porque algu\u00e9n introduciu o teu enderezo de correo electr\u00f3nico e fixo clic en &quot;esquec\u00edn a frase de acceso&quot;. Se non fuches ti, simplemente ignora esta mensaxe.",
+		"Reset": "Para restablecer o teu contrasinal, fai clic en {{1}}",
+		"SetUpPassphrase": "Configurar frase de paso",
+		"DomainCode": "Se a p\u00e1xina web xa est\u00e1 aberta no teu navegador, podes introducir o c\u00f3digo"
+	},
+	"SeeYou": "V\u00e9monos en {{1}}!",
+	"LinkToUnsubscribe": "Aqu\u00ed tes unha ligaz\u00f3n para cancelar a <a href='{{1}}'>subscrici\u00f3n</a> se non queres recibir m\u00e1is correos electr\u00f3nicos."
 }

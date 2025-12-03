@@ -1,196 +1,196 @@
 {
-    "avatar": {
-        "Someone": "አንድ ሰው"
-    },
-    "identifier": {
-        "types": {
-            "email": "ኢሜይል",
-            "mobile": "ሞባይል",
-            "web3": "ድር3"
-        }
-    },
-    "clipboard": {
-        "Copied": "ተቀድቷል! አሁን በማንኛውም ቦታ መለጠፍ ይችላሉ."
-    },
-    "analytics": {
-        "Title": "ትንታኔ",
-        "Daily": "በየቀኑ",
-        "Weekly": "በየሳምንቱ",
-        "Monthly": "ወርሃዊ",
-        "Application": "መተግበሪያ",
-        "Pages": "ገፆች",
-        "Services": "አገልግሎቶች",
-        "Faq": "በየጥ",
-        "WeekDays": "የሳምንት ቀናት"
-    },
-    "actions": {
-        "LogIn": "ግባ",
-        "LogOut": "ውጣ"
-    },
-    "activate": {
-        "OneTimeCode": "የተቀበልከውን ኮድ አስገባ፡-",
-        "SetAsPrimary": "{{1}} እንደ አንደኛ ደረጃ {{2}} አዘጋጅ",
-        "ChoosePassPhrase": "<strong>ለመግባት የማለፊያ ሀረግ<\/strong> ይምረጡ።<br> በቀላሉ የሚያስታውሷቸው ጥቂት ቃላትን የያዘ ቀላል ሐረግ።",
-        "ChoosePassPhraseSeeSuggestions": "መለያዎን ለመጠበቅ ጥሩ <strong>ማለፊያ ሐረግ<\/strong> ይምረጡ። ለአንዳንድ ሀሳቦች ጥቆማዎችን ይመልከቱ።",
-        "LogOutAndTryAgain": "ይውጡ እና እንደገና ይሞክሩ",
-        "IfYouFeel": "የሆነ ችግር እንደተፈጠረ ከተሰማዎት ማድረግ ይችላሉ።",
-        "SetIdentifierButtonTitle": "እንደገና ጀምር",
-        "ActivateMyAccount": "መለያዬን አግብር"
-    },
-    "session": {
-        "GetStarted": "እንጀምር"
-    },
-    "authorize": {
-        "GetStarted": "እንጀምር",
-        "Authorize": "ፍቀድ",
-        "TermsLabel": "አንብቤ ተስማምቻለሁ<br> ወደ {{link}}",
-        "TermsTitle": "ውሎች",
-        "mustAgree": "በመጀመሪያ በውሉ መስማማት አለብዎት።"
-    },
-    "register": {
-        "TermsLabel": "{{link}} ተቀብያለሁ",
-        "TermsTitle": "ውሎች"
-    },
-    "notifications": {
-        "title": "ፍቃድ",
-        "prompt": "ማሳወቂያዎችን ማንቃት ይፈልጋሉ? ስለምትጨነቁላቸው ነገሮች የቅጽበታዊ ዝማኔዎችን ይደርስዎታል።",
-        "yes": "አዎ",
-        "no": "አይ",
-        "WelcomePleaseVerifyEmail": "እንኳን ደህና መጣህ! እባክህ የኢሜል አድራሻህን አረጋግጥ።",
-        "WelcomeVerifyEmail": "እንኳን ደህና መጣህ! የኢሜይል አድራሻህን አረጋግጥ.",
-        "ForgetPass": "ሄይ የይለፍ ሐረግህን ረሳኸው?",
-        "PassphraseSaved": "የማለፊያ ሐረግዎ ተቀምጧል።",
-        "IdentifierActivated": "የእርስዎ {{type}} ነቅቷል።",
-        "CompletedActivation": "የተጠቃሚ ማግበር ጨርሰሃል።",
-        "CompletedActivationLogIn": "የተጠቃሚ ማግበር ጨርሰሃል። አሁን ለመግባት ይሞክሩ።"
-    },
-    "contacts": {
-        "dialog": {
-            "title": "እውቂያን ይምረጡ",
-            "CreateAccount": "+ አዲስ እውቂያ",
-            "CreateAccountNotFound": "Q.Users.Cordova.UI.create አልተገኘም።",
-            "SearchByName": "በስም ፈልግ",
-            "EmptyContacts": "እውቂያዎች አልተገኙም..."
-        },
-        "select": {
-            "title": "የ {{displayName}} አድራሻ ይምረጡ"
-        },
-        "require": {
-            "Instructions": "ይህ እንዲሰራ የሁሉም እውቂያዎች መዳረሻን ማንቃት ያስፈልግዎታል።"
-        }
-    },
-    "usersContacts": {
-        "selectLabel": "እባክዎ መለያ ይምረጡ።",
-        "inviteUser": "ተጠቃሚዎችን ይጋብዙ",
-        "selectRole": "ሚና ይምረጡ",
-        "inviteRole": "{{role}} ጋብዝ"
-    },
-    "invalidLanguageSelected": "ልክ ያልሆነ ቋንቋ ተመርጧል",
-    "platforms": {
-        "wallet": "የኪስ ቦርሳ",
-        "broadcast": "ስርጭት"
-    },
-    "login": {
-        "title": "እንኳን ደህና መጣህ",
-        "directions": {
-            "GetStarted": "መለያ ይፍጠሩ ወይም ይግቡ።",
-            "NoRegister": "መለያ ካለዎት ይግቡ።",
-            "WasInvited": "እርስዎን ለማግኘት ምርጡ መንገድ ምንድነው?"
-        },
-        "directionsNoRegister": "መለያ ካለዎት ይግቡ።",
-        "goButton": "➔",
-        "passphrase": "የማለፊያ ሐረግዎን ያስገቡ፡-",
-        "loginButton": "እንጀምር",
-        "registerButton": "እንጀምር",
-        "resendButton": "የማግበር መልእክት ላክ",
-        "forgot": "ረሳው?",
-        "resendConfirm": "የይለፍ ሐረግዎን እንደገና ለማስጀመር መልእክት መላክ ይፈልጋሉ?",
-        "resendSuccess": "የይለፍ ሐረግዎን እንደገና ለማስጀመር መልእክት ካለ ያረጋግጡ",
-        "resendClose": "ገጠመ",
-        "noPassphrase": "ከመግባትዎ በፊት በማግበር መልእክትዎ ውስጥ ያለውን ሊንክ በመጫን ማለፊያ ሀረግ ማዘጋጀት አለብዎት።",
-        "notVerified": "ለመግባት ለራስህ የማግበር መልእክት መላክ አለብህ።",
-        "emailExists": "ከዚህ በፊት በዚህ ኢሜይል ለመመዝገብ ሞክረዋል? ከሆነ መለያዎን ለማግበር የገቢ መልእክት ሳጥንዎን ያረጋግጡ። <a href='#resend' class='Q_button Users_activation_resend'>መልዕክቱን እንደገና ለመላክ ጠቅ ያድርጉ<\/a>",
-        "mobileExists": "ከዚህ በፊት በዚህ የሞባይል ቁጥር ለመመዝገብ ሞክረዋል? ከሆነ መለያዎን ለማግበር ኤስኤምኤስዎን ያረጋግጡ። <a href='#resend' class='Q_button Users_activation_resend'>መልዕክቱን እንደገና ለመላክ ጠቅ ያድርጉ<\/a>",
-        "usingOther": "ወይም ይችላሉ",
-        "connectPlatforms": "ወይም የሚከተሉትን በመጠቀም ይገናኙ:",
-        "prompt": "የመጠቀሚያ ስም ምረጥ:",
-        "newUser": "ወይም ከዚህ በታች አዲስ መለያ ይፍጠሩ",
-        "placeholders": {
-            "identifier": "የእርስዎ ሞባይል # ወይም ኢሜይል",
-            "mobile": "ሞባይልዎን # ያስገቡ",
-            "email": "የኢሜይል አድራሻዎን ያስገቡ",
-            "username": "ፊደሎችን እና ቁጥሮችን ብቻ ይጠቀሙ"
-        },
-        "confirmTerms": "የአገልግሎት ውሉን ይቀበሉ?",
-        "facebookNoEmail": "የፌስቡክ መለያህ የተረጋገጠ የኢሜይል አድራሻ ይጎድለዋል። በቀላሉ በአገርኛ መንገድ ይግቡ።",
-        "picTooltip": "ይህን ምስል በኋላ መቀየር ትችላለህ",
-        "web3": {
-            "payload": "በጊዜ {{timestamp}} ወደ {{host}} ይግቡ",
-            "alert": {
-                "title": "ወደ Wallet በማዞር ላይ",
-                "content": "ይህን ንግግር አንዴ ከዘጉ፣ ወደ ቦርሳዎ ይወሰዳሉ። ከገቡ በኋላ ወደዚህ ገጽ ይመለሱ።"
-            },
-            "ConnectWallet": "Walletን ያገናኙ"
-        }
-    },
-    "setIdentifier": {
-        "title": "የመግቢያ መንገድ ያክሉ",
-        "sendMessage": "የማግበር መልእክት ላክ",
-        "placeholders": {
-            "identifier": "ሞባይልዎን # ወይም ኢሜልዎን ያስገቡ",
-            "mobile": "የተንቀሳቃሽ ስልክ ቁጥርዎን ያስገቡ",
-            "email": "የኢሜይል አድራሻዎን ያስገቡ",
-            "username": "የተጠቃሚ ስም"
-        }
-    },
-    "prompt": {
-        "title": "{{Platform}} መለያ",
-        "areUsing": "{{platform}} እየተጠቀሙ ነው።",
-        "noLongerUsing": "ከ {{platform}} ጋር አልተገናኘህም።",
-        "doAuth": "በዚህ መለያ ይግቡ",
-        "doSwitch": "ወደዚህ መለያ ቀይር"
-    },
-    "roles": {
-        "Owner": "ባለቤት",
-        "Admin": "አስተዳዳሪ",
-        "Member": "አባል",
-        "Guest": "እንግዳ",
-        "Host": "አስተናጋጅ"
-    },
-    "web3": {
-        "WrongMethod": "የተሳሳተ የውል ዘዴ {{methodName}}",
-        "ChangeWallet": "Wallet ቀይር",
-        "ConnectWallet": "Walletን ያገናኙ",
-        "AfterWalletConnectedPleaseRefresh": "የኪስ ቦርሳ ከተገናኘ በኋላ የኪስ ቦርሳውን ለመለየት እባክዎ ይህን ገጽ ያድሱ"
-    },
-    "labels": {
-        "addToPhonebook": "ወደ ስልኬ እውቂያዎች አክል",
-        "addLabel": "አዲስ ግንኙነት",
-        "prompt": "ስም ስጠው",
-        "titles": {
-            "Users\/owners": "ባለቤቶች",
-            "Users\/admins": "አስተዳዳሪዎች",
-            "Users\/members": "አባላት",
-            "Users\/guests": "እንግዶች",
-            "Users\/hosts": "አስተናጋጆች",
-            "Users\/testers": "ሞካሪዎች",
-            "Users\/speakers": "ተናጋሪዎች"
-        }
-    },
-    "people": {
-        "People": "ሰዎች"
-    },
-    "external": {
-        "defaults": {
-            "title": "",
-            "bio": "መድረክ ተሳትፎ bot. https:\/\/engageusers.ai ላይ የራስዎን ያግኙ",
-            "website": "https:\/\/engageusers.ai"
-        }
-    },
-    "errors": {
-        "NotEnoughPermissionsWallet": "የዚህን ተጠቃሚ ቦርሳ ለማንበብ በቂ ፍቃዶች የሉም",
-        "ThisUserHaveNoWallet": "ይህ ተጠቃሚ የተመደበ የኪስ ቦርሳ የለውም",
-        "TheWalletOfThisUserInvalid": "የዚህ ተጠቃሚ የኪስ ቦርሳ ልክ ያልሆነ ነው።",
-        "WalletInvalid": "የኪስ ቦርሳ አድራሻ ልክ አይደለም።"
-    }
+	"avatar": {
+		"Someone": "\u12a0\u1295\u12f5 \u1230\u12cd"
+	},
+	"identifier": {
+		"types": {
+			"email": "\u12a2\u121c\u12ed\u120d",
+			"mobile": "\u121e\u1263\u12ed\u120d",
+			"web3": "\u12f5\u122d3"
+		}
+	},
+	"clipboard": {
+		"Copied": "\u1270\u1240\u12f5\u1277\u120d! \u12a0\u1201\u1295 \u1260\u121b\u1295\u129b\u12cd\u121d \u1266\u1273 \u1218\u1208\u1320\u134d \u12ed\u127d\u120b\u1209."
+	},
+	"analytics": {
+		"Title": "\u1275\u1295\u1273\u1294",
+		"Daily": "\u1260\u12e8\u1240\u1291",
+		"Weekly": "\u1260\u12e8\u1233\u121d\u1295\u1271",
+		"Monthly": "\u12c8\u122d\u1203\u12ca",
+		"Application": "\u1218\u1270\u130d\u1260\u122a\u12eb",
+		"Pages": "\u1308\u1346\u127d",
+		"Services": "\u12a0\u1308\u120d\u130d\u120e\u1276\u127d",
+		"Faq": "\u1260\u12e8\u1325",
+		"WeekDays": "\u12e8\u1233\u121d\u1295\u1275 \u1240\u1293\u1275"
+	},
+	"actions": {
+		"LogIn": "\u130d\u1263",
+		"LogOut": "\u12cd\u1323"
+	},
+	"activate": {
+		"OneTimeCode": "\u12e8\u1270\u1240\u1260\u120d\u12a8\u12cd\u1295 \u12ae\u12f5 \u12a0\u1235\u1308\u1263\u1361-",
+		"SetAsPrimary": "{{1}} \u12a5\u1295\u12f0 \u12a0\u1295\u12f0\u129b \u12f0\u1228\u1303 {{2}} \u12a0\u12d8\u130b\u1305",
+		"ChoosePassPhrase": "<strong>\u1208\u1218\u130d\u1263\u1275 \u12e8\u121b\u1208\u134a\u12eb \u1200\u1228\u130d</strong> \u12ed\u121d\u1228\u1321\u1362<br> \u1260\u1240\u120b\u1209 \u12e8\u121a\u12eb\u1235\u1273\u12cd\u1237\u1278\u12cd \u1325\u1242\u1275 \u1243\u120b\u1275\u1295 \u12e8\u12eb\u12d8 \u1240\u120b\u120d \u1210\u1228\u130d\u1362",
+		"ChoosePassPhraseSeeSuggestions": "\u1218\u1208\u12eb\u12ce\u1295 \u1208\u1218\u1320\u1260\u1245 \u1325\u1229 <strong>\u121b\u1208\u134a\u12eb \u1210\u1228\u130d</strong> \u12ed\u121d\u1228\u1321\u1362 \u1208\u12a0\u1295\u12f3\u1295\u12f5 \u1200\u1233\u1266\u127d \u1325\u1246\u121b\u12ce\u127d\u1295 \u12ed\u1218\u120d\u12a8\u1271\u1362",
+		"LogOutAndTryAgain": "\u12ed\u12cd\u1321 \u12a5\u1293 \u12a5\u1295\u12f0\u1308\u1293 \u12ed\u121e\u12ad\u1229",
+		"IfYouFeel": "\u12e8\u1206\u1290 \u127d\u130d\u122d \u12a5\u1295\u12f0\u1270\u1348\u1320\u1228 \u12a8\u1270\u1230\u121b\u12ce\u1275 \u121b\u12f5\u1228\u130d \u12ed\u127d\u120b\u1209\u1362",
+		"SetIdentifierButtonTitle": "\u12a5\u1295\u12f0\u1308\u1293 \u1300\u121d\u122d",
+		"ActivateMyAccount": "\u1218\u1208\u12eb\u12ec\u1295 \u12a0\u130d\u1265\u122d"
+	},
+	"session": {
+		"GetStarted": "\u12a5\u1295\u1300\u121d\u122d"
+	},
+	"authorize": {
+		"GetStarted": "\u12a5\u1295\u1300\u121d\u122d",
+		"Authorize": "\u134d\u1240\u12f5",
+		"TermsLabel": "\u12a0\u1295\u1265\u1264 \u1270\u1235\u121b\u121d\u127b\u1208\u1201<br> \u12c8\u12f0 {{link}}",
+		"TermsTitle": "\u12cd\u120e\u127d",
+		"mustAgree": "\u1260\u1218\u1300\u1218\u122a\u12eb \u1260\u12cd\u1209 \u1218\u1235\u121b\u121b\u1275 \u12a0\u1208\u1265\u12ce\u1275\u1362"
+	},
+	"register": {
+		"TermsLabel": "{{link}} \u1270\u1240\u1265\u12eb\u1208\u1201",
+		"TermsTitle": "\u12cd\u120e\u127d"
+	},
+	"notifications": {
+		"title": "\u134d\u1243\u12f5",
+		"prompt": "\u121b\u1233\u12c8\u1242\u12eb\u12ce\u127d\u1295 \u121b\u1295\u1243\u1275 \u12ed\u1348\u120d\u130b\u1209? \u1235\u1208\u121d\u1275\u1328\u1290\u1241\u120b\u1278\u12cd \u1290\u1308\u122e\u127d \u12e8\u1245\u133d\u1260\u1273\u12ca \u12dd\u121b\u1294\u12ce\u127d\u1295 \u12ed\u12f0\u122d\u1235\u12ce\u1273\u120d\u1362",
+		"yes": "\u12a0\u12ce",
+		"no": "\u12a0\u12ed",
+		"WelcomePleaseVerifyEmail": "\u12a5\u1295\u12b3\u1295 \u12f0\u1205\u1293 \u1218\u1323\u1205! \u12a5\u1263\u12ad\u1205 \u12e8\u12a2\u121c\u120d \u12a0\u12f5\u122b\u123b\u1205\u1295 \u12a0\u1228\u130b\u130d\u1325\u1362",
+		"WelcomeVerifyEmail": "\u12a5\u1295\u12b3\u1295 \u12f0\u1205\u1293 \u1218\u1323\u1205! \u12e8\u12a2\u121c\u12ed\u120d \u12a0\u12f5\u122b\u123b\u1205\u1295 \u12a0\u1228\u130b\u130d\u1325.",
+		"ForgetPass": "\u1204\u12ed \u12e8\u12ed\u1208\u134d \u1210\u1228\u130d\u1205\u1295 \u1228\u1233\u12b8\u12cd?",
+		"PassphraseSaved": "\u12e8\u121b\u1208\u134a\u12eb \u1210\u1228\u130d\u12ce \u1270\u1240\u121d\u1327\u120d\u1362",
+		"IdentifierActivated": "\u12e8\u12a5\u122d\u1235\u12ce {{type}} \u1290\u1245\u1277\u120d\u1362",
+		"CompletedActivation": "\u12e8\u1270\u1320\u1243\u121a \u121b\u130d\u1260\u122d \u1328\u122d\u1230\u1203\u120d\u1362",
+		"CompletedActivationLogIn": "\u12e8\u1270\u1320\u1243\u121a \u121b\u130d\u1260\u122d \u1328\u122d\u1230\u1203\u120d\u1362 \u12a0\u1201\u1295 \u1208\u1218\u130d\u1263\u1275 \u12ed\u121e\u12ad\u1229\u1362"
+	},
+	"contacts": {
+		"dialog": {
+			"title": "\u12a5\u12cd\u1242\u12eb\u1295 \u12ed\u121d\u1228\u1321",
+			"CreateAccount": "+ \u12a0\u12f2\u1235 \u12a5\u12cd\u1242\u12eb",
+			"CreateAccountNotFound": "Q.Users.Cordova.UI.create \u12a0\u120d\u1270\u1308\u1298\u121d\u1362",
+			"SearchByName": "\u1260\u1235\u121d \u1348\u120d\u130d",
+			"EmptyContacts": "\u12a5\u12cd\u1242\u12eb\u12ce\u127d \u12a0\u120d\u1270\u1308\u1299\u121d..."
+		},
+		"select": {
+			"title": "\u12e8 {{displayName}} \u12a0\u12f5\u122b\u123b \u12ed\u121d\u1228\u1321"
+		},
+		"require": {
+			"Instructions": "\u12ed\u1205 \u12a5\u1295\u12f2\u1230\u122b \u12e8\u1201\u1209\u121d \u12a5\u12cd\u1242\u12eb\u12ce\u127d \u1218\u12f3\u1228\u123b\u1295 \u121b\u1295\u1243\u1275 \u12eb\u1235\u1348\u120d\u130d\u12ce\u1273\u120d\u1362"
+		}
+	},
+	"usersContacts": {
+		"selectLabel": "\u12a5\u1263\u12ad\u12ce \u1218\u1208\u12eb \u12ed\u121d\u1228\u1321\u1362",
+		"inviteUser": "\u1270\u1320\u1243\u121a\u12ce\u127d\u1295 \u12ed\u130b\u1265\u12d9",
+		"selectRole": "\u121a\u1293 \u12ed\u121d\u1228\u1321",
+		"inviteRole": "{{role}} \u130b\u1265\u12dd"
+	},
+	"invalidLanguageSelected": "\u120d\u12ad \u12eb\u120d\u1206\u1290 \u124b\u1295\u124b \u1270\u1218\u122d\u1327\u120d",
+	"platforms": {
+		"wallet": "\u12e8\u12aa\u1235 \u1266\u122d\u1233",
+		"broadcast": "\u1235\u122d\u132d\u1275"
+	},
+	"login": {
+		"title": "\u12a5\u1295\u12b3\u1295 \u12c8\u12f0 {{AppName}} \u1260\u12f0\u1205\u1293 \u1218\u1321",
+		"directions": {
+			"GetStarted": "\u121b\u1233\u12c8\u1242\u12eb\u12ce\u127d\u1295 \u12e8\u1275 \u1218\u120b\u12ad \u12a0\u1208\u1265\u1295?",
+			"NoRegister": "\u1218\u1208\u12eb \u12ab\u1208\u12ce\u1275 \u12ed\u130d\u1261\u1362",
+			"WasInvited": "\u12a5\u122d\u1235\u12ce\u1295 \u1208\u121b\u130d\u1298\u1275 \u121d\u122d\u1321 \u1218\u1295\u1308\u12f5 \u121d\u1295\u12f5\u1290\u12cd?"
+		},
+		"directionsNoRegister": "\u1218\u1208\u12eb \u12ab\u1208\u12ce\u1275 \u12ed\u130d\u1261\u1362",
+		"goButton": "\u2794",
+		"passphrase": "\u12e8\u121b\u1208\u134a\u12eb \u1210\u1228\u130d\u12ce\u1295 \u12eb\u1235\u1308\u1261\u1361-",
+		"loginButton": "\u12a5\u1295\u1300\u121d\u122d",
+		"registerButton": "\u12a5\u1295\u1300\u121d\u122d",
+		"resendButton": "\u12e8\u121b\u130d\u1260\u122d \u1218\u120d\u12a5\u12ad\u1275 \u120b\u12ad",
+		"forgot": "\u1228\u1233\u12cd?",
+		"resendConfirm": "\u12e8\u12ed\u1208\u134d \u1210\u1228\u130d\u12ce\u1295 \u12a5\u1295\u12f0\u1308\u1293 \u1208\u121b\u1235\u1300\u1218\u122d \u1218\u120d\u12a5\u12ad\u1275 \u1218\u120b\u12ad \u12ed\u1348\u120d\u130b\u1209?",
+		"resendSuccess": "\u12e8\u12ed\u1208\u134d \u1210\u1228\u130d\u12ce\u1295 \u12a5\u1295\u12f0\u1308\u1293 \u1208\u121b\u1235\u1300\u1218\u122d \u1218\u120d\u12a5\u12ad\u1275 \u12ab\u1208 \u12eb\u1228\u130b\u130d\u1321",
+		"resendClose": "\u1308\u1320\u1218",
+		"noPassphrase": "\u12a8\u1218\u130d\u1263\u1275\u12ce \u1260\u134a\u1275 \u1260\u121b\u130d\u1260\u122d \u1218\u120d\u12a5\u12ad\u1275\u12ce \u12cd\u1235\u1325 \u12eb\u1208\u12cd\u1295 \u120a\u1295\u12ad \u1260\u1218\u132b\u1295 \u121b\u1208\u134a\u12eb \u1200\u1228\u130d \u121b\u12d8\u130b\u1300\u1275 \u12a0\u1208\u1265\u12ce\u1275\u1362",
+		"notVerified": "\u1208\u1218\u130d\u1263\u1275 \u1208\u122b\u1235\u1205 \u12e8\u121b\u130d\u1260\u122d \u1218\u120d\u12a5\u12ad\u1275 \u1218\u120b\u12ad \u12a0\u1208\u1265\u1205\u1362",
+		"emailExists": "\u12a8\u12da\u1205 \u1260\u134a\u1275 \u1260\u12da\u1205 \u12a2\u121c\u12ed\u120d \u1208\u1218\u1218\u12dd\u1308\u1265 \u121e\u12ad\u1228\u12cb\u120d? \u12a8\u1206\u1290 \u1218\u1208\u12eb\u12ce\u1295 \u1208\u121b\u130d\u1260\u122d \u12e8\u1308\u1262 \u1218\u120d\u12a5\u12ad\u1275 \u1233\u1325\u1295\u12ce\u1295 \u12eb\u1228\u130b\u130d\u1321\u1362 <a href='#resend' class='Q_button Users_activation_resend'>\u1218\u120d\u12d5\u12ad\u1271\u1295 \u12a5\u1295\u12f0\u1308\u1293 \u1208\u1218\u120b\u12ad \u1320\u1245 \u12eb\u12f5\u122d\u1309</a>",
+		"mobileExists": "\u12a8\u12da\u1205 \u1260\u134a\u1275 \u1260\u12da\u1205 \u12e8\u121e\u1263\u12ed\u120d \u1241\u1325\u122d \u1208\u1218\u1218\u12dd\u1308\u1265 \u121e\u12ad\u1228\u12cb\u120d? \u12a8\u1206\u1290 \u1218\u1208\u12eb\u12ce\u1295 \u1208\u121b\u130d\u1260\u122d \u12a4\u1235\u12a4\u121d\u12a4\u1235\u12ce\u1295 \u12eb\u1228\u130b\u130d\u1321\u1362 <a href='#resend' class='Q_button Users_activation_resend'>\u1218\u120d\u12d5\u12ad\u1271\u1295 \u12a5\u1295\u12f0\u1308\u1293 \u1208\u1218\u120b\u12ad \u1320\u1245 \u12eb\u12f5\u122d\u1309</a>",
+		"usingOther": "\u12c8\u12ed\u121d \u12ed\u127d\u120b\u1209",
+		"connectPlatforms": "\u12c8\u12ed\u121d \u12e8\u121a\u12a8\u1270\u1209\u1275\u1295 \u1260\u1218\u1320\u1240\u121d \u12ed\u1308\u1293\u1299:",
+		"prompt": "\u12e8\u1218\u1320\u1240\u121a\u12eb \u1235\u121d \u121d\u1228\u1325:",
+		"newUser": "\u12c8\u12ed\u121d \u12a8\u12da\u1205 \u1260\u1273\u127d \u12a0\u12f2\u1235 \u1218\u1208\u12eb \u12ed\u134d\u1320\u1229",
+		"placeholders": {
+			"identifier": "\u12e8\u12a5\u122d\u1235\u12ce \u121e\u1263\u12ed\u120d # \u12c8\u12ed\u121d \u12a2\u121c\u12ed\u120d",
+			"mobile": "\u121e\u1263\u12ed\u120d\u12ce\u1295 # \u12eb\u1235\u1308\u1261",
+			"email": "\u12e8\u12a2\u121c\u12ed\u120d \u12a0\u12f5\u122b\u123b\u12ce\u1295 \u12eb\u1235\u1308\u1261",
+			"username": "\u134a\u12f0\u120e\u127d\u1295 \u12a5\u1293 \u1241\u1325\u122e\u127d\u1295 \u1265\u127b \u12ed\u1320\u1240\u1219"
+		},
+		"confirmTerms": "\u12e8\u12a0\u1308\u120d\u130d\u120e\u1275 \u12cd\u1209\u1295 \u12ed\u1240\u1260\u1209?",
+		"facebookNoEmail": "\u12e8\u134c\u1235\u1261\u12ad \u1218\u1208\u12eb\u1205 \u12e8\u1270\u1228\u130b\u1308\u1320 \u12e8\u12a2\u121c\u12ed\u120d \u12a0\u12f5\u122b\u123b \u12ed\u130e\u12f5\u1208\u12cb\u120d\u1362 \u1260\u1240\u120b\u1209 \u1260\u12a0\u1308\u122d\u129b \u1218\u1295\u1308\u12f5 \u12ed\u130d\u1261\u1362",
+		"picTooltip": "\u12ed\u1205\u1295 \u121d\u1235\u120d \u1260\u128b\u120b \u1218\u1240\u12e8\u122d \u1275\u127d\u120b\u1208\u1205",
+		"web3": {
+			"payload": "\u1260\u130a\u12dc {{timestamp}} \u12c8\u12f0 {{host}} \u12ed\u130d\u1261",
+			"alert": {
+				"title": "\u12c8\u12f0 Wallet \u1260\u121b\u12de\u122d \u120b\u12ed",
+				"content": "\u12ed\u1205\u1295 \u1295\u130d\u130d\u122d \u12a0\u1295\u12f4 \u12a8\u12d8\u1309\u1363 \u12c8\u12f0 \u1266\u122d\u1233\u12ce \u12ed\u12c8\u1230\u12f3\u1209\u1362 \u12a8\u1308\u1261 \u1260\u128b\u120b \u12c8\u12f0\u12da\u1205 \u1308\u133d \u12ed\u1218\u1208\u1231\u1362"
+			},
+			"ConnectWallet": "Wallet\u1295 \u12eb\u1308\u1293\u1299"
+		}
+	},
+	"setIdentifier": {
+		"title": "\u12e8\u1218\u130d\u1262\u12eb \u1218\u1295\u1308\u12f5 \u12eb\u12ad\u1209",
+		"sendMessage": "\u12e8\u121b\u130d\u1260\u122d \u1218\u120d\u12a5\u12ad\u1275 \u120b\u12ad",
+		"placeholders": {
+			"identifier": "\u121e\u1263\u12ed\u120d\u12ce\u1295 # \u12c8\u12ed\u121d \u12a2\u121c\u120d\u12ce\u1295 \u12eb\u1235\u1308\u1261",
+			"mobile": "\u12e8\u1270\u1295\u1240\u1233\u1243\u123d \u1235\u120d\u12ad \u1241\u1325\u122d\u12ce\u1295 \u12eb\u1235\u1308\u1261",
+			"email": "\u12e8\u12a2\u121c\u12ed\u120d \u12a0\u12f5\u122b\u123b\u12ce\u1295 \u12eb\u1235\u1308\u1261",
+			"username": "\u12e8\u1270\u1320\u1243\u121a \u1235\u121d"
+		}
+	},
+	"prompt": {
+		"title": "{{Platform}} \u1218\u1208\u12eb",
+		"areUsing": "{{platform}} \u12a5\u12e8\u1270\u1320\u1240\u1219 \u1290\u12cd\u1362",
+		"noLongerUsing": "\u12a8 {{platform}} \u130b\u122d \u12a0\u120d\u1270\u1308\u1293\u1298\u1205\u121d\u1362",
+		"doAuth": "\u1260\u12da\u1205 \u1218\u1208\u12eb \u12ed\u130d\u1261",
+		"doSwitch": "\u12c8\u12f0\u12da\u1205 \u1218\u1208\u12eb \u1240\u12ed\u122d"
+	},
+	"roles": {
+		"Owner": "\u1263\u1208\u1264\u1275",
+		"Admin": "\u12a0\u1235\u1270\u12f3\u12f3\u122a",
+		"Member": "\u12a0\u1263\u120d",
+		"Guest": "\u12a5\u1295\u130d\u12f3",
+		"Host": "\u12a0\u1235\u1270\u1293\u130b\u1305"
+	},
+	"web3": {
+		"WrongMethod": "\u12e8\u1270\u1233\u1233\u1270 \u12e8\u12cd\u120d \u12d8\u12f4 {{methodName}}",
+		"ChangeWallet": "Wallet \u1240\u12ed\u122d",
+		"ConnectWallet": "Wallet\u1295 \u12eb\u1308\u1293\u1299",
+		"AfterWalletConnectedPleaseRefresh": "\u12e8\u12aa\u1235 \u1266\u122d\u1233 \u12a8\u1270\u1308\u1293\u1298 \u1260\u128b\u120b \u12e8\u12aa\u1235 \u1266\u122d\u1233\u12cd\u1295 \u1208\u1218\u1208\u12e8\u1275 \u12a5\u1263\u12ad\u12ce \u12ed\u1205\u1295 \u1308\u133d \u12eb\u12f5\u1231"
+	},
+	"labels": {
+		"addToPhonebook": "\u12c8\u12f0 \u1235\u120d\u12ac \u12a5\u12cd\u1242\u12eb\u12ce\u127d \u12a0\u12ad\u120d",
+		"addLabel": "\u12a0\u12f2\u1235 \u130d\u1295\u1299\u1290\u1275",
+		"prompt": "\u1235\u121d \u1235\u1320\u12cd",
+		"titles": {
+			"Users/owners": "\u1263\u1208\u1264\u1276\u127d",
+			"Users/admins": "\u12a0\u1235\u1270\u12f3\u12f3\u122a\u12ce\u127d",
+			"Users/members": "\u12a0\u1263\u120b\u1275",
+			"Users/guests": "\u12a5\u1295\u130d\u12f6\u127d",
+			"Users/hosts": "\u12a0\u1235\u1270\u1293\u130b\u1306\u127d",
+			"Users/testers": "\u121e\u12ab\u122a\u12ce\u127d",
+			"Users/speakers": "\u1270\u1293\u130b\u122a\u12ce\u127d"
+		}
+	},
+	"people": {
+		"People": "\u1230\u12ce\u127d"
+	},
+	"external": {
+		"defaults": {
+			"title": "",
+			"bio": "\u1218\u12f5\u1228\u12ad \u1270\u1233\u1275\u134e bot. https://engageusers.ai \u120b\u12ed \u12e8\u122b\u1235\u12ce\u1295 \u12eb\u130d\u1299",
+			"website": "https://engageusers.ai"
+		}
+	},
+	"errors": {
+		"NotEnoughPermissionsWallet": "\u12e8\u12da\u1205\u1295 \u1270\u1320\u1243\u121a \u1266\u122d\u1233 \u1208\u121b\u1295\u1260\u1265 \u1260\u1242 \u134d\u1243\u12f6\u127d \u12e8\u1209\u121d",
+		"ThisUserHaveNoWallet": "\u12ed\u1205 \u1270\u1320\u1243\u121a \u12e8\u1270\u1218\u12f0\u1260 \u12e8\u12aa\u1235 \u1266\u122d\u1233 \u12e8\u1208\u12cd\u121d",
+		"TheWalletOfThisUserInvalid": "\u12e8\u12da\u1205 \u1270\u1320\u1243\u121a \u12e8\u12aa\u1235 \u1266\u122d\u1233 \u120d\u12ad \u12eb\u120d\u1206\u1290 \u1290\u12cd\u1362",
+		"WalletInvalid": "\u12e8\u12aa\u1235 \u1266\u122d\u1233 \u12a0\u12f5\u122b\u123b \u120d\u12ad \u12a0\u12ed\u12f0\u1208\u121d\u1362"
+	}
 }

@@ -1,22 +1,22 @@
 {
-    "activation": {
-        "Subject": "Mirë se vini! Ju lutemi verifikoni adresën tuaj të emailit.",
-        "Thanks": "Mirë se vini në {{1}}",
-        "ReallyYourEmail": "A është vërtet kjo adresa juaj e emailit, {{1}}? Nëse po, klikoni <a href='{{2}}'>këtu<\/a> për të vendosur frazën tuaj të kalimit dhe për të aktivizuar llogarinë tuaj.",
-        "SeeYou": "Shihemi në <a href='{{1}}'>{{2}}<\/a> !",
-        "OtherwiseClickLink": "Përndryshe, klikoni <a href='{{1}}'>këtë lidhje<\/a> ."
-    },
-    "identifier": {
-        "Subject": "Mirë se vini! Verifikoni adresën tuaj të emailit."
-    },
-    "resend": {
-        "Subject": "Hej, e harrove frazën e kalimit?",
-        "Thanks": "Faleminderit për vizitën {{1}}",
-        "YouAreReceiving": "Ju po e merrni këtë email sepse dikush futi adresën tuaj të emailit dhe kliko &quot;ka harruar frazën e kalimit&quot;. Nëse nuk ishit ju, thjesht injoroni këtë mesazh.",
-        "Reset": "Për të rivendosur frazën e kalimit, kliko {{1}}",
-        "SetUpPassphrase": "Vendos frazën e kalimit",
-        "DomainCode": "Nëse faqja e internetit është tashmë e hapur në shfletuesin tuaj, mund të futni kodin"
-    },
-    "SeeYou": "Shihemi në {{1}}!",
-    "LinkToUnsubscribe": "Këtu është një lidhje për t&#39;u <a href='{{1}}'>çregjistruar<\/a> nëse nuk dëshironi të merrni më emaile."
+	"activation": {
+		"Subject": "Mir\u00eb se vini! Ju lutemi verifikoni adres\u00ebn tuaj t\u00eb emailit.",
+		"Thanks": "Mir\u00eb se vini n\u00eb {{1}}",
+		"ReallyYourEmail": "A \u00ebsht\u00eb v\u00ebrtet kjo adresa juaj e emailit, {{1}}? N\u00ebse po, klikoni <a href='{{2}}'>k\u00ebtu</a> p\u00ebr t\u00eb vendosur fraz\u00ebn tuaj t\u00eb kalimit dhe p\u00ebr t\u00eb aktivizuar llogarin\u00eb tuaj.",
+		"SeeYou": "Shihemi n\u00eb <a href='{{1}}'>{{2}}</a> !",
+		"OtherwiseClickLink": "P\u00ebrndryshe, klikoni <a href='{{1}}'>k\u00ebt\u00eb lidhje</a> ."
+	},
+	"identifier": {
+		"Subject": "Mir\u00eb se vini! Verifikoni adres\u00ebn tuaj t\u00eb emailit."
+	},
+	"resend": {
+		"Subject": "Hej, e harrove fraz\u00ebn e kalimit?",
+		"Thanks": "Faleminderit p\u00ebr vizit\u00ebn {{1}}",
+		"YouAreReceiving": "Ju po e merrni k\u00ebt\u00eb email sepse dikush futi adres\u00ebn tuaj t\u00eb emailit dhe kliko &quot;ka harruar fraz\u00ebn e kalimit&quot;. N\u00ebse nuk ishit ju, thjesht injoroni k\u00ebt\u00eb mesazh.",
+		"Reset": "P\u00ebr t\u00eb rivendosur fraz\u00ebn e kalimit, kliko {{1}}",
+		"SetUpPassphrase": "Vendos fraz\u00ebn e kalimit",
+		"DomainCode": "N\u00ebse faqja e internetit \u00ebsht\u00eb tashm\u00eb e hapur n\u00eb shfletuesin tuaj, mund t\u00eb futni kodin"
+	},
+	"SeeYou": "Shihemi n\u00eb {{1}}!",
+	"LinkToUnsubscribe": "K\u00ebtu \u00ebsht\u00eb nj\u00eb lidhje p\u00ebr t&#39;u <a href='{{1}}'>\u00e7regjistruar</a> n\u00ebse nuk d\u00ebshironi t\u00eb merrni m\u00eb emaile."
 }

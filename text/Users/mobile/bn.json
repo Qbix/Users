@@ -1,14 +1,14 @@
 {
-    "activation": {
-        "Thanks": "{{1}}-এ স্বাগতম৷",
-        "ClickHere": "আপনার অ্যাকাউন্ট সক্রিয় করতে এখানে ক্লিক করুন: {{1}}"
-    },
-    "addMobile": {
-        "ClickHere": "আপনার মোবাইল নম্বর যাচাই করতে এখানে ক্লিক করুন: {{1}}"
-    },
-    "resend": {
-        "DidYouWant": "আপনি কি {{1}} এ আপনার পাসফ্রেজ রিসেট করতে চান?",
-        "ClickHere": "তারপর এখানে ক্লিক করুন: {{1}}",
-        "OrEnterCode": "অথবা কোড লিখুন:"
-    }
+	"activation": {
+		"Thanks": "{{1}}-\u098f \u09b8\u09cd\u09ac\u09be\u0997\u09a4\u09ae\u09f7",
+		"ClickHere": "\u0986\u09aa\u09a8\u09be\u09b0 \u0985\u09cd\u09af\u09be\u0995\u09be\u0989\u09a8\u09cd\u099f \u09b8\u0995\u09cd\u09b0\u09bf\u09af\u09bc \u0995\u09b0\u09a4\u09c7 \u098f\u0996\u09be\u09a8\u09c7 \u0995\u09cd\u09b2\u09bf\u0995 \u0995\u09b0\u09c1\u09a8: {{1}}"
+	},
+	"addMobile": {
+		"ClickHere": "\u0986\u09aa\u09a8\u09be\u09b0 \u09ae\u09cb\u09ac\u09be\u0987\u09b2 \u09a8\u09ae\u09cd\u09ac\u09b0 \u09af\u09be\u099a\u09be\u0987 \u0995\u09b0\u09a4\u09c7 \u098f\u0996\u09be\u09a8\u09c7 \u0995\u09cd\u09b2\u09bf\u0995 \u0995\u09b0\u09c1\u09a8: {{1}}"
+	},
+	"resend": {
+		"DidYouWant": "\u0986\u09aa\u09a8\u09bf \u0995\u09bf {{1}} \u098f \u0986\u09aa\u09a8\u09be\u09b0 \u09aa\u09be\u09b8\u09ab\u09cd\u09b0\u09c7\u099c \u09b0\u09bf\u09b8\u09c7\u099f \u0995\u09b0\u09a4\u09c7 \u099a\u09be\u09a8?",
+		"ClickHere": "\u09a4\u09be\u09b0\u09aa\u09b0 \u098f\u0996\u09be\u09a8\u09c7 \u0995\u09cd\u09b2\u09bf\u0995 \u0995\u09b0\u09c1\u09a8: {{1}}",
+		"OrEnterCode": "\u0985\u09a5\u09ac\u09be \u0995\u09cb\u09a1 \u09b2\u09bf\u0996\u09c1\u09a8:"
+	}
 }

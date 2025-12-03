@@ -1,22 +1,22 @@
 {
-    "activation": {
-        "Subject": "Laipni lūdzam! Lūdzu, apstipriniet savu e-pasta adresi.",
-        "Thanks": "Laipni lūdzam {{1}}",
-        "ReallyYourEmail": "Vai šī tiešām ir jūsu e-pasta adrese, {{1}}? Ja tā, noklikšķiniet <a href='{{2}}'>šeit<\/a> , lai iestatītu ieejas frāzi un aktivizētu savu kontu.",
-        "SeeYou": "Tiekamies <a href='{{1}}'>{{2}}<\/a> !",
-        "OtherwiseClickLink": "Pretējā gadījumā noklikšķiniet uz <a href='{{1}}'>šīs saites<\/a> ."
-    },
-    "identifier": {
-        "Subject": "Laipni lūdzam! Pārbaudiet savu e-pasta adresi."
-    },
-    "resend": {
-        "Subject": "Sveiki, vai aizmirsāt savu ieejas frāzi?",
-        "Thanks": "Paldies, ka apmeklējāt {{1}}",
-        "YouAreReceiving": "Jūs saņēmāt šo e-pasta ziņojumu, jo kāds ievadīja jūsu e-pasta adresi un noklikšķināja uz &quot;aizmirsu ieejas frāzi&quot;. Ja tas nebijāt jūs, vienkārši ignorējiet šo ziņojumu.",
-        "Reset": "Lai atiestatītu ieejas frāzi, noklikšķiniet uz {{1}}",
-        "SetUpPassphrase": "Iestatiet ieejas frāzi",
-        "DomainCode": "Ja tīmekļa lapa jūsu pārlūkprogrammā jau ir atvērta, varat ievadīt kodu"
-    },
-    "SeeYou": "Tiekamies {{1}}!",
-    "LinkToUnsubscribe": "Šeit ir saite, lai <a href='{{1}}'>anulētu abonementu<\/a> , ja vairs nevēlaties saņemt e-pasta ziņojumus."
+	"activation": {
+		"Subject": "Laipni l\u016bdzam! L\u016bdzu, apstipriniet savu e-pasta adresi.",
+		"Thanks": "Laipni l\u016bdzam {{1}}",
+		"ReallyYourEmail": "Vai \u0161\u012b tie\u0161\u0101m ir j\u016bsu e-pasta adrese, {{1}}? Ja t\u0101, noklik\u0161\u0137iniet <a href='{{2}}'>\u0161eit</a> , lai iestat\u012btu ieejas fr\u0101zi un aktiviz\u0113tu savu kontu.",
+		"SeeYou": "Tiekamies <a href='{{1}}'>{{2}}</a> !",
+		"OtherwiseClickLink": "Pret\u0113j\u0101 gad\u012bjum\u0101 noklik\u0161\u0137iniet uz <a href='{{1}}'>\u0161\u012bs saites</a> ."
+	},
+	"identifier": {
+		"Subject": "Laipni l\u016bdzam! P\u0101rbaudiet savu e-pasta adresi."
+	},
+	"resend": {
+		"Subject": "Sveiki, vai aizmirs\u0101t savu ieejas fr\u0101zi?",
+		"Thanks": "Paldies, ka apmekl\u0113j\u0101t {{1}}",
+		"YouAreReceiving": "J\u016bs sa\u0146\u0113m\u0101t \u0161o e-pasta zi\u0146ojumu, jo k\u0101ds ievad\u012bja j\u016bsu e-pasta adresi un noklik\u0161\u0137in\u0101ja uz &quot;aizmirsu ieejas fr\u0101zi&quot;. Ja tas nebij\u0101t j\u016bs, vienk\u0101r\u0161i ignor\u0113jiet \u0161o zi\u0146ojumu.",
+		"Reset": "Lai atiestat\u012btu ieejas fr\u0101zi, noklik\u0161\u0137iniet uz {{1}}",
+		"SetUpPassphrase": "Iestatiet ieejas fr\u0101zi",
+		"DomainCode": "Ja t\u012bmek\u013ca lapa j\u016bsu p\u0101rl\u016bkprogramm\u0101 jau ir atv\u0113rta, varat ievad\u012bt kodu"
+	},
+	"SeeYou": "Tiekamies {{1}}!",
+	"LinkToUnsubscribe": "\u0160eit ir saite, lai <a href='{{1}}'>anul\u0113tu abonementu</a> , ja vairs nev\u0113laties sa\u0146emt e-pasta zi\u0146ojumus."
 }

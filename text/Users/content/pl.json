@@ -1,196 +1,196 @@
 {
-    "avatar": {
-        "Someone": "Ktoś"
-    },
-    "identifier": {
-        "types": {
-            "email": "E-mail",
-            "mobile": "mobilny",
-            "web3": "Web3"
-        }
-    },
-    "clipboard": {
-        "Copied": "Skopiowane! Teraz możesz wkleić go w dowolnym miejscu."
-    },
-    "analytics": {
-        "Title": "Analityka",
-        "Daily": "Codziennie",
-        "Weekly": "Co tydzień",
-        "Monthly": "Miesięczny",
-        "Application": "Aplikacja",
-        "Pages": "Strony",
-        "Services": "Usługi",
-        "Faq": "Często zadawane pytania",
-        "WeekDays": "Dni tygodnia"
-    },
-    "actions": {
-        "LogIn": "Zaloguj sie",
-        "LogOut": "Wyloguj"
-    },
-    "activate": {
-        "OneTimeCode": "Wpisz otrzymany kod:",
-        "SetAsPrimary": "Ustaw {{1}} jako moje podstawowe {{2}}",
-        "ChoosePassPhrase": "Wybierz <strong>hasło<\/strong> , aby się zalogować.<br> Prosta fraza składająca się z kilku słów, które z łatwością zapamiętasz.",
-        "ChoosePassPhraseSeeSuggestions": "Wybierz dobre <strong>hasło<\/strong> , aby chronić swoje konto. Zobacz sugestie dotyczące niektórych pomysłów.",
-        "LogOutAndTryAgain": "Wyloguj się i spróbuj ponownie",
-        "IfYouFeel": "Jeśli czujesz, że coś poszło nie tak, możesz",
-        "SetIdentifierButtonTitle": "zacząć od nowa",
-        "ActivateMyAccount": "Aktywuj moje konto"
-    },
-    "session": {
-        "GetStarted": "Zaczynaj"
-    },
-    "authorize": {
-        "GetStarted": "Zaczynaj",
-        "Authorize": "Autoryzować",
-        "TermsLabel": "Przeczytałem i zgadzam się<br> do {{link}}",
-        "TermsTitle": "Warunki",
-        "mustAgree": "Najpierw musisz zaakceptować warunki."
-    },
-    "register": {
-        "TermsLabel": "Akceptuję {{link}}",
-        "TermsTitle": "Warunki"
-    },
-    "notifications": {
-        "title": "Pozwolenie",
-        "prompt": "Czy chcesz włączyć powiadomienia? Będziesz otrzymywać aktualizacje w czasie rzeczywistym o rzeczach, na których Ci zależy.",
-        "yes": "Tak",
-        "no": "NIE",
-        "WelcomePleaseVerifyEmail": "Powitanie! Proszę zweryfikować swój adres e-mail.",
-        "WelcomeVerifyEmail": "Powitanie! Zweryfikuj swój adres email.",
-        "ForgetPass": "Hej, zapomniałeś hasła?",
-        "PassphraseSaved": "Twoje hasło zostało zapisane.",
-        "IdentifierActivated": "Twoje {{type}} zostało aktywowane.",
-        "CompletedActivation": "Aktywacja użytkownika została zakończona.",
-        "CompletedActivationLogIn": "Aktywacja użytkownika została zakończona. Spróbuj zalogować się teraz."
-    },
-    "contacts": {
-        "dialog": {
-            "title": "Wybierz kontakt",
-            "CreateAccount": "+ Nowy kontakt",
-            "CreateAccountNotFound": "Nie znaleziono Q.Users.Cordova.UI.create",
-            "SearchByName": "Szukaj według nazwy",
-            "EmptyContacts": "Nie znaleziono kontaktów..."
-        },
-        "select": {
-            "title": "Wybierz kontakt {{displayName}}"
-        },
-        "require": {
-            "Instructions": "Aby ta funkcja zadziałała, konieczne będzie włączenie dostępu do wszystkich kontaktów."
-        }
-    },
-    "usersContacts": {
-        "selectLabel": "Wybierz etykietę.",
-        "inviteUser": "Zaproś użytkowników",
-        "selectRole": "Wybierz rolę",
-        "inviteRole": "Zaproś {{role}}"
-    },
-    "invalidLanguageSelected": "Wybrano nieprawidłowy język",
-    "platforms": {
-        "wallet": "Portfel",
-        "broadcast": "Audycja"
-    },
-    "login": {
-        "title": "Powitanie",
-        "directions": {
-            "GetStarted": "Utwórz konto lub zaloguj się.",
-            "NoRegister": "Zaloguj się, jeśli masz konto.",
-            "WasInvited": "Jak najlepiej się z Tobą skontaktować?"
-        },
-        "directionsNoRegister": "Zaloguj się, jeśli masz konto.",
-        "goButton": "➔",
-        "passphrase": "Wpisz hasło:",
-        "loginButton": "Zaczynaj",
-        "registerButton": "Zaczynaj",
-        "resendButton": "Wyślij wiadomość aktywacyjną",
-        "forgot": "Zapomniałem?",
-        "resendConfirm": "Czy chcesz wysłać wiadomość, aby zresetować hasło?",
-        "resendSuccess": "Sprawdź, czy pojawiła się wiadomość, aby zresetować hasło",
-        "resendClose": "Zamknąć",
-        "noPassphrase": "Zanim będziesz mógł się zalogować, musisz ustawić hasło, klikając link w wiadomości aktywacyjnej.",
-        "notVerified": "Aby się zalogować, musisz wysłać do siebie wiadomość aktywacyjną.",
-        "emailExists": "Czy próbowałeś wcześniej zarejestrować się za pomocą tego adresu e-mail? Jeśli tak, sprawdź swoją skrzynkę odbiorczą, aby aktywować konto. <a href='#resend' class='Q_button Users_activation_resend'>Kliknij, aby ponownie wysłać wiadomość<\/a>",
-        "mobileExists": "Czy próbowałeś wcześniej zarejestrować się przy użyciu tego numeru telefonu komórkowego? Jeśli tak, sprawdź wiadomość SMS, aby aktywować konto. <a href='#resend' class='Q_button Users_activation_resend'>Kliknij, aby ponownie wysłać wiadomość<\/a>",
-        "usingOther": "albo możesz",
-        "connectPlatforms": "lub połącz za pomocą:",
-        "prompt": "Wybierz nazwę użytkownika:",
-        "newUser": "lub utwórz nowe konto poniżej",
-        "placeholders": {
-            "identifier": "numer telefonu komórkowego lub adres e-mail",
-            "mobile": "wprowadź swój numer telefonu komórkowego",
-            "email": "wprowadź swój adres e-mail",
-            "username": "używaj tylko liter i cyfr"
-        },
-        "confirmTerms": "Zaakceptować Warunki korzystania z usługi?",
-        "facebookNoEmail": "Twoje konto na Facebooku nie ma potwierdzonego adresu e-mail. Po prostu zaloguj się w natywny sposób.",
-        "picTooltip": "Możesz zmienić to zdjęcie później",
-        "web3": {
-            "payload": "Zaloguj się do {{host}} o godzinie {{timestamp}}",
-            "alert": {
-                "title": "Przekierowanie do Portfela",
-                "content": "Po zamknięciu tego okna dialogowego zostaniesz przeniesiony do swojego portfela. Po zalogowaniu wróć na tę stronę."
-            },
-            "ConnectWallet": "Połącz portfel"
-        }
-    },
-    "setIdentifier": {
-        "title": "Dodaj sposób logowania",
-        "sendMessage": "Wyślij wiadomość aktywacyjną",
-        "placeholders": {
-            "identifier": "wprowadź swój numer telefonu komórkowego lub adres e-mail",
-            "mobile": "Wprowadź swój numer telefonu komórkowego",
-            "email": "wprowadź swój adres e-mail",
-            "username": "nazwa użytkownika"
-        }
-    },
-    "prompt": {
-        "title": "Konto {{Platform}}",
-        "areUsing": "Używasz {{platform}} jako",
-        "noLongerUsing": "Nie jesteś już połączony z {{platform}} jako",
-        "doAuth": "Zaloguj się na to konto",
-        "doSwitch": "Przełącz się na to konto"
-    },
-    "roles": {
-        "Owner": "Właściciel",
-        "Admin": "Admin",
-        "Member": "Członek",
-        "Guest": "Gość",
-        "Host": "Gospodarz"
-    },
-    "web3": {
-        "WrongMethod": "Niewłaściwa metoda kontraktu {{methodName}}",
-        "ChangeWallet": "Zmień portfel",
-        "ConnectWallet": "Połącz portfel",
-        "AfterWalletConnectedPleaseRefresh": "Po podłączeniu portfela odśwież tę stronę, aby rozpoznać portfel"
-    },
-    "labels": {
-        "addToPhonebook": "Dodaj do moich kontaktów w telefonie",
-        "addLabel": "Nowy związek",
-        "prompt": "Daj temu imię",
-        "titles": {
-            "Users\/owners": "Właściciele",
-            "Users\/admins": "Administratorzy",
-            "Users\/members": "Członkowie",
-            "Users\/guests": "Goście",
-            "Users\/hosts": "Zastępy niebieskie",
-            "Users\/testers": "Testery",
-            "Users\/speakers": "Głośniki"
-        }
-    },
-    "people": {
-        "People": "Ludzie"
-    },
-    "external": {
-        "defaults": {
-            "title": "",
-            "bio": "Bot angażujący forum. Zdobądź własny na https:\/\/engageusers.ai",
-            "website": "https:\/\/engageusers.ai"
-        }
-    },
-    "errors": {
-        "NotEnoughPermissionsWallet": "Niewystarczające uprawnienia do odczytu portfela tego użytkownika",
-        "ThisUserHaveNoWallet": "Ten użytkownik nie ma przypisanego portfela",
-        "TheWalletOfThisUserInvalid": "Portfel tego użytkownika jest nieprawidłowy",
-        "WalletInvalid": "Adres portfela jest nieprawidłowy"
-    }
+	"avatar": {
+		"Someone": "Kto\u015b"
+	},
+	"identifier": {
+		"types": {
+			"email": "E-mail",
+			"mobile": "mobilny",
+			"web3": "Web3"
+		}
+	},
+	"clipboard": {
+		"Copied": "Skopiowane! Teraz mo\u017cesz wklei\u0107 go w dowolnym miejscu."
+	},
+	"analytics": {
+		"Title": "Analityka",
+		"Daily": "Codziennie",
+		"Weekly": "Co tydzie\u0144",
+		"Monthly": "Miesi\u0119czny",
+		"Application": "Aplikacja",
+		"Pages": "Strony",
+		"Services": "Us\u0142ugi",
+		"Faq": "Cz\u0119sto zadawane pytania",
+		"WeekDays": "Dni tygodnia"
+	},
+	"actions": {
+		"LogIn": "Zaloguj sie",
+		"LogOut": "Wyloguj"
+	},
+	"activate": {
+		"OneTimeCode": "Wpisz otrzymany kod:",
+		"SetAsPrimary": "Ustaw {{1}} jako moje podstawowe {{2}}",
+		"ChoosePassPhrase": "Wybierz <strong>has\u0142o</strong> , aby si\u0119 zalogowa\u0107.<br> Prosta fraza sk\u0142adaj\u0105ca si\u0119 z kilku s\u0142\u00f3w, kt\u00f3re z \u0142atwo\u015bci\u0105 zapami\u0119tasz.",
+		"ChoosePassPhraseSeeSuggestions": "Wybierz dobre <strong>has\u0142o</strong> , aby chroni\u0107 swoje konto. Zobacz sugestie dotycz\u0105ce niekt\u00f3rych pomys\u0142\u00f3w.",
+		"LogOutAndTryAgain": "Wyloguj si\u0119 i spr\u00f3buj ponownie",
+		"IfYouFeel": "Je\u015bli czujesz, \u017ce co\u015b posz\u0142o nie tak, mo\u017cesz",
+		"SetIdentifierButtonTitle": "zacz\u0105\u0107 od nowa",
+		"ActivateMyAccount": "Aktywuj moje konto"
+	},
+	"session": {
+		"GetStarted": "Zaczynaj"
+	},
+	"authorize": {
+		"GetStarted": "Zaczynaj",
+		"Authorize": "Autoryzowa\u0107",
+		"TermsLabel": "Przeczyta\u0142em i zgadzam si\u0119<br> do {{link}}",
+		"TermsTitle": "Warunki",
+		"mustAgree": "Najpierw musisz zaakceptowa\u0107 warunki."
+	},
+	"register": {
+		"TermsLabel": "Akceptuj\u0119 {{link}}",
+		"TermsTitle": "Warunki"
+	},
+	"notifications": {
+		"title": "Pozwolenie",
+		"prompt": "Czy chcesz w\u0142\u0105czy\u0107 powiadomienia? B\u0119dziesz otrzymywa\u0107 aktualizacje w czasie rzeczywistym o rzeczach, na kt\u00f3rych Ci zale\u017cy.",
+		"yes": "Tak",
+		"no": "NIE",
+		"WelcomePleaseVerifyEmail": "Powitanie! Prosz\u0119 zweryfikowa\u0107 sw\u00f3j adres e-mail.",
+		"WelcomeVerifyEmail": "Powitanie! Zweryfikuj sw\u00f3j adres email.",
+		"ForgetPass": "Hej, zapomnia\u0142e\u015b has\u0142a?",
+		"PassphraseSaved": "Twoje has\u0142o zosta\u0142o zapisane.",
+		"IdentifierActivated": "Twoje {{type}} zosta\u0142o aktywowane.",
+		"CompletedActivation": "Aktywacja u\u017cytkownika zosta\u0142a zako\u0144czona.",
+		"CompletedActivationLogIn": "Aktywacja u\u017cytkownika zosta\u0142a zako\u0144czona. Spr\u00f3buj zalogowa\u0107 si\u0119 teraz."
+	},
+	"contacts": {
+		"dialog": {
+			"title": "Wybierz kontakt",
+			"CreateAccount": "+ Nowy kontakt",
+			"CreateAccountNotFound": "Nie znaleziono Q.Users.Cordova.UI.create",
+			"SearchByName": "Szukaj wed\u0142ug nazwy",
+			"EmptyContacts": "Nie znaleziono kontakt\u00f3w..."
+		},
+		"select": {
+			"title": "Wybierz kontakt {{displayName}}"
+		},
+		"require": {
+			"Instructions": "Aby ta funkcja zadzia\u0142a\u0142a, konieczne b\u0119dzie w\u0142\u0105czenie dost\u0119pu do wszystkich kontakt\u00f3w."
+		}
+	},
+	"usersContacts": {
+		"selectLabel": "Wybierz etykiet\u0119.",
+		"inviteUser": "Zapro\u015b u\u017cytkownik\u00f3w",
+		"selectRole": "Wybierz rol\u0119",
+		"inviteRole": "Zapro\u015b {{role}}"
+	},
+	"invalidLanguageSelected": "Wybrano nieprawid\u0142owy j\u0119zyk",
+	"platforms": {
+		"wallet": "Portfel",
+		"broadcast": "Audycja"
+	},
+	"login": {
+		"title": "Witamy w {{AppName}}",
+		"directions": {
+			"GetStarted": "Gdzie powinni\u015bmy wysy\u0142a\u0107 powiadomienia?",
+			"NoRegister": "Zaloguj si\u0119, je\u015bli masz konto.",
+			"WasInvited": "Jak najlepiej si\u0119 z Tob\u0105 skontaktowa\u0107?"
+		},
+		"directionsNoRegister": "Zaloguj si\u0119, je\u015bli masz konto.",
+		"goButton": "\u2794",
+		"passphrase": "Wpisz has\u0142o:",
+		"loginButton": "Zaczynaj",
+		"registerButton": "Zaczynaj",
+		"resendButton": "Wy\u015blij wiadomo\u015b\u0107 aktywacyjn\u0105",
+		"forgot": "Zapomnia\u0142em?",
+		"resendConfirm": "Czy chcesz wys\u0142a\u0107 wiadomo\u015b\u0107, aby zresetowa\u0107 has\u0142o?",
+		"resendSuccess": "Sprawd\u017a, czy pojawi\u0142a si\u0119 wiadomo\u015b\u0107, aby zresetowa\u0107 has\u0142o",
+		"resendClose": "Zamkn\u0105\u0107",
+		"noPassphrase": "Zanim b\u0119dziesz m\u00f3g\u0142 si\u0119 zalogowa\u0107, musisz ustawi\u0107 has\u0142o, klikaj\u0105c link w wiadomo\u015bci aktywacyjnej.",
+		"notVerified": "Aby si\u0119 zalogowa\u0107, musisz wys\u0142a\u0107 do siebie wiadomo\u015b\u0107 aktywacyjn\u0105.",
+		"emailExists": "Czy pr\u00f3bowa\u0142e\u015b wcze\u015bniej zarejestrowa\u0107 si\u0119 za pomoc\u0105 tego adresu e-mail? Je\u015bli tak, sprawd\u017a swoj\u0105 skrzynk\u0119 odbiorcz\u0105, aby aktywowa\u0107 konto. <a href='#resend' class='Q_button Users_activation_resend'>Kliknij, aby ponownie wys\u0142a\u0107 wiadomo\u015b\u0107</a>",
+		"mobileExists": "Czy pr\u00f3bowa\u0142e\u015b wcze\u015bniej zarejestrowa\u0107 si\u0119 przy u\u017cyciu tego numeru telefonu kom\u00f3rkowego? Je\u015bli tak, sprawd\u017a wiadomo\u015b\u0107 SMS, aby aktywowa\u0107 konto. <a href='#resend' class='Q_button Users_activation_resend'>Kliknij, aby ponownie wys\u0142a\u0107 wiadomo\u015b\u0107</a>",
+		"usingOther": "albo mo\u017cesz",
+		"connectPlatforms": "lub po\u0142\u0105cz za pomoc\u0105:",
+		"prompt": "Wybierz nazw\u0119 u\u017cytkownika:",
+		"newUser": "lub utw\u00f3rz nowe konto poni\u017cej",
+		"placeholders": {
+			"identifier": "numer telefonu kom\u00f3rkowego lub adres e-mail",
+			"mobile": "wprowad\u017a sw\u00f3j numer telefonu kom\u00f3rkowego",
+			"email": "wprowad\u017a sw\u00f3j adres e-mail",
+			"username": "u\u017cywaj tylko liter i cyfr"
+		},
+		"confirmTerms": "Zaakceptowa\u0107 Warunki korzystania z us\u0142ugi?",
+		"facebookNoEmail": "Twoje konto na Facebooku nie ma potwierdzonego adresu e-mail. Po prostu zaloguj si\u0119 w natywny spos\u00f3b.",
+		"picTooltip": "Mo\u017cesz zmieni\u0107 to zdj\u0119cie p\u00f3\u017aniej",
+		"web3": {
+			"payload": "Zaloguj si\u0119 do {{host}} o godzinie {{timestamp}}",
+			"alert": {
+				"title": "Przekierowanie do Portfela",
+				"content": "Po zamkni\u0119ciu tego okna dialogowego zostaniesz przeniesiony do swojego portfela. Po zalogowaniu wr\u00f3\u0107 na t\u0119 stron\u0119."
+			},
+			"ConnectWallet": "Po\u0142\u0105cz portfel"
+		}
+	},
+	"setIdentifier": {
+		"title": "Dodaj spos\u00f3b logowania",
+		"sendMessage": "Wy\u015blij wiadomo\u015b\u0107 aktywacyjn\u0105",
+		"placeholders": {
+			"identifier": "wprowad\u017a sw\u00f3j numer telefonu kom\u00f3rkowego lub adres e-mail",
+			"mobile": "Wprowad\u017a sw\u00f3j numer telefonu kom\u00f3rkowego",
+			"email": "wprowad\u017a sw\u00f3j adres e-mail",
+			"username": "nazwa u\u017cytkownika"
+		}
+	},
+	"prompt": {
+		"title": "Konto {{Platform}}",
+		"areUsing": "U\u017cywasz {{platform}} jako",
+		"noLongerUsing": "Nie jeste\u015b ju\u017c po\u0142\u0105czony z {{platform}} jako",
+		"doAuth": "Zaloguj si\u0119 na to konto",
+		"doSwitch": "Prze\u0142\u0105cz si\u0119 na to konto"
+	},
+	"roles": {
+		"Owner": "W\u0142a\u015bciciel",
+		"Admin": "Admin",
+		"Member": "Cz\u0142onek",
+		"Guest": "Go\u015b\u0107",
+		"Host": "Gospodarz"
+	},
+	"web3": {
+		"WrongMethod": "Niew\u0142a\u015bciwa metoda kontraktu {{methodName}}",
+		"ChangeWallet": "Zmie\u0144 portfel",
+		"ConnectWallet": "Po\u0142\u0105cz portfel",
+		"AfterWalletConnectedPleaseRefresh": "Po pod\u0142\u0105czeniu portfela od\u015bwie\u017c t\u0119 stron\u0119, aby rozpozna\u0107 portfel"
+	},
+	"labels": {
+		"addToPhonebook": "Dodaj do moich kontakt\u00f3w w telefonie",
+		"addLabel": "Nowy zwi\u0105zek",
+		"prompt": "Daj temu imi\u0119",
+		"titles": {
+			"Users/owners": "W\u0142a\u015bciciele",
+			"Users/admins": "Administratorzy",
+			"Users/members": "Cz\u0142onkowie",
+			"Users/guests": "Go\u015bcie",
+			"Users/hosts": "Zast\u0119py niebieskie",
+			"Users/testers": "Testery",
+			"Users/speakers": "G\u0142o\u015bniki"
+		}
+	},
+	"people": {
+		"People": "Ludzie"
+	},
+	"external": {
+		"defaults": {
+			"title": "",
+			"bio": "Bot anga\u017cuj\u0105cy forum. Zdob\u0105d\u017a w\u0142asny na https://engageusers.ai",
+			"website": "https://engageusers.ai"
+		}
+	},
+	"errors": {
+		"NotEnoughPermissionsWallet": "Niewystarczaj\u0105ce uprawnienia do odczytu portfela tego u\u017cytkownika",
+		"ThisUserHaveNoWallet": "Ten u\u017cytkownik nie ma przypisanego portfela",
+		"TheWalletOfThisUserInvalid": "Portfel tego u\u017cytkownika jest nieprawid\u0142owy",
+		"WalletInvalid": "Adres portfela jest nieprawid\u0142owy"
+	}
 }

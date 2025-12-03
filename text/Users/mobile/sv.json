@@ -1,14 +1,14 @@
 {
-    "activation": {
-        "Thanks": "Välkommen till {{1}}.",
-        "ClickHere": "Klicka här för att aktivera ditt konto: {{1}}"
-    },
-    "addMobile": {
-        "ClickHere": "Klicka här för att verifiera ditt mobilnummer: {{1}}"
-    },
-    "resend": {
-        "DidYouWant": "Ville du återställa din lösenfras i {{1}}?",
-        "ClickHere": "Klicka sedan här: {{1}}",
-        "OrEnterCode": "eller ange kod:"
-    }
+	"activation": {
+		"Thanks": "V\u00e4lkommen till {{1}}.",
+		"ClickHere": "Klicka h\u00e4r f\u00f6r att aktivera ditt konto: {{1}}"
+	},
+	"addMobile": {
+		"ClickHere": "Klicka h\u00e4r f\u00f6r att verifiera ditt mobilnummer: {{1}}"
+	},
+	"resend": {
+		"DidYouWant": "Ville du \u00e5terst\u00e4lla din l\u00f6senfras i {{1}}?",
+		"ClickHere": "Klicka sedan h\u00e4r: {{1}}",
+		"OrEnterCode": "eller ange kod:"
+	}
 }

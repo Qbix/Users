@@ -1,51 +1,51 @@
 {
-    "title": {
-        "createCommunity": "ایجاد انجمن"
-    },
-    "list": {
-        "table": {
-            "td0": "نام زنجیر",
-            "td1": "شناسه زنجیره",
-            "td2": "آدرس انجمن"
-        },
-        "btnTitle": "تولید کردن"
-    },
-    "form": {
-        "labels": {
-            "chain": "زنجیر",
-            "hook": "قلاب",
-            "invitedHook": "InvitedHook",
-            "name": "نام",
-            "symbol": "سمبل",
-            "contracturi": "contractURI"
-        },
-        "placeholders": {
-            "hook": "0x0000000000000000000000000000000000000000",
-            "invitedHook": "0x0000000000000000000000000000000000000000",
-            "name": "نام ERC721",
-            "symbol": "نماد ERC721",
-            "contracturi": "URI قرارداد"
-        },
-        "small": {
-            "hook": "آدرس هوک قرارداد پیاده سازی شده رابط ICommunityHook. می تواند آدرس (0) باشد",
-            "invitedHook": "آدرس دعوت هوک قرارداد پیاده سازی شده رابط ICommunityInvite. می تواند آدرس (0) باشد",
-            "name": "نام ERC721",
-            "symbol": "نماد ERC721",
-            "contracturi": "URI قرارداد"
-        },
-        "err": {
-            "hook": "<b>قلاب<\/b> نامعتبر است",
-            "invitedHook": "<b>دعوت شده هوک<\/b> نامعتبر است",
-            "name": "<b>نام<\/b> نامعتبر است",
-            "symbol": "<b>نماد<\/b> نامعتبر است",
-            "contracturi": "<b>contractURI<\/b> نامعتبر است"
-        },
-        "btnTitle": "تولید کردن"
-    },
-    "err": {
-        "cantFindFactoryAddress": "آدرس کارخانه پیدا نمی شود",
-        "transactionFailed": "معامله ناموفق بود",
-        "smthWentWrong": "مشکلی پیش آمد"
-    },
-    "foo": "بار"
+	"title": {
+		"createCommunity": "\u0627\u06cc\u062c\u0627\u062f \u0627\u0646\u062c\u0645\u0646"
+	},
+	"list": {
+		"table": {
+			"td0": "\u0646\u0627\u0645 \u0632\u0646\u062c\u06cc\u0631",
+			"td1": "\u0634\u0646\u0627\u0633\u0647 \u0632\u0646\u062c\u06cc\u0631\u0647",
+			"td2": "\u0622\u062f\u0631\u0633 \u0627\u0646\u062c\u0645\u0646"
+		},
+		"btnTitle": "\u062a\u0648\u0644\u06cc\u062f \u06a9\u0631\u062f\u0646"
+	},
+	"form": {
+		"labels": {
+			"chain": "\u0632\u0646\u062c\u06cc\u0631",
+			"hook": "\u0642\u0644\u0627\u0628",
+			"invitedHook": "InvitedHook",
+			"name": "\u0646\u0627\u0645",
+			"symbol": "\u0633\u0645\u0628\u0644",
+			"contracturi": "contractURI"
+		},
+		"placeholders": {
+			"hook": "0x0000000000000000000000000000000000000000",
+			"invitedHook": "0x0000000000000000000000000000000000000000",
+			"name": "\u0646\u0627\u0645 ERC721",
+			"symbol": "\u0646\u0645\u0627\u062f ERC721",
+			"contracturi": "URI \u0642\u0631\u0627\u0631\u062f\u0627\u062f"
+		},
+		"small": {
+			"hook": "\u0622\u062f\u0631\u0633 \u0647\u0648\u06a9 \u0642\u0631\u0627\u0631\u062f\u0627\u062f \u067e\u06cc\u0627\u062f\u0647 \u0633\u0627\u0632\u06cc \u0634\u062f\u0647 \u0631\u0627\u0628\u0637 ICommunityHook. \u0645\u06cc \u062a\u0648\u0627\u0646\u062f \u0622\u062f\u0631\u0633 (0) \u0628\u0627\u0634\u062f",
+			"invitedHook": "\u0622\u062f\u0631\u0633 \u062f\u0639\u0648\u062a \u0647\u0648\u06a9 \u0642\u0631\u0627\u0631\u062f\u0627\u062f \u067e\u06cc\u0627\u062f\u0647 \u0633\u0627\u0632\u06cc \u0634\u062f\u0647 \u0631\u0627\u0628\u0637 ICommunityInvite. \u0645\u06cc \u062a\u0648\u0627\u0646\u062f \u0622\u062f\u0631\u0633 (0) \u0628\u0627\u0634\u062f",
+			"name": "\u0646\u0627\u0645 ERC721",
+			"symbol": "\u0646\u0645\u0627\u062f ERC721",
+			"contracturi": "URI \u0642\u0631\u0627\u0631\u062f\u0627\u062f"
+		},
+		"err": {
+			"hook": "<b>\u0642\u0644\u0627\u0628</b> \u0646\u0627\u0645\u0639\u062a\u0628\u0631 \u0627\u0633\u062a",
+			"invitedHook": "<b>\u062f\u0639\u0648\u062a \u0634\u062f\u0647 \u0647\u0648\u06a9</b> \u0646\u0627\u0645\u0639\u062a\u0628\u0631 \u0627\u0633\u062a",
+			"name": "<b>\u0646\u0627\u0645</b> \u0646\u0627\u0645\u0639\u062a\u0628\u0631 \u0627\u0633\u062a",
+			"symbol": "<b>\u0646\u0645\u0627\u062f</b> \u0646\u0627\u0645\u0639\u062a\u0628\u0631 \u0627\u0633\u062a",
+			"contracturi": "<b>contractURI</b> \u0646\u0627\u0645\u0639\u062a\u0628\u0631 \u0627\u0633\u062a"
+		},
+		"btnTitle": "\u062a\u0648\u0644\u06cc\u062f \u06a9\u0631\u062f\u0646"
+	},
+	"err": {
+		"cantFindFactoryAddress": "\u0622\u062f\u0631\u0633 \u06a9\u0627\u0631\u062e\u0627\u0646\u0647 \u067e\u06cc\u062f\u0627 \u0646\u0645\u06cc \u0634\u0648\u062f",
+		"transactionFailed": "\u0645\u0639\u0627\u0645\u0644\u0647 \u0646\u0627\u0645\u0648\u0641\u0642 \u0628\u0648\u062f",
+		"smthWentWrong": "\u0645\u0634\u06a9\u0644\u06cc \u067e\u06cc\u0634 \u0622\u0645\u062f"
+	},
+	"foo": "\u0628\u0627\u0631"
 }

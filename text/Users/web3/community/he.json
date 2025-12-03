@@ -1,51 +1,51 @@
 {
-    "title": {
-        "createCommunity": "צור קהילה"
-    },
-    "list": {
-        "table": {
-            "td0": "שם שרשרת",
-            "td1": "מזהה שרשרת",
-            "td2": "כתובת קהילה"
-        },
-        "btnTitle": "ליצר"
-    },
-    "form": {
-        "labels": {
-            "chain": "שַׁרשֶׁרֶת",
-            "hook": "וו",
-            "invitedHook": "InvitedHook",
-            "name": "שֵׁם",
-            "symbol": "סֵמֶל",
-            "contracturi": "contractURI"
-        },
-        "placeholders": {
-            "hook": "0x000000000000000000000000000000000000",
-            "invitedHook": "0x000000000000000000000000000000000000",
-            "name": "שם ERC721",
-            "symbol": "סמל ERC721",
-            "contracturi": "חוזה URI"
-        },
-        "small": {
-            "hook": "Hook כתובת של חוזה מיושם ממשק ICommunityHook. יכול להיות כתובת (0)",
-            "invitedHook": "הכתובת של inviteHook של החוזה מיושם ממשק ICommunityInvite. יכול להיות כתובת (0)",
-            "name": "שם ERC721",
-            "symbol": "סמל ERC721",
-            "contracturi": "חוזה URI"
-        },
-        "err": {
-            "hook": "<b>הוק<\/b> לא חוקי",
-            "invitedHook": "<b>inviteHook<\/b> לא חוקי",
-            "name": "<b>השם<\/b> לא חוקי",
-            "symbol": "<b>סמל<\/b> לא חוקי",
-            "contracturi": "<b>contractURI<\/b> אינו חוקי"
-        },
-        "btnTitle": "ליצר"
-    },
-    "err": {
-        "cantFindFactoryAddress": "לא מוצא את כתובת המפעל",
-        "transactionFailed": "העסקה נכשלה",
-        "smthWentWrong": "משהו השתבש"
-    },
-    "foo": "בַּר"
+	"title": {
+		"createCommunity": "\u05e6\u05d5\u05e8 \u05e7\u05d4\u05d9\u05dc\u05d4"
+	},
+	"list": {
+		"table": {
+			"td0": "\u05e9\u05dd \u05e9\u05e8\u05e9\u05e8\u05ea",
+			"td1": "\u05de\u05d6\u05d4\u05d4 \u05e9\u05e8\u05e9\u05e8\u05ea",
+			"td2": "\u05db\u05ea\u05d5\u05d1\u05ea \u05e7\u05d4\u05d9\u05dc\u05d4"
+		},
+		"btnTitle": "\u05dc\u05d9\u05e6\u05e8"
+	},
+	"form": {
+		"labels": {
+			"chain": "\u05e9\u05c1\u05b7\u05e8\u05e9\u05c1\u05b6\u05e8\u05b6\u05ea",
+			"hook": "\u05d5\u05d5",
+			"invitedHook": "InvitedHook",
+			"name": "\u05e9\u05c1\u05b5\u05dd",
+			"symbol": "\u05e1\u05b5\u05de\u05b6\u05dc",
+			"contracturi": "contractURI"
+		},
+		"placeholders": {
+			"hook": "0x000000000000000000000000000000000000",
+			"invitedHook": "0x000000000000000000000000000000000000",
+			"name": "\u05e9\u05dd ERC721",
+			"symbol": "\u05e1\u05de\u05dc ERC721",
+			"contracturi": "\u05d7\u05d5\u05d6\u05d4 URI"
+		},
+		"small": {
+			"hook": "Hook \u05db\u05ea\u05d5\u05d1\u05ea \u05e9\u05dc \u05d7\u05d5\u05d6\u05d4 \u05de\u05d9\u05d5\u05e9\u05dd \u05de\u05de\u05e9\u05e7 ICommunityHook. \u05d9\u05db\u05d5\u05dc \u05dc\u05d4\u05d9\u05d5\u05ea \u05db\u05ea\u05d5\u05d1\u05ea (0)",
+			"invitedHook": "\u05d4\u05db\u05ea\u05d5\u05d1\u05ea \u05e9\u05dc inviteHook \u05e9\u05dc \u05d4\u05d7\u05d5\u05d6\u05d4 \u05de\u05d9\u05d5\u05e9\u05dd \u05de\u05de\u05e9\u05e7 ICommunityInvite. \u05d9\u05db\u05d5\u05dc \u05dc\u05d4\u05d9\u05d5\u05ea \u05db\u05ea\u05d5\u05d1\u05ea (0)",
+			"name": "\u05e9\u05dd ERC721",
+			"symbol": "\u05e1\u05de\u05dc ERC721",
+			"contracturi": "\u05d7\u05d5\u05d6\u05d4 URI"
+		},
+		"err": {
+			"hook": "<b>\u05d4\u05d5\u05e7</b> \u05dc\u05d0 \u05d7\u05d5\u05e7\u05d9",
+			"invitedHook": "<b>inviteHook</b> \u05dc\u05d0 \u05d7\u05d5\u05e7\u05d9",
+			"name": "<b>\u05d4\u05e9\u05dd</b> \u05dc\u05d0 \u05d7\u05d5\u05e7\u05d9",
+			"symbol": "<b>\u05e1\u05de\u05dc</b> \u05dc\u05d0 \u05d7\u05d5\u05e7\u05d9",
+			"contracturi": "<b>contractURI</b> \u05d0\u05d9\u05e0\u05d5 \u05d7\u05d5\u05e7\u05d9"
+		},
+		"btnTitle": "\u05dc\u05d9\u05e6\u05e8"
+	},
+	"err": {
+		"cantFindFactoryAddress": "\u05dc\u05d0 \u05de\u05d5\u05e6\u05d0 \u05d0\u05ea \u05db\u05ea\u05d5\u05d1\u05ea \u05d4\u05de\u05e4\u05e2\u05dc",
+		"transactionFailed": "\u05d4\u05e2\u05e1\u05e7\u05d4 \u05e0\u05db\u05e9\u05dc\u05d4",
+		"smthWentWrong": "\u05de\u05e9\u05d4\u05d5 \u05d4\u05e9\u05ea\u05d1\u05e9"
+	},
+	"foo": "\u05d1\u05bc\u05b7\u05e8"
 }

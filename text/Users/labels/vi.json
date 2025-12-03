@@ -1,15 +1,15 @@
 {
-    "addToPhonebook": "Thêm vào danh bạ điện thoại của tôi",
-    "addLabel": "Mối quan hệ mơi",
-    "newRole": "Vai trò mới",
-    "prompt": "Đặt tên cho nó",
-    "newLabel": "Nhãn mới",
-    "editLabel": "Chỉnh sửa nhãn",
-    "addBtn": "Thêm vào",
-    "editBtn": "Cứu",
-    "canManageDialogTitle": "Có thể quản lý vai trò",
-    "canManageBtn": "Có thể quản lý ...",
-    "titlePlaceholder": "Tiêu đề",
-    "selectOptionTitle_web2": "Tự nhiên",
-    "selectOptionTitle_web3": "Web3"
+	"addToPhonebook": "Th\u00eam v\u00e0o danh b\u1ea1 \u0111i\u1ec7n tho\u1ea1i c\u1ee7a t\u00f4i",
+	"addLabel": "M\u1ed1i quan h\u1ec7 m\u01a1i",
+	"newRole": "Vai tr\u00f2 m\u1edbi",
+	"prompt": "\u0110\u1eb7t t\u00ean cho n\u00f3",
+	"newLabel": "Nh\u00e3n m\u1edbi",
+	"editLabel": "Ch\u1ec9nh s\u1eeda nh\u00e3n",
+	"addBtn": "Th\u00eam v\u00e0o",
+	"editBtn": "C\u1ee9u",
+	"canManageDialogTitle": "C\u00f3 th\u1ec3 qu\u1ea3n l\u00fd vai tr\u00f2",
+	"canManageBtn": "C\u00f3 th\u1ec3 qu\u1ea3n l\u00fd ...",
+	"titlePlaceholder": "Ti\u00eau \u0111\u1ec1",
+	"selectOptionTitle_web2": "T\u1ef1 nhi\u00ean",
+	"selectOptionTitle_web3": "Web3"
 }

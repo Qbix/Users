@@ -1,14 +1,14 @@
 {
-    "activation": {
-        "Thanks": "Tere tulemast teenusesse {{1}}.",
-        "ClickHere": "Konto aktiveerimiseks klõpsake siin: {{1}}"
-    },
-    "addMobile": {
-        "ClickHere": "Mobiilinumbri kinnitamiseks klõpsake siin: {{1}}"
-    },
-    "resend": {
-        "DidYouWant": "Kas tahtsite oma parooli lähtestada keeles {{1}}?",
-        "ClickHere": "Seejärel klõpsake siin: {{1}}",
-        "OrEnterCode": "või sisesta kood:"
-    }
+	"activation": {
+		"Thanks": "Tere tulemast teenusesse {{1}}.",
+		"ClickHere": "Konto aktiveerimiseks kl\u00f5psake siin: {{1}}"
+	},
+	"addMobile": {
+		"ClickHere": "Mobiilinumbri kinnitamiseks kl\u00f5psake siin: {{1}}"
+	},
+	"resend": {
+		"DidYouWant": "Kas tahtsite oma parooli l\u00e4htestada keeles {{1}}?",
+		"ClickHere": "Seej\u00e4rel kl\u00f5psake siin: {{1}}",
+		"OrEnterCode": "v\u00f5i sisesta kood:"
+	}
 }

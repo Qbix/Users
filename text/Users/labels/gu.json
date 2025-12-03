@@ -1,15 +1,15 @@
 {
-    "addToPhonebook": "મારા ફોન સંપર્કોમાં ઉમેરો",
-    "addLabel": "નવો સંબંધ",
-    "newRole": "નવી ભૂમિકા",
-    "prompt": "તેને એક નામ આપો",
-    "newLabel": "નવું લેબલ",
-    "editLabel": "લેબલ સંપાદિત કરો",
-    "addBtn": "ઉમેરો",
-    "editBtn": "સાચવો",
-    "canManageDialogTitle": "ભૂમિકાઓનું સંચાલન કરી શકે છે",
-    "canManageBtn": "મેનેજ કરી શકો છો...",
-    "titlePlaceholder": "શીર્ષક",
-    "selectOptionTitle_web2": "મૂળ",
-    "selectOptionTitle_web3": "વેબ3"
+	"addToPhonebook": "\u0aae\u0abe\u0ab0\u0abe \u0aab\u0acb\u0aa8 \u0ab8\u0a82\u0aaa\u0ab0\u0acd\u0a95\u0acb\u0aae\u0abe\u0a82 \u0a89\u0aae\u0ac7\u0ab0\u0acb",
+	"addLabel": "\u0aa8\u0ab5\u0acb \u0ab8\u0a82\u0aac\u0a82\u0aa7",
+	"newRole": "\u0aa8\u0ab5\u0ac0 \u0aad\u0ac2\u0aae\u0abf\u0a95\u0abe",
+	"prompt": "\u0aa4\u0ac7\u0aa8\u0ac7 \u0a8f\u0a95 \u0aa8\u0abe\u0aae \u0a86\u0aaa\u0acb",
+	"newLabel": "\u0aa8\u0ab5\u0ac1\u0a82 \u0ab2\u0ac7\u0aac\u0ab2",
+	"editLabel": "\u0ab2\u0ac7\u0aac\u0ab2 \u0ab8\u0a82\u0aaa\u0abe\u0aa6\u0abf\u0aa4 \u0a95\u0ab0\u0acb",
+	"addBtn": "\u0a89\u0aae\u0ac7\u0ab0\u0acb",
+	"editBtn": "\u0ab8\u0abe\u0a9a\u0ab5\u0acb",
+	"canManageDialogTitle": "\u0aad\u0ac2\u0aae\u0abf\u0a95\u0abe\u0a93\u0aa8\u0ac1\u0a82 \u0ab8\u0a82\u0a9a\u0abe\u0ab2\u0aa8 \u0a95\u0ab0\u0ac0 \u0ab6\u0a95\u0ac7 \u0a9b\u0ac7",
+	"canManageBtn": "\u0aae\u0ac7\u0aa8\u0ac7\u0a9c \u0a95\u0ab0\u0ac0 \u0ab6\u0a95\u0acb \u0a9b\u0acb...",
+	"titlePlaceholder": "\u0ab6\u0ac0\u0ab0\u0acd\u0ab7\u0a95",
+	"selectOptionTitle_web2": "\u0aae\u0ac2\u0ab3",
+	"selectOptionTitle_web3": "\u0ab5\u0ac7\u0aac3"
 }

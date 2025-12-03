@@ -1,4 +1,4 @@
 {
-    "NotLoggedIn": "您尚未登录。<a href='#login' data-users-login>点击此处登录<\/a>",
-    "InvalidLanguage": "无效语言{{language}}"
+	"NotLoggedIn": "\u60a8\u5c1a\u672a\u767b\u5f55\u3002<a href='#login' data-users-login>\u70b9\u51fb\u6b64\u5904\u767b\u5f55</a>",
+	"InvalidLanguage": "\u65e0\u6548\u8bed\u8a00{{language}}"
 }

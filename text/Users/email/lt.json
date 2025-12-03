@@ -1,22 +1,22 @@
 {
-    "activation": {
-        "Subject": "Sveiki! Patvirtinkite savo el. pašto adresą.",
-        "Thanks": "Sveiki atvykę į {{1}}",
-        "ReallyYourEmail": "Ar tai tikrai jūsų el. pašto adresas, {{1}}? Jei taip, spustelėkite <a href='{{2}}'>čia<\/a> , kad nustatytumėte slaptafrazę ir suaktyvintumėte paskyrą.",
-        "SeeYou": "Iki pasimatymo <a href='{{1}}'>{{2}}<\/a> !",
-        "OtherwiseClickLink": "Kitu atveju spustelėkite <a href='{{1}}'>šią nuorodą<\/a> ."
-    },
-    "identifier": {
-        "Subject": "Sveiki! Patvirtinkite savo elektroninį paštą."
-    },
-    "resend": {
-        "Subject": "Ei, ar pamiršai savo slaptafrazę?",
-        "Thanks": "Dėkojame, kad apsilankėte {{1}}",
-        "YouAreReceiving": "Gavote šį el. laišką, nes kažkas įvedė jūsų el. pašto adresą ir paspaudė „pamiršau slaptafrazę“. Jei tai buvote ne jūs, tiesiog nekreipkite dėmesio į šį pranešimą.",
-        "Reset": "Norėdami iš naujo nustatyti slaptafrazę, spustelėkite {{1}}",
-        "SetUpPassphrase": "Nustatyti slaptafrazę",
-        "DomainCode": "Jei tinklalapis jau atidarytas jūsų naršyklėje, galite įvesti kodą"
-    },
-    "SeeYou": "Iki pasimatymo {{1}}!",
-    "LinkToUnsubscribe": "Čia yra nuoroda, kaip <a href='{{1}}'>atsisakyti prenumeratos<\/a> , jei nenorite gauti daugiau el. laiškų."
+	"activation": {
+		"Subject": "Sveiki! Patvirtinkite savo el. pa\u0161to adres\u0105.",
+		"Thanks": "Sveiki atvyk\u0119 \u012f {{1}}",
+		"ReallyYourEmail": "Ar tai tikrai j\u016bs\u0173 el. pa\u0161to adresas, {{1}}? Jei taip, spustel\u0117kite <a href='{{2}}'>\u010dia</a> , kad nustatytum\u0117te slaptafraz\u0119 ir suaktyvintum\u0117te paskyr\u0105.",
+		"SeeYou": "Iki pasimatymo <a href='{{1}}'>{{2}}</a> !",
+		"OtherwiseClickLink": "Kitu atveju spustel\u0117kite <a href='{{1}}'>\u0161i\u0105 nuorod\u0105</a> ."
+	},
+	"identifier": {
+		"Subject": "Sveiki! Patvirtinkite savo elektronin\u012f pa\u0161t\u0105."
+	},
+	"resend": {
+		"Subject": "Ei, ar pamir\u0161ai savo slaptafraz\u0119?",
+		"Thanks": "D\u0117kojame, kad apsilank\u0117te {{1}}",
+		"YouAreReceiving": "Gavote \u0161\u012f el. lai\u0161k\u0105, nes ka\u017ekas \u012fved\u0117 j\u016bs\u0173 el. pa\u0161to adres\u0105 ir paspaud\u0117 \u201epamir\u0161au slaptafraz\u0119\u201c. Jei tai buvote ne j\u016bs, tiesiog nekreipkite d\u0117mesio \u012f \u0161\u012f prane\u0161im\u0105.",
+		"Reset": "Nor\u0117dami i\u0161 naujo nustatyti slaptafraz\u0119, spustel\u0117kite {{1}}",
+		"SetUpPassphrase": "Nustatyti slaptafraz\u0119",
+		"DomainCode": "Jei tinklalapis jau atidarytas j\u016bs\u0173 nar\u0161ykl\u0117je, galite \u012fvesti kod\u0105"
+	},
+	"SeeYou": "Iki pasimatymo {{1}}!",
+	"LinkToUnsubscribe": "\u010cia yra nuoroda, kaip <a href='{{1}}'>atsisakyti prenumeratos</a> , jei nenorite gauti daugiau el. lai\u0161k\u0173."
 }

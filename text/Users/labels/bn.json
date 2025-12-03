@@ -1,15 +1,15 @@
 {
-    "addToPhonebook": "আমার ফোন পরিচিতি যোগ করুন",
-    "addLabel": "নতুন সম্পর্ক",
-    "newRole": "নতুন ভূমিকা",
-    "prompt": "এটার একটি নাম দাও",
-    "newLabel": "নতুন লেবেল",
-    "editLabel": "লেবেল সম্পাদনা করুন",
-    "addBtn": "যোগ করুন",
-    "editBtn": "সংরক্ষণ",
-    "canManageDialogTitle": "ভূমিকা পরিচালনা করতে পারেন",
-    "canManageBtn": "পরিচালনা করতে পারেন...",
-    "titlePlaceholder": "শিরোনাম",
-    "selectOptionTitle_web2": "স্থানীয়",
-    "selectOptionTitle_web3": "ওয়েব 3"
+	"addToPhonebook": "\u0986\u09ae\u09be\u09b0 \u09ab\u09cb\u09a8 \u09aa\u09b0\u09bf\u099a\u09bf\u09a4\u09bf \u09af\u09cb\u0997 \u0995\u09b0\u09c1\u09a8",
+	"addLabel": "\u09a8\u09a4\u09c1\u09a8 \u09b8\u09ae\u09cd\u09aa\u09b0\u09cd\u0995",
+	"newRole": "\u09a8\u09a4\u09c1\u09a8 \u09ad\u09c2\u09ae\u09bf\u0995\u09be",
+	"prompt": "\u098f\u099f\u09be\u09b0 \u098f\u0995\u099f\u09bf \u09a8\u09be\u09ae \u09a6\u09be\u0993",
+	"newLabel": "\u09a8\u09a4\u09c1\u09a8 \u09b2\u09c7\u09ac\u09c7\u09b2",
+	"editLabel": "\u09b2\u09c7\u09ac\u09c7\u09b2 \u09b8\u09ae\u09cd\u09aa\u09be\u09a6\u09a8\u09be \u0995\u09b0\u09c1\u09a8",
+	"addBtn": "\u09af\u09cb\u0997 \u0995\u09b0\u09c1\u09a8",
+	"editBtn": "\u09b8\u0982\u09b0\u0995\u09cd\u09b7\u09a3",
+	"canManageDialogTitle": "\u09ad\u09c2\u09ae\u09bf\u0995\u09be \u09aa\u09b0\u09bf\u099a\u09be\u09b2\u09a8\u09be \u0995\u09b0\u09a4\u09c7 \u09aa\u09be\u09b0\u09c7\u09a8",
+	"canManageBtn": "\u09aa\u09b0\u09bf\u099a\u09be\u09b2\u09a8\u09be \u0995\u09b0\u09a4\u09c7 \u09aa\u09be\u09b0\u09c7\u09a8...",
+	"titlePlaceholder": "\u09b6\u09bf\u09b0\u09cb\u09a8\u09be\u09ae",
+	"selectOptionTitle_web2": "\u09b8\u09cd\u09a5\u09be\u09a8\u09c0\u09af\u09bc",
+	"selectOptionTitle_web3": "\u0993\u09af\u09bc\u09c7\u09ac 3"
 }

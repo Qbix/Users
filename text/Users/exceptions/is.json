@@ -1,4 +1,4 @@
 {
-    "NotLoggedIn": "Þú ert ekki skráður inn. <a href='#login' data-users-login>Smelltu hér til að skrá þig inn<\/a>",
-    "InvalidLanguage": "Ógilt tungumál {{language}}"
+	"NotLoggedIn": "\u00de\u00fa ert ekki skr\u00e1\u00f0ur inn. <a href='#login' data-users-login>Smelltu h\u00e9r til a\u00f0 skr\u00e1 \u00feig inn</a>",
+	"InvalidLanguage": "\u00d3gilt tungum\u00e1l {{language}}"
 }

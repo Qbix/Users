@@ -1,4 +1,4 @@
 {
-    "NotLoggedIn": "አልገቡም። <a href='#login' data-users-login>ለመግባት እዚህ ጠቅ ያድርጉ<\/a>",
-    "InvalidLanguage": "ልክ ያልሆነ ቋንቋ {{language}}"
+	"NotLoggedIn": "\u12a0\u120d\u1308\u1261\u121d\u1362 <a href='#login' data-users-login>\u1208\u1218\u130d\u1263\u1275 \u12a5\u12da\u1205 \u1320\u1245 \u12eb\u12f5\u122d\u1309</a>",
+	"InvalidLanguage": "\u120d\u12ad \u12eb\u120d\u1206\u1290 \u124b\u1295\u124b {{language}}"
 }

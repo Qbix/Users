@@ -1,22 +1,22 @@
 {
-    "activation": {
-        "Subject": "Tervetuloa! Vahvista sähköpostiosoitteesi.",
-        "Thanks": "Tervetuloa {{1}}",
-        "ReallyYourEmail": "Onko tämä todella sähköpostiosoitteesi, {{1}}? Jos näin on, napsauta <a href='{{2}}'>tätä<\/a> asettaaksesi tunnuslauseesi ja aktivoidaksesi tilisi.",
-        "SeeYou": "Nähdään <a href='{{1}}'>{{2}}<\/a> !",
-        "OtherwiseClickLink": "Muussa tapauksessa napsauta <a href='{{1}}'>tätä linkkiä<\/a> ."
-    },
-    "identifier": {
-        "Subject": "Tervetuloa! Vahvista sähköpostiosoitteesi."
-    },
-    "resend": {
-        "Subject": "Hei, unohditko salasanasi?",
-        "Thanks": "Kiitos vierailustasi {{1}}",
-        "YouAreReceiving": "Sait tämän sähköpostin, koska joku on antanut sähköpostiosoitteesi ja napsauttanut &quot;unohdin tunnuslauseen&quot;. Jos et ollut sinä, jätä tämä viesti huomioimatta.",
-        "Reset": "Voit nollata salasanasi napsauttamalla {{1}}",
-        "SetUpPassphrase": "Määritä tunnuslause",
-        "DomainCode": "Jos verkkosivu on jo auki selaimessasi, voit syöttää koodin"
-    },
-    "SeeYou": "Nähdään {{1}}!",
-    "LinkToUnsubscribe": "Tässä on linkki <a href='{{1}}'>tilauksen peruuttamiseen<\/a> , jos et halua saada enää sähköpostiviestejä."
+	"activation": {
+		"Subject": "Tervetuloa! Vahvista s\u00e4hk\u00f6postiosoitteesi.",
+		"Thanks": "Tervetuloa {{1}}",
+		"ReallyYourEmail": "Onko t\u00e4m\u00e4 todella s\u00e4hk\u00f6postiosoitteesi, {{1}}? Jos n\u00e4in on, napsauta <a href='{{2}}'>t\u00e4t\u00e4</a> asettaaksesi tunnuslauseesi ja aktivoidaksesi tilisi.",
+		"SeeYou": "N\u00e4hd\u00e4\u00e4n <a href='{{1}}'>{{2}}</a> !",
+		"OtherwiseClickLink": "Muussa tapauksessa napsauta <a href='{{1}}'>t\u00e4t\u00e4 linkki\u00e4</a> ."
+	},
+	"identifier": {
+		"Subject": "Tervetuloa! Vahvista s\u00e4hk\u00f6postiosoitteesi."
+	},
+	"resend": {
+		"Subject": "Hei, unohditko salasanasi?",
+		"Thanks": "Kiitos vierailustasi {{1}}",
+		"YouAreReceiving": "Sait t\u00e4m\u00e4n s\u00e4hk\u00f6postin, koska joku on antanut s\u00e4hk\u00f6postiosoitteesi ja napsauttanut &quot;unohdin tunnuslauseen&quot;. Jos et ollut sin\u00e4, j\u00e4t\u00e4 t\u00e4m\u00e4 viesti huomioimatta.",
+		"Reset": "Voit nollata salasanasi napsauttamalla {{1}}",
+		"SetUpPassphrase": "M\u00e4\u00e4rit\u00e4 tunnuslause",
+		"DomainCode": "Jos verkkosivu on jo auki selaimessasi, voit sy\u00f6tt\u00e4\u00e4 koodin"
+	},
+	"SeeYou": "N\u00e4hd\u00e4\u00e4n {{1}}!",
+	"LinkToUnsubscribe": "T\u00e4ss\u00e4 on linkki <a href='{{1}}'>tilauksen peruuttamiseen</a> , jos et halua saada en\u00e4\u00e4 s\u00e4hk\u00f6postiviestej\u00e4."
 }

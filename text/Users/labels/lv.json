@@ -1,15 +1,15 @@
 {
-    "addToPhonebook": "Pievienot mana tālruņa kontaktpersonām",
-    "addLabel": "Jaunas attiecības",
-    "newRole": "Jauna loma",
-    "prompt": "Piešķiriet tai nosaukumu",
-    "newLabel": "Jauna etiķete",
-    "editLabel": "Rediģēt etiķeti",
-    "addBtn": "Pievienot",
-    "editBtn": "Saglabāt",
-    "canManageDialogTitle": "Var pārvaldīt lomas",
-    "canManageBtn": "Var pārvaldīt...",
-    "titlePlaceholder": "Nosaukums",
-    "selectOptionTitle_web2": "Dzimtā",
-    "selectOptionTitle_web3": "Web3"
+	"addToPhonebook": "Pievienot mana t\u0101lru\u0146a kontaktperson\u0101m",
+	"addLabel": "Jaunas attiec\u012bbas",
+	"newRole": "Jauna loma",
+	"prompt": "Pie\u0161\u0137iriet tai nosaukumu",
+	"newLabel": "Jauna eti\u0137ete",
+	"editLabel": "Redi\u0123\u0113t eti\u0137eti",
+	"addBtn": "Pievienot",
+	"editBtn": "Saglab\u0101t",
+	"canManageDialogTitle": "Var p\u0101rvald\u012bt lomas",
+	"canManageBtn": "Var p\u0101rvald\u012bt...",
+	"titlePlaceholder": "Nosaukums",
+	"selectOptionTitle_web2": "Dzimt\u0101",
+	"selectOptionTitle_web3": "Web3"
 }

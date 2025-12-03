@@ -1,4 +1,4 @@
 {
-    "NotLoggedIn": "Nie ste prihlásený. <a href='#login' data-users-login>Kliknite sem a prihláste sa<\/a>",
-    "InvalidLanguage": "Neplatný jazyk {{language}}"
+	"NotLoggedIn": "Nie ste prihl\u00e1sen\u00fd. <a href='#login' data-users-login>Kliknite sem a prihl\u00e1ste sa</a>",
+	"InvalidLanguage": "Neplatn\u00fd jazyk {{language}}"
 }

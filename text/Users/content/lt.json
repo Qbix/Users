@@ -1,196 +1,196 @@
 {
-    "avatar": {
-        "Someone": "kažkas"
-    },
-    "identifier": {
-        "types": {
-            "email": "El. paštas",
-            "mobile": "Mobilusis",
-            "web3": "Web3"
-        }
-    },
-    "clipboard": {
-        "Copied": "Nukopijuota! Dabar galite jį įklijuoti bet kur."
-    },
-    "analytics": {
-        "Title": "Analizė",
-        "Daily": "Kasdien",
-        "Weekly": "Kas savaitę",
-        "Monthly": "Kas mėnesį",
-        "Application": "Taikymas",
-        "Pages": "Puslapiai",
-        "Services": "Paslaugos",
-        "Faq": "DUK",
-        "WeekDays": "Darbo dienomis"
-    },
-    "actions": {
-        "LogIn": "Prisijungti",
-        "LogOut": "Atsijungti"
-    },
-    "activate": {
-        "OneTimeCode": "Įveskite gautą kodą:",
-        "SetAsPrimary": "Nustatyti {{1}} kaip pagrindinį {{2}}",
-        "ChoosePassPhrase": "Pasirinkite <strong>slaptažodžio frazę<\/strong> , kuria norite prisijungti.<br> Paprasta frazė, susidedanti iš kelių žodžių, kurią lengvai įsiminsite.",
-        "ChoosePassPhraseSeeSuggestions": "Pasirinkite gerą <strong>slaptažodžio frazę<\/strong> , kad apsaugotumėte savo paskyrą. Peržiūrėkite kai kurių idėjų pasiūlymus.",
-        "LogOutAndTryAgain": "Atsijunkite ir bandykite dar kartą",
-        "IfYouFeel": "Jei jaučiate, kad kažkas nutiko ne taip, galite",
-        "SetIdentifierButtonTitle": "pradėti iš naujo",
-        "ActivateMyAccount": "Suaktyvinkite Mano paskyrą"
-    },
-    "session": {
-        "GetStarted": "Pradėti"
-    },
-    "authorize": {
-        "GetStarted": "Pradėti",
-        "Authorize": "Įgalioti",
-        "TermsLabel": "Perskaiciau ir sutinku<br> į {{link}}",
-        "TermsTitle": "Sąlygos",
-        "mustAgree": "Pirmiausia turite sutikti su sąlygomis."
-    },
-    "register": {
-        "TermsLabel": "Priimu {{link}}",
-        "TermsTitle": "Sąlygos"
-    },
-    "notifications": {
-        "title": "Leidimas",
-        "prompt": "Ar norite įjungti pranešimus? Realiuoju laiku gausite naujienas apie jums rūpimus dalykus.",
-        "yes": "Taip",
-        "no": "Nr",
-        "WelcomePleaseVerifyEmail": "Sveiki! Patvirtinkite savo el. pašto adresą.",
-        "WelcomeVerifyEmail": "Sveiki! Patvirtinkite savo elektroninį paštą.",
-        "ForgetPass": "Ei, ar pamiršai savo slaptafrazę?",
-        "PassphraseSaved": "Jūsų slaptažodis buvo išsaugotas.",
-        "IdentifierActivated": "Jūsų {{type}} buvo suaktyvintas.",
-        "CompletedActivation": "Baigėte naudotojo aktyvinimą.",
-        "CompletedActivationLogIn": "Baigėte naudotojo aktyvinimą. Pabandykite prisijungti dabar."
-    },
-    "contacts": {
-        "dialog": {
-            "title": "Pasirinkite kontaktą",
-            "CreateAccount": "+ Naujas kontaktas",
-            "CreateAccountNotFound": "Q.Users.Cordova.UI.create nerastas",
-            "SearchByName": "Ieškoti pagal pavadinimą",
-            "EmptyContacts": "Kontaktai nerasta..."
-        },
-        "select": {
-            "title": "Pasirinkite kontaktą iš {{displayName}}"
-        },
-        "require": {
-            "Instructions": "Kad tai veiktų, turėsite įgalinti prieigą prie visų kontaktų."
-        }
-    },
-    "usersContacts": {
-        "selectLabel": "Pasirinkite etiketę.",
-        "inviteUser": "Pakviesti vartotojus",
-        "selectRole": "Pasirinkite Role",
-        "inviteRole": "Pakvieskite {{role}}"
-    },
-    "invalidLanguageSelected": "Pasirinkta netinkama kalba",
-    "platforms": {
-        "wallet": "Piniginė",
-        "broadcast": "Transliacija"
-    },
-    "login": {
-        "title": "Sveiki",
-        "directions": {
-            "GetStarted": "Susikurkite paskyrą arba prisijunkite.",
-            "NoRegister": "Prisijunkite, jei turite paskyrą.",
-            "WasInvited": "Koks yra geriausias būdas su jumis susisiekti?"
-        },
-        "directionsNoRegister": "Prisijunkite, jei turite paskyrą.",
-        "goButton": "➔",
-        "passphrase": "Įveskite slaptažodžio frazę:",
-        "loginButton": "Pradėti",
-        "registerButton": "Pradėti",
-        "resendButton": "Siųsti aktyvinimo pranešimą",
-        "forgot": "Pamiršau?",
-        "resendConfirm": "Ar norite išsiųsti pranešimą, kad iš naujo nustatytumėte slaptafrazę?",
-        "resendSuccess": "Patikrinkite, ar nėra pranešimo, kad iš naujo nustatytumėte slaptafrazę",
-        "resendClose": "Uždaryti",
-        "noPassphrase": "Prieš prisijungdami, spustelėdami aktyvinimo pranešime esančią nuorodą, turite nustatyti slaptažodžio frazę.",
-        "notVerified": "Norėdami prisijungti, turite išsiųsti sau aktyvinimo pranešimą.",
-        "emailExists": "Ar bandėte registruotis šiuo el. pašto adresu anksčiau? Jei taip, patikrinkite gautuosius, kad suaktyvintumėte paskyrą. <a href='#resend' class='Q_button Users_activation_resend'>Spustelėkite norėdami išsiųsti pranešimą dar kartą<\/a>",
-        "mobileExists": "Ar bandėte registruotis šiuo mobiliojo telefono numeriu anksčiau? Jei taip, patikrinkite savo SMS, kad suaktyvintumėte paskyrą. <a href='#resend' class='Q_button Users_activation_resend'>Spustelėkite norėdami išsiųsti pranešimą dar kartą<\/a>",
-        "usingOther": "arba tu gali",
-        "connectPlatforms": "arba prisijunkite naudodami:",
-        "prompt": "Pasirinkite vartotojo vardą:",
-        "newUser": "arba toliau sukurkite naują paskyrą",
-        "placeholders": {
-            "identifier": "savo mobiliojo telefono numerį arba el",
-            "mobile": "įveskite savo mobiliojo telefono numerį",
-            "email": "Įveskite savo elektroninio pašto adresą",
-            "username": "naudokite tik raides ir skaičius"
-        },
-        "confirmTerms": "Sutinkate su paslaugų teikimo sąlygomis?",
-        "facebookNoEmail": "Jūsų Facebook paskyroje trūksta patvirtinto el. pašto adreso. Tiesiog prisijunkite vietiniu būdu.",
-        "picTooltip": "Vėliau galėsite pakeisti šią nuotrauką",
-        "web3": {
-            "payload": "Prisijunkite prie {{host}} {{timestamp}} laiku",
-            "alert": {
-                "title": "Peradresuojama į Piniginę",
-                "content": "Kai uždarysite šį dialogo langą, būsite nukreipti į savo piniginę. Prisijungę grįžkite į šį puslapį."
-            },
-            "ConnectWallet": "Prijunkite Piniginę"
-        }
-    },
-    "setIdentifier": {
-        "title": "Pridėkite prisijungimo būdą",
-        "sendMessage": "Siųsti aktyvinimo pranešimą",
-        "placeholders": {
-            "identifier": "įveskite savo mobiliojo telefono numerį arba el",
-            "mobile": "įveskite savo mobiliojo telefono numerį",
-            "email": "Įveskite savo elektroninio pašto adresą",
-            "username": "Vartotojo vardas"
-        }
-    },
-    "prompt": {
-        "title": "{{Platform}} sąskaita",
-        "areUsing": "Jūs naudojate {{platform}} kaip",
-        "noLongerUsing": "Jūs nebesate prisijungę prie {{platform}} as",
-        "doAuth": "Prisijunkite naudodami šią paskyrą",
-        "doSwitch": "Perjungti į šią paskyrą"
-    },
-    "roles": {
-        "Owner": "Savininkas",
-        "Admin": "Admin",
-        "Member": "narys",
-        "Guest": "Svečias",
-        "Host": "Šeimininkas"
-    },
-    "web3": {
-        "WrongMethod": "Neteisingas sutarties metodas {{methodName}}",
-        "ChangeWallet": "Keisti Piniginę",
-        "ConnectWallet": "Prijunkite Piniginę",
-        "AfterWalletConnectedPleaseRefresh": "Prijungę piniginę atnaujinkite šį puslapį, kad atpažintumėte piniginę"
-    },
-    "labels": {
-        "addToPhonebook": "Pridėti prie mano telefono kontaktų",
-        "addLabel": "Nauji santykiai",
-        "prompt": "Duok jam pavadinimą",
-        "titles": {
-            "Users\/owners": "Savininkai",
-            "Users\/admins": "Administratoriai",
-            "Users\/members": "Nariai",
-            "Users\/guests": "Svečiai",
-            "Users\/hosts": "Šeimininkai",
-            "Users\/testers": "Bandytojai",
-            "Users\/speakers": "Garsiakalbiai"
-        }
-    },
-    "people": {
-        "People": "Žmonės"
-    },
-    "external": {
-        "defaults": {
-            "title": "",
-            "bio": "Forumo įtraukimo botas. Gaukite savo adresu https:\/\/engageusers.ai",
-            "website": "https:\/\/engageusers.ai"
-        }
-    },
-    "errors": {
-        "NotEnoughPermissionsWallet": "Nepakanka leidimų skaityti šio naudotojo piniginę",
-        "ThisUserHaveNoWallet": "Šiam vartotojui nepriskirta piniginė",
-        "TheWalletOfThisUserInvalid": "Šio vartotojo piniginė negalioja",
-        "WalletInvalid": "Netinkamas piniginės adresas"
-    }
+	"avatar": {
+		"Someone": "ka\u017ekas"
+	},
+	"identifier": {
+		"types": {
+			"email": "El. pa\u0161tas",
+			"mobile": "Mobilusis",
+			"web3": "Web3"
+		}
+	},
+	"clipboard": {
+		"Copied": "Nukopijuota! Dabar galite j\u012f \u012fklijuoti bet kur."
+	},
+	"analytics": {
+		"Title": "Analiz\u0117",
+		"Daily": "Kasdien",
+		"Weekly": "Kas savait\u0119",
+		"Monthly": "Kas m\u0117nes\u012f",
+		"Application": "Taikymas",
+		"Pages": "Puslapiai",
+		"Services": "Paslaugos",
+		"Faq": "DUK",
+		"WeekDays": "Darbo dienomis"
+	},
+	"actions": {
+		"LogIn": "Prisijungti",
+		"LogOut": "Atsijungti"
+	},
+	"activate": {
+		"OneTimeCode": "\u012eveskite gaut\u0105 kod\u0105:",
+		"SetAsPrimary": "Nustatyti {{1}} kaip pagrindin\u012f {{2}}",
+		"ChoosePassPhrase": "Pasirinkite <strong>slapta\u017eod\u017eio fraz\u0119</strong> , kuria norite prisijungti.<br> Paprasta fraz\u0117, susidedanti i\u0161 keli\u0173 \u017eod\u017ei\u0173, kuri\u0105 lengvai \u012fsiminsite.",
+		"ChoosePassPhraseSeeSuggestions": "Pasirinkite ger\u0105 <strong>slapta\u017eod\u017eio fraz\u0119</strong> , kad apsaugotum\u0117te savo paskyr\u0105. Per\u017ei\u016br\u0117kite kai kuri\u0173 id\u0117j\u0173 pasi\u016blymus.",
+		"LogOutAndTryAgain": "Atsijunkite ir bandykite dar kart\u0105",
+		"IfYouFeel": "Jei jau\u010diate, kad ka\u017ekas nutiko ne taip, galite",
+		"SetIdentifierButtonTitle": "prad\u0117ti i\u0161 naujo",
+		"ActivateMyAccount": "Suaktyvinkite Mano paskyr\u0105"
+	},
+	"session": {
+		"GetStarted": "Prad\u0117ti"
+	},
+	"authorize": {
+		"GetStarted": "Prad\u0117ti",
+		"Authorize": "\u012egalioti",
+		"TermsLabel": "Perskaiciau ir sutinku<br> \u012f {{link}}",
+		"TermsTitle": "S\u0105lygos",
+		"mustAgree": "Pirmiausia turite sutikti su s\u0105lygomis."
+	},
+	"register": {
+		"TermsLabel": "Priimu {{link}}",
+		"TermsTitle": "S\u0105lygos"
+	},
+	"notifications": {
+		"title": "Leidimas",
+		"prompt": "Ar norite \u012fjungti prane\u0161imus? Realiuoju laiku gausite naujienas apie jums r\u016bpimus dalykus.",
+		"yes": "Taip",
+		"no": "Nr",
+		"WelcomePleaseVerifyEmail": "Sveiki! Patvirtinkite savo el. pa\u0161to adres\u0105.",
+		"WelcomeVerifyEmail": "Sveiki! Patvirtinkite savo elektronin\u012f pa\u0161t\u0105.",
+		"ForgetPass": "Ei, ar pamir\u0161ai savo slaptafraz\u0119?",
+		"PassphraseSaved": "J\u016bs\u0173 slapta\u017eodis buvo i\u0161saugotas.",
+		"IdentifierActivated": "J\u016bs\u0173 {{type}} buvo suaktyvintas.",
+		"CompletedActivation": "Baig\u0117te naudotojo aktyvinim\u0105.",
+		"CompletedActivationLogIn": "Baig\u0117te naudotojo aktyvinim\u0105. Pabandykite prisijungti dabar."
+	},
+	"contacts": {
+		"dialog": {
+			"title": "Pasirinkite kontakt\u0105",
+			"CreateAccount": "+ Naujas kontaktas",
+			"CreateAccountNotFound": "Q.Users.Cordova.UI.create nerastas",
+			"SearchByName": "Ie\u0161koti pagal pavadinim\u0105",
+			"EmptyContacts": "Kontaktai nerasta..."
+		},
+		"select": {
+			"title": "Pasirinkite kontakt\u0105 i\u0161 {{displayName}}"
+		},
+		"require": {
+			"Instructions": "Kad tai veikt\u0173, tur\u0117site \u012fgalinti prieig\u0105 prie vis\u0173 kontakt\u0173."
+		}
+	},
+	"usersContacts": {
+		"selectLabel": "Pasirinkite etiket\u0119.",
+		"inviteUser": "Pakviesti vartotojus",
+		"selectRole": "Pasirinkite Role",
+		"inviteRole": "Pakvieskite {{role}}"
+	},
+	"invalidLanguageSelected": "Pasirinkta netinkama kalba",
+	"platforms": {
+		"wallet": "Pinigin\u0117",
+		"broadcast": "Transliacija"
+	},
+	"login": {
+		"title": "Sveiki atvyk\u0119 \u012f {{AppName}}",
+		"directions": {
+			"GetStarted": "Kur tur\u0117tume si\u0173sti prane\u0161imus?",
+			"NoRegister": "Prisijunkite, jei turite paskyr\u0105.",
+			"WasInvited": "Koks yra geriausias b\u016bdas su jumis susisiekti?"
+		},
+		"directionsNoRegister": "Prisijunkite, jei turite paskyr\u0105.",
+		"goButton": "\u2794",
+		"passphrase": "\u012eveskite slapta\u017eod\u017eio fraz\u0119:",
+		"loginButton": "Prad\u0117ti",
+		"registerButton": "Prad\u0117ti",
+		"resendButton": "Si\u0173sti aktyvinimo prane\u0161im\u0105",
+		"forgot": "Pamir\u0161au?",
+		"resendConfirm": "Ar norite i\u0161si\u0173sti prane\u0161im\u0105, kad i\u0161 naujo nustatytum\u0117te slaptafraz\u0119?",
+		"resendSuccess": "Patikrinkite, ar n\u0117ra prane\u0161imo, kad i\u0161 naujo nustatytum\u0117te slaptafraz\u0119",
+		"resendClose": "U\u017edaryti",
+		"noPassphrase": "Prie\u0161 prisijungdami, spustel\u0117dami aktyvinimo prane\u0161ime esan\u010di\u0105 nuorod\u0105, turite nustatyti slapta\u017eod\u017eio fraz\u0119.",
+		"notVerified": "Nor\u0117dami prisijungti, turite i\u0161si\u0173sti sau aktyvinimo prane\u0161im\u0105.",
+		"emailExists": "Ar band\u0117te registruotis \u0161iuo el. pa\u0161to adresu anks\u010diau? Jei taip, patikrinkite gautuosius, kad suaktyvintum\u0117te paskyr\u0105. <a href='#resend' class='Q_button Users_activation_resend'>Spustel\u0117kite nor\u0117dami i\u0161si\u0173sti prane\u0161im\u0105 dar kart\u0105</a>",
+		"mobileExists": "Ar band\u0117te registruotis \u0161iuo mobiliojo telefono numeriu anks\u010diau? Jei taip, patikrinkite savo SMS, kad suaktyvintum\u0117te paskyr\u0105. <a href='#resend' class='Q_button Users_activation_resend'>Spustel\u0117kite nor\u0117dami i\u0161si\u0173sti prane\u0161im\u0105 dar kart\u0105</a>",
+		"usingOther": "arba tu gali",
+		"connectPlatforms": "arba prisijunkite naudodami:",
+		"prompt": "Pasirinkite vartotojo vard\u0105:",
+		"newUser": "arba toliau sukurkite nauj\u0105 paskyr\u0105",
+		"placeholders": {
+			"identifier": "savo mobiliojo telefono numer\u012f arba el",
+			"mobile": "\u012fveskite savo mobiliojo telefono numer\u012f",
+			"email": "\u012eveskite savo elektroninio pa\u0161to adres\u0105",
+			"username": "naudokite tik raides ir skai\u010dius"
+		},
+		"confirmTerms": "Sutinkate su paslaug\u0173 teikimo s\u0105lygomis?",
+		"facebookNoEmail": "J\u016bs\u0173 Facebook paskyroje tr\u016bksta patvirtinto el. pa\u0161to adreso. Tiesiog prisijunkite vietiniu b\u016bdu.",
+		"picTooltip": "V\u0117liau gal\u0117site pakeisti \u0161i\u0105 nuotrauk\u0105",
+		"web3": {
+			"payload": "Prisijunkite prie {{host}} {{timestamp}} laiku",
+			"alert": {
+				"title": "Peradresuojama \u012f Pinigin\u0119",
+				"content": "Kai u\u017edarysite \u0161\u012f dialogo lang\u0105, b\u016bsite nukreipti \u012f savo pinigin\u0119. Prisijung\u0119 gr\u012f\u017ekite \u012f \u0161\u012f puslap\u012f."
+			},
+			"ConnectWallet": "Prijunkite Pinigin\u0119"
+		}
+	},
+	"setIdentifier": {
+		"title": "Prid\u0117kite prisijungimo b\u016bd\u0105",
+		"sendMessage": "Si\u0173sti aktyvinimo prane\u0161im\u0105",
+		"placeholders": {
+			"identifier": "\u012fveskite savo mobiliojo telefono numer\u012f arba el",
+			"mobile": "\u012fveskite savo mobiliojo telefono numer\u012f",
+			"email": "\u012eveskite savo elektroninio pa\u0161to adres\u0105",
+			"username": "Vartotojo vardas"
+		}
+	},
+	"prompt": {
+		"title": "{{Platform}} s\u0105skaita",
+		"areUsing": "J\u016bs naudojate {{platform}} kaip",
+		"noLongerUsing": "J\u016bs nebesate prisijung\u0119 prie {{platform}} as",
+		"doAuth": "Prisijunkite naudodami \u0161i\u0105 paskyr\u0105",
+		"doSwitch": "Perjungti \u012f \u0161i\u0105 paskyr\u0105"
+	},
+	"roles": {
+		"Owner": "Savininkas",
+		"Admin": "Admin",
+		"Member": "narys",
+		"Guest": "Sve\u010dias",
+		"Host": "\u0160eimininkas"
+	},
+	"web3": {
+		"WrongMethod": "Neteisingas sutarties metodas {{methodName}}",
+		"ChangeWallet": "Keisti Pinigin\u0119",
+		"ConnectWallet": "Prijunkite Pinigin\u0119",
+		"AfterWalletConnectedPleaseRefresh": "Prijung\u0119 pinigin\u0119 atnaujinkite \u0161\u012f puslap\u012f, kad atpa\u017eintum\u0117te pinigin\u0119"
+	},
+	"labels": {
+		"addToPhonebook": "Prid\u0117ti prie mano telefono kontakt\u0173",
+		"addLabel": "Nauji santykiai",
+		"prompt": "Duok jam pavadinim\u0105",
+		"titles": {
+			"Users/owners": "Savininkai",
+			"Users/admins": "Administratoriai",
+			"Users/members": "Nariai",
+			"Users/guests": "Sve\u010diai",
+			"Users/hosts": "\u0160eimininkai",
+			"Users/testers": "Bandytojai",
+			"Users/speakers": "Garsiakalbiai"
+		}
+	},
+	"people": {
+		"People": "\u017dmon\u0117s"
+	},
+	"external": {
+		"defaults": {
+			"title": "",
+			"bio": "Forumo \u012ftraukimo botas. Gaukite savo adresu https://engageusers.ai",
+			"website": "https://engageusers.ai"
+		}
+	},
+	"errors": {
+		"NotEnoughPermissionsWallet": "Nepakanka leidim\u0173 skaityti \u0161io naudotojo pinigin\u0119",
+		"ThisUserHaveNoWallet": "\u0160iam vartotojui nepriskirta pinigin\u0117",
+		"TheWalletOfThisUserInvalid": "\u0160io vartotojo pinigin\u0117 negalioja",
+		"WalletInvalid": "Netinkamas pinigin\u0117s adresas"
+	}
 }

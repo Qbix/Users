@@ -52,7 +52,7 @@
 		login: {
 			title: 'Welcome',
 			directions: {
-				"GetStarted": "Create an account, or log in.",
+				"GetStarted": "Where should we send notifications?",
 				"NoRegister": "Log in if you have an account.",
 				"WasInvited": "What's the best way to reach you?"
 			},

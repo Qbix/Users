@@ -1,14 +1,14 @@
 {
-    "activation": {
-        "Thanks": "{{1}}-a xoş gəlmisiniz.",
-        "ClickHere": "Hesabınızı aktivləşdirmək üçün bura klikləyin: {{1}}"
-    },
-    "addMobile": {
-        "ClickHere": "Mobil nömrənizi doğrulamaq üçün bura klikləyin: {{1}}"
-    },
-    "resend": {
-        "DidYouWant": "{{1}} daxilində parol ifadənizi sıfırlamaq istəyirdiniz?",
-        "ClickHere": "Sonra bura klikləyin: {{1}}",
-        "OrEnterCode": "və ya kodu daxil edin:"
-    }
+	"activation": {
+		"Thanks": "{{1}}-a xo\u015f g\u0259lmisiniz.",
+		"ClickHere": "Hesab\u0131n\u0131z\u0131 aktivl\u0259\u015fdirm\u0259k \u00fc\u00e7\u00fcn bura klikl\u0259yin: {{1}}"
+	},
+	"addMobile": {
+		"ClickHere": "Mobil n\u00f6mr\u0259nizi do\u011frulamaq \u00fc\u00e7\u00fcn bura klikl\u0259yin: {{1}}"
+	},
+	"resend": {
+		"DidYouWant": "{{1}} daxilind\u0259 parol ifad\u0259nizi s\u0131f\u0131rlamaq ist\u0259yirdiniz?",
+		"ClickHere": "Sonra bura klikl\u0259yin: {{1}}",
+		"OrEnterCode": "v\u0259 ya kodu daxil edin:"
+	}
 }

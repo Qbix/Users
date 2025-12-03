@@ -1,22 +1,22 @@
 {
-    "activation": {
-        "Subject": "Bine ati venit! Vă rog să vă verificați adresa de email.",
-        "Thanks": "Bun venit la {{1}}",
-        "ReallyYourEmail": "Este chiar aceasta adresa ta de e-mail, {{1}}? Dacă da, faceți clic <a href='{{2}}'>aici<\/a> pentru a vă seta expresia de acces și pentru a vă activa contul.",
-        "SeeYou": "Ne vedem pe <a href='{{1}}'>{{2}}<\/a> !",
-        "OtherwiseClickLink": "În caz contrar, faceți clic pe <a href='{{1}}'>acest link<\/a> ."
-    },
-    "identifier": {
-        "Subject": "Bine ati venit! Verifică-ți adresa de email."
-    },
-    "resend": {
-        "Subject": "Hei, ți-ai uitat fraza de acces?",
-        "Thanks": "Vă mulțumim că ați vizitat {{1}}",
-        "YouAreReceiving": "Primești acest e-mail deoarece cineva a introdus adresa ta de e-mail și a făcut clic pe „am uitat fraza de acces”. Dacă nu ai fost tu, pur și simplu ignora acest mesaj.",
-        "Reset": "Pentru a vă reseta expresia de acces, faceți clic pe {{1}}",
-        "SetUpPassphrase": "Configurați expresia de acces",
-        "DomainCode": "Dacă pagina web este deja deschisă în browser, puteți introduce codul"
-    },
-    "SeeYou": "Ne vedem pe {{1}}!",
-    "LinkToUnsubscribe": "Iată un link pentru a vă <a href='{{1}}'>dezabona<\/a> dacă nu doriți să primiți mai multe e-mailuri."
+	"activation": {
+		"Subject": "Bine ati venit! V\u0103 rog s\u0103 v\u0103 verifica\u021bi adresa de email.",
+		"Thanks": "Bun venit la {{1}}",
+		"ReallyYourEmail": "Este chiar aceasta adresa ta de e-mail, {{1}}? Dac\u0103 da, face\u021bi clic <a href='{{2}}'>aici</a> pentru a v\u0103 seta expresia de acces \u0219i pentru a v\u0103 activa contul.",
+		"SeeYou": "Ne vedem pe <a href='{{1}}'>{{2}}</a> !",
+		"OtherwiseClickLink": "\u00cen caz contrar, face\u021bi clic pe <a href='{{1}}'>acest link</a> ."
+	},
+	"identifier": {
+		"Subject": "Bine ati venit! Verific\u0103-\u021bi adresa de email."
+	},
+	"resend": {
+		"Subject": "Hei, \u021bi-ai uitat fraza de acces?",
+		"Thanks": "V\u0103 mul\u021bumim c\u0103 a\u021bi vizitat {{1}}",
+		"YouAreReceiving": "Prime\u0219ti acest e-mail deoarece cineva a introdus adresa ta de e-mail \u0219i a f\u0103cut clic pe \u201eam uitat fraza de acces\u201d. Dac\u0103 nu ai fost tu, pur \u0219i simplu ignora acest mesaj.",
+		"Reset": "Pentru a v\u0103 reseta expresia de acces, face\u021bi clic pe {{1}}",
+		"SetUpPassphrase": "Configura\u021bi expresia de acces",
+		"DomainCode": "Dac\u0103 pagina web este deja deschis\u0103 \u00een browser, pute\u021bi introduce codul"
+	},
+	"SeeYou": "Ne vedem pe {{1}}!",
+	"LinkToUnsubscribe": "Iat\u0103 un link pentru a v\u0103 <a href='{{1}}'>dezabona</a> dac\u0103 nu dori\u021bi s\u0103 primi\u021bi mai multe e-mailuri."
 }

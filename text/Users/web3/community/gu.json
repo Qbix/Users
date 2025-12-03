@@ -1,51 +1,51 @@
 {
-    "title": {
-        "createCommunity": "સમુદાય બનાવો"
-    },
-    "list": {
-        "table": {
-            "td0": "સાંકળનું નામ",
-            "td1": "સાંકળ આઈડી",
-            "td2": "સમુદાયનું સરનામું"
-        },
-        "btnTitle": "ઉત્પાદન"
-    },
-    "form": {
-        "labels": {
-            "chain": "સાંકળ",
-            "hook": "હૂક",
-            "invitedHook": "InvitedHook",
-            "name": "નામ",
-            "symbol": "પ્રતીક",
-            "contracturi": "કોન્ટ્રાક્ટયુઆરઆઈ"
-        },
-        "placeholders": {
-            "hook": "0x00000000000000000000000000000000000",
-            "invitedHook": "0x00000000000000000000000000000000000",
-            "name": "ERC721 નામ",
-            "symbol": "ERC721 પ્રતીક",
-            "contracturi": "કરાર URI"
-        },
-        "small": {
-            "hook": "કરારનું હૂક સરનામું અમલમાં મૂકાયેલ ICcommunityHook ઇન્ટરફેસ. સરનામું (0) હોઈ શકે છે",
-            "invitedHook": "કોન્ટ્રાક્ટનું આમંત્રિત હૂક સરનામું અમલીકૃત ICcommunityInvite ઈન્ટરફેસ. સરનામું (0) હોઈ શકે છે",
-            "name": "ERC721 નામ",
-            "symbol": "ERC721 પ્રતીક",
-            "contracturi": "કરાર URI"
-        },
-        "err": {
-            "hook": "<b>હૂક<\/b> અમાન્ય",
-            "invitedHook": "<b>આમંત્રિત હૂક<\/b> અમાન્ય",
-            "name": "<b>નામ<\/b> અમાન્ય",
-            "symbol": "<b>પ્રતીક<\/b> અમાન્ય",
-            "contracturi": "<b>કોન્ટ્રાક્ટયુઆરઆઈ<\/b> અમાન્ય"
-        },
-        "btnTitle": "ઉત્પાદન"
-    },
-    "err": {
-        "cantFindFactoryAddress": "ફેક્ટરી સરનામું શોધી શકાતું નથી",
-        "transactionFailed": "વ્યવહાર નિષ્ફળ ગયો",
-        "smthWentWrong": "કંઈક ખોટું થયું"
-    },
-    "foo": "બાર"
+	"title": {
+		"createCommunity": "\u0ab8\u0aae\u0ac1\u0aa6\u0abe\u0aaf \u0aac\u0aa8\u0abe\u0ab5\u0acb"
+	},
+	"list": {
+		"table": {
+			"td0": "\u0ab8\u0abe\u0a82\u0a95\u0ab3\u0aa8\u0ac1\u0a82 \u0aa8\u0abe\u0aae",
+			"td1": "\u0ab8\u0abe\u0a82\u0a95\u0ab3 \u0a86\u0a88\u0aa1\u0ac0",
+			"td2": "\u0ab8\u0aae\u0ac1\u0aa6\u0abe\u0aaf\u0aa8\u0ac1\u0a82 \u0ab8\u0ab0\u0aa8\u0abe\u0aae\u0ac1\u0a82"
+		},
+		"btnTitle": "\u0a89\u0aa4\u0acd\u0aaa\u0abe\u0aa6\u0aa8"
+	},
+	"form": {
+		"labels": {
+			"chain": "\u0ab8\u0abe\u0a82\u0a95\u0ab3",
+			"hook": "\u0ab9\u0ac2\u0a95",
+			"invitedHook": "InvitedHook",
+			"name": "\u0aa8\u0abe\u0aae",
+			"symbol": "\u0aaa\u0acd\u0ab0\u0aa4\u0ac0\u0a95",
+			"contracturi": "\u0a95\u0acb\u0aa8\u0acd\u0a9f\u0acd\u0ab0\u0abe\u0a95\u0acd\u0a9f\u0aaf\u0ac1\u0a86\u0ab0\u0a86\u0a88"
+		},
+		"placeholders": {
+			"hook": "0x00000000000000000000000000000000000",
+			"invitedHook": "0x00000000000000000000000000000000000",
+			"name": "ERC721 \u0aa8\u0abe\u0aae",
+			"symbol": "ERC721 \u0aaa\u0acd\u0ab0\u0aa4\u0ac0\u0a95",
+			"contracturi": "\u0a95\u0ab0\u0abe\u0ab0 URI"
+		},
+		"small": {
+			"hook": "\u0a95\u0ab0\u0abe\u0ab0\u0aa8\u0ac1\u0a82 \u0ab9\u0ac2\u0a95 \u0ab8\u0ab0\u0aa8\u0abe\u0aae\u0ac1\u0a82 \u0a85\u0aae\u0ab2\u0aae\u0abe\u0a82 \u0aae\u0ac2\u0a95\u0abe\u0aaf\u0ac7\u0ab2 ICcommunityHook \u0a87\u0aa8\u0acd\u0a9f\u0ab0\u0aab\u0ac7\u0ab8. \u0ab8\u0ab0\u0aa8\u0abe\u0aae\u0ac1\u0a82 (0) \u0ab9\u0acb\u0a88 \u0ab6\u0a95\u0ac7 \u0a9b\u0ac7",
+			"invitedHook": "\u0a95\u0acb\u0aa8\u0acd\u0a9f\u0acd\u0ab0\u0abe\u0a95\u0acd\u0a9f\u0aa8\u0ac1\u0a82 \u0a86\u0aae\u0a82\u0aa4\u0acd\u0ab0\u0abf\u0aa4 \u0ab9\u0ac2\u0a95 \u0ab8\u0ab0\u0aa8\u0abe\u0aae\u0ac1\u0a82 \u0a85\u0aae\u0ab2\u0ac0\u0a95\u0ac3\u0aa4 ICcommunityInvite \u0a88\u0aa8\u0acd\u0a9f\u0ab0\u0aab\u0ac7\u0ab8. \u0ab8\u0ab0\u0aa8\u0abe\u0aae\u0ac1\u0a82 (0) \u0ab9\u0acb\u0a88 \u0ab6\u0a95\u0ac7 \u0a9b\u0ac7",
+			"name": "ERC721 \u0aa8\u0abe\u0aae",
+			"symbol": "ERC721 \u0aaa\u0acd\u0ab0\u0aa4\u0ac0\u0a95",
+			"contracturi": "\u0a95\u0ab0\u0abe\u0ab0 URI"
+		},
+		"err": {
+			"hook": "<b>\u0ab9\u0ac2\u0a95</b> \u0a85\u0aae\u0abe\u0aa8\u0acd\u0aaf",
+			"invitedHook": "<b>\u0a86\u0aae\u0a82\u0aa4\u0acd\u0ab0\u0abf\u0aa4 \u0ab9\u0ac2\u0a95</b> \u0a85\u0aae\u0abe\u0aa8\u0acd\u0aaf",
+			"name": "<b>\u0aa8\u0abe\u0aae</b> \u0a85\u0aae\u0abe\u0aa8\u0acd\u0aaf",
+			"symbol": "<b>\u0aaa\u0acd\u0ab0\u0aa4\u0ac0\u0a95</b> \u0a85\u0aae\u0abe\u0aa8\u0acd\u0aaf",
+			"contracturi": "<b>\u0a95\u0acb\u0aa8\u0acd\u0a9f\u0acd\u0ab0\u0abe\u0a95\u0acd\u0a9f\u0aaf\u0ac1\u0a86\u0ab0\u0a86\u0a88</b> \u0a85\u0aae\u0abe\u0aa8\u0acd\u0aaf"
+		},
+		"btnTitle": "\u0a89\u0aa4\u0acd\u0aaa\u0abe\u0aa6\u0aa8"
+	},
+	"err": {
+		"cantFindFactoryAddress": "\u0aab\u0ac7\u0a95\u0acd\u0a9f\u0ab0\u0ac0 \u0ab8\u0ab0\u0aa8\u0abe\u0aae\u0ac1\u0a82 \u0ab6\u0acb\u0aa7\u0ac0 \u0ab6\u0a95\u0abe\u0aa4\u0ac1\u0a82 \u0aa8\u0aa5\u0ac0",
+		"transactionFailed": "\u0ab5\u0acd\u0aaf\u0ab5\u0ab9\u0abe\u0ab0 \u0aa8\u0abf\u0ab7\u0acd\u0aab\u0ab3 \u0a97\u0aaf\u0acb",
+		"smthWentWrong": "\u0a95\u0a82\u0a88\u0a95 \u0a96\u0acb\u0a9f\u0ac1\u0a82 \u0aa5\u0aaf\u0ac1\u0a82"
+	},
+	"foo": "\u0aac\u0abe\u0ab0"
 }

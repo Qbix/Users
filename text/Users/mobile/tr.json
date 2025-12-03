@@ -1,14 +1,14 @@
 {
-    "activation": {
-        "Thanks": "{{1}}&#39;a hoş geldiniz.",
-        "ClickHere": "Hesabınızı etkinleştirmek için burayı tıklayın: {{1}}"
-    },
-    "addMobile": {
-        "ClickHere": "Cep telefonu numaranızı doğrulamak için burayı tıklayın: {{1}}"
-    },
-    "resend": {
-        "DidYouWant": "{{1}} içindeki parolanızı sıfırlamak mı istediniz?",
-        "ClickHere": "Sonra buraya tıklayın: {{1}}",
-        "OrEnterCode": "veya kodu girin:"
-    }
+	"activation": {
+		"Thanks": "{{1}}&#39;a ho\u015f geldiniz.",
+		"ClickHere": "Hesab\u0131n\u0131z\u0131 etkinle\u015ftirmek i\u00e7in buray\u0131 t\u0131klay\u0131n: {{1}}"
+	},
+	"addMobile": {
+		"ClickHere": "Cep telefonu numaran\u0131z\u0131 do\u011frulamak i\u00e7in buray\u0131 t\u0131klay\u0131n: {{1}}"
+	},
+	"resend": {
+		"DidYouWant": "{{1}} i\u00e7indeki parolan\u0131z\u0131 s\u0131f\u0131rlamak m\u0131 istediniz?",
+		"ClickHere": "Sonra buraya t\u0131klay\u0131n: {{1}}",
+		"OrEnterCode": "veya kodu girin:"
+	}
 }

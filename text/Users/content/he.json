@@ -1,196 +1,196 @@
 {
-    "avatar": {
-        "Someone": "מִישֶׁהוּ"
-    },
-    "identifier": {
-        "types": {
-            "email": "אימייל",
-            "mobile": "נייד",
-            "web3": "אינטרנט 3"
-        }
-    },
-    "clipboard": {
-        "Copied": "מוּעֲתָק! עכשיו אתה יכול להדביק אותו בכל מקום."
-    },
-    "analytics": {
-        "Title": "ניתוח",
-        "Daily": "יום יומי",
-        "Weekly": "שְׁבוּעִי",
-        "Monthly": "יַרחוֹן",
-        "Application": "יישום",
-        "Pages": "דפים",
-        "Services": "שירותים",
-        "Faq": "שאלות נפוצות",
-        "WeekDays": "ימי חול"
-    },
-    "actions": {
-        "LogIn": "התחברות",
-        "LogOut": "להתנתק"
-    },
-    "activate": {
-        "OneTimeCode": "הכנס את הקוד שקיבלת:",
-        "SetAsPrimary": "הגדר {{1}} כ {{2}} העיקרי שלי",
-        "ChoosePassPhrase": "בחר <strong>ביטוי סיסמה<\/strong> להתחבר איתו.<br> ביטוי פשוט המורכב מכמה מילים שתזכרו בקלות.",
-        "ChoosePassPhraseSeeSuggestions": "בחר <strong>ביטוי סיסמה<\/strong> טוב כדי להגן על החשבון שלך. עיין בהצעות לכמה רעיונות.",
-        "LogOutAndTryAgain": "צא ונסה שוב",
-        "IfYouFeel": "אם אתה מרגיש שמשהו השתבש, אתה יכול",
-        "SetIdentifierButtonTitle": "להתחיל מחדש",
-        "ActivateMyAccount": "הפעל את החשבון שלי"
-    },
-    "session": {
-        "GetStarted": "להתחיל"
-    },
-    "authorize": {
-        "GetStarted": "להתחיל",
-        "Authorize": "לְאַשֵׁר",
-        "TermsLabel": "קראתי ואני מסכים<br> ל {{link}}",
-        "TermsTitle": "תנאים",
-        "mustAgree": "ראשית עליך להסכים לתנאים."
-    },
-    "register": {
-        "TermsLabel": "אני מקבל את ה {{link}}",
-        "TermsTitle": "תנאים"
-    },
-    "notifications": {
-        "title": "רְשׁוּת",
-        "prompt": "האם אתה רוצה להפעיל התראות? תקבל עדכונים בזמן אמת לגבי דברים שחשובים לך.",
-        "yes": "כן",
-        "no": "לא",
-        "WelcomePleaseVerifyEmail": "ברוך הבא! נא לאמת את כתובת הדוא&quot;ל שלך.",
-        "WelcomeVerifyEmail": "ברוך הבא! אמת את כתובת הדוא&quot;ל שלך.",
-        "ForgetPass": "היי, שכחת את משפט הסיסמה שלך?",
-        "PassphraseSaved": "ביטוי הסיסמה שלך נשמר.",
-        "IdentifierActivated": "{{type}} שלך הופעל.",
-        "CompletedActivation": "השלמת את הפעלת המשתמש.",
-        "CompletedActivationLogIn": "השלמת את הפעלת המשתמש. נסה להיכנס עכשיו."
-    },
-    "contacts": {
-        "dialog": {
-            "title": "בחר איש קשר",
-            "CreateAccount": "+ איש קשר חדש",
-            "CreateAccountNotFound": "Q.Users.Cordova.UI.create לא נמצא",
-            "SearchByName": "חפש לפי שם",
-            "EmptyContacts": "אנשי קשר לא נמצאו..."
-        },
-        "select": {
-            "title": "בחר איש קשר של {{displayName}}"
-        },
-        "require": {
-            "Instructions": "תצטרך לאפשר גישה לכל אנשי הקשר כדי שזה יעבוד."
-        }
-    },
-    "usersContacts": {
-        "selectLabel": "אנא בחר תווית.",
-        "inviteUser": "הזמן משתמשים",
-        "selectRole": "בחר תפקיד",
-        "inviteRole": "הזמן {{role}}"
-    },
-    "invalidLanguageSelected": "נבחרה שפה לא חוקית",
-    "platforms": {
-        "wallet": "ארנק",
-        "broadcast": "מִשׁדָר"
-    },
-    "login": {
-        "title": "ברוך הבא",
-        "directions": {
-            "GetStarted": "צור חשבון, או היכנס.",
-            "NoRegister": "היכנס אם יש לך חשבון.",
-            "WasInvited": "מהי הדרך הטובה ביותר להגיע אליך?"
-        },
-        "directionsNoRegister": "היכנס אם יש לך חשבון.",
-        "goButton": "➔",
-        "passphrase": "הזן את משפט הסיסמה שלך:",
-        "loginButton": "להתחיל",
-        "registerButton": "להתחיל",
-        "resendButton": "שלח הודעת הפעלה",
-        "forgot": "שכח מזה?",
-        "resendConfirm": "האם ברצונך לשלוח הודעה לאיפוס ביטוי הסיסמה שלך?",
-        "resendSuccess": "בדוק אם יש הודעה לאיפוס ביטוי הסיסמה שלך",
-        "resendClose": "סגור",
-        "noPassphrase": "לפני שתוכל להתחבר, עליך להגדיר ביטוי סיסמה על ידי לחיצה על הקישור בהודעת ההפעלה שלך.",
-        "notVerified": "עליך לשלוח לעצמך הודעת הפעלה כדי להיכנס.",
-        "emailExists": "האם ניסית להירשם עם האימייל הזה בעבר? אם כן, בדוק את תיבת הדואר הנכנס שלך כדי להפעיל את חשבונך. <a href='#resend' class='Q_button Users_activation_resend'>לחץ כדי לשלוח מחדש את ההודעה<\/a>",
-        "mobileExists": "ניסית להירשם עם מספר הנייד הזה בעבר? אם כן, בדוק את ה-SMS שלך כדי להפעיל את חשבונך. <a href='#resend' class='Q_button Users_activation_resend'>לחץ כדי לשלוח מחדש את ההודעה<\/a>",
-        "usingOther": "או שאתה יכול",
-        "connectPlatforms": "או התחבר באמצעות:",
-        "prompt": "בחר שם משתמש:",
-        "newUser": "או צור חשבון חדש למטה",
-        "placeholders": {
-            "identifier": "# הנייד או האימייל שלך",
-            "mobile": "הזן את מספר הטלפון הנייד שלך",
-            "email": "הזן את כתובת הדוא&quot;ל שלך",
-            "username": "השתמש באותיות ומספרים בלבד"
-        },
-        "confirmTerms": "האם לקבל את התנאים וההגבלות?",
-        "facebookNoEmail": "בחשבון הפייסבוק שלך חסרה כתובת אימייל מאושרת. פשוט התחבר בצורה המקורית.",
-        "picTooltip": "אתה יכול לשנות תמונה זו מאוחר יותר",
-        "web3": {
-            "payload": "היכנס ל {{host}} בזמן {{timestamp}}",
-            "alert": {
-                "title": "מפנה מחדש לארנק",
-                "content": "לאחר שתסגור את הדו-שיח הזה, תועבר לארנק שלך. לאחר הכניסה, חזור לדף זה."
-            },
-            "ConnectWallet": "חבר ארנק"
-        }
-    },
-    "setIdentifier": {
-        "title": "הוסף דרך להתחבר",
-        "sendMessage": "שלח הודעת הפעלה",
-        "placeholders": {
-            "identifier": "הזן את מספר הטלפון הנייד או האימייל שלך",
-            "mobile": "הזן את מספר הנייד שלך",
-            "email": "הזן את כתובת הדוא&quot;ל שלך",
-            "username": "שם משתמש"
-        }
-    },
-    "prompt": {
-        "title": "חשבון {{Platform}}",
-        "areUsing": "אתה משתמש ב {{platform}} as",
-        "noLongerUsing": "אינך מחובר יותר ל {{platform}} as",
-        "doAuth": "התחבר עם חשבון זה",
-        "doSwitch": "עבור לחשבון זה"
-    },
-    "roles": {
-        "Owner": "בעלים",
-        "Admin": "מנהל מערכת",
-        "Member": "חבר",
-        "Guest": "אוֹרֵחַ",
-        "Host": "מנחה"
-    },
-    "web3": {
-        "WrongMethod": "שיטת חוזה שגויה {{methodName}}",
-        "ChangeWallet": "שנה ארנק",
-        "ConnectWallet": "חבר ארנק",
-        "AfterWalletConnectedPleaseRefresh": "לאחר חיבור הארנק אנא רענן דף זה כדי לזהות את הארנק"
-    },
-    "labels": {
-        "addToPhonebook": "הוסף לטלפון שלי אנשי קשר",
-        "addLabel": "מערכת יחסים חדשה",
-        "prompt": "תן לזה שם",
-        "titles": {
-            "Users\/owners": "בעלים",
-            "Users\/admins": "מנהלי מערכת",
-            "Users\/members": "חברים",
-            "Users\/guests": "אורחים",
-            "Users\/hosts": "מארחים",
-            "Users\/testers": "בודקים",
-            "Users\/speakers": "רמקולים"
-        }
-    },
-    "people": {
-        "People": "אֲנָשִׁים"
-    },
-    "external": {
-        "defaults": {
-            "title": "",
-            "bio": "בוט מעורבות בפורום. קבל משלך בכתובת https:\/\/engageusers.ai",
-            "website": "https:\/\/engageusers.ai"
-        }
-    },
-    "errors": {
-        "NotEnoughPermissionsWallet": "אין מספיק הרשאות לקרוא את הארנק של המשתמש הזה",
-        "ThisUserHaveNoWallet": "למשתמש זה לא הוקצה ארנק",
-        "TheWalletOfThisUserInvalid": "הארנק של משתמש זה לא חוקי",
-        "WalletInvalid": "כתובת הארנק לא חוקית"
-    }
+	"avatar": {
+		"Someone": "\u05de\u05b4\u05d9\u05e9\u05c1\u05b6\u05d4\u05d5\u05bc"
+	},
+	"identifier": {
+		"types": {
+			"email": "\u05d0\u05d9\u05de\u05d9\u05d9\u05dc",
+			"mobile": "\u05e0\u05d9\u05d9\u05d3",
+			"web3": "\u05d0\u05d9\u05e0\u05d8\u05e8\u05e0\u05d8 3"
+		}
+	},
+	"clipboard": {
+		"Copied": "\u05de\u05d5\u05bc\u05e2\u05b2\u05ea\u05b8\u05e7! \u05e2\u05db\u05e9\u05d9\u05d5 \u05d0\u05ea\u05d4 \u05d9\u05db\u05d5\u05dc \u05dc\u05d4\u05d3\u05d1\u05d9\u05e7 \u05d0\u05d5\u05ea\u05d5 \u05d1\u05db\u05dc \u05de\u05e7\u05d5\u05dd."
+	},
+	"analytics": {
+		"Title": "\u05e0\u05d9\u05ea\u05d5\u05d7",
+		"Daily": "\u05d9\u05d5\u05dd \u05d9\u05d5\u05de\u05d9",
+		"Weekly": "\u05e9\u05c1\u05b0\u05d1\u05d5\u05bc\u05e2\u05b4\u05d9",
+		"Monthly": "\u05d9\u05b7\u05e8\u05d7\u05d5\u05b9\u05df",
+		"Application": "\u05d9\u05d9\u05e9\u05d5\u05dd",
+		"Pages": "\u05d3\u05e4\u05d9\u05dd",
+		"Services": "\u05e9\u05d9\u05e8\u05d5\u05ea\u05d9\u05dd",
+		"Faq": "\u05e9\u05d0\u05dc\u05d5\u05ea \u05e0\u05e4\u05d5\u05e6\u05d5\u05ea",
+		"WeekDays": "\u05d9\u05de\u05d9 \u05d7\u05d5\u05dc"
+	},
+	"actions": {
+		"LogIn": "\u05d4\u05ea\u05d7\u05d1\u05e8\u05d5\u05ea",
+		"LogOut": "\u05dc\u05d4\u05ea\u05e0\u05ea\u05e7"
+	},
+	"activate": {
+		"OneTimeCode": "\u05d4\u05db\u05e0\u05e1 \u05d0\u05ea \u05d4\u05e7\u05d5\u05d3 \u05e9\u05e7\u05d9\u05d1\u05dc\u05ea:",
+		"SetAsPrimary": "\u05d4\u05d2\u05d3\u05e8 {{1}} \u05db {{2}} \u05d4\u05e2\u05d9\u05e7\u05e8\u05d9 \u05e9\u05dc\u05d9",
+		"ChoosePassPhrase": "\u05d1\u05d7\u05e8 <strong>\u05d1\u05d9\u05d8\u05d5\u05d9 \u05e1\u05d9\u05e1\u05de\u05d4</strong> \u05dc\u05d4\u05ea\u05d7\u05d1\u05e8 \u05d0\u05d9\u05ea\u05d5.<br> \u05d1\u05d9\u05d8\u05d5\u05d9 \u05e4\u05e9\u05d5\u05d8 \u05d4\u05de\u05d5\u05e8\u05db\u05d1 \u05de\u05db\u05de\u05d4 \u05de\u05d9\u05dc\u05d9\u05dd \u05e9\u05ea\u05d6\u05db\u05e8\u05d5 \u05d1\u05e7\u05dc\u05d5\u05ea.",
+		"ChoosePassPhraseSeeSuggestions": "\u05d1\u05d7\u05e8 <strong>\u05d1\u05d9\u05d8\u05d5\u05d9 \u05e1\u05d9\u05e1\u05de\u05d4</strong> \u05d8\u05d5\u05d1 \u05db\u05d3\u05d9 \u05dc\u05d4\u05d2\u05df \u05e2\u05dc \u05d4\u05d7\u05e9\u05d1\u05d5\u05df \u05e9\u05dc\u05da. \u05e2\u05d9\u05d9\u05df \u05d1\u05d4\u05e6\u05e2\u05d5\u05ea \u05dc\u05db\u05de\u05d4 \u05e8\u05e2\u05d9\u05d5\u05e0\u05d5\u05ea.",
+		"LogOutAndTryAgain": "\u05e6\u05d0 \u05d5\u05e0\u05e1\u05d4 \u05e9\u05d5\u05d1",
+		"IfYouFeel": "\u05d0\u05dd \u05d0\u05ea\u05d4 \u05de\u05e8\u05d2\u05d9\u05e9 \u05e9\u05de\u05e9\u05d4\u05d5 \u05d4\u05e9\u05ea\u05d1\u05e9, \u05d0\u05ea\u05d4 \u05d9\u05db\u05d5\u05dc",
+		"SetIdentifierButtonTitle": "\u05dc\u05d4\u05ea\u05d7\u05d9\u05dc \u05de\u05d7\u05d3\u05e9",
+		"ActivateMyAccount": "\u05d4\u05e4\u05e2\u05dc \u05d0\u05ea \u05d4\u05d7\u05e9\u05d1\u05d5\u05df \u05e9\u05dc\u05d9"
+	},
+	"session": {
+		"GetStarted": "\u05dc\u05d4\u05ea\u05d7\u05d9\u05dc"
+	},
+	"authorize": {
+		"GetStarted": "\u05dc\u05d4\u05ea\u05d7\u05d9\u05dc",
+		"Authorize": "\u05dc\u05b0\u05d0\u05b7\u05e9\u05c1\u05b5\u05e8",
+		"TermsLabel": "\u05e7\u05e8\u05d0\u05ea\u05d9 \u05d5\u05d0\u05e0\u05d9 \u05de\u05e1\u05db\u05d9\u05dd<br> \u05dc {{link}}",
+		"TermsTitle": "\u05ea\u05e0\u05d0\u05d9\u05dd",
+		"mustAgree": "\u05e8\u05d0\u05e9\u05d9\u05ea \u05e2\u05dc\u05d9\u05da \u05dc\u05d4\u05e1\u05db\u05d9\u05dd \u05dc\u05ea\u05e0\u05d0\u05d9\u05dd."
+	},
+	"register": {
+		"TermsLabel": "\u05d0\u05e0\u05d9 \u05de\u05e7\u05d1\u05dc \u05d0\u05ea \u05d4 {{link}}",
+		"TermsTitle": "\u05ea\u05e0\u05d0\u05d9\u05dd"
+	},
+	"notifications": {
+		"title": "\u05e8\u05b0\u05e9\u05c1\u05d5\u05bc\u05ea",
+		"prompt": "\u05d4\u05d0\u05dd \u05d0\u05ea\u05d4 \u05e8\u05d5\u05e6\u05d4 \u05dc\u05d4\u05e4\u05e2\u05d9\u05dc \u05d4\u05ea\u05e8\u05d0\u05d5\u05ea? \u05ea\u05e7\u05d1\u05dc \u05e2\u05d3\u05db\u05d5\u05e0\u05d9\u05dd \u05d1\u05d6\u05de\u05df \u05d0\u05de\u05ea \u05dc\u05d2\u05d1\u05d9 \u05d3\u05d1\u05e8\u05d9\u05dd \u05e9\u05d7\u05e9\u05d5\u05d1\u05d9\u05dd \u05dc\u05da.",
+		"yes": "\u05db\u05df",
+		"no": "\u05dc\u05d0",
+		"WelcomePleaseVerifyEmail": "\u05d1\u05e8\u05d5\u05da \u05d4\u05d1\u05d0! \u05e0\u05d0 \u05dc\u05d0\u05de\u05ea \u05d0\u05ea \u05db\u05ea\u05d5\u05d1\u05ea \u05d4\u05d3\u05d5\u05d0&quot;\u05dc \u05e9\u05dc\u05da.",
+		"WelcomeVerifyEmail": "\u05d1\u05e8\u05d5\u05da \u05d4\u05d1\u05d0! \u05d0\u05de\u05ea \u05d0\u05ea \u05db\u05ea\u05d5\u05d1\u05ea \u05d4\u05d3\u05d5\u05d0&quot;\u05dc \u05e9\u05dc\u05da.",
+		"ForgetPass": "\u05d4\u05d9\u05d9, \u05e9\u05db\u05d7\u05ea \u05d0\u05ea \u05de\u05e9\u05e4\u05d8 \u05d4\u05e1\u05d9\u05e1\u05de\u05d4 \u05e9\u05dc\u05da?",
+		"PassphraseSaved": "\u05d1\u05d9\u05d8\u05d5\u05d9 \u05d4\u05e1\u05d9\u05e1\u05de\u05d4 \u05e9\u05dc\u05da \u05e0\u05e9\u05de\u05e8.",
+		"IdentifierActivated": "{{type}} \u05e9\u05dc\u05da \u05d4\u05d5\u05e4\u05e2\u05dc.",
+		"CompletedActivation": "\u05d4\u05e9\u05dc\u05de\u05ea \u05d0\u05ea \u05d4\u05e4\u05e2\u05dc\u05ea \u05d4\u05de\u05e9\u05ea\u05de\u05e9.",
+		"CompletedActivationLogIn": "\u05d4\u05e9\u05dc\u05de\u05ea \u05d0\u05ea \u05d4\u05e4\u05e2\u05dc\u05ea \u05d4\u05de\u05e9\u05ea\u05de\u05e9. \u05e0\u05e1\u05d4 \u05dc\u05d4\u05d9\u05db\u05e0\u05e1 \u05e2\u05db\u05e9\u05d9\u05d5."
+	},
+	"contacts": {
+		"dialog": {
+			"title": "\u05d1\u05d7\u05e8 \u05d0\u05d9\u05e9 \u05e7\u05e9\u05e8",
+			"CreateAccount": "+ \u05d0\u05d9\u05e9 \u05e7\u05e9\u05e8 \u05d7\u05d3\u05e9",
+			"CreateAccountNotFound": "Q.Users.Cordova.UI.create \u05dc\u05d0 \u05e0\u05de\u05e6\u05d0",
+			"SearchByName": "\u05d7\u05e4\u05e9 \u05dc\u05e4\u05d9 \u05e9\u05dd",
+			"EmptyContacts": "\u05d0\u05e0\u05e9\u05d9 \u05e7\u05e9\u05e8 \u05dc\u05d0 \u05e0\u05de\u05e6\u05d0\u05d5..."
+		},
+		"select": {
+			"title": "\u05d1\u05d7\u05e8 \u05d0\u05d9\u05e9 \u05e7\u05e9\u05e8 \u05e9\u05dc {{displayName}}"
+		},
+		"require": {
+			"Instructions": "\u05ea\u05e6\u05d8\u05e8\u05da \u05dc\u05d0\u05e4\u05e9\u05e8 \u05d2\u05d9\u05e9\u05d4 \u05dc\u05db\u05dc \u05d0\u05e0\u05e9\u05d9 \u05d4\u05e7\u05e9\u05e8 \u05db\u05d3\u05d9 \u05e9\u05d6\u05d4 \u05d9\u05e2\u05d1\u05d5\u05d3."
+		}
+	},
+	"usersContacts": {
+		"selectLabel": "\u05d0\u05e0\u05d0 \u05d1\u05d7\u05e8 \u05ea\u05d5\u05d5\u05d9\u05ea.",
+		"inviteUser": "\u05d4\u05d6\u05de\u05df \u05de\u05e9\u05ea\u05de\u05e9\u05d9\u05dd",
+		"selectRole": "\u05d1\u05d7\u05e8 \u05ea\u05e4\u05e7\u05d9\u05d3",
+		"inviteRole": "\u05d4\u05d6\u05de\u05df {{role}}"
+	},
+	"invalidLanguageSelected": "\u05e0\u05d1\u05d7\u05e8\u05d4 \u05e9\u05e4\u05d4 \u05dc\u05d0 \u05d7\u05d5\u05e7\u05d9\u05ea",
+	"platforms": {
+		"wallet": "\u05d0\u05e8\u05e0\u05e7",
+		"broadcast": "\u05de\u05b4\u05e9\u05c1\u05d3\u05b8\u05e8"
+	},
+	"login": {
+		"title": "\u05d1\u05e8\u05d5\u05db\u05d9\u05dd \u05d4\u05d1\u05d0\u05d9\u05dd \u05dc {{AppName}}",
+		"directions": {
+			"GetStarted": "\u05dc\u05d0\u05df \u05e2\u05dc\u05d9\u05e0\u05d5 \u05dc\u05e9\u05dc\u05d5\u05d7 \u05d4\u05ea\u05e8\u05d0\u05d5\u05ea?",
+			"NoRegister": "\u05d4\u05d9\u05db\u05e0\u05e1 \u05d0\u05dd \u05d9\u05e9 \u05dc\u05da \u05d7\u05e9\u05d1\u05d5\u05df.",
+			"WasInvited": "\u05de\u05d4\u05d9 \u05d4\u05d3\u05e8\u05da \u05d4\u05d8\u05d5\u05d1\u05d4 \u05d1\u05d9\u05d5\u05ea\u05e8 \u05dc\u05d4\u05d2\u05d9\u05e2 \u05d0\u05dc\u05d9\u05da?"
+		},
+		"directionsNoRegister": "\u05d4\u05d9\u05db\u05e0\u05e1 \u05d0\u05dd \u05d9\u05e9 \u05dc\u05da \u05d7\u05e9\u05d1\u05d5\u05df.",
+		"goButton": "\u2794",
+		"passphrase": "\u05d4\u05d6\u05df \u05d0\u05ea \u05de\u05e9\u05e4\u05d8 \u05d4\u05e1\u05d9\u05e1\u05de\u05d4 \u05e9\u05dc\u05da:",
+		"loginButton": "\u05dc\u05d4\u05ea\u05d7\u05d9\u05dc",
+		"registerButton": "\u05dc\u05d4\u05ea\u05d7\u05d9\u05dc",
+		"resendButton": "\u05e9\u05dc\u05d7 \u05d4\u05d5\u05d3\u05e2\u05ea \u05d4\u05e4\u05e2\u05dc\u05d4",
+		"forgot": "\u05e9\u05db\u05d7 \u05de\u05d6\u05d4?",
+		"resendConfirm": "\u05d4\u05d0\u05dd \u05d1\u05e8\u05e6\u05d5\u05e0\u05da \u05dc\u05e9\u05dc\u05d5\u05d7 \u05d4\u05d5\u05d3\u05e2\u05d4 \u05dc\u05d0\u05d9\u05e4\u05d5\u05e1 \u05d1\u05d9\u05d8\u05d5\u05d9 \u05d4\u05e1\u05d9\u05e1\u05de\u05d4 \u05e9\u05dc\u05da?",
+		"resendSuccess": "\u05d1\u05d3\u05d5\u05e7 \u05d0\u05dd \u05d9\u05e9 \u05d4\u05d5\u05d3\u05e2\u05d4 \u05dc\u05d0\u05d9\u05e4\u05d5\u05e1 \u05d1\u05d9\u05d8\u05d5\u05d9 \u05d4\u05e1\u05d9\u05e1\u05de\u05d4 \u05e9\u05dc\u05da",
+		"resendClose": "\u05e1\u05d2\u05d5\u05e8",
+		"noPassphrase": "\u05dc\u05e4\u05e0\u05d9 \u05e9\u05ea\u05d5\u05db\u05dc \u05dc\u05d4\u05ea\u05d7\u05d1\u05e8, \u05e2\u05dc\u05d9\u05da \u05dc\u05d4\u05d2\u05d3\u05d9\u05e8 \u05d1\u05d9\u05d8\u05d5\u05d9 \u05e1\u05d9\u05e1\u05de\u05d4 \u05e2\u05dc \u05d9\u05d3\u05d9 \u05dc\u05d7\u05d9\u05e6\u05d4 \u05e2\u05dc \u05d4\u05e7\u05d9\u05e9\u05d5\u05e8 \u05d1\u05d4\u05d5\u05d3\u05e2\u05ea \u05d4\u05d4\u05e4\u05e2\u05dc\u05d4 \u05e9\u05dc\u05da.",
+		"notVerified": "\u05e2\u05dc\u05d9\u05da \u05dc\u05e9\u05dc\u05d5\u05d7 \u05dc\u05e2\u05e6\u05de\u05da \u05d4\u05d5\u05d3\u05e2\u05ea \u05d4\u05e4\u05e2\u05dc\u05d4 \u05db\u05d3\u05d9 \u05dc\u05d4\u05d9\u05db\u05e0\u05e1.",
+		"emailExists": "\u05d4\u05d0\u05dd \u05e0\u05d9\u05e1\u05d9\u05ea \u05dc\u05d4\u05d9\u05e8\u05e9\u05dd \u05e2\u05dd \u05d4\u05d0\u05d9\u05de\u05d9\u05d9\u05dc \u05d4\u05d6\u05d4 \u05d1\u05e2\u05d1\u05e8? \u05d0\u05dd \u05db\u05df, \u05d1\u05d3\u05d5\u05e7 \u05d0\u05ea \u05ea\u05d9\u05d1\u05ea \u05d4\u05d3\u05d5\u05d0\u05e8 \u05d4\u05e0\u05db\u05e0\u05e1 \u05e9\u05dc\u05da \u05db\u05d3\u05d9 \u05dc\u05d4\u05e4\u05e2\u05d9\u05dc \u05d0\u05ea \u05d7\u05e9\u05d1\u05d5\u05e0\u05da. <a href='#resend' class='Q_button Users_activation_resend'>\u05dc\u05d7\u05e5 \u05db\u05d3\u05d9 \u05dc\u05e9\u05dc\u05d5\u05d7 \u05de\u05d7\u05d3\u05e9 \u05d0\u05ea \u05d4\u05d4\u05d5\u05d3\u05e2\u05d4</a>",
+		"mobileExists": "\u05e0\u05d9\u05e1\u05d9\u05ea \u05dc\u05d4\u05d9\u05e8\u05e9\u05dd \u05e2\u05dd \u05de\u05e1\u05e4\u05e8 \u05d4\u05e0\u05d9\u05d9\u05d3 \u05d4\u05d6\u05d4 \u05d1\u05e2\u05d1\u05e8? \u05d0\u05dd \u05db\u05df, \u05d1\u05d3\u05d5\u05e7 \u05d0\u05ea \u05d4-SMS \u05e9\u05dc\u05da \u05db\u05d3\u05d9 \u05dc\u05d4\u05e4\u05e2\u05d9\u05dc \u05d0\u05ea \u05d7\u05e9\u05d1\u05d5\u05e0\u05da. <a href='#resend' class='Q_button Users_activation_resend'>\u05dc\u05d7\u05e5 \u05db\u05d3\u05d9 \u05dc\u05e9\u05dc\u05d5\u05d7 \u05de\u05d7\u05d3\u05e9 \u05d0\u05ea \u05d4\u05d4\u05d5\u05d3\u05e2\u05d4</a>",
+		"usingOther": "\u05d0\u05d5 \u05e9\u05d0\u05ea\u05d4 \u05d9\u05db\u05d5\u05dc",
+		"connectPlatforms": "\u05d0\u05d5 \u05d4\u05ea\u05d7\u05d1\u05e8 \u05d1\u05d0\u05de\u05e6\u05e2\u05d5\u05ea:",
+		"prompt": "\u05d1\u05d7\u05e8 \u05e9\u05dd \u05de\u05e9\u05ea\u05de\u05e9:",
+		"newUser": "\u05d0\u05d5 \u05e6\u05d5\u05e8 \u05d7\u05e9\u05d1\u05d5\u05df \u05d7\u05d3\u05e9 \u05dc\u05de\u05d8\u05d4",
+		"placeholders": {
+			"identifier": "# \u05d4\u05e0\u05d9\u05d9\u05d3 \u05d0\u05d5 \u05d4\u05d0\u05d9\u05de\u05d9\u05d9\u05dc \u05e9\u05dc\u05da",
+			"mobile": "\u05d4\u05d6\u05df \u05d0\u05ea \u05de\u05e1\u05e4\u05e8 \u05d4\u05d8\u05dc\u05e4\u05d5\u05df \u05d4\u05e0\u05d9\u05d9\u05d3 \u05e9\u05dc\u05da",
+			"email": "\u05d4\u05d6\u05df \u05d0\u05ea \u05db\u05ea\u05d5\u05d1\u05ea \u05d4\u05d3\u05d5\u05d0&quot;\u05dc \u05e9\u05dc\u05da",
+			"username": "\u05d4\u05e9\u05ea\u05de\u05e9 \u05d1\u05d0\u05d5\u05ea\u05d9\u05d5\u05ea \u05d5\u05de\u05e1\u05e4\u05e8\u05d9\u05dd \u05d1\u05dc\u05d1\u05d3"
+		},
+		"confirmTerms": "\u05d4\u05d0\u05dd \u05dc\u05e7\u05d1\u05dc \u05d0\u05ea \u05d4\u05ea\u05e0\u05d0\u05d9\u05dd \u05d5\u05d4\u05d4\u05d2\u05d1\u05dc\u05d5\u05ea?",
+		"facebookNoEmail": "\u05d1\u05d7\u05e9\u05d1\u05d5\u05df \u05d4\u05e4\u05d9\u05d9\u05e1\u05d1\u05d5\u05e7 \u05e9\u05dc\u05da \u05d7\u05e1\u05e8\u05d4 \u05db\u05ea\u05d5\u05d1\u05ea \u05d0\u05d9\u05de\u05d9\u05d9\u05dc \u05de\u05d0\u05d5\u05e9\u05e8\u05ea. \u05e4\u05e9\u05d5\u05d8 \u05d4\u05ea\u05d7\u05d1\u05e8 \u05d1\u05e6\u05d5\u05e8\u05d4 \u05d4\u05de\u05e7\u05d5\u05e8\u05d9\u05ea.",
+		"picTooltip": "\u05d0\u05ea\u05d4 \u05d9\u05db\u05d5\u05dc \u05dc\u05e9\u05e0\u05d5\u05ea \u05ea\u05de\u05d5\u05e0\u05d4 \u05d6\u05d5 \u05de\u05d0\u05d5\u05d7\u05e8 \u05d9\u05d5\u05ea\u05e8",
+		"web3": {
+			"payload": "\u05d4\u05d9\u05db\u05e0\u05e1 \u05dc {{host}} \u05d1\u05d6\u05de\u05df {{timestamp}}",
+			"alert": {
+				"title": "\u05de\u05e4\u05e0\u05d4 \u05de\u05d7\u05d3\u05e9 \u05dc\u05d0\u05e8\u05e0\u05e7",
+				"content": "\u05dc\u05d0\u05d7\u05e8 \u05e9\u05ea\u05e1\u05d2\u05d5\u05e8 \u05d0\u05ea \u05d4\u05d3\u05d5-\u05e9\u05d9\u05d7 \u05d4\u05d6\u05d4, \u05ea\u05d5\u05e2\u05d1\u05e8 \u05dc\u05d0\u05e8\u05e0\u05e7 \u05e9\u05dc\u05da. \u05dc\u05d0\u05d7\u05e8 \u05d4\u05db\u05e0\u05d9\u05e1\u05d4, \u05d7\u05d6\u05d5\u05e8 \u05dc\u05d3\u05e3 \u05d6\u05d4."
+			},
+			"ConnectWallet": "\u05d7\u05d1\u05e8 \u05d0\u05e8\u05e0\u05e7"
+		}
+	},
+	"setIdentifier": {
+		"title": "\u05d4\u05d5\u05e1\u05e3 \u05d3\u05e8\u05da \u05dc\u05d4\u05ea\u05d7\u05d1\u05e8",
+		"sendMessage": "\u05e9\u05dc\u05d7 \u05d4\u05d5\u05d3\u05e2\u05ea \u05d4\u05e4\u05e2\u05dc\u05d4",
+		"placeholders": {
+			"identifier": "\u05d4\u05d6\u05df \u05d0\u05ea \u05de\u05e1\u05e4\u05e8 \u05d4\u05d8\u05dc\u05e4\u05d5\u05df \u05d4\u05e0\u05d9\u05d9\u05d3 \u05d0\u05d5 \u05d4\u05d0\u05d9\u05de\u05d9\u05d9\u05dc \u05e9\u05dc\u05da",
+			"mobile": "\u05d4\u05d6\u05df \u05d0\u05ea \u05de\u05e1\u05e4\u05e8 \u05d4\u05e0\u05d9\u05d9\u05d3 \u05e9\u05dc\u05da",
+			"email": "\u05d4\u05d6\u05df \u05d0\u05ea \u05db\u05ea\u05d5\u05d1\u05ea \u05d4\u05d3\u05d5\u05d0&quot;\u05dc \u05e9\u05dc\u05da",
+			"username": "\u05e9\u05dd \u05de\u05e9\u05ea\u05de\u05e9"
+		}
+	},
+	"prompt": {
+		"title": "\u05d7\u05e9\u05d1\u05d5\u05df {{Platform}}",
+		"areUsing": "\u05d0\u05ea\u05d4 \u05de\u05e9\u05ea\u05de\u05e9 \u05d1 {{platform}} as",
+		"noLongerUsing": "\u05d0\u05d9\u05e0\u05da \u05de\u05d7\u05d5\u05d1\u05e8 \u05d9\u05d5\u05ea\u05e8 \u05dc {{platform}} as",
+		"doAuth": "\u05d4\u05ea\u05d7\u05d1\u05e8 \u05e2\u05dd \u05d7\u05e9\u05d1\u05d5\u05df \u05d6\u05d4",
+		"doSwitch": "\u05e2\u05d1\u05d5\u05e8 \u05dc\u05d7\u05e9\u05d1\u05d5\u05df \u05d6\u05d4"
+	},
+	"roles": {
+		"Owner": "\u05d1\u05e2\u05dc\u05d9\u05dd",
+		"Admin": "\u05de\u05e0\u05d4\u05dc \u05de\u05e2\u05e8\u05db\u05ea",
+		"Member": "\u05d7\u05d1\u05e8",
+		"Guest": "\u05d0\u05d5\u05b9\u05e8\u05b5\u05d7\u05b7",
+		"Host": "\u05de\u05e0\u05d7\u05d4"
+	},
+	"web3": {
+		"WrongMethod": "\u05e9\u05d9\u05d8\u05ea \u05d7\u05d5\u05d6\u05d4 \u05e9\u05d2\u05d5\u05d9\u05d4 {{methodName}}",
+		"ChangeWallet": "\u05e9\u05e0\u05d4 \u05d0\u05e8\u05e0\u05e7",
+		"ConnectWallet": "\u05d7\u05d1\u05e8 \u05d0\u05e8\u05e0\u05e7",
+		"AfterWalletConnectedPleaseRefresh": "\u05dc\u05d0\u05d7\u05e8 \u05d7\u05d9\u05d1\u05d5\u05e8 \u05d4\u05d0\u05e8\u05e0\u05e7 \u05d0\u05e0\u05d0 \u05e8\u05e2\u05e0\u05df \u05d3\u05e3 \u05d6\u05d4 \u05db\u05d3\u05d9 \u05dc\u05d6\u05d4\u05d5\u05ea \u05d0\u05ea \u05d4\u05d0\u05e8\u05e0\u05e7"
+	},
+	"labels": {
+		"addToPhonebook": "\u05d4\u05d5\u05e1\u05e3 \u05dc\u05d8\u05dc\u05e4\u05d5\u05df \u05e9\u05dc\u05d9 \u05d0\u05e0\u05e9\u05d9 \u05e7\u05e9\u05e8",
+		"addLabel": "\u05de\u05e2\u05e8\u05db\u05ea \u05d9\u05d7\u05e1\u05d9\u05dd \u05d7\u05d3\u05e9\u05d4",
+		"prompt": "\u05ea\u05df \u05dc\u05d6\u05d4 \u05e9\u05dd",
+		"titles": {
+			"Users/owners": "\u05d1\u05e2\u05dc\u05d9\u05dd",
+			"Users/admins": "\u05de\u05e0\u05d4\u05dc\u05d9 \u05de\u05e2\u05e8\u05db\u05ea",
+			"Users/members": "\u05d7\u05d1\u05e8\u05d9\u05dd",
+			"Users/guests": "\u05d0\u05d5\u05e8\u05d7\u05d9\u05dd",
+			"Users/hosts": "\u05de\u05d0\u05e8\u05d7\u05d9\u05dd",
+			"Users/testers": "\u05d1\u05d5\u05d3\u05e7\u05d9\u05dd",
+			"Users/speakers": "\u05e8\u05de\u05e7\u05d5\u05dc\u05d9\u05dd"
+		}
+	},
+	"people": {
+		"People": "\u05d0\u05b2\u05e0\u05b8\u05e9\u05c1\u05b4\u05d9\u05dd"
+	},
+	"external": {
+		"defaults": {
+			"title": "",
+			"bio": "\u05d1\u05d5\u05d8 \u05de\u05e2\u05d5\u05e8\u05d1\u05d5\u05ea \u05d1\u05e4\u05d5\u05e8\u05d5\u05dd. \u05e7\u05d1\u05dc \u05de\u05e9\u05dc\u05da \u05d1\u05db\u05ea\u05d5\u05d1\u05ea https://engageusers.ai",
+			"website": "https://engageusers.ai"
+		}
+	},
+	"errors": {
+		"NotEnoughPermissionsWallet": "\u05d0\u05d9\u05df \u05de\u05e1\u05e4\u05d9\u05e7 \u05d4\u05e8\u05e9\u05d0\u05d5\u05ea \u05dc\u05e7\u05e8\u05d5\u05d0 \u05d0\u05ea \u05d4\u05d0\u05e8\u05e0\u05e7 \u05e9\u05dc \u05d4\u05de\u05e9\u05ea\u05de\u05e9 \u05d4\u05d6\u05d4",
+		"ThisUserHaveNoWallet": "\u05dc\u05de\u05e9\u05ea\u05de\u05e9 \u05d6\u05d4 \u05dc\u05d0 \u05d4\u05d5\u05e7\u05e6\u05d4 \u05d0\u05e8\u05e0\u05e7",
+		"TheWalletOfThisUserInvalid": "\u05d4\u05d0\u05e8\u05e0\u05e7 \u05e9\u05dc \u05de\u05e9\u05ea\u05de\u05e9 \u05d6\u05d4 \u05dc\u05d0 \u05d7\u05d5\u05e7\u05d9",
+		"WalletInvalid": "\u05db\u05ea\u05d5\u05d1\u05ea \u05d4\u05d0\u05e8\u05e0\u05e7 \u05dc\u05d0 \u05d7\u05d5\u05e7\u05d9\u05ea"
+	}
 }

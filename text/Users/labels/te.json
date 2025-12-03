@@ -1,15 +1,15 @@
 {
-    "addToPhonebook": "నా ఫోన్ పరిచయాలకు జోడించండి",
-    "addLabel": "కొత్త సంబంధం",
-    "newRole": "కొత్త పాత్ర",
-    "prompt": "దానికి ఒక పేరు పెట్టండి",
-    "newLabel": "కొత్త లేబుల్",
-    "editLabel": "లేబుల్‌ని సవరించండి",
-    "addBtn": "జోడించు",
-    "editBtn": "సేవ్ చేయండి",
-    "canManageDialogTitle": "పాత్రలను నిర్వహించగలరు",
-    "canManageBtn": "నిర్వహించగలరు...",
-    "titlePlaceholder": "శీర్షిక",
-    "selectOptionTitle_web2": "స్థానికుడు",
-    "selectOptionTitle_web3": "వెబ్3"
+	"addToPhonebook": "\u0c28\u0c3e \u0c2b\u0c4b\u0c28\u0c4d \u0c2a\u0c30\u0c3f\u0c1a\u0c2f\u0c3e\u0c32\u0c15\u0c41 \u0c1c\u0c4b\u0c21\u0c3f\u0c02\u0c1a\u0c02\u0c21\u0c3f",
+	"addLabel": "\u0c15\u0c4a\u0c24\u0c4d\u0c24 \u0c38\u0c02\u0c2c\u0c02\u0c27\u0c02",
+	"newRole": "\u0c15\u0c4a\u0c24\u0c4d\u0c24 \u0c2a\u0c3e\u0c24\u0c4d\u0c30",
+	"prompt": "\u0c26\u0c3e\u0c28\u0c3f\u0c15\u0c3f \u0c12\u0c15 \u0c2a\u0c47\u0c30\u0c41 \u0c2a\u0c46\u0c1f\u0c4d\u0c1f\u0c02\u0c21\u0c3f",
+	"newLabel": "\u0c15\u0c4a\u0c24\u0c4d\u0c24 \u0c32\u0c47\u0c2c\u0c41\u0c32\u0c4d",
+	"editLabel": "\u0c32\u0c47\u0c2c\u0c41\u0c32\u0c4d\u200c\u0c28\u0c3f \u0c38\u0c35\u0c30\u0c3f\u0c02\u0c1a\u0c02\u0c21\u0c3f",
+	"addBtn": "\u0c1c\u0c4b\u0c21\u0c3f\u0c02\u0c1a\u0c41",
+	"editBtn": "\u0c38\u0c47\u0c35\u0c4d \u0c1a\u0c47\u0c2f\u0c02\u0c21\u0c3f",
+	"canManageDialogTitle": "\u0c2a\u0c3e\u0c24\u0c4d\u0c30\u0c32\u0c28\u0c41 \u0c28\u0c3f\u0c30\u0c4d\u0c35\u0c39\u0c3f\u0c02\u0c1a\u0c17\u0c32\u0c30\u0c41",
+	"canManageBtn": "\u0c28\u0c3f\u0c30\u0c4d\u0c35\u0c39\u0c3f\u0c02\u0c1a\u0c17\u0c32\u0c30\u0c41...",
+	"titlePlaceholder": "\u0c36\u0c40\u0c30\u0c4d\u0c37\u0c3f\u0c15",
+	"selectOptionTitle_web2": "\u0c38\u0c4d\u0c25\u0c3e\u0c28\u0c3f\u0c15\u0c41\u0c21\u0c41",
+	"selectOptionTitle_web3": "\u0c35\u0c46\u0c2c\u0c4d3"
 }

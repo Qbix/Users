@@ -1,22 +1,22 @@
 {
-    "activation": {
-        "Subject": "Vítejte! Ověřte prosím svou e-mailovou adresu.",
-        "Thanks": "Vítejte v {{1}}",
-        "ReallyYourEmail": "Je to opravdu vaše e-mailová adresa, {{1}}? Pokud ano, klikněte <a href='{{2}}'>sem<\/a> a nastavte si přístupové heslo a aktivujte svůj účet.",
-        "SeeYou": "Uvidíme se na <a href='{{1}}'>{{2}}<\/a> !",
-        "OtherwiseClickLink": "V opačném případě klikněte na <a href='{{1}}'>tento odkaz<\/a> ."
-    },
-    "identifier": {
-        "Subject": "Vítejte! Ověřte svou e-mailovou adresu."
-    },
-    "resend": {
-        "Subject": "Hej, zapomněl jsi heslo?",
-        "Thanks": "Děkujeme za návštěvu {{1}}",
-        "YouAreReceiving": "Tento e-mail jste obdrželi, protože někdo zadal vaši e-mailovou adresu a klikl na „zapomněl jsem heslo“. Pokud jste to nebyli vy, jednoduše tuto zprávu ignorujte.",
-        "Reset": "Chcete-li resetovat přístupovou frázi, klikněte na {{1}}",
-        "SetUpPassphrase": "Nastavte přístupovou frázi",
-        "DomainCode": "Pokud je webová stránka již otevřena ve vašem prohlížeči, můžete zadat kód"
-    },
-    "SeeYou": "Uvidíme se na {{1}}!",
-    "LinkToUnsubscribe": "Zde je odkaz pro <a href='{{1}}'>odhlášení<\/a> , pokud již nechcete dostávat žádné další e-maily."
+	"activation": {
+		"Subject": "V\u00edtejte! Ov\u011b\u0159te pros\u00edm svou e-mailovou adresu.",
+		"Thanks": "V\u00edtejte v {{1}}",
+		"ReallyYourEmail": "Je to opravdu va\u0161e e-mailov\u00e1 adresa, {{1}}? Pokud ano, klikn\u011bte <a href='{{2}}'>sem</a> a nastavte si p\u0159\u00edstupov\u00e9 heslo a aktivujte sv\u016fj \u00fa\u010det.",
+		"SeeYou": "Uvid\u00edme se na <a href='{{1}}'>{{2}}</a> !",
+		"OtherwiseClickLink": "V opa\u010dn\u00e9m p\u0159\u00edpad\u011b klikn\u011bte na <a href='{{1}}'>tento odkaz</a> ."
+	},
+	"identifier": {
+		"Subject": "V\u00edtejte! Ov\u011b\u0159te svou e-mailovou adresu."
+	},
+	"resend": {
+		"Subject": "Hej, zapomn\u011bl jsi heslo?",
+		"Thanks": "D\u011bkujeme za n\u00e1v\u0161t\u011bvu {{1}}",
+		"YouAreReceiving": "Tento e-mail jste obdr\u017eeli, proto\u017ee n\u011bkdo zadal va\u0161i e-mailovou adresu a klikl na \u201ezapomn\u011bl jsem heslo\u201c. Pokud jste to nebyli vy, jednodu\u0161e tuto zpr\u00e1vu ignorujte.",
+		"Reset": "Chcete-li resetovat p\u0159\u00edstupovou fr\u00e1zi, klikn\u011bte na {{1}}",
+		"SetUpPassphrase": "Nastavte p\u0159\u00edstupovou fr\u00e1zi",
+		"DomainCode": "Pokud je webov\u00e1 str\u00e1nka ji\u017e otev\u0159ena ve va\u0161em prohl\u00ed\u017ee\u010di, m\u016f\u017eete zadat k\u00f3d"
+	},
+	"SeeYou": "Uvid\u00edme se na {{1}}!",
+	"LinkToUnsubscribe": "Zde je odkaz pro <a href='{{1}}'>odhl\u00e1\u0161en\u00ed</a> , pokud ji\u017e nechcete dost\u00e1vat \u017e\u00e1dn\u00e9 dal\u0161\u00ed e-maily."
 }

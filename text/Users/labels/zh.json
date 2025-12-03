@@ -1,15 +1,15 @@
 {
-    "addToPhonebook": "添加到我的手机联系人",
-    "addLabel": "新关系",
-    "newRole": "新角色",
-    "prompt": "给它起个名字",
-    "newLabel": "新标签",
-    "editLabel": "编辑标签",
-    "addBtn": "添加",
-    "editBtn": "节省",
-    "canManageDialogTitle": "可以管理角色",
-    "canManageBtn": "可以管理...",
-    "titlePlaceholder": "标题",
-    "selectOptionTitle_web2": "本国的",
-    "selectOptionTitle_web3": "网络3"
+	"addToPhonebook": "\u6dfb\u52a0\u5230\u6211\u7684\u624b\u673a\u8054\u7cfb\u4eba",
+	"addLabel": "\u65b0\u5173\u7cfb",
+	"newRole": "\u65b0\u89d2\u8272",
+	"prompt": "\u7ed9\u5b83\u8d77\u4e2a\u540d\u5b57",
+	"newLabel": "\u65b0\u6807\u7b7e",
+	"editLabel": "\u7f16\u8f91\u6807\u7b7e",
+	"addBtn": "\u6dfb\u52a0",
+	"editBtn": "\u8282\u7701",
+	"canManageDialogTitle": "\u53ef\u4ee5\u7ba1\u7406\u89d2\u8272",
+	"canManageBtn": "\u53ef\u4ee5\u7ba1\u7406...",
+	"titlePlaceholder": "\u6807\u9898",
+	"selectOptionTitle_web2": "\u672c\u56fd\u7684",
+	"selectOptionTitle_web3": "\u7f51\u7edc3"
 }

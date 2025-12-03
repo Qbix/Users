@@ -1,15 +1,15 @@
 {
-    "addToPhonebook": "הוסף לטלפון שלי אנשי קשר",
-    "addLabel": "מערכת יחסים חדשה",
-    "newRole": "תפקיד חדש",
-    "prompt": "תן לזה שם",
-    "newLabel": "תווית חדשה",
-    "editLabel": "ערוך תווית",
-    "addBtn": "לְהוֹסִיף",
-    "editBtn": "להציל",
-    "canManageDialogTitle": "יכול לנהל תפקידים",
-    "canManageBtn": "יכול לנהל...",
-    "titlePlaceholder": "כותרת",
-    "selectOptionTitle_web2": "יָלִיד",
-    "selectOptionTitle_web3": "אינטרנט 3"
+	"addToPhonebook": "\u05d4\u05d5\u05e1\u05e3 \u05dc\u05d8\u05dc\u05e4\u05d5\u05df \u05e9\u05dc\u05d9 \u05d0\u05e0\u05e9\u05d9 \u05e7\u05e9\u05e8",
+	"addLabel": "\u05de\u05e2\u05e8\u05db\u05ea \u05d9\u05d7\u05e1\u05d9\u05dd \u05d7\u05d3\u05e9\u05d4",
+	"newRole": "\u05ea\u05e4\u05e7\u05d9\u05d3 \u05d7\u05d3\u05e9",
+	"prompt": "\u05ea\u05df \u05dc\u05d6\u05d4 \u05e9\u05dd",
+	"newLabel": "\u05ea\u05d5\u05d5\u05d9\u05ea \u05d7\u05d3\u05e9\u05d4",
+	"editLabel": "\u05e2\u05e8\u05d5\u05da \u05ea\u05d5\u05d5\u05d9\u05ea",
+	"addBtn": "\u05dc\u05b0\u05d4\u05d5\u05b9\u05e1\u05b4\u05d9\u05e3",
+	"editBtn": "\u05dc\u05d4\u05e6\u05d9\u05dc",
+	"canManageDialogTitle": "\u05d9\u05db\u05d5\u05dc \u05dc\u05e0\u05d4\u05dc \u05ea\u05e4\u05e7\u05d9\u05d3\u05d9\u05dd",
+	"canManageBtn": "\u05d9\u05db\u05d5\u05dc \u05dc\u05e0\u05d4\u05dc...",
+	"titlePlaceholder": "\u05db\u05d5\u05ea\u05e8\u05ea",
+	"selectOptionTitle_web2": "\u05d9\u05b8\u05dc\u05b4\u05d9\u05d3",
+	"selectOptionTitle_web3": "\u05d0\u05d9\u05e0\u05d8\u05e8\u05e0\u05d8 3"
 }

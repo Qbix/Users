@@ -1,14 +1,14 @@
 {
-    "activation": {
-        "Thanks": "Fáilte go {{1}}.",
-        "ClickHere": "Cliceáil anseo chun do chuntas a ghníomhachtú: {{1}}"
-    },
-    "addMobile": {
-        "ClickHere": "Cliceáil anseo chun d&#39;uimhir ghutháin phóca a fhíorú: {{1}}"
-    },
-    "resend": {
-        "DidYouWant": "An raibh tú ag iarraidh do phasfhrása a athshocrú in {{1}}?",
-        "ClickHere": "Ansin cliceáil anseo: {{1}}",
-        "OrEnterCode": "nó cuir isteach cód:"
-    }
+	"activation": {
+		"Thanks": "F\u00e1ilte go {{1}}.",
+		"ClickHere": "Clice\u00e1il anseo chun do chuntas a ghn\u00edomhacht\u00fa: {{1}}"
+	},
+	"addMobile": {
+		"ClickHere": "Clice\u00e1il anseo chun d&#39;uimhir ghuth\u00e1in ph\u00f3ca a fh\u00edor\u00fa: {{1}}"
+	},
+	"resend": {
+		"DidYouWant": "An raibh t\u00fa ag iarraidh do phasfhr\u00e1sa a athshocr\u00fa in {{1}}?",
+		"ClickHere": "Ansin clice\u00e1il anseo: {{1}}",
+		"OrEnterCode": "n\u00f3 cuir isteach c\u00f3d:"
+	}
 }

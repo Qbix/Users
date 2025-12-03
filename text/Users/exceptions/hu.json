@@ -1,4 +1,4 @@
 {
-    "NotLoggedIn": "Nincs bejelentkezve. <a href='#login' data-users-login>Kattintson ide a bejelentkezéshez<\/a>",
-    "InvalidLanguage": "Érvénytelen nyelv {{language}}"
+	"NotLoggedIn": "Nincs bejelentkezve. <a href='#login' data-users-login>Kattintson ide a bejelentkez\u00e9shez</a>",
+	"InvalidLanguage": "\u00c9rv\u00e9nytelen nyelv {{language}}"
 }

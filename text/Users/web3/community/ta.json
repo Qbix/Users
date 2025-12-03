@@ -1,51 +1,51 @@
 {
-    "title": {
-        "createCommunity": "சமூகத்தை உருவாக்கவும்"
-    },
-    "list": {
-        "table": {
-            "td0": "சங்கிலி பெயர்",
-            "td1": "செயின் ஐடி",
-            "td2": "சமூக முகவரி"
-        },
-        "btnTitle": "உற்பத்தி செய்"
-    },
-    "form": {
-        "labels": {
-            "chain": "சங்கிலி",
-            "hook": "கொக்கி",
-            "invitedHook": "அழைக்கப்பட்ட ஹூக்",
-            "name": "பெயர்",
-            "symbol": "சின்னம்",
-            "contracturi": "ஒப்பந்தம்URI"
-        },
-        "placeholders": {
-            "hook": "0x0000000000000000000000000000000000000",
-            "invitedHook": "0x0000000000000000000000000000000000000",
-            "name": "ERC721 பெயர்",
-            "symbol": "ERC721 சின்னம்",
-            "contracturi": "ஒப்பந்த URI"
-        },
-        "small": {
-            "hook": "செயல்படுத்தப்பட்ட ஒப்பந்தத்தின் ஹூக் முகவரி ICommunityHook இடைமுகம். முகவரி (0) ஆக இருக்கலாம்",
-            "invitedHook": "ICommunityInvite இடைமுகம் செயல்படுத்தப்பட்ட ஒப்பந்தத்தின் ஹூக் முகவரி. முகவரி (0) ஆக இருக்கலாம்",
-            "name": "ERC721 பெயர்",
-            "symbol": "ERC721 சின்னம்",
-            "contracturi": "ஒப்பந்த URI"
-        },
-        "err": {
-            "hook": "<b>ஹூக்<\/b> செல்லாதது",
-            "invitedHook": "<b>அழைக்கப்பட்ட ஹூக்<\/b> தவறானது",
-            "name": "<b>பெயர்<\/b> செல்லாது",
-            "symbol": "<b>சின்னம்<\/b> செல்லாது",
-            "contracturi": "<b>காண்ட்ராக்ட்யூரி<\/b> செல்லாது"
-        },
-        "btnTitle": "உற்பத்தி செய்"
-    },
-    "err": {
-        "cantFindFactoryAddress": "தொழிற்சாலை முகவரியைக் கண்டுபிடிக்க முடியவில்லை",
-        "transactionFailed": "பரிவர்த்தனை தோல்வியடைந்தது",
-        "smthWentWrong": "ஏதோ தவறு நடந்துவிட்டது"
-    },
-    "foo": "மதுக்கூடம்"
+	"title": {
+		"createCommunity": "\u0b9a\u0bae\u0bc2\u0b95\u0ba4\u0bcd\u0ba4\u0bc8 \u0b89\u0bb0\u0bc1\u0bb5\u0bbe\u0b95\u0bcd\u0b95\u0bb5\u0bc1\u0bae\u0bcd"
+	},
+	"list": {
+		"table": {
+			"td0": "\u0b9a\u0b99\u0bcd\u0b95\u0bbf\u0bb2\u0bbf \u0baa\u0bc6\u0baf\u0bb0\u0bcd",
+			"td1": "\u0b9a\u0bc6\u0baf\u0bbf\u0ba9\u0bcd \u0b90\u0b9f\u0bbf",
+			"td2": "\u0b9a\u0bae\u0bc2\u0b95 \u0bae\u0bc1\u0b95\u0bb5\u0bb0\u0bbf"
+		},
+		"btnTitle": "\u0b89\u0bb1\u0bcd\u0baa\u0ba4\u0bcd\u0ba4\u0bbf \u0b9a\u0bc6\u0baf\u0bcd"
+	},
+	"form": {
+		"labels": {
+			"chain": "\u0b9a\u0b99\u0bcd\u0b95\u0bbf\u0bb2\u0bbf",
+			"hook": "\u0b95\u0bca\u0b95\u0bcd\u0b95\u0bbf",
+			"invitedHook": "\u0b85\u0bb4\u0bc8\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0bb9\u0bc2\u0b95\u0bcd",
+			"name": "\u0baa\u0bc6\u0baf\u0bb0\u0bcd",
+			"symbol": "\u0b9a\u0bbf\u0ba9\u0bcd\u0ba9\u0bae\u0bcd",
+			"contracturi": "\u0b92\u0baa\u0bcd\u0baa\u0ba8\u0bcd\u0ba4\u0bae\u0bcdURI"
+		},
+		"placeholders": {
+			"hook": "0x0000000000000000000000000000000000000",
+			"invitedHook": "0x0000000000000000000000000000000000000",
+			"name": "ERC721 \u0baa\u0bc6\u0baf\u0bb0\u0bcd",
+			"symbol": "ERC721 \u0b9a\u0bbf\u0ba9\u0bcd\u0ba9\u0bae\u0bcd",
+			"contracturi": "\u0b92\u0baa\u0bcd\u0baa\u0ba8\u0bcd\u0ba4 URI"
+		},
+		"small": {
+			"hook": "\u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0b92\u0baa\u0bcd\u0baa\u0ba8\u0bcd\u0ba4\u0ba4\u0bcd\u0ba4\u0bbf\u0ba9\u0bcd \u0bb9\u0bc2\u0b95\u0bcd \u0bae\u0bc1\u0b95\u0bb5\u0bb0\u0bbf ICommunityHook \u0b87\u0b9f\u0bc8\u0bae\u0bc1\u0b95\u0bae\u0bcd. \u0bae\u0bc1\u0b95\u0bb5\u0bb0\u0bbf (0) \u0b86\u0b95 \u0b87\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bb2\u0bbe\u0bae\u0bcd",
+			"invitedHook": "ICommunityInvite \u0b87\u0b9f\u0bc8\u0bae\u0bc1\u0b95\u0bae\u0bcd \u0b9a\u0bc6\u0baf\u0bb2\u0bcd\u0baa\u0b9f\u0bc1\u0ba4\u0bcd\u0ba4\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0b92\u0baa\u0bcd\u0baa\u0ba8\u0bcd\u0ba4\u0ba4\u0bcd\u0ba4\u0bbf\u0ba9\u0bcd \u0bb9\u0bc2\u0b95\u0bcd \u0bae\u0bc1\u0b95\u0bb5\u0bb0\u0bbf. \u0bae\u0bc1\u0b95\u0bb5\u0bb0\u0bbf (0) \u0b86\u0b95 \u0b87\u0bb0\u0bc1\u0b95\u0bcd\u0b95\u0bb2\u0bbe\u0bae\u0bcd",
+			"name": "ERC721 \u0baa\u0bc6\u0baf\u0bb0\u0bcd",
+			"symbol": "ERC721 \u0b9a\u0bbf\u0ba9\u0bcd\u0ba9\u0bae\u0bcd",
+			"contracturi": "\u0b92\u0baa\u0bcd\u0baa\u0ba8\u0bcd\u0ba4 URI"
+		},
+		"err": {
+			"hook": "<b>\u0bb9\u0bc2\u0b95\u0bcd</b> \u0b9a\u0bc6\u0bb2\u0bcd\u0bb2\u0bbe\u0ba4\u0ba4\u0bc1",
+			"invitedHook": "<b>\u0b85\u0bb4\u0bc8\u0b95\u0bcd\u0b95\u0baa\u0bcd\u0baa\u0b9f\u0bcd\u0b9f \u0bb9\u0bc2\u0b95\u0bcd</b> \u0ba4\u0bb5\u0bb1\u0bbe\u0ba9\u0ba4\u0bc1",
+			"name": "<b>\u0baa\u0bc6\u0baf\u0bb0\u0bcd</b> \u0b9a\u0bc6\u0bb2\u0bcd\u0bb2\u0bbe\u0ba4\u0bc1",
+			"symbol": "<b>\u0b9a\u0bbf\u0ba9\u0bcd\u0ba9\u0bae\u0bcd</b> \u0b9a\u0bc6\u0bb2\u0bcd\u0bb2\u0bbe\u0ba4\u0bc1",
+			"contracturi": "<b>\u0b95\u0bbe\u0ba3\u0bcd\u0b9f\u0bcd\u0bb0\u0bbe\u0b95\u0bcd\u0b9f\u0bcd\u0baf\u0bc2\u0bb0\u0bbf</b> \u0b9a\u0bc6\u0bb2\u0bcd\u0bb2\u0bbe\u0ba4\u0bc1"
+		},
+		"btnTitle": "\u0b89\u0bb1\u0bcd\u0baa\u0ba4\u0bcd\u0ba4\u0bbf \u0b9a\u0bc6\u0baf\u0bcd"
+	},
+	"err": {
+		"cantFindFactoryAddress": "\u0ba4\u0bca\u0bb4\u0bbf\u0bb1\u0bcd\u0b9a\u0bbe\u0bb2\u0bc8 \u0bae\u0bc1\u0b95\u0bb5\u0bb0\u0bbf\u0baf\u0bc8\u0b95\u0bcd \u0b95\u0ba3\u0bcd\u0b9f\u0bc1\u0baa\u0bbf\u0b9f\u0bbf\u0b95\u0bcd\u0b95 \u0bae\u0bc1\u0b9f\u0bbf\u0baf\u0bb5\u0bbf\u0bb2\u0bcd\u0bb2\u0bc8",
+		"transactionFailed": "\u0baa\u0bb0\u0bbf\u0bb5\u0bb0\u0bcd\u0ba4\u0bcd\u0ba4\u0ba9\u0bc8 \u0ba4\u0bcb\u0bb2\u0bcd\u0bb5\u0bbf\u0baf\u0b9f\u0bc8\u0ba8\u0bcd\u0ba4\u0ba4\u0bc1",
+		"smthWentWrong": "\u0b8f\u0ba4\u0bc7\u0bbe \u0ba4\u0bb5\u0bb1\u0bc1 \u0ba8\u0b9f\u0ba8\u0bcd\u0ba4\u0bc1\u0bb5\u0bbf\u0b9f\u0bcd\u0b9f\u0ba4\u0bc1"
+	},
+	"foo": "\u0bae\u0ba4\u0bc1\u0b95\u0bcd\u0b95\u0bc2\u0b9f\u0bae\u0bcd"
 }

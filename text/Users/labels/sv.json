@@ -1,15 +1,15 @@
 {
-    "addToPhonebook": "Lägg till i mina telefonkontakter",
-    "addLabel": "Nytt förhållande",
-    "newRole": "Ny roll",
-    "prompt": "Ge det ett namn",
-    "newLabel": "Ny etikett",
-    "editLabel": "Redigera etikett",
-    "addBtn": "Lägg till",
-    "editBtn": "Spara",
-    "canManageDialogTitle": "Kan hantera roller",
-    "canManageBtn": "Kan hantera...",
-    "titlePlaceholder": "Titel",
-    "selectOptionTitle_web2": "Inföding",
-    "selectOptionTitle_web3": "Web3"
+	"addToPhonebook": "L\u00e4gg till i mina telefonkontakter",
+	"addLabel": "Nytt f\u00f6rh\u00e5llande",
+	"newRole": "Ny roll",
+	"prompt": "Ge det ett namn",
+	"newLabel": "Ny etikett",
+	"editLabel": "Redigera etikett",
+	"addBtn": "L\u00e4gg till",
+	"editBtn": "Spara",
+	"canManageDialogTitle": "Kan hantera roller",
+	"canManageBtn": "Kan hantera...",
+	"titlePlaceholder": "Titel",
+	"selectOptionTitle_web2": "Inf\u00f6ding",
+	"selectOptionTitle_web3": "Web3"
 }

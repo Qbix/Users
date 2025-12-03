@@ -1,15 +1,15 @@
 {
-    "addToPhonebook": "Dodaj u kontakte mog telefona",
-    "addLabel": "Nova veza",
-    "newRole": "Nova uloga",
-    "prompt": "Daj mu ime",
-    "newLabel": "Nova etiketa",
-    "editLabel": "Uredi oznaku",
-    "addBtn": "Dodati",
-    "editBtn": "Uštedjeti",
-    "canManageDialogTitle": "Može upravljati ulogama",
-    "canManageBtn": "Može upravljati...",
-    "titlePlaceholder": "Titula",
-    "selectOptionTitle_web2": "Zavičajni",
-    "selectOptionTitle_web3": "Web3"
+	"addToPhonebook": "Dodaj u kontakte mog telefona",
+	"addLabel": "Nova veza",
+	"newRole": "Nova uloga",
+	"prompt": "Daj mu ime",
+	"newLabel": "Nova etiketa",
+	"editLabel": "Uredi oznaku",
+	"addBtn": "Dodati",
+	"editBtn": "U\u0161tedjeti",
+	"canManageDialogTitle": "Mo\u017ee upravljati ulogama",
+	"canManageBtn": "Mo\u017ee upravljati...",
+	"titlePlaceholder": "Titula",
+	"selectOptionTitle_web2": "Zavi\u010dajni",
+	"selectOptionTitle_web3": "Web3"
 }

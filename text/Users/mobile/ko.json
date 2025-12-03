@@ -1,14 +1,14 @@
 {
-    "activation": {
-        "Thanks": "{{1}}에 오신 것을 환영합니다.",
-        "ClickHere": "계정을 활성화하려면 여기를 클릭하세요. {{1}}"
-    },
-    "addMobile": {
-        "ClickHere": "휴대전화 번호를 확인하려면 여기를 클릭하세요. {{1}}"
-    },
-    "resend": {
-        "DidYouWant": "{{1}}에서 암호를 재설정하시겠습니까?",
-        "ClickHere": "그런 다음 여기를 클릭하세요: {{1}}",
-        "OrEnterCode": "또는 코드 입력:"
-    }
+	"activation": {
+		"Thanks": "{{1}}\uc5d0 \uc624\uc2e0 \uac83\uc744 \ud658\uc601\ud569\ub2c8\ub2e4.",
+		"ClickHere": "\uacc4\uc815\uc744 \ud65c\uc131\ud654\ud558\ub824\uba74 \uc5ec\uae30\ub97c \ud074\ub9ad\ud558\uc138\uc694. {{1}}"
+	},
+	"addMobile": {
+		"ClickHere": "\ud734\ub300\uc804\ud654 \ubc88\ud638\ub97c \ud655\uc778\ud558\ub824\uba74 \uc5ec\uae30\ub97c \ud074\ub9ad\ud558\uc138\uc694. {{1}}"
+	},
+	"resend": {
+		"DidYouWant": "{{1}}\uc5d0\uc11c \uc554\ud638\ub97c \uc7ac\uc124\uc815\ud558\uc2dc\uaca0\uc2b5\ub2c8\uae4c?",
+		"ClickHere": "\uadf8\ub7f0 \ub2e4\uc74c \uc5ec\uae30\ub97c \ud074\ub9ad\ud558\uc138\uc694: {{1}}",
+		"OrEnterCode": "\ub610\ub294 \ucf54\ub4dc \uc785\ub825:"
+	}
 }

@@ -1,196 +1,196 @@
 {
-    "avatar": {
-        "Someone": "Duine éigin"
-    },
-    "identifier": {
-        "types": {
-            "email": "Ríomhphost",
-            "mobile": "Soghluaiste",
-            "web3": "Gréasán3"
-        }
-    },
-    "clipboard": {
-        "Copied": "Cóipeáladh! Anois is féidir leat é a ghreamú in áit ar bith."
-    },
-    "analytics": {
-        "Title": "Anailísíocht",
-        "Daily": "laethúil",
-        "Weekly": "Seachtainiúil",
-        "Monthly": "go míosúil",
-        "Application": "Iarratas",
-        "Pages": "Leathanaigh",
-        "Services": "Seirbhísí",
-        "Faq": "CC",
-        "WeekDays": "Laethanta na Seachtaine"
-    },
-    "actions": {
-        "LogIn": "Logáil isteach",
-        "LogOut": "Logáil Amach"
-    },
-    "activate": {
-        "OneTimeCode": "Cuir isteach an cód a fuair tú:",
-        "SetAsPrimary": "Socraigh {{1}} mar mo bhun {{2}}",
-        "ChoosePassPhrase": "Roghnaigh <strong>pasfhrása<\/strong> chun logáil isteach leis.<br> Frása simplí comhdhéanta de chúpla focal a gcuimhneoidh tú go héasca.",
-        "ChoosePassPhraseSeeSuggestions": "Roghnaigh <strong>pasfhrása<\/strong> maith chun do chuntas a chosaint. Féach ar na moltaí le haghaidh roinnt smaointe.",
-        "LogOutAndTryAgain": "Logáil Amach agus Bain triail eile as",
-        "IfYouFeel": "Má bhraitheann tú go ndeachaigh rud éigin mícheart, is féidir leat",
-        "SetIdentifierButtonTitle": "thosaigh arís",
-        "ActivateMyAccount": "Gníomhachtaigh Mo Chuntas"
-    },
-    "session": {
-        "GetStarted": "Tosaigh"
-    },
-    "authorize": {
-        "GetStarted": "Tosaigh",
-        "Authorize": "Údar",
-        "TermsLabel": "Léigh mé agus aontaím<br> go dtí an {{link}}",
-        "TermsTitle": "Téarmaí",
-        "mustAgree": "Ar dtús caithfidh tú aontú leis na téarmaí."
-    },
-    "register": {
-        "TermsLabel": "Glacaim leis an {{link}}",
-        "TermsTitle": "Téarmaí"
-    },
-    "notifications": {
-        "title": "Cead",
-        "prompt": "Ar mhaith leat fógraí a chumasú? Gheobhaidh tú nuashonruithe fíor-ama faoi na rudaí is cúram duit.",
-        "yes": "Tá",
-        "no": "Níl",
-        "WelcomePleaseVerifyEmail": "Fáilte romhat! Fíoraigh do sheoladh ríomhphoist.",
-        "WelcomeVerifyEmail": "Fáilte romhat! Fíoraigh do sheoladh ríomhphoist.",
-        "ForgetPass": "Hey, an ndearna tú dearmad ar do phasfhrása?",
-        "PassphraseSaved": "Sábháladh frása do phas.",
-        "IdentifierActivated": "Tá do {{type}} gníomhachtaithe.",
-        "CompletedActivation": "Tá gníomhachtú úsáideora críochnaithe agat.",
-        "CompletedActivationLogIn": "Tá gníomhachtú úsáideora críochnaithe agat. Bain triail as logáil isteach anois."
-    },
-    "contacts": {
-        "dialog": {
-            "title": "Roghnaigh teagmhálaí",
-            "CreateAccount": "+ Teagmháil Nua",
-            "CreateAccountNotFound": "Q.Users.Cordova.UI.create gan aimsiú",
-            "SearchByName": "Cuardaigh de réir ainm",
-            "EmptyContacts": "Teagmhálaithe gan aimsiú..."
-        },
-        "select": {
-            "title": "Roghnaigh teagmhálaí {{displayName}}"
-        },
-        "require": {
-            "Instructions": "Beidh ort rochtain ar gach teagmhálaí a chumasú le go n-oibreoidh sé seo."
-        }
-    },
-    "usersContacts": {
-        "selectLabel": "Roghnaigh lipéad le do thoil.",
-        "inviteUser": "Tabhair cuireadh d&#39;Úsáideoirí",
-        "selectRole": "Roghnaigh Ról",
-        "inviteRole": "Tabhair cuireadh {{role}}"
-    },
-    "invalidLanguageSelected": "Teanga neamhbhailí roghnaithe",
-    "platforms": {
-        "wallet": "Sparán",
-        "broadcast": "Craoladh"
-    },
-    "login": {
-        "title": "Fáilte",
-        "directions": {
-            "GetStarted": "Cruthaigh cuntas, nó logáil isteach.",
-            "NoRegister": "Logáil isteach má tá cuntas agat.",
-            "WasInvited": "Cad é an bealach is fearr chun teagmháil a dhéanamh leat?"
-        },
-        "directionsNoRegister": "Logáil isteach má tá cuntas agat.",
-        "goButton": "➔",
-        "passphrase": "Cuir isteach frása do phas:",
-        "loginButton": "Tosaigh",
-        "registerButton": "Tosaigh",
-        "resendButton": "Seol Teachtaireacht Gníomhachtaithe",
-        "forgot": "Dearmad air?",
-        "resendConfirm": "Ar mhaith leat teachtaireacht a sheoladh chun do phasfhrása a athshocrú?",
-        "resendSuccess": "Seiceáil do theachtaireacht chun do phasfhrása a athshocrú",
-        "resendClose": "Dún",
-        "noPassphrase": "Sular féidir leat logáil isteach, ní mór duit frása pas a shocrú trí chliceáil ar an nasc i do theachtaireacht gníomhachtaithe.",
-        "notVerified": "Ní mór duit teachtaireacht gníomhachtaithe a sheoladh chugat féin chun logáil isteach.",
-        "emailExists": "An ndearna tú iarracht clárú leis an ríomhphost seo roimhe seo? Más ea, seiceáil do bhosca isteach chun do chuntas a ghníomhachtú. <a href='#resend' class='Q_button Users_activation_resend'>Cliceáil chun an teachtaireacht a athsheoladh<\/a>",
-        "mobileExists": "An ndearna tú iarracht clárú leis an uimhir ghutháin seo roimhe seo? Más amhlaidh, seiceáil do SMS chun do chuntas a ghníomhachtú. <a href='#resend' class='Q_button Users_activation_resend'>Cliceáil chun an teachtaireacht a athsheoladh<\/a>",
-        "usingOther": "nó is féidir leat",
-        "connectPlatforms": "nó ceangail ag baint úsáide as:",
-        "prompt": "Roghnaigh ainm úsáideora:",
-        "newUser": "nó cruthaigh cuntas nua thíos",
-        "placeholders": {
-            "identifier": "do # teileafón soghluaiste nó ríomhphost",
-            "mobile": "cuir isteach do ghuthán póca #",
-            "email": "Cuir isteach do sheoladh ríomhphoist",
-            "username": "úsáid litreacha agus uimhreacha amháin"
-        },
-        "confirmTerms": "Glac leis na Téarmaí Seirbhíse?",
-        "facebookNoEmail": "Tá seoladh ríomhphoist deimhnithe in easnamh ar do chuntas facebook. Níl ort ach logáil isteach ar an mbealach dúchais.",
-        "picTooltip": "Is féidir leat an pictiúr seo a athrú níos déanaí",
-        "web3": {
-            "payload": "Logáil isteach {{host}} ag am {{timestamp}}",
-            "alert": {
-                "title": "Atreorú chuig Sparán",
-                "content": "Nuair a dhúnann tú an dialóg seo, tógfar chuig do sparán thú. Tar éis duit síniú isteach, fill ar an leathanach seo."
-            },
-            "ConnectWallet": "Ceangail Sparán"
-        }
-    },
-    "setIdentifier": {
-        "title": "Cuir bealach le logáil isteach",
-        "sendMessage": "Seol Teachtaireacht Gníomhachtaithe",
-        "placeholders": {
-            "identifier": "cuir isteach do ghuthán # nó ríomhphost",
-            "mobile": "cuir isteach d&#39;uimhir soghluaiste",
-            "email": "Cuir isteach do sheoladh ríomhphoist",
-            "username": "ainm úsáideora"
-        }
-    },
-    "prompt": {
-        "title": "Cuntas {{Platform}}",
-        "areUsing": "Tá tú ag úsáid {{platform}} mar",
-        "noLongerUsing": "Níl tú ceangailte a thuilleadh le {{platform}} mar",
-        "doAuth": "Logáil isteach leis an gcuntas seo",
-        "doSwitch": "Athraigh go dtí an cuntas seo"
-    },
-    "roles": {
-        "Owner": "Úinéir",
-        "Admin": "Riarachán",
-        "Member": "Ball",
-        "Guest": "Aoi",
-        "Host": "Óstach"
-    },
-    "web3": {
-        "WrongMethod": "Modh conartha mícheart {{methodName}} saor in aisce,",
-        "ChangeWallet": "Athraigh Sparán",
-        "ConnectWallet": "Ceangail Sparán",
-        "AfterWalletConnectedPleaseRefresh": "Tar éis duit an sparán a nascadh, athnuaigh an leathanach seo chun an sparán a aithint"
-    },
-    "labels": {
-        "addToPhonebook": "Cuir le Mo Theagmhálaithe Fón",
-        "addLabel": "Gaol Nua",
-        "prompt": "Tabhair ainm air",
-        "titles": {
-            "Users\/owners": "Úinéirí",
-            "Users\/admins": "Riarthóirí",
-            "Users\/members": "Baill",
-            "Users\/guests": "Aíonna",
-            "Users\/hosts": "Óstach",
-            "Users\/testers": "Tástálaithe",
-            "Users\/speakers": "Cainteoirí"
-        }
-    },
-    "people": {
-        "People": "Daoine"
-    },
-    "external": {
-        "defaults": {
-            "title": "",
-            "bio": "Bot rannpháirtíocht fóram. Faigh do chuid féin ag https:\/\/engageusers.ai",
-            "website": "https:\/\/engageusers.ai"
-        }
-    },
-    "errors": {
-        "NotEnoughPermissionsWallet": "Níl go leor ceadanna chun sparán an úsáideora seo a léamh",
-        "ThisUserHaveNoWallet": "Níl aon sparán sannta don úsáideoir seo",
-        "TheWalletOfThisUserInvalid": "Tá sparán an úsáideora seo neamhbhailí",
-        "WalletInvalid": "Seoladh sparán neamhbhailí"
-    }
+	"avatar": {
+		"Someone": "Duine \u00e9igin"
+	},
+	"identifier": {
+		"types": {
+			"email": "R\u00edomhphost",
+			"mobile": "Soghluaiste",
+			"web3": "Gr\u00e9as\u00e1n3"
+		}
+	},
+	"clipboard": {
+		"Copied": "C\u00f3ipe\u00e1ladh! Anois is f\u00e9idir leat \u00e9 a ghream\u00fa in \u00e1it ar bith."
+	},
+	"analytics": {
+		"Title": "Anail\u00eds\u00edocht",
+		"Daily": "laeth\u00fail",
+		"Weekly": "Seachtaini\u00fail",
+		"Monthly": "go m\u00edos\u00fail",
+		"Application": "Iarratas",
+		"Pages": "Leathanaigh",
+		"Services": "Seirbh\u00eds\u00ed",
+		"Faq": "CC",
+		"WeekDays": "Laethanta na Seachtaine"
+	},
+	"actions": {
+		"LogIn": "Log\u00e1il isteach",
+		"LogOut": "Log\u00e1il Amach"
+	},
+	"activate": {
+		"OneTimeCode": "Cuir isteach an c\u00f3d a fuair t\u00fa:",
+		"SetAsPrimary": "Socraigh {{1}} mar mo bhun {{2}}",
+		"ChoosePassPhrase": "Roghnaigh <strong>pasfhr\u00e1sa</strong> chun log\u00e1il isteach leis.<br> Fr\u00e1sa simpl\u00ed comhdh\u00e9anta de ch\u00fapla focal a gcuimhneoidh t\u00fa go h\u00e9asca.",
+		"ChoosePassPhraseSeeSuggestions": "Roghnaigh <strong>pasfhr\u00e1sa</strong> maith chun do chuntas a chosaint. F\u00e9ach ar na molta\u00ed le haghaidh roinnt smaointe.",
+		"LogOutAndTryAgain": "Log\u00e1il Amach agus Bain triail eile as",
+		"IfYouFeel": "M\u00e1 bhraitheann t\u00fa go ndeachaigh rud \u00e9igin m\u00edcheart, is f\u00e9idir leat",
+		"SetIdentifierButtonTitle": "thosaigh ar\u00eds",
+		"ActivateMyAccount": "Gn\u00edomhachtaigh Mo Chuntas"
+	},
+	"session": {
+		"GetStarted": "Tosaigh"
+	},
+	"authorize": {
+		"GetStarted": "Tosaigh",
+		"Authorize": "\u00dadar",
+		"TermsLabel": "L\u00e9igh m\u00e9 agus aonta\u00edm<br> go dt\u00ed an {{link}}",
+		"TermsTitle": "T\u00e9arma\u00ed",
+		"mustAgree": "Ar dt\u00fas caithfidh t\u00fa aont\u00fa leis na t\u00e9arma\u00ed."
+	},
+	"register": {
+		"TermsLabel": "Glacaim leis an {{link}}",
+		"TermsTitle": "T\u00e9arma\u00ed"
+	},
+	"notifications": {
+		"title": "Cead",
+		"prompt": "Ar mhaith leat f\u00f3gra\u00ed a chumas\u00fa? Gheobhaidh t\u00fa nuashonruithe f\u00edor-ama faoi na ruda\u00ed is c\u00faram duit.",
+		"yes": "T\u00e1",
+		"no": "N\u00edl",
+		"WelcomePleaseVerifyEmail": "F\u00e1ilte romhat! F\u00edoraigh do sheoladh r\u00edomhphoist.",
+		"WelcomeVerifyEmail": "F\u00e1ilte romhat! F\u00edoraigh do sheoladh r\u00edomhphoist.",
+		"ForgetPass": "Hey, an ndearna t\u00fa dearmad ar do phasfhr\u00e1sa?",
+		"PassphraseSaved": "S\u00e1bh\u00e1ladh fr\u00e1sa do phas.",
+		"IdentifierActivated": "T\u00e1 do {{type}} gn\u00edomhachtaithe.",
+		"CompletedActivation": "T\u00e1 gn\u00edomhacht\u00fa \u00fas\u00e1ideora cr\u00edochnaithe agat.",
+		"CompletedActivationLogIn": "T\u00e1 gn\u00edomhacht\u00fa \u00fas\u00e1ideora cr\u00edochnaithe agat. Bain triail as log\u00e1il isteach anois."
+	},
+	"contacts": {
+		"dialog": {
+			"title": "Roghnaigh teagmh\u00e1la\u00ed",
+			"CreateAccount": "+ Teagmh\u00e1il Nua",
+			"CreateAccountNotFound": "Q.Users.Cordova.UI.create gan aimsi\u00fa",
+			"SearchByName": "Cuardaigh de r\u00e9ir ainm",
+			"EmptyContacts": "Teagmh\u00e1laithe gan aimsi\u00fa..."
+		},
+		"select": {
+			"title": "Roghnaigh teagmh\u00e1la\u00ed {{displayName}}"
+		},
+		"require": {
+			"Instructions": "Beidh ort rochtain ar gach teagmh\u00e1la\u00ed a chumas\u00fa le go n-oibreoidh s\u00e9 seo."
+		}
+	},
+	"usersContacts": {
+		"selectLabel": "Roghnaigh lip\u00e9ad le do thoil.",
+		"inviteUser": "Tabhair cuireadh d&#39;\u00das\u00e1ideoir\u00ed",
+		"selectRole": "Roghnaigh R\u00f3l",
+		"inviteRole": "Tabhair cuireadh {{role}}"
+	},
+	"invalidLanguageSelected": "Teanga neamhbhail\u00ed roghnaithe",
+	"platforms": {
+		"wallet": "Spar\u00e1n",
+		"broadcast": "Craoladh"
+	},
+	"login": {
+		"title": "F\u00e1ilte go {{AppName}}",
+		"directions": {
+			"GetStarted": "C\u00e1 h\u00e1it ar cheart d\u00fainn f\u00f3gra\u00ed a sheoladh?",
+			"NoRegister": "Log\u00e1il isteach m\u00e1 t\u00e1 cuntas agat.",
+			"WasInvited": "Cad \u00e9 an bealach is fearr chun teagmh\u00e1il a dh\u00e9anamh leat?"
+		},
+		"directionsNoRegister": "Log\u00e1il isteach m\u00e1 t\u00e1 cuntas agat.",
+		"goButton": "\u2794",
+		"passphrase": "Cuir isteach fr\u00e1sa do phas:",
+		"loginButton": "Tosaigh",
+		"registerButton": "Tosaigh",
+		"resendButton": "Seol Teachtaireacht Gn\u00edomhachtaithe",
+		"forgot": "Dearmad air?",
+		"resendConfirm": "Ar mhaith leat teachtaireacht a sheoladh chun do phasfhr\u00e1sa a athshocr\u00fa?",
+		"resendSuccess": "Seice\u00e1il do theachtaireacht chun do phasfhr\u00e1sa a athshocr\u00fa",
+		"resendClose": "D\u00fan",
+		"noPassphrase": "Sular f\u00e9idir leat log\u00e1il isteach, n\u00ed m\u00f3r duit fr\u00e1sa pas a shocr\u00fa tr\u00ed chlice\u00e1il ar an nasc i do theachtaireacht gn\u00edomhachtaithe.",
+		"notVerified": "N\u00ed m\u00f3r duit teachtaireacht gn\u00edomhachtaithe a sheoladh chugat f\u00e9in chun log\u00e1il isteach.",
+		"emailExists": "An ndearna t\u00fa iarracht cl\u00e1r\u00fa leis an r\u00edomhphost seo roimhe seo? M\u00e1s ea, seice\u00e1il do bhosca isteach chun do chuntas a ghn\u00edomhacht\u00fa. <a href='#resend' class='Q_button Users_activation_resend'>Clice\u00e1il chun an teachtaireacht a athsheoladh</a>",
+		"mobileExists": "An ndearna t\u00fa iarracht cl\u00e1r\u00fa leis an uimhir ghuth\u00e1in seo roimhe seo? M\u00e1s amhlaidh, seice\u00e1il do SMS chun do chuntas a ghn\u00edomhacht\u00fa. <a href='#resend' class='Q_button Users_activation_resend'>Clice\u00e1il chun an teachtaireacht a athsheoladh</a>",
+		"usingOther": "n\u00f3 is f\u00e9idir leat",
+		"connectPlatforms": "n\u00f3 ceangail ag baint \u00fas\u00e1ide as:",
+		"prompt": "Roghnaigh ainm \u00fas\u00e1ideora:",
+		"newUser": "n\u00f3 cruthaigh cuntas nua th\u00edos",
+		"placeholders": {
+			"identifier": "do # teileaf\u00f3n soghluaiste n\u00f3 r\u00edomhphost",
+			"mobile": "cuir isteach do ghuth\u00e1n p\u00f3ca #",
+			"email": "Cuir isteach do sheoladh r\u00edomhphoist",
+			"username": "\u00fas\u00e1id litreacha agus uimhreacha amh\u00e1in"
+		},
+		"confirmTerms": "Glac leis na T\u00e9arma\u00ed Seirbh\u00edse?",
+		"facebookNoEmail": "T\u00e1 seoladh r\u00edomhphoist deimhnithe in easnamh ar do chuntas facebook. N\u00edl ort ach log\u00e1il isteach ar an mbealach d\u00fachais.",
+		"picTooltip": "Is f\u00e9idir leat an picti\u00far seo a athr\u00fa n\u00edos d\u00e9ana\u00ed",
+		"web3": {
+			"payload": "Log\u00e1il isteach {{host}} ag am {{timestamp}}",
+			"alert": {
+				"title": "Atreor\u00fa chuig Spar\u00e1n",
+				"content": "Nuair a dh\u00fanann t\u00fa an dial\u00f3g seo, t\u00f3gfar chuig do spar\u00e1n th\u00fa. Tar \u00e9is duit s\u00edni\u00fa isteach, fill ar an leathanach seo."
+			},
+			"ConnectWallet": "Ceangail Spar\u00e1n"
+		}
+	},
+	"setIdentifier": {
+		"title": "Cuir bealach le log\u00e1il isteach",
+		"sendMessage": "Seol Teachtaireacht Gn\u00edomhachtaithe",
+		"placeholders": {
+			"identifier": "cuir isteach do ghuth\u00e1n # n\u00f3 r\u00edomhphost",
+			"mobile": "cuir isteach d&#39;uimhir soghluaiste",
+			"email": "Cuir isteach do sheoladh r\u00edomhphoist",
+			"username": "ainm \u00fas\u00e1ideora"
+		}
+	},
+	"prompt": {
+		"title": "Cuntas {{Platform}}",
+		"areUsing": "T\u00e1 t\u00fa ag \u00fas\u00e1id {{platform}} mar",
+		"noLongerUsing": "N\u00edl t\u00fa ceangailte a thuilleadh le {{platform}} mar",
+		"doAuth": "Log\u00e1il isteach leis an gcuntas seo",
+		"doSwitch": "Athraigh go dt\u00ed an cuntas seo"
+	},
+	"roles": {
+		"Owner": "\u00dain\u00e9ir",
+		"Admin": "Riarach\u00e1n",
+		"Member": "Ball",
+		"Guest": "Aoi",
+		"Host": "\u00d3stach"
+	},
+	"web3": {
+		"WrongMethod": "Modh conartha m\u00edcheart {{methodName}} saor in aisce,",
+		"ChangeWallet": "Athraigh Spar\u00e1n",
+		"ConnectWallet": "Ceangail Spar\u00e1n",
+		"AfterWalletConnectedPleaseRefresh": "Tar \u00e9is duit an spar\u00e1n a nascadh, athnuaigh an leathanach seo chun an spar\u00e1n a aithint"
+	},
+	"labels": {
+		"addToPhonebook": "Cuir le Mo Theagmh\u00e1laithe F\u00f3n",
+		"addLabel": "Gaol Nua",
+		"prompt": "Tabhair ainm air",
+		"titles": {
+			"Users/owners": "\u00dain\u00e9ir\u00ed",
+			"Users/admins": "Riarth\u00f3ir\u00ed",
+			"Users/members": "Baill",
+			"Users/guests": "A\u00edonna",
+			"Users/hosts": "\u00d3stach",
+			"Users/testers": "T\u00e1st\u00e1laithe",
+			"Users/speakers": "Cainteoir\u00ed"
+		}
+	},
+	"people": {
+		"People": "Daoine"
+	},
+	"external": {
+		"defaults": {
+			"title": "",
+			"bio": "Bot rannph\u00e1irt\u00edocht f\u00f3ram. Faigh do chuid f\u00e9in ag https://engageusers.ai",
+			"website": "https://engageusers.ai"
+		}
+	},
+	"errors": {
+		"NotEnoughPermissionsWallet": "N\u00edl go leor ceadanna chun spar\u00e1n an \u00fas\u00e1ideora seo a l\u00e9amh",
+		"ThisUserHaveNoWallet": "N\u00edl aon spar\u00e1n sannta don \u00fas\u00e1ideoir seo",
+		"TheWalletOfThisUserInvalid": "T\u00e1 spar\u00e1n an \u00fas\u00e1ideora seo neamhbhail\u00ed",
+		"WalletInvalid": "Seoladh spar\u00e1n neamhbhail\u00ed"
+	}
 }

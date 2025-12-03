@@ -1,196 +1,196 @@
 {
-    "avatar": {
-        "Someone": "Dikush"
-    },
-    "identifier": {
-        "types": {
-            "email": "Email",
-            "mobile": "Celular",
-            "web3": "Web3"
-        }
-    },
-    "clipboard": {
-        "Copied": "E kopjuar! Tani mund ta ngjitni kudo."
-    },
-    "analytics": {
-        "Title": "Analiza",
-        "Daily": "Ditore",
-        "Weekly": "Javore",
-        "Monthly": "Mujore",
-        "Application": "Aplikacion",
-        "Pages": "Faqet",
-        "Services": "Shërbimet",
-        "Faq": "Fak",
-        "WeekDays": "Ditët e javës"
-    },
-    "actions": {
-        "LogIn": "identifikohu",
-        "LogOut": "shkyç"
-    },
-    "activate": {
-        "OneTimeCode": "Futni kodin që keni marrë:",
-        "SetAsPrimary": "Vendos {{1}} si {{2}} tim primar",
-        "ChoosePassPhrase": "Zgjidhni një <strong>frazë kalimi<\/strong> për t&#39;u identifikuar.<br> Një frazë e thjeshtë e përbërë nga disa fjalë që do t&#39;i mbani mend lehtë.",
-        "ChoosePassPhraseSeeSuggestions": "Zgjidhni një <strong>frazë të mirë kalimi<\/strong> për të mbrojtur llogarinë tuaj. Shihni sugjerimet për disa ide.",
-        "LogOutAndTryAgain": "Dilni dhe provoni përsëri",
-        "IfYouFeel": "Nëse mendoni se diçka shkoi keq, mundeni",
-        "SetIdentifierButtonTitle": "filloje nga e para",
-        "ActivateMyAccount": "Aktivizo llogarinë time"
-    },
-    "session": {
-        "GetStarted": "Fillo"
-    },
-    "authorize": {
-        "GetStarted": "Fillo",
-        "Authorize": "Autorizoj",
-        "TermsLabel": "Kam lexuar dhe jam dakord<br> deri në {{link}}",
-        "TermsTitle": "Kushtet",
-        "mustAgree": "Së pari ju duhet të pajtoheni me kushtet."
-    },
-    "register": {
-        "TermsLabel": "Unë pranoj {{link}}",
-        "TermsTitle": "Kushtet"
-    },
-    "notifications": {
-        "title": "Leja",
-        "prompt": "Dëshiron të aktivizosh njoftimet? Do të merrni përditësime në kohë reale për gjërat që ju interesojnë.",
-        "yes": "po",
-        "no": "Nr",
-        "WelcomePleaseVerifyEmail": "Mirë se vini! Ju lutemi verifikoni adresën tuaj të emailit.",
-        "WelcomeVerifyEmail": "Mirë se vini! Verifikoni adresën tuaj të emailit.",
-        "ForgetPass": "Hej, e ke harruar frazën e kalimit?",
-        "PassphraseSaved": "Fraza juaj e kalimit është ruajtur.",
-        "IdentifierActivated": "{{type}} juaj është aktivizuar.",
-        "CompletedActivation": "Ju keni përfunduar aktivizimin e përdoruesit.",
-        "CompletedActivationLogIn": "Ju keni përfunduar aktivizimin e përdoruesit. Provoni të identifikoheni tani."
-    },
-    "contacts": {
-        "dialog": {
-            "title": "Zgjidhni kontaktin",
-            "CreateAccount": "+ Kontakt i ri",
-            "CreateAccountNotFound": "Q.Users.Cordova.UI.create nuk u gjet",
-            "SearchByName": "Kërko sipas emrit",
-            "EmptyContacts": "Kontaktet nuk u gjetën..."
-        },
-        "select": {
-            "title": "Zgjidh kontaktin e {{displayName}}"
-        },
-        "require": {
-            "Instructions": "Ju do të duhet të aktivizoni qasjen në të gjitha kontaktet në mënyrë që kjo të funksionojë."
-        }
-    },
-    "usersContacts": {
-        "selectLabel": "Ju lutemi zgjidhni etiketën.",
-        "inviteUser": "Ftoni përdoruesit",
-        "selectRole": "Zgjidhni Rolin",
-        "inviteRole": "Fto {{role}}"
-    },
-    "invalidLanguageSelected": "Është zgjedhur gjuhë e pavlefshme",
-    "platforms": {
-        "wallet": "Portofoli",
-        "broadcast": "Transmetimi"
-    },
-    "login": {
-        "title": "Mirë se vini",
-        "directions": {
-            "GetStarted": "Krijo një llogari, ose identifikohu.",
-            "NoRegister": "Hyni nëse keni një llogari.",
-            "WasInvited": "Cila është mënyra më e mirë për të arritur tek ju?"
-        },
-        "directionsNoRegister": "Hyni nëse keni një llogari.",
-        "goButton": "➔",
-        "passphrase": "Shkruani frazën tuaj të kalimit:",
-        "loginButton": "Fillo",
-        "registerButton": "Fillo",
-        "resendButton": "Dërgoni një mesazh aktivizimi",
-        "forgot": "E harrova?",
-        "resendConfirm": "Dëshiron të dërgosh një mesazh për të rivendosur frazën e kalimit?",
-        "resendSuccess": "Kontrolloni për një mesazh për të rivendosur frazën tuaj të kalimit",
-        "resendClose": "Mbylle",
-        "noPassphrase": "Përpara se të mund të identifikoheni, duhet të vendosni një frazë kalimi duke klikuar lidhjen në mesazhin tuaj të aktivizimit.",
-        "notVerified": "Ju duhet t&#39;i dërgoni vetes një mesazh aktivizimi në mënyrë që të identifikoheni.",
-        "emailExists": "A keni provuar të regjistroheni me këtë email më parë? Nëse po, kontrolloni kutinë tuaj hyrëse për të aktivizuar llogarinë tuaj. <a href='#resend' class='Q_button Users_activation_resend'>Klikoni për të ridërguar mesazhin<\/a>",
-        "mobileExists": "A keni provuar të regjistroheni me këtë numër celular më parë? Nëse po, kontrolloni SMS për të aktivizuar llogarinë tuaj. <a href='#resend' class='Q_button Users_activation_resend'>Klikoni për të ridërguar mesazhin<\/a>",
-        "usingOther": "ose mundesh",
-        "connectPlatforms": "ose lidheni duke përdorur:",
-        "prompt": "Zgjidhni një emër përdoruesi:",
-        "newUser": "ose krijoni një llogari të re më poshtë",
-        "placeholders": {
-            "identifier": "# celulari ose emaili juaj",
-            "mobile": "shkruani numrin e celularit tuaj",
-            "email": "shkruani adresën tuaj të emailit",
-            "username": "përdorni vetëm shkronja dhe numra"
-        },
-        "confirmTerms": "Prano Kushtet e Shërbimit?",
-        "facebookNoEmail": "Llogarisë suaj në facebook i mungon një adresë emaili e konfirmuar. Thjesht regjistrohuni në mënyrë amtare.",
-        "picTooltip": "Ju mund ta ndryshoni këtë foto më vonë",
-        "web3": {
-            "payload": "Hyni në {{host}} në kohën {{timestamp}}",
-            "alert": {
-                "title": "Po ridrejtohet te Portofoli",
-                "content": "Pasi të mbyllni këtë dialog, do të çoheni në portofolin tuaj. Pasi të identifikoheni, kthehuni në këtë faqe."
-            },
-            "ConnectWallet": "Lidhni portofolin"
-        }
-    },
-    "setIdentifier": {
-        "title": "Shtoni një mënyrë për t&#39;u identifikuar",
-        "sendMessage": "Dërgoni një mesazh aktivizimi",
-        "placeholders": {
-            "identifier": "shkruani numrin e celularit ose emailin tuaj",
-            "mobile": "shkruani numrin tuaj celular",
-            "email": "shkruani adresën tuaj të emailit",
-            "username": "emri i përdoruesit"
-        }
-    },
-    "prompt": {
-        "title": "Llogaria {{Platform}}",
-        "areUsing": "Ju jeni duke përdorur {{platform}} si",
-        "noLongerUsing": "Nuk je më i lidhur me {{platform}} si",
-        "doAuth": "Identifikohu me këtë llogari",
-        "doSwitch": "Kalo në këtë llogari"
-    },
-    "roles": {
-        "Owner": "Pronari",
-        "Admin": "Admin",
-        "Member": "Anëtar",
-        "Guest": "I ftuar",
-        "Host": "Mikpritës"
-    },
-    "web3": {
-        "WrongMethod": "Metoda e gabuar e kontratës {{methodName}}",
-        "ChangeWallet": "Ndrysho portofolin",
-        "ConnectWallet": "Lidhni portofolin",
-        "AfterWalletConnectedPleaseRefresh": "Pas lidhjes së portofolit, ju lutemi rifreskoni këtë faqe për të njohur portofolin"
-    },
-    "labels": {
-        "addToPhonebook": "Shto te kontaktet e telefonit tim",
-        "addLabel": "Marrëdhënie e re",
-        "prompt": "Jepini një emër",
-        "titles": {
-            "Users\/owners": "Pronarët",
-            "Users\/admins": "Administratorët",
-            "Users\/members": "Anëtarët",
-            "Users\/guests": "Të ftuarit",
-            "Users\/hosts": "Pritësit",
-            "Users\/testers": "Testuesit",
-            "Users\/speakers": "Folësit"
-        }
-    },
-    "people": {
-        "People": "Njerëzit"
-    },
-    "external": {
-        "defaults": {
-            "title": "",
-            "bio": "Bot i angazhimit në forum. Merrni tuajën në https:\/\/engageusers.ai",
-            "website": "https:\/\/engageusers.ai"
-        }
-    },
-    "errors": {
-        "NotEnoughPermissionsWallet": "Nuk ka leje të mjaftueshme për të lexuar portofolin e këtij përdoruesi",
-        "ThisUserHaveNoWallet": "Ky përdorues nuk ka një portofol të caktuar",
-        "TheWalletOfThisUserInvalid": "Portofoli i këtij përdoruesi është i pavlefshëm",
-        "WalletInvalid": "Adresa e portofolit është e pavlefshme"
-    }
+	"avatar": {
+		"Someone": "Dikush"
+	},
+	"identifier": {
+		"types": {
+			"email": "Email",
+			"mobile": "Celular",
+			"web3": "Web3"
+		}
+	},
+	"clipboard": {
+		"Copied": "E kopjuar! Tani mund ta ngjitni kudo."
+	},
+	"analytics": {
+		"Title": "Analiza",
+		"Daily": "Ditore",
+		"Weekly": "Javore",
+		"Monthly": "Mujore",
+		"Application": "Aplikacion",
+		"Pages": "Faqet",
+		"Services": "Sh\u00ebrbimet",
+		"Faq": "Fak",
+		"WeekDays": "Dit\u00ebt e jav\u00ebs"
+	},
+	"actions": {
+		"LogIn": "identifikohu",
+		"LogOut": "shky\u00e7"
+	},
+	"activate": {
+		"OneTimeCode": "Futni kodin q\u00eb keni marr\u00eb:",
+		"SetAsPrimary": "Vendos {{1}} si {{2}} tim primar",
+		"ChoosePassPhrase": "Zgjidhni nj\u00eb <strong>fraz\u00eb kalimi</strong> p\u00ebr t&#39;u identifikuar.<br> Nj\u00eb fraz\u00eb e thjesht\u00eb e p\u00ebrb\u00ebr\u00eb nga disa fjal\u00eb q\u00eb do t&#39;i mbani mend leht\u00eb.",
+		"ChoosePassPhraseSeeSuggestions": "Zgjidhni nj\u00eb <strong>fraz\u00eb t\u00eb mir\u00eb kalimi</strong> p\u00ebr t\u00eb mbrojtur llogarin\u00eb tuaj. Shihni sugjerimet p\u00ebr disa ide.",
+		"LogOutAndTryAgain": "Dilni dhe provoni p\u00ebrs\u00ebri",
+		"IfYouFeel": "N\u00ebse mendoni se di\u00e7ka shkoi keq, mundeni",
+		"SetIdentifierButtonTitle": "filloje nga e para",
+		"ActivateMyAccount": "Aktivizo llogarin\u00eb time"
+	},
+	"session": {
+		"GetStarted": "Fillo"
+	},
+	"authorize": {
+		"GetStarted": "Fillo",
+		"Authorize": "Autorizoj",
+		"TermsLabel": "Kam lexuar dhe jam dakord<br> deri n\u00eb {{link}}",
+		"TermsTitle": "Kushtet",
+		"mustAgree": "S\u00eb pari ju duhet t\u00eb pajtoheni me kushtet."
+	},
+	"register": {
+		"TermsLabel": "Un\u00eb pranoj {{link}}",
+		"TermsTitle": "Kushtet"
+	},
+	"notifications": {
+		"title": "Leja",
+		"prompt": "D\u00ebshiron t\u00eb aktivizosh njoftimet? Do t\u00eb merrni p\u00ebrdit\u00ebsime n\u00eb koh\u00eb reale p\u00ebr gj\u00ebrat q\u00eb ju interesojn\u00eb.",
+		"yes": "po",
+		"no": "Nr",
+		"WelcomePleaseVerifyEmail": "Mir\u00eb se vini! Ju lutemi verifikoni adres\u00ebn tuaj t\u00eb emailit.",
+		"WelcomeVerifyEmail": "Mir\u00eb se vini! Verifikoni adres\u00ebn tuaj t\u00eb emailit.",
+		"ForgetPass": "Hej, e ke harruar fraz\u00ebn e kalimit?",
+		"PassphraseSaved": "Fraza juaj e kalimit \u00ebsht\u00eb ruajtur.",
+		"IdentifierActivated": "{{type}} juaj \u00ebsht\u00eb aktivizuar.",
+		"CompletedActivation": "Ju keni p\u00ebrfunduar aktivizimin e p\u00ebrdoruesit.",
+		"CompletedActivationLogIn": "Ju keni p\u00ebrfunduar aktivizimin e p\u00ebrdoruesit. Provoni t\u00eb identifikoheni tani."
+	},
+	"contacts": {
+		"dialog": {
+			"title": "Zgjidhni kontaktin",
+			"CreateAccount": "+ Kontakt i ri",
+			"CreateAccountNotFound": "Q.Users.Cordova.UI.create nuk u gjet",
+			"SearchByName": "K\u00ebrko sipas emrit",
+			"EmptyContacts": "Kontaktet nuk u gjet\u00ebn..."
+		},
+		"select": {
+			"title": "Zgjidh kontaktin e {{displayName}}"
+		},
+		"require": {
+			"Instructions": "Ju do t\u00eb duhet t\u00eb aktivizoni qasjen n\u00eb t\u00eb gjitha kontaktet n\u00eb m\u00ebnyr\u00eb q\u00eb kjo t\u00eb funksionoj\u00eb."
+		}
+	},
+	"usersContacts": {
+		"selectLabel": "Ju lutemi zgjidhni etiket\u00ebn.",
+		"inviteUser": "Ftoni p\u00ebrdoruesit",
+		"selectRole": "Zgjidhni Rolin",
+		"inviteRole": "Fto {{role}}"
+	},
+	"invalidLanguageSelected": "\u00cbsht\u00eb zgjedhur gjuh\u00eb e pavlefshme",
+	"platforms": {
+		"wallet": "Portofoli",
+		"broadcast": "Transmetimi"
+	},
+	"login": {
+		"title": "Mir\u00eb se vini n\u00eb {{AppName}}",
+		"directions": {
+			"GetStarted": "Ku duhet t\u00eb d\u00ebrgojm\u00eb njoftime?",
+			"NoRegister": "Hyni n\u00ebse keni nj\u00eb llogari.",
+			"WasInvited": "Cila \u00ebsht\u00eb m\u00ebnyra m\u00eb e mir\u00eb p\u00ebr t\u00eb arritur tek ju?"
+		},
+		"directionsNoRegister": "Hyni n\u00ebse keni nj\u00eb llogari.",
+		"goButton": "\u2794",
+		"passphrase": "Shkruani fraz\u00ebn tuaj t\u00eb kalimit:",
+		"loginButton": "Fillo",
+		"registerButton": "Fillo",
+		"resendButton": "D\u00ebrgoni nj\u00eb mesazh aktivizimi",
+		"forgot": "E harrova?",
+		"resendConfirm": "D\u00ebshiron t\u00eb d\u00ebrgosh nj\u00eb mesazh p\u00ebr t\u00eb rivendosur fraz\u00ebn e kalimit?",
+		"resendSuccess": "Kontrolloni p\u00ebr nj\u00eb mesazh p\u00ebr t\u00eb rivendosur fraz\u00ebn tuaj t\u00eb kalimit",
+		"resendClose": "Mbylle",
+		"noPassphrase": "P\u00ebrpara se t\u00eb mund t\u00eb identifikoheni, duhet t\u00eb vendosni nj\u00eb fraz\u00eb kalimi duke klikuar lidhjen n\u00eb mesazhin tuaj t\u00eb aktivizimit.",
+		"notVerified": "Ju duhet t&#39;i d\u00ebrgoni vetes nj\u00eb mesazh aktivizimi n\u00eb m\u00ebnyr\u00eb q\u00eb t\u00eb identifikoheni.",
+		"emailExists": "A keni provuar t\u00eb regjistroheni me k\u00ebt\u00eb email m\u00eb par\u00eb? N\u00ebse po, kontrolloni kutin\u00eb tuaj hyr\u00ebse p\u00ebr t\u00eb aktivizuar llogarin\u00eb tuaj. <a href='#resend' class='Q_button Users_activation_resend'>Klikoni p\u00ebr t\u00eb rid\u00ebrguar mesazhin</a>",
+		"mobileExists": "A keni provuar t\u00eb regjistroheni me k\u00ebt\u00eb num\u00ebr celular m\u00eb par\u00eb? N\u00ebse po, kontrolloni SMS p\u00ebr t\u00eb aktivizuar llogarin\u00eb tuaj. <a href='#resend' class='Q_button Users_activation_resend'>Klikoni p\u00ebr t\u00eb rid\u00ebrguar mesazhin</a>",
+		"usingOther": "ose mundesh",
+		"connectPlatforms": "ose lidheni duke p\u00ebrdorur:",
+		"prompt": "Zgjidhni nj\u00eb em\u00ebr p\u00ebrdoruesi:",
+		"newUser": "ose krijoni nj\u00eb llogari t\u00eb re m\u00eb posht\u00eb",
+		"placeholders": {
+			"identifier": "# celulari ose emaili juaj",
+			"mobile": "shkruani numrin e celularit tuaj",
+			"email": "shkruani adres\u00ebn tuaj t\u00eb emailit",
+			"username": "p\u00ebrdorni vet\u00ebm shkronja dhe numra"
+		},
+		"confirmTerms": "Prano Kushtet e Sh\u00ebrbimit?",
+		"facebookNoEmail": "Llogaris\u00eb suaj n\u00eb facebook i mungon nj\u00eb adres\u00eb emaili e konfirmuar. Thjesht regjistrohuni n\u00eb m\u00ebnyr\u00eb amtare.",
+		"picTooltip": "Ju mund ta ndryshoni k\u00ebt\u00eb foto m\u00eb von\u00eb",
+		"web3": {
+			"payload": "Hyni n\u00eb {{host}} n\u00eb koh\u00ebn {{timestamp}}",
+			"alert": {
+				"title": "Po ridrejtohet te Portofoli",
+				"content": "Pasi t\u00eb mbyllni k\u00ebt\u00eb dialog, do t\u00eb \u00e7oheni n\u00eb portofolin tuaj. Pasi t\u00eb identifikoheni, kthehuni n\u00eb k\u00ebt\u00eb faqe."
+			},
+			"ConnectWallet": "Lidhni portofolin"
+		}
+	},
+	"setIdentifier": {
+		"title": "Shtoni nj\u00eb m\u00ebnyr\u00eb p\u00ebr t&#39;u identifikuar",
+		"sendMessage": "D\u00ebrgoni nj\u00eb mesazh aktivizimi",
+		"placeholders": {
+			"identifier": "shkruani numrin e celularit ose emailin tuaj",
+			"mobile": "shkruani numrin tuaj celular",
+			"email": "shkruani adres\u00ebn tuaj t\u00eb emailit",
+			"username": "emri i p\u00ebrdoruesit"
+		}
+	},
+	"prompt": {
+		"title": "Llogaria {{Platform}}",
+		"areUsing": "Ju jeni duke p\u00ebrdorur {{platform}} si",
+		"noLongerUsing": "Nuk je m\u00eb i lidhur me {{platform}} si",
+		"doAuth": "Identifikohu me k\u00ebt\u00eb llogari",
+		"doSwitch": "Kalo n\u00eb k\u00ebt\u00eb llogari"
+	},
+	"roles": {
+		"Owner": "Pronari",
+		"Admin": "Admin",
+		"Member": "An\u00ebtar",
+		"Guest": "I ftuar",
+		"Host": "Mikprit\u00ebs"
+	},
+	"web3": {
+		"WrongMethod": "Metoda e gabuar e kontrat\u00ebs {{methodName}}",
+		"ChangeWallet": "Ndrysho portofolin",
+		"ConnectWallet": "Lidhni portofolin",
+		"AfterWalletConnectedPleaseRefresh": "Pas lidhjes s\u00eb portofolit, ju lutemi rifreskoni k\u00ebt\u00eb faqe p\u00ebr t\u00eb njohur portofolin"
+	},
+	"labels": {
+		"addToPhonebook": "Shto te kontaktet e telefonit tim",
+		"addLabel": "Marr\u00ebdh\u00ebnie e re",
+		"prompt": "Jepini nj\u00eb em\u00ebr",
+		"titles": {
+			"Users/owners": "Pronar\u00ebt",
+			"Users/admins": "Administrator\u00ebt",
+			"Users/members": "An\u00ebtar\u00ebt",
+			"Users/guests": "T\u00eb ftuarit",
+			"Users/hosts": "Prit\u00ebsit",
+			"Users/testers": "Testuesit",
+			"Users/speakers": "Fol\u00ebsit"
+		}
+	},
+	"people": {
+		"People": "Njer\u00ebzit"
+	},
+	"external": {
+		"defaults": {
+			"title": "",
+			"bio": "Bot i angazhimit n\u00eb forum. Merrni tuaj\u00ebn n\u00eb https://engageusers.ai",
+			"website": "https://engageusers.ai"
+		}
+	},
+	"errors": {
+		"NotEnoughPermissionsWallet": "Nuk ka leje t\u00eb mjaftueshme p\u00ebr t\u00eb lexuar portofolin e k\u00ebtij p\u00ebrdoruesi",
+		"ThisUserHaveNoWallet": "Ky p\u00ebrdorues nuk ka nj\u00eb portofol t\u00eb caktuar",
+		"TheWalletOfThisUserInvalid": "Portofoli i k\u00ebtij p\u00ebrdoruesi \u00ebsht\u00eb i pavlefsh\u00ebm",
+		"WalletInvalid": "Adresa e portofolit \u00ebsht\u00eb e pavlefshme"
+	}
 }

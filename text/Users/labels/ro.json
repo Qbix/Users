@@ -1,15 +1,15 @@
 {
-    "addToPhonebook": "Adăugați la contactele mele din telefon",
-    "addLabel": "Noua Relatie",
-    "newRole": "Rol nou",
-    "prompt": "Dă-i un nume",
-    "newLabel": "Etichetă nouă",
-    "editLabel": "Editați eticheta",
-    "addBtn": "Adăuga",
-    "editBtn": "Salvați",
-    "canManageDialogTitle": "Poate gestiona roluri",
-    "canManageBtn": "Poate gestiona...",
-    "titlePlaceholder": "Titlu",
-    "selectOptionTitle_web2": "Nativ",
-    "selectOptionTitle_web3": "Web3"
+	"addToPhonebook": "Ad\u0103uga\u021bi la contactele mele din telefon",
+	"addLabel": "Noua Relatie",
+	"newRole": "Rol nou",
+	"prompt": "D\u0103-i un nume",
+	"newLabel": "Etichet\u0103 nou\u0103",
+	"editLabel": "Edita\u021bi eticheta",
+	"addBtn": "Ad\u0103uga",
+	"editBtn": "Salva\u021bi",
+	"canManageDialogTitle": "Poate gestiona roluri",
+	"canManageBtn": "Poate gestiona...",
+	"titlePlaceholder": "Titlu",
+	"selectOptionTitle_web2": "Nativ",
+	"selectOptionTitle_web3": "Web3"
 }

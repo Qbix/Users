@@ -1,22 +1,22 @@
 {
-    "activation": {
-        "Subject": "Vitajte! Overte svoju e-mailovú adresu.",
-        "Thanks": "Vitajte v {{1}}",
-        "ReallyYourEmail": "Je toto naozaj vaša e-mailová adresa, {{1}}? Ak áno, kliknite <a href='{{2}}'>sem<\/a> a nastavte si prístupovú frázu a aktivujte svoj účet.",
-        "SeeYou": "Uvidíme sa na <a href='{{1}}'>{{100}}<\/a> !",
-        "OtherwiseClickLink": "V opačnom prípade kliknite na <a href='{{1}}'>tento odkaz<\/a> ."
-    },
-    "identifier": {
-        "Subject": "Vitajte! Overte svoju e-mailovú adresu."
-    },
-    "resend": {
-        "Subject": "Hej, zabudli ste svoju prístupovú frázu?",
-        "Thanks": "Ďakujeme za návštevu {{1}}",
-        "YouAreReceiving": "Tento e-mail ste dostali, pretože niekto zadal vašu e-mailovú adresu a klikol na „zabudol som heslo“. Ak ste to neboli vy, jednoducho túto správu ignorujte.",
-        "Reset": "Ak chcete obnoviť prístupovú frázu, kliknite na {{1}}",
-        "SetUpPassphrase": "Nastavte prístupovú frázu",
-        "DomainCode": "Ak je webová stránka už otvorená vo vašom prehliadači, môžete zadať kód"
-    },
-    "SeeYou": "Uvidíme sa na {{1}}!",
-    "LinkToUnsubscribe": "Tu je odkaz na <a href='{{1}}'>odhlásenie<\/a> , ak si neželáte dostávať ďalšie e-maily."
+	"activation": {
+		"Subject": "Vitajte! Overte svoju e-mailov\u00fa adresu.",
+		"Thanks": "Vitajte v {{1}}",
+		"ReallyYourEmail": "Je toto naozaj va\u0161a e-mailov\u00e1 adresa, {{1}}? Ak \u00e1no, kliknite <a href='{{2}}'>sem</a> a nastavte si pr\u00edstupov\u00fa fr\u00e1zu a aktivujte svoj \u00fa\u010det.",
+		"SeeYou": "Uvid\u00edme sa na <a href='{{1}}'>{{100}}</a> !",
+		"OtherwiseClickLink": "V opa\u010dnom pr\u00edpade kliknite na <a href='{{1}}'>tento odkaz</a> ."
+	},
+	"identifier": {
+		"Subject": "Vitajte! Overte svoju e-mailov\u00fa adresu."
+	},
+	"resend": {
+		"Subject": "Hej, zabudli ste svoju pr\u00edstupov\u00fa fr\u00e1zu?",
+		"Thanks": "\u010eakujeme za n\u00e1v\u0161tevu {{1}}",
+		"YouAreReceiving": "Tento e-mail ste dostali, preto\u017ee niekto zadal va\u0161u e-mailov\u00fa adresu a klikol na \u201ezabudol som heslo\u201c. Ak ste to neboli vy, jednoducho t\u00fato spr\u00e1vu ignorujte.",
+		"Reset": "Ak chcete obnovi\u0165 pr\u00edstupov\u00fa fr\u00e1zu, kliknite na {{1}}",
+		"SetUpPassphrase": "Nastavte pr\u00edstupov\u00fa fr\u00e1zu",
+		"DomainCode": "Ak je webov\u00e1 str\u00e1nka u\u017e otvoren\u00e1 vo va\u0161om prehliada\u010di, m\u00f4\u017eete zada\u0165 k\u00f3d"
+	},
+	"SeeYou": "Uvid\u00edme sa na {{1}}!",
+	"LinkToUnsubscribe": "Tu je odkaz na <a href='{{1}}'>odhl\u00e1senie</a> , ak si ne\u017eel\u00e1te dost\u00e1va\u0165 \u010fal\u0161ie e-maily."
 }

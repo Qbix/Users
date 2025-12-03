@@ -1,4 +1,4 @@
 {
-    "NotLoggedIn": "आप लॉग इन नहीं हैं। <a href='#login' data-users-login>लॉग इन करने के लिए यहां क्लिक करें<\/a>",
-    "InvalidLanguage": "अमान्य भाषा {{language}}"
+	"NotLoggedIn": "\u0906\u092a \u0932\u0949\u0917 \u0907\u0928 \u0928\u0939\u0940\u0902 \u0939\u0948\u0902\u0964 <a href='#login' data-users-login>\u0932\u0949\u0917 \u0907\u0928 \u0915\u0930\u0928\u0947 \u0915\u0947 \u0932\u093f\u090f \u092f\u0939\u093e\u0902 \u0915\u094d\u0932\u093f\u0915 \u0915\u0930\u0947\u0902</a>",
+	"InvalidLanguage": "\u0905\u092e\u093e\u0928\u094d\u092f \u092d\u093e\u0937\u093e {{language}}"
 }

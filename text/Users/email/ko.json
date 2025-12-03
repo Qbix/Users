@@ -1,22 +1,22 @@
 {
-    "activation": {
-        "Subject": "어서 오십시오! 이메일 주소를 확인하세요.",
-        "Thanks": "{{1}}에 오신 것을 환영합니다.",
-        "ReallyYourEmail": "{{1}}, 이것이 정말 귀하의 이메일 주소입니까? 그렇다면 <a href='{{2}}'>여기<\/a> 를 클릭하여 암호를 설정하고 계정을 활성화하십시오.",
-        "SeeYou": "<a href='{{1}}'>{{2}}<\/a> 에서 만나요!",
-        "OtherwiseClickLink": "그렇지 않으면 <a href='{{1}}'>이 링크를<\/a> 클릭하십시오."
-    },
-    "identifier": {
-        "Subject": "어서 오십시오! 이메일 주소를 확인."
-    },
-    "resend": {
-        "Subject": "암호를 잊으셨나요?",
-        "Thanks": "{{1}}을(를) 방문해 주셔서 감사합니다.",
-        "YouAreReceiving": "누군가가 귀하의 이메일 주소를 입력하고 &quot;암호를 잊으셨습니까?&quot;를 클릭했기 때문에 이 이메일을 받으셨습니다. 귀하가 아닌 경우 이 메시지를 무시하십시오.",
-        "Reset": "암호를 재설정하려면 {{1}}를 클릭하세요.",
-        "SetUpPassphrase": "암호 설정",
-        "DomainCode": "웹 페이지가 브라우저에 이미 열려 있는 경우 코드를 입력할 수 있습니다."
-    },
-    "SeeYou": "{{1}}에서 만나요!",
-    "LinkToUnsubscribe": "더 이상 이메일을 받지 않으려면 <a href='{{1}}'>수신거부<\/a> 링크를 클릭하세요."
+	"activation": {
+		"Subject": "\uc5b4\uc11c \uc624\uc2ed\uc2dc\uc624! \uc774\uba54\uc77c \uc8fc\uc18c\ub97c \ud655\uc778\ud558\uc138\uc694.",
+		"Thanks": "{{1}}\uc5d0 \uc624\uc2e0 \uac83\uc744 \ud658\uc601\ud569\ub2c8\ub2e4.",
+		"ReallyYourEmail": "{{1}}, \uc774\uac83\uc774 \uc815\ub9d0 \uadc0\ud558\uc758 \uc774\uba54\uc77c \uc8fc\uc18c\uc785\ub2c8\uae4c? \uadf8\ub807\ub2e4\uba74 <a href='{{2}}'>\uc5ec\uae30</a> \ub97c \ud074\ub9ad\ud558\uc5ec \uc554\ud638\ub97c \uc124\uc815\ud558\uace0 \uacc4\uc815\uc744 \ud65c\uc131\ud654\ud558\uc2ed\uc2dc\uc624.",
+		"SeeYou": "<a href='{{1}}'>{{2}}</a> \uc5d0\uc11c \ub9cc\ub098\uc694!",
+		"OtherwiseClickLink": "\uadf8\ub807\uc9c0 \uc54a\uc73c\uba74 <a href='{{1}}'>\uc774 \ub9c1\ud06c\ub97c</a> \ud074\ub9ad\ud558\uc2ed\uc2dc\uc624."
+	},
+	"identifier": {
+		"Subject": "\uc5b4\uc11c \uc624\uc2ed\uc2dc\uc624! \uc774\uba54\uc77c \uc8fc\uc18c\ub97c \ud655\uc778."
+	},
+	"resend": {
+		"Subject": "\uc554\ud638\ub97c \uc78a\uc73c\uc168\ub098\uc694?",
+		"Thanks": "{{1}}\uc744(\ub97c) \ubc29\ubb38\ud574 \uc8fc\uc154\uc11c \uac10\uc0ac\ud569\ub2c8\ub2e4.",
+		"YouAreReceiving": "\ub204\uad70\uac00\uac00 \uadc0\ud558\uc758 \uc774\uba54\uc77c \uc8fc\uc18c\ub97c \uc785\ub825\ud558\uace0 &quot;\uc554\ud638\ub97c \uc78a\uc73c\uc168\uc2b5\ub2c8\uae4c?&quot;\ub97c \ud074\ub9ad\ud588\uae30 \ub54c\ubb38\uc5d0 \uc774 \uc774\uba54\uc77c\uc744 \ubc1b\uc73c\uc168\uc2b5\ub2c8\ub2e4. \uadc0\ud558\uac00 \uc544\ub2cc \uacbd\uc6b0 \uc774 \uba54\uc2dc\uc9c0\ub97c \ubb34\uc2dc\ud558\uc2ed\uc2dc\uc624.",
+		"Reset": "\uc554\ud638\ub97c \uc7ac\uc124\uc815\ud558\ub824\uba74 {{1}}\ub97c \ud074\ub9ad\ud558\uc138\uc694.",
+		"SetUpPassphrase": "\uc554\ud638 \uc124\uc815",
+		"DomainCode": "\uc6f9 \ud398\uc774\uc9c0\uac00 \ube0c\ub77c\uc6b0\uc800\uc5d0 \uc774\ubbf8 \uc5f4\ub824 \uc788\ub294 \uacbd\uc6b0 \ucf54\ub4dc\ub97c \uc785\ub825\ud560 \uc218 \uc788\uc2b5\ub2c8\ub2e4."
+	},
+	"SeeYou": "{{1}}\uc5d0\uc11c \ub9cc\ub098\uc694!",
+	"LinkToUnsubscribe": "\ub354 \uc774\uc0c1 \uc774\uba54\uc77c\uc744 \ubc1b\uc9c0 \uc54a\uc73c\ub824\uba74 <a href='{{1}}'>\uc218\uc2e0\uac70\ubd80</a> \ub9c1\ud06c\ub97c \ud074\ub9ad\ud558\uc138\uc694."
 }

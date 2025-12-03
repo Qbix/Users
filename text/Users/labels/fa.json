@@ -1,15 +1,15 @@
 {
-    "addToPhonebook": "افزودن به مخاطبین تلفن من",
-    "addLabel": "رابطه جدید",
-    "newRole": "نقش جدید",
-    "prompt": "اسمش را بگذار",
-    "newLabel": "برچسب جدید",
-    "editLabel": "ویرایش برچسب",
-    "addBtn": "اضافه کردن",
-    "editBtn": "صرفه جویی",
-    "canManageDialogTitle": "می تواند نقش ها را مدیریت کند",
-    "canManageBtn": "می تواند مدیریت ...",
-    "titlePlaceholder": "عنوان",
-    "selectOptionTitle_web2": "بومی",
-    "selectOptionTitle_web3": "وب 3"
+	"addToPhonebook": "\u0627\u0641\u0632\u0648\u062f\u0646 \u0628\u0647 \u0645\u062e\u0627\u0637\u0628\u06cc\u0646 \u062a\u0644\u0641\u0646 \u0645\u0646",
+	"addLabel": "\u0631\u0627\u0628\u0637\u0647 \u062c\u062f\u06cc\u062f",
+	"newRole": "\u0646\u0642\u0634 \u062c\u062f\u06cc\u062f",
+	"prompt": "\u0627\u0633\u0645\u0634 \u0631\u0627 \u0628\u06af\u0630\u0627\u0631",
+	"newLabel": "\u0628\u0631\u0686\u0633\u0628 \u062c\u062f\u06cc\u062f",
+	"editLabel": "\u0648\u06cc\u0631\u0627\u06cc\u0634 \u0628\u0631\u0686\u0633\u0628",
+	"addBtn": "\u0627\u0636\u0627\u0641\u0647 \u06a9\u0631\u062f\u0646",
+	"editBtn": "\u0635\u0631\u0641\u0647 \u062c\u0648\u06cc\u06cc",
+	"canManageDialogTitle": "\u0645\u06cc \u062a\u0648\u0627\u0646\u062f \u0646\u0642\u0634 \u0647\u0627 \u0631\u0627 \u0645\u062f\u06cc\u0631\u06cc\u062a \u06a9\u0646\u062f",
+	"canManageBtn": "\u0645\u06cc \u062a\u0648\u0627\u0646\u062f \u0645\u062f\u06cc\u0631\u06cc\u062a ...",
+	"titlePlaceholder": "\u0639\u0646\u0648\u0627\u0646",
+	"selectOptionTitle_web2": "\u0628\u0648\u0645\u06cc",
+	"selectOptionTitle_web3": "\u0648\u0628 3"
 }

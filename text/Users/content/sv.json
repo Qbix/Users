@@ -1,196 +1,196 @@
 {
-    "avatar": {
-        "Someone": "Någon"
-    },
-    "identifier": {
-        "types": {
-            "email": "E-post",
-            "mobile": "Mobil",
-            "web3": "Web3"
-        }
-    },
-    "clipboard": {
-        "Copied": "Kopierade! Nu kan du klistra in den var som helst."
-    },
-    "analytics": {
-        "Title": "Analytics",
-        "Daily": "Dagligen",
-        "Weekly": "Varje vecka",
-        "Monthly": "En gång i månaden",
-        "Application": "Ansökan",
-        "Pages": "Sidor",
-        "Services": "Tjänster",
-        "Faq": "FAQ",
-        "WeekDays": "Veckodagar"
-    },
-    "actions": {
-        "LogIn": "logga in",
-        "LogOut": "logga ut"
-    },
-    "activate": {
-        "OneTimeCode": "Ange koden du fick:",
-        "SetAsPrimary": "Ställ in {{1}} som min primära {{2}}",
-        "ChoosePassPhrase": "Välj en <strong>lösenordsfras<\/strong> att logga in med.<br> En enkel fras som består av några ord som du lätt kommer ihåg.",
-        "ChoosePassPhraseSeeSuggestions": "Välj en bra <strong>lösenordsfras<\/strong> för att skydda ditt konto. Se förslagen för några idéer.",
-        "LogOutAndTryAgain": "Logga ut och försök igen",
-        "IfYouFeel": "Om du känner att något gick fel kan du",
-        "SetIdentifierButtonTitle": "börja om",
-        "ActivateMyAccount": "Aktivera Mitt konto"
-    },
-    "session": {
-        "GetStarted": "Komma igång"
-    },
-    "authorize": {
-        "GetStarted": "Komma igång",
-        "Authorize": "Godkänna",
-        "TermsLabel": "Jag har läst och håller med<br> till {{link}} an",
-        "TermsTitle": "Villkor",
-        "mustAgree": "Först måste du godkänna villkoren."
-    },
-    "register": {
-        "TermsLabel": "Jag accepterar {{link}} an",
-        "TermsTitle": "Villkor"
-    },
-    "notifications": {
-        "title": "Lov",
-        "prompt": "Vill du aktivera aviseringar? Du kommer att få uppdateringar i realtid om saker du bryr dig om.",
-        "yes": "Ja",
-        "no": "Nej",
-        "WelcomePleaseVerifyEmail": "Välkommen! Vänligen verifiera din email adress.",
-        "WelcomeVerifyEmail": "Välkommen! Verifiera din e-postadress.",
-        "ForgetPass": "Hej, har du glömt din lösenfras?",
-        "PassphraseSaved": "Din lösenordsfras har sparats.",
-        "IdentifierActivated": "Din {{type}} har aktiverats.",
-        "CompletedActivation": "Du har slutfört användaraktiveringen.",
-        "CompletedActivationLogIn": "Du har slutfört användaraktiveringen. Testa att logga in nu."
-    },
-    "contacts": {
-        "dialog": {
-            "title": "Välj kontakt",
-            "CreateAccount": "+ Ny kontakt",
-            "CreateAccountNotFound": "Q.Users.Cordova.UI.create hittades inte",
-            "SearchByName": "Sök på namn",
-            "EmptyContacts": "Det gick inte att hitta kontakter..."
-        },
-        "select": {
-            "title": "Välj kontakt på {{displayName}}"
-        },
-        "require": {
-            "Instructions": "Du måste aktivera åtkomst till alla kontakter för att detta ska fungera."
-        }
-    },
-    "usersContacts": {
-        "selectLabel": "Välj etikett.",
-        "inviteUser": "Bjud in användare",
-        "selectRole": "Välj Roll",
-        "inviteRole": "Bjud in {{role}}"
-    },
-    "invalidLanguageSelected": "Ogiltigt språk valt",
-    "platforms": {
-        "wallet": "Plånbok",
-        "broadcast": "Utsända"
-    },
-    "login": {
-        "title": "Välkommen",
-        "directions": {
-            "GetStarted": "Skapa ett konto eller logga in.",
-            "NoRegister": "Logga in om du har ett konto.",
-            "WasInvited": "Vad är det bästa sättet att nå dig?"
-        },
-        "directionsNoRegister": "Logga in om du har ett konto.",
-        "goButton": "➔",
-        "passphrase": "Ange din lösenordsfras:",
-        "loginButton": "Komma igång",
-        "registerButton": "Komma igång",
-        "resendButton": "Skicka aktiveringsmeddelande",
-        "forgot": "Glömde det?",
-        "resendConfirm": "Vill du skicka ett meddelande för att återställa din lösenfras?",
-        "resendSuccess": "Sök efter ett meddelande för att återställa din lösenfras",
-        "resendClose": "Stänga",
-        "noPassphrase": "Innan du kan logga in måste du ställa in en lösenordsfras genom att klicka på länken i ditt aktiveringsmeddelande.",
-        "notVerified": "Du måste skicka ett aktiveringsmeddelande till dig själv för att kunna logga in.",
-        "emailExists": "Försökte du registrera dig med detta e-postmeddelande tidigare? Om så är fallet, kontrollera din inkorg för att aktivera ditt konto. <a href='#resend' class='Q_button Users_activation_resend'>Klicka för att skicka meddelandet igen<\/a>",
-        "mobileExists": "Har du försökt registrera dig med detta mobilnummer tidigare? Om så är fallet, kontrollera ditt SMS för att aktivera ditt konto. <a href='#resend' class='Q_button Users_activation_resend'>Klicka för att skicka meddelandet igen<\/a>",
-        "usingOther": "Eller kan du",
-        "connectPlatforms": "eller anslut med:",
-        "prompt": "Välj ett användarnamn:",
-        "newUser": "eller skapa ett nytt konto nedan",
-        "placeholders": {
-            "identifier": "ditt mobilnummer eller e-post",
-            "mobile": "ange ditt mobilnummer",
-            "email": "Skriv in din mailadress",
-            "username": "använd endast bokstäver och siffror"
-        },
-        "confirmTerms": "Acceptera användarvillkoren?",
-        "facebookNoEmail": "Ditt Facebook-konto saknar en bekräftad e-postadress. Logga helt enkelt på det ursprungliga sättet.",
-        "picTooltip": "Du kan ändra den här bilden senare",
-        "web3": {
-            "payload": "Logga in på {{host}} vid tidpunkten {{timestamp}}",
-            "alert": {
-                "title": "Omdirigerar till Wallet",
-                "content": "När du stänger den här dialogrutan tas du till din plånbok. När du har loggat in går du tillbaka till den här sidan."
-            },
-            "ConnectWallet": "Anslut plånbok"
-        }
-    },
-    "setIdentifier": {
-        "title": "Lägg till ett sätt att logga in",
-        "sendMessage": "Skicka aktiveringsmeddelande",
-        "placeholders": {
-            "identifier": "ange ditt mobilnummer eller e-post",
-            "mobile": "Skriv in ditt mobilnummer",
-            "email": "Skriv in din mailadress",
-            "username": "Användarnamn"
-        }
-    },
-    "prompt": {
-        "title": "{{Platform}} konto",
-        "areUsing": "Du använder {{platform}} som",
-        "noLongerUsing": "Du är inte längre ansluten till {{platform}} as",
-        "doAuth": "Logga in med detta konto",
-        "doSwitch": "Byt till det här kontot"
-    },
-    "roles": {
-        "Owner": "Ägare",
-        "Admin": "Administration",
-        "Member": "Medlem",
-        "Guest": "Gäst",
-        "Host": "Värd"
-    },
-    "web3": {
-        "WrongMethod": "Fel kontraktsmetod {{methodName}}",
-        "ChangeWallet": "Byt plånbok",
-        "ConnectWallet": "Anslut plånbok",
-        "AfterWalletConnectedPleaseRefresh": "När plånboken är ansluten, uppdatera den här sidan för att känna igen plånboken"
-    },
-    "labels": {
-        "addToPhonebook": "Lägg till i mina telefonkontakter",
-        "addLabel": "Nytt förhållande",
-        "prompt": "Ge det ett namn",
-        "titles": {
-            "Users\/owners": "Ägare",
-            "Users\/admins": "Administratörer",
-            "Users\/members": "Medlemmar",
-            "Users\/guests": "Gäster",
-            "Users\/hosts": "Värdar",
-            "Users\/testers": "Testare",
-            "Users\/speakers": "Högtalare"
-        }
-    },
-    "people": {
-        "People": "människor"
-    },
-    "external": {
-        "defaults": {
-            "title": "",
-            "bio": "Forum engagemang bot. Skaffa din egen på https:\/\/engageusers.ai",
-            "website": "https:\/\/engageusers.ai"
-        }
-    },
-    "errors": {
-        "NotEnoughPermissionsWallet": "Inte tillräckliga behörigheter för att läsa plånbok för denna användare",
-        "ThisUserHaveNoWallet": "Denna användare har ingen plånbok tilldelad",
-        "TheWalletOfThisUserInvalid": "Den här användarens plånbok är ogiltig",
-        "WalletInvalid": "Ogiltig plånboksadress"
-    }
+	"avatar": {
+		"Someone": "N\u00e5gon"
+	},
+	"identifier": {
+		"types": {
+			"email": "E-post",
+			"mobile": "Mobil",
+			"web3": "Web3"
+		}
+	},
+	"clipboard": {
+		"Copied": "Kopierade! Nu kan du klistra in den var som helst."
+	},
+	"analytics": {
+		"Title": "Analytics",
+		"Daily": "Dagligen",
+		"Weekly": "Varje vecka",
+		"Monthly": "En g\u00e5ng i m\u00e5naden",
+		"Application": "Ans\u00f6kan",
+		"Pages": "Sidor",
+		"Services": "Tj\u00e4nster",
+		"Faq": "FAQ",
+		"WeekDays": "Veckodagar"
+	},
+	"actions": {
+		"LogIn": "logga in",
+		"LogOut": "logga ut"
+	},
+	"activate": {
+		"OneTimeCode": "Ange koden du fick:",
+		"SetAsPrimary": "St\u00e4ll in {{1}} som min prim\u00e4ra {{2}}",
+		"ChoosePassPhrase": "V\u00e4lj en <strong>l\u00f6senordsfras</strong> att logga in med.<br> En enkel fras som best\u00e5r av n\u00e5gra ord som du l\u00e4tt kommer ih\u00e5g.",
+		"ChoosePassPhraseSeeSuggestions": "V\u00e4lj en bra <strong>l\u00f6senordsfras</strong> f\u00f6r att skydda ditt konto. Se f\u00f6rslagen f\u00f6r n\u00e5gra id\u00e9er.",
+		"LogOutAndTryAgain": "Logga ut och f\u00f6rs\u00f6k igen",
+		"IfYouFeel": "Om du k\u00e4nner att n\u00e5got gick fel kan du",
+		"SetIdentifierButtonTitle": "b\u00f6rja om",
+		"ActivateMyAccount": "Aktivera Mitt konto"
+	},
+	"session": {
+		"GetStarted": "Komma ig\u00e5ng"
+	},
+	"authorize": {
+		"GetStarted": "Komma ig\u00e5ng",
+		"Authorize": "Godk\u00e4nna",
+		"TermsLabel": "Jag har l\u00e4st och h\u00e5ller med<br> till {{link}} an",
+		"TermsTitle": "Villkor",
+		"mustAgree": "F\u00f6rst m\u00e5ste du godk\u00e4nna villkoren."
+	},
+	"register": {
+		"TermsLabel": "Jag accepterar {{link}} an",
+		"TermsTitle": "Villkor"
+	},
+	"notifications": {
+		"title": "Lov",
+		"prompt": "Vill du aktivera aviseringar? Du kommer att f\u00e5 uppdateringar i realtid om saker du bryr dig om.",
+		"yes": "Ja",
+		"no": "Nej",
+		"WelcomePleaseVerifyEmail": "V\u00e4lkommen! V\u00e4nligen verifiera din email adress.",
+		"WelcomeVerifyEmail": "V\u00e4lkommen! Verifiera din e-postadress.",
+		"ForgetPass": "Hej, har du gl\u00f6mt din l\u00f6senfras?",
+		"PassphraseSaved": "Din l\u00f6senordsfras har sparats.",
+		"IdentifierActivated": "Din {{type}} har aktiverats.",
+		"CompletedActivation": "Du har slutf\u00f6rt anv\u00e4ndaraktiveringen.",
+		"CompletedActivationLogIn": "Du har slutf\u00f6rt anv\u00e4ndaraktiveringen. Testa att logga in nu."
+	},
+	"contacts": {
+		"dialog": {
+			"title": "V\u00e4lj kontakt",
+			"CreateAccount": "+ Ny kontakt",
+			"CreateAccountNotFound": "Q.Users.Cordova.UI.create hittades inte",
+			"SearchByName": "S\u00f6k p\u00e5 namn",
+			"EmptyContacts": "Det gick inte att hitta kontakter..."
+		},
+		"select": {
+			"title": "V\u00e4lj kontakt p\u00e5 {{displayName}}"
+		},
+		"require": {
+			"Instructions": "Du m\u00e5ste aktivera \u00e5tkomst till alla kontakter f\u00f6r att detta ska fungera."
+		}
+	},
+	"usersContacts": {
+		"selectLabel": "V\u00e4lj etikett.",
+		"inviteUser": "Bjud in anv\u00e4ndare",
+		"selectRole": "V\u00e4lj Roll",
+		"inviteRole": "Bjud in {{role}}"
+	},
+	"invalidLanguageSelected": "Ogiltigt spr\u00e5k valt",
+	"platforms": {
+		"wallet": "Pl\u00e5nbok",
+		"broadcast": "Uts\u00e4nda"
+	},
+	"login": {
+		"title": "V\u00e4lkommen till {{AppName}}",
+		"directions": {
+			"GetStarted": "Vart ska vi skicka aviseringar?",
+			"NoRegister": "Logga in om du har ett konto.",
+			"WasInvited": "Vad \u00e4r det b\u00e4sta s\u00e4ttet att n\u00e5 dig?"
+		},
+		"directionsNoRegister": "Logga in om du har ett konto.",
+		"goButton": "\u2794",
+		"passphrase": "Ange din l\u00f6senordsfras:",
+		"loginButton": "Komma ig\u00e5ng",
+		"registerButton": "Komma ig\u00e5ng",
+		"resendButton": "Skicka aktiveringsmeddelande",
+		"forgot": "Gl\u00f6mde det?",
+		"resendConfirm": "Vill du skicka ett meddelande f\u00f6r att \u00e5terst\u00e4lla din l\u00f6senfras?",
+		"resendSuccess": "S\u00f6k efter ett meddelande f\u00f6r att \u00e5terst\u00e4lla din l\u00f6senfras",
+		"resendClose": "St\u00e4nga",
+		"noPassphrase": "Innan du kan logga in m\u00e5ste du st\u00e4lla in en l\u00f6senordsfras genom att klicka p\u00e5 l\u00e4nken i ditt aktiveringsmeddelande.",
+		"notVerified": "Du m\u00e5ste skicka ett aktiveringsmeddelande till dig sj\u00e4lv f\u00f6r att kunna logga in.",
+		"emailExists": "F\u00f6rs\u00f6kte du registrera dig med detta e-postmeddelande tidigare? Om s\u00e5 \u00e4r fallet, kontrollera din inkorg f\u00f6r att aktivera ditt konto. <a href='#resend' class='Q_button Users_activation_resend'>Klicka f\u00f6r att skicka meddelandet igen</a>",
+		"mobileExists": "Har du f\u00f6rs\u00f6kt registrera dig med detta mobilnummer tidigare? Om s\u00e5 \u00e4r fallet, kontrollera ditt SMS f\u00f6r att aktivera ditt konto. <a href='#resend' class='Q_button Users_activation_resend'>Klicka f\u00f6r att skicka meddelandet igen</a>",
+		"usingOther": "Eller kan du",
+		"connectPlatforms": "eller anslut med:",
+		"prompt": "V\u00e4lj ett anv\u00e4ndarnamn:",
+		"newUser": "eller skapa ett nytt konto nedan",
+		"placeholders": {
+			"identifier": "ditt mobilnummer eller e-post",
+			"mobile": "ange ditt mobilnummer",
+			"email": "Skriv in din mailadress",
+			"username": "anv\u00e4nd endast bokst\u00e4ver och siffror"
+		},
+		"confirmTerms": "Acceptera anv\u00e4ndarvillkoren?",
+		"facebookNoEmail": "Ditt Facebook-konto saknar en bekr\u00e4ftad e-postadress. Logga helt enkelt p\u00e5 det ursprungliga s\u00e4ttet.",
+		"picTooltip": "Du kan \u00e4ndra den h\u00e4r bilden senare",
+		"web3": {
+			"payload": "Logga in p\u00e5 {{host}} vid tidpunkten {{timestamp}}",
+			"alert": {
+				"title": "Omdirigerar till Wallet",
+				"content": "N\u00e4r du st\u00e4nger den h\u00e4r dialogrutan tas du till din pl\u00e5nbok. N\u00e4r du har loggat in g\u00e5r du tillbaka till den h\u00e4r sidan."
+			},
+			"ConnectWallet": "Anslut pl\u00e5nbok"
+		}
+	},
+	"setIdentifier": {
+		"title": "L\u00e4gg till ett s\u00e4tt att logga in",
+		"sendMessage": "Skicka aktiveringsmeddelande",
+		"placeholders": {
+			"identifier": "ange ditt mobilnummer eller e-post",
+			"mobile": "Skriv in ditt mobilnummer",
+			"email": "Skriv in din mailadress",
+			"username": "Anv\u00e4ndarnamn"
+		}
+	},
+	"prompt": {
+		"title": "{{Platform}} konto",
+		"areUsing": "Du anv\u00e4nder {{platform}} som",
+		"noLongerUsing": "Du \u00e4r inte l\u00e4ngre ansluten till {{platform}} as",
+		"doAuth": "Logga in med detta konto",
+		"doSwitch": "Byt till det h\u00e4r kontot"
+	},
+	"roles": {
+		"Owner": "\u00c4gare",
+		"Admin": "Administration",
+		"Member": "Medlem",
+		"Guest": "G\u00e4st",
+		"Host": "V\u00e4rd"
+	},
+	"web3": {
+		"WrongMethod": "Fel kontraktsmetod {{methodName}}",
+		"ChangeWallet": "Byt pl\u00e5nbok",
+		"ConnectWallet": "Anslut pl\u00e5nbok",
+		"AfterWalletConnectedPleaseRefresh": "N\u00e4r pl\u00e5nboken \u00e4r ansluten, uppdatera den h\u00e4r sidan f\u00f6r att k\u00e4nna igen pl\u00e5nboken"
+	},
+	"labels": {
+		"addToPhonebook": "L\u00e4gg till i mina telefonkontakter",
+		"addLabel": "Nytt f\u00f6rh\u00e5llande",
+		"prompt": "Ge det ett namn",
+		"titles": {
+			"Users/owners": "\u00c4gare",
+			"Users/admins": "Administrat\u00f6rer",
+			"Users/members": "Medlemmar",
+			"Users/guests": "G\u00e4ster",
+			"Users/hosts": "V\u00e4rdar",
+			"Users/testers": "Testare",
+			"Users/speakers": "H\u00f6gtalare"
+		}
+	},
+	"people": {
+		"People": "m\u00e4nniskor"
+	},
+	"external": {
+		"defaults": {
+			"title": "",
+			"bio": "Forum engagemang bot. Skaffa din egen p\u00e5 https://engageusers.ai",
+			"website": "https://engageusers.ai"
+		}
+	},
+	"errors": {
+		"NotEnoughPermissionsWallet": "Inte tillr\u00e4ckliga beh\u00f6righeter f\u00f6r att l\u00e4sa pl\u00e5nbok f\u00f6r denna anv\u00e4ndare",
+		"ThisUserHaveNoWallet": "Denna anv\u00e4ndare har ingen pl\u00e5nbok tilldelad",
+		"TheWalletOfThisUserInvalid": "Den h\u00e4r anv\u00e4ndarens pl\u00e5nbok \u00e4r ogiltig",
+		"WalletInvalid": "Ogiltig pl\u00e5nboksadress"
+	}
 }

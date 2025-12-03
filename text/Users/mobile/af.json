@@ -1,14 +1,14 @@
 {
-    "activation": {
-        "Thanks": "Welkom by {{1}}.",
-        "ClickHere": "Klik hier om jou rekening te aktiveer: {{1}}"
-    },
-    "addMobile": {
-        "ClickHere": "Klik hier om jou selfoonnommer te verifieer: {{1}}"
-    },
-    "resend": {
-        "DidYouWant": "Wou jy jou wagfrase in {{1}} terugstel?",
-        "ClickHere": "Klik dan hier: {{1}}",
-        "OrEnterCode": "of voer kode in:"
-    }
+	"activation": {
+		"Thanks": "Welkom by {{1}}.",
+		"ClickHere": "Klik hier om jou rekening te aktiveer: {{1}}"
+	},
+	"addMobile": {
+		"ClickHere": "Klik hier om jou selfoonnommer te verifieer: {{1}}"
+	},
+	"resend": {
+		"DidYouWant": "Wou jy jou wagfrase in {{1}} terugstel?",
+		"ClickHere": "Klik dan hier: {{1}}",
+		"OrEnterCode": "of voer kode in:"
+	}
 }

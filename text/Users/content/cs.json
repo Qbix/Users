@@ -1,196 +1,196 @@
 {
-    "avatar": {
-        "Someone": "Někdo"
-    },
-    "identifier": {
-        "types": {
-            "email": "E-mailem",
-            "mobile": "mobilní, pohybliví",
-            "web3": "Web3"
-        }
-    },
-    "clipboard": {
-        "Copied": "Zkopírováno! Nyní jej můžete vložit kamkoli."
-    },
-    "analytics": {
-        "Title": "Analytics",
-        "Daily": "Denně",
-        "Weekly": "Týdně",
-        "Monthly": "Měsíční",
-        "Application": "aplikace",
-        "Pages": "Stránky",
-        "Services": "Služby",
-        "Faq": "Faq",
-        "WeekDays": "Týdenní dny"
-    },
-    "actions": {
-        "LogIn": "přihlásit se",
-        "LogOut": "odhlásit se"
-    },
-    "activate": {
-        "OneTimeCode": "Zadejte kód, který jste obdrželi:",
-        "SetAsPrimary": "Nastavit {{1}} jako mých primárních {{2}}",
-        "ChoosePassPhrase": "Vyberte <strong>heslo,<\/strong> pomocí kterého se chcete přihlásit.<br> Jednoduchá fráze složená z pár slov, které si snadno zapamatujete.",
-        "ChoosePassPhraseSeeSuggestions": "Vyberte si dobrou <strong>přístupovou frázi<\/strong> k ochraně svého účtu. Podívejte se na návrhy některých nápadů.",
-        "LogOutAndTryAgain": "Odhlaste se a zkuste to znovu",
-        "IfYouFeel": "Pokud máte pocit, že se něco pokazilo, můžete",
-        "SetIdentifierButtonTitle": "začít znovu",
-        "ActivateMyAccount": "Aktivujte Můj účet"
-    },
-    "session": {
-        "GetStarted": "Začít"
-    },
-    "authorize": {
-        "GetStarted": "Začít",
-        "Authorize": "Povolit",
-        "TermsLabel": "Přečetl jsem a souhlasím<br> na {{link}}",
-        "TermsTitle": "Podmínky",
-        "mustAgree": "Nejprve musíte souhlasit s podmínkami."
-    },
-    "register": {
-        "TermsLabel": "Přijímám {{link}}",
-        "TermsTitle": "Podmínky"
-    },
-    "notifications": {
-        "title": "Povolení",
-        "prompt": "Chcete povolit upozornění? Budete dostávat aktuální informace o věcech, které vás zajímají.",
-        "yes": "Ano",
-        "no": "Ne",
-        "WelcomePleaseVerifyEmail": "Vítejte! Ověřte prosím svou e-mailovou adresu.",
-        "WelcomeVerifyEmail": "Vítejte! Ověřte svou e-mailovou adresu.",
-        "ForgetPass": "Hej, zapomněl jsi heslo?",
-        "PassphraseSaved": "Vaše heslo bylo uloženo.",
-        "IdentifierActivated": "Vaše {{type}} byla aktivována.",
-        "CompletedActivation": "Dokončili jste aktivaci uživatele.",
-        "CompletedActivationLogIn": "Dokončili jste aktivaci uživatele. Zkuste se nyní přihlásit."
-    },
-    "contacts": {
-        "dialog": {
-            "title": "Vyberte kontakt",
-            "CreateAccount": "+ Nový kontakt",
-            "CreateAccountNotFound": "Q.Users.Cordova.UI.create nebyl nalezen",
-            "SearchByName": "Hledat podle jména",
-            "EmptyContacts": "Kontakty nenalezeny..."
-        },
-        "select": {
-            "title": "Vyberte kontakt {{displayName}}"
-        },
-        "require": {
-            "Instructions": "Aby to fungovalo, budete muset povolit přístup ke všem kontaktům."
-        }
-    },
-    "usersContacts": {
-        "selectLabel": "Vyberte štítek.",
-        "inviteUser": "Pozvat uživatele",
-        "selectRole": "Vyberte Role",
-        "inviteRole": "Pozvat {{role}}"
-    },
-    "invalidLanguageSelected": "Vybrán neplatný jazyk",
-    "platforms": {
-        "wallet": "Peněženka",
-        "broadcast": "Přenos"
-    },
-    "login": {
-        "title": "Vítejte",
-        "directions": {
-            "GetStarted": "Vytvořte si účet nebo se přihlaste.",
-            "NoRegister": "Přihlaste se, pokud máte účet.",
-            "WasInvited": "Jaký je nejlepší způsob, jak se k vám dostat?"
-        },
-        "directionsNoRegister": "Přihlaste se, pokud máte účet.",
-        "goButton": "➔",
-        "passphrase": "Zadejte heslo:",
-        "loginButton": "Začít",
-        "registerButton": "Začít",
-        "resendButton": "Odeslat aktivační zprávu",
-        "forgot": "Zapomeň na to?",
-        "resendConfirm": "Chcete odeslat zprávu pro resetování přístupové fráze?",
-        "resendSuccess": "Vyhledejte zprávu o resetování přístupového hesla",
-        "resendClose": "Zavřít",
-        "noPassphrase": "Než se budete moci přihlásit, musíte kliknutím na odkaz v aktivační zprávě nastavit heslo.",
-        "notVerified": "Abyste se mohli přihlásit, musíte si poslat aktivační zprávu.",
-        "emailExists": "Zkoušeli jste se registrovat pomocí tohoto e-mailu dříve? Pokud ano, zkontrolujte svou doručenou poštu a aktivujte svůj účet. <a href='#resend' class='Q_button Users_activation_resend'>Kliknutím zprávu znovu odešlete<\/a>",
-        "mobileExists": "Zkoušeli jste se dříve registrovat pomocí tohoto mobilního čísla? Pokud ano, zkontrolujte svou SMS a aktivujte svůj účet. <a href='#resend' class='Q_button Users_activation_resend'>Kliknutím zprávu znovu odešlete<\/a>",
-        "usingOther": "nebo můžete",
-        "connectPlatforms": "nebo se připojte pomocí:",
-        "prompt": "Vyberte si uživatelské jméno:",
-        "newUser": "nebo si níže vytvořte nový účet",
-        "placeholders": {
-            "identifier": "váš mobil # nebo e-mail",
-            "mobile": "zadejte svůj mobil #",
-            "email": "vložte svou e-mailovou adresu",
-            "username": "používejte pouze písmena a číslice"
-        },
-        "confirmTerms": "Přijmout podmínky služby?",
-        "facebookNoEmail": "Ve vašem facebookovém účtu chybí potvrzená e-mailová adresa. Jednoduše se přihlaste nativním způsobem.",
-        "picTooltip": "Tento obrázek můžete později změnit",
-        "web3": {
-            "payload": "Přihlaste se do {{host}} v čase {{timestamp}}",
-            "alert": {
-                "title": "Přesměrování do Peněženky",
-                "content": "Jakmile tento dialog zavřete, budete přesměrováni do své peněženky. Po přihlášení se vraťte na tuto stránku."
-            },
-            "ConnectWallet": "Připojte Peněženku"
-        }
-    },
-    "setIdentifier": {
-        "title": "Přidejte způsob přihlášení",
-        "sendMessage": "Odeslat aktivační zprávu",
-        "placeholders": {
-            "identifier": "zadejte číslo svého mobilního telefonu nebo e-mail",
-            "mobile": "Vložte své telefonní číslo",
-            "email": "vložte svou e-mailovou adresu",
-            "username": "uživatelské jméno"
-        }
-    },
-    "prompt": {
-        "title": "Účet {{Platform}}",
-        "areUsing": "Používáte {{platform}} jako",
-        "noLongerUsing": "Již nejste připojeni k {{platform}} as",
-        "doAuth": "Přihlaste se pomocí tohoto účtu",
-        "doSwitch": "Přepnout na tento účet"
-    },
-    "roles": {
-        "Owner": "Majitel",
-        "Admin": "Admin",
-        "Member": "Člen",
-        "Guest": "Host",
-        "Host": "Hostitel"
-    },
-    "web3": {
-        "WrongMethod": "Nesprávná metoda smlouvy {{methodName}}",
-        "ChangeWallet": "Změnit peněženku",
-        "ConnectWallet": "Připojte Peněženku",
-        "AfterWalletConnectedPleaseRefresh": "Po připojení peněženky obnovte tuto stránku, aby byla peněženka rozpoznána"
-    },
-    "labels": {
-        "addToPhonebook": "Přidat do kontaktů v mém telefonu",
-        "addLabel": "Nový vztah",
-        "prompt": "Dejte tomu jméno",
-        "titles": {
-            "Users\/owners": "Vlastníci",
-            "Users\/admins": "Správci",
-            "Users\/members": "členové",
-            "Users\/guests": "Hosté",
-            "Users\/hosts": "Hostitelé",
-            "Users\/testers": "Testeři",
-            "Users\/speakers": "Řečníci"
-        }
-    },
-    "people": {
-        "People": "Lidé"
-    },
-    "external": {
-        "defaults": {
-            "title": "",
-            "bio": "Robot pro zapojení do fóra. Získejte svůj vlastní na https:\/\/engageusers.ai",
-            "website": "https:\/\/engageusers.ai"
-        }
-    },
-    "errors": {
-        "NotEnoughPermissionsWallet": "Nemáte dostatečná oprávnění ke čtení peněženky tohoto uživatele",
-        "ThisUserHaveNoWallet": "Tento uživatel nemá přiřazenou žádnou peněženku",
-        "TheWalletOfThisUserInvalid": "Peněženka tohoto uživatele je neplatná",
-        "WalletInvalid": "Adresa peněženky je neplatná"
-    }
+	"avatar": {
+		"Someone": "N\u011bkdo"
+	},
+	"identifier": {
+		"types": {
+			"email": "E-mailem",
+			"mobile": "mobiln\u00ed, pohybliv\u00ed",
+			"web3": "Web3"
+		}
+	},
+	"clipboard": {
+		"Copied": "Zkop\u00edrov\u00e1no! Nyn\u00ed jej m\u016f\u017eete vlo\u017eit kamkoli."
+	},
+	"analytics": {
+		"Title": "Analytics",
+		"Daily": "Denn\u011b",
+		"Weekly": "T\u00fddn\u011b",
+		"Monthly": "M\u011bs\u00ed\u010dn\u00ed",
+		"Application": "aplikace",
+		"Pages": "Str\u00e1nky",
+		"Services": "Slu\u017eby",
+		"Faq": "Faq",
+		"WeekDays": "T\u00fddenn\u00ed dny"
+	},
+	"actions": {
+		"LogIn": "p\u0159ihl\u00e1sit se",
+		"LogOut": "odhl\u00e1sit se"
+	},
+	"activate": {
+		"OneTimeCode": "Zadejte k\u00f3d, kter\u00fd jste obdr\u017eeli:",
+		"SetAsPrimary": "Nastavit {{1}} jako m\u00fdch prim\u00e1rn\u00edch {{2}}",
+		"ChoosePassPhrase": "Vyberte <strong>heslo,</strong> pomoc\u00ed kter\u00e9ho se chcete p\u0159ihl\u00e1sit.<br> Jednoduch\u00e1 fr\u00e1ze slo\u017een\u00e1 z p\u00e1r slov, kter\u00e9 si snadno zapamatujete.",
+		"ChoosePassPhraseSeeSuggestions": "Vyberte si dobrou <strong>p\u0159\u00edstupovou fr\u00e1zi</strong> k ochran\u011b sv\u00e9ho \u00fa\u010dtu. Pod\u00edvejte se na n\u00e1vrhy n\u011bkter\u00fdch n\u00e1pad\u016f.",
+		"LogOutAndTryAgain": "Odhlaste se a zkuste to znovu",
+		"IfYouFeel": "Pokud m\u00e1te pocit, \u017ee se n\u011bco pokazilo, m\u016f\u017eete",
+		"SetIdentifierButtonTitle": "za\u010d\u00edt znovu",
+		"ActivateMyAccount": "Aktivujte M\u016fj \u00fa\u010det"
+	},
+	"session": {
+		"GetStarted": "Za\u010d\u00edt"
+	},
+	"authorize": {
+		"GetStarted": "Za\u010d\u00edt",
+		"Authorize": "Povolit",
+		"TermsLabel": "P\u0159e\u010detl jsem a souhlas\u00edm<br> na {{link}}",
+		"TermsTitle": "Podm\u00ednky",
+		"mustAgree": "Nejprve mus\u00edte souhlasit s podm\u00ednkami."
+	},
+	"register": {
+		"TermsLabel": "P\u0159ij\u00edm\u00e1m {{link}}",
+		"TermsTitle": "Podm\u00ednky"
+	},
+	"notifications": {
+		"title": "Povolen\u00ed",
+		"prompt": "Chcete povolit upozorn\u011bn\u00ed? Budete dost\u00e1vat aktu\u00e1ln\u00ed informace o v\u011bcech, kter\u00e9 v\u00e1s zaj\u00edmaj\u00ed.",
+		"yes": "Ano",
+		"no": "Ne",
+		"WelcomePleaseVerifyEmail": "V\u00edtejte! Ov\u011b\u0159te pros\u00edm svou e-mailovou adresu.",
+		"WelcomeVerifyEmail": "V\u00edtejte! Ov\u011b\u0159te svou e-mailovou adresu.",
+		"ForgetPass": "Hej, zapomn\u011bl jsi heslo?",
+		"PassphraseSaved": "Va\u0161e heslo bylo ulo\u017eeno.",
+		"IdentifierActivated": "Va\u0161e {{type}} byla aktivov\u00e1na.",
+		"CompletedActivation": "Dokon\u010dili jste aktivaci u\u017eivatele.",
+		"CompletedActivationLogIn": "Dokon\u010dili jste aktivaci u\u017eivatele. Zkuste se nyn\u00ed p\u0159ihl\u00e1sit."
+	},
+	"contacts": {
+		"dialog": {
+			"title": "Vyberte kontakt",
+			"CreateAccount": "+ Nov\u00fd kontakt",
+			"CreateAccountNotFound": "Q.Users.Cordova.UI.create nebyl nalezen",
+			"SearchByName": "Hledat podle jm\u00e9na",
+			"EmptyContacts": "Kontakty nenalezeny..."
+		},
+		"select": {
+			"title": "Vyberte kontakt {{displayName}}"
+		},
+		"require": {
+			"Instructions": "Aby to fungovalo, budete muset povolit p\u0159\u00edstup ke v\u0161em kontakt\u016fm."
+		}
+	},
+	"usersContacts": {
+		"selectLabel": "Vyberte \u0161t\u00edtek.",
+		"inviteUser": "Pozvat u\u017eivatele",
+		"selectRole": "Vyberte Role",
+		"inviteRole": "Pozvat {{role}}"
+	},
+	"invalidLanguageSelected": "Vybr\u00e1n neplatn\u00fd jazyk",
+	"platforms": {
+		"wallet": "Pen\u011b\u017eenka",
+		"broadcast": "P\u0159enos"
+	},
+	"login": {
+		"title": "V\u00edtejte u {{AppName}}",
+		"directions": {
+			"GetStarted": "Kam m\u00e1me pos\u00edlat ozn\u00e1men\u00ed?",
+			"NoRegister": "P\u0159ihlaste se, pokud m\u00e1te \u00fa\u010det.",
+			"WasInvited": "Jak\u00fd je nejlep\u0161\u00ed zp\u016fsob, jak se k v\u00e1m dostat?"
+		},
+		"directionsNoRegister": "P\u0159ihlaste se, pokud m\u00e1te \u00fa\u010det.",
+		"goButton": "\u2794",
+		"passphrase": "Zadejte heslo:",
+		"loginButton": "Za\u010d\u00edt",
+		"registerButton": "Za\u010d\u00edt",
+		"resendButton": "Odeslat aktiva\u010dn\u00ed zpr\u00e1vu",
+		"forgot": "Zapome\u0148 na to?",
+		"resendConfirm": "Chcete odeslat zpr\u00e1vu pro resetov\u00e1n\u00ed p\u0159\u00edstupov\u00e9 fr\u00e1ze?",
+		"resendSuccess": "Vyhledejte zpr\u00e1vu o resetov\u00e1n\u00ed p\u0159\u00edstupov\u00e9ho hesla",
+		"resendClose": "Zav\u0159\u00edt",
+		"noPassphrase": "Ne\u017e se budete moci p\u0159ihl\u00e1sit, mus\u00edte kliknut\u00edm na odkaz v aktiva\u010dn\u00ed zpr\u00e1v\u011b nastavit heslo.",
+		"notVerified": "Abyste se mohli p\u0159ihl\u00e1sit, mus\u00edte si poslat aktiva\u010dn\u00ed zpr\u00e1vu.",
+		"emailExists": "Zkou\u0161eli jste se registrovat pomoc\u00ed tohoto e-mailu d\u0159\u00edve? Pokud ano, zkontrolujte svou doru\u010denou po\u0161tu a aktivujte sv\u016fj \u00fa\u010det. <a href='#resend' class='Q_button Users_activation_resend'>Kliknut\u00edm zpr\u00e1vu znovu ode\u0161lete</a>",
+		"mobileExists": "Zkou\u0161eli jste se d\u0159\u00edve registrovat pomoc\u00ed tohoto mobiln\u00edho \u010d\u00edsla? Pokud ano, zkontrolujte svou SMS a aktivujte sv\u016fj \u00fa\u010det. <a href='#resend' class='Q_button Users_activation_resend'>Kliknut\u00edm zpr\u00e1vu znovu ode\u0161lete</a>",
+		"usingOther": "nebo m\u016f\u017eete",
+		"connectPlatforms": "nebo se p\u0159ipojte pomoc\u00ed:",
+		"prompt": "Vyberte si u\u017eivatelsk\u00e9 jm\u00e9no:",
+		"newUser": "nebo si n\u00ed\u017ee vytvo\u0159te nov\u00fd \u00fa\u010det",
+		"placeholders": {
+			"identifier": "v\u00e1\u0161 mobil # nebo e-mail",
+			"mobile": "zadejte sv\u016fj mobil #",
+			"email": "vlo\u017ete svou e-mailovou adresu",
+			"username": "pou\u017e\u00edvejte pouze p\u00edsmena a \u010d\u00edslice"
+		},
+		"confirmTerms": "P\u0159ijmout podm\u00ednky slu\u017eby?",
+		"facebookNoEmail": "Ve va\u0161em facebookov\u00e9m \u00fa\u010dtu chyb\u00ed potvrzen\u00e1 e-mailov\u00e1 adresa. Jednodu\u0161e se p\u0159ihlaste nativn\u00edm zp\u016fsobem.",
+		"picTooltip": "Tento obr\u00e1zek m\u016f\u017eete pozd\u011bji zm\u011bnit",
+		"web3": {
+			"payload": "P\u0159ihlaste se do {{host}} v \u010dase {{timestamp}}",
+			"alert": {
+				"title": "P\u0159esm\u011brov\u00e1n\u00ed do Pen\u011b\u017eenky",
+				"content": "Jakmile tento dialog zav\u0159ete, budete p\u0159esm\u011brov\u00e1ni do sv\u00e9 pen\u011b\u017eenky. Po p\u0159ihl\u00e1\u0161en\u00ed se vra\u0165te na tuto str\u00e1nku."
+			},
+			"ConnectWallet": "P\u0159ipojte Pen\u011b\u017eenku"
+		}
+	},
+	"setIdentifier": {
+		"title": "P\u0159idejte zp\u016fsob p\u0159ihl\u00e1\u0161en\u00ed",
+		"sendMessage": "Odeslat aktiva\u010dn\u00ed zpr\u00e1vu",
+		"placeholders": {
+			"identifier": "zadejte \u010d\u00edslo sv\u00e9ho mobiln\u00edho telefonu nebo e-mail",
+			"mobile": "Vlo\u017ete sv\u00e9 telefonn\u00ed \u010d\u00edslo",
+			"email": "vlo\u017ete svou e-mailovou adresu",
+			"username": "u\u017eivatelsk\u00e9 jm\u00e9no"
+		}
+	},
+	"prompt": {
+		"title": "\u00da\u010det {{Platform}}",
+		"areUsing": "Pou\u017e\u00edv\u00e1te {{platform}} jako",
+		"noLongerUsing": "Ji\u017e nejste p\u0159ipojeni k {{platform}} as",
+		"doAuth": "P\u0159ihlaste se pomoc\u00ed tohoto \u00fa\u010dtu",
+		"doSwitch": "P\u0159epnout na tento \u00fa\u010det"
+	},
+	"roles": {
+		"Owner": "Majitel",
+		"Admin": "Admin",
+		"Member": "\u010clen",
+		"Guest": "Host",
+		"Host": "Hostitel"
+	},
+	"web3": {
+		"WrongMethod": "Nespr\u00e1vn\u00e1 metoda smlouvy {{methodName}}",
+		"ChangeWallet": "Zm\u011bnit pen\u011b\u017eenku",
+		"ConnectWallet": "P\u0159ipojte Pen\u011b\u017eenku",
+		"AfterWalletConnectedPleaseRefresh": "Po p\u0159ipojen\u00ed pen\u011b\u017eenky obnovte tuto str\u00e1nku, aby byla pen\u011b\u017eenka rozpozn\u00e1na"
+	},
+	"labels": {
+		"addToPhonebook": "P\u0159idat do kontakt\u016f v m\u00e9m telefonu",
+		"addLabel": "Nov\u00fd vztah",
+		"prompt": "Dejte tomu jm\u00e9no",
+		"titles": {
+			"Users/owners": "Vlastn\u00edci",
+			"Users/admins": "Spr\u00e1vci",
+			"Users/members": "\u010dlenov\u00e9",
+			"Users/guests": "Host\u00e9",
+			"Users/hosts": "Hostitel\u00e9",
+			"Users/testers": "Teste\u0159i",
+			"Users/speakers": "\u0158e\u010dn\u00edci"
+		}
+	},
+	"people": {
+		"People": "Lid\u00e9"
+	},
+	"external": {
+		"defaults": {
+			"title": "",
+			"bio": "Robot pro zapojen\u00ed do f\u00f3ra. Z\u00edskejte sv\u016fj vlastn\u00ed na https://engageusers.ai",
+			"website": "https://engageusers.ai"
+		}
+	},
+	"errors": {
+		"NotEnoughPermissionsWallet": "Nem\u00e1te dostate\u010dn\u00e1 opr\u00e1vn\u011bn\u00ed ke \u010dten\u00ed pen\u011b\u017eenky tohoto u\u017eivatele",
+		"ThisUserHaveNoWallet": "Tento u\u017eivatel nem\u00e1 p\u0159i\u0159azenou \u017e\u00e1dnou pen\u011b\u017eenku",
+		"TheWalletOfThisUserInvalid": "Pen\u011b\u017eenka tohoto u\u017eivatele je neplatn\u00e1",
+		"WalletInvalid": "Adresa pen\u011b\u017eenky je neplatn\u00e1"
+	}
 }

@@ -1,14 +1,14 @@
 {
-    "activation": {
-        "Thanks": "Welkom bij {{1}}.",
-        "ClickHere": "Klik hier om uw account te activeren: {{1}}"
-    },
-    "addMobile": {
-        "ClickHere": "Klik hier om uw mobiele nummer te verifiëren: {{1}}"
-    },
-    "resend": {
-        "DidYouWant": "Wil je je wachtwoordzin resetten in {{1}}?",
-        "ClickHere": "Klik dan hier: {{1}}",
-        "OrEnterCode": "of voer code in:"
-    }
+	"activation": {
+		"Thanks": "Welkom bij {{1}}.",
+		"ClickHere": "Klik hier om uw account te activeren: {{1}}"
+	},
+	"addMobile": {
+		"ClickHere": "Klik hier om uw mobiele nummer te verifi\u00ebren: {{1}}"
+	},
+	"resend": {
+		"DidYouWant": "Wil je je wachtwoordzin resetten in {{1}}?",
+		"ClickHere": "Klik dan hier: {{1}}",
+		"OrEnterCode": "of voer code in:"
+	}
 }

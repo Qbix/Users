@@ -1,22 +1,22 @@
 {
-    "activation": {
-        "Subject": "Fáilte romhat! Fíoraigh do sheoladh ríomhphoist.",
-        "Thanks": "Fáilte go {{1}}",
-        "ReallyYourEmail": "An é seo do sheoladh ríomhphoist i ndáiríre, {{1}}? Más ea, cliceáil <a href='{{2}}'>anseo<\/a> chun do phasfhrása a shocrú agus do chuntas a ghníomhachtú.",
-        "SeeYou": "Féach leat ar <a href='{{1}}'>{{2}}<\/a> !",
-        "OtherwiseClickLink": "Seachas sin, cliceáil ar <a href='{{1}}'>an nasc seo<\/a> ."
-    },
-    "identifier": {
-        "Subject": "Fáilte romhat! Fíoraigh do sheoladh ríomhphoist."
-    },
-    "resend": {
-        "Subject": "Hey, an ndearna tú dearmad ar do phasfhrása?",
-        "Thanks": "Go raibh maith agat as cuairt a thabhairt ar {{1}}",
-        "YouAreReceiving": "Tá an ríomhphost seo á fháil agat toisc gur chuir duine éigin isteach do sheoladh ríomhphoist agus gur chliceáil &quot;dearmad pasfhrása&quot;. Mura tusa a bhí ann, déan neamhaird den teachtaireacht seo.",
-        "Reset": "Chun do phasfhrása a athshocrú, cliceáil {{1}}",
-        "SetUpPassphrase": "Socraigh pasfhrása",
-        "DomainCode": "Má tá an leathanach gréasáin oscailte i do bhrabhsálaí cheana féin, is féidir leat an cód a chur isteach"
-    },
-    "SeeYou": "Féach leat ar {{1}}!",
-    "LinkToUnsubscribe": "Seo nasc chun <a href='{{1}}'>díliostáil<\/a> mura bhfuil tú ag iarraidh a thuilleadh ríomhphoist a fháil."
+	"activation": {
+		"Subject": "F\u00e1ilte romhat! F\u00edoraigh do sheoladh r\u00edomhphoist.",
+		"Thanks": "F\u00e1ilte go {{1}}",
+		"ReallyYourEmail": "An \u00e9 seo do sheoladh r\u00edomhphoist i nd\u00e1ir\u00edre, {{1}}? M\u00e1s ea, clice\u00e1il <a href='{{2}}'>anseo</a> chun do phasfhr\u00e1sa a shocr\u00fa agus do chuntas a ghn\u00edomhacht\u00fa.",
+		"SeeYou": "F\u00e9ach leat ar <a href='{{1}}'>{{2}}</a> !",
+		"OtherwiseClickLink": "Seachas sin, clice\u00e1il ar <a href='{{1}}'>an nasc seo</a> ."
+	},
+	"identifier": {
+		"Subject": "F\u00e1ilte romhat! F\u00edoraigh do sheoladh r\u00edomhphoist."
+	},
+	"resend": {
+		"Subject": "Hey, an ndearna t\u00fa dearmad ar do phasfhr\u00e1sa?",
+		"Thanks": "Go raibh maith agat as cuairt a thabhairt ar {{1}}",
+		"YouAreReceiving": "T\u00e1 an r\u00edomhphost seo \u00e1 fh\u00e1il agat toisc gur chuir duine \u00e9igin isteach do sheoladh r\u00edomhphoist agus gur chlice\u00e1il &quot;dearmad pasfhr\u00e1sa&quot;. Mura tusa a bh\u00ed ann, d\u00e9an neamhaird den teachtaireacht seo.",
+		"Reset": "Chun do phasfhr\u00e1sa a athshocr\u00fa, clice\u00e1il {{1}}",
+		"SetUpPassphrase": "Socraigh pasfhr\u00e1sa",
+		"DomainCode": "M\u00e1 t\u00e1 an leathanach gr\u00e9as\u00e1in oscailte i do bhrabhs\u00e1la\u00ed cheana f\u00e9in, is f\u00e9idir leat an c\u00f3d a chur isteach"
+	},
+	"SeeYou": "F\u00e9ach leat ar {{1}}!",
+	"LinkToUnsubscribe": "Seo nasc chun <a href='{{1}}'>d\u00edliost\u00e1il</a> mura bhfuil t\u00fa ag iarraidh a thuilleadh r\u00edomhphoist a fh\u00e1il."
 }

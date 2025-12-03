@@ -1,51 +1,51 @@
 {
-    "title": {
-        "createCommunity": "Cruthaigh Pobal"
-    },
-    "list": {
-        "table": {
-            "td0": "Ainm Slabhra",
-            "td1": "Aitheantas Slabhra",
-            "td2": "Seoladh pobail"
-        },
-        "btnTitle": "Tháirgeadh"
-    },
-    "form": {
-        "labels": {
-            "chain": "Slabhra",
-            "hook": "Duán",
-            "invitedHook": "Cuireadh Hook",
-            "name": "Ainm",
-            "symbol": "Siombail",
-            "contracturi": "conarthaURI"
-        },
-        "placeholders": {
-            "hook": "0x000000000000000000000000000000000000",
-            "invitedHook": "0x000000000000000000000000000000000000",
-            "name": "ERC721 Ainm",
-            "symbol": "Siombail ERC721",
-            "contracturi": "URI conradh"
-        },
-        "small": {
-            "hook": "seoladh duán an chonartha curtha i bhfeidhm comhéadan ICommunityHook. Is féidir seoladh(0) a bheith ann",
-            "invitedHook": "Seoladh cuireadh Hook an chonartha comhéadan iCommunityInvite curtha i bhfeidhm. Is féidir seoladh(0) a bheith ann",
-            "name": "ERC721 Ainm",
-            "symbol": "Siombail ERC721",
-            "contracturi": "URI conradh"
-        },
-        "err": {
-            "hook": "<b>Hook<\/b> neamhbhailí",
-            "invitedHook": "<b>cuireadhHook<\/b> neamhbhailí",
-            "name": "<b>Ainm<\/b> neamhbhailí",
-            "symbol": "<b>Siombail<\/b> neamhbhailí",
-            "contracturi": "<b>contractURI<\/b> neamhbhailí"
-        },
-        "btnTitle": "Tháirgeadh"
-    },
-    "err": {
-        "cantFindFactoryAddress": "Ní féidir seoladh monarchan a aimsiú",
-        "transactionFailed": "Theip ar an idirbheart",
-        "smthWentWrong": "Chuaigh rud eigin mícheart"
-    },
-    "foo": "barra"
+	"title": {
+		"createCommunity": "Cruthaigh Pobal"
+	},
+	"list": {
+		"table": {
+			"td0": "Ainm Slabhra",
+			"td1": "Aitheantas Slabhra",
+			"td2": "Seoladh pobail"
+		},
+		"btnTitle": "Th\u00e1irgeadh"
+	},
+	"form": {
+		"labels": {
+			"chain": "Slabhra",
+			"hook": "Du\u00e1n",
+			"invitedHook": "Cuireadh Hook",
+			"name": "Ainm",
+			"symbol": "Siombail",
+			"contracturi": "conarthaURI"
+		},
+		"placeholders": {
+			"hook": "0x000000000000000000000000000000000000",
+			"invitedHook": "0x000000000000000000000000000000000000",
+			"name": "ERC721 Ainm",
+			"symbol": "Siombail ERC721",
+			"contracturi": "URI conradh"
+		},
+		"small": {
+			"hook": "seoladh du\u00e1n an chonartha curtha i bhfeidhm comh\u00e9adan ICommunityHook. Is f\u00e9idir seoladh(0) a bheith ann",
+			"invitedHook": "Seoladh cuireadh Hook an chonartha comh\u00e9adan iCommunityInvite curtha i bhfeidhm. Is f\u00e9idir seoladh(0) a bheith ann",
+			"name": "ERC721 Ainm",
+			"symbol": "Siombail ERC721",
+			"contracturi": "URI conradh"
+		},
+		"err": {
+			"hook": "<b>Hook</b> neamhbhail\u00ed",
+			"invitedHook": "<b>cuireadhHook</b> neamhbhail\u00ed",
+			"name": "<b>Ainm</b> neamhbhail\u00ed",
+			"symbol": "<b>Siombail</b> neamhbhail\u00ed",
+			"contracturi": "<b>contractURI</b> neamhbhail\u00ed"
+		},
+		"btnTitle": "Th\u00e1irgeadh"
+	},
+	"err": {
+		"cantFindFactoryAddress": "N\u00ed f\u00e9idir seoladh monarchan a aimsi\u00fa",
+		"transactionFailed": "Theip ar an idirbheart",
+		"smthWentWrong": "Chuaigh rud eigin m\u00edcheart"
+	},
+	"foo": "barra"
 }
