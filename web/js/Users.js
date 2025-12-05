@@ -592,7 +592,7 @@
 				}
 				var url = nextUrl || urls[Q.info.app + '/home'] || Q.url('');
 				Q.handle(url);
-				Q.handle(options.onComplete);
+				Q.handle(options.onComplete, Q.Users, [user, options, priv]);
 			}, 'Users'),
 			onResult: new Q.Event(),
 			onRequireComplete: new Q.Event(),

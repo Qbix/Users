@@ -13,6 +13,23 @@
  */
 class Users_Intent extends Base_Users_Intent
 {
+/**
+	 * Retrieve intent from database by its token
+	 * @method fetch
+	 * @static
+	 * @param {string} $token
+	 * @param {boolean} $throwIfMissing Whether to throw exception if intent is missing
+	 * @return {Users_Intent}
+	 */
+	static function fetch($token, $throwIfMissing = false)
+	{
+		$intent = self::fromToken($token);
+		if (!$intent && $throwIfMissing) {
+			throw new Users_Exception_NotAuthorized();
+		}
+		return self::fromToken($token);
+	}
+
 	/**
 	 * Retrieve intent from database by its token
 	 * @method fromToken
@@ -343,6 +360,11 @@ class Users_Intent extends Base_Users_Intent
 		$instr = $this->getAllInstructions();
 		unset($instr[$instructionName]);
 		$this->instructions = Q::json_encode($instr, Q::JSON_FORCE_OBJECT);
+	}
+
+	function exportArray($options = null)
+	{
+		return $this->getAllInstructions();
 	}
 
 	/**

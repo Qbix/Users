@@ -152,14 +152,14 @@ abstract class Users extends Base_Users
 	 * @param {string|array|Db_Expression} [$filter=null] 
 	 *  You can pass additional criteria here for the label field
 	 *  in the `Users_Contact::select`, such as an array or Db_Range
-	 * @param {array} [$options=array()] Any additional options to pass to the query, such as "ignoreCache"
+	 * @param {array} [$queryOptions=array()] Any additional options to pass to the query, such as "ignoreCache"
 	 * @param {string} [$userId=null] If not passed, the logged in user is used, if any
 	 * @return {array} An associative array of $roleName => $contactRow pairs
 	 */
 	static function roles(
 		$publisherId = null,
 		$filter = null,
-		$options = array(),
+		$queryOptions = array(),
 		$userId = null)
 	{
 		if (empty($publisherId)) {
@@ -177,7 +177,7 @@ abstract class Users extends Base_Users
 				'userId' => $publisherId,
 				'contactUserId' => $userId
 			))->andWhere($filter ? array('label' => $filter) : null)
-			->options($options)
+			->options($queryOptions)
 			->fetchDbRows(null, null, 'label');
 		return $contacts;
 	}
