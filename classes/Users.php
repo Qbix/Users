@@ -2542,7 +2542,7 @@ abstract class Users extends Base_Users
 	}
 
 	/**
-	 * Call this method to update names of one or more streams.
+	 * Call this method to update ids of one or more users.
 	 * This should update them in many tables of the Users plugin.
 	 * Also, other plugins can add a hook to create their own updates.
 	 * @param {array} $updates pairs of (oldUserId => newUserId)
