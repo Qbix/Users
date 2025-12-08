@@ -371,6 +371,9 @@
 			"labels": "labels/default",
 			"canManage": ["Users/owners", "Users/admins"]
 		},
+		"filter": {
+			"byIdPrefixes": []
+		},
 		"vote": {
 			"Users/hinted": {
 				"value": 1
