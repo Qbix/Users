@@ -52,11 +52,17 @@ class Users_Referred extends Base_Users_Referred
 			$r->points = $points;
 		}
 		$threshold = Q_Config::get('Users', 'referred', $referredToType, 'qualified', 10);
+		$justQualified = false;
 		if ($prevPoints < $threshold and $points >= $threshold) {
 			// the user passed the threshold and qualified for something, record the time
 			$r->qualifiedTime = new Db_Expression("CURRENT_TIMESTAMP");
+			$justQualified = true;
 		}
 		$r->save();
+		Q::event('Users/referred', array(
+			'referred' => $r,
+			'justQualified' => $justQualified
+		), 'after');
 		return $r;
 	}
 
