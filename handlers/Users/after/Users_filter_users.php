@@ -12,7 +12,9 @@ function Users_after_Users_filter_users($params, &$result)
             }
         }
     }
-    $result = array_values(array_diff($result, $hiddenUserIds));
+    if ($hiddenUserIds) {
+        $result = array_values(array_diff($result, $hiddenUserIds));
+    }
 
     // hide by Users/hidden role
     $hiddenRole = 'Users/hidden';
