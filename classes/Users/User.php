@@ -1422,6 +1422,35 @@ class Users_User extends Base_Users_User
 			->execute();
 	}
 
+	/**
+	 * Call this function to get a timestamp of when the user was last seen.
+	 * This is here so "before" hooks can override it with more introspective logic.
+	 * @method lastActiveTime
+	 * @static
+	 * @param {string} $userId
+	 * @return {integer} a timestamp, in seconds from the UNIX epoch.
+	 * @throws {Users_Exception_NoSuchUser} if the user wasn't found in the database
+	 */
+	static function lastActiveTime($userId)
+	{
+		/**
+		 * @event Users/user/lastActiveTime {before}
+		 * @param {string} userId The id of the user
+		 * @return {string} can set a different timestamp by assigning to result reference
+		 */
+		$lastActiveTime = Q::event('Users/user/lastActiveTime', compact('userId'), 'before');
+
+		if ($lastActiveTime) {
+			return $lastActiveTime;
+		}
+
+		$user = Users_User::fetch($userId, true);
+		if (empty($user->updatedTime)) {
+			return 0;
+		}
+		return Users::db()->fromDateTime($user->updatedTime);
+	}
+
 	/* * * */
 	/**
 	 * Implements the __set_state method, so it can work with

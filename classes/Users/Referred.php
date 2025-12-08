@@ -26,66 +26,104 @@ class Users_Referred extends Base_Users_Referred
 	}
 
 	/**
-	 * Inserts or updates Users_Referred
+	 * Call this to handle referrals for action taken on certain types of resources.
+	 * Inserts or updates Users_Referred rows with information about users referring other users.
+	 * May cause qualifiedTime to be set, in which case justQualified = true in Users/referred "after" hook
 	 * @param {string} $userId The user that was referred
-	 * @param {string} $publisherId The community or publisher of content the user was referred to
+	 * @param {string} $communityId The community or publisher of content the user was referred to
 	 * @param {string} $referredAction The type of entity the user was referred to
 	 * @param {string} $referredType The type of entity the user was referred to
-	 * @param {string} $invitingUserId The user that did the referring
-	 * @return {Users_Referred}
+	 * @param {string} [$byUserId] You can explicitly override the user to reward for the referring
+	 * @return {Users_Referred|false} Returns false if couldn't determine which user to reward
 	 */
-	static function handleReferral($userId, $publisherId, $referredAction, $referredType, $invitingUserId)
+	static function handleReferral($userId, $communityId, $referredAction, $referredType, $byUserId = null)
 	{
 		$points = Q_Config::get('Users', 'referred', $referredAction, $referredType, 'points', 10);
 		if (!$points) {
 			return;
 		}
-		$r = new Users_Referred(array(
+
+		$lastActiveTime = Users_User::lastActiveTime($userId);
+		$referred = null;
+		$justQualified = false;
+
+		$byUserId = Q::event(
+			'Users/referred',
+			compact('userId', 'communityId', 'referredAction', 'referredType', 'byUserId', 'points', 'referred', 'justQualified', 'lastActiveTime'),
+			'before',
+			$byUserId
+		);
+
+		if (!$byUserId) {
+			$q = Users_Referred::select()->where(array(
+				'userId' => $userId,
+				'toCommunityId' => $communityId
+			))->andWhere('qualifiedTime IS NOT NULL');
+
+			$lastActiveDateTime = Users::db()->toDateTime($lastActiveTime);
+			$seconds = Q_Config::get('Users', 'referred', 'expiration', 0);
+			if ($seconds) {
+				$cutoff = new Db_Range("$lastActiveDateTime - INTERVAL $seconds SECOND");
+				$q = $q->andWhere(array('insertedTime' => new Db_Range(null, null, true, $cutoff)));
+			}
+
+			$rows = $q->orderBy('qualifiedTime', true)->limit(1)->fetchDbRows();
+			if ($rows) {
+				$byUserId = $rows[0]->referredByUserId;
+			} else {
+				return false;
+			}
+		}
+
+		$referred = new Users_Referred(array(
 			'userId' => $userId,
-			'toCommunityId' => $publisherId,
-			'byUserId' => $invitingUserId
+			'toCommunityId' => $communityId,
+			'referredByUserId' => $byUserId
 		));
-		if ($r->retrieve()) {
-			$prevPoints = $r->points;
-			$r->points = max($r->points, $points);
+
+		if ($referred->retrieve()) {
+			$prevPoints = $referred->points;
+			$referred->points = max($referred->points, $points);
 		} else {
 			$prevPoints = 0;
-			$r->points = $points;
+			$referred->points = $points;
 		}
+
 		$threshold = Q_Config::get('Users', 'referred', 'qualified', 'points', 10);
-		$justQualified = false;
-		if (!$r->qualifiedTime and $prevPoints < $threshold and $points >= $threshold) {
-			// the user passed the threshold and qualified for something, record the time
-			$r->qualifiedTime = new Db_Expression("CURRENT_TIMESTAMP");
+		if (!$referred->qualifiedTime && $prevPoints < $threshold && $points >= $threshold) {
+			$referred->qualifiedTime = new Db_Expression("CURRENT_TIMESTAMP");
 			$justQualified = true;
 		}
 
 		$maxCount = Q_Config::get('Users', 'referred', 'history', 'max', 10);
-		
-		$byAction = $r->getExtra('byAction', array());
+
+		$byAction = $referred->getExtra('byAction', array());
 		$existing = Q::ifset($byAction, $referredAction, array());
 		if (count($existing) > $maxCount) {
 			array_shift($existing);
 		}
 		$existing[] = array(time(), $points, $prevPoints);
 		$byAction[$referredAction] = $existing;
-		$r->setExtra('byAction', $byAction);
+		$referred->setExtra('byAction', $byAction);
 
-		$byType = $r->getExtra('byType', array());
+		$byType = $referred->getExtra('byType', array());
 		$existing = Q::ifset($byType, $referredType, array());
 		if (count($existing) > $maxCount) {
 			array_shift($existing);
 		}
 		$existing[] = array(time(), $points, $prevPoints);
 		$byType[$referredType] = $existing;
-		$r->setExtra('byType', $byType);
+		$referred->setExtra('byType', $byType);
 
-		$r->save();
-		Q::event('Users/referred', array(
-			'referred' => $r,
-			'justQualified' => $justQualified
-		), 'after');
-		return $r;
+		$referred->save();
+
+		Q::event(
+			'Users/referred',
+			compact('userId', 'communityId', 'referredAction', 'referredType', 'byUserId', 'points', 'referred', 'justQualified', 'lastActiveTime'),
+			'after'
+		);
+
+		return $referred;
 	}
 
 	/**

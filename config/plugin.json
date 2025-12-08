@@ -455,7 +455,7 @@
 			}
 		},
 		"referred": {
-
+			"expiration": 136656000 /* referrals expire after a year */
 		},
 		"communities": {
 			"admins": ["Users/owners", "Users/admins"]
