@@ -164,7 +164,7 @@ class Users_Web3Transaction extends Base_Users_Web3Transaction
 	{
 		$attr = $this->getAllExtras();
 		unset($attr[$extraName]);
-		$this->extra = Q::json_encode($attr);
+		$this->extra = Q::json_encode($attr, Q::JSON_FORCE_OBJECT);;
 	}
 	
 	/**

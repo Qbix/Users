@@ -100,7 +100,7 @@ class Users_Permission extends Base_Users_Permission
 	{
 		$attr = $this->getAllExtras();
 		unset($attr[$extraName]);
-		$this->extra = Q::json_encode($attr);
+		$this->extra = Q::json_encode($attr, Q::JSON_FORCE_OBJECT);;
 	}
 
 	/**

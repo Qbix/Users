@@ -454,6 +454,9 @@
 				"canSee": ["Users/admins"]
 			}
 		},
+		"referred": {
+
+		},
 		"communities": {
 			"admins": ["Users/owners", "Users/admins"]
 		},

@@ -89,7 +89,7 @@ class Users_ExternalTo extends Base_Users_ExternalTo
 	{
 		$attr = $this->getAllExtras();
 		unset($attr[$extraName]);
-		$this->extra = Q::json_encode($attr);
+		$this->extra = Q::json_encode($attr, Q::JSON_FORCE_OBJECT);;
 	}
 	
 	/**
