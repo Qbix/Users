@@ -38,7 +38,7 @@ class Users_Referred extends Base_Users_Referred
 	 */
 	static function handleReferral($userId, $communityId, $referredAction, $referredType, $byUserId = null)
 	{
-		$points = Q_Config::get('Users', 'referred', $referredAction, $referredType, 'points', 10);
+		$points = Q_Config::get('Users', 'referred', $referredAction, $referredType, 'points', 1);
 		if (!$points) {
 			return;
 		}
@@ -47,14 +47,16 @@ class Users_Referred extends Base_Users_Referred
 		$referred = null;
 		$justQualified = false;
 
+		$fields = compact('byUserId');
 		$fields = Q::event(
 			'Users/referred',
 			compact('userId', 'communityId', 'referredAction', 'referredType', 'byUserId', 'points', 'referred', 'justQualified', 'lastActiveTime'),
 			'before',
-			compact('byUserId')
+			false,
+			$fields
 		);
 
-		if (!empty($fields['byUserId'])) {
+		if (empty($fields['byUserId'])) {
 			$q = Users_Referred::select()->where(array(
 				'userId' => $userId,
 				'toCommunityId' => $communityId
@@ -63,7 +65,7 @@ class Users_Referred extends Base_Users_Referred
 			$lastActiveDateTime = Users::db()->toDateTime($lastActiveTime);
 			$seconds = Q_Config::get('Users', 'referred', 'expiration', 0);
 			if ($seconds) {
-				$cutoff = new Db_Range("$lastActiveDateTime - INTERVAL $seconds SECOND");
+				$cutoff = new Db_Expression("'$lastActiveDateTime' - INTERVAL $seconds SECOND");
 				$q = $q->andWhere(array('insertedTime' => new Db_Range(null, null, true, $cutoff)));
 			}
 
@@ -96,7 +98,7 @@ class Users_Referred extends Base_Users_Referred
 		}
 
 		$threshold = Q_Config::get('Users', 'referred', 'qualified', 'points', 10);
-		if (!$referred->qualifiedTime && $prevPoints < $threshold && $points >= $threshold) {
+		if (empty($referred->qualifiedTime) && $prevPoints < $threshold && $points >= $threshold) {
 			$referred->qualifiedTime = new Db_Expression("CURRENT_TIMESTAMP");
 			$justQualified = true;
 		}
