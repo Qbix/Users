@@ -1433,6 +1433,11 @@ class Users_User extends Base_Users_User
 	 */
 	static function lastActiveTime($userId)
 	{
+		static $result = array();
+		if (isset($result[$userId])) {
+			return $result[$userId];
+		}
+
 		/**
 		 * @event Users/user/lastActiveTime {before}
 		 * @param {string} userId The id of the user
@@ -1440,15 +1445,15 @@ class Users_User extends Base_Users_User
 		 */
 		$lastActiveTime = Q::event('Users/User/lastActiveTime', compact('userId'), 'before');
 
-		if ($lastActiveTime) {
-			return $lastActiveTime;
+		if (isset($lastActiveTime)) {
+			return $result[$userId] = $lastActiveTime;
 		}
 
 		$user = Users_User::fetch($userId, true);
 		if (empty($user->updatedTime)) {
-			return 0;
+			return $result[$userId] = 0;
 		}
-		return Users::db()->fromDateTime($user->updatedTime);
+		return $result[$userId] = Users::db()->fromDateTime($user->updatedTime);
 	}
 
 	/* * * */

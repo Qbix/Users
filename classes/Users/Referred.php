@@ -48,11 +48,11 @@ class Users_Referred extends Base_Users_Referred
 		$lastActiveTime = Users_User::lastActiveTime($userId);
 		$referred = null;
 		$justQualified = false;
-
+		
 		$fields = compact('byUserId');
 		$fields = Q::event(
 			'Users/referred',
-			compact('userId', 'communityId', 'referredAction', 'referredType', 'byUserId', 'points', 'referred', 'justQualified', 'lastActiveTime'),
+			compact('userId', 'communityId', 'referredAction', 'referredType', 'byUserId', 'points', 'lastActiveTime'),
 			'before',
 			false,
 			$fields
@@ -218,4 +218,10 @@ class Users_Referred extends Base_Users_Referred
 			$result->$k = $v;
 		return $result;
 	}
+
+	/**
+	 * Which referrals were handled during this request.
+	 * Used to avoid handling them again.
+	 */
+	static $handled = array();
 };
