@@ -38,7 +38,9 @@ class Users_Referred extends Base_Users_Referred
 	 */
 	static function handleReferral($userId, $communityId, $referredAction, $referredType, $byUserId = null)
 	{
-		$points = Q_Config::get('Users', 'referred', $referredAction, $referredType, 'points', 1);
+		$points = Q_Config::get('Users', 'referred', $referredAction, $referredType, 'points', 
+			Q_Config::get('Users', 'referred', $referredAction, '', 'points', 1)
+		);
 		if (!$points) {
 			return;
 		}

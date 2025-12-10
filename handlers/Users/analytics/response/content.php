@@ -6,7 +6,7 @@ function Users_analytics_response_content($params) {
 		"weekly" => $day * 7,
 		"monthly" => date("t") * $day
 	);
-	$types = array("app", "page", "Assets/service", "faq");
+	$types = array("app", "page", "faq");
 	$results = Users_Vote::select()->where(array(
 		"forType" => $types
 	))->fetchDbRows();
