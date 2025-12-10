@@ -27,7 +27,8 @@
 			"Q/session/generateId": ["Users/before/Q_session_generateId"],
 			"Q/session/save": ["Users/before/Q_session_save"],
 			"Q/Utils/canWriteToPath": ["Users/before/Q_Utils_canWriteToPath"],
-			"Q/Utils/canReadFromPath": ["Users/before/Q_Utils_canReadFromPath"]
+			"Q/Utils/canReadFromPath": ["Users/before/Q_Utils_canReadFromPath"],
+			"Metrics/Visit/id": ["Users/before/Metrics_Visit_id"]
 		},
 		"handlersAfterEvent": {
 			"Q/Plugin/install": ["Users/after/Q_Plugin_install"],

@@ -1438,7 +1438,7 @@ class Users_User extends Base_Users_User
 		 * @param {string} userId The id of the user
 		 * @return {string} can set a different timestamp by assigning to result reference
 		 */
-		$lastActiveTime = Q::event('Users/user/lastActiveTime', compact('userId'), 'before');
+		$lastActiveTime = Q::event('Users/User/lastActiveTime', compact('userId'), 'before');
 
 		if ($lastActiveTime) {
 			return $lastActiveTime;
