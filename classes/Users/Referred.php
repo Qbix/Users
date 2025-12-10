@@ -47,14 +47,14 @@ class Users_Referred extends Base_Users_Referred
 		$referred = null;
 		$justQualified = false;
 
-		$byUserId = Q::event(
+		$fields = Q::event(
 			'Users/referred',
 			compact('userId', 'communityId', 'referredAction', 'referredType', 'byUserId', 'points', 'referred', 'justQualified', 'lastActiveTime'),
 			'before',
-			$byUserId
+			compact('byUserId')
 		);
 
-		if (!$byUserId) {
+		if (!empty($fields['byUserId'])) {
 			$q = Users_Referred::select()->where(array(
 				'userId' => $userId,
 				'toCommunityId' => $communityId
@@ -69,10 +69,16 @@ class Users_Referred extends Base_Users_Referred
 
 			$rows = $q->orderBy('qualifiedTime', true)->limit(1)->fetchDbRows();
 			if ($rows) {
-				$byUserId = $rows[0]->referredByUserId;
+				$fields['byUserId'] = $rows[0]->referredByUserId;
 			} else {
 				return false;
 			}
+		}
+
+		// apply byUserId and any extras from fields
+		$byUserId = $fields['byUserId'];
+		if (!empty($fields['extras']) and is_array($fields['extras'])) {
+			$referred->setExtra($fields['extras']);
 		}
 
 		$referred = new Users_Referred(array(
