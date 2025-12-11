@@ -2771,12 +2771,12 @@ abstract class Users extends Base_Users
 			} else if ($user->mobileNumber) {
 				$to = 'mobile';
 				$destination = $user->mobileNumber;
-			} else if ($usePending and $user->mobileNumberPending) {
-				$to = 'mobile';
-				$destination = $user->mobileNumberPending;
 			} else if ($user->emailAddress) {
 				$to = 'email';
 				$destination = $user->emailAddress;
+			} else if ($usePending and $user->mobileNumberPending) {
+				$to = 'mobile';
+				$destination = $user->mobileNumberPending;
 			} else if ($usePending and $user->emailAddressPending) {
 				$to = 'email';
 				$destination = $user->emailAddressPending;

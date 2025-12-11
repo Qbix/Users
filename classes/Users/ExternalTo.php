@@ -123,8 +123,9 @@ class Users_ExternalTo extends Base_Users_ExternalTo
 	 * @param {string|array|Db_Range} $labels Optionally filter by external labels
 	 * @param {array} [$options=array()]
 	 * @param {string|array} [$options.contactUserId=null] Optionally filter by contactUserId
-	 * @param {&array} [$userIdsByXids=array()] pass a reference to an array that will be filled with ($contactXid => $userId) pairs
-	 * @return {array} An array of (label => array(xid, xid, ...)) pairs
+	 * @param {&array} [$userIdsByXids=array()] pass a reference to an array that will be filled with
+	 *  array(platform => array(appId => array($contactXid => $contactUserId)))) pairs
+	 * @return {array} An array of array(platform => array(appId => array(label => array(xid, xid, ...)))) pairs
 	 */
 	static function fetchXidsByLabels($userId, $labels = null, $options = array(), &$userIdsByXids = array())
 	{
@@ -268,7 +269,7 @@ class Users_ExternalTo extends Base_Users_ExternalTo
 		if (empty($this->xid)) {
 			$this->xid = '';
 		}
-		if (!empty($scope)) {
+		if (!empty($data['scope'])) {
 			$this->setExtra('scope', $data['scope']);
 		}
 		$this->save();

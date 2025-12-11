@@ -256,32 +256,37 @@ class Users_Contact extends Base_Users_Contact
 		$results = Users_ExternalTo::fetchXidsByLabels($userId, $label, $options, $userIdsByXids);
 		$externalContacts = array();
 		foreach ($results as $platform => $platformResults) {
-			foreach ($platformResults as $appId => $contactXids) {
+			foreach ($platformResults as $appId => $platformAppResults) {
 				$contactUserIds = array();
-				$remainingXids = array();
-				foreach ($contactXids as $i => $contactXid) {
-					if (isset($userIdsByXids[$contactXid][$platform][$appId])) {
-						$contactUserIds[] = $userIdsByXids[$contactXid][$platform][$appId];
-					} else {
-						if ($secondAppId = Users_ExternalTo::secondAppId($platform, $appId)
-						and isset($userIdsByXids[$contactXid][$platform][$appId])) {
-							$contactUserIds[] = $userIdsByXids[$contactXid][$platform][$appId];
+				foreach ($platformAppResults as $label => $contactXids) {
+					$foundUserIds = array();
+					$remainingXids = array();
+					foreach ($contactXids as $contactXid) {
+						if (isset($userIdsByXids[$platform][$appId][$contactXid])) {
+							$foundUserIds[] = $userIdsByXids[$platform][$appId][$contactXid];
 						} else {
-							$remainingXids[] = $contactXid;
+							if ($secondAppId = Users_ExternalTo::secondAppId($platform, $appId)
+							and isset($userIdsByXids[$platform][$secondAppId][$contactXid])) {
+								$foundUserIds[] = $userIdsByXids[$platform][$secondAppId][$contactXid];
+							} else {
+								$remainingXids[] = $contactXid;
+							}
 						}
 					}
+					$remainingUserIds = Users_User::idsFromPlatformXids(
+						$platform,
+						$appId,
+						$remainingXids,
+						true
+					);
+					$contactUserIds[$label] = array_merge($foundUserIds, $remainingUserIds);
 				}
-				$remainingUserIds = Users_User::idsFromPlatformXids(
-					$platform,
-					$appId,
-					$remainingXids,
-					true
-				);
-				$contactUserIds = array_merge($contactUserIds, $remainingUserIds);
-				foreach ($contactUserIds as $contactUserId) {
-					$externalContacts[] = new Users_Contact(compact(
-						'userId', 'label', 'contactUserId'
-					));
+				foreach ($contactUserIds as $label => $cids) {
+					foreach ($cids as $contactUserId) {
+						$externalContacts[] = new Users_Contact(compact(
+							'userId', 'label', 'contactUserId'
+						));
+					}
 				}
 			}
 		}

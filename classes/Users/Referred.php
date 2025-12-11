@@ -33,10 +33,12 @@ class Users_Referred extends Base_Users_Referred
 	 * @param {string} $communityId The community or publisher of content the user was referred to
 	 * @param {string} $referredAction The type of entity the user was referred to
 	 * @param {string} $referredType The type of entity the user was referred to
-	 * @param {string} [$byUserId] You can explicitly override the user to reward for the referring
+	 * @param {array} [$options=array()]
+	 * @param {string} [$options.byUserId] You can explicitly override the user to reward for the referring
+	 * @param {array} [$options.extras] Pass any extras to this referral, e.g. to retain metadata for other plugins
 	 * @return {Users_Referred|false} Returns false if couldn't determine which user to reward
 	 */
-	static function handleReferral($userId, $communityId, $referredAction, $referredType, $byUserId = null)
+	static function handleReferral($userId, $communityId, $referredAction, $referredType, $options = array())
 	{
 		$points = Q_Config::get('Users', 'referred', $referredAction, $referredType, 'points', 
 			Q_Config::get('Users', 'referred', $referredAction, '', 'points', 1)
@@ -49,10 +51,10 @@ class Users_Referred extends Base_Users_Referred
 		$referred = null;
 		$justQualified = false;
 		
-		$fields = compact('byUserId');
+		$fields = Q::take($options, array('byUserId', 'extras'));
 		$fields = Q::event(
 			'Users/referred',
-			compact('userId', 'communityId', 'referredAction', 'referredType', 'byUserId', 'points', 'lastActiveTime'),
+			compact('userId', 'communityId', 'referredAction', 'referredType', 'options', 'points', 'lastActiveTime'),
 			'before',
 			false,
 			$fields
@@ -81,15 +83,14 @@ class Users_Referred extends Base_Users_Referred
 
 		// apply byUserId and any extras from fields
 		$byUserId = $fields['byUserId'];
-		if (!empty($fields['extras']) and is_array($fields['extras'])) {
-			$referred->setExtra($fields['extras']);
-		}
-
 		$referred = new Users_Referred(array(
 			'userId' => $userId,
 			'toCommunityId' => $communityId,
 			'referredByUserId' => $byUserId
 		));
+		if (!empty($fields['extras']) and is_array($fields['extras'])) {
+			$referred->setExtra($fields['extras']);
+		}
 
 		if ($referred->retrieve()) {
 			$prevPoints = $referred->points;
@@ -127,6 +128,17 @@ class Users_Referred extends Base_Users_Referred
 
 		$referred->save();
 
+		/**
+		 * @event Users/referred {after}
+		 * @param $userId
+		 * @param $communityId
+		 * @param $referredAction
+		 * @param $referredType
+		 * @param $byUserId
+		 * @param $points
+		 * @param $referred
+		 * @param $justQualified
+		 */
 		Q::event(
 			'Users/referred',
 			compact('userId', 'communityId', 'referredAction', 'referredType', 'byUserId', 'points', 'referred', 'justQualified', 'lastActiveTime'),

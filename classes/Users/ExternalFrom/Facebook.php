@@ -174,4 +174,97 @@ class Users_ExternalFrom_Facebook extends Users_ExternalFrom implements Users_Ex
 		);
 		return $result;
 	}
+
+	/**
+	 * Takes roleIds and returns externalLabel => array(xids)
+	 * For Facebook there are no role-based queries, so we simply
+	 * return our single xid for each requested roleId.
+	 */
+	public function fetchXids(array $roleIds, array $options = array())
+	{
+		$xid = $this->xid;
+		if (!$xid) {
+			return array();
+		}
+
+		$results = array();
+		foreach ($roleIds as $roleId) {
+			// External label format: facebook_appId/<roleId>
+			$label = "<<< facebook_{$this->appId}/{$roleId}";
+			$results[$label] = array($xid);
+		}
+		return $results;
+	}
+
+	/**
+	 * Sends a notification to the user via the Facebook Game Notification API.
+	 *
+	 * @method handlePushNotification
+	 * @param array $notification
+	 * @param array $options Additional options (unused for now)
+	 * @return boolean True on success, false on failure
+	 */
+	public function handlePushNotification($notification, $options = array())
+	{
+		$xid = $this->xid;
+		if (!$xid) {
+			return false;
+		}
+
+		$alert = isset($notification['alert']) ? $notification['alert'] : null;
+		$text = "";
+
+		if (is_string($alert)) {
+			$text = $alert;
+		} else if (is_array($alert) && !empty($alert['body'])) {
+			$text = $alert['body'];
+		}
+
+		// Optional link
+		$href = isset($notification['href']) ? $notification['href'] : '';
+		if ($href && strlen($href) && $href[0] === '/') {
+			$baseUrl = Q_Config::get(array('Users','apps','baseUrl'), '');
+			$href = $baseUrl . $href;
+		}
+
+		try {
+			// Facebook Graph API call
+			$facebook = $this->get('facebook');
+			$facebook->post(
+				"/{$xid}/notifications",
+				array(
+					'template' => $text,
+					'href'     => $href
+				),
+				$this->accessToken
+			);
+
+			return true;
+
+		} catch (Exception $e) {
+
+			$msg = strtolower($e->getMessage());
+
+			// Hard rejections
+			if (
+				strpos($msg, "forbidden") !== false ||
+				strpos($msg, "not authorized") !== false ||
+				strpos($msg, "invalid") !== false ||
+				strpos($msg, "app not allowed") !== false
+			) {
+				$e->rejected = true;
+			}
+
+			// Rate limits
+			if (
+				strpos($msg, "rate") !== false ||
+				strpos($msg, "429") !== false
+			) {
+				$e->rateLimited = true;
+			}
+
+			return false;
+		}
+	}
+
 }

@@ -1274,8 +1274,9 @@ class Users_User extends Base_Users_User
 	 * @param {string} $appId The id of an app on the platform
 	 * @param {array|string} $xids An array of facebook user ids, or a comma-delimited string
 	 * @param {boolean} [$dontInsertFutureUsers=false] Pass true to skip inserting future users.
-	 * @param {array} $statuses Optional reference to an array to populate with $status values ('verified' or 'future') in the same order as the $identifiers.
-	 * @return {array} The array of user ids
+	 * @param {array} $statuses Optional reference to an array to populate with $status values ('verified' or 'future')
+	 * 	with keys in same order as in xids.
+	 * @return {array} The array of user ids, with keys in the same order as in xids.
 	 */
 	static function idsFromPlatformXids (
 		$platform,
@@ -1292,16 +1293,20 @@ class Users_User extends Base_Users_User
 		}
 		$platformApp = $platform . '_' . $appId;
 		$users = array();
-		foreach ($xids as $xid) {
+		foreach ($xids as $k => $xid) {
 			if (!$dontInsertFutureUsers) {
-				$users[] = Users::futureUser($platformApp, $xid, $status);
+				$users[$k] = Users::futureUser($platformApp, $xid, $status);
 			} else {
-				$users[] = $user = Users_User::from($platformApp, $xid);
+				$users[$k] = $user = Users_User::from($platformApp, $xid);
 				$status = $user ? 'verified' : 'missing';
 			}
-			$statuses[] = $status;
+			$statuses[$k] = $status;
 		}
-		return array_map(array('Users_User', '_getId'), $users);
+		$results = array();
+		foreach ($users as $k => $user) {
+			$results[$k] = $user->_getId();
+		}
+		return $results;
 	}
 
 	/**
