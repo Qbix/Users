@@ -40,7 +40,9 @@ class Users_Referred extends Base_Users_Referred
 	 */
 	static function handleReferral($userId, $communityId, $referredAction, $referredType, $options = array())
 	{
-		$points = Q_Config::get('Users', 'referred', $referredAction, $referredType, 'points', 
+		// Determine referral points for this action/type
+		$points = Q_Config::get(
+			'Users', 'referred', $referredAction, $referredType, 'points',
 			Q_Config::get('Users', 'referred', $referredAction, '', 'points', 1)
 		);
 		if (!$points) {
@@ -48,9 +50,9 @@ class Users_Referred extends Base_Users_Referred
 		}
 
 		$lastActiveTime = Users_User::lastActiveTime($userId);
-		$referred = null;
 		$justQualified = false;
-		
+
+		// Allow hooks to modify byUserId or extras
 		$fields = Q::take($options, array('byUserId', 'extras'));
 		$fields = Q::event(
 			'Users/referred',
@@ -60,38 +62,39 @@ class Users_Referred extends Base_Users_Referred
 			$fields
 		);
 
+		// If no explicit override, determine referrer via deterministic lookup
 		if (empty($fields['byUserId'])) {
-			$q = Users_Referred::select()->where(array(
-				'userId' => $userId,
-				'toCommunityId' => $communityId
-			))->andWhere('qualifiedTime IS NOT NULL');
+			$fields['byUserId'] = Users_Referred::referrer(
+				$userId,
+				$communityId,
+				array(
+					'requireQualified' => true,
+					'expiration'       => Q_Config::get('Users', 'referred', 'expiration', 0),
+					'lastActiveTime'   => $lastActiveTime,
+					'newestFirst'      => true
+				)
+			);
 
-			$lastActiveDateTime = Users::db()->toDateTime($lastActiveTime);
-			$seconds = Q_Config::get('Users', 'referred', 'expiration', 0);
-			if ($seconds) {
-				$cutoff = new Db_Expression("'$lastActiveDateTime' - INTERVAL $seconds SECOND");
-				$q = $q->andWhere(array('insertedTime' => new Db_Range(null, null, true, $cutoff)));
-			}
-
-			$rows = $q->orderBy('qualifiedTime', true)->limit(1)->fetchDbRows();
-			if ($rows) {
-				$fields['byUserId'] = $rows[0]->referredByUserId;
-			} else {
-				return false;
+			if (!$fields['byUserId']) {
+				return false; // No valid referrer found
 			}
 		}
 
-		// apply byUserId and any extras from fields
 		$byUserId = $fields['byUserId'];
+
+		// Prepare the Users_Referred row
 		$referred = new Users_Referred(array(
-			'userId' => $userId,
-			'toCommunityId' => $communityId,
+			'userId'         => $userId,
+			'toCommunityId'  => $communityId,
 			'referredByUserId' => $byUserId
 		));
-		if (!empty($fields['extras']) and is_array($fields['extras'])) {
+
+		// Apply extra metadata
+		if (!empty($fields['extras']) && is_array($fields['extras'])) {
 			$referred->setExtra($fields['extras']);
 		}
 
+		// Update or set points
 		if ($referred->retrieve()) {
 			$prevPoints = $referred->points;
 			$referred->points = max($referred->points, $points);
@@ -100,14 +103,18 @@ class Users_Referred extends Base_Users_Referred
 			$referred->points = $points;
 		}
 
+		// Determine if this qualifies the referrer now
 		$threshold = Q_Config::get('Users', 'referred', 'qualified', 'points', 10);
-		if (empty($referred->qualifiedTime) && $prevPoints < $threshold && $points >= $threshold) {
+		if (empty($referred->qualifiedTime)
+			&& $prevPoints < $threshold
+			&& $points >= $threshold)
+		{
 			$referred->qualifiedTime = new Db_Expression("CURRENT_TIMESTAMP");
 			$justQualified = true;
 		}
 
+		// Maintain referral history: byAction
 		$maxCount = Q_Config::get('Users', 'referred', 'history', 'max', 10);
-
 		$byAction = $referred->getExtra('byAction', array());
 		$existing = Q::ifset($byAction, $referredAction, array());
 		if (count($existing) > $maxCount) {
@@ -117,6 +124,7 @@ class Users_Referred extends Base_Users_Referred
 		$byAction[$referredAction] = $existing;
 		$referred->setExtra('byAction', $byAction);
 
+		// Maintain referral history: byType
 		$byType = $referred->getExtra('byType', array());
 		$existing = Q::ifset($byType, $referredType, array());
 		if (count($existing) > $maxCount) {
@@ -126,18 +134,19 @@ class Users_Referred extends Base_Users_Referred
 		$byType[$referredType] = $existing;
 		$referred->setExtra('byType', $byType);
 
+		// Save the row
 		$referred->save();
 
 		/**
 		 * @event Users/referred {after}
-		 * @param $userId
-		 * @param $communityId
-		 * @param $referredAction
-		 * @param $referredType
-		 * @param $byUserId
-		 * @param $points
-		 * @param $referred
-		 * @param $justQualified
+		 * @param string $userId
+		 * @param string $communityId
+		 * @param string $referredAction
+		 * @param string $referredType
+		 * @param string $byUserId
+		 * @param int    $points
+		 * @param Users_Referred $referred
+		 * @param bool   $justQualified
 		 */
 		Q::event(
 			'Users/referred',
@@ -146,6 +155,70 @@ class Users_Referred extends Base_Users_Referred
 		);
 
 		return $referred;
+	}
+
+
+	/**
+	 * Lightweight referrer lookup for a user within a community.
+	 * Does not modify referral points or create rows.
+	 *
+	 * @method referrer
+	 * @static
+	 * @param {string} userId The user who was referred
+	 * @param {string} communityId The community where the referral took place
+	 * @param {array} [options] Optional parameters
+	 * @param {boolean} [options.requireQualified=false] 
+	 *   If true, only consider rows where qualifiedTime IS NOT NULL
+	 * @param {integer} [options.expiration] 
+	 *   Expiration window in seconds. Defaults to 
+	 *   Q_Config::get('Users','referred','expiration',0)
+	 * @param {integer} [options.lastActiveTime] 
+	 *   UNIX timestamp used for expiration cutoff calculation
+	 * @param {boolean} [options.newestFirst=false] 
+	 *   If true, returns the row with the newest qualifiedTime or insertedTime
+	 *
+	 * @return {string|null} referredByUserId The referrer’s userId, or null if none found
+	 */
+	static function referrer($userId, $communityId, $options = array())
+	{
+		$requireQualified = Q::ifset($options, 'requireQualified', false);
+		$newestFirst = Q::ifset($options, 'newestFirst', false);
+
+		$expiration = Q::ifset($options, 'expiration', Q_Config::get(
+			'Users', 'referred', 'expiration', 0
+		));
+
+		$lastActiveTime   = Q::ifset($options, 'lastActiveTime', null);
+		if ($expiration && !$lastActiveTime) {
+			// lastActiveTime is required for expiration logic
+			$lastActiveTime = Users_User::lastActiveTime($userId);
+		}
+
+		$q = Users_Referred::select()->where(array(
+			'userId'       => $userId,
+			'toCommunityId'=> $communityId
+		));
+
+		if ($requireQualified) {
+			$q = $q->andWhere("qualifiedTime IS NOT NULL");
+		}
+
+		// expiration: only consider referrals whose insertedTime is after cutoff
+		if ($expiration && $lastActiveTime) {
+			$db = Users::db();
+			$dt = $db->toDateTime($lastActiveTime);
+			$cutoff = new Db_Expression("'$dt' - INTERVAL $expiration SECOND");
+			$q = $q->andWhere(array(
+				'insertedTime' => new Db_Range(null, null, true, $cutoff)
+			));
+		}
+
+		// order: newest first
+		$orderCol = $requireQualified ? 'qualifiedTime' : 'insertedTime';
+		$q = $q->orderBy($orderCol, $newestFirst);
+
+		$row = $q->limit(1)->fetchDbRow();
+		return $row ? $row->referredByUserId : null;
 	}
 
 	/**
