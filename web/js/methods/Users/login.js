@@ -519,7 +519,7 @@ Q.exports(function (Users, priv) {
 					}
 				}
 				var $img = $('<img />').attr('src', src)
-					.attr('title', Q.text.Streams.login.picTooltip);
+					.attr('title', Q.text.Users.login.picTooltip);
 				var $formContent = $('<div class="Users_login_username_block" />').append(
 					$('<label for="Users_login_username" />').html(Q.text.Users.login.prompt)
 				).append(
@@ -643,7 +643,7 @@ Q.exports(function (Users, priv) {
 						);
 				}).attr('tabindex', 1002);
 				if (Q.text.Users.login.newUser) {
-					$p.append($('<div />').html(Q.text.Streams.login.newUser));
+					$p.append($('<div />').html(Q.text.Users.login.newUser));
 				}
 				$p.prependTo(form);
 				return form;
@@ -665,7 +665,7 @@ Q.exports(function (Users, priv) {
 				} else {
 					if (localStorage.getItem(priv._register_localStorageKey)
 					&& !Users.login.options.dontDiscourageMultipleAccounts) {
-						$('.Streams_login_fullname_block, .Streams_login_get_started', step2).hide();
+						$('.Users_login_fullname_block, .Streams_login_fullname_block, .Streams_login_get_started', step2).hide();
 					}
 					step2.slideDown('fast', function () {
 						$dc.scrollTop($dc[0].scrollHeight - $dc[0].clientHeight);
