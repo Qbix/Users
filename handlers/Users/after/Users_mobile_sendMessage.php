@@ -7,5 +7,5 @@ function Users_after_Users_mobile_sendMessage($params)
 	if (!$transport) {
 		$logMessage = "Would have $logMessage";
 	}
-	Q::log($logMessage, Q_Config::get('Users', 'mobile', 'logKey', 'SMS'));
+	Q::log($logMessage, Q_Config::get('Users', 'mobile', 'logKey', 'mobile'));
 }
