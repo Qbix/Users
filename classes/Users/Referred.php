@@ -36,15 +36,16 @@ class Users_Referred extends Base_Users_Referred
 	 * @param {array} [$options=array()]
 	 * @param {string} [$options.byUserId] You can explicitly override the user to reward for the referring
 	 * @param {array} [$options.extras] Pass any extras to this referral, e.g. to retain metadata for other plugins
+	 * @param {array} [$options.points] Manually pass points (e.g. to scale points by size of purchase)
 	 * @return {Users_Referred|false} Returns false if couldn't determine which user to reward
 	 */
 	static function handleReferral($userId, $communityId, $referredAction, $referredType, $options = array())
 	{
 		// Determine referral points for this action/type
-		$points = Q_Config::get(
+		$points = Q::ifset($options, 'points', Q_Config::get(
 			'Users', 'referred', $referredAction, $referredType, 'points',
 			Q_Config::get('Users', 'referred', $referredAction, '', 'points', 1)
-		);
+		));
 		if (!$points) {
 			return;
 		}
