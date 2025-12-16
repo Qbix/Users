@@ -162,7 +162,7 @@ class Users_Email extends Base_Users_Email
 				} else {
 					$email->addTo($emailAddress);
 				}
-				$email->setSubject($subject);
+				$email->setSubject(mb_encode_mimeheader($subject, 'UTF-8', 'B'));
 				if (empty($options['html'])) {
 					$email->setBodyText($body);
 				} else {

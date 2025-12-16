@@ -2730,14 +2730,18 @@ abstract class Users extends Base_Users
 	 */
 	static function deliver($userId, $module, $event, $fields = array(), $text = null, $usePending = false)
 	{
-		if (!isset($text)) {
-			$text = "$module/deliver";
-		}
-		if (is_string($text)) {
-			$text = Q_Text::get($text);
-		}
-		if (is_array($text)) {
-			$fields = array_merge($fields, $text);
+		try {
+			if (!isset($text)) {
+				$text = "$module/deliver";
+			}
+			if (is_string($text)) {
+				$text = Q_Text::get($text);
+			}
+			if (is_array($text)) {
+				$fields = array_merge($fields, $text);
+			}
+		} catch (Exception $e) {
+
 		}
 		$user = $userId instanceof Users_User ? $userId : Users_User::fetch($userId, true);
 		$userId = $user->id;
@@ -2783,7 +2787,13 @@ abstract class Users extends Base_Users
 			}
 		}
 
-		$viewName = "$module/$to/$event";
+		if (!isset($to)) {
+			return false;
+		}
+		$viewName = "$module/$to/$event.php";
+		if (!Q::realPath("views" . DS . $viewName)) {
+			$viewName = "$module/$to/$event.handlebars";
+		}
 
 		if ($to === 'email') {
 			$defaultSubject = ucfirst($module) . ': ' . $event;
@@ -2792,7 +2802,7 @@ abstract class Users extends Base_Users
 			$email->sendMessage($subject, $viewName, $fields);
 			return true;
 		} else if ($to === 'mobile') {
-			$mobile = new Users_Mobile(array('mobile' => $destination));
+			$mobile = new Users_Mobile(array('number' => $destination));
 			$mobile->sendMessage($viewName, $fields);
 			return true;
 		} else if ($to === 'device') {
