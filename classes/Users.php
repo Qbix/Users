@@ -993,7 +993,7 @@ abstract class Users extends Base_Users
 		try {
 			Q_Session::start(false, null, 'authenticated');
 		} catch (Exception $e) {
-			if (Q_Dispatcher::$startedResponse) {
+			if (Q_Dispatcher::$startedResponse and !Q_Request::isInternal() ) {
 				// can't start a session in the middle of a response, just return null
 				return null;
 			}
