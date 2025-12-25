@@ -192,5 +192,8 @@
 		"ThisUserHaveNoWallet": "Bu istifad\u0259\u00e7iy\u0259 pul kis\u0259si t\u0259yin edilm\u0259yib",
 		"TheWalletOfThisUserInvalid": "Bu istifad\u0259\u00e7inin pul kis\u0259si etibars\u0131zd\u0131r",
 		"WalletInvalid": "Pulqab\u0131 \u00fcnvan\u0131 yanl\u0131\u015fd\u0131r"
+	},
+	"dialogs": {
+		"Apply": "Davam et"
 	}
 }

@@ -192,5 +192,8 @@
 		"ThisUserHaveNoWallet": "Tento u\u017eivatel nem\u00e1 p\u0159i\u0159azenou \u017e\u00e1dnou pen\u011b\u017eenku",
 		"TheWalletOfThisUserInvalid": "Pen\u011b\u017eenka tohoto u\u017eivatele je neplatn\u00e1",
 		"WalletInvalid": "Adresa pen\u011b\u017eenky je neplatn\u00e1"
+	},
+	"dialogs": {
+		"Apply": "Pokra\u010dovat"
 	}
 }

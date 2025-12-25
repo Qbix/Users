@@ -192,5 +192,8 @@
 		"ThisUserHaveNoWallet": "Nid oes gan y defnyddiwr hwn waled wedi&#39;i neilltuo",
 		"TheWalletOfThisUserInvalid": "Mae waled y defnyddiwr hwn yn annilys",
 		"WalletInvalid": "Cyfeiriad waled yn annilys"
+	},
+	"dialogs": {
+		"Apply": "Parhau"
 	}
 }

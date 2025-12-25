@@ -192,5 +192,8 @@
 		"ThisUserHaveNoWallet": "Ovaj korisnik nema dodijeljen nov\u010danik",
 		"TheWalletOfThisUserInvalid": "Nov\u010danik ovog korisnika nije valjan",
 		"WalletInvalid": "Adresa nov\u010danika nije va\u017ee\u0107a"
+	},
+	"dialogs": {
+		"Apply": "Nastaviti"
 	}
 }

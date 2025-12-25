@@ -192,5 +192,8 @@
 		"ThisUserHaveNoWallet": "Pengguna ini tidak mempunyai dompet yang diberikan",
 		"TheWalletOfThisUserInvalid": "Dompet pengguna ini tidak sah",
 		"WalletInvalid": "Alamat dompet tidak sah"
+	},
+	"dialogs": {
+		"Apply": "Teruskan"
 	}
 }

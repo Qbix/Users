@@ -192,5 +192,8 @@
 		"ThisUserHaveNoWallet": "Hierdie gebruiker het geen beursie toegewys nie",
 		"TheWalletOfThisUserInvalid": "Die beursie van hierdie gebruiker is ongeldig",
 		"WalletInvalid": "Wallet-adres ongeldig"
+	},
+	"dialogs": {
+		"Apply": "Gaan voort"
 	}
 }

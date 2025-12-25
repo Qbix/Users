@@ -192,5 +192,8 @@
 		"ThisUserHaveNoWallet": "Acest utilizator nu are portofel alocat",
 		"TheWalletOfThisUserInvalid": "Portofelul acestui utilizator este invalid",
 		"WalletInvalid": "Adresa portofel nevalid\u0103"
+	},
+	"dialogs": {
+		"Apply": "Continua"
 	}
 }

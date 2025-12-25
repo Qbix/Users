@@ -192,5 +192,8 @@
 		"ThisUserHaveNoWallet": "Ehhez a felhaszn\u00e1l\u00f3hoz nincs hozz\u00e1rendelve p\u00e9nzt\u00e1rca",
 		"TheWalletOfThisUserInvalid": "A felhaszn\u00e1l\u00f3 p\u00e9nzt\u00e1rc\u00e1ja \u00e9rv\u00e9nytelen",
 		"WalletInvalid": "A Wallet-c\u00edm \u00e9rv\u00e9nytelen"
+	},
+	"dialogs": {
+		"Apply": "Folytat\u00e1s"
 	}
 }

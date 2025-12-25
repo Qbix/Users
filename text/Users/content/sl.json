@@ -192,5 +192,8 @@
 		"ThisUserHaveNoWallet": "Ta uporabnik nima dodeljene denarnice",
 		"TheWalletOfThisUserInvalid": "Denarnica tega uporabnika je neveljavna",
 		"WalletInvalid": "Naslov denarnice ni veljaven"
+	},
+	"dialogs": {
+		"Apply": "Nadaljuj"
 	}
 }

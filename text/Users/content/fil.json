@@ -192,5 +192,8 @@
 		"ThisUserHaveNoWallet": "Walang nakatalagang wallet ang user na ito",
 		"TheWalletOfThisUserInvalid": "Di-wasto ang wallet ng user na ito",
 		"WalletInvalid": "Di-wasto ang address ng pitaka"
+	},
+	"dialogs": {
+		"Apply": "Magpatuloy"
 	}
 }

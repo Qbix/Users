@@ -192,5 +192,8 @@
 		"ThisUserHaveNoWallet": "N\u00edl aon spar\u00e1n sannta don \u00fas\u00e1ideoir seo",
 		"TheWalletOfThisUserInvalid": "T\u00e1 spar\u00e1n an \u00fas\u00e1ideora seo neamhbhail\u00ed",
 		"WalletInvalid": "Seoladh spar\u00e1n neamhbhail\u00ed"
+	},
+	"dialogs": {
+		"Apply": "Lean ar aghaidh"
 	}
 }

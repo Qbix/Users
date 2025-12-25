@@ -192,5 +192,8 @@
 		"ThisUserHaveNoWallet": "Ng\u01b0\u1eddi d\u00f9ng n\u00e0y kh\u00f4ng c\u00f3 v\u00ed \u0111\u01b0\u1ee3c ch\u1ec9 \u0111\u1ecbnh",
 		"TheWalletOfThisUserInvalid": "V\u00ed c\u1ee7a ng\u01b0\u1eddi d\u00f9ng n\u00e0y kh\u00f4ng h\u1ee3p l\u1ec7",
 		"WalletInvalid": "\u0110\u1ecba ch\u1ec9 v\u00ed kh\u00f4ng h\u1ee3p l\u1ec7"
+	},
+	"dialogs": {
+		"Apply": "Ti\u1ebfp t\u1ee5c"
 	}
 }

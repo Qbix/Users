@@ -192,5 +192,8 @@
 		"ThisUserHaveNoWallet": "\u00deessi notandi hefur ekkert veski \u00fathluta\u00f0",
 		"TheWalletOfThisUserInvalid": "Veski \u00feessa notanda \u00f3gilt",
 		"WalletInvalid": "Veski heimilisfang \u00f3gilt"
+	},
+	"dialogs": {
+		"Apply": "Halda \u00e1fram"
 	}
 }

@@ -192,5 +192,8 @@
 		"ThisUserHaveNoWallet": "T\u00e4lle k\u00e4ytt\u00e4j\u00e4lle ei ole m\u00e4\u00e4ritetty lompakkoa",
 		"TheWalletOfThisUserInvalid": "T\u00e4m\u00e4n k\u00e4ytt\u00e4j\u00e4n lompakko on virheellinen",
 		"WalletInvalid": "Lompakon osoite on virheellinen"
+	},
+	"dialogs": {
+		"Apply": "Jatkaa"
 	}
 }

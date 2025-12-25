@@ -192,5 +192,8 @@
 		"ThisUserHaveNoWallet": "\u0160im lietot\u0101jam nav pie\u0161\u0137irts maks",
 		"TheWalletOfThisUserInvalid": "\u0160\u012b lietot\u0101ja maks nav der\u012bgs",
 		"WalletInvalid": "Maka adrese nav der\u012bga"
+	},
+	"dialogs": {
+		"Apply": "Turpin\u0101t"
 	}
 }

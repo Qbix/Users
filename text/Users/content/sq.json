@@ -192,5 +192,8 @@
 		"ThisUserHaveNoWallet": "Ky p\u00ebrdorues nuk ka nj\u00eb portofol t\u00eb caktuar",
 		"TheWalletOfThisUserInvalid": "Portofoli i k\u00ebtij p\u00ebrdoruesi \u00ebsht\u00eb i pavlefsh\u00ebm",
 		"WalletInvalid": "Adresa e portofolit \u00ebsht\u00eb e pavlefshme"
+	},
+	"dialogs": {
+		"Apply": "Vazhdo"
 	}
 }

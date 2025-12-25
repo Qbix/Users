@@ -192,5 +192,8 @@
 		"ThisUserHaveNoWallet": "Mtumiaji huyu hajakabidhiwa pochi",
 		"TheWalletOfThisUserInvalid": "Pochi ya mtumiaji huyu ni batili",
 		"WalletInvalid": "Anwani ya Wallet si sahihi"
+	},
+	"dialogs": {
+		"Apply": "Endelea"
 	}
 }

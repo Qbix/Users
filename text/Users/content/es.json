@@ -192,5 +192,8 @@
 		"ThisUserHaveNoWallet": "Este usuario no tiene billetera asignada",
 		"TheWalletOfThisUserInvalid": "La billetera de este usuario no es v\u00e1lida",
 		"WalletInvalid": "Direcci\u00f3n de billetera no v\u00e1lida"
+	},
+	"dialogs": {
+		"Apply": "Continuar"
 	}
 }

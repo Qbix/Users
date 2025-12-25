@@ -192,5 +192,8 @@
 		"ThisUserHaveNoWallet": "Ten u\u017cytkownik nie ma przypisanego portfela",
 		"TheWalletOfThisUserInvalid": "Portfel tego u\u017cytkownika jest nieprawid\u0142owy",
 		"WalletInvalid": "Adres portfela jest nieprawid\u0142owy"
+	},
+	"dialogs": {
+		"Apply": "Kontynuowa\u0107"
 	}
 }

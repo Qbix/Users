@@ -192,5 +192,8 @@
 		"ThisUserHaveNoWallet": "Denne bruger har ingen tegnebog tildelt",
 		"TheWalletOfThisUserInvalid": "Denne brugers tegnebog er ugyldig",
 		"WalletInvalid": "Wallet-adressen er ugyldig"
+	},
+	"dialogs": {
+		"Apply": "Forts\u00e6tte"
 	}
 }

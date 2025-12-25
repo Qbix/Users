@@ -192,5 +192,8 @@
 		"ThisUserHaveNoWallet": "Este usuario non ten ningunha carteira asignada",
 		"TheWalletOfThisUserInvalid": "A carteira deste usuario non \u00e9 v\u00e1lida",
 		"WalletInvalid": "O enderezo da carteira non \u00e9 v\u00e1lido"
+	},
+	"dialogs": {
+		"Apply": "Continuar"
 	}
 }

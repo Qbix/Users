@@ -192,5 +192,8 @@
 		"ThisUserHaveNoWallet": "A questo utente non \u00e8 assegnato alcun portafoglio",
 		"TheWalletOfThisUserInvalid": "Il portafoglio di questo utente non \u00e8 valido",
 		"WalletInvalid": "Indirizzo del portafoglio non valido"
+	},
+	"dialogs": {
+		"Apply": "Continuare"
 	}
 }

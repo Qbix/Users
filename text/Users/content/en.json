@@ -2,6 +2,9 @@
 	"avatar": {
 		"Someone": "Someone"
 	},
+	"dialogs": {
+		"Apply": "Continue"
+	},
 	"identifier": {
 		"types": {
 			"email": "Email",

@@ -192,5 +192,8 @@
 		"ThisUserHaveNoWallet": "Deze gebruiker heeft geen portemonnee toegewezen",
 		"TheWalletOfThisUserInvalid": "De portemonnee van deze gebruiker is ongeldig",
 		"WalletInvalid": "Wallet-adres ongeldig"
+	},
+	"dialogs": {
+		"Apply": "Doorgaan"
 	}
 }

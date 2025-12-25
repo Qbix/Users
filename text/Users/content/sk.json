@@ -192,5 +192,8 @@
 		"ThisUserHaveNoWallet": "Tento pou\u017e\u00edvate\u013e nem\u00e1 priraden\u00fa \u017eiadnu pe\u0148a\u017eenku",
 		"TheWalletOfThisUserInvalid": "Pe\u0148a\u017eenka tohto pou\u017e\u00edvate\u013ea je neplatn\u00e1",
 		"WalletInvalid": "Adresa pe\u0148a\u017eenky je neplatn\u00e1"
+	},
+	"dialogs": {
+		"Apply": "Pokra\u010dova\u0165"
 	}
 }

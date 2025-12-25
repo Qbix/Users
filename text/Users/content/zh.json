@@ -192,5 +192,8 @@
 		"ThisUserHaveNoWallet": "\u8be5\u7528\u6237\u6ca1\u6709\u5206\u914d\u94b1\u5305",
 		"TheWalletOfThisUserInvalid": "\u8be5\u7528\u6237\u94b1\u5305\u65e0\u6548",
 		"WalletInvalid": "\u94b1\u5305\u5730\u5740\u65e0\u6548"
+	},
+	"dialogs": {
+		"Apply": "\u7ee7\u7eed"
 	}
 }

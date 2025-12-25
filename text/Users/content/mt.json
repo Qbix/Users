@@ -192,5 +192,8 @@
 		"ThisUserHaveNoWallet": "Dan l-utent m&#39;g\u0127andux kartiera assenjat",
 		"TheWalletOfThisUserInvalid": "Il-kartiera ta&#39; dan l-utent invalida",
 		"WalletInvalid": "Indirizz tal-kartiera mhux validu"
+	},
+	"dialogs": {
+		"Apply": "Kompli"
 	}
 }

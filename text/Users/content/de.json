@@ -192,5 +192,8 @@
 		"ThisUserHaveNoWallet": "Diesem Benutzer ist kein Wallet zugewiesen",
 		"TheWalletOfThisUserInvalid": "Das Wallet dieses Benutzers ist ung\u00fcltig",
 		"WalletInvalid": "Wallet-Adresse ung\u00fcltig"
+	},
+	"dialogs": {
+		"Apply": "Weitermachen"
 	}
 }

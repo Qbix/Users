@@ -192,5 +192,8 @@
 		"ThisUserHaveNoWallet": "Erabiltzaile honek ez du diru-zorrorik esleitu",
 		"TheWalletOfThisUserInvalid": "Erabiltzaile honen zorroa baliogabea",
 		"WalletInvalid": "Diru-zorroaren helbidea baliogabea"
+	},
+	"dialogs": {
+		"Apply": "Jarraitu"
 	}
 }

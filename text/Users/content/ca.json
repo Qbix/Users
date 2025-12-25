@@ -192,5 +192,8 @@
 		"ThisUserHaveNoWallet": "Aquest usuari no t\u00e9 assignada cap cartera",
 		"TheWalletOfThisUserInvalid": "La cartera d&#39;aquest usuari no \u00e9s v\u00e0lida",
 		"WalletInvalid": "L&#39;adre\u00e7a de la cartera no \u00e9s v\u00e0lida"
+	},
+	"dialogs": {
+		"Apply": "Continua"
 	}
 }

@@ -192,5 +192,8 @@
 		"ThisUserHaveNoWallet": "Denna anv\u00e4ndare har ingen pl\u00e5nbok tilldelad",
 		"TheWalletOfThisUserInvalid": "Den h\u00e4r anv\u00e4ndarens pl\u00e5nbok \u00e4r ogiltig",
 		"WalletInvalid": "Ogiltig pl\u00e5nboksadress"
+	},
+	"dialogs": {
+		"Apply": "Forts\u00e4tta"
 	}
 }

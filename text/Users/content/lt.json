@@ -192,5 +192,8 @@
 		"ThisUserHaveNoWallet": "\u0160iam vartotojui nepriskirta pinigin\u0117",
 		"TheWalletOfThisUserInvalid": "\u0160io vartotojo pinigin\u0117 negalioja",
 		"WalletInvalid": "Netinkamas pinigin\u0117s adresas"
+	},
+	"dialogs": {
+		"Apply": "T\u0119sti"
 	}
 }

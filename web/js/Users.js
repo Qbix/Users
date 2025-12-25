@@ -36,6 +36,10 @@
 			Someone: "Someone"
 		},
 
+		dialogs: {
+			Apply: "Continue"
+		},
+
 		identifier: {
 			types: {
 				Email: "Email",
@@ -2657,7 +2661,8 @@
 		var $dialog = $(dialog);
 		Users.hint("Users/dialogCloseHint", $dialog.find('.Q_close')[0], {
 			show: {delay: 5000},
-			dontStopBeforeShown: true
+			dontStopBeforeShown: true,
+			tooltip: {text: Q.text.Users.dialogs.Apply}
 		});
 	}, 'Users.dialogCloseHint');
 	
