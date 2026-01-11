@@ -6,7 +6,6 @@
 		}
 	],
 	"require": {
-		"google/apiclient": "^2.14",
         "intercoin/simple-web3-php": "dev-master",
 		"minishlink/web-push": "^6.0.0",
 		"aws/aws-sdk-php": "3.*",
