@@ -1800,21 +1800,9 @@ abstract class Users extends Base_Users
 					imagecopyresampled($image, $source, 0, 0, (int)$sx, (int)$sy, (int)$w, (int)$h, (int)$w2, (int)$h2);
 				}
 				$info = pathinfo($filename);
-				switch ($info['extension']) {
-					case 'png':
-						$func = 'imagepng';
-						imagesavealpha($image, true);
-						imagealphablending($image, true);
-						break;
-					case 'jpg':
-					case 'jpeg':
-						$func = 'imagejpeg';
-						break;
-					case 'gif':
-						$func = 'imagegif';
-						break;
-				}
-				call_user_func($func, $image, $directory.DS.$info['filename'].'.png');
+				imagesavealpha($image, true);
+				imagealphablending($image, false);
+				imagepng($image, $directory.DS.$info['filename'].'.png');
 			} else { // source is an array with "size" and "hash" for avatar generator
 				$type = Q_Config::get('Users', 'login', 'iconType', 'wavatar');
 				$gravatar = Q_Config::get('Users', 'login', 'gravatar', false);
