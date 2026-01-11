@@ -19,7 +19,8 @@ use phpseclib\Math\BigInteger;
  *
  * @class Users_Web3
  */
-class Users_Web3 extends Base_Users_Web3 {
+class Users_Web3 extends Base_Users_Web3
+{
 	/**
 	 * Used to execute methods on the blockchain.
 	 * If you don't pass privateKey, then it returns the result of a "view" operation (possibly cached locally).
@@ -40,6 +41,7 @@ class Users_Web3 extends Base_Users_Web3 {
 	 * @param {integer} [$delay=0] If not found in cache, set how many microseconds to delay before querying the blockchain
 	 * @param {array} [$transaction=array()] Additional information for transaction, with possible keys 'from', 'gas', 'gasPrice', 'value', 'nonce'
 	 * @param {string} [$privateKey=null] Optionally pass an ECDSA private key here, to sign the transaction with (e.g. to change blockchain state).
+	 * @param {callable} [$callback] You can pass e.g. a closure here, works well with batching
 	 * @return {mixed} Returns the transaction hash, if privateKey was specified. Otherwise, returns the (possibly cached) result of "view" operation on the blockchain.
 	 */
 	static function execute (
@@ -52,7 +54,8 @@ class Users_Web3 extends Base_Users_Web3 {
 		$cacheDuration = null,
 		$delay = 0,
 		$transaction = array(),
-		$privateKey = null)
+		$privateKey = null,
+		$callback = null)
 	{
 		list($appInfo, $provider, $rpcUrl) = self::objects($appId);
 		if ($cacheDuration === null) {
@@ -126,14 +129,35 @@ class Users_Web3 extends Base_Users_Web3 {
 			// despite the fact that there are enough funds in the wallet and options: "gasPrice", "gasLimit"
             $provider->setPersonalData($from, $privateKey);
         }
-			
+	
         $contract = new SWeb3_contract($provider, $contractAddress, $contractABI);
+
+		// If in batching mode, enqueue RPC + metadata and return immediately
+		if (is_array(self::$batching[self::$batchName][$appInfo['appId']])) {
+
+			// Enqueue RPC into provider batch
+			$contract->call($methodName, $params);
+
+			// Track metadata for decoding / callbacks later
+			self::$batching[self::$batchName][$appInfo['appId']][] = array(
+				$contract,
+				$methodName,
+				false,        // signedTx = false (view call)
+				$callback
+			);
+
+			return count(self::$batching[self::$batchName][$appInfo['appId']]) - 1;
+		}
         
+		if ($callback !== null && !is_callable($callback)) {
+			throw new InvalidArgumentException("execute(): callback must be callable or null");
+		}
+
 		if ($privateKey) {
-            if (is_array(self::$batching[$appInfo['appId']])) {
+            if (is_array(self::$batching[self::$batchName][$appInfo['appId']])) {
                 throw new Exception("Batching signed transactions has not been supported yet.");
             }
-			$extra_data = [];
+			$extra_data = array();
             
             if (!isset($transaction['nonce'])) {
 
@@ -182,13 +206,6 @@ class Users_Web3 extends Base_Users_Web3 {
 			return null;
 		}
         
-        // if in batching mode, we just push into queue list (self::$batching)
-        // and return number of transaction of our list.
-		if (is_array(self::$batching[$appInfo['appId']])) {
-			array_push(self::$batching[$appInfo['appId']], array($contract, $methodName, ($privateKey ? true : false), $callback));
-			return count(self::$batching[$appInfo['appId']]) - 1;
-		}
-        
         // if not batch then we expect a result
         // so just need to adjust returned data
 
@@ -213,20 +230,29 @@ class Users_Web3 extends Base_Users_Web3 {
 	}
 
 	/**
-	 * Start a batch, then call execute() method multiple times with same $appId,
-	 * and finally call batchExecute($callback, $appId)
-	 * @method batchStart
+	 * Start or switch to a batch, then call execute() method multiple times with same $appId,
+	 * and finally call batchExecute($callback, $appId) or batchCancel($appId, $batchName);
+	 * @method batchName
 	 * @static
 	 * @param {string} [$appId=Q::app()] Indicate which entry in Users/apps config to use
+	 * @param {string} [$batchName=''] Pass a batch name here if you have multiple concurrent batches
 	 */
-	static function batchStart($appId = null)
-	{
-        
+	static function batchUse($appId = null, $batchName = '')
+	{   
 		list($appInfo, $provider, $rpcUrl) = self::objects($appId);
-		$provider->batch(true);
-         // [appId] => 0x13881
-		self::$batching[$appInfo['appId']] = array();
-        
+
+		$appKey = $appInfo['appId'];
+
+		self::$batchName = $batchName;
+
+		if (!isset(self::$batching[$batchName])) {
+			self::$batching[$batchName] = array();
+		}
+
+		if (!isset(self::$batching[$batchName][$appKey])) {
+			$provider->batch(true);
+			self::$batching[$batchName][$appKey] = array();
+		}
 	}
 
 	/**
@@ -235,42 +261,98 @@ class Users_Web3 extends Base_Users_Web3 {
 	 * @method batchExecute
 	 * @static
 	 * @param {string} [$appId=Q::app()] Indicate which entry in Users/apps config to use
+	 * @param {string} [$batchName=''] Pass a batch name here if you have multiple concurrent batches
 	 */
-	static function batchExecute($appId = null, &$batchResults = null)
+	static function batchExecute($appId = null, &$batchResults = null, $batchName = '')
 	{
+		$data = array();
 
-		$err = null;
-		$data = [];
 		list($appInfo, $provider, $rpcUrl) = self::objects($appId);
+		$appKey = $appInfo['appId'];
+
+		// Nothing to execute
+		if (empty(self::$batching[$batchName])
+		 || empty(self::$batching[$batchName][$appKey])) {
+			return $data;
+		}
 
 		$results = $provider->executeBatch();
-        if (count($results) == 0) {
-			throw new Q_Exception($err);
+		if (!is_array($results) || !count($results)) {
+			$provider->batch(false);
+			throw new Q_Exception("Empty batch result");
 		}
-        $batchResults = $results;
-        
-		foreach ($results as $index=>$result) {
-            // !!! not $result->id
-            // id in rpc reseponce is the same for all reqeuests on batch request. because batch request the single 
-			list($contract, $methodName, $signedTx, $callable) = self::$batching[$appInfo['appId']][$index];
-            if ($signedTx) {
-                $data[$index] = $results[$index]->result;
-            } else {
-                $data[$index] = self::adjust($contract->DecodeData($methodName, $results[$index]->result));
-            }
-			
-			//call_user_func($callable, $data[$index], $index);
+
+		$batchResults = $results;
+
+		foreach ($results as $index => $result) {
+			if (!isset(self::$batching[$batchName][$appKey][$index])) {
+				continue;
+			}
+			list($contract, $methodName, $signedTx, $callable) =
+				self::$batching[$batchName][$appKey][$index];
+			if ($signedTx) {
+				$data[$index] = $result->result;
+			} else {
+				$data[$index] = self::adjust(
+					$contract->DecodeData($methodName, $result->result)
+				);
+			}
+			// Optional callback hook (still intentionally disabled)
+			// if (is_callable($callable)) {
+			//     call_user_func($callable, $data[$index], $index);
+			// }
 		}
-		self::$batching[$appInfo['appId']] = null;
-        $extra_curl_params = [];
-        $extra_header_params = [];
-		self::$providers[$rpcUrl] = new SWeb3($rpcUrl, $extra_curl_params, $extra_header_params);
-        $provider->batch(false);
-		if ($err) {
-			throw new Q_Exception($err);
+
+		// Cleanup batch state for this app
+		unset(self::$batching[$batchName][$appKey]);
+
+		// Cleanup batch name if empty
+		if (empty(self::$batching[$batchName])) {
+			unset(self::$batching[$batchName]);
 		}
+
+		// Reset provider batching
+		$provider->batch(false);
+
+		// Reset global batch mode if this was the active one
+		if (self::$batchName === $batchName) {
+			self::$batchName = '';
+		}
+
+		// Reset provider instance to clean state
+		self::$providers[$rpcUrl] = new SWeb3($rpcUrl, array(), array());
+
 		return $data;
 	}
+
+
+	/**
+	 * Cancel a batch, so the batchName can be re-used again from scatch
+	 * @method batchCancel
+	 * @static
+	 * @param {string} [$appId=Q::app()] Indicate which entry in Users/apps config to use
+	 * @param {string} [$batchName=''] Pass a batch name here if you have multiple concurrent batches
+	 */
+	static function batchCancel($appId = null, $batchName = '')
+	{
+		list($appInfo, $provider, $rpcUrl) = self::objects($appId);
+		$appKey = $appInfo['appId'];
+
+		unset(self::$batching[$batchName][$appKey]);
+
+		if (empty(self::$batching[$batchName])) {
+			unset(self::$batching[$batchName]);
+		}
+
+		if (empty(self::$batching)) {
+			$provider->batch(false);
+		}
+
+		if (self::$batchName === $batchName) {
+			self::$batchName = '';
+		}
+	}
+
         
     static function adjustValue($in) 
     {
@@ -648,4 +730,5 @@ class Users_Web3 extends Base_Users_Web3 {
 
 	public static $providers = array();
 	public static $batching = array();
+	public static $batchName = '';
 };
