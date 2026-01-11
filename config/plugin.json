@@ -142,18 +142,21 @@
 				"sizes": ["40", "50", "80", "1000"],
 				"defaultSize": "40",
 				"defaultCacheBust": 1000,
+				"extension": "png",
 				"maxStretch": 5
 			},
             "Users/labels": {
 				"sizes": ["40", "50", "80", "200"],
 				"defaultSize": "40",
 				"defaultCacheBust": 1000,
+				"extension": "png",
 				"maxStretch": 3
 			},
 			"Users/cover": {
 				"sizes": ["1000x263", "1200x315", "1400x368"],
 				"defaultSize": "1200x315",
 				"defaultCacheBust": 1000,
+				"extension": "jpg",
 				"maxStretch": 3
 			}
 		},
