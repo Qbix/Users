@@ -1227,7 +1227,7 @@
 
 	Q.onInit.add(function () {
 		// Maintain backward-compatible behavior
-		var permissions = Q.getObject('capability.permissions', Users);
+		var permissions = Q.getObject('capability.permissions', Users) || [];
 		var found = false;
 		if (Q.info.socket && Q.info.socket.permissions) {
 			for (var i=0; i<permissions.length; ++i) {
