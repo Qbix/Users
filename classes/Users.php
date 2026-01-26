@@ -2331,7 +2331,12 @@ abstract class Users extends Base_Users
 			? $payload
 			: Q::take($payload, $sig['fieldNames']);
 		$serialized = Q_Utils::serialize($fields);
-		if (!Q_Crypto::verify($serialized, $sig['signature'], $publicKey)) {
+		$results = Q_Data::verify(
+			$serialized,
+			array($publicKey),
+			array($sig['signature'])
+		);
+		if (empty($results[0]) || $results[0] !== true) {
 			return false;
 		}
 		return $publicKey;

@@ -589,7 +589,7 @@
 				}
 
 				// the user changed, redirect to their home page
-				var urls = Q.urls || {};
+				var urls = Q.info.urls || {};
 				var nextUrl = options.successUrl;
 				if (priv.result === 'register' && options.onboardingUrl) {
 					nextUrl = options.onboardingUrl;
@@ -1191,7 +1191,7 @@
 				url: Q.action('Users/logout'),
 				using: '*',
 				onSuccess: new Q.Event(function (options) {
-					var urls = Q.urls || {};
+					var urls = Q.info.urls || {};
 					Q.handle(options.welcomeUrl
 						|| urls[Q.info.app + '/welcome']
 						|| Q.url(''));
@@ -2627,7 +2627,7 @@
 	Users.disconnect.web3 = Web3.disconnect;
 
 	Q.onReady.add(function () {
-		Users.urls.onComplete = Q.urls['Communities/home'];
+		Users.urls.onComplete = Q.info.urls['Communities/home'];
 		Users.Facebook.construct();
 		_subscribeToEvents(Users.Web3.provider);
 	}, 'Users');
