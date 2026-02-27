@@ -616,6 +616,36 @@ html.Users_loggedIn .Users_whenLoggedOut {
 	cursor: pointer;
 }
 
+.Users_web3_block {
+	margin: 12px 0;
+	padding: 10px;
+	border-radius: 8px;
+	background: #f6f8fa;
+}
+
+.Users_web3_row {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.Users_web3_icon {
+	width: 32px;
+	height: 32px;
+}
+
+.Users_web3_text {
+	display: flex;
+	flex-direction: column;
+}
+
+.Users_web3_address {
+	font-family: monospace;
+	font-weight: 600;
+	color: #333;
+	margin-top: 4px;
+}
+
 @media (prefers-color-scheme: dark) {
 	#Users_login_identifierExists { color: inherit; }
 }
