@@ -9,31 +9,54 @@ Q.exports(function (Users, priv) {
 		var xid = null;
 
 		// ============================================================
-		// CASE 1: Cookie Resume
+		// CASE 1: Cookie Resume  (FIXED: now re-validates via Users.authenticate)
 		// ============================================================
 		try {
 			var w3sr_json = Q.cookie(cookieName);
 			if (w3sr_json) {
 				var w3sr = JSON.parse(w3sr_json);
-				var hash = ethers.utils.hashMessage(w3sr[0]);
-				xid = ethers.utils.recoverAddress(hash, w3sr[1]);
+				var payload = w3sr[0];
+				var signature = w3sr[1];
+
+				var hash = ethers.utils.hashMessage(payload);
+				xid = ethers.utils.recoverAddress(hash, signature);
 
 				if (!xid) throw new Error("Bad signature");
 
-				var matches = w3sr[0].match(/[\d]{8,12}/);
+				var matches = payload.match(/[\d]{8,12}/);
 				if (!matches) throw new Error("Missing timestamp");
 
-				if (Q.Users.authenticate.expires &&
-					matches[0] < Date.now() / 1000 - Q.Users.authenticate.expires) {
+				var ts = parseInt(matches[0], 10);
+				var duration = Q.getObject("Users.authenticate.expires") || 86400;
+
+				if (ts < (Date.now() / 1000) - duration) {
 					throw new Error("Expired");
 				}
 
-				priv.handleXid(
-					platform,
-					platformAppId,
-					xid,
-					onSuccess,
-					onCancel,
+				// Re-send to server exactly like Telegram does
+				Users.authPayload = Users.authPayload || {};
+				Users.authPayload.web3 = {
+					xid: xid,
+					payload: payload,
+					signature: signature,
+					platform: 'web3'
+				};
+
+				Users.authenticate('web3',
+					function (user) {
+						priv.handleXid(
+							platform,
+							platformAppId,
+							xid,
+							onSuccess,
+							onCancel,
+							Q.extend({ prompt: false }, options)
+						);
+					},
+					function (err) {
+						Q.cookie(cookieName, null, { path: '/' });
+						if (onCancel) onCancel(err);
+					},
 					Q.extend({ prompt: false }, options)
 				);
 
@@ -106,13 +129,11 @@ Q.exports(function (Users, priv) {
 						params: [msg, address.toLowerCase()]
 					}).then(function (signature) {
 
-						// Store resume cookie
 						Q.cookie(cookieName,
 							JSON.stringify([payload, signature]),
 							{ path: '/', maxAge: 86400 * 7 }
 						);
 
-						// Prepare auth payload EXACTLY like old working code
 						Users.authPayload = Users.authPayload || {};
 						Users.authPayload.web3 = {
 							xid: address,
@@ -124,7 +145,6 @@ Q.exports(function (Users, priv) {
 								: p.chainId
 						};
 
-						// Use original authentication path
 						Users.authenticate('web3',
 							function (user) {
 								if (onSuccess) {
@@ -166,7 +186,6 @@ Q.exports(function (Users, priv) {
 						return;
 					}
 
-					// Fallback to QR / mobile handoff
 					Users.Intent.provision(
 						"Users/authenticate",
 						"web3",
@@ -183,7 +202,6 @@ Q.exports(function (Users, priv) {
 				});
 			});
 
-			// Refresh if authenticated after returning
 			Q.onVisibilityChange.setOnce(function (isShown) {
 				if (!isShown) return;
 
