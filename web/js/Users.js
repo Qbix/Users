@@ -420,28 +420,49 @@
 		}
 
 		function __doAuthenticate() {
+			var adapter = Users.adapters[platform];
+			if (!adapter) {
+				throw new Q.Error("Unknown auth platform: " + platform);
+			}
+
+			var fields = adapter.buildAuthFields(options);
+
+			priv._doAuthenticate(
+				fields,
+				platform,
+				platformAppId,
+				onSuccess,
+				onCancel,
+				options
+			);
+		}
+
+		function __doAuthenticate() {
+			var adapter = Users.authenticate[platform];
 			var fields = {};
-			var appId = (options && options.appId) || Q.info.app;
-			if (platform === 'facebook') {
-				var ar = Users.Facebook.getAuthResponse();
-				if (!ar) {
-					// in some rare cases, the user may have logged out of facebook
-					// while our prompt was visible, so there is no longer a valid
-					// facebook authResponse. In this case, even though they want
-					// to authenticate, we must cancel it.
-					alert("Connection to facebook was lost. Try connecting again.");
-					priv._doCancel(platform, platformAppId, null, onSuccess, onCancel, options);
-					return;
+			if (adapter && typeof adapter.buildAuthFields === 'function') {
+				fields = adapter.buildAuthFields(
+					platform,
+					platformAppId,
+					onSuccess,
+					onCancel,
+					options
+				);
+				if (!fields) {
+					return; // adapter already canceled
 				}
-				ar.expires = Math.floor(Date.now() / 1000) + ar.expiresIn;
-				ar.fbAppId = platformAppId;
-				ar.appId = appId;
-				fields['Q.Users.authPayload.facebook'] = ar;
 			} else if (Q.Users.authPayload[platform]) {
 				Q.extend(fields, Q.Users.authPayload[platform]);
 				fields.updateXid = !!Q.getObject("updateXid", options);
 			}
-			priv._doAuthenticate(fields, platform, platformAppId, onSuccess, onCancel, options);
+			priv._doAuthenticate(
+				fields,
+				platform,
+				platformAppId,
+				onSuccess,
+				onCancel,
+				options
+			);
 		}
 	}
 	

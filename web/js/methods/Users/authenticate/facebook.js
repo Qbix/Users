@@ -1,8 +1,8 @@
 Q.exports(function (Users, priv) {
     
     /**
-	 * Authenticates this session with a given platform,
-	 * if the user was already connected to it.
+	 * Facebook platform authentication adapter.
+	 * Authenticates user if the user was already connected to it.
 	 * It tries to do so by checking a cookie that would have been set by the server.
 	 * @method authenticate
 	 * @param {String} platform Currently it's `facebook`
@@ -23,24 +23,98 @@ Q.exports(function (Users, priv) {
 		
 		// make sure facebook is initialized
 		Q.Users.init.facebook(function () {
+
 			// check if user is connected to facebook
 			Q.Users.Facebook.getLoginStatus(function (response) {
+
 				if (response.status === 'connected') {
+
 					priv.handleXid(
-						platform, platformAppId, response.authResponse.userID,
-						onSuccess, onCancel, Q.extend({response: response}, options)
+						platform,
+						platformAppId,
+						response.authResponse.userID,
+						onSuccess,
+						onCancel,
+						Q.extend({ response: response }, options)
 					);
+
 				} else if (platformAppId) {
+
 					// let's delete any stale facebook cookies there might be
 					// otherwise they might confuse our server-side authentication.
-					Q.cookie('fbs_' + platformAppId, null, {path: '/'});
-					Q.cookie('fbsr_' + platformAppId, null, {path: '/'});
-					priv._doCancel(platform, platformAppId, null, onSuccess, onCancel, options);
+					Q.cookie('fbs_' + platformAppId, null, { path: '/' });
+					Q.cookie('fbsr_' + platformAppId, null, { path: '/' });
+
+					priv._doCancel(
+						platform,
+						platformAppId,
+						null,
+						onSuccess,
+						onCancel,
+						options
+					);
 				}
+
 			}, options.force ? true : false);
+
 		}, {
 			appId: options.appId
 		});
+	}
+
+	/**
+	 * Builds authentication fields for server-side authenticate call.
+	 * This moves facebook-specific payload shaping out of core.
+	 *
+	 * In some rare cases, the user may have logged out of facebook
+	 * while our prompt was visible, so there is no longer a valid
+	 * facebook authResponse. In this case, even though they want
+	 * to authenticate, we must cancel it.
+	 *
+	 * @method buildAuthFields
+	 * @param {String} platform
+	 * @param {String} platformAppId
+	 * @param {Function} onSuccess
+	 * @param {Function} onCancel
+	 * @param {Object} options
+	 * @return {Object|null} fields for priv._doAuthenticate or null if canceled
+	 */
+	facebook.buildAuthFields = function (
+		platform,
+		platformAppId,
+		onSuccess,
+		onCancel,
+		options
+	) {
+
+		options = options || {};
+		var appId = options.appId || Q.info.app;
+
+		var ar = Users.Facebook.getAuthResponse();
+
+		if (!ar) {
+
+			alert("Connection to facebook was lost. Try connecting again.");
+
+			priv._doCancel(
+				platform,
+				platformAppId,
+				null,
+				onSuccess,
+				onCancel,
+				options
+			);
+
+			return null;
+		}
+
+		ar.expires = Math.floor(Date.now() / 1000) + ar.expiresIn;
+		ar.fbAppId = platformAppId;
+		ar.appId = appId;
+
+		return {
+			'Q.Users.authPayload.facebook': ar
+		};
 	};
     
     return facebook;
