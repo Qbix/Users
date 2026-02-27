@@ -2,275 +2,191 @@ Q.exports(function (Users, priv) {
 
 	var Web3 = Users.Web3;
 
-	/**
-	 * Authenticate this session using a connected Web3 wallet.
-	 * Works via the intent-based flow (Users/intent → Users/authenticate/web3),
-	 * and can also resume via a signed cookie (`w3sr_*`) previously issued by the server.
-	 * @method web3
-	 * @param {String} platform "web3"
-	 * @param {String} platformAppId  appId or "all"
-	 * @param {Function} onSuccess  called when authenticated
-	 * @param {Function} onCancel   called on cancellation or failure
-	 * @param {Object} [options]
-	 *   @param {Boolean} [options.force=false]
-	 *   @param {String} [options.appId=Q.info.app]
-	 */
 	return function web3(platform, platformAppId, onSuccess, onCancel, options) {
 		options = options || {};
 
-		const cookieName = 'w3sr_' + platformAppId;
-		let xid = null;
+		var cookieName = 'w3sr_' + platformAppId;
+		var xid = null;
 
 		// ============================================================
-		// CASE 1: Try cookie resume (fast path)
+		// CASE 1: Cookie Resume
 		// ============================================================
 		try {
-			const w3sr_json = Q.cookie(cookieName);
+			var w3sr_json = Q.cookie(cookieName);
 			if (w3sr_json) {
-				const w3sr = JSON.parse(w3sr_json);
-				const hash = ethers.utils.hashMessage(w3sr[0]);
+				var w3sr = JSON.parse(w3sr_json);
+				var hash = ethers.utils.hashMessage(w3sr[0]);
 				xid = ethers.utils.recoverAddress(hash, w3sr[1]);
+
 				if (!xid) throw new Error("Bad signature");
 
-				const matches = w3sr[0].match(/[\d]{8,12}/);
-				if (!matches) throw new Error("w3sr cookie missing timestamp");
+				var matches = w3sr[0].match(/[\d]{8,12}/);
+				if (!matches) throw new Error("Missing timestamp");
+
 				if (Q.Users.authenticate.expires &&
 					matches[0] < Date.now() / 1000 - Q.Users.authenticate.expires) {
-					throw new Error("w3sr token expired");
+					throw new Error("Expired");
 				}
 
-				Q.req('Users/authenticate', function (err, response) {
-					if (err) {
-						console.warn('Web3 authenticate failed (cookie):', err);
-						Q.cookie(cookieName, null, { path: '/' });
-						return _intentBasedFlow();
-					}
-					priv.handleXid(
-						platform,
-						platformAppId,
-						(response.user && response.user.id) || xid,
-						onSuccess,
-						onCancel,
-						Q.extend({ response, prompt: false }, options)
-					);
-				}, {
-					method: 'POST',
-					fields: {
-						platform: 'web3',
-						appId: options.appId || platformAppId,
-						updateXid: true
-					}
-				});
+				priv.handleXid(
+					platform,
+					platformAppId,
+					xid,
+					onSuccess,
+					onCancel,
+					Q.extend({ prompt: false }, options)
+				);
+
 				return;
 			}
 		} catch (e) {
-			console.warn('Web3 cookie resume failed:', e);
 			Q.cookie(cookieName, null, { path: '/' });
 		}
 
 		// ============================================================
-		// CASE 2: No valid cookie → Intent-based Web3 authentication
+		// CASE 2: Intent-Based Flow
 		// ============================================================
+
 		_intentBasedFlow();
 
 		function _intentBasedFlow() {
-			let provider = window.ethereum || (window.Web3 && Web3.provider) || null;
-			let wallets = Q.getObject("web3.wallets", Users);
-			let _subscribed = false;
 
-			function _subscribeToEvents(p) {
-				if (_subscribed || !p || !p.on) return;
-				p.on("accountsChanged", () => Q.handle(Web3.onAccountsChanged, p));
-				p.on("chainChanged", () => Q.handle(Web3.onChainChanged, p));
-				_subscribed = true;
+			var provider = window.ethereum || Web3.provider || null;
+			var subscribed = false;
+
+			function _subscribe(p) {
+				if (subscribed || !p || !p.on) return;
+				p.on("accountsChanged", function () {
+					Q.handle(Web3.onAccountsChanged, p);
+				});
+				p.on("chainChanged", function () {
+					Q.handle(Web3.onChainChanged, p);
+				});
+				subscribed = true;
 			}
 
-			function _ensureProvider(cb) {
+			function _ensureProvider(callback) {
 				if (provider && provider.request) {
-					_subscribeToEvents(provider);
-					return cb(null, provider);
+					_subscribe(provider);
+					return callback(null, provider);
 				}
-				const tout = setTimeout(() => cb(new Error("No provider")), 1000);
-				window.addEventListener("eip6963:announceProvider", ev => {
+
+				var tout = setTimeout(function () {
+					callback(new Error("No provider"));
+				}, 1000);
+
+				window.addEventListener("eip6963:announceProvider", function (ev) {
 					provider = ev.detail.provider;
 					clearTimeout(tout);
-					_subscribeToEvents(provider);
-					cb(null, provider);
+					_subscribe(provider);
+					callback(null, provider);
 				}, { once: true });
+
 				window.dispatchEvent(new Event('eip6963:requestProvider'));
 			}
 
-			function _signAndSend(p, intent) {
+			function _signAndAuthenticate(p) {
+
 				p.request({ method: 'eth_requestAccounts' })
 				.then(function (accounts) {
+
 					var address = accounts[0];
 
-					// Use original payload format
 					var payload = Q.text.Users.login.web3.payload.interpolate({
 						host: location.host,
 						timestamp: Math.floor(Date.now() / 1000)
 					});
 
-					// Hex encode same way original code did
-					var msg = '0x' + Buffer.from(payload, "utf8").toString("hex");
+					var msg = ethers.utils.hexlify(
+						ethers.utils.toUtf8Bytes(payload)
+					);
 
 					return p.request({
 						method: 'personal_sign',
-						params: [msg, address]
+						params: [msg, address.toLowerCase()]
 					}).then(function (signature) {
-						return {
-							address: address,
-							signature: signature,
-							payload: payload
-						};
-					});
-				})
-				.then(function (res) {
 
-					// Optional cookie resume (same structure as original expectation)
-					Q.cookie(cookieName, JSON.stringify([res.payload, res.signature]), {
-						path: '/',
-						maxAge: 86400 * 7
-					});
-
-					Q.req('Users/authenticate/web3', function (err, r) {
-						if (err) {
-							return onCancel && onCancel(err, options);
-						}
-
-						priv.handleXid(
-							platform,
-							platformAppId,
-							(r.user && r.user.id) || res.address,
-							onSuccess,
-							onCancel,
-							Q.extend({ response: r, prompt: false }, options)
+						// Store resume cookie
+						Q.cookie(cookieName,
+							JSON.stringify([payload, signature]),
+							{ path: '/', maxAge: 86400 * 7 }
 						);
 
-					}, {
-						method: 'POST',
-						fields: {
-							intent: intent,
-							address: res.address,
-							signature: res.signature,
-							payload: res.payload
-						}
+						// Prepare auth payload EXACTLY like old working code
+						Users.authPayload = Users.authPayload || {};
+						Users.authPayload.web3 = {
+							xid: address,
+							payload: payload,
+							signature: signature,
+							platform: 'web3',
+							chainId: (typeof p.chainId === 'function')
+								? p.chainId()
+								: p.chainId
+						};
+
+						// Use original authentication path
+						Users.authenticate('web3',
+							function (user) {
+								if (onSuccess) {
+									onSuccess(user);
+								}
+							},
+							function () {
+								if (onCancel) {
+									onCancel();
+								}
+							},
+							Q.extend({ prompt: false }, options)
+						);
 					});
 				})
 				.catch(function (ex) {
 					if (onCancel) {
-						onCancel(ex, options);
+						onCancel(ex);
 					}
 				});
 			}
 
-			function _walletConnect() {
-				const modal = $("w3m-modal");
-				modal.addClass("Q_floatAboveDocument").css({
-					position: "fixed",
-					"z-index": Q.zIndexTopmost() + 1
-				});
-				Web3.walletConnectProvider.on("connect", info => {
-					const p = Web3.walletConnectProvider;
-					p.request({ method: 'eth_requestAccounts' }).then(() => {
-						Web3.provider = p;
-						_subscribeToEvents(p);
-						Q.handle(Web3.onConnect, p, [info]);
-					});
-				});
-				Web3.walletConnectProvider.connect();
-			}
+			Users.init.web3(function () {
 
-			Users.init.web3(() => {
-				_ensureProvider((err, p) => {
+				_ensureProvider(function (err, p) {
+
 					if (p && p.request) {
-						Users.Intent.provision("Users/authenticate", "web3", Q.app, slots => {
-							if (!slots) return onCancel && onCancel("Provision failed");
-							_signAndSend(p, slots.capability.token || slots.capability);
-						});
+						Users.Intent.provision(
+							"Users/authenticate",
+							"web3",
+							Q.app,
+							function (slots) {
+								if (!slots) {
+									return onCancel && onCancel("Provision failed");
+								}
+								_signAndAuthenticate(p);
+							}
+						);
 						return;
 					}
 
-					if (!wallets) return onCancel && onCancel(err || "No wallets configured");
-
-					delete wallets.walletconnect;
-
-					Q.Template.set("Users/web3/connect/wallet", `
-						<ul>
-							{{#each wallets}}
-								<li>
-									<a 
-										{{#if url}}href="{{url}}"{{/if}}
-										{{#if data-url}}data-url="{{data-url}}"{{/if}}
-										style="background-image:url({{img}})">
-										{{name}}
-									</a>
-								</li>
-							{{/each}}
-						</ul>
-					`);
-
-					let dialog, timeoutId;
-					Q.Dialogs.push({
-						title: Q.text.Users.login.web3.ConnectWallet,
-						className: "Users_connect_wallets",
-						content: "",
-						stylesheet: "{{Users}}/css/Users/wallets.css",
-						onActivate: function (d) {
-							dialog = d;
-							const u = new URL(location.href);
-							Users.Intent.provision("Users/authenticate", "web3", Q.app, slots => {
-								if (!slots) return onCancel && onCancel("Provision failed");
-								const capability = slots.capability;
-								const urlParams = {
-									intent: capability.token,
-									url: u.href,
-									urlEncoded: encodeURIComponent(u.href),
-									urlWithoutScheme: u.href.replace(/^[^:]+:\/\//, '')
-								};
-								const cWallets = Q.extend({}, wallets);
-								Q.each(cWallets, (i, val) => {
-									cWallets[i].img = Q.url("{{Users}}/img/web3/wallet/" + i + ".png");
-									if (val.url)
-										cWallets[i].url = val.url.interpolate(urlParams);
-									else
-										cWallets[i]["data-url"] = i;
-								});
-								Q.Template.render("Users/web3/connect/wallet", { wallets: cWallets }, (err, html) => {
-									Q.replace($(".Q_dialog_content", dialog)[0], html);
-									$("a", dialog).on(Q.Pointer.fastclick, function (e) {
-										e.preventDefault();
-										const key = this.getAttribute("data-url");
-										if (key === "walletconnect") return _walletConnect();
-										const wallet = cWallets[key];
-										if (!wallet) return;
-										Users.Intent.start(capability, {
-											platform: "web3",
-											url: wallet.url,
-											skip: { QR: true }
-										});
-									});
-								});
+					// Fallback to QR / mobile handoff
+					Users.Intent.provision(
+						"Users/authenticate",
+						"web3",
+						Q.app,
+						function (slots) {
+							if (!slots) {
+								return onCancel && onCancel("Provision failed");
+							}
+							Users.Intent.start(slots.capability, {
+								platform: "web3"
 							});
-
-							Web3.onConnect.set(() => {
-								setTimeout(() => Q.Dialogs.close(dialog), 500);
-							}, "Users_connect_wallets");
-
-							timeoutId = setTimeout(() => {
-								Q.Dialogs.close(dialog);
-							}, 60000);
-						},
-						onClose: function () {
-							if (timeoutId) clearTimeout(timeoutId);
 						}
-					});
+					);
 				});
 			});
 
-			// Refresh the page if session becomes authenticated after returning from wallet app
-			Q.onVisibilityChange.setOnce(isShown => {
+			// Refresh if authenticated after returning
+			Q.onVisibilityChange.setOnce(function (isShown) {
 				if (!isShown) return;
+
 				Q.req("Users/session", ["result"], function (err, r) {
 					if (r && r.slots && r.slots.result === "authenticated") {
 						Q.loadUrl(location.href, {
@@ -281,8 +197,6 @@ Q.exports(function (Users, priv) {
 							ignoreHistory: true,
 							quiet: true
 						});
-					} else if (err) {
-						console.warn("Web3 auth refresh failed:", err);
 					}
 				});
 			}, "Q.Users.authenticate.web3");
