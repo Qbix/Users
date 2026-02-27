@@ -102,39 +102,66 @@ Q.exports(function (Users, priv) {
 
 			function _signAndSend(p, intent) {
 				p.request({ method: 'eth_requestAccounts' })
-					.then(accounts => {
-						const address = accounts[0];
-						const message = Q.text.Users.login.web3.SignMessage.interpolate({ intent });
-						return p.request({
-							method: 'personal_sign',
-							params: [message, address]
-						}).then(signature => ({ address, signature, message }));
-					})
-					.then(res => {
-						// cache signature cookie for fast resume
-						Q.cookie(cookieName, JSON.stringify([res.message, res.signature]), {
-							path: '/', maxAge: 86400 * 7
-						});
-						Q.req('Users/authenticate/web3', function (err, r) {
-							if (err) return onCancel && onCancel(err, options);
-							priv.handleXid(
-								platform,
-								platformAppId,
-								(r.user && r.user.id) || null,
-								onSuccess,
-								onCancel,
-								Q.extend({ response: r, prompt: false }, options)
-							);
-						}, {
-							method: 'POST',
-							fields: {
-								intent: intent,
-								address: res.address,
-								signature: res.signature
-							}
-						});
-					})
-					.catch(ex => onCancel && onCancel(ex, options));
+				.then(function (accounts) {
+					var address = accounts[0];
+
+					// Use original payload format
+					var payload = Q.text.Users.login.web3.payload.interpolate({
+						host: location.host,
+						timestamp: Math.floor(Date.now() / 1000)
+					});
+
+					// Hex encode same way original code did
+					var msg = '0x' + Buffer.from(payload, "utf8").toString("hex");
+
+					return p.request({
+						method: 'personal_sign',
+						params: [msg, address]
+					}).then(function (signature) {
+						return {
+							address: address,
+							signature: signature,
+							payload: payload
+						};
+					});
+				})
+				.then(function (res) {
+
+					// Optional cookie resume (same structure as original expectation)
+					Q.cookie(cookieName, JSON.stringify([res.payload, res.signature]), {
+						path: '/',
+						maxAge: 86400 * 7
+					});
+
+					Q.req('Users/authenticate/web3', function (err, r) {
+						if (err) {
+							return onCancel && onCancel(err, options);
+						}
+
+						priv.handleXid(
+							platform,
+							platformAppId,
+							(r.user && r.user.id) || res.address,
+							onSuccess,
+							onCancel,
+							Q.extend({ response: r, prompt: false }, options)
+						);
+
+					}, {
+						method: 'POST',
+						fields: {
+							intent: intent,
+							address: res.address,
+							signature: res.signature,
+							payload: res.payload
+						}
+					});
+				})
+				.catch(function (ex) {
+					if (onCancel) {
+						onCancel(ex, options);
+					}
+				});
 			}
 
 			function _walletConnect() {
