@@ -261,7 +261,7 @@ Q.exports(function (Users, priv) {
 	}
 
 	function _authenticateActions(caption) {
-		return $("<div class='Users_actions Q_big_prompt' />").append(
+		return $("<div class='Users_actions Q_buttons Q_big_prompt' />").append(
 			$('<button type="submit" class="Q_button Q_main_button Users_confirm" />')
 				.html(caption)
 		);

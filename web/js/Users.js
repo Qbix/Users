@@ -1947,7 +1947,7 @@
 		abbreviateAddress: function (address, len) {
 			len = len || 5;
 			return Users.Web3.validate.address(address)
-				? address.substring(0, 2+len) + '...' + address.substring(-len)
+				? address.substring(0, 2+len) + '...' + address.substring(address.length-len)
 				: null;
 		},
 
