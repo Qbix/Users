@@ -51,18 +51,17 @@ Q.exports(function (Users, priv) {
 				);
 			}
 
-			var contractAddress =
-				contracts[chainId] || contracts['all'];
+			var contractAddress = contracts[chainId] || contracts['all'];
 
-			return Web3.getContract(
-				contractABIName,
-				{
-					chainId: chainId,
-					contractAddress: contractAddress,
-					readOnly: readOnly
-				},
-				callback
-			);
+            var args = [contractABIName, {
+                chainId: chainId,
+                contractAddress: contractAddress,
+                readOnly: readOnly
+            }];
+            if (callback) {
+                args.push(callback);
+            }
+			return Web3.getContract.apply(Web3, args);
 
 		});
 
