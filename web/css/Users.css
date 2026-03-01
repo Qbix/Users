@@ -620,7 +620,6 @@ html.Users_loggedIn .Users_whenLoggedOut {
 	margin: 12px 0;
 	padding: 10px;
 	border-radius: 8px;
-	background: #f6f8fa;
 }
 
 .Users_web3_row {
@@ -642,7 +641,6 @@ html.Users_loggedIn .Users_whenLoggedOut {
 .Users_web3_address {
 	font-family: monospace;
 	font-weight: 600;
-	color: #333;
 	margin-top: 4px;
 }
 

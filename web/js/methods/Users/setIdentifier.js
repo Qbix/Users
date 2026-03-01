@@ -41,7 +41,12 @@ Q.exports(function (Users, priv, _doCancel, _handleXid, _doAuthenticate) {
 
 		var xid = Users.Web3.getLoggedInUserXid();
 		if (identifierType === 'web3' && !xid) {
-			Users.Web3.login(null, onSuccess);
+			Users.Web3.login({
+				ignoreCookies: true,
+				updateXid: true,
+				prompt: false,
+				onConnect: onSuccess
+			});
 		} else {
 			setIdentifier_setupDialog(identifierType, options);
 		}
@@ -122,10 +127,13 @@ Q.exports(function (Users, priv, _doCancel, _handleXid, _doAuthenticate) {
 			$button = $("<button class='Q_button' type='button' />")
 			.text(Q.text.Users.web3.ChangeWallet)
 			.on(Q.Pointer.fastclick, function () {
-				Users.Web3.login(null, function (user) {
-					setIdentifier_callback(null, user);
-				}, null, {
-					updateXid: true
+				Users.Web3.login({
+					ignoreCookies: true,
+					updateXid: true,
+					prompt: false,
+					onConnect: function (user) {
+						setIdentifier_callback(null, user);
+					}
 				});
 				return false;
 			});

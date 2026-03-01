@@ -339,7 +339,7 @@
 						"platform": true
 					},
 					"web3": {
-						"redirect": "tg://resolve?domain={{botUsername}}&{{parameter}}=intent-{{token}}"
+						"redirect": "{{currentUrl}}?Q.Users.intent=token"
 					}
 				}
 			},

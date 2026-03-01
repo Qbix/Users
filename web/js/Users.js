@@ -1371,7 +1371,7 @@
 //      else if ( querystring.queryField('access_token')) {
 // 			//  this is not enabled because malicious users can handleOpenUrl to set some token
 // 			if (Users.Facebook.accessToken) {
-// 				Users.Facebook.doLogin({
+// 				Users.Facebook.performLogin({
 // 					status: 'connected',
 // 					authResponse: {
 // 						accessToken: Users.Facebook.accessToken
@@ -1508,7 +1508,7 @@
 		Users.hinted = [];
 		Q.Session.clear();
 		Users.authPayload.web3 = null;
-		Web3.getContract.cache.clear();
+		Web3.getContract.cache && Web3.getContract.cache.clear();
 		ddc.className = ddc.className.replace(' Users_loggedIn', '') + ' Users_loggedOut';
 		ddc.className = ddc.className.replace(/(Users_role-\w+s)+/g, '');
 		var language = location.search.queryField('Q.language') || navigator.language;
@@ -1660,7 +1660,7 @@
 		return [Users, priv];
 	});
 
-	Users.Facebook = {
+	Users.Facebook = Q.Method.define({
 
 		usingPlatforms: null,
 		me: {},
@@ -1670,255 +1670,147 @@
 		scheme: null,
 		scope: 'email',
 
-		disconnect: function (appId, callback) {
-			var platformAppId = Users.getPlatformAppId('facebook', appId);
-			if (!platformAppId) {
-				console.warn("Users.logout: missing Users.apps.facebook." + appId + ".appId");
-			}
-			Q.cookie('fbs_' + platformAppId, null, {path: '/'});
-			Q.cookie('fbsr_' + platformAppId, null, {path: '/'});
-			Users.init.facebook(function logoutCallback(err) {
-				if (err) {
-					return Q.handle(callback);
-				}
+		// Async methods (loaded dynamically)
+		getLoginStatus: new Q.Method(),
+		disconnect: new Q.Method(),
+		performLogin: new Q.Method(),
 
-				Users.Facebook.getLoginStatus(function (response) {
-					setTimeout(function () {
-						Users.logout.occurring = false;
-					}, 0);
-					if (!response.authResponse) {
-						return Q.handle(callback);
-					}
-					return window.FB && FB.logout(function () {
-						delete Users.connected.facebook;
-						Q.handle(callback);
-					});
-				}, true);
-			}, {
-				appId: appId
-			});
-		},
-
+		/**
+		 * Initialize Facebook environment and detect login mode.
+		 * Determines whether we use web, native, or oauth flow.
+		 */
 		construct: function () {
-			Users.Facebook.appId = Q.getObject(['facebook', Q.info.app, 'appId'], Users.apps);
 
-			if (Q.info.isCordova) {
-				Users.Facebook.scheme = Q.getObject([Q.info.platform, Q.info.app, 'scheme'], Users.apps);
-				Users.Facebook.scheme = Users.Facebook.scheme && Users.Facebook.scheme.replace('://', '');
-				Users.Facebook.type = 'oauth';
-				if (Q.info.platform === 'ios') {
-					// ios
-					window.appAvailability && appAvailability.check('fb://', function () {
-						Users.Facebook.type = 'native';
-					});
-				} else {
-					// android
-					window.appAvailability && appAvailability.check('com.facebook.katana', function () {
-						Users.Facebook.type = 'native';
-					}, function () {
-						window.appAvailability.check('com.facebook.lite', function () {
-							Users.Facebook.type = 'native';
-						});
-					});
-				}
-			}
-		},
+			Users.Facebook.appId = Q.getObject(
+				['facebook', Q.info.app, 'appId'],
+				Users.apps
+			);
 
-		login: function (callback) {
-			var scope = Users.Facebook.scope;
-			if (Q.isArrayLike(scope)) {
-				scope = scope.join(',');
-			}
-			switch (Users.Facebook.type) {
-			case 'web':
-				FB.login(function (response) {
-					Users.Facebook.doLogin(response);
-					callback && callback(response);
-				}, scope ? {scope: scope} : undefined);
-				break;
-			case 'native':
-				facebookConnectPlugin.login(["email"], function (response) {
-					Users.Facebook.doLogin(response);
-					callback && callback(response);
-				}, function (err) {
-					console.warn(err);
-				});
-				break;
-			case 'oauth':
-				var url = 'https://www.facebook.com/v2.11/dialog/oauth' +
-					'?client_id=' + Users.Facebook.appId +
-					'&redirect_uri=' + Q.baseUrl() + '/login/facebook%3Fscheme%3D' + Users.Facebook.scheme +
-					'&state=' + _stringGen(10) +
-					'&response_type=token&scope=' + Users.Facebook.scope.join(",");
-				cordova.plugins.browsertabs.openUrl(url,
-					{scheme: Users.Facebook.scheme + '://'},
-					function(success) { console.log(success); },
-					function(err) { console.log(err); }
-				);
-			}
-
-			function _stringGen(len) {
-				var text = "";
-				var charset = "abcdefghijklmnopqrstuvwxyz0123456789";
-				for (var i = 0; i < len; i++)
-					text += charset.charAt(Math.floor(Math.random() * charset.length));
-				return text;
-			}
-		},
-
-		doLogin: function (response) {
-			if (!response.authResponse) {
+			if (!Q.info.isCordova) {
 				return;
 			}
-			var step1_form = $('#Users_login_step1_form');
-			step1_form.data('used', 'facebook');
-			step1_form.data('platforms', Users.Facebook.usingPlatforms);
-			var p = Q.pipe(['me', 'picture'], function (params) {
-				var me = params.me[0];
-				Users.Facebook.me = me;
-				var picture = params.picture[0].data;
-				var $usersLoginIdentifier = $('#Users_login_identifier');
-				if (!me.email) {
-					step1_form.data('used', null);
-					alert(Q.text.Users.login.facebook.noEmail);
-					$usersLoginIdentifier.plugin('Q/clickfocus');
-					return true;
-				}
-				priv.registerInfo = {
-					firstName: me.first_name,
-					lastName: me.last_name,
-					gender: me.gender,
-					birthday: me.birthday,
-					timezone: me.timezone,
-					locale: me.locale,
-					verified: me.verified,
-					pic: picture.url,
-					picWidth: picture.width,
-					picHeight: picture.height
-				};
 
-				if ($usersLoginIdentifier.length) {
-					$usersLoginIdentifier
-						.val(me.email)
-						.closest('form')
-						.submit();
-					// The login onSuccess callback is about to be called
-				} else {
-					var url = Q.action(Users.login.options.userQueryUri) + '?' + $.param({
-						identifier: me.email,
-						identifierType: 'email'
-					});
-					Q.request(url, ['data'], function (err, response) {
-						if (response.errors) {
-							return;
-						}
+			Users.Facebook.scheme = Q.getObject(
+				[Q.info.platform, Q.info.app, 'scheme'],
+				Users.apps
+			);
 
-						Q.Response.processScriptDataAndLines(response);
-
-						// auto-login by authenticating with facebook
-						Users.authenticate('facebook', function (user) {
-							priv.login_connected = true;
-							priv.login_onConnect && priv.login_onConnect(user);
-						}, function () {
-							priv.login_onCancel && priv.login_onCancel();
-						}, {"prompt": false});
-
-					}, {xhr: Q.info.useTouchEvents ? 'sync' : {}});
-				}
-			});
-			var paramsPicture = {
-				"redirect": false,
-				"height": "200",
-				"type": "normal",
-				"width": "200"
-			};
-			var paramsFields = {};
-			if (response.authResponse.accessToken) {
-				paramsPicture.access_token = response.authResponse.accessToken;
-				paramsFields.access_token = response.authResponse.accessToken;
+			if (Users.Facebook.scheme) {
+				Users.Facebook.scheme =
+					Users.Facebook.scheme.replace('://', '');
 			}
-			FB.api("/me/picture", paramsPicture, p.fill('picture'));
-			FB.api('/me?fields=first_name,last_name,gender,birthday,timezone,locale,verified,email', paramsFields, p.fill('me'));
+
+			Users.Facebook.type = 'oauth';
+
+			if (Q.info.platform === 'ios') {
+
+				window.appAvailability &&
+				appAvailability.check('fb://', function () {
+					Users.Facebook.type = 'native';
+				});
+
+			} else {
+
+				window.appAvailability &&
+				appAvailability.check(
+					'com.facebook.katana',
+					function () {
+						Users.Facebook.type = 'native';
+					},
+					function () {
+						appAvailability.check(
+							'com.facebook.lite',
+							function () {
+								Users.Facebook.type = 'native';
+							}
+						);
+					}
+				);
+			}
 		},
 
+		/**
+		 * Return current Facebook auth response.
+		 * @method getAuthResponse
+		 * @return {Object|null}
+		 */
 		getAuthResponse: function () {
+
 			switch (Users.Facebook.type) {
+
 				case 'web':
-					return FB.getAuthResponse();
-					break;
+					return window.FB
+						? FB.getAuthResponse()
+						: null;
+
 				case 'native':
 				case 'oauth':
 					return {
 						status: 'connected',
 						authResponse: {
-							accessToken: Q.isEmpty(Users.Facebook.accessToken) ? '' : Users.Facebook.accessToken,
+							accessToken:
+								Users.Facebook.accessToken || '',
 							expiresIn: 4400,
 							signedRequest: '',
-							userID: Q.isEmpty(Users.Facebook.me.id) ? '' : Users.Facebook.me.id
+							userID:
+								Users.Facebook.me.id || ''
 						}
 					};
-					break;
 			}
 		},
 
-		getLoginStatus: function (cb, force) {
-			switch (Users.Facebook.type) {
-				case 'web':
-					var timeout = 5000;
-					if (!window.FB) {
-						cb({});
-					} if (timeout) {
-						var t = setTimeout(function () {
-							// just in case, if FB is not responding let's still fire the callback
-							// FB ignores callback if:
-							//	-- domain is not properly setup
-							//	-- application is running in sandbox mode and developer is not logged in
-							console.warn("Facebook is not responding to FB.getLoginStatus within " + timeout / 1000 + " sec.");
-							cb({});
-						}, timeout);
-						FB.getLoginStatus(function (response) {
-							clearTimeout(t);
-							cb(response);
-						}, force);
-					} else {
-						if (FB.getAuthResponse()) {
-							FB.getLoginStatus(cb, force);
-						}
-					}
-					break;
-				case 'native':
-					facebookConnectPlugin.getLoginStatus(function (response) {
-						cb(response);
-					});
-					break;
-				case 'oauth':
-					cb(Users.Facebook.getAuthResponse());
-					break;
-			}
-		},
-
+		/**
+		 * Get access token synchronously.
+		 * @method getAccessToken
+		 * @return {String}
+		 */
 		getAccessToken: function () {
+
 			switch (Users.Facebook.type) {
+
 				case 'web':
-					return FB.getAccessToken();
+					return window.FB
+						? FB.getAccessToken()
+						: '';
+
 				case 'native':
 					return facebookConnectPlugin.getAccessToken();
+
 				case 'oauth':
-					return Q.isEmpty(Users.Facebook.accessToken) ? '' : Users.Facebook.accessToken;
+					return Users.Facebook.accessToken || '';
 			}
 		}
 
-	};
+	}, "{{Users}}/js/methods/Users/Facebook",
+	function () {
+		return [Users, priv];
+	});
 	
-	var Web3 = Users.Web3 = {
+	var Web3 = Users.Web3 = Q.Method.define({
 		zeroAddress: '0x0000000000000000000000000000000000000000',
 		chains: {},
 		provider: null,
 		web3Modal: null,
+
+		connect: new Q.Method(),
+		disconnect: new Q.Method(),
+		login: new Q.Method(),
+		loggedIn: new Q.Method(),	
+		execute: new Q.Method(),
+		getWalletAddress: new Q.Method(),
+		getChainId: new Q.Method(),
+		switchChain: new Q.Method(),
+		withChain: new Q.Method(),
+		getContract: new Q.Method(),
+		getFactory: new Q.Method(),
+		transaction: new Q.Method(),
+
 		onAccountsChanged: new Q.Event(),
 		onChainChanged: new Q.Event(),
 		onConnect: new Q.Event(),
 		onDisconnect: new Q.Event(),
+		onAccounts: new Q.Event(),
+		onSign: new Q.Event(),
 
 		toChecksumAddress(address) {
 			return ethers.utils.getAddress(address)
@@ -1950,282 +1842,6 @@
 				? address.substring(0, 2+len) + '...' + address.substring(address.length-len)
 				: null;
 		},
-
-		disconnect: function (callback) {
-			if (Users.disconnect.web3.occurring) {
-				return false;
-			}
-			localStorage.removeItem('walletconnect');
-			localStorage.removeItem('WALLETCONNECT_DEEPLINK_CHOICE');
-			Users.disconnect.web3.occurring = true;
-			if (Web3.web3Modal) {
-				Web3.web3Modal.closeModal();
-			}
-			if (!Web3.provider) {
-				Q.handle(callback);
-				Users.disconnect.web3.occurring = false;
-				return false;
-			}
-			if (Web3.provider.close) {
-				Web3.provider.close().then(function (result) {
-					delete Users.connected.web3;
-					Web3.provider = null;
-					setTimeout(function () {
-						Users.disconnect.web3.occurring = false;
-						Q.handle(callback);
-					}, 0);
-				});
-				Users.disconnect.web3.cleanupT = setTimeout(function () {
-					Users.disconnect.web3.occurring = false;
-					delete Users.disconnect.web3.cleanupT;
-				}, 300);
-			} else {
-				setTimeout(function () {
-					Users.logout.occurring = false;
-				}, 0);
-				if (Web3.provider._handleDisconnect) {
-					Web3.provider._handleDisconnect();
-				}
-				delete Users.connected.web3;
-				Web3.provider = null;
-				Q.handle(callback);
-				Users.disconnect.web3.occurring = false;
-			}
-			return true;
-		},
-
-		/**
-		 * Connect web3 wallet session
-		 * @method connect
-		 * @param {Function} [callback]
-		 * @return {Promise} to be used instead of callback
-		 */
-		connect: function (callback) {
-			Users.authenticate('web3', callback);
-		},
-
-		login: function (signedCallback, authenticatedCallback, cancelCallback, options) {
-			var _prevDocumentTitle = document.title;
-			document.title = Users.communityName;
-			var _prevMetaTitle = $('meta[name="title"]').attr('content');
-			$('meta[name="title"]').attr('content', Users.communityName);
-			var _prevOGTitle = $('meta[property="og:title"]').attr('content');
-			$('meta[property="og:title"]').attr('content', Users.communityName);
-			Web3.connect(function (err, provider) {
-				if (err) {
-					return _cancel();
-				}
-				_restoreTitle();
-				Web3.provider = provider;
-
-				// Subscribe to accounts change
-				provider.on("accountsChanged", function (accounts) {
-					console.log('provider.accountsChanged', accounts);
-					Web3.getContract.cache.clear();
-				});
-
-				// Subscribe to chainId change
-				provider.on("chainChanged", function (chainId) {
-					console.log('provider.chainChanged', chainId);
-				});
-				// Subscribe to provider disconnection
-				provider.on("connect", function (info) {
-					console.log('provider.connect', info);
-				});
-				// Subscribe to provider disconnection
-				provider.on("disconnect", function (error) {
-					console.log("provider.disconnect: ", error);
-
-					if (Users.logout.occurring || Web3.switchChainOccurring) {
-						if (Web3.switchChainOccurring === true) {
-							Web3.switchChainOccurring = false;
-						}
-
-						return;
-					}
-
-					Users.logout({using: 'web3', url: ''});
-				});
-				var payload = Q.text.Users.login.web3.payload.interpolate({
-					host: location.host,
-					timestamp: Math.floor(Date.now() / 1000)
-				});
-				(new ethers.providers.Web3Provider(provider, 'any'))
-				.listAccounts().then(function (accounts) {
-					var web3Address = Q.cookie('Q_Users_web3_address') || '';
-					if (web3Address && accounts.includes(web3Address)) {
-						var loginExpires = Q.cookie('Q_Users_web3_login_expires');
-						if (loginExpires > Date.now() / 1000) {
-							_proceed();
-							return;
-						}
-					}
-					if (provider.wc || provider.modal) {
-						Q.alert(Q.text.Users.login.web3.alert.content, {
-							title: Q.text.Users.login.web3.alert.title,
-							onClose: function () {
-								var address = accounts[0];
-								provider.request({
-									method: 'personal_sign',
-									params: [ 
-										ethers.utils.hexlify(ethers.utils.toUtf8Bytes(payload)), 
-										address.toLowerCase()
-									]
-								}).then(_proceed)
-								.catch(_cancel);	
-							}
-						});
-					} else {
-						var from = accounts[0];
-						var msg = '0x' + Buffer.from(payload, "utf8").toString("hex");
-						var sign = ethereum.request({
-							method: "personal_sign",
-							params: [msg, from],
-						}).then(_proceed)
-						.catch(_cancel);
-						// var signer = new ethers.providers.Web3Provider(provider).getSigner();
-						//   signer.signMessage(payload)
-						// .then(_proceed)
-						// .catch(_cancel);
-					}
-					function _proceed(signature) {
-						Users.authPayload.web3 = {
-							xid: accounts[0],
-							payload: payload,
-							signature: signature,
-							platform: 'web3',
-							chainId: (typeof provider.chainId === 'function') ? provider.chainId() : provider.chainId
-						}
-						if (Q.handle(signedCallback, null, [Users.authPayload.web3]) === false) {
-							return;
-						}
-						Users.authenticate('web3', function (user) {
-							Q.handle(authenticatedCallback, null, [user])
-							priv.login_connected = true;
-							priv.login_onConnect && priv.login_onConnect(user);
-						}, function () {
-							priv.login_onCancel && priv.login_onCancel();
-						}, Q.extend({"prompt": false}, options));
-					}
-				}).catch(_cancel);
-			});
-			function _cancel(err) {
-				_restoreTitle();
-				Q.handle(cancelCallback, Users, [null]);
-			}
-			function _restoreTitle() {
-				if (_prevDocumentTitle) {
-					document.title = _prevDocumentTitle;
-				}
-				if (_prevMetaTitle) {
-					$('meta[name="title"]').attr('content', _prevMetaTitle)
-				}
-				if (_prevOGTitle) {
-					$('meta[property="og:title"]').attr('content', _prevOGTitle)
-				}
-			}
-		},
-
-		/**
-		 * Check if user logged in to MetaMask
-		 * @method loggedIn
-		 * @param {Function} [callback]
-		 * @return {Boolean}
-		 */
-		loggedIn: function (callback) {
-			if (typeof ethereum === 'undefined') {
-				return console.log("MetaMask browser plugin not found");
-			}
-			(new ethers.providers.Web3Provider(ethereum))
-			.listAccounts().then(function(accounts){
-				return Q.handle(callback, null, [accounts.length]);
-			}).catch(function (err) {
-				Q.alert(err.message);
-			});
-		},
-		/**
-		 * Execute method on contract
-		 * @method execute
-		 * @param {string} contractABIName Name of the view template that contains the ABI JSON
-		 * @param {string|Object} contractAddress Can be a string starts with "0x", or an object with the properties below.
-		 * @param {string} [contractAddress.contractAddress] If an object is passed then the contractAddress must go here.
-		 * @param {string} [contractAddress.readOnly] This would use a provider, without having to
-		 *    connect with a signer or to switch networks. Use if you're only going to use it for reading data.
-		 * @param {string} [contractAddress.chainId] This would be the chainId to use for method calls
-		 *    on this contract. If readOnly isn't true, then switchChain is called if necessary, to switch
-		 *    the wallet to the new chainId for posting transactions. In this case, the user canceiling this switch
-		 *    would result in an error in the callback/promise.
-		 * @param {String} methodName
-		 * @param {Array} params
-		 * @param {function} callback receives (err, result) with result from the ethers.js contract method
-		 * @return {Promise} to be used instead of callback
-		 */
-		execute: function (contractABIName, contractAddress, methodName, params, callback) {
-			Web3.getContract(
-				contractABIName, 
-				contractAddress, 
-				function (err, contract) {
-					if (!contract[methodName]) {
-						var possibilities = [];
-						var m = methodName.match(/[A-Za-z1-9]+/);
-						if (m) {
-							for (var k in contract) {
-								if (k.startsWith(m[0])) {
-									possibilities.push(k);
-								}
-							}
-						}
-						var err = "Q.Users.Web3.execute: missing method " + methodName + "\n"
-							+ "But perhaps you meant these method names: \n" + possibilities.join("\n");
-						console.error(err);
-						return Q.handle(callback, null, [err]);
-					}
-					contract[methodName].apply(null, params).then(function (result) {
-						Q.handle(callback, null, [null, result]);
-					}, function (err) {
-						Q.handle(callback, null, [err]);
-					});
-				}
-			);
-		},
-		
-		/**
-		 * Get currently selected wallet address asynchronously
-		 * @method getWalletAddress
-		 * @param {function} callback receives (err, address)
-	     * @return {Promise} to be used instead of callback
-		 */
-		getWalletAddress: Q.promisify(function (callback) {
-			return Web3.connect(function (err, provider) {
-				if (err) {
-					return Q.handle(callback, null, [err]);
-				}
-
-				(new ethers.providers.Web3Provider(provider))
-				.listAccounts().then(function (accounts) {
-					return Q.handle(callback, null, [null, accounts[0]]);
-				});
-			});
-		}),
-
-		/**
-		 * Get currently selected chain id asynchronously
-		 * @method getChainId
-		 * @param {Function} callback receives (err, chainId) where chainId is in hexadecimal
-		 * @return {Promise} to be used instead of callback
-		 */
-		getChainId: Q.promisify(function (callback) {
-			Web3.connect(function (err, provider) {
-				if (err) {
-					return Q.handle(callback, null, [err]);
-				}
-				(new ethers.providers.Web3Provider(provider))
-				.getNetwork().then(function (network) {
-					var chainId = network.chainId;
-					return Q.handle(callback, null, [null, '0x' + Number(chainId).toString(16)]);
-				});
-			});
-		}),
 
 		/**
 		 * Synchronously get the currently selected address on current provider
@@ -2265,284 +1881,6 @@
 			return new ethers.providers.JsonRpcBatchProvider(url);
 		},
 
-		/**
-		 * Switch provider to a different Web3 chain, unless
-		 * the provider is already on that chain. Call the callback
-		 * in either case.
-		 * @method switchChain
-		 * @static
-		 * @param {String|Object} info Can be the chainId (e.g. "0x1")
-		 *   or an object with chain info to pass to the wallet
-		 * @param {String} info.chainId
-		 * @param {String} info.name
-		 * @param {String} info.currency
-		 * @param {String} info.currency.name
-		 * @param {String} info.currency.symbol
-		 * @param {Number} info.currency.decimals
-		 * @param {String} [info.rpcUrl] or rpcUrls
-		 * @param {Array} [info.rpcUrls] or rpcUrl
-		 * @param {String} [info.blockExplorerUrl] or blockExplorerUrls
-		 * @param {Array} [info.blockExplorerUrls] or blockExplorerUrl
-		 * @param {Function} callback receives (error, chainId, provider)
-		 * @return {Promise} to be used instead of callback
-		 */
-		switchChain: Q.promisify(function (info, callback) {
-			if (typeof info === 'string') {
-				info = Web3.chains[info];
-			}
-			if (!info || !info.chainId) {
-				return Q.handle(callback, null, ["Q.Users.Web3.switchChain: chainId missing"]);
-			}
-			Web3.connect(function (err, provider) {
-				if (err) {
-					return Q.handle(callback, null, [err]);
-				}
-				
-				if (provider && provider.chainId == info.chainId) {
-					return _continue();
-				}
-
-				Web3.switchChainOccurring = true;
-				
-				provider.request({
-					method: 'wallet_switchEthereumChain',
-					params: [{ chainId: info.chainId }],
-				}).then(_continue)
-				.catch(function (switchError) {
-					// check if error message is json
-					if (JSON.isValid(switchError.message)) {
-						switchError = JSON.parse(switchError.message);
-					}
-
-					// This error code indicates that the chain has not been added to MetaMask.
-					if (switchError.code !== 4902
-					&& switchError.code !== -32603) {
-						return Q.handle(callback, null, [switchError]);
-					}
-					var rpcUrls = info.rpcUrls || [info.rpcUrl];
-					var blockExplorerUrls = info.blockExplorerUrls || [info.blockExplorerUrl];
-					provider.request({
-						method: 'wallet_addEthereumChain',
-						params: [{
-							chainId: info.chainId,
-							chainName: info.name,
-							nativeCurrency: {
-								name: info.currency.name,
-								symbol: info.currency.symbol,
-								decimals: info.currency.decimals
-							},
-							rpcUrls: rpcUrls,
-							blockExplorerUrls: blockExplorerUrls
-						}]
-					}).then(_continue)
-					.catch(function (error) {
-						Q.handle(callback, null, [error]);
-					});
-				});
-
-				function _continue() {
-					Web3.switchChainOccurring = false;
-					Q.handle(callback, null, [null, provider.chainId, provider]);
-				}
-			});
-		}),
-
-		/**
-		 * withChain May switch to the chain if it's not selected yet
-		 * @static
-		 * @param {String} chainId You can pass null here to just use the current chain
-		 * @param {Function} callback Takes provider, needSigner
-		 */
-		withChain: function _withChain(chainId, callback) {
-			Web3.connect(function (err, provider) {
-				if (err) {
-					return Q.handle(callback, null, [err]);
-				}
-
-				if (!chainId || parseInt(provider.chainId) === parseInt(chainId)) {
-					callback(provider, true);
-				} else {
-					var chain = Web3.chains[chainId];
-					Web3.switchChain(chain, function (err) {
-						if (Q.firstErrorMessage(err)) {
-							return Q.handle(callback, null, [err]);
-						}
-						callback(provider, true);
-					});
-				}
-			});
-		},
-
-		/**
-		 * Transfer some native coin to a recipient,
-		 * or issue some other transaction by specifying options.
-		 * See https://docs.ethers.org/v5/api/providers/types/#providers-TransactionRequest
-		 * @param {String} recipient address of type "0x..."
-		 * @param {String} chainId the ID of the chain (may need to switch to it)
-		 * @param {Number} amount the amount of native coin to send, with decimal portion
-		 * @param {Function} callback can receive (err, transaction)
-		 * @param {Object} options see TransactionRequest of ethers.js
-		 * @param {String} options.chainId Pass a chain ID here to switch to it, if necessary
-		 * @param {String} options.gasPrice One of multiple options you can do
-		 * @param {String} [options.wait=0] How many blocks to wait, if > 0 then promise might fail transaction failure
-		 * @return {Promise} to be used instead of callback
-		 */
-		transaction: Q.promisify(function _transaction(recipient, amount, callback, options) {
-			options = options || {};
-			var wait = Q.getObject("wait", options);
-			if (!isNaN(wait)) {
-				delete options.wait;
-			}
-			Web3.withChain(options.chainId, function (provider) {
-				try {
-					var signer = new ethers.providers.Web3Provider(provider).getSigner();
-					Web3.getWalletAddress(function (err, address) {
-						signer.sendTransaction(Q.extend({}, options, {
-							from: address,
-							to: recipient,
-							value: ethers.utils.parseEther(String(amount))
-						})).then(function (transactionRequest) {
-							if (!Q.getObject("wait", transactionRequest)) {
-								return Q.handle(callback, null, ["Transaction request invalid", transactionRequest]);
-							}
-	
-							if (!wait) {
-								return Q.handle(callback, null, [null, transactionRequest]);
-							}
-	
-							transactionRequest.wait(wait).then(function (transactionReceipt) {
-								if (parseInt(Q.getObject("status", transactionReceipt)) === 1) {
-									return Q.handle(callback, null, [null, transactionRequest, transactionReceipt]);
-								}
-	
-								Q.handle(callback, null, ["Transaction failed", transactionRequest, transactionReceipt]);
-							}, function (err) {
-								Q.handle(callback, null, [err, transactionRequest]);
-							});
-						}).catch(function (err) {
-							Q.handle(callback, null, [err]);
-						});
-					});
-				} catch (err) {
-					Q.handle(callback, null, [err]);
-				}
-			});
-		}),
-
-		/**
-		 * Used to fetch the ethers.Contract object to use with a smart contract.
-		 * @method getContract
-		 * @static
-		 * @param {string} contractABIName Name of the view template that contains the ABI JSON
-		 * @param {string|Object} contractAddress Can be a string starts with "0x", or an object with the properties below.
-		 * @param {string} [contractAddress.contractAddress] If an object is passed then the contractAddress must go here.
-		 * @param {string} [contractAddress.readOnly] This would use a provider, without having to
-		 *    connect with a signer or to switch networks. Use if you're only going to use it for reading data.
-		 * @param {string} [contractAddress.chainId] This would be the chainId to use for method calls
-		 *    on this contract. If readOnly isn't true, then switchChain is called if necessary, to switch
-		 *    the wallet to the new chainId for posting transactions. In this case, the user canceiling this switch
-		 *    would result in an error in the callback/promise.
-		 * @param {Function} [callback] receives (err, contract)
-		 * @return {Promise} to be used instead of callback
-		 */
-		getContract: Q.promisify(Q.getter(
-		function(contractABIName, contractAddress, callback) {
-			Web3.connect(function () {
-				var chainId, address, readOnly;
-				if (Q.isPlainObject(contractAddress)) {
-					chainId = contractAddress.chainId;
-					address = contractAddress.contractAddress;
-					readOnly = contractAddress.readOnly;
-				} else {
-					address = contractAddress;
-				}
-				Q.Template.set(contractABIName, undefined, "abi.json");
-				Q.Template.render(contractABIName, function (err, json) {
-					try {
-						var ABI = JSON.parse(json);
-					} catch (e) {
-						return Q.handle(callback, null, [e]);
-					}
-					if (readOnly) {
-						if (chainId) {
-							_proceed(chainId);
-						} else {
-							Web3.getChainId().then(_proceed)
-							.catch(console.warn);
-						}
-						return;
-						function _proceed(chainId) {
-							return _continue(Web3.getBatchProvider(chainId), false);
-						}
-					}
-					Web3.withChain(chainId, _continue);
-					function _continue(provider, needSigner) {
-						try {
-							var signer, contract;
-							if (needSigner) {
-								signer = new ethers.providers.Web3Provider(provider).getSigner();
-								contract = new ethers.Contract(address, ABI, signer);
-							} else {
-								contract = new ethers.Contract(address, ABI, provider);
-							}
-							contract.ABI = ABI;
-							Q.handle(callback, contract, [null, contract]);
-						} catch (err) {
-							Q.handle(callback, null, [err]);
-						}
-					}
-				});
-			});
-		}, {
-			cache: Q.Cache.document("Users.Web3.getContract")
-		})),
-
-		/**
-		 * Used to fetch the ethers.Contract object to use with a smart contract.
-		 * Looks up the factory address using the chainId that is currently selected in the wallet.
-		 * @method getFactory
-		 * @static
-		 * @param {string} contractABIName Name of the view template that contains the ABI JSON
-		 * @param {string|Object} [chainId] optional, pass a string here to switch to the indicated chain first,
-		 *   or an object with the following properties:
-		 * @param {string} [chainId.readOnly] This would use a provider, without having to
-		 *    connect with a signer or to switch networks. Use if you're only going to use it for reading data.
-		 * @param {string} [chainId.chainId] This would be the chainId to use for method calls
-		 *    on this factory contract. If readOnly isn't true, then switchChain is called if necessary, to switch
-		 *    the wallet to the new chainId for posting transactions. In this case, the user canceiling this switch
-		 *    would result in an error in the callback/promise.
-		 * @param {Function} [callback] receives (err, contract)
-		 * @return {Promise} to be used instead of callback
-		 */
-		getFactory: Q.promisify(function(contractABIName, chainId, callback) {
-			var readOnly = false;
-			if (Q.isPlainObject(chainId)) {
-				readOnly = chainId.readOnly;
-				chainId = chainId.chainId;
-			}
-			if (typeof chainId !== 'string'
-			|| chainId.substring(0, 2) !== '0x') {
-				if (!callback) {
-					callback = chainId;
-				}
-				chainId = null;
-			}
-			return chainId
-				? _continue(chainId)
-				: Web3.getChainId().then(_continue);
-			function _continue(chainId) {
-				var contracts = Web3.contracts[contractABIName];
-				if (Q.isEmpty(contracts)) {
-					throw new Q.Exception("Users.Web3.getFactory: missing contract address for " + contractABIName);
-				}
-				var contractAddress = contracts[chainId] || contracts['all'];
-				return Web3.getContract(contractABIName, {
-					chainId: chainId,
-					contractAddress: contractAddress,
-					readOnly: readOnly
-				}, callback);
-			}
-		}),
 		parseMetamaskError: function (err, contracts=[]) {
             if (err.code != '-32603' || Q.isEmpty(err.data)) {
 				return err.message;
@@ -2615,7 +1953,10 @@
 				}
 			}
 		}
-	};
+	}, "{{Users}}/js/methods/Users/Web3",
+	function() {
+		return [Users, priv];
+	});
 
 	Users.Communities = {
 		Web3: {
@@ -2651,27 +1992,38 @@
 		var urls = Q.urls || {};
 		Users.urls.onComplete = urls['Communities/home'];
 		Users.Facebook.construct();
-		_subscribeToEvents(Users.Web3.provider);
+		priv.subscribeToEvents(Users.Web3.provider);
 	}, 'Users');
 
-	function _subscribeToEvents(provider) {
+	priv.subscribeToEvents = function (provider) {
 		if (!provider || !provider.on
 		|| provider.subscribedToEvents) {
 			return;
 		}
 		provider.on("accountsChanged", function (accounts) {
-			Q.handle(Web3.onAccountsChanged, this, [accounts]);
+			accounts = accounts || [];
+			Web3.getContract.cache && Web3.getContract.cache.clear();
+			Web3.getFactory.cache && Web3.getFactory.cache.clear();
+			Web3.onAccountsChanged.handle(accounts);
+			if (!accounts.length) {
+				Web3.onDisconnect.handle({ reason: "accounts empty" });
+			}
 		});
 		provider.on("chainChanged", function (chainId) {
-			Q.handle(Web3.onChainChanged, this, [chainId]);
+			Web3.onChainChanged.handle(chainId);
 		});
 		provider.on("connect", function (info) {
-			Web3.provider = provider;
-			Q.handle(Web3.onConnect, this, [info]);
+			Web3.onProviderConnect && Web3.onProviderConnect.handle(info);
 		});
-		provider.on("disconnect", function (info) {
-			Web3.disconnect();
-			Q.handle(Web3.onDisconnect, this, [info]);
+		provider.on("disconnect", function (error) {
+			if (Users.logout.occurring || Web3.switchChainOccurring) {
+				if (Web3.switchChainOccurring === true) {
+					Web3.switchChainOccurring = false;
+				}
+				return;
+			}
+			Web3.onDisconnect.handle(error);
+			Users.logout({ using: 'web3', url: '' });
 		});
 		provider.subscribedToEvents = true;
 	}

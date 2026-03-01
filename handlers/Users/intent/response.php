@@ -38,8 +38,13 @@ function Users_intent_response()
     $intent = null;
     if (isset($_REQUEST['capability'])) {
         $capability = new Q_Capability($_REQUEST['capability']);
+        if (!Q_Valid::capability($capability, array('Users/intent'))) {
+            throw new Users_Exception_NotAuthorized();
+        }
         if (isset($capability->data['token'])) {
-            $intent = (new Users_Intent(array('token' => $capability->data['token'])))->retrieve();
+            $intent = (new Users_Intent(array(
+                'token' => $capability->data['token']
+            )))->retrieve();
             if ($intent) {
                 if (!empty($intent->action)) {
                     $action = $intent->action;

@@ -36,7 +36,7 @@ Q.exports(function (Users, priv) {
 	*  @param {String} [options.identifier] If passed, automatically enters this identifier and clicks the Go button
 	*  @return {Boolean} Whether a login flow has started
 	*/
-     return function _Users_login(options) {
+    return function _Users_login(options) {
 
 		var o = Q.extend({}, Users.login.options, options);
 
@@ -174,13 +174,16 @@ Q.exports(function (Users, priv) {
 					appId: appId
 				});
 			} else if (o.using[0] === 'web3') { // only web3 used. Open web3 login right away
-				Users.Web3.login(function (result) {
-					if (!result) {
-						_onCancel();
-					} else {
-						// do nothing, since we already executed this:
-						// _authenticate('web3');
-					}
+				Users.Web3.login({
+					onSigned: function (result) {
+						if (!result) {
+							_onCancel();
+						} else {
+							// do nothing, since we already executed this:
+							// _authenticate('web3');
+						}
+					},
+					updateXid: true
 				});
 			} else {
 				var platform = o.using[0];
@@ -857,13 +860,16 @@ Q.exports(function (Users, priv) {
 								if (login_setupDialog.dialog) {
 									Q.Dialogs.pop();
 								}
-								Users.Web3.login(function (result) {
-									if (!result) {
-										_onCancel();
-									} else {
-										// do nothing, since we already executed this:
-										// _authenticate('web3');
-									}
+								Users.Web3.login({
+									onSigned: function (result) {
+										if (!result) {
+											_onCancel();
+										} else {
+											// do nothing, since we already executed this:
+											// _authenticate('web3');
+										}
+									},
+									updateXid: true
 								});
 								return false;
 							});

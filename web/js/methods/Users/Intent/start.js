@@ -12,7 +12,7 @@ Q.exports(function (Users, priv) {
 	 * @method start
 	 * @static
 	 * @param {Object|String} capability the capability from Users.Intent.provision,
-	 *   or just an action name (e.g. "Users/authenticate") to trigger fallback
+	 *   otherwise specify options.action (e.g. "Users/authenticate") to trigger fallback
 	 * @param {Object} [options]
      * @param {String} [options.action] If capability is empty, specify this
      * @param {String} [options.platform] If capability is empty, specify this
@@ -20,9 +20,9 @@ Q.exports(function (Users, priv) {
      * @param {String} [options.url] Can be used to override url
      * @param {String} [options.interpolate] Any additional fields to interpolate into url
 	 * @param {String} [options.interpolateQR] Optionally provide different fields to interpolate into QR code URL
-	 * @param {Boolean} [options.skip]
-	 * @param {Boolean} [options.skip.redirect]
-	 * @param {Boolean} [options.skip.QR]
+	 * @param {Boolean} [options.skip] Used to skip one or both actions
+	 * @param {Boolean} [options.skip.redirect] skip redirect
+	 * @param {Boolean} [options.skip.QR] skip showing QR code
 	 */
 	return function Users_Intent_start(capability, options) {
 		options = Q.extend({skip: {}}, options);
@@ -70,9 +70,9 @@ Q.exports(function (Users, priv) {
 		Users.Intent.onStarted(fields.platform).handle.call(Users.Intent, fields);
 
 		var apps = Users.apps[fields.platform] || {};
-		if (!apps[fields.appId]) {
-			return false;
-		}
+		// if (!apps[fields.appId]) {
+		// 	return false;
+		// }
 
 		var url = options.url || Q.getObject([
 			fields.action, fields.platform, 'redirect'
@@ -80,7 +80,7 @@ Q.exports(function (Users, priv) {
 		if (!url) {
 			return false;
 		}
-		url = url.interpolate(Q.extend({
+		url = Q.interpolateUrl(url, Q.extend({
 			token: token
 		}, options.interpolate, apps[fields.appId]));
 
@@ -128,7 +128,10 @@ Q.exports(function (Users, priv) {
 			});
 		}
 
-		if (!options.skip.redirect) {
+		if (!options.skip.redirect
+		&& !url.startsWith('https://')
+		&& !url.startsWith('http://')) {
+			// try opening a custom app via its schema
 			window.location = url;
 		}
 
