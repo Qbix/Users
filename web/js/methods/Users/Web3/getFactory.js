@@ -16,7 +16,7 @@ Q.exports(function (Users, priv) {
 		chainId,
 		callback
 	) {
-
+        var Web3 = Users.Web3;
         if (typeof contractABIName !== 'string') {
             throw new Error("Users.Web3.getContract() expects contactABIName as a string");
         }
