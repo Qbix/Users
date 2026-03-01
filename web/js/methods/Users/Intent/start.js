@@ -56,7 +56,8 @@ Q.exports(function (Users, priv) {
 			action: options.action || capability.action,
 			platform: options.platform || capability.platform,
 			appId: options.appId || capability.appId || Q.info.app,
-			interpolate: options.interpolate
+			interpolate: options.interpolate,
+			url: location.href
 		};
 
 		// Generate intent server-side (idempotent)

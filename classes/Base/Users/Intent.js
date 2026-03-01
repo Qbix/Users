@@ -24,6 +24,7 @@ var Row = Q.require('Db/Row');
  * @param {String|Buffer} [fields.token] defaults to ""
  * @param {String|Buffer} [fields.action] defaults to ""
  * @param {String|Buffer} [fields.instructions] defaults to null
+ * @param {String|Buffer} [fields.url] defaults to null
  * @param {String|Buffer} [fields.sessionId] defaults to null
  * @param {String|Buffer} [fields.userId] defaults to null
  * @param {String|Db.Expression} [fields.startTime] defaults to null
@@ -52,6 +53,12 @@ Q.mixin(Base, Row);
  */
 /**
  * @property instructions
+ * @type String|Buffer
+ * @default null
+ * 
+ */
+/**
+ * @property url
  * @type String|Buffer
  * @default null
  * 
@@ -309,6 +316,7 @@ Base.fieldNames = function () {
 		"token",
 		"action",
 		"instructions",
+		"url",
 		"sessionId",
 		"userId",
 		"startTime",
@@ -429,6 +437,42 @@ Base.prototype.maxSize_instructions = function () {
 Base.column_instructions = function () {
 
 return [["varbinary","2047","",false],true,"",null];
+};
+
+/**
+ * Method is called before setting the field and verifies if value is string of length within acceptable limit.
+ * Optionally accept numeric value which is converted to string
+ * @method beforeSet_url
+ * @param {string} value
+ * @return {string} The value
+ * @throws {Error} An exception is thrown if 'value' is not string or is exceedingly long
+ */
+Base.prototype.beforeSet_url = function (value) {
+		if (value == undefined) return value;
+		if (value instanceof Db.Expression) return value;
+		if (typeof value !== "string" && typeof value !== "number" && !(value instanceof Buffer))
+			throw new Error('Must pass a String or Buffer to '+this.table()+".url");
+		if (typeof value === "string" && value.length > 2083)
+			throw new Error('Exceedingly long value being assigned to '+this.table()+".url");
+		return value;
+};
+
+	/**
+	 * Returns the maximum string length that can be assigned to the url field
+	 * @return {integer}
+	 */
+Base.prototype.maxSize_url = function () {
+
+		return 2083;
+};
+
+	/**
+	 * Returns schema information for url column
+	 * @return {array} [[typeName, displayRange, modifiers, unsigned], isNull, key, default]
+	 */
+Base.column_url = function () {
+
+return [["varbinary","2083","",false],true,"",null];
 };
 
 /**

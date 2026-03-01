@@ -19,6 +19,7 @@
  * @param {string} [$fields.token] defaults to ""
  * @param {string} [$fields.action] defaults to ""
  * @param {string} [$fields.instructions] defaults to null
+ * @param {string} [$fields.url] defaults to null
  * @param {string} [$fields.sessionId] defaults to null
  * @param {string} [$fields.userId] defaults to null
  * @param {string|Db_Expression} [$fields.startTime] defaults to null
@@ -43,6 +44,12 @@ abstract class Base_Users_Intent extends Db_Row
 	 */
 	/**
 	 * @property $instructions
+	 * @type string
+	 * @default null
+	 * 
+	 */
+	/**
+	 * @property $url
 	 * @type string
 	 * @default null
 	 * 
@@ -149,6 +156,71 @@ abstract class Base_Users_Intent extends Db_Row
 	static function connectionName()
 	{
 		return 'Users';
+	}
+
+	/**
+	 * Returns index metadata for the table
+	 * @method indexes
+	 * @static
+	 * @return {array}
+	 */
+	static function indexes()
+	{
+		return array (
+  'PRIMARY' => 
+  array (
+    'unique' => true,
+    'type' => 'BTREE',
+    'columns' => 
+    array (
+      0 => 'token',
+    ),
+  ),
+  'userId' => 
+  array (
+    'unique' => false,
+    'type' => 'BTREE',
+    'columns' => 
+    array (
+      0 => 'userId',
+    ),
+  ),
+  'sessionId' => 
+  array (
+    'unique' => false,
+    'type' => 'BTREE',
+    'columns' => 
+    array (
+      0 => 'sessionId',
+    ),
+  ),
+  'endTime' => 
+  array (
+    'unique' => false,
+    'type' => 'BTREE',
+    'columns' => 
+    array (
+      0 => 'endTime',
+    ),
+  ),
+);
+	}
+
+	/**
+	 * Returns true if a left-prefix index exists for the given columns
+	 * @method hasIndexOn
+	 * @static
+	 * @param {array} $columns
+	 * @return {boolean}
+	 */
+	static function hasIndexOn(array $columns)
+	{
+		foreach (self::indexes() as $idx) {
+			if (array_slice($idx['columns'], 0, count($columns)) === $columns) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**
@@ -458,6 +530,61 @@ return array (
   array (
     0 => 'varbinary',
     1 => '2047',
+    2 => '',
+    3 => false,
+  ),
+  1 => true,
+  2 => '',
+  3 => NULL,
+);			
+	}
+
+	/**
+	 * Method is called before setting the field and verifies if value is string of length within acceptable limit.
+	 * Optionally accept numeric value which is converted to string
+	 * @method beforeSet_url
+	 * @param {string} $value
+	 * @return {array} An array of field name and value
+	 * @throws {Exception} An exception is thrown if $value is not string or is exceedingly long
+	 */
+	function beforeSet_url($value)
+	{
+		if (!isset($value)) {
+			return array('url', $value);
+		}
+		if ($value instanceof Db_Expression
+               or $value instanceof Db_Range) {
+			return array('url', $value);
+		}
+		if (!is_string($value) and !is_numeric($value))
+			throw new Exception('Must pass a string to '.$this->getTable().".url");
+		if (strlen($value) > 2083)
+			throw new Exception('Exceedingly long value being assigned to '.$this->getTable().".url");
+		return array('url', $value);			
+	}
+
+	/**
+	 * Returns the maximum string length that can be assigned to the url field
+	 * @return {integer}
+	 */
+	function maxSize_url()
+	{
+
+		return 2083;			
+	}
+
+	/**
+	 * Returns schema information for url column
+	 * @return {array} [[typeName, displayRange, modifiers, unsigned], isNull, key, default]
+	 */
+	static function column_url()
+	{
+
+return array (
+  0 => 
+  array (
+    0 => 'varbinary',
+    1 => '2083',
     2 => '',
     3 => false,
   ),
@@ -862,7 +989,7 @@ return array (
 	 */
 	static function fieldNames($table_alias = null, $field_alias_prefix = null)
 	{
-		$field_names = array('token', 'action', 'instructions', 'sessionId', 'userId', 'startTime', 'endTime', 'insertedTime', 'updatedTime', 'completedTime');
+		$field_names = array('token', 'action', 'instructions', 'url', 'sessionId', 'userId', 'startTime', 'endTime', 'insertedTime', 'updatedTime', 'completedTime');
 		$result = $field_names;
 		if (!empty($table_alias)) {
 			$temp = array();

@@ -35,7 +35,7 @@ function Users_intent_post()
 
 	// Extract relevant fields from capability data
 	$data = Q::ifset($capability, 'data', $capability);
-	$fieldNames = array('token', 'action', 'platform', 'appId');
+	$fieldNames = array('token', 'action', 'platform', 'appId', 'url');
 	$fields = Q::take($data, $fieldNames);
 	Q::take($_REQUEST, $fieldNames, $fields);
 
@@ -63,7 +63,7 @@ function Users_intent_post()
 			unset($instructions[$f]);
 		}
 		$intent = Users_Intent::newIntent(
-			$fields['action'], $fields['userId'], $instructions, $fields['token']
+			$fields['action'], $fields['userId'], $instructions, $fields['token'], $fields['url']
 		);
 		Q_Session::start();
 		$intents = Q::ifset($_SESSION, 'Users', 'intents', array());

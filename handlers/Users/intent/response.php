@@ -69,6 +69,7 @@ function Users_intent_response()
         if ($refererURL = Q::ifset($_SERVER, 'HTTP_REFERER', null)) {
             Q_Response::redirect($refererURL);
         } else {
+            http_response_code(500);
             echo "No active session";
         }
         return false;
@@ -95,8 +96,20 @@ function Users_intent_response()
         $intent->getAllInstructions(),
         array('token' => $intent->token)
     );
-    $pattern = Q_Config::expect('Users', 'intents', 'actions', $action, $platform, $field);
-    $url = Q::interpolate($pattern, $params);
-    Q_Response::redirect($url);
+    $pattern = Q_Config::get('Users', 'intents', 'actions', $action, $platform, $field, false);
+    if (!$pattern) {
+        if (empty($intent->url)) {
+            http_response_code(500);
+            echo "Missing intent->url to redirect to.";
+        } else {
+            $url = Q_Uri::fixUrl(
+                $intent->url . '?Q.Users.intent=' . urlencode($intent->token)
+            );
+            Q_Response::redirect($url);
+        }
+    } else {
+        $url = Q::interpolate($pattern, $params);
+        Q_Response::redirect($url);
+    }
     return false; // to prevent XSS, don't return anything to JS, simply redirect the user
 }

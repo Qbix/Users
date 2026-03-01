@@ -13,7 +13,7 @@
  */
 class Users_Intent extends Base_Users_Intent
 {
-/**
+	/**
 	 * Retrieve intent from database by its token
 	 * @method fetch
 	 * @static
@@ -27,7 +27,7 @@ class Users_Intent extends Base_Users_Intent
 		if (!$intent && $throwIfMissing) {
 			throw new Users_Exception_NotAuthorized();
 		}
-		return self::fromToken($token);
+		return $intent;
 	}
 
 	/**
@@ -96,11 +96,18 @@ class Users_Intent extends Base_Users_Intent
 	 *   such as the platform to authenticate with, etc.
 	 * @param {string} [$token] optionally specify the exact token of the intent,
 	 *   this is mostly for use by internal handlers like Users/intent/post.php
+	 * @param {string} [$url] url of page the user was on when the intent was generated,
+	 *   useful for returning to this page in another session after intent was completed
 	 * @return {Users_Intent}
 	 * @throws {Q_Exception_SessionHijacked}
 	 */
-	static function newIntent($action, $userId = null, $instructions = array(), $token = null)
-	{
+	static function newIntent(
+		$action, 
+		$userId = null, 
+		$instructions = array(), 
+		$token = null,
+		$url = null
+	){
 		$info = Q_Config::get('Users', 'intents', 'actions', $action, false);
 		if (!$info) {
 			throw new Users_Exception_NotAuthorized();
@@ -137,6 +144,12 @@ class Users_Intent extends Base_Users_Intent
 			$intent = new Users_Intent(compact('action', 'instructions'));
 			if ($token) {
 				$intent->token = $token;
+			}
+			if ($url) {
+				$base = Q_Request::baseUrl();
+				if (Q::startsWith($url, $base)) {
+					$intent->url = $url;
+				}
 			}
 			$intent->startTime = new Db_Expression('CURRENT_TIMESTAMP');
 			if ($duration = Q::ifset($info, 'duration', 600)) {
@@ -315,7 +328,7 @@ class Users_Intent extends Base_Users_Intent
 	}
 
 	/**
-	 * @method getAllinstructions
+	 * @method getAllInstructions
 	 * @return {array} The array of all instructions set in the message
 	 */
 	function getAllInstructions()
@@ -364,7 +377,9 @@ class Users_Intent extends Base_Users_Intent
 
 	function exportArray($options = null)
 	{
-		return $this->getAllInstructions();
+		$fields = $this->fields;
+		$fields['instructions'] = $this->getAllInstructions();
+		return $fields;
 	}
 
 	/**

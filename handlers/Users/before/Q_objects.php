@@ -122,15 +122,14 @@ function Users_before_Q_objects(&$params)
 	// 	Q_Response::redirect($newUrl);
 	// }
 
-	if ($token = Q_Request::special('Users.intent')) {
-		$intent = new Users_Intent(compact('token'));
-		if ($intent->retrieve()) {
-			if (Users::db()->fromDateTime($intent->endTime) < time()) {
-				throw new Q_Exception_Expired();
-			}
-			$intent->accept(array(
-				'evenIfCompleted' => true
-			)); // authenticates this session, and logs user in
+	if ($token = Q_Request::special('Users.intent')
+	and $intent = Users_Intent::fetch($token)) {
+		if (!$intent->isValid()) {
+			throw new Q_Exception_Expired();
 		}
+		$intent->accept(array(
+			'evenIfCompleted' => true
+		)); // authenticates this session, and logs user in
+		Q_Response::setScriptData('Q.plugins.Users.intent', $intent->exportArray());
 	}
 }
