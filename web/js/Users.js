@@ -1337,50 +1337,6 @@
 		});
 	}, 'Users');
 	
-	function _setSessionFromQueryString(querystring)
-	{
-		if (!querystring) {
-			return;
-		}
-		if (querystring.queryField('Q.Users.newSessionId')) {
-			var fieldNames = [
-				'Q.Users.appId', 'Q.Users.newSessionId', 'Q.Users.platform',
-				'Q.Users.deviceId', 'Q.timestamp', 'Q.Users.signature'
-			];
-			var fields = querystring.queryField(fieldNames);
-			var storedDeviceId = localStorage.getItem("Q.Users.Device.deviceId");
-			fields['Q.Users.deviceId'] = fields['Q.Users.deviceId'] || storedDeviceId;
-			if (fields['Q.Users.newSessionId']) {
-				Q.req('Users/session', function (err, response) {
-					Q.Response.processScriptDataAndLines(response);
-					// Q.request.options.onProcessed would have changed loggedInUser already
-					// but maybe we want to redirect anyway, after a handoff
-					var href = Q.getObject("Q.Cordova.handoff.url");
-					if (href) {
-						location.href = href;
-					}
-				}, {
-					method: 'put',
-					loadExtras: 'session',
-					fields: fields
-				});
-			}
-		} else if (querystring.queryField('facebookLogin') == 1) {
-			Users.login({using: 'facebook'});
-		} 
-//      else if ( querystring.queryField('access_token')) {
-// 			//  this is not enabled because malicious users can handleOpenUrl to set some token
-// 			if (Users.Facebook.accessToken) {
-// 				Users.Facebook.performLogin({
-// 					status: 'connected',
-// 					authResponse: {
-// 						accessToken: Users.Facebook.accessToken
-// 					}
-// 				});
-// 			}
-// 		}
-	}
-
 	$('body').on('click', '[data-users-login]', function () {
 		Q.Users.login({
 			successUrl: location.href
@@ -1400,7 +1356,6 @@
 			});
 
 		// 
-		_setSessionFromQueryString(location.search);
 
 		document.documentElement.removeClass(Users.loggedInUser ? 'Users_loggedOut' : 'Users_loggedIn');
 		document.documentElement.addClass(Users.loggedInUser ? 'Users_loggedIn' : 'Users_loggedOut');
