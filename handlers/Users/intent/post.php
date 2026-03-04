@@ -71,6 +71,10 @@ function Users_intent_post()
 		$_SESSION['Users']['intents'] = $intents;
 	}
 
+	$socketCapability = new Q_Capability($capability);
+	$socketCapability->addPermission('Users/socket');
+
 	// Return minimal info (AJAX-safe)
 	Q_Response::setSlot('intent', $intent->exportArray());
+	Q_Response::setSlot('capability', $socketCapability->exportArray());
 }

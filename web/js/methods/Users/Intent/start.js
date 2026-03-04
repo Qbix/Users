@@ -57,12 +57,27 @@ Q.exports(function (Users, priv) {
 			platform: options.platform || capability.platform,
 			appId: options.appId || capability.appId || Q.info.app,
 			interpolate: options.interpolate,
-			url: location.href
+			url: location.href,
+			'Q.clientId': Q.clientId()
 		};
 
 		// Generate intent server-side (idempotent)
-		Q.req('Users/intent', function (err) {
-			if (err) console.warn('Intent provisioning failed:', err);
+		Q.req('Users/intent', function (err, response) {
+			if (err) {
+				console.warn('Intent start failed:', err);
+				return;
+			}
+
+			var socketCapability = Q.getObject('slots.capability', response);
+			if (!socketCapability) {
+				return;
+			}
+
+			if (!Q.Socket.isConnected('/Q')) {
+				Q.Socket.connect('/Q', {
+					capability: socketCapability
+				});
+			}
 		}, {
 			method: 'post',
 			fields: fields
@@ -170,6 +185,8 @@ Q.exports(function (Users, priv) {
 			Q.onVisibilityChange.remove('Q.Intent.start');
 		}, 'Q.Intent.start');
 		window.addEventListener('focus', _reload);
+		Q.Socket.onEvent('Users/intentComplete', '/Q')
+			.setOnce(_reload, 'Users.Intent.start');
 		return _reload;
 	}
 });

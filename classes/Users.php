@@ -1098,7 +1098,8 @@ abstract class Users extends Base_Users
 		 */
 		Q::event('Users/setLoggedInUser/updateSessionId', @compact('user'), 'before');
 		
-		$user->sessionId = Q_Session::id();
+		$sessionId = Q_Session::id();
+		$user->sessionId = $sessionId;
 		$user->save(); // update sessionId in user
 
 		// update the language for this session
@@ -1136,6 +1137,16 @@ abstract class Users extends Base_Users
 			));
 			Q_Response::setNotice('Users::setLoggedInUser', $html, array(
 				'timeout' => Q_Config::get('Users', 'notices', 'timeout', 5)
+			));
+		}
+
+		$clientId = Q_Request::special('clientId');
+		if ($clientId) {
+			Q_Utils::sendToNode(array(
+				"Q/method" => "Users/setLoggedInUser",
+				"sessionId" => $sessionId,
+				"userId" => $user->id,
+				"clientId" => $clientId
 			));
 		}
 

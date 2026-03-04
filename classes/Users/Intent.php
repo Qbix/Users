@@ -211,7 +211,6 @@ class Users_Intent extends Base_Users_Intent
 		Q::event('Users/intent/accept', compact('intent', 'options', 'session', 'userId'), 'after');
 		return true;
 	}
-
 	/**
 	 * Mark intent completed, and set logged-in user in original session
 	 * if no one was logged in there yet.
@@ -252,10 +251,18 @@ class Users_Intent extends Base_Users_Intent
 				}
 			}
 		}
+
+		// notify Node.js so the originating browser session can react immediately
+		Q_Utils::sendToNode(array(
+			"Q/method" => "Users/intentComplete",
+			"token" => $intent->token,
+			"userId" => $intent->userId,
+			"sessionId" => $intent->sessionId
+		));
+
 		Q::event('Users/intent/complete', compact('intent', 'session', 'user'), 'after');
 		return true;
 	}
-
 	/**
 	 * Does necessary preparations for saving an intent in the database.
 	 * @method beforeSave

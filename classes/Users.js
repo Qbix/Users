@@ -246,6 +246,34 @@ function Users_request_handler(req, res, next) {
     switch (parsed['Q/method']) {
 		case 'Users/device':
 			break;
+		case "Users/setLoggedInUser":
+			var clientId = parsed.clientId;
+			var userId = parsed.userId;
+			var sessionId = parsed.sessionId;
+			if (!clientId || !userId) {
+				break;
+			}
+			var nsp = Q.Socket.io.of('/Q');
+			var client = nsp.sockets.get(clientId);
+			if (!client) {
+				break;
+			}
+			client.userId = userId;
+			client.sessionId = sessionId;
+			// remove from previous user mapping
+			for (var uid in Users.clients) {
+				if (Users.clients[uid] && Users.clients[uid][clientId]) {
+					delete Users.clients[uid][clientId];
+				}
+			}
+			client.userId = userId;
+			client.sessionId = sessionId;
+			if (!Users.clients[userId]) {
+				Users.clients[userId] = {};
+			}
+			Users.clients[userId][clientId] = client;
+			Q.log("Socket upgraded to user " + userId + " (" + clientId + ")");
+			break;
 		case 'Users/logout':
 			if (userId && sessionId) {
 				var clients = Users.clients[userId];
@@ -373,6 +401,14 @@ function Users_request_handler(req, res, next) {
 			break;
 		case "Users/emitToUser":
 			Users.Socket.emitToUser(parsed.userId, parsed.event, parsed.data);
+			break;
+		case "Users/intentComplete":
+			if (parsed.userId) {
+				Users.Socket.emitToUser(parsed.userId, 'Users/intentComplete', {
+					token: parsed.token,
+					sessionId: parsed.sessionId
+				});
+			}
 			break;
 		default:
 			break;
