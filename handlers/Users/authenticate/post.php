@@ -11,8 +11,8 @@ function Users_authenticate_post()
 	Q_Request::requireFields(array('platform'), true);
 	$platform = $_REQUEST['platform'];
 	$appId = Q::ifset($_REQUEST, 'appId', null);
-	$updateXid = filter_var(Q::ifset($_REQUEST, "updateXid", false), FILTER_VALIDATE_BOOLEAN);
-	$user = Users::authenticate($platform, $appId, $authenticated, null, $updateXid);
+	$dontUpdateXid = filter_var(Q::ifset($_REQUEST, "dontUpdateXid", false), FILTER_VALIDATE_BOOLEAN);
+	$user = Users::authenticate($platform, $appId, $authenticated, null, $dontUpdateXid);
 	if (!$user) {
 		throw new Users_Exception_NotLoggedIn();
 	}

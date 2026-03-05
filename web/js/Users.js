@@ -453,7 +453,7 @@
 				}
 			} else if (Q.Users.authPayload[platform]) {
 				Q.extend(fields, Q.Users.authPayload[platform]);
-				fields.updateXid = !!Q.getObject("updateXid", options);
+				fields.dontUpdateXid = !!Q.getObject("dontUpdateXid", options);
 			}
 			priv._doAuthenticate(
 				fields,

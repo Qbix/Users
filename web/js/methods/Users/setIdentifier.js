@@ -43,7 +43,7 @@ Q.exports(function (Users, priv, _doCancel, _handleXid, _doAuthenticate) {
 		if (identifierType === 'web3' && !xid) {
 			Users.Web3.login({
 				ignoreCookies: true,
-				updateXid: true,
+				dontUpdateXid: true,
 				prompt: false,
 				onConnect: onSuccess
 			});
@@ -129,7 +129,7 @@ Q.exports(function (Users, priv, _doCancel, _handleXid, _doAuthenticate) {
 			.on(Q.Pointer.fastclick, function () {
 				Users.Web3.login({
 					ignoreCookies: true,
-					updateXid: true,
+					dontUpdateXid: true,
 					prompt: false,
 					onConnect: function (user) {
 						setIdentifier_callback(null, user);

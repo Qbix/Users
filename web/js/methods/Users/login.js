@@ -183,7 +183,7 @@ Q.exports(function (Users, priv) {
 							// _authenticate('web3');
 						}
 					},
-					updateXid: true
+					dontUpdateXid: true
 				});
 			} else {
 				var platform = o.using[0];
@@ -869,7 +869,7 @@ Q.exports(function (Users, priv) {
 											// _authenticate('web3');
 										}
 									},
-									updateXid: true
+									dontUpdateXid: true
 								});
 								return false;
 							});

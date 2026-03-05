@@ -365,7 +365,8 @@ abstract class Users extends Base_Users
 	 *  "email", "first_name", "last_name", "gender", "icon" etc.
 	 *  If the email address is imported, it is set without requiring verification, and
 	 *  any email under Users/transactional/authenticated is sent.
-	 * @param {boolean} [$updateXid=false] If true and xid defined for logged in user, update xid for this user.
+	 * @param {boolean} [$dontUpdateXid=false] If true and user already has xid for the platform,
+	 *  switches user rather than update its xid
 	 * @return {Users_User}
 	 */
 	static function authenticate(
@@ -373,7 +374,7 @@ abstract class Users extends Base_Users
 		$appId = null,
 		&$authenticated = null,
 		$import = null,
-		$updateXid = false)
+		$dontUpdateXid = false)
 	{
 		$platforms = Q_Config::get('Users', 'apps', 'platforms', array());
 		if (!in_array($platform, $platforms)) {
@@ -444,7 +445,7 @@ abstract class Users extends Base_Users
 				$retrieved = true;
 			}
 		}
-		if ($appIdForAuth !== $appId) {
+		if ($appId and $appIdForAuth !== $appId) {
 			// Add this appId into the extras, to be saved in row and info for session
 			$appIds = $externalFrom->getExtra('appIds', array());
 			if (!in_array($appId, $appIds)) {
@@ -457,7 +458,7 @@ abstract class Users extends Base_Users
 		$platformApp = $platform . '_' . $appIdForAuth;
 		if ($retrieved) {
 			$user_xid = $user->getXid($platformApp);
-			if (!$user_xid || $updateXid) {
+			if (!$user_xid || !$dontUpdateXid) {
 				// this is a logged-in user who was never authenticated with this platform.
 				// First, let's find any other user who has authenticated with the
 				// authenticated xid, and clear their xid
@@ -549,10 +550,10 @@ abstract class Users extends Base_Users
 					throw new Q_Exception("Users_Identify for $platform xid $xid exists but not user with id {$ui->userId}");
 				}
 				$retrieved = true;
+				$platformApp = $platform . '_' . $appIdForAuth;
+				$user->setXid($platformApp, $xid);
 				if ($ui->state === 'future') {
 					$authenticated = 'adopted';
-					$platformApp = $platform . '_' . $appIdForAuth;
-					$user->setXid($platformApp, $xid);
 					$user->signedUpWith = $platformApp; // should have been "none" before this
 					/**
 					 * @event Users/adoptFutureUser {before}
