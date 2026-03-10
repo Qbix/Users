@@ -741,7 +741,7 @@ abstract class Users extends Base_Users
 			if ((!isset($ef->accessToken) and isset($accessToken))
 			or (!isset($ef->expires) and isset($sessionExpires)) 
 			or (!isset($ef->extra) and isset($extra)) 
-			or ($ef->expires != $sessionExpires)
+			or (!isset($sessionExpires) or $ef->expires != $sessionExpires)
 			or ($ef->accessToken != $accessToken)
 			or ($ef->accessToken != $extra)) {
 				/**
