@@ -458,7 +458,7 @@ abstract class Users extends Base_Users
 		$platformApp = $platform . '_' . $appIdForAuth;
 		if ($retrieved) {
 			$user_xid = $user->getXid($platformApp);
-			if (!$user_xid || !$dontUpdateXid) {
+			if (!$user_xid) {
 				// this is a logged-in user who was never authenticated with this platform.
 				// First, let's find any other user who has authenticated with the
 				// authenticated xid, and clear their xid
@@ -526,7 +526,7 @@ abstract class Users extends Base_Users
 				$ui->state = 'verified';
 				$ui->userId = $user->id;
 				$ui->save(true);
-			} else if ($user_xid !== $xid) {
+			} else if ($user_xid !== $xid and $dontUpdateXid) {
 				// The logged-in user was authenticated with the platform already,
 				// and associated with a different platform xid.
 				// Most likely, a completely different person has logged into the platform
