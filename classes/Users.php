@@ -1084,10 +1084,20 @@ abstract class Users extends Base_Users
 			}
 		}
 
-		// Store the new information in the session
+		Q_Session::setNonce();
+
+		// The above might have started a new session, and if that session
+		// was deterministic, then it might have a loggedInUser after all, so
+		// do this check one more time before saving the session
+		$loggedInUserId = Q::ifset($_SESSION, 'Users', 'loggedInUser', 'id', null);
+		if (Q::ifset($user, "id", null) === $loggedInUserId) {
+			// This user is already the logged-in user. Do nothing.
+			return false;
+		}
+
+		// Store the new information in the session (to be saved at request shutdown)
 		$snf = Q_Config::get('Q', 'session', 'nonceField', 'nonce');
 		$_SESSION['Users']['loggedInUser']['id'] = $user->id;
-		Q_Session::setNonce();
 		
 		$user->sessionCount = isset($user->sessionCount)
 			? $user->sessionCount + 1
