@@ -91,7 +91,7 @@
 		"broadcast": "Darllediad"
 	},
 	"login": {
-		"title": "Croeso i {{AppName}}",
+		"title": "Croeso i {{CommunityName}}",
 		"directions": {
 			"GetStarted": "I ble ddylen ni anfon hysbysiadau?",
 			"NoRegister": "Mewngofnodwch os oes gennych gyfrif.",

@@ -91,7 +91,7 @@
 		"broadcast": "\ubc29\uc1a1"
 	},
 	"login": {
-		"title": "{{AppName}} \uc5d0 \uc624\uc2e0 \uac83\uc744 \ud658\uc601\ud569\ub2c8\ub2e4",
+		"title": "{{CommunityName}} \uc5d0 \uc624\uc2e0 \uac83\uc744 \ud658\uc601\ud569\ub2c8\ub2e4",
 		"directions": {
 			"GetStarted": "\uc54c\ub9bc\uc740 \uc5b4\ub514\ub85c \ubcf4\ub0b4\uc57c \ud558\ub098\uc694?",
 			"NoRegister": "\uacc4\uc815\uc774 \uc788\uc73c\uba74 \ub85c\uadf8\uc778\ud558\uc2ed\uc2dc\uc624.",

@@ -91,7 +91,7 @@
 		"broadcast": "Oddaja"
 	},
 	"login": {
-		"title": "Dobrodo\u0161li pri {{AppName}}",
+		"title": "Dobrodo\u0161li pri {{CommunityName}}",
 		"directions": {
 			"GetStarted": "Kam naj po\u0161ljemo obvestila?",
 			"NoRegister": "Prijavite se, \u010de imate ra\u010dun.",

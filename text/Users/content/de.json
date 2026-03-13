@@ -91,7 +91,7 @@
 		"broadcast": "\u00dcbertragen"
 	},
 	"login": {
-		"title": "Willkommen bei {{AppName}}",
+		"title": "Willkommen bei {{CommunityName}}",
 		"directions": {
 			"GetStarted": "Wohin sollen wir Benachrichtigungen senden?",
 			"NoRegister": "Melden Sie sich an, wenn Sie ein Konto haben.",

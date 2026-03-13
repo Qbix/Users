@@ -94,7 +94,7 @@
 		"broadcast": "Broadcast"
 	},
 	"login": {
-		"title": "Welcome to {{AppName}}",
+		"title": "Welcome to {{CommunityName}}",
 		"directions": {
 			"GetStarted": "Where should we send notifications?",
 			"NoRegister": "Log in if you have an account.",

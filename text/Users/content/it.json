@@ -91,7 +91,7 @@
 		"broadcast": "Trasmissione"
 	},
 	"login": {
-		"title": "Benvenuti al {{AppName}}",
+		"title": "Benvenuti al {{CommunityName}}",
 		"directions": {
 			"GetStarted": "Dove dovremmo inviare le notifiche?",
 			"NoRegister": "Accedi se hai un account.",

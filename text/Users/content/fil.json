@@ -91,7 +91,7 @@
 		"broadcast": "I-broadcast"
 	},
 	"login": {
-		"title": "Maligayang pagdating sa {{AppName}}",
+		"title": "Maligayang pagdating sa {{CommunityName}}",
 		"directions": {
 			"GetStarted": "Saan kami dapat magpadala ng mga abiso?",
 			"NoRegister": "Mag-log in kung mayroon kang account.",

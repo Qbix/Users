@@ -91,7 +91,7 @@
 		"broadcast": "Emitiranje"
 	},
 	"login": {
-		"title": "Dobrodo\u0161li u {{AppName}}",
+		"title": "Dobrodo\u0161li u {{CommunityName}}",
 		"directions": {
 			"GetStarted": "Kamo trebamo slati obavijesti?",
 			"NoRegister": "Prijavite se ako imate ra\u010dun.",

@@ -923,7 +923,7 @@ Q.exports(function (Users, priv) {
 				: null;
 
 			var title = (options.title || Q.text.Users.login.title).interpolate({
-				'AppName': Q.info.app
+				CommunityName: Q.Users.communityName
 			});
 
 			login_setupDialog.dialog = Q.Dialogs.push({

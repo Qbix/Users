@@ -91,7 +91,7 @@
 		"broadcast": "Yay\u0131m"
 	},
 	"login": {
-		"title": "{{AppName}} a xo\u015f g\u0259lmisiniz",
+		"title": "{{CommunityName}} a xo\u015f g\u0259lmisiniz",
 		"directions": {
 			"GetStarted": "Bildiri\u015fl\u0259ri hara g\u00f6nd\u0259rm\u0259liyik?",
 			"NoRegister": "Hesab\u0131n\u0131z varsa daxil olun.",

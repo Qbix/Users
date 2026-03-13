@@ -91,7 +91,7 @@
 		"broadcast": "Difuzare"
 	},
 	"login": {
-		"title": "Bun venit la {{AppName}}",
+		"title": "Bun venit la {{CommunityName}}",
 		"directions": {
 			"GetStarted": "Unde ar trebui s\u0103 trimitem notific\u0103rile?",
 			"NoRegister": "Conecta\u021bi-v\u0103 dac\u0103 ave\u021bi un cont.",

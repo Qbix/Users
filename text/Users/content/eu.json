@@ -91,7 +91,7 @@
 		"broadcast": "Emisioa"
 	},
 	"login": {
-		"title": "Ongi etorri {{AppName}}",
+		"title": "Ongi etorri {{CommunityName}}",
 		"directions": {
 			"GetStarted": "Nora bidali behar ditugu jakinarazpenak?",
 			"NoRegister": "Hasi saioa kontu bat baduzu.",

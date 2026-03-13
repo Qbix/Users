@@ -91,7 +91,7 @@
 		"broadcast": "\u00datsending"
 	},
 	"login": {
-		"title": "Velkomin(n) \u00ed {{AppName}}",
+		"title": "Velkomin(n) \u00ed {{CommunityName}}",
 		"directions": {
 			"GetStarted": "Hvert eigum vi\u00f0 a\u00f0 senda tilkynningar?",
 			"NoRegister": "Skr\u00e1\u00f0u \u00feig inn ef \u00fe\u00fa ert me\u00f0 reikning.",

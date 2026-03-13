@@ -91,7 +91,7 @@
 		"broadcast": "Uitzending"
 	},
 	"login": {
-		"title": "Welkom bij {{AppName}}",
+		"title": "Welkom bij {{CommunityName}}",
 		"directions": {
 			"GetStarted": "Waar moeten we de meldingen naartoe sturen?",
 			"NoRegister": "Log in als je een account hebt.",

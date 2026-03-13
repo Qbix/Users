@@ -91,7 +91,7 @@
 		"broadcast": "Yay\u0131n"
 	},
 	"login": {
-		"title": "{{AppName}} Ho\u015f Geldiniz",
+		"title": "{{CommunityName}} Ho\u015f Geldiniz",
 		"directions": {
 			"GetStarted": "Bildirimleri nereye g\u00f6ndermeliyiz?",
 			"NoRegister": "Hesab\u0131n\u0131z varsa giri\u015f yap\u0131n.",

@@ -91,7 +91,7 @@
 		"broadcast": "Uitsaai"
 	},
 	"login": {
-		"title": "Welkom by {{AppName}}",
+		"title": "Welkom by {{CommunityName}}",
 		"directions": {
 			"GetStarted": "Waarheen moet ons kennisgewings stuur?",
 			"NoRegister": "Meld aan as jy &#39;n rekening het.",

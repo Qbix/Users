@@ -91,7 +91,7 @@
 		"broadcast": "Siaran"
 	},
 	"login": {
-		"title": "Selamat datang di {{AppName}}",
+		"title": "Selamat datang di {{CommunityName}}",
 		"directions": {
 			"GetStarted": "Ke mana kami harus mengirimkan notifikasi?",
 			"NoRegister": "Masuk jika Anda memiliki akun.",

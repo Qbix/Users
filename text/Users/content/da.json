@@ -91,7 +91,7 @@
 		"broadcast": "Udsende"
 	},
 	"login": {
-		"title": "Velkommen til {{AppName}}",
+		"title": "Velkommen til {{CommunityName}}",
 		"directions": {
 			"GetStarted": "Hvor skal vi sende notifikationer hen?",
 			"NoRegister": "Log ind, hvis du har en konto.",

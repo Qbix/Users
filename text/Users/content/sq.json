@@ -91,7 +91,7 @@
 		"broadcast": "Transmetimi"
 	},
 	"login": {
-		"title": "Mir\u00eb se vini n\u00eb {{AppName}}",
+		"title": "Mir\u00eb se vini n\u00eb {{CommunityName}}",
 		"directions": {
 			"GetStarted": "Ku duhet t\u00eb d\u00ebrgojm\u00eb njoftime?",
 			"NoRegister": "Hyni n\u00ebse keni nj\u00eb llogari.",

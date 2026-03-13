@@ -91,7 +91,7 @@
 		"broadcast": "Ad\u00e1s"
 	},
 	"login": {
-		"title": "\u00dcdv\u00f6z\u00f6lj\u00fck {{AppName}} n\u00e9l",
+		"title": "\u00dcdv\u00f6z\u00f6lj\u00fck {{CommunityName}} n\u00e9l",
 		"directions": {
 			"GetStarted": "Hov\u00e1 k\u00fcldj\u00fcnk \u00e9rtes\u00edt\u00e9seket?",
 			"NoRegister": "Jelentkezzen be, ha van fi\u00f3kja.",

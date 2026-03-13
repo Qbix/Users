@@ -91,7 +91,7 @@
 		"broadcast": "Craoladh"
 	},
 	"login": {
-		"title": "F\u00e1ilte go {{AppName}}",
+		"title": "F\u00e1ilte go {{CommunityName}}",
 		"directions": {
 			"GetStarted": "C\u00e1 h\u00e1it ar cheart d\u00fainn f\u00f3gra\u00ed a sheoladh?",
 			"NoRegister": "Log\u00e1il isteach m\u00e1 t\u00e1 cuntas agat.",

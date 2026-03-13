@@ -91,7 +91,7 @@
 		"broadcast": "Vysielanie"
 	},
 	"login": {
-		"title": "Vitajte v {{AppName}}",
+		"title": "Vitajte v {{CommunityName}}",
 		"directions": {
 			"GetStarted": "Kam m\u00e1me posiela\u0165 ozn\u00e1menia?",
 			"NoRegister": "Prihl\u00e1ste sa, ak m\u00e1te \u00fa\u010det.",

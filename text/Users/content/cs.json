@@ -91,7 +91,7 @@
 		"broadcast": "P\u0159enos"
 	},
 	"login": {
-		"title": "V\u00edtejte u {{AppName}}",
+		"title": "V\u00edtejte u {{CommunityName}}",
 		"directions": {
 			"GetStarted": "Kam m\u00e1me pos\u00edlat ozn\u00e1men\u00ed?",
 			"NoRegister": "P\u0159ihlaste se, pokud m\u00e1te \u00fa\u010det.",

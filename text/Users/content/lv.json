@@ -91,7 +91,7 @@
 		"broadcast": "Raid\u012bjums"
 	},
 	"login": {
-		"title": "Laipni l\u016bdzam {{AppName}}",
+		"title": "Laipni l\u016bdzam {{CommunityName}}",
 		"directions": {
 			"GetStarted": "Kur mums vajadz\u0113tu s\u016bt\u012bt pazi\u0146ojumus?",
 			"NoRegister": "Piesakieties, ja jums ir konts.",

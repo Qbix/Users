@@ -91,7 +91,7 @@
 		"broadcast": "Diffuser"
 	},
 	"login": {
-		"title": "Bienvenue sur {{AppName}}",
+		"title": "Bienvenue sur {{CommunityName}}",
 		"directions": {
 			"GetStarted": "O\u00f9 devons-nous envoyer les notifications\u00a0?",
 			"NoRegister": "Connectez-vous si vous avez un compte.",

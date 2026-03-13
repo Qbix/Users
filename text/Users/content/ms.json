@@ -91,7 +91,7 @@
 		"broadcast": "Siarkan"
 	},
 	"login": {
-		"title": "Selamat datang ke {{AppName}}",
+		"title": "Selamat datang ke {{CommunityName}}",
 		"directions": {
 			"GetStarted": "Di manakah kami harus menghantar pemberitahuan?",
 			"NoRegister": "Log masuk jika anda mempunyai akaun.",

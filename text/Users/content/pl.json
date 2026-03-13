@@ -91,7 +91,7 @@
 		"broadcast": "Audycja"
 	},
 	"login": {
-		"title": "Witamy w {{AppName}}",
+		"title": "Witamy w {{CommunityName}}",
 		"directions": {
 			"GetStarted": "Gdzie powinni\u015bmy wysy\u0142a\u0107 powiadomienia?",
 			"NoRegister": "Zaloguj si\u0119, je\u015bli masz konto.",

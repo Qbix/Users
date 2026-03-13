@@ -91,7 +91,7 @@
 		"broadcast": "Ph\u00e1t tin"
 	},
 	"login": {
-		"title": "Ch\u00e0o m\u1eebng \u0111\u1ebfn v\u1edbi {{AppName}}",
+		"title": "Ch\u00e0o m\u1eebng \u0111\u1ebfn v\u1edbi {{CommunityName}}",
 		"directions": {
 			"GetStarted": "Ch\u00fang t\u00f4i n\u00ean g\u1eedi th\u00f4ng b\u00e1o \u0111\u1ebfn \u0111\u00e2u?",
 			"NoRegister": "\u0110\u0103ng nh\u1eadp n\u1ebfu b\u1ea1n c\u00f3 t\u00e0i kho\u1ea3n.",

@@ -91,7 +91,7 @@
 		"broadcast": "Saade"
 	},
 	"login": {
-		"title": "Tere tulemast {{AppName}}",
+		"title": "Tere tulemast {{CommunityName}}",
 		"directions": {
 			"GetStarted": "Kuhu peaksime teateid saatma?",
 			"NoRegister": "Logige sisse, kui teil on konto.",

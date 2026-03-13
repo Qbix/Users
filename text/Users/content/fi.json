@@ -91,7 +91,7 @@
 		"broadcast": "L\u00e4hett\u00e4\u00e4"
 	},
 	"login": {
-		"title": "Tervetuloa {{AppName}} \u00e4\u00e4n",
+		"title": "Tervetuloa {{CommunityName}} \u00e4\u00e4n",
 		"directions": {
 			"GetStarted": "Minne meid\u00e4n pit\u00e4isi l\u00e4hett\u00e4\u00e4 ilmoitukset?",
 			"NoRegister": "Kirjaudu sis\u00e4\u00e4n, jos sinulla on tili.",

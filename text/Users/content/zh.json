@@ -91,7 +91,7 @@
 		"broadcast": "\u64ad\u9001"
 	},
 	"login": {
-		"title": "\u6b22\u8fce\u6765\u5230{{AppName}}",
+		"title": "\u6b22\u8fce\u6765\u5230{{CommunityName}}",
 		"directions": {
 			"GetStarted": "\u6211\u4eec\u5e94\u8be5\u628a\u901a\u77e5\u53d1\u9001\u5230\u54ea\u91cc\uff1f",
 			"NoRegister": "\u5982\u679c\u60a8\u6709\u5e10\u6237\uff0c\u8bf7\u767b\u5f55\u3002",

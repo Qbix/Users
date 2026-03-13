@@ -91,7 +91,7 @@
 		"broadcast": "Tangaza"
 	},
 	"login": {
-		"title": "Karibu kwenye {{AppName}}",
+		"title": "Karibu kwenye {{CommunityName}}",
 		"directions": {
 			"GetStarted": "Je, tunapaswa kutuma arifa wapi?",
 			"NoRegister": "Ingia ikiwa una akaunti.",

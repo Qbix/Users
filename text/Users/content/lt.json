@@ -91,7 +91,7 @@
 		"broadcast": "Transliacija"
 	},
 	"login": {
-		"title": "Sveiki atvyk\u0119 \u012f {{AppName}}",
+		"title": "Sveiki atvyk\u0119 \u012f {{CommunityName}}",
 		"directions": {
 			"GetStarted": "Kur tur\u0117tume si\u0173sti prane\u0161imus?",
 			"NoRegister": "Prisijunkite, jei turite paskyr\u0105.",
