@@ -155,41 +155,96 @@ Q.mixin(Users_Vote, Q.require('Base/Users/Vote'));
 
 /**
  * Saves votes by a user
- * @param {String} type the type of item being voted on
- * @param {Array} ids an array of item IDs to vote for
- * @param {Array} weights an array of item IDs to vote for
- * @param {Array} values an array of item IDs to vote for
- * @param {String} asUserId the ID of the user casting the votes
- * @param {Function} callback - can be called after all the votes have been saved
- * @returns {Array|false} Returns the array of vote objects saved, or false if asUserId is not provided
+ * @static
+ * @method vote
+ * @param {String} type The forType column value
+ * @param {Array} ids Array of item IDs (string|number)
+ * @param {Array} [values] Optional array of numeric values aligned with ids (default = 1)
+ * @param {Array} [weights] Optional array of numeric weights aligned with ids (default = 1)
+ * @param {String} asUserId The userId casting the votes
+ * @param {Function} [callback] Called after all votes are saved
+ * @return {Array|false} Returns array of Users_Vote objects saved, or false if asUserId not provided
  */
 Users_Vote.vote = function(
-	type, 
+	type,
 	ids,
-	weights,
 	values,
-	asUserId, 
+	weights,
+	asUserId,
 	callback
 ) {
 	if (!asUserId) {
 		return false;
 	}
 	ids = ids || [];
-	weights = weights || [];
 	values = values || [];
-	const votes = [];
+	weights = weights || [];
+
+	var votes = [];
 	var p = new Q.Pipe(ids, 1, function () {
-		callback && callback(ids);
+		callback && callback(votes);
 	});
-	for (var i=0; i<ids.length; ++i) {
+
+	for (var i = 0; i < ids.length; ++i) {
+		var id = ids[i];
+		if (typeof id !== 'string' && typeof id !== 'number') {
+			continue;
+		}
+
 		var vote = new Users_Vote({
 			userId: asUserId,
 			forType: type,
-			forId: String(ids[i]),
-			value: values[i],
-			weight: weights[i]
+			forId: String(id),
+			value: (i in values) ? values[i] : 1,
+			weight: (i in weights) ? weights[i] : 1
 		});
-		vote.save(true, false, p.fill(ids[i]));
+
+		vote.save(true, false, p.fill(id));
+		votes.push(vote);
+	}
+
+	return votes;
+};
+
+/**
+ * Removes votes previously saved by a user
+ * @static
+ * @method unvote
+ * @param {String} type The forType column value
+ * @param {Array} ids Array of item IDs (string|number)
+ * @param {String} asUserId The userId removing the votes
+ * @param {Function} [callback] Called after all votes are removed
+ * @return {Array|false} Returns array of Users_Vote objects removed, or false if asUserId not provided
+ */
+Users_Vote.unvote = function(
+	type,
+	ids,
+	asUserId,
+	callback
+) {
+	if (!asUserId) {
+		return false;
+	}
+	ids = ids || [];
+
+	var votes = [];
+	var p = new Q.Pipe(ids, 1, function () {
+		callback && callback(votes);
+	});
+
+	for (var i = 0; i < ids.length; ++i) {
+		var id = ids[i];
+		if (typeof id !== 'string' && typeof id !== 'number') {
+			continue;
+		}
+
+		var vote = new Users_Vote({
+			userId: asUserId,
+			forType: type,
+			forId: String(id)
+		});
+
+		vote.remove(p.fill(id));
 		votes.push(vote);
 	}
 

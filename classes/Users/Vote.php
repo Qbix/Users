@@ -219,18 +219,22 @@ class Users_Vote extends Base_Users_Vote
 	/**
 	 * Saves votes by a user
 	 * @static
-	 * @param {array} $ids an array of numbers or strings
-	 * @param {array} $values an array of numbers
-	 * @param {array} $weights an array of numbers
-	 * @return {array|false} Returns the array of Users_Vote objects saved,
+	 * @method vote
+	 * @param {String} type The forType column value
+	 * @param {Array} ids An array of numbers or strings
+	 * @param {Array} [values] An array of numeric values aligned with ids
+	 * @param {Array} [weights] Optional array of weights aligned with ids (default = 1)
+	 * @param {Users_User} [user] Optional user object (defaults to logged-in user)
+	 * @return {Array|false} Returns the array of Users_Vote objects saved,
 	 *   or false if user was not logged in
 	 */
 	static function vote(
-		$type, 
-		array $ids, 
-		array $weights = array(), 
-		array $values = array(), 
-		$user = null)
+		$type,
+		array $ids,
+		array $values = array(),
+		array $weights = array(),
+		$user = null
+	)
 	{
 		if (!$user) {
 			$user = Users::loggedInUser(false, false);
@@ -238,29 +242,49 @@ class Users_Vote extends Base_Users_Vote
 				return false;
 			}
 		}
+
 		$votes = array();
-		foreach ($ids as $id) {
+
+		foreach ($ids as $i => $id) {
 			if (!is_string($id) && !is_numeric($id)) {
 				continue;
 			}
+
+			if (!array_key_exists($i, $values)) {
+				// skip if value is missing (values are required)
+				continue;
+			}
+
 			$vote = new Users_Vote();
 			$vote->userId = $user->id;
 			$vote->forType = $type;
 			$vote->forId = (string)$id;
+
+			$vote->value =  array_key_exists($i, $weights) ? $weights[$i] : 1;
+			$vote->weight = array_key_exists($i, $weights) ? $weights[$i] : 1;
+
 			$vote->save(true);
+			$votes[] = $vote;
 		}
+
 		return $votes;
 	}
 
 	/**
 	 * Removes votes the user previously saved
 	 * @static
-	 * @param {array} $ids an array of numbers or strings,
-	 *   typically derived from some attribute of the stream
-	 * @return {array|false} Returns the array of Users_Vote objects removed,
+	 * @method unvote
+	 * @param {String} type The forType column value
+	 * @param {Array} ids An array of numbers or strings
+	 * @param {Users_User} [user] Optional user object (defaults to logged-in user)
+	 * @return {Array|false} Returns the array of Users_Vote objects removed,
 	 *   or false if user was not logged in
 	 */
-	static function unvote(string $type, array $ids, $user = null)
+	static function unvote(
+		$type,
+		array $ids,
+		$user = null
+	)
 	{
 		if (!$user) {
 			$user = Users::loggedInUser(false, false);
@@ -268,20 +292,28 @@ class Users_Vote extends Base_Users_Vote
 				return false;
 			}
 		}
+
 		$votes = array();
+
 		foreach ($ids as $id) {
 			if (!is_string($id) && !is_numeric($id)) {
 				continue;
 			}
+
 			$vote = new Users_Vote();
 			$vote->userId = $user->id;
 			$vote->forType = $type;
 			$vote->forId = (string)$id;
-			$vote->remove();
+
+			// Only attempt remove if it exists (avoids unnecessary writes)
+			if ($vote->retrieve()) {
+				$vote->remove();
+				$votes[] = $vote;
+			}
 		}
+
 		return $votes;
 	}
-
 
 	/* * * */
 	/**
