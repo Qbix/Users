@@ -250,11 +250,6 @@ class Users_Vote extends Base_Users_Vote
 				continue;
 			}
 
-			if (!array_key_exists($i, $values)) {
-				// skip if value is missing (values are required)
-				continue;
-			}
-
 			$vote = new Users_Vote();
 			$vote->userId = $user->id;
 			$vote->forType = $type;
