@@ -1770,6 +1770,128 @@
 		toChecksumAddress(address) {
 			return ethers.utils.getAddress(address)
 		},
+
+		/**
+		 * Converts a hex value into a decimal string.
+		 *
+		 * Behavior:
+		 * - If digits is undefined, trim trailing zeros
+		 * - If digits is provided, fixed number of fractional digits
+		 *
+		 * @method toDecimal
+		 * @param {String} hex
+		 * @param {Number} [decimals=18]
+		 * @param {Number} [digits] Optional fixed fractional digits
+		 * @return {String|null}
+		 */
+		toDecimal: function (hex, decimals, digits) {
+			decimals = (decimals !== undefined) ? decimals : 18;
+
+			if (!hex) return null;
+
+			try {
+				let value = BigInt(hex);
+				let base = 10n ** BigInt(decimals);
+
+				let integer = value / base;
+				let fraction = value % base;
+
+				if (decimals === 0) {
+					return integer.toString();
+				}
+
+				let fractionStr = fraction.toString().padStart(decimals, '0');
+
+				if (digits !== undefined) {
+					// fixed precision (truncate, not round)
+					fractionStr = fractionStr.slice(0, digits).padEnd(digits, '0');
+					return integer.toString() + '.' + fractionStr;
+				}
+
+				// default: trim trailing zeros
+				fractionStr = fractionStr.replace(/0+$/, '');
+
+				return fractionStr
+					? integer.toString() + '.' + fractionStr
+					: integer.toString();
+			} catch (e) {
+				return null;
+			}
+		},
+
+		/**
+		 * Converts a decimal string into hex.
+		 *
+		 * Behavior:
+		 * - If bits is undefined, no padding, no masking
+		 * - If bits is provided, modulo mask + left-pad to full width
+		 *
+		 * @method toHex
+		 * @param {String|BigInt} input
+		 * @param {Number} [decimals=18]
+		 * @param {Number} [bits] Optional bit width (e.g. 160, 256)
+		 * @return {String|null}
+		 */
+		toHex: function (input, decimals, bits) {
+			decimals = (decimals !== undefined) ? decimals : 18;
+
+			if (input === undefined || input === null) return null;
+
+			try {
+				if (typeof input === 'number') {
+					throw new Error('Unsafe input: use string instead of Number');
+				}
+
+				let value;
+
+				// Fast path for BigInt
+				if (typeof input === 'bigint') {
+					value = input;
+				} else {
+					let str = input.toString().trim();
+					if (!str) return null;
+
+					let negative = false;
+					if (str[0] === '-') {
+						negative = true;
+						str = str.slice(1);
+					}
+
+					let [intPart, fracPart = ''] = str.split('.');
+					intPart = intPart || '0';
+					fracPart = fracPart.padEnd(decimals, '0').slice(0, decimals);
+
+					let base = 10n ** BigInt(decimals);
+
+					value =
+						BigInt(intPart) * base +
+						BigInt(fracPart || '0');
+
+					if (negative) {
+						value = -value;
+					}
+				}
+
+				// Apply modulo only if bits specified
+				if (bits !== undefined) {
+					let mod = 1n << BigInt(bits);
+					value = ((value % mod) + mod) % mod;
+				}
+
+				let hex = value.toString(16);
+
+				// Pad only if bits specified
+				if (bits !== undefined) {
+					let byteLength = Math.ceil(bits / 8);
+					let hexLength = byteLength * 2;
+					hex = hex.padStart(hexLength, '0');
+				}
+
+				return '0x' + hex;
+			} catch (e) {
+				return null;
+			}
+		},
         
         getExplorerLink: function(address, chainId, partPrepend = 'token/') {
 			if (!Q.Users.Web3.chains[chainId]) {
