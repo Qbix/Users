@@ -2552,8 +2552,11 @@ abstract class Users extends Base_Users
 			$o += count($rows3);
 			$rows = array_merge($rows, $rows3);
 		}
-		$result = array_slice(array_keys($rows), 0, $options['limit']);
-		return $result;
+		$userIds = array_slice(array_keys($rows), 0, $options['limit']);
+		$userIds = Q::event('Users/filter/users', array(
+			'from' => 'Users::userIds'
+		), 'after', false, $userIds);
+		return $userIds;
 	}
 
 	/**
