@@ -121,7 +121,7 @@ Users.listen = function (options) {
 
 	// Start internal server
 	var server = Q.listen();
-    server.attached.express.post('/Q/node', Users_request_handler);
+	server.attached.express.post('/Q/node', Users_request_handler);
 };
 
 Users.listen.options = {};
@@ -236,30 +236,29 @@ Users.appInfo = function (platform, appId)
 
 function Users_request_handler(req, res, next) {
 	var parsed = req.body;
-    if (!req.internal || !req.validated
+	if (!req.internal || !req.validated
 	|| !parsed || !parsed['Q/method']) {
 		return next();
 	}
-	var userId = parsed.userId;
+
+	var userId    = parsed.userId;
 	var sessionId = parsed.sessionId;
-	var socketId = parsed.socketId;
-    switch (parsed['Q/method']) {
+	var socketId  = parsed.socketId;
+	var clients, client, cid;
+
+	switch (parsed['Q/method']) {
 		case 'Users/device':
 			break;
 		case "Users/setLoggedInUser":
 			var clientId = parsed.clientId;
-			var userId = parsed.userId;
-			var sessionId = parsed.sessionId;
 			if (!clientId || !userId) {
 				break;
 			}
 			var nsp = Q.Socket.io.of('/Q');
-			var client = nsp.sockets.get(clientId);
+			client = nsp.sockets.get(clientId);
 			if (!client) {
 				break;
 			}
-			client.userId = userId;
-			client.sessionId = sessionId;
 			// remove from previous user mapping
 			for (var uid in Users.clients) {
 				if (Users.clients[uid] && Users.clients[uid][clientId]) {
@@ -275,17 +274,19 @@ function Users_request_handler(req, res, next) {
 			Q.log("Socket upgraded to user " + userId + " (" + clientId + ")");
 			break;
 		case 'Users/logout':
-			if (userId && sessionId) {
-				var clients = Users.clients[userId];
-				for (var cid in clients) {
-					if (clients[cid].sessionId === sessionId) {
-						clients[cid].disconnect();
+			if (userId) {
+				if (sessionId) {
+					clients = Users.clients[userId];
+					for (cid in clients) {
+						if (clients[cid] && clients[cid].sessionId === sessionId) {
+							clients[cid].disconnect();
+						}
 					}
 				}
+				Users.pushNotifications(userId, {
+					badge: 0
+				});
 			}
-			Users.pushNotifications(userId, {
-				badge: 0
-			});
 			break;
 		// case 'Users/session':
 		//             var sid = parsed.sessionId;
@@ -310,94 +311,92 @@ function Users_request_handler(req, res, next) {
 			}
 			break;
 		case 'Users/addEventListener':
-			if (userId && socketId) {
-				var clients = Users.clients[userId];
-				var client = null;
-				for (var cid in clients) {
-					if(!clients[cid].id) continue;
+			if (!userId || !socketId) {
+				break;
+			}
+			clients = Users.clients[userId];
+			client = null;
+			for (cid in clients) {
+				if (!clients[cid] || !clients[cid].id) continue;
+				if (clients[cid].id === socketId) {
+					client = clients[cid];
+					break;
+				}
+			}
+			if (!client) {
+				break;
+			}
+			var eventName = parsed.eventName;
+			var handlerToExecute = parsed.handlerToExecute;
+			var evtData = parsed.data;
+			if (typeof evtData === 'string') {
+				try { evtData = JSON.parse(evtData); } catch(e) { evtData = {}; }
+			}
+			evtData = evtData || {};
+			if (!eventName || !handlerToExecute) {
+				break;
+			}
+			(function(capturedClient, capturedData, capturedHandler) {
+				capturedClient.on(eventName, function() {
+					var headers = {
+						'user-agent': 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.9) Gecko/20071025 Firefox/2.0.0.9',
+						'cookie': capturedClient.handshake.headers.cookie
+					};
+					Q.Utils.queryExternal(capturedHandler, capturedData, null, headers)
+					.catch(function(err) {
+						Q.log('Users/addEventListener queryExternal error: ' + err.message);
+					});
+				});
+			})(client, evtData, handlerToExecute);
+			break;
 
-					if (clients[cid].id === socketId) {
-						client = clients[cid];
+		case 'Users/checkIfOnline':
+			var operatorUserId  = parsed.operatorUserId;
+			var operatorSocketId = parsed.operatorSocketId;
+			if (!userId || !socketId || !operatorUserId || !operatorSocketId) {
+				break;
+			}
+			var checkHandler = parsed.handlerToExecute;
+			if (!checkHandler) {
+				break;
+			}
+			var checkData = parsed.data;
+			if (typeof checkData === 'string') {
+				try { checkData = JSON.parse(checkData); } catch(e) { checkData = {}; }
+			}
+			checkData = checkData || {};
+
+			(function(uid, sid, opUid, opSid, data, handler) {
+				// find the target user's socket
+				var targetClient = null;
+				var targetClients = Users.clients[uid] || {};
+				for (var c in targetClients) {
+					if (targetClients[c] && targetClients[c].id === sid) {
+						targetClient = targetClients[c];
 						break;
 					}
 				}
+				data.userIsOnline = targetClient ? 'true' : 'false';
 
-				if(!client) {
-					return;
-				}
-
-				var eventName = parsed.eventName;
-				var handlerToExecute = parsed.handlerToExecute;
-				var data = parsed.data;
-				if(!eventName || !handlerToExecute) {
-					return
-				}
-
-				client.on(eventName, function(){
-					var headers = {
-						'user-agent':'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.9) Gecko/20071025 Firefox/2.0.0.9',
-						'cookie':client.handshake.headers.cookie
-					};
-					Q.Utils.queryExternal(handlerToExecute, data, null, headers, function(err, response) {
-					});
-				});
-			}
-			break;
-		
-		case 'Users/checkIfOnline':
-
-			var operatorUserId = parsed.operatorUserId;
-			var operatorSocketId = parsed.operatorSocketId;
-			if (userId && socketId && operatorUserId && operatorSocketId) {			
-				function getClientIfOnline() {
-					var clients = Users.clients[userId];
-
-					for (var cid in clients) {
-						if (!clients[cid].id) continue;
-						if (clients[cid].id === socketId) {
-							return clients[cid];
-						}
+				// find the operator's socket for cookie forwarding
+				var opClient = null;
+				var opClients = Users.clients[opUid] || {};
+				for (var oc in opClients) {
+					if (opClients[oc] && opClients[oc].id === opSid) {
+						opClient = opClients[oc];
+						break;
 					}
-					return null;
 				}
+				var headers = opClient ? {
+					'user-agent': 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.9) Gecko/20071025 Firefox/2.0.0.9',
+					'cookie': opClient.handshake.headers.cookie
+				} : {};
 
-				function getOperatorClient() {
-					var clients = Users.clients[operatorUserId];
-
-					for (var cid in clients) {
-						if (!clients[cid].id) continue;
-
-						if (clients[cid].id === operatorSocketId) {
-							return clients[cid];
-						}
-					}
-					return null;
-				}
-
-				var eventName = parsed.eventName;
-				var handlerToExecute = parsed.handlerToExecute;
-				var data = parsed.data;
-
-				if(!handlerToExecute) {
-					return
-				}
-
-				var client = getClientIfOnline();
-				data.userIsOnline = client != null ? 'true' : 'false';
-
-				var operatorClient = getOperatorClient();
-				var headers = {};
-				if (operatorClient) {
-					headers = {
-						'user-agent':'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.9) Gecko/20071025 Firefox/2.0.0.9',
-						'cookie':operatorClient.handshake.headers.cookie
-					};
-				}
-
-				Q.Utils.queryExternal(handlerToExecute, data, null, headers, function(err, response) {
+				Q.Utils.queryExternal(handler, data, null, headers)
+				.catch(function(err) {
+					Q.log('Users/checkIfOnline queryExternal error: ' + err.message);
 				});
-				
-			}
+			})(userId, socketId, operatorUserId, operatorSocketId, checkData, checkHandler);
 			break;
 		case "Users/emitToUser":
 			Users.Socket.emitToUser(parsed.userId, parsed.event, parsed.data);
@@ -438,16 +437,19 @@ Users.Socket = {
 	 */
 	listen: function (options) {
 		var socket = Q.Socket.listen(options);
+
 		if (!socket) {
 			console.warn("Users.listen: socket missing");
+			return null;
 		}
+
 		socket.io.of('/Q').use(function (client, next) {
 			// NOTE: the Q.Socket middleware already ran, and set
 			// client.capability to the capability object.
 			// Since the capability was successfully verified,
 			// the userId must have been generated by the PHP server,
 			// so we trust it.
-			var userId = client.capability.userId;
+			var userId = client.capability && client.capability.userId;
 			if (!userId) {
 				return next(); // user is not logged in
 			}
@@ -486,7 +488,7 @@ Users.Socket = {
 			}
 			client.alreadyListening = true;
 			client.on('Users/clients', function (callback) {
-				var userId = client.capability.userId;
+				var userId = client.capability && client.capability.userId;
 				if (!userId) {
 					callback(null);
 				}
