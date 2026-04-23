@@ -283,6 +283,30 @@ class Users_Label extends Base_Users_Label
 	}
 
 	/**
+	 * Check whether a user holds one or more labels relative to a publisher.
+	 * Thin convenience wrapper over Users::roles for the common yes/no case.
+	 * @method hasLabel
+	 * @static
+	 * @param {string|array|Db_Expression} $label
+	 *   The label (or labels) to check for. Accepts the same forms as the
+	 *   $filter argument of Users::roles, so an array means "holds any of these".
+	 * @param {string|null} [$userId=null]
+	 *   The user whose label is being checked. Defaults to the logged-in user.
+	 * @param {string|null} [$publisherId=null]
+	 *   The publisher relative to whom to check. Defaults to Users::currentCommunityId().
+	 * @return {boolean} True if the user holds at least one matching label.
+	 */
+	static function hasLabel($label, $userId = null, $publisherId = null)
+	{
+		if (!isset($userId)) {
+			$user = Users::loggedInUser(true);
+			$userId = $user->id;
+		}
+		$roles = Users::roles($publisherId, $label, array(), $userId);
+		return !empty($roles);
+	}
+
+	/**
 	 * Whether $label_1 can grant $label_2
 	 * @method canGrantLabel
 	 * @param {string} $label_1 - Label doing the granting
