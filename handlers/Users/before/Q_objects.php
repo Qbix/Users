@@ -28,19 +28,24 @@ function Users_before_Q_objects(&$params)
 		Q_Text::setLanguage($user->preferredLanguage);
 	}
 
-	if ($sigField = Q_Config::get('Users', 'signatures', 'sigField', null)
-	and !empty($_SESSION['Users']['publicKey'])) {
+	$sigField = Q_Config::get('Users', 'signatures', 'sigField', null);
+	$nonceField = Q_Config::get('Users', 'signatures', 'nonceField', null);
+
+	if ($sigField && !empty($_SESSION['Users']['publicKey'])) {
+		$sigField = str_replace('.', '_', $sigField);
 		$rl = Q_Config::get('Users', 'requireLogin', array());
+		$duri = Q_Dispatcher::uri();
+
 		foreach ($rl as $k => $v) {
 			$uri = Q_Uri::from($k);
-			$duri = Q_Dispatcher::uri();
-			if (($uri->module != '*' and $uri->module = $duri->module)
-			or ($uri->action != '*' and $uri->action = $duri->action)) {
+
+			// Skip rules that don't match the current request
+			if (($uri->module != '*' && $uri->module != $duri->module)
+			|| ($uri->action != '*' && $uri->action != $duri->action)) {
 				continue;
 			}
 
-			$sigField = str_replace('.', '_', $sigField);
-			$nonceField = Q_Config::get('Users', 'signatures', 'nonceField', null);
+			// Nonce check
 			if ($nonceField) {
 				Q_Valid::requireFields(array($nonceField), $_POST, true);
 				$nonce = $_POST[$nonceField];
@@ -52,28 +57,24 @@ function Users_before_Q_objects(&$params)
 					));
 				}
 				$_SESSION['Users']['nonce'] = $nonce;
-				// session will probably be saved, unless transaction is rolled back
 			}
 
-			// validate the signature on the request
+			// Validate the signature. Keep signature embedded in $payload[$sigField]
+			// so Users::verify can find it; pass true for lookInSession.
 			$payload = $_POST;
-			$signature = Q::ifset($payload, $sigField, null);
-			if (empty($signature)) {
+			if (empty($payload[$sigField])) {
 				throw new Users_Exception_MissingSignature();
 			}
-			if (is_array($signature)) {
-				if (!empty($signature['fieldNames'])) {
-					$nf = Q_Config::get('Users', 'signatures', 'nonceField', null);
-					if (!in_array($nf, $signature['fieldNames'])) {
-						$signature['fieldNames'][] = $nf;
-					}
-					$payload = Q::take($payload, $signature['fieldNames']);
-				}
-				Q_Valid::requireFields(array('signature'), $signature, true);
-				$signature = $signature['signature'];
+			// Ensure the nonce field is covered by the signature's fieldNames
+			if ($nonceField
+			&& isset($payload[$sigField]['fieldNames'])
+			&& is_array($payload[$sigField]['fieldNames'])
+			&& !in_array($nonceField, $payload[$sigField]['fieldNames'])) {
+				$payload[$sigField]['fieldNames'][] = $nonceField;
 			}
+
 			try {
-				if (Users::verify($payload, $signature, true) === false) {
+				if (Users::verify($payload, true) === false) {
 					throw new Users_Exception_NotAuthorized();
 				}
 			} catch (Q_Exception_MissingPHPVersion $e) {
@@ -81,7 +82,7 @@ function Users_before_Q_objects(&$params)
 				// so we can silently exit, or write to the log
 				// SECURITY: inform the admins to update their PHP
 			}
-			break; // we already checked, once is enough
+			break; // matched a rule and verified; done
 		}
 	}
 

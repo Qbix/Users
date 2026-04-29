@@ -530,6 +530,10 @@ html.Users_loggedIn .Users_whenLoggedOut {
 	height: var(--dashboard-mobile-height);
 }
 
+.Q_mobile .Q_contextual .Users_status_tool .Users_status_login::before {
+	display: none;
+}
+
 .Q_mobile .Users_status_tool .Users_avatar_tool img {
 	display: inline-block;
 }
