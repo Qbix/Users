@@ -26,21 +26,19 @@ function Users_before_Q_Utils_canWriteToPath($params, &$result)
 	$matches = array();
 	if (preg_match("#files/$app/uploads/Users/(.*)/icon#", $path, $matches)
 	and !empty($matches[1])) {
-		if ($userIdForIcon = Q_Utils::joinId($matches[1], '/')
-		and $userIdForIcon !== $user->id) {
+		$userIdForIcon = Q_Utils::joinId($matches[1], '/');
+		if ($userIdForIcon and $userIdForIcon !== $user->id) {
+			$labels = array_merge(
+				Q_Config::get("Users", "icon", "canManage", array()),
+				Q_Config::get("Users", "icon", "canSetInitialCustom", array())
+			);
 			// check labels which can manage the user's icon
-			if ($labels = Q_Config::get("Users", "icon", "canManage", array())
-			and Users_Contact::fetch($userIdForIcon, $labels, array(
+			if (!empty($labels) and Users_Contact::fetch($userIdForIcon, $labels, array(
 				'contactUserId' => $user->id,
 				'skipAccess' => true
 			))) {
 				$usersCanHandle[] = $userIdForIcon;
-			} else if ($labels = Q_Config::get("Users", "icon", "canSetInitialCustom", array())
-			and Users_Contact::fetch($userIdForIcon, $labels, array(
-				'contactUserId' => $user->id,
-				'skipAccess' => true
-			))) {
-				$usersCanHandle[] = $userIdForIcon;
+				Users::$cache['user'] = $userIdForIcon;
 			}
 		}
 	} else if (preg_match("#files/$app/uploads/Users/(.*)/labels/(.*)/#", $path, $matches)
@@ -50,6 +48,7 @@ function Users_before_Q_Utils_canWriteToPath($params, &$result)
 		and $userIdForIcon !== $user->id
 		and Users::canManageLabels($user->id, $userIdForIcon, $label)) {
 			$usersCanHandle[] = $userIdForIcon;
+			Users::$cache['user'] = $userIdForIcon;
 		}
 	}
 
