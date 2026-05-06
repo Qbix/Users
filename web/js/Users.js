@@ -555,6 +555,7 @@
 	 */
 	Users.signature = function (payload, callback, options) {
 		if (!crypto || !crypto.subtle) {
+			Q.handle(callback, null, ["Users.signature: insecure context, crypto.subtle unavailable"]);
 			return false;
 		}
 		var fieldNames = options && options.fieldNames;
