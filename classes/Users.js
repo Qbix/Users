@@ -108,8 +108,20 @@ Users.communitySuffix = function() {
 // };
 
 /**
- * Start internal listener for Users plugin and open socket<br/>
- * Accepts "Users/session" message
+ * Start internal listener for Users plugin and open socket.
+ *
+ * Registers Q/method handlers via the framework's server.addMethod() API.
+ * The framework's IPC dispatcher (Q.listen) owns /Q/node, routes by
+ * Q/method, and gates on req.internal + req.validated before invoking
+ * any handler here — so handlers don't need to re-check those.
+ *
+ * Handler signature: function (parsed, req, res, ctx)
+ *   - `parsed` is req.body (the signed internal payload)
+ *   - `req`, `res` are the Express request/response (rarely needed)
+ *   - `ctx` carries IPC metadata (jobId, done) when the caller used
+ *     Q_Utils::sendToNode with 'job'=>true + 'webhook'=>...
+ *   Most handlers only need `parsed`.
+ *
  * @method listen
  * @param {Object} [options={}]
  * @param {Object} [options.apn.provider={}] Additional options for node-apn Provider
@@ -121,7 +133,183 @@ Users.listen = function (options) {
 
 	// Start internal server
 	var server = Q.listen();
-	server.attached.express.post('/Q/node', Users_request_handler);
+
+	// Users/device — no-op placeholder (matches legacy behavior: empty case).
+	server.addMethod('Users/device', function () {});
+
+	// Users/setLoggedInUser — attach a socket.io client to a newly authenticated user.
+	server.addMethod('Users/setLoggedInUser', function (parsed) {
+		var userId = parsed.userId;
+		var sessionId = parsed.sessionId;
+		var clientId = parsed.clientId;
+		if (!clientId || !userId) {
+			return;
+		}
+		var nsp = Q.Socket.io.of('/Q');
+		var client = nsp.sockets.get(clientId);
+		if (!client) {
+			return;
+		}
+		// remove from previous user mapping
+		for (var uid in Users.clients) {
+			if (Users.clients[uid] && Users.clients[uid][clientId]) {
+				delete Users.clients[uid][clientId];
+			}
+		}
+		client.userId = userId;
+		client.sessionId = sessionId;
+		if (!Users.clients[userId]) {
+			Users.clients[userId] = {};
+		}
+		Users.clients[userId][clientId] = client;
+		Q.log("Socket upgraded to user " + userId + " (" + clientId + ")");
+	});
+
+	// Users/logout — disconnect sockets for a session and clear push badge.
+	server.addMethod('Users/logout', function (parsed) {
+		var userId = parsed.userId;
+		var sessionId = parsed.sessionId;
+		if (!userId) {
+			return;
+		}
+		if (sessionId) {
+			var clients = Users.clients[userId];
+			for (var cid in clients) {
+				if (clients[cid] && clients[cid].sessionId === sessionId) {
+					clients[cid].disconnect();
+				}
+			}
+		}
+		Users.pushNotifications(userId, {
+			badge: 0
+		});
+	});
+
+	// Users/sendMessage — send a view-rendered message via email/SMS.
+	//
+	// NOTE: the legacy handler references an undeclared function `_send`.
+	// This is preserved verbatim from the original switch case — if the
+	// code path is ever exercised it will throw ReferenceError, exactly as
+	// before. Define `_send` in scope if you want this to actually work.
+	server.addMethod('Users/sendMessage', function (parsed) {
+		if (parsed.delay) {
+			setTimeout(_send, parsed.delay);
+		} else {
+			_send();
+		}
+	});
+
+	// Users/addEventListener — attach an external callback to a socket event.
+	server.addMethod('Users/addEventListener', function (parsed) {
+		var userId = parsed.userId;
+		var socketId = parsed.socketId;
+		if (!userId || !socketId) {
+			return;
+		}
+		var clients = Users.clients[userId];
+		var client = null;
+		for (var cid in clients) {
+			if (!clients[cid] || !clients[cid].id) continue;
+			if (clients[cid].id === socketId) {
+				client = clients[cid];
+				break;
+			}
+		}
+		if (!client) {
+			return;
+		}
+		var eventName = parsed.eventName;
+		var handlerToExecute = parsed.handlerToExecute;
+		if (!eventName || !handlerToExecute) {
+			return;
+		}
+		var evtData = parsed.data;
+		if (typeof evtData === 'string') {
+			try { evtData = JSON.parse(evtData); } catch(e) { evtData = {}; }
+		}
+		evtData = evtData || {};
+
+		(function(capturedClient, capturedData, capturedHandler) {
+			capturedClient.on(eventName, function() {
+				var headers = {
+					'user-agent': 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.9) Gecko/20071025 Firefox/2.0.0.9',
+					'cookie': capturedClient.handshake.headers.cookie
+				};
+				Q.Utils.queryExternal(capturedHandler, capturedData, null, headers)
+				.catch(function(err) {
+					Q.log('Users/addEventListener queryExternal error: ' + err.message);
+				});
+			});
+		})(client, evtData, handlerToExecute);
+	});
+
+	// Users/checkIfOnline — report whether a target user's socket is connected,
+	// fanning the result back through the operator's session cookie.
+	server.addMethod('Users/checkIfOnline', function (parsed) {
+		var userId = parsed.userId;
+		var socketId = parsed.socketId;
+		var operatorUserId = parsed.operatorUserId;
+		var operatorSocketId = parsed.operatorSocketId;
+		if (!userId || !socketId || !operatorUserId || !operatorSocketId) {
+			return;
+		}
+		var checkHandler = parsed.handlerToExecute;
+		if (!checkHandler) {
+			return;
+		}
+		var checkData = parsed.data;
+		if (typeof checkData === 'string') {
+			try { checkData = JSON.parse(checkData); } catch(e) { checkData = {}; }
+		}
+		checkData = checkData || {};
+
+		(function(uid, sid, opUid, opSid, data, handler) {
+			// find the target user's socket
+			var targetClient = null;
+			var targetClients = Users.clients[uid] || {};
+			for (var c in targetClients) {
+				if (targetClients[c] && targetClients[c].id === sid) {
+					targetClient = targetClients[c];
+					break;
+				}
+			}
+			data.userIsOnline = targetClient ? 'true' : 'false';
+
+			// find the operator's socket for cookie forwarding
+			var opClient = null;
+			var opClients = Users.clients[opUid] || {};
+			for (var oc in opClients) {
+				if (opClients[oc] && opClients[oc].id === opSid) {
+					opClient = opClients[oc];
+					break;
+				}
+			}
+			var headers = opClient ? {
+				'user-agent': 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.9) Gecko/20071025 Firefox/2.0.0.9',
+				'cookie': opClient.handshake.headers.cookie
+			} : {};
+
+			Q.Utils.queryExternal(handler, data, null, headers)
+			.catch(function(err) {
+				Q.log('Users/checkIfOnline queryExternal error: ' + err.message);
+			});
+		})(userId, socketId, operatorUserId, operatorSocketId, checkData, checkHandler);
+	});
+
+	// Users/emitToUser — fan out a socket.io event to all of a user's clients.
+	server.addMethod('Users/emitToUser', function (parsed) {
+		Users.Socket.emitToUser(parsed.userId, parsed.event, parsed.data);
+	});
+
+	// Users/intentComplete — notify a user's clients that an intent finished.
+	server.addMethod('Users/intentComplete', function (parsed) {
+		if (parsed.userId) {
+			Users.Socket.emitToUser(parsed.userId, 'Users/intentComplete', {
+				token: parsed.token,
+				sessionId: parsed.sessionId
+			});
+		}
+	});
 };
 
 Users.listen.options = {};
@@ -233,187 +421,6 @@ Users.appInfo = function (platform, appId)
 		appInfo: appInfo
 	};
 };
-
-function Users_request_handler(req, res, next) {
-	var parsed = req.body;
-	if (!req.internal || !req.validated
-	|| !parsed || !parsed['Q/method']) {
-		return next();
-	}
-
-	var userId    = parsed.userId;
-	var sessionId = parsed.sessionId;
-	var socketId  = parsed.socketId;
-	var clients, client, cid;
-
-	switch (parsed['Q/method']) {
-		case 'Users/device':
-			break;
-		case "Users/setLoggedInUser":
-			var clientId = parsed.clientId;
-			if (!clientId || !userId) {
-				break;
-			}
-			var nsp = Q.Socket.io.of('/Q');
-			client = nsp.sockets.get(clientId);
-			if (!client) {
-				break;
-			}
-			// remove from previous user mapping
-			for (var uid in Users.clients) {
-				if (Users.clients[uid] && Users.clients[uid][clientId]) {
-					delete Users.clients[uid][clientId];
-				}
-			}
-			client.userId = userId;
-			client.sessionId = sessionId;
-			if (!Users.clients[userId]) {
-				Users.clients[userId] = {};
-			}
-			Users.clients[userId][clientId] = client;
-			Q.log("Socket upgraded to user " + userId + " (" + clientId + ")");
-			break;
-		case 'Users/logout':
-			if (userId) {
-				if (sessionId) {
-					clients = Users.clients[userId];
-					for (cid in clients) {
-						if (clients[cid] && clients[cid].sessionId === sessionId) {
-							clients[cid].disconnect();
-						}
-					}
-				}
-				Users.pushNotifications(userId, {
-					badge: 0
-				});
-			}
-			break;
-		// case 'Users/session':
-		//             var sid = parsed.sessionId;
-		//             var content = parsed.content ? JSON.parse(parsed.content) : null;
-		// 	if (content !== null) {
-		// 		console.log((Users.sessions[sid] ? "Update" : "New") + " session from PHP: " + sid);
-		// 		Users.sessions[sid] = content;
-		// 	} else {
-		// 		delete Users.sessions[sid];
-		// 		console.log("Deleted session from PHP: " + sid);
-		// 	}
-		// 	break;
-		case 'Users/sendMessage':
-			/*
-			 * Required: view, emailAddress or mobile number
-			 * Optional: delay, subject, fields, options
-			 */
-			if (parsed.delay) {
-				setTimeout(_send, parsed.delay);
-			} else {
-				_send();
-			}
-			break;
-		case 'Users/addEventListener':
-			if (!userId || !socketId) {
-				break;
-			}
-			clients = Users.clients[userId];
-			client = null;
-			for (cid in clients) {
-				if (!clients[cid] || !clients[cid].id) continue;
-				if (clients[cid].id === socketId) {
-					client = clients[cid];
-					break;
-				}
-			}
-			if (!client) {
-				break;
-			}
-			var eventName = parsed.eventName;
-			var handlerToExecute = parsed.handlerToExecute;
-			var evtData = parsed.data;
-			if (typeof evtData === 'string') {
-				try { evtData = JSON.parse(evtData); } catch(e) { evtData = {}; }
-			}
-			evtData = evtData || {};
-			if (!eventName || !handlerToExecute) {
-				break;
-			}
-			(function(capturedClient, capturedData, capturedHandler) {
-				capturedClient.on(eventName, function() {
-					var headers = {
-						'user-agent': 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.9) Gecko/20071025 Firefox/2.0.0.9',
-						'cookie': capturedClient.handshake.headers.cookie
-					};
-					Q.Utils.queryExternal(capturedHandler, capturedData, null, headers)
-					.catch(function(err) {
-						Q.log('Users/addEventListener queryExternal error: ' + err.message);
-					});
-				});
-			})(client, evtData, handlerToExecute);
-			break;
-
-		case 'Users/checkIfOnline':
-			var operatorUserId  = parsed.operatorUserId;
-			var operatorSocketId = parsed.operatorSocketId;
-			if (!userId || !socketId || !operatorUserId || !operatorSocketId) {
-				break;
-			}
-			var checkHandler = parsed.handlerToExecute;
-			if (!checkHandler) {
-				break;
-			}
-			var checkData = parsed.data;
-			if (typeof checkData === 'string') {
-				try { checkData = JSON.parse(checkData); } catch(e) { checkData = {}; }
-			}
-			checkData = checkData || {};
-
-			(function(uid, sid, opUid, opSid, data, handler) {
-				// find the target user's socket
-				var targetClient = null;
-				var targetClients = Users.clients[uid] || {};
-				for (var c in targetClients) {
-					if (targetClients[c] && targetClients[c].id === sid) {
-						targetClient = targetClients[c];
-						break;
-					}
-				}
-				data.userIsOnline = targetClient ? 'true' : 'false';
-
-				// find the operator's socket for cookie forwarding
-				var opClient = null;
-				var opClients = Users.clients[opUid] || {};
-				for (var oc in opClients) {
-					if (opClients[oc] && opClients[oc].id === opSid) {
-						opClient = opClients[oc];
-						break;
-					}
-				}
-				var headers = opClient ? {
-					'user-agent': 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.9) Gecko/20071025 Firefox/2.0.0.9',
-					'cookie': opClient.handshake.headers.cookie
-				} : {};
-
-				Q.Utils.queryExternal(handler, data, null, headers)
-				.catch(function(err) {
-					Q.log('Users/checkIfOnline queryExternal error: ' + err.message);
-				});
-			})(userId, socketId, operatorUserId, operatorSocketId, checkData, checkHandler);
-			break;
-		case "Users/emitToUser":
-			Users.Socket.emitToUser(parsed.userId, parsed.event, parsed.data);
-			break;
-		case "Users/intentComplete":
-			if (parsed.userId) {
-				Users.Socket.emitToUser(parsed.userId, 'Users/intentComplete', {
-					token: parsed.token,
-					sessionId: parsed.sessionId
-				});
-			}
-			break;
-		default:
-			break;
-	}
-	return next();
-}
 
 var timeouts = {};
 
