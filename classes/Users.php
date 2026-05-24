@@ -239,110 +239,6 @@ abstract class Users extends Base_Users
 	}
 
 	/**
-	 * @method oAuth
-	 * @static
-	 * @param {string} $platform The name of the oAuth platform, under Users/apps config
-	 * @param {string} [$appId=Q::app()] Only needed if you have multiple apps on platform
-	 * @return {Zend_Oauth_Client}
-	 * @throws {Users_Exception_NotLoggedIn} If user is not logged in
-	 */
-	static function oAuth($platform, $appId = null)
-	{
-		return null;
-		// TODO: REFACTOR TO USE oAuth 2
-		/*
-		$nativeuser = self::loggedInUser();
-
-		if(!$nativeuser)
-			throw new Users_Exception_NotLoggedIn();
-
-		if (!isset($appId)) {
-			$appId = Q::app();
-		}
-
-		#Set up oauth options
-		$oauthOptions = Q_Config::expect('Users', 'apps', $platform, $appId, 'oauth');
-		$customOptions = Q_Config::get('Users', 'apps', $platform, $appId, 'options', null);
-
-		#If the user already has a token in our DB:
-		$externalFrom = new Users_ExternalFrom();
-		$externalFrom->userId = $nativeuser->id;
-		$externalFrom->platform = $platform;
-		$externalFrom->appId = $appId;
-
-		if($externalFrom->retrieve())
-		{
-				$zt = new Zend_Oauth_Token_Access();
-				$zt->setToken($externalFrom->access_token);
-				$zt->setTokenSecret($externalFrom->session_secret);
-
-				return $zt->getHttpClient($oauthOptions);
-		}
-
-		#Otherwise, obtain a token from platform:
-		$consumer = new Zend_Oauth_Consumer($oauthOptions);
-
-		if(isset($_GET['oauth_token']) && isset($_SESSION[$platform.'_request_token'])) //it's a redirect back from google
-		{
-			$token = $consumer->getAccessToken($_GET, unserialize($_SESSION[$platform.'_request_token']));
-
-			$_SESSION[$platform.'_access_token'] = serialize($token);
-			$_SESSION[$platform.'_request_token'] = null;
-
-			#Save tokens to database
-			$externalFrom->accessToken = $token->getToken();
-			$externalFrom->setExtra('secret') = $token->getTokenSecret();
-			$externalFrom->save();
-
-			return $token->getHttpClient($oauthOptions);
-		}
-		else //it's initial pop-up load
-		{
-			$token = $consumer->getRequestToken($customOptions);
-
-			$_SESSION[$platform.'_request_token'] = serialize($token);
-
-			$consumer->redirect();
-
-			return null;
-		}
-		*/
-
-	}
-
-	/**
-	 * @method oAuthClear
-	 * @static
-	 * @param {string} $platform The name of the oAuth platform, under Users/apps config
-	 * @param {string} [$appId=Q::app()] Only needed if you have multiple apps on platform
-	 * @throws {Users_Exception_NotLoggedIn} If user is not logged in
-	 */
-	static function oAuthClear($platform, $appId = null)
-	{
-		return;
-		// TODO: REFACTOR THIS
-		/*
-		$nativeuser = self::loggedInUser();
-
-		if(!$nativeuser)
-			throw new Users_Exception_NotLoggedIn();
-		
-		if (!isset($appId)) {
-			$app = Q::app();
-			list($appId, $appInfo) = Users::appInfo($platform, $appId);
-			$appId = Q_Config::expect('Users', 'apps', $platform, $app, 'appId');
-		}
-
-		$externalFrom = new Users_ExternalFrom();
-		$externalFrom->userId = $nativeuser->id;
-		$externalFrom->platform = $platform;
-		$externalFrom->appId = $appId;
-		$externalFrom->retrieve();
-		$externalFrom->remove();
-		*/
-	}
-
-	/**
 	 * Retrieves the currently logged-in user from the session.
 	 * If the user was not originally retrieved from the database,
 	 * inserts a new one.
@@ -1752,10 +1648,15 @@ abstract class Users extends Base_Users
 			}
 		}
 		if ($largestSource) {
-			if (Q_Valid::url($largestSource)) {
-				$data = Q_Utils::get($largestSource, null, true, $o);
-			} else {
-				$data = file_get_contents($largestSource);
+			$data = null;
+			try {
+				if (Q_Valid::url($largestSource)) {
+					$data = Q_Utils::get($largestSource, null, true, $o);
+				} else {
+					$data = file_get_contents($largestSource);
+				}
+			} catch (Exception $e) {
+				
 			}
 			if (pathinfo($source, PATHINFO_EXTENSION) == 'ico') {
 				require_once USERS_PLUGIN_DIR.DS.'vendor'.DS.'autoload.php';
