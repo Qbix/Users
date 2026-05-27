@@ -270,7 +270,7 @@
     padding: 20px;
 }
 
-.Users_avatar_icon, .Users_avatar_name
+.Users_avatar_icon, .Users_avatar_name:not(.Q_editing)
 {
 	display: inline-block;
 	vertical-align: middle;
