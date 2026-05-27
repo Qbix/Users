@@ -270,11 +270,15 @@
     padding: 20px;
 }
 
-.Users_avatar_icon, .Users_avatar_name:not(.Q_editing)
+.Users_avatar_icon, .Users_avatar_name
 {
 	display: inline-block;
 	vertical-align: middle;
 	overflow: hidden;
+}
+
+.Users_avatar_name.Q_editing {
+	overflow: visible;
 }
 
 #Users_login_step2 td {
