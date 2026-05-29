@@ -6,21 +6,20 @@ function Users_before_Q_objects(&$params)
 
 	// We sometimes pass this in the request, for browsers like Safari
 	// that don't allow setting of cookies using javascript inside 3rd party iframes
-	
 	if ($authPayload = Q_Request::special('Users.authPayload.facebook', null)) {
 		$appId = Q::ifset($authPayload, 'appId', $app);
 		Users_ExternalFrom_Facebook::authenticate($appId);
 	}
 
-	$uri = Q_Dispatcher::uri();
+	$duri = Q_Dispatcher::uri();
 	$actions = array('activate' => true);
-	if ($uri->module === 'Users' and isset($actions[$uri->action])) {
-		Q::event("Users/{$uri->action}/objects");
+	if ($duri->module === 'Users' && isset($actions[$duri->action])) {
+		Q::event("Users/{$duri->action}/objects");
 	}
-	
+
 	// Fire an event for hooking into, if necessary
 	Q::event('Users/objects', array(), 'after');
-	
+
 	if ($user = Users::loggedInUser(false, false)
 	and $user->preferredLanguage
 	and Q_Config::get('Users', 'login', 'setLanguage', true)
@@ -28,20 +27,20 @@ function Users_before_Q_objects(&$params)
 		Q_Text::setLanguage($user->preferredLanguage);
 	}
 
+	// Signature verification for required-login endpoints
 	$sigField = Q_Config::get('Users', 'signatures', 'sigField', null);
 	$nonceField = Q_Config::get('Users', 'signatures', 'nonceField', null);
 
 	if ($sigField && !empty($_SESSION['Users']['publicKey'])) {
 		$sigField = str_replace('.', '_', $sigField);
 		$rl = Q_Config::get('Users', 'requireLogin', array());
-		$duri = Q_Dispatcher::uri();
 
 		foreach ($rl as $k => $v) {
-			$uri = Q_Uri::from($k);
+			$ruri = Q_Uri::from($k);
 
 			// Skip rules that don't match the current request
-			if (($uri->module != '*' && $uri->module != $duri->module)
-			|| ($uri->action != '*' && $uri->action != $duri->action)) {
+			if (($ruri->module != '*' && $ruri->module != $duri->module)
+			|| ($ruri->action != '*' && $ruri->action != $duri->action)) {
 				continue;
 			}
 
@@ -57,6 +56,7 @@ function Users_before_Q_objects(&$params)
 					));
 				}
 				$_SESSION['Users']['nonce'] = $nonce;
+				// session will probably be saved, unless transaction is rolled back
 			}
 
 			// Validate the signature. Keep signature embedded in $payload[$sigField]
@@ -65,7 +65,7 @@ function Users_before_Q_objects(&$params)
 			if (empty($payload[$sigField])) {
 				throw new Users_Exception_MissingSignature();
 			}
-			// Ensure the nonce field is covered by the signature's fieldNames
+			// Ensure nonceField is covered by the signature's fieldNames
 			if ($nonceField
 			&& isset($payload[$sigField]['fieldNames'])
 			&& is_array($payload[$sigField]['fieldNames'])
@@ -128,9 +128,12 @@ function Users_before_Q_objects(&$params)
 		if (!$intent->isValid()) {
 			throw new Q_Exception_Expired();
 		}
+		// SECURITY DECISION: evenIfCompleted=true allows replay of leaked
+		// intent tokens. Remove unless a specific flow requires re-acceptance,
+		// in which case bind to session/origin to prevent replay from elsewhere.
 		$intent->accept(array(
 			'evenIfCompleted' => true
-		)); // authenticates this session, and logs user in
+		));
 		Q_Response::setScriptData('Q.plugins.Users.intent', $intent->exportArray());
 	}
 }

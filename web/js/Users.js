@@ -1301,11 +1301,20 @@
 					if (key) return; // key already exists
 
 					// Always set up listener, even if not currently requesting
+					// Read the expected parent origin stamped by embed.php into a meta tag
+					// (or window.Q.info). On Qbix's own domain this can be omitted; for
+					// third-party embeds, the server registers the host's origin and stamps
+					// it here so the listener can validate.
+					var expectedParentOrigin = Q.getObject('Q.info.expectedParentOrigin') || null;
+
 					window.addEventListener('message', function (ev) {
+						// For third-party embed contexts, require origin to match the allowlist
+						if (expectedParentOrigin && ev.origin !== expectedParentOrigin) {
+							Q.warn('Users: rejected postMessage from unexpected origin: ' + ev.origin);
+							return;
+						}
 						var data = ev.data || {};
 						if (!data.type) return;
-
-						// Accept from any origin; recovery key is non-extractable
 						if (data.type === 'Q.Users.recoveryKey.recover') {
 							Q.log('Users: received recoveryKey.recover from parent');
 							try {
