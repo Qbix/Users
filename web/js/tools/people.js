@@ -9,6 +9,12 @@
  * @class Users/people
  * @constructor
  * @param {Object} options Override various options for this tool
+ * @param {Object} [options.limit=100]
+ * @param {Boolean} [options.avatar.short=true]
+ * @param {Number|String} [options.avatar.icon='50']
+ * @param {Object} [options.avatar.filter]
+ * @param {Array} [options.avatar.filter.labels]
+ * @param {Q.Event} [options.onChoose]
  */
 Q.Tool.define("Users/people", function (options) {
     var tool = this;
@@ -22,6 +28,9 @@ Q.Tool.define("Users/people", function (options) {
     avatar: {
         short: true,
         icon: '50'
+    },
+    filter: {
+
     },
     onChoose: new Q.Event()
 },
