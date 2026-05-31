@@ -205,12 +205,12 @@ class Users_Contact extends Base_Users_Contact
 	}
 
 	/**
-	 * Retrieve array of contacts of userId under a label.
+	 * Retrieve array of contacts of userId under various labels.
 	 * Now supports externalLabels of the form "<<< {{platform}}_{{appId}}/{{suffix}}"
 	 * @method fetch
 	 * @static
 	 * @param {string} $userId The user whose contacts to fetch
-	 * @param {string|array|Db_Range|Db_Expression} $label Optionally filter contacts by label
+	 * @param {string|array|Db_Range|Db_Expression} $labels Optionally filter contacts by label
 	 * @param {array} [$options=array()]
 	 * @param {integer} [$options.limit=false]
 	 * @param {integer} [$options.offset=0] 
@@ -219,18 +219,26 @@ class Users_Contact extends Base_Users_Contact
 	 * @param {string|array} [$options.contactUserId=null] Optionally filter by contactUserId
 	 * @return {array} array of Users_Contact rows
 	 */
-	static function fetch($userId, $label = null, $options = array())
+	static function fetch($userId, $labels = null, $options = array())
 	{
 		if (empty($userId)) {
 			throw new Q_Exception_RequiredField(array('field' => 'userId'));
 		}
-		if (empty($options['skipAccess']) and $label) {
+		if (empty($options['skipAccess']) and $labels) {
 			$asUserId = Q::ifset($options, 'asUserId', null);
 			if (!$asUserId) {
 				$liu = Users::loggedInUser();
 				$asUserId = $liu ? $liu->id : '';
 			}
-			Users::canManageContacts($asUserId, $userId, $label, true, true);
+			if (is_string($labels)) {
+				$labels = array($labels);
+			}
+			if (is_array($labels)) {
+				// check ability to fetch specific labels
+				foreach ($labels as $label) {
+					Users::canManageContacts($asUserId, $userId, $label, true, true);
+				}
+			}
 		}
 		$limit = isset($options['limit']) ? $options['limit'] : null;
 		$offset = isset($options['offset']) ? $options['offset'] : 0;
@@ -240,11 +248,11 @@ class Users_Contact extends Base_Users_Contact
 			$criteria['contactUserId'] = $options['contactUserId'];
 		}
 		
-		if ($label) {
-			if (is_string($label) and substr($label, -1) === '/') {
-				$label = new Db_Range($label, true, false, true);
+		if ($labels) {
+			if (is_string($labels) and substr($labels, -1) === '/') {
+				$labels = new Db_Range($labels, true, false, true);
 			}
-			$criteria['label'] = $label; // can be array, string, or range
+			$criteria['label'] = $labels; // can be array, string, or range
 		}
 
 		$query = Users_Contact::select()->where($criteria);
@@ -253,7 +261,7 @@ class Users_Contact extends Base_Users_Contact
 		}
 		$nativeContacts = $query->fetchDbRows();
 
-		$results = Users_ExternalTo::fetchXidsByLabels($userId, $label, $options, $userIdsByXids);
+		$results = Users_ExternalTo::fetchXidsByLabels($userId, $labels, $options, $userIdsByXids);
 		$externalContacts = array();
 		foreach ($results as $platform => $platformResults) {
 			foreach ($platformResults as $appId => $platformAppResults) {

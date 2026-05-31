@@ -42,5 +42,5 @@ function Users_label_response_labels($params = array())
 			$rows = array_merge($rows, Users_Label::fetch($userId, $filter));
 		}
 	}
-	return Q_Response::setSlot('labels', Db::exportArray($rows));
+	return Db::exportArray($rows);
 }

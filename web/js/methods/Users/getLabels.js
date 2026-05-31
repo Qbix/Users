@@ -21,9 +21,9 @@ Q.exports(function (Users, priv) {
 			filter = undefined;
 		}
 		if (Q.isEmpty(userId)) {
-			return Q.handle(callback, null, []);
+			return Q.handle(callback, null, [null, {}]);
 		}
-		Q.req('Users/label', 'labels', function (err, data) {
+		Q.req('Users/label', ['labels', 'can'], function (err, data) {
 			var msg = Q.firstErrorMessage(err, data);
 			if (msg) {
 				Users.onError.handle.call(this, msg, err, data.labels);
@@ -33,7 +33,7 @@ Q.exports(function (Users, priv) {
 			Q.each(data.slots.labels, function (i) {
 				data.slots.labels[i] = new Users.Label(data.slots.labels[i]);
 			});
-			Q.handle(callback, data, [err, data.slots.labels]);
+			Q.handle(callback, data, [err, data.slots.labels, data.slots.can]);
 		}, {
 			fields: {
 				userId: userId,

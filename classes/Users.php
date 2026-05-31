@@ -882,8 +882,8 @@ abstract class Users extends Base_Users
 	 */
 	static function loggedInUser(
 		$throwIfNotLoggedIn = false,
-		$startSession = true)
-	{
+		$startSession = true
+	) {
 		if ($startSession === false and !Q_Session::id()) {
 			return null;
 		}
@@ -911,6 +911,22 @@ abstract class Users extends Base_Users
 		}
 
 		return $user;
+	}
+
+	/**
+	 * Get the logged-in userId, or "" if no one is logged in
+	 * @method loggedInUserId
+	 * @static
+	 * @param {boolean} [$startSession=true]
+	 *   Whether to start a PHP session if one doesn't already exist.
+	 *   But this only happens if Q_Dispatcher::$startedResponse is false.
+	 * @return {string}
+	 */
+	static function loggedInUserId(
+		$startSession = true
+	) {
+		$user = self::loggedInUser(false, $startSession);
+		return $user ? $user->id : '';
 	}
 
 	/**
@@ -2068,6 +2084,16 @@ abstract class Users extends Base_Users
 		} else if ($asUserId === $userId) {
 			if ($readOnly or substr($label, 0, 6) === 'Users/') {
 				$authorized = true;
+			}
+		} else if ($readOnly) {
+			$roles = array_merge(array(''), array_keys(Users::roles(
+				$userId, null, array(), $asUserId
+			)));
+			foreach ($roles as $role) {
+				if (Users_Label::canSeeLabel($role, $label)) {
+					$authorized = true;
+					break;
+				}
 			}
 		}
 		if (!$authorized and $throwIfNotAuthorized) {

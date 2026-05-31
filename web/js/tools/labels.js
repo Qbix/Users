@@ -49,7 +49,7 @@ Q.Tool.define("Users/labels", function Users_labels_tool(options) {
     var tool = this
     var state = tool.state;
     if (state.userId == null) {
-            state.userId = Users.loggedInUserId();
+        state.userId = Users.loggedInUserId();
     }
     if (state.canAdd === true) {
         //state.canAdd = tool.text.addLabel2;
@@ -701,13 +701,8 @@ Q.Tool.define("Users/labels", function Users_labels_tool(options) {
             selectedLabels.push($(this).attr('data-label'));
         });
 
-        Q.Users.getLabels(state.userId, state.filter, function (err, labels) {
+        Q.Users.getLabels(state.userId, state.filter, function (err, labels, can) {
 
-            // exclude labels if state.exclude not empty
-            Q.each(state.exclude, function (i, label) {
-                delete(labels[label]);
-            });
-            
             var labelsAsArray = Object.entries(labels);
             Q.each(state.excludeStartsWith, function (i, pattern) {
                 labelsAsArray = labelsAsArray.filter( function( el ) {
@@ -715,6 +710,19 @@ Q.Tool.define("Users/labels", function Users_labels_tool(options) {
                 });
             });
             labels = Object.fromEntries(labelsAsArray);
+
+            // exclude labels if state.exclude not empty
+            Q.each(state.exclude, function (i, label) {
+                delete(labels[label]);
+            });
+
+            // exclude labels the server says you can't see
+            var canSeeLabels = Q.getObject([state.userId, 'see'], can);
+            for (var label in labels) {
+                if (canSeeLabels.indexOf(label) < 0) {
+                    delete(labels[label]);
+                }
+            }
 
             tool.state.labels = labels;
 
