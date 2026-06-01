@@ -255,7 +255,7 @@ class Users_Vote extends Base_Users_Vote
 			$vote->forType = $type;
 			$vote->forId = (string)$id;
 
-			$vote->value =  array_key_exists($i, $weights) ? $weights[$i] : 1;
+			$vote->value =  array_key_exists($i, $values) ? $values[$i] : 1;
 			$vote->weight = array_key_exists($i, $weights) ? $weights[$i] : 1;
 
 			$vote->save(true);
