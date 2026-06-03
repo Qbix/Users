@@ -46,7 +46,7 @@ function Users_oauth_response()
 		}
 		Q_Response::setSlot('completed', $completed);
 		Q_Response::setSlot('ok', $ok);
-		Q_Response::setSlot('xid', $ok ? $xid : null);
+		Q_Response::setSlot('xid', $ok ? $xid : "");
 		return;
 	}
 
