@@ -47,14 +47,14 @@ function Users_oauth_response()
 					// public profile subset only (icon/name/username) for the login
 					// prompt; the tokens stored alongside it never leave the server.
 					$oauth = $intent->getInstruction('oauth');
-					$profile = is_array($oauth) ? Q::ifset($oauth, 'profile', null) : null;
+					$profile = is_array($oauth) ? Q::ifset($oauth, 'profile', "") : "";
 				}
 			}
 		}
 		Q_Response::setSlot('ok', $ok);
 		Q_Response::setSlot('completed', $ok);
 		Q_Response::setSlot('xid', $ok ? $xid : "");
-		Q_Response::setSlot('profile', $ok ? $profile : null);
+		Q_Response::setSlot('profile', $ok ? $profile : "");
 		return;
 	}
 
@@ -103,7 +103,7 @@ function Users_oauth_response()
 				'refreshToken' => Q::ifset($tokens, 'refreshToken', null),
 				'profile'      => $me
 					? Q::take($me, array('username', 'name', 'profile_image_url'))
-					: null
+					: ""
 			);
 
 			// The verifier has done its job; the xid is public and safe to expose.
