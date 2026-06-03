@@ -34,6 +34,7 @@ function Users_oauth_response()
 		$token = Q_Request::get('intent', null);
 		$ok = false;
 		$xid = null;
+		$profile = null;
 		if ($token) {
 			$intent = Users_Intent::fromToken($token);
 			// only the session that created the intent may read its status
@@ -42,11 +43,18 @@ function Users_oauth_response()
 				// ok == phase 2 finished and stashed the xid. Completion is later,
 				// inside Users::authenticate, so we must NOT gate on completedTime.
 				$ok = !empty($xid);
+				if ($ok) {
+					// public profile subset only (icon/name/username) for the login
+					// prompt; the tokens stored alongside it never leave the server.
+					$oauth = $intent->getInstruction('oauth');
+					$profile = is_array($oauth) ? Q::ifset($oauth, 'profile', null) : null;
+				}
 			}
 		}
 		Q_Response::setSlot('ok', $ok);
 		Q_Response::setSlot('completed', $ok);
 		Q_Response::setSlot('xid', $ok ? $xid : "");
+		Q_Response::setSlot('profile', $ok ? $profile : null);
 		return;
 	}
 

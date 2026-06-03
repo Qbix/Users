@@ -161,7 +161,7 @@ Q.exports(function (Users, priv) {
 							}
 							for (var i = 0; i < checked.length; ++i) {
 								if (!checked[i]) {
-									_onCancel(scope); // at least some permission was not granted
+									_onCancel(o, scope); // at least some permission was not granted
 									return;
 								}
 							}

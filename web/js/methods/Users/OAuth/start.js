@@ -17,7 +17,8 @@ Q.exports(function (Users, priv) {
 	 * @param {String} platform A platform under Q.plugins.Users.apps (e.g. "twitter")
 	 * @param {String|Array} [scope] Advisory; the server builds the authorize URL from config.
 	 * @param {Function} callback Receives (err, result). result is
-	 *   {token, completed:true, xid} on success, or null if canceled.
+	 *   {token, completed:true, xid, profile} on success, or null if canceled.
+	 *   profile is the public {name, username, profile_image_url} subset, for prompts.
 	 *   Not called on the full-page path (the page navigates away).
 	 * @param {Object} [options]
 	 *   @param {String} [options.appId=Q.info.app] Internal appId under Users.apps[platform]
@@ -42,22 +43,26 @@ Q.exports(function (Users, priv) {
 			location.href = Q.url('Users/oauth', fields);
 		}
 
+		// Watch for the popup to close, then read the intent row once: ok means phase
+		// 2 stashed an xid (success vs cancel), and we also pull the public profile
+		// subset (icon/name/username) for the login prompt. The actual login + intent
+		// completion happen afterwards in handleXid -> Users/authenticate.
 		function _poll(token, w) {
 			var ival = setInterval(function () {
 				if (w && !w.closed) {
 					return;
 				}
 				clearInterval(ival);
-				// one status check; the intent row is the source of truth
-				Q.req('Users/oauth', ['completed', 'ok', 'xid'], function (err, response) {
+				Q.req('Users/oauth', ['completed', 'ok', 'xid', 'profile'], function (err, response) {
 					var fem = Q.firstErrorMessage(err, response);
 					if (fem) {
 						return callback && callback(fem);
 					}
 					var ok = Q.getObject('slots.ok', response);
 					var xid = Q.getObject('slots.xid', response);
+					var profile = Q.getObject('slots.profile', response);
 					callback && callback(null,
-						ok ? { token: token, completed: true, xid: xid } : null
+						ok ? { token: token, completed: true, xid: xid, profile: profile } : null
 					);
 				}, {
 					method: 'get',
