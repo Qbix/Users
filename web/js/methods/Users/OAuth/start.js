@@ -104,8 +104,9 @@ Q.exports(function (Users, priv) {
 					platform: platform,
 					appId: appId,
 					skip: { redirect: true, QR: true }
+				}).then(function () {
+					proceed(token);
 				});
-				proceed(token);
 			}
 
 			if (info.capability && info.token) {
