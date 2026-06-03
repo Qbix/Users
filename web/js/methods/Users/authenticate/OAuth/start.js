@@ -1,84 +1,125 @@
 Q.exports(function (Users, priv) {
 
-    /**
-     * Methods for OAuth
-     * @class Users.OAuth
-     * @constructor
-     * @param {Object} fields
-     */
-    /**
-     * Start an oAuth flow, and let the Users plugin handle it
-     * @method start
-     * @static
-     * @param {String} platform The name of an external platform under Q.plugins.Users.apps
-     * @param {String} scope The scopes to request from the platform. See their docs.
-     * @param {Function} [callback] This function is called after the oAuth flow ends,
-     *    unless options.openWindow === false, because then the redirect would happen.
-     * @param {Object} [options={}]
-     * @param {Object|String} [options.openWindow={closeUrlRegExp:Q.url("Users/oauthed")+".*"}] 
-     *    Set to false to start the oAuth flow in the
-     *    current window. Otherwise, this object can be used to set window features
-     *    passed to window.open() as a string.
-     * @param {Object|String} [options.finalRedirect=location.href] If openWindow === false,
-     *    this can be used to specify the url to redirect to after Users plugin has
-     *    handled the oAuth redirect. Defaults to current window location.
-     * @param {String} [appId=Q.info.app] Override appId to under Q.Users.apps[platform]
-     * @param {String} [options.redirect_uri] You can override the redirect URI.
-     *    Often this has to be added to a whitelist on the platform's side.
-     * @param {String} [options.response_type='code']
-     * @param {String} [options.state=Math.random()] If state was not provided, this
-     *    method also modifies the passed options object and sets options.state on it
-     * @return {String}
-     */
-    return function Users_OAuth_start(platform, scope, callback, options) {
-        options = options || {};
-        var finalRedirect = options.finalRedirect || location.href;
-        var appId = options.appId || Q.info.appId;
-        var appInfo = Q.getObject([platform, appId], Users.apps)
-        var authorizeUri = options.authorizeUri || appInfo.authorizeUri;
-        var client_id = options.client_id || appInfo.client_id || appInfo.appId;
-        if (!authorizeUri) {
-            throw new Q.Exception("Users.OAuth.start: authorizeUri is empty");
-        }
-        var redirectUri = options.redirectUri || Users.OAuth.redirectUri;
-        var responseType = options.responseType || 'code';
-        if (!options.state) {
-            options.state = String(Math.random());
-        }
-        if (!('openWindow' in options)) {
-            options.openWindow = {};
-        }
-        // this cookie will be sent on the next request, probably to Users/oauthed action
-        Q.cookie('Q_Users_oAuth', JSON.stringify({
-            platform: platform,
-            appId: appId,
-            scope: scope,
-            state: options.state,
-            finalRedirect: finalRedirect
-        }));
-        var url = OAuth.url(authorizeUri, appId, scope, options);
-        if (options.openWindow === false) {
-            location.href = url;
-        } else {
-            var w = window.open(url, 'Q_Users_oAuth', options.openWindow);
-            var ival = setInterval(function () {
-                var regexp = new RegExp(
-                    options.openWindow.closeUrlRegExp
-                    || Q.url("Users/close") + ".*"
-                );
-                if (w.name === 'Q_Users_oAuth_success'
-                || w.location.href.match(regexp)) {
-                    w.close();
-                    callback(w.url);
-                    clearInterval(ival);
-                }
-                if (w.name === 'Q_Users_oAuth_error') {
-                    w.close();
-                    callback(false);
-                    clearInterval(ival);
-                }
-            }, 300);
-        }
-    };
+	/**
+	 * Drives an OAuth 2.0 flow over the Users.Intent system and reports the
+	 * outcome. If an intent token is already cached (provisioned ahead of time),
+	 * this opens the Users/oauth handler in a popup synchronously — so it must be
+	 * called from within the user gesture. If no token is cached, it provisions
+	 * one and, since that is async (and a popup opened from an async callback would
+	 * be blocked), falls back to a full-page redirect. Pass openWindow:false to
+	 * force the full-page path (e.g. on mobile, where popups can't self-close).
+	 *
+	 * Completion is read server-side from the intent row, so nothing depends on
+	 * reading across origins.
+	 *
+	 * @method start
+	 * @static
+	 * @param {String} platform A platform under Q.plugins.Users.apps (e.g. "twitter")
+	 * @param {String|Array} [scope] Advisory; the server builds the authorize URL
+	 *   from config. Arrays are space-joined by the server side.
+	 * @param {Function} callback Receives (err, result). result is
+	 *   {token, completed:true, xid} on success, or null if the flow was canceled.
+	 *   Not called on the full-page path (the page navigates away).
+	 * @param {Object} [options]
+	 *   @param {String} [options.appId=Q.info.app] Internal appId under Users.apps[platform]
+	 *   @param {String} [options.token] An already-provisioned intent token to reuse
+	 *   @param {Window} [options.popup] A window opened synchronously by the caller,
+	 *     to be reused even on the async (provision) path
+	 *   @param {Object|String|Boolean} [options.openWindow={}] window.open features string,
+	 *     or false to run the flow full-page
+	 *   @param {String} [options.finalRedirect=location.href] Where the full-page flow returns
+	 */
+	return function Users_OAuth_start(platform, scope, callback, options) {
+		options = options || {};
+		var appId = options.appId || Q.info.app;
+		var openWindow = ('openWindow' in options) ? options.openWindow : {};
+
+		function _fields(token) {
+			return { intent: token, platform: platform, appId: appId };
+		}
+
+		function _fullPage(token) {
+			var fields = _fields(token);
+			fields.finalRedirect = options.finalRedirect || location.href;
+			location.href = Q.url('Users/oauth', fields);
+		}
+
+		function _poll(token, w) {
+			var ival = setInterval(function () {
+				if (w && !w.closed) {
+					return;
+				}
+				clearInterval(ival);
+				// one status check; the intent row is the source of truth
+				Q.req('Users/oauth', ['completed', 'ok', 'xid'], function (err, response) {
+					var fem = Q.firstErrorMessage(err, response);
+					if (fem) {
+						return callback && callback(fem);
+					}
+					var ok = Q.getObject('slots.ok', response);
+					var xid = Q.getObject('slots.xid', response);
+					callback && callback(null,
+						ok ? { token: token, completed: true, xid: xid } : null
+					);
+				}, {
+					method: 'get',
+					fields: { intent: token, check: 1, platform: platform }
+				});
+			}, 300);
+		}
+
+		function _popup(token, w) {
+			var url = Q.url('Users/oauth', _fields(token));
+			if (w) {
+				try { w.location.href = url; }
+				catch (e) { w = window.open(url, 'Q_Users_oauth'); }
+			} else {
+				w = window.open(url, 'Q_Users_oauth',
+					typeof openWindow === 'string' ? openWindow : 'width=620,height=720');
+			}
+			if (!w) {
+				return _fullPage(token); // popup blocked
+			}
+			_poll(token, w);
+		}
+
+		var token = options.token || Q.getObject(
+			['Users/authenticate', platform, appId, 'token'],
+			Users.Intent.provision.results
+		);
+
+		if (token) {
+			// synchronous: still inside the gesture, so the popup opens cleanly
+			if (openWindow === false) { _fullPage(token); }
+			else { _popup(token, options.popup); }
+			return;
+		}
+
+		// No cached token: we must provision (async). For the popup path we open
+		// the window now, while still in the gesture, and fill its URL once the
+		// token arrives. Only an explicit openWindow:false goes full-page.
+		if (openWindow === false) {
+			Users.Intent.provision('Users/authenticate', platform, appId, function (slots) {
+				var t = slots && slots.token;
+				if (!t) {
+					return callback && callback("Users.OAuth.start: could not provision an intent");
+				}
+				_fullPage(t);
+			});
+			return;
+		}
+
+		var w = options.popup || window.open('', 'Q_Users_oauth',
+			typeof openWindow === 'string' ? openWindow : 'width=620,height=720');
+		Users.Intent.provision('Users/authenticate', platform, appId, function (slots) {
+			var t = slots && slots.token;
+			if (!t) {
+				if (w && !options.popup) { try { w.close(); } catch (e) {} }
+				return callback && callback("Users.OAuth.start: could not provision an intent");
+			}
+			if (w) { _popup(t, w); }
+			else { _fullPage(t); } // popup was blocked
+		});
+	};
 
 });
