@@ -33,7 +33,7 @@ Q.exports(function (Users, priv) {
 				return Users.authenticate.hasOwnProperty(k);
 			});
 			throw new Q.Error(
-				"Users.authenticate: platform must be one of " + handlers.join(', ')
+				"Users.authenticate: platform must be one of [" + handlers.join(', ') + "]"
 			);
 		}
 		Users.authenticate.occurring = true;

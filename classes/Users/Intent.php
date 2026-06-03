@@ -362,10 +362,16 @@ class Users_Intent extends Base_Users_Intent
 	 * @param {mixed} $value The value to set the instruction to
 	 * @return Streams_Message
 	 */
-	function setInstruction($instructionName, $value)
+	function setInstruction($instructionName, $value = null)
 	{
 		$instr = $this->getAllInstructions();
-		$instr[$instructionName] = $value;
+		if (is_array($instructionName)) {
+			foreach ($instructionName as $k => $v) {
+				$instr[$k] = $v;
+			}
+		} else {
+			$instr[$instructionName] = $value;
+		}
 		$this->instructions = Q::json_encode($instr, Q::JSON_FORCE_OBJECT);
 
 		return $this;
@@ -382,9 +388,17 @@ class Users_Intent extends Base_Users_Intent
 		$this->instructions = Q::json_encode($instr, Q::JSON_FORCE_OBJECT);
 	}
 
+	/**
+	 * Returns the fields and values we can export to clients, excluding sessionId.
+	 * Can also contain "instructions", which will contain all the instructions.
+	 * @method exportArray
+	 * @param {$array} [$options=null]
+	 * @return {array}
+	 */
 	function exportArray($options = null)
 	{
 		$fields = $this->fields;
+		unset($fields['sessionId']);
 		$fields['instructions'] = $this->getAllInstructions();
 		return $fields;
 	}

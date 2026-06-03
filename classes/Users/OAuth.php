@@ -125,7 +125,7 @@ class Users_OAuth
 			}
 
 			// ---- Attempt silent refresh ----
-			$refreshToken = $ef->get('refreshToken', null);
+			$refreshToken = $ef->getExtra('refreshToken', null);
 			if ($refreshToken) {
 				$tokens = self::refresh($tokenUrl, $clientId, $clientSecret, $refreshToken);
 				if ($tokens) {
@@ -252,6 +252,105 @@ class Users_OAuth
 		$ef->remove();
 	}
 
+	/**
+	 * Build a platform authorize URL for a session-free (intent-driven) flow.
+	 *
+	 * Unlike oAuth(), this keeps no PKCE state in the session: it generates the
+	 * verifier and returns it through &$verifier so the caller can persist it
+	 * wherever the flow lives (e.g. on a Users_Intent). The matching challenge
+	 * goes into the URL. The caller chooses $state (typically the intent token).
+	 *
+	 * @method authorizeUrl
+	 * @static
+	 * @param {string} $platform
+	 * @param {string} $appId Internal app id (will be resolved via Users::appInfo)
+	 * @param {string} $state Opaque state echoed back by the platform
+	 * @param {&string} [$verifier=null] Filled with the PKCE code_verifier when pkce is on
+	 * @return {string} The full authorize URL
+	 * @throws {Q_Exception_MissingConfig}
+	 */
+	static function authorizeUrl($platform, $appId, $state, &$verifier = null)
+	{
+		list($appId, $appInfo) = Users::appInfo($platform, $appId, true);
+
+		$clientId    = Q::ifset($appInfo, 'clientId', null);
+		$oauth2      = Q::ifset($appInfo, 'oauth2', array());
+		$authUrl     = Q::ifset($oauth2, 'authorizationUrl', null);
+		$scopes      = Q::ifset($oauth2, 'scopes', array());
+		$redirectUri = Q::ifset($oauth2, 'redirectUri', null);
+		$usePkce     = Q::ifset($oauth2, 'pkce', true);
+
+		if (!$clientId || !$authUrl || !$redirectUri) {
+			throw new Q_Exception_MissingConfig(array(
+				'fieldpath' => "Users/apps/$platform/$appId/oauth2"
+			));
+		}
+
+		$params = array(
+			'response_type' => 'code',
+			'client_id'     => $clientId,
+			'redirect_uri'  => $redirectUri,
+			'scope'         => implode(' ', (array)$scopes),
+			'state'         => $state,
+		);
+
+		if ($usePkce) {
+			$verifier  = self::generateVerifier();
+			$params['code_challenge']        = self::generateChallenge($verifier);
+			$params['code_challenge_method'] = 'S256';
+		}
+
+		return $authUrl . '?' . http_build_query($params);
+	}
+
+	/**
+	 * Exchange an authorization code for tokens, session-free.
+	 *
+	 * The PKCE verifier is passed in explicitly (the intent-driven flow stores it
+	 * on the intent rather than the session). Returns a normalized token array.
+	 *
+	 * @method exchange
+	 * @static
+	 * @param {string} $platform
+	 * @param {string} $appId Internal app id (will be resolved via Users::appInfo)
+	 * @param {string} $code Authorization code from the platform
+	 * @param {string|null} [$verifier=null] PKCE code_verifier, or null for non-PKCE flows
+	 * @return {array|null} array('accessToken','expires'(unix|null),'refreshToken'(|null),'scope'(|null)) or null
+	 * @throws {Q_Exception_MissingConfig}
+	 */
+	static function exchange($platform, $appId, $code, $verifier = null)
+	{
+		list($appId, $appInfo) = Users::appInfo($platform, $appId, true);
+
+		$clientId     = Q::ifset($appInfo, 'clientId', null);
+		$clientSecret = Q::ifset($appInfo, 'clientSecret', null);
+		$oauth2       = Q::ifset($appInfo, 'oauth2', array());
+		$tokenUrl     = Q::ifset($oauth2, 'tokenUrl', null);
+		$redirectUri  = Q::ifset($oauth2, 'redirectUri', null);
+
+		if (!$clientId || !$tokenUrl || !$redirectUri) {
+			throw new Q_Exception_MissingConfig(array(
+				'fieldpath' => "Users/apps/$platform/$appId/oauth2"
+			));
+		}
+
+		$tokens = self::exchangeCode(
+			$tokenUrl, $clientId, $clientSecret, $code, $verifier, $redirectUri
+		);
+		if (!$tokens || empty($tokens['access_token'])) {
+			return null;
+		}
+
+		return array(
+			'accessToken'  => $tokens['access_token'],
+			'expires'      => isset($tokens['expires_in'])
+				? time() + (int)$tokens['expires_in']
+				: null,
+			'refreshToken' => Q::ifset($tokens, 'refresh_token', null),
+			'scope'        => Q::ifset($tokens, 'scope', null),
+		);
+	}
+
 	// -------------------------------------------------------------------------
 	// Private helpers
 	// -------------------------------------------------------------------------
@@ -336,7 +435,7 @@ class Users_OAuth
 			? Db::fromDateTime(date('Y-m-d H:i:s', time() + (int)$tokens['expires_in']))
 			: null;
 		if (!empty($tokens['refresh_token'])) {
-			$ef->set('refreshToken', $tokens['refresh_token']);
+			$ef->setExtra('refreshToken', $tokens['refresh_token']);
 		}
 		$ef->save();
 	}
@@ -356,7 +455,7 @@ class Users_OAuth
 			'access_token'  => $ef->accessToken,
 			'token_type'    => 'bearer',
 			'expires'       => $ef->expires ? (int)Db::toDateTime($ef->expires, true) : null,
-			'refresh_token' => $ef->get('refreshToken', null),
+			'refresh_token' => $ef->getExtra('refreshToken', null),
 			'platform'      => $platform,
 			'appId'         => $appId,
 		);

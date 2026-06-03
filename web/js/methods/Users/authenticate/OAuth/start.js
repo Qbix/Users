@@ -15,11 +15,11 @@ Q.exports(function (Users, priv) {
      * @param {Function} [callback] This function is called after the oAuth flow ends,
      *    unless options.openWindow === false, because then the redirect would happen.
      * @param {Object} [options={}]
-     * @param {Object|String} [openWindow={closeUrlRegExp:Q.url("Users/oauthed")+".*"}] 
+     * @param {Object|String} [options.openWindow={closeUrlRegExp:Q.url("Users/oauthed")+".*"}] 
      *    Set to false to start the oAuth flow in the
      *    current window. Otherwise, this object can be used to set window features
      *    passed to window.open() as a string.
-     * @param {Object|String} [finalRedirect=location.href] If openWindow === false,
+     * @param {Object|String} [options.finalRedirect=location.href] If openWindow === false,
      *    this can be used to specify the url to redirect to after Users plugin has
      *    handled the oAuth redirect. Defaults to current window location.
      * @param {String} [appId=Q.info.app] Override appId to under Q.Users.apps[platform]

@@ -305,8 +305,10 @@ Users.listen = function (options) {
 	server.addMethod('Users/intentComplete', function (parsed) {
 		if (parsed.userId) {
 			Users.Socket.emitToUser(parsed.userId, 'Users/intentComplete', {
-				token: parsed.token,
-				sessionId: parsed.sessionId
+				token: parsed.token
+				// don't send sessionId, because it's a confidential http cookie
+				// and we want to make sure that XSS can never get it
+				// sessionId: parsed.sessionId
 			});
 		}
 	});

@@ -1000,54 +1000,61 @@
 	});
 	
 	/**
-	 * Methods for OAuth
+	 * OAuth 2.0 helpers
 	 * @class Users.OAuth
-	 * @constructor
-	 * @param {Object} fields
 	 */
-	var OAuth = Users.OAuth = Q.Method.define({
+	Users.OAuth = {
 		/**
-		 * Generate a URL based on the oAuth spec, with a redirect back to our
-		 * own endpoint hosted by the Users plugin, to save the information in the database
-		 * and possibly close any popup window.
+		 * The callback URL the platform redirects back to. Points at the
+		 * generic Users/oauth handler. Registered in each platform's portal.
+		 */
+		redirectUri: Q.url('Users/oauth'),
+
+		/**
+		 * Builds a platform authorize URL on the client (for flows that do not
+		 * go through the intent-driven server handler). The server-driven flow
+		 * in Users.OAuth.start() builds its own URL and ignores this.
 		 * @method url
-		 * @static
-		 * @param {String} authorizeUri The url of the oAuth service endpoint
-		 * @param {String} client_id The id of this client app on the externa; platform.
-		 *    Typically found in Users_ExternalTo under appId in the Qbix server database.
-		 * @param {String} scope The scopes to request from the platform. See their docs.
-		 * @param {Object} [options={}]
-		 * @param {String} [options.redirect_uri] You can override the redirect URI.
-		 *    Often this has to be added to a whitelist on the platform's side.
-		 * @param {String} [options.response_type='code']
-		 * @param {String} [options.state=Math.random()] If state was not provided, this
-		 *    method also modifies the passed options object and sets options.state on it
-		 * @return {String} The URL to redirect to or open in a window
+		 * @param {String} authorizeUri e.g. "https://twitter.com/i/oauth2/authorize"
+		 * @param {String} client_id
+		 * @param {String|Array} [scope] space-joined if an array
+		 * @param {Object} [options]
+		 *   @param {String} [options.redirectUri=Users.OAuth.redirectUri]
+		 *   @param {String} [options.responseType="code"]
+		 *   @param {String} [options.state]
+		 * @return {String}
 		 */
 		url: function (authorizeUri, client_id, scope, options) {
 			options = options || {};
-			var responseType = options.responseType || 'code';
-			var redirectUri = options.redirectUri || Users.OAuth.redirectUri;
-			if (options.openWindow) {
-				redirectUri = Q.url(redirectUri + '?openWindow=1');
-			}
-			if (!options.state) {
-				options.state = String(Math.random());
-			}
-			Q.cookie('Users_latest_oAuth_state', options.state);
-			Q.url(authorizeUri, {
+			var params = {
+				response_type: options.responseType || 'code',
 				client_id: client_id,
-				redirect_uri: redirectUri,
-				state: options.state,
-				response_type: responseType,
-				scope: scope
-			});
+				redirect_uri: options.redirectUri || Users.OAuth.redirectUri,
+				scope: Q.isArrayLike(scope) ? Array.prototype.join.call(scope, ' ') : (scope || ''),
+				state: options.state || Math.random().toString(36).slice(2)
+			};
+			var parts = [];
+			for (var k in params) {
+				parts.push(encodeURIComponent(k) + '=' + encodeURIComponent(params[k]));
+			}
+			return authorizeUri
+				+ (authorizeUri.indexOf('?') >= 0 ? '&' : '?')
+				+ parts.join('&');
 		},
+
+		/**
+		 * Runs an OAuth 2.0 flow over the Users.Intent system (popup + status).
+		 * Body in {{Users}}/js/methods/Users/OAuth/start.js
+		 * @method start
+		 */
 		start: new Q.Method()
-	}, "{{Users}}/js/methods/Users/OAuth",
-	function() {
-		return [Users, priv];
-	});
+	};
+
+	Q.Method.define(
+		Users.OAuth,
+		'{{Users}}/js/methods/Users/OAuth',
+		function () { return [Users, priv]; }
+	);
 
 	priv._Users_manage = function(action, method, fields, field, Constructor, getter, callback) {
 		if (getter) {
@@ -1281,7 +1288,7 @@
 			var platformAppId = Users.getPlatformAppId(platform, appId);
 			if (platformAppId) Q.handle(Users.init[platform]);
 		}
-		OAuth.redirectUri = Q.action('Users/oauthed');
+		Users.OAuth.redirectUri = Q.action('Users/oauthed');
 
 		var prefix = Q.getObject('Q.info.sessionIdPrefixes.authenticated');
 		var nonce = Q.cookie('Q_nonce');
