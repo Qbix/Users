@@ -49,7 +49,9 @@ Q.exports(function (Users, priv) {
 				function (user) {
 					// success
 					priv.result = 'authenticate';
-					Q.handle(o.onSuccess, this, [user, o, priv, platform]);
+					if (false !== Q.handle(o.onResult, this, [user, o, priv, platform])) {
+						Q.handle(o.onSuccess, this, [user, o, priv, platform]);
+					}
 					Users.login.occurring = Users.login.interacting = false;
 				},
 				function (err) {
@@ -65,10 +67,9 @@ Q.exports(function (Users, priv) {
 
 		if (o.unlessLoggedIn && Users.loggedInUser) {
 			var pn = priv.used || 'native';
-			var ret = Q.handle(o.onResult, this, [
+			if (false !== Q.handle(o.onResult, this, [
 				Users.loggedInUser, options, priv.result, pn
-			]);
-			if (false !== ret) {
+			])) {
 				Q.handle(o.onSuccess, this, [
 					Users.loggedInUser, options, priv.result, pn
 				]);
@@ -88,7 +89,7 @@ Q.exports(function (Users, priv) {
 		}
 
 		_doLogin();
-
+		
 		return true;
 
 		function _doLogin() {
@@ -221,15 +222,14 @@ Q.exports(function (Users, priv) {
 		}
 
 		/*
-  * Private functions
-  */
+		* Private functions
+		*/
 		// login complete - run onSuccess handler
 		function _onComplete(user) {
 			var p = Q.copy(priv);
 			Q.setObject('Q.Socket.connect.options.auth.capability', JSON.stringify(Users.capability));
 			var pn = priv.used || 'native';
-			var ret = Q.handle(o.onResult, this, [user, o, p, pn]);
-			if (false !== ret) {
+			if (false !== Q.handle(o.onResult, this, [user, o, p, pn])) {
 				Q.handle(o.onSuccess, this, [user, o, p, pn]);
 			}
 			Users.onLogin.handle(user);
@@ -704,9 +704,9 @@ Q.exports(function (Users, priv) {
 		}
 
 		/*
-          * Set up login dialog.
-          * login_setupDialog.dialog will contain the dialog
-          */
+         * Set up login dialog.
+         * login_setupDialog.dialog will contain the dialog
+         */
 		function login_setupDialog(usingPlatforms, options) {
 			options = options || {};
 			$('#Users_login_step1_form').data('used', null);
@@ -884,7 +884,6 @@ Q.exports(function (Users, priv) {
 						).attr('tabindex', 1000)
 						.css({'display': 'inline-block', 'vertical-align': 'middle'})
 						.click(function () {
-							Q.Dialogs.close(login_setupDialog.dialog);
 							if (location.search.includes('handoff=yes')) {
 								var scheme = Q.getObject([Q.info.platform, Q.info.app, 'scheme'], Users.apps);
 								location.href = scheme + '#' + platform + 'Login=1';
@@ -925,7 +924,7 @@ Q.exports(function (Users, priv) {
 				CommunityName: Q.Users.communityName
 			});
 
-			login_setupDialog.dialog = Q.Dialogs.push({
+			Q.Users.login.dialog = login_setupDialog.dialog = Q.Dialogs.push({
 				title: title,
 				content: $('<div />').append($explanation, step1_div, step2_div),
 				elementId: 'Users_login_dialog',

@@ -622,7 +622,9 @@
 				Q.handle(url);
 				Q.handle(options.onComplete, Q.Users, [user, options, priv]);
 			}, 'Users'),
-			onResult: new Q.Event(),
+			onResult: new Q.Event(function Users_login_onResult(user, options, priv) {
+				Q.Dialogs.close(Q.Users.login.dialog);
+			}),
 			onRequireComplete: new Q.Event(),
 			onComplete: new Q.Event(),
 			onDialog: new Q.Event(),
