@@ -42,8 +42,7 @@ Q.exports(function (Users, priv) {
 
 		// Auto-authenticate if configured and user not logged in
 		if (!Users.loggedInUser && o.autoAuthenticatePlatform) {
-			// Prevent recursive reentry
-			Users.login.occurring = true;
+			Users.login.occurring = true; // Mark early to help prevent recursive calls
 			var platform = o.autoAuthenticatePlatform;
 			Users.authenticate(
 				platform,
@@ -51,12 +50,11 @@ Q.exports(function (Users, priv) {
 					// success
 					priv.result = 'authenticate';
 					Q.handle(o.onSuccess, this, [user, o, priv, platform]);
-					Users.login.occurring = false;
+					Users.login.occurring = Users.login.interacting = false;
 				},
 				function (err) {
 					// failed or canceled, continue with normal login flow
 					console.warn('Auto-auth failed:', err);
-					Users.login.occurring = false;
 					_doLogin();
 				},
 				o
@@ -89,13 +87,14 @@ Q.exports(function (Users, priv) {
 			o.using = o.using.split(',');
 		}
 
-		Users.login.occurring = true;
-
 		_doLogin();
 
 		return true;
 
 		function _doLogin() {
+			Users.login.occurring = true; // login flow started
+			Users.login.interacting = !o.tryQuietly; // it is interactive
+
 			// try quietly, possible only with one of "facebook" or "web3"
 			if (o.tryQuietly) {
 				var platform = (typeof o.tryQuietly === 'string') ? o.tryQuietly : '';
@@ -218,7 +217,7 @@ Q.exports(function (Users, priv) {
 			if (false !== Q.handle(o.onResult, this, [scope, o])) {
 				Q.handle(o.onCancel, this, [scope, o]);
 			}
-			Users.login.occurring = false;
+			Users.login.occurring = Users.login.interacting = false;
 		}
 
 		/*
@@ -234,7 +233,7 @@ Q.exports(function (Users, priv) {
 				Q.handle(o.onSuccess, this, [user, o, p, pn]);
 			}
 			Users.onLogin.handle(user);
-			Users.login.occurring = false;
+			Users.login.occurring = Users.login.interacting = false;
 		}
 
 		function _activationComplete(data, user) {
@@ -249,7 +248,7 @@ Q.exports(function (Users, priv) {
 					return alert(fem);
 				}
 				// DEBUGGING: For debugging purposes
-				Users.login.occurring = false;
+				Users.login.occurring = Users.login.interacting = false;
 				if (!o.onRequireComplete
 					|| response2.slots.accountStatus === 'complete') {
 					_onComplete(user);

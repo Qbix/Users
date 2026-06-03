@@ -396,7 +396,9 @@
 		}
 		if (options.prompt === undefined || options.prompt === null) {
 			// show prompt only if we aren't ignoring this platform xid
-			if (xid == ignoreXid) {
+			// and not actively trying to log in
+			if (xid == ignoreXid && !Users.login.interacting) {
+				// for example, we're just doing login with tryQuietly or Users.authenticate
 				priv._doCancel(null, platform, platformAppId, onSuccess, onCancel, options);
 			} else {
 				Users.prompt(platform, xid, __doAuthenticate, __doCancel);
