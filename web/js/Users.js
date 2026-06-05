@@ -1300,62 +1300,92 @@
 			_fetchUserData();
 		}
 		Q.request.options.onProcessed.set(_fetchUserData, 'Users');
-
-		// --- NEW IFRAME AWARENESS AND MESSAGE HANDLING ---
+		
+		// --- IFRAME AWARENESS AND MESSAGE HANDLING ---
 
 		var inIframe = (window.self !== window.top);
 
-		// Wait for Service Worker activation before running session key logic
 		Q.ServiceWorker.onActive.addOnce(function () {
 			if (!Users.Session.publicKey && Users.Session.key.generateOnLogin) {
 				Users.Session.getKey(function (err, key) {
 					if (key) return; // key already exists
 
-					// Always set up listener, even if not currently requesting
-					// Read the expected parent origin stamped by embed.php into a meta tag
-					// (or window.Q.info). On Qbix's own domain this can be omitted; for
-					// third-party embeds, the server registers the host's origin and stamps
-					// it here so the listener can validate.
 					var expectedParentOrigin = Q.getObject('Q.info.expectedParentOrigin') || null;
+					var tmt = null;
+					var handled = false;
+
+					function _hydrateAndRecover(recoveryKey) {
+						if (handled) return;
+						handled = true;
+						if (tmt) clearTimeout(tmt);
+						var storeName = 'Q.Users.keys';
+						Q.IndexedDB.open(Q.info.baseUrl, storeName, 'id', function (err, db) {
+							if (err || !db) {
+								Q.warn('Users: cannot open IndexedDB to hydrate recovery key: ' + err);
+								Users.Session.generateKey();
+								return;
+							}
+							Q.IndexedDB.put(db, storeName, 'Users.Recovery', recoveryKey, function (err2) {
+								if (err2) {
+									Q.warn('Users: failed to store hydrated recovery key: ' + err2);
+									Users.Session.generateKey();
+									return;
+								}
+								Users.Session.recover();
+							});
+						});
+					}
 
 					window.addEventListener('message', function (ev) {
-						// For third-party embed contexts, require origin to match the allowlist
 						if (expectedParentOrigin && ev.origin !== expectedParentOrigin) {
 							Q.warn('Users: rejected postMessage from unexpected origin: ' + ev.origin);
 							return;
 						}
 						var data = ev.data || {};
 						if (!data.type) return;
-						if (data.type === 'Q.Users.recoveryKey.recover') {
-							Q.log('Users: received recoveryKey.recover from parent');
-							try {
-								clearTimeout(tmt);
-								Users.Session.recover();
-							} catch (e) {
-								Q.warn('Users.Session.recover() failed: ' + e);
+
+						if (data.type === 'Q.Users.recoveryKey.recover'
+						 || data.type === 'Q.Users.recoveryKey.restored') {
+							Q.log('Users: received ' + data.type + ' from parent');
+							var key = data.payload && data.payload.recoveryKey;
+							if (key) {
+								_hydrateAndRecover(key);
 							}
+							// If key is null/missing, parent has nothing for us.
+							// Let the timeout fall through to generateKey.
 						}
 					}, false);
 
-					var tmt = setTimeout(function () {
+					// Wait longer if we know parent is a registered embed host (has Q.embed).
+					// Otherwise short timeout for the case where parent doesn't speak our protocol.
+					var waitMs = expectedParentOrigin ? 3000 : 300;
+					tmt = setTimeout(function () {
+						if (handled) return;
+						handled = true;
+						Q.log('Users: no recoveryKey response from parent within ' + waitMs + 'ms, generating fresh');
 						Users.Session.generateKey();
-					}, 300);
+					}, waitMs);
 
 					if (inIframe) {
-						// Ask parent to provide recovery key, if it has one
 						try {
+							var targetOrigin = expectedParentOrigin || '*';
 							window.parent.postMessage(
 								{ type: 'Q.Users.recoveryKey.request' },
-								'*'
+								targetOrigin
 							);
 							Q.log('Users: requested recovery key from parent');
 						} catch (e) {
 							Q.warn('Users: postMessage request to parent failed: ' + e);
 						}
+					} else {
+						// Not in iframe; no point waiting for a parent that doesn't exist
+						if (tmt) clearTimeout(tmt);
+						Users.Session.generateKey();
 					}
 				});
 			}
 		});
+
 	}, 'Users');
 	
 	$('body').on('click', '[data-users-login]', function () {
