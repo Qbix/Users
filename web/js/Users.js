@@ -1300,7 +1300,6 @@
 			_fetchUserData();
 		}
 		Q.request.options.onProcessed.set(_fetchUserData, 'Users');
-		
 		// --- IFRAME AWARENESS AND MESSAGE HANDLING ---
 
 		var inIframe = (window.self !== window.top);
@@ -1679,6 +1678,7 @@
 		// Async methods (loaded dynamically)
 		getLoginStatus: new Q.Method(),
 		disconnect: new Q.Method(),
+		login: new Q.Method();
 		doLogin: new Q.Method(),
 
 		/**
