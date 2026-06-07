@@ -144,7 +144,7 @@ Q.exports(function (Users, priv) {
 			} else if (o.using[0] === 'facebook') { // only facebook used. Open facebook login right away
 				var appId = (o.appIds && o.appIds.facebook) || Q.info.app;
 				Users.init.facebook(function () {
-					Users.Facebook.login(function (response) {
+					Users.Facebook.doLogin(function (response) {
 						if (!response.authResponse) {
 							_onCancel();
 							return;
