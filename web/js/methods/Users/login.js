@@ -144,7 +144,7 @@ Q.exports(function (Users, priv) {
 			} else if (o.using[0] === 'facebook') { // only facebook used. Open facebook login right away
 				var appId = (o.appIds && o.appIds.facebook) || Q.info.app;
 				Users.init.facebook(function () {
-					Users.Facebook.doLogin(function (response) {
+					Users.Facebook.login(function (response) {
 						if (!response.authResponse) {
 							_onCancel();
 							return;
@@ -835,7 +835,7 @@ Q.exports(function (Users, priv) {
 									Users.init.facebook(function () {
 										Users.Facebook.usingPlatforms = usingPlatforms;
 										Users.Facebook.scope = options.scope;
-										Users.Facebook.doLogin();
+										Users.Facebook.login();
 									}, {
 										appId: appId
 									});
