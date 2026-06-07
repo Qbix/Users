@@ -1678,7 +1678,7 @@
 		// Async methods (loaded dynamically)
 		getLoginStatus: new Q.Method(),
 		disconnect: new Q.Method(),
-		login: new Q.Method();
+		login: new Q.Method(),
 		doLogin: new Q.Method(),
 
 		/**
