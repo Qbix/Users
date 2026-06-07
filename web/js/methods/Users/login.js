@@ -835,7 +835,7 @@ Q.exports(function (Users, priv) {
 									Users.init.facebook(function () {
 										Users.Facebook.usingPlatforms = usingPlatforms;
 										Users.Facebook.scope = options.scope;
-										Users.Facebook.login();
+										Users.Facebook.doLogin();
 									}, {
 										appId: appId
 									});

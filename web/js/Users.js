@@ -1679,7 +1679,7 @@
 		// Async methods (loaded dynamically)
 		getLoginStatus: new Q.Method(),
 		disconnect: new Q.Method(),
-		performLogin: new Q.Method(),
+		doLogin: new Q.Method(),
 
 		/**
 		 * Initialize Facebook environment and detect login mode.

@@ -6,7 +6,7 @@ Q.exports(function (Users, priv) {
 	 * Fetches user profile + picture, prepares registration info,
 	 * and either submits the login form or authenticates automatically.
 	 *
-	 * @method performLogin
+	 * @method doLogin
 	 * @static
 	 * @param {Object} response
 	 *   Facebook login response containing authResponse.
