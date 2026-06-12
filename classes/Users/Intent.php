@@ -134,8 +134,9 @@ class Users_Intent extends Base_Users_Intent
 				'sessionId' => $sessionId,
 				'action' => $action,
 				'insertedTime' => new Db_Range(new Db_Expression("CURRENT_TIMESTAMP - INTERVAL $debounce SECOND"), false, false, null)
-			))->andWhere('completedTime IS NOT NULL')
-			->fetchDbRows();
+			))->andWhere(array(
+				'completedTime' => Db_Values::$NOT_NULL
+			))->fetchDbRows();
 		if (count($intents)) {
 			$intent = reset($intents);
 		} else {

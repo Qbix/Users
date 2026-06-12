@@ -602,6 +602,7 @@
 	});
 	Users.scope = new Q.Method();
 	Users.sign = new Q.Method();
+	Users.bridgeResolve = new Q.Method();
 
 	Users.login = new Q.Method({
 		options: {
@@ -932,6 +933,36 @@
     Users.managePermissions = new Q.Method();
 
 	/**
+	 * Request storage access from the browser. Must be called from within
+	 * a user gesture (click handler). On grant, the iframe gains access to
+	 * unpartitioned first-party cookies for the current origin and should be
+	 * reloaded to pick them up. Cross-browser: Safari (iOS/macOS) and
+	 * Chrome (desktop/Android) both implement the Storage Access API.
+	 *
+	 * @method requestStorageAccess
+	 * @static
+	 * @param {Function} callback Receives (err, granted)
+	 */
+	Users.requestStorageAccess = function (callback) {
+		if (!document.requestStorageAccess) {
+			return callback && callback(new Error('not supported'));
+		}
+		var checkHas = document.hasStorageAccess
+			? document.hasStorageAccess()
+			: Promise.resolve(false);
+		checkHas.then(function (has) {
+			if (has) return callback && callback(null, true);
+			return document.requestStorageAccess().then(function () {
+				callback && callback(null, true);
+			}, function (err) {
+				callback && callback(err || new Error('denied'), false);
+			});
+		}, function (err) {
+			callback && callback(err, false);
+		});
+	};
+
+	/**
 	 * Methods for setting up common user interface elements
 	 * @class Users.Interface
 	 */
@@ -995,6 +1026,7 @@
 		actions: {},
 		provision: new Q.Method(),
 		start: new Q.Method(),
+		mint: new Q.Method(),
 		onStarted: Q.Event.factory({}, [""]),
 		onProvisioned: Q.Event.factory({}, [""]),
 		onCompleted: Q.Event.factory({}, [""])
@@ -1300,16 +1332,57 @@
 			_fetchUserData();
 		}
 		Q.request.options.onProcessed.set(_fetchUserData, 'Users');
+
 		// --- IFRAME AWARENESS AND MESSAGE HANDLING ---
 
 		var inIframe = (window.self !== window.top);
+		var expectedParentOrigin = Q.getObject('Q.info.expectedParentOrigin') || null;
 
+		// Q.Users.Embed.call dispatcher — handles postMessage RPC from parent.
+		// Registered unconditionally in iframe context, regardless of session key state.
+		if (inIframe) {
+			window.addEventListener('message', function (ev) {
+				if (expectedParentOrigin && ev.origin !== expectedParentOrigin) return;
+				var data = ev.data || {};
+				if (data.type !== 'Q.Users.Embed.call') return;
+				if (!data.id || !data.method) return;
+
+				var handlers = Q.getObject('Q.Users.Embed.handlers') || {};
+				var handler = Q.getObject(data.method, handlers);
+
+				function respond(err, result) {
+					var targetOrigin = expectedParentOrigin || '*';
+					try {
+						window.parent.postMessage({
+							type: 'Q.Users.Embed.return',
+							id: data.id,
+							error: err ? (err.message || String(err)) : null,
+							result: result
+						}, targetOrigin);
+					} catch (e) {
+						Q.warn('Users: Q.Users.Embed.return postMessage failed: ' + e);
+					}
+				}
+
+				if (!handler) {
+					respond(new Error('no handler for method: ' + data.method));
+					return;
+				}
+
+				try {
+					handler(data.params || {}, respond);
+				} catch (e) {
+					respond(e);
+				}
+			}, false);
+		}
+
+		// Session key recovery flow — only matters if we don't already have a key
 		Q.ServiceWorker.onActive.addOnce(function () {
 			if (!Users.Session.publicKey && Users.Session.key.generateOnLogin) {
 				Users.Session.getKey(function (err, key) {
 					if (key) return; // key already exists
 
-					var expectedParentOrigin = Q.getObject('Q.info.expectedParentOrigin') || null;
 					var tmt = null;
 					var handled = false;
 
@@ -1350,13 +1423,9 @@
 							if (key) {
 								_hydrateAndRecover(key);
 							}
-							// If key is null/missing, parent has nothing for us.
-							// Let the timeout fall through to generateKey.
 						}
 					}, false);
 
-					// Wait longer if we know parent is a registered embed host (has Q.embed).
-					// Otherwise short timeout for the case where parent doesn't speak our protocol.
 					var waitMs = expectedParentOrigin ? 3000 : 300;
 					tmt = setTimeout(function () {
 						if (handled) return;
@@ -1377,13 +1446,28 @@
 							Q.warn('Users: postMessage request to parent failed: ' + e);
 						}
 					} else {
-						// Not in iframe; no point waiting for a parent that doesn't exist
 						if (tmt) clearTimeout(tmt);
 						Users.Session.generateKey();
 					}
 				});
 			}
 		});
+
+		// Register handlers for parent-side Q.Users.Embed.call invocations.
+		// Inline because the handler is tiny; if more handlers are added,
+		// refactor to Users.Embed.handlers via Q.Method.define.
+		Q.setObject('Q.Users.Embed.handlers.Users.bridge.mint',
+		function (params, respond) {
+			Users.Intent.mint('Users/bridge', 'web', Q.info.app, function (err, token) {
+				if (err) return respond(err);
+				respond(null, token);
+			});
+		});
+
+		// Remove cookie jar in (partitioned) top-level context
+		if (window.self === window.top) {
+			try { sessionStorage.removeItem('Q.cookieJar'); } catch (e) {}
+		}
 
 	}, 'Users');
 	
@@ -1405,10 +1489,14 @@
 				return false;
 			});
 
-		// 
-
 		document.documentElement.removeClass(Users.loggedInUser ? 'Users_loggedOut' : 'Users_loggedIn');
 		document.documentElement.addClass(Users.loggedInUser ? 'Users_loggedIn' : 'Users_loggedOut');
+
+		var conflict = Q.getObject('Q.plugins.Users.bridgeConflict');
+		if (!conflict || !conflict.token) return;
+		if (Users.bridgeResolve.handled) return;
+		Users.bridgeResolve.handled = true;
+		Q.handle(Users.bridgeResolve, Users, [conflict]);
 	}, 'Users');
 
 	// handoff action
@@ -1678,8 +1766,8 @@
 		// Async methods (loaded dynamically)
 		getLoginStatus: new Q.Method(),
 		disconnect: new Q.Method(),
-		login: new Q.Method(),
 		doLogin: new Q.Method(),
+		login: new Q.Method(),
 
 		/**
 		 * Initialize Facebook environment and detect login mode.

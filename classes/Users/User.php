@@ -1461,6 +1461,28 @@ class Users_User extends Base_Users_User
 		return $result[$userId] = Users::db()->fromDateTime($user->updatedTime);
 	}
 
+	/**
+	 * Write switchToLoggedInUserId into the target session's content. Picked up
+	 * on the next request to that session, which will switch to the new user
+	 * via the existing setLoggedInUser machinery.
+	 *
+	 * @param string $sessionId The session to update
+	 * @param string $userId The user to switch to
+	 */
+	function pushIntoSession($sessionId, $userId)
+	{
+		if (!$sessionId || !$userId) return;
+		$session = new Users_Session();
+		$session->id = $sessionId;
+		if (!$session->retrieve()) return;
+		$content = json_decode($session->content, true);
+		if (!is_array($content)) $content = array();
+		if (empty($content['Users'])) $content['Users'] = array();
+		$content['Users']['switchToLoggedInUserId'] = $userId;
+		$session->setContent($content);
+		$session->save();
+	}
+
 	/* * * */
 	/**
 	 * Implements the __set_state method, so it can work with
