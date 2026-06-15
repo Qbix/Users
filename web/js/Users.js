@@ -1548,7 +1548,7 @@
 			});
 		}
 		Users.lastSeenNonce = Q.nonce;
-		if (!response || !response.errors) {
+		if (!response || !response.errors || !Q.Users.loggedInUser) {
 			return;
 		}
 		var i, l = response.errors.length, lost = false;
