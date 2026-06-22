@@ -1589,8 +1589,7 @@
 		if (Users.Session.key.generateOnLogin) {
 			Users.Session.generateKey();
 		}
-		Q.Socket.disconnectAll();
-		Q.Socket.reconnectAll(); // to trigger new onConnect
+		Q.Socket.recreateAll();
 	}, 'Users');
 	Users.onLogout = new Q.Event(function () {
 		Users.Session.key.loaded = null;
