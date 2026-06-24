@@ -420,6 +420,8 @@ Q.exports(function (Users, priv) {
 			}
 
 			function setupLoginForm() {
+				var username_input = $('<input type="text" name="username" autocomplete="username" style="position: absolute; top: 0; left: -1000px; width: 1000px;" tabindex="-1" aria-hidden="true">')
+					.val(identifier_input.val());
 				var passphrase_input = $('<input type="password" name="passphrase" id="current-password" class="Q_password" />')
 					.attr('tabindex', 1010)
 					.attr('maxlength', Q.text.Users.login.maxlengths.passphrase)
@@ -445,6 +447,7 @@ Q.exports(function (Users, priv) {
 						$("<div id='Users_login_passphrase_div' >").append(
 							passphrase_input,
 							passphrase_hashed_input,
+							username_input,
 							$('<a id="Users_login_passphrase_forgot" href="#forgot"/>')
 								.html(Q.text.Users.login.forgot)
 								.on(Q.Pointer.touchclick, function () {
