@@ -23,7 +23,8 @@ Q.exports(function (Users, priv) {
 		if (Q.isEmpty(userId)) {
 			return Q.handle(callback, null, [null, {}]);
 		}
-		Q.req('Users/label', ['labels', 'can'], function (err, data) {
+		var slots = Q.Users.isCommunityId(userId) ? ['labels', 'can'] : ['labels'];
+		Q.req('Users/label', slots, function (err, data) {
 			var msg = Q.firstErrorMessage(err, data);
 			if (msg) {
 				Users.onError.handle.call(this, msg, err, data.labels);
