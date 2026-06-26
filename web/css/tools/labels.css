@@ -46,8 +46,10 @@
 .Users_labels_tool .Users_labels_title {
     display: block;
     white-space: normal;
-    text-align: center;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 .Users_labels_add_phonebook {
     box-shadow: 2px 2px 2px rgb(128 128 128 / 50%);

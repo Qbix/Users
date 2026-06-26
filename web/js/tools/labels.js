@@ -920,7 +920,7 @@ Q.Template.set('Users/labels', `
 <ul>
 {{#if addToPhonebook}}
     <li class="Users_labels_action Users_labels_add_phonebook">
-      <img class="Users_labels_icon" src="{{phoneBookIcon}}">
+      <img class="Users_labels_icon Q_wiggle" src="{{phoneBookIcon}}">
       <div class="Users_labels_title">{{addToPhonebook}}</div>
     </li>
 {{/if}}
