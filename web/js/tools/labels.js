@@ -717,10 +717,12 @@ Q.Tool.define("Users/labels", function Users_labels_tool(options) {
             });
 
             // exclude labels the server says you can't see
-            var canSeeLabels = Q.getObject([state.userId, 'see'], can);
-            for (var label in labels) {
-                if (canSeeLabels.indexOf(label) < 0) {
-                    delete(labels[label]);
+            if (can) {
+                var canSeeLabels = Q.getObject([state.userId, 'see'], can);
+                for (var label in labels) {
+                    if (canSeeLabels.indexOf(label) < 0) {
+                        delete(labels[label]);
+                    }
                 }
             }
 
