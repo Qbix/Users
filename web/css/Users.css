@@ -308,6 +308,7 @@
 #Users_login_usingPlatforms { padding: 10px; font-size: 18px; text-indent: 5px; text-align: center; }
 #Users_login_passphrase_div #current-password { width: 100%; padding: 2%; }
 .Users_login_get_started { text-align: center; margin-top: 10px; }
+label[for="Users_login_identifier"] { font-size: 1em; }
 
 #Users_login_passphrase_div { position: relative; }
 #Users_login_passphrase_forgot { display: block; position: absolute; right: 5px; bottom: 10px; color: #888; padding: 4px; }
