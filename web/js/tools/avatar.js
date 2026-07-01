@@ -124,12 +124,7 @@ Q.Tool.define("Users/avatar", function Users_avatar_tool(options) {
 			var icon = state.icon ? params.icon[0] : '';
 			var contents = state.contents ? params.contents[0] : '';
 			tool.element.innerHTML = icon + contents;
-			var img = tool.element.querySelector('img');
-			if (img) {
-				img.addEventListener('error', function () {
-					img.setAttribute('src', Users.iconUrl("{{Users}}/img/icons/default", 400));
-				});
-			}
+			_setFallbackImage(tool);
 		});
 	
 		if (state.userId === '') {
@@ -233,6 +228,15 @@ function _optimisticRender(tool, payload) {
 		if ($name.length) {
 			$name.text(payload.username);
 		}
+	}
+}
+
+function _setFallbackImage(tool) {
+	var img = tool.element.querySelector('img');
+	if (img) {
+		img.addEventListener('error', function () {
+			img.setAttribute('src', Users.iconUrl("{{Users}}/img/icons/default", 400));
+		});
 	}
 }
 
