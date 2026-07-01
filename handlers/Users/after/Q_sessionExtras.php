@@ -9,7 +9,7 @@ function Users_after_Q_sessionExtras() {
 	}
 	$roles = Users::roles();
 	foreach ($roles as $label => $role) {
-		Q_Response::addHtmlCssClass('Users_role-'.Q_Utils::normalize($role->label, '_', null, 200, true));
+		Q_Response::addHtmlCssClass('Users_role-'.Q_Utils::normalize($role->label, '_', null, 200, true), array('weight' => 2));
 		Q_Response::setScriptData('Q.plugins.Users.roles.'.$label, $role->exportArray());
 	}
 	$config = Q_Config::get('Users', 'roles', array());
@@ -26,5 +26,5 @@ function Users_after_Q_sessionExtras() {
 	}
 	$user = Users::loggedInUser(false, false);
 	Q_Response::setScriptData("Q.plugins.Users.capability", Users::capability()->exportArray());
-	Q_Response::addHtmlCssClass($user ? 'Users_loggedIn' : 'Users_loggedOut');
+	Q_Response::addHtmlCssClass($user ? 'Users_loggedIn' : 'Users_loggedOut', array('weight' => 2));
 }
