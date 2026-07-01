@@ -13,6 +13,11 @@ Q.exports(function (Users, priv) {
 	 * If IndexedDB fails, marks the session key as ephemeral via publicKeyIsEphemeral.
 	 * Safe for concurrent or repeated calls — only one generation runs at a time.
 	 *
+	 * After successful generation, posts the recovery CryptoKey to window.parent
+	 * (when running in an iframe) so the parent page can persist it across
+	 * future iframe loads. The CryptoKey is non-extractable and remains usable
+	 * only when posted back to this same origin's iframe context.
+	 *
 	 * @method generateKey
 	 * @static
 	 * @param {Function} callback Receives (err, event, key, response)
@@ -110,6 +115,7 @@ Q.exports(function (Users, priv) {
 					});
 				}).then(function (obj) {
 					obj.publicKeyIsEphemeral = publicKeyIsEphemeral;
+					_notifyParentOfRecoveryKey(obj.recoveryKey);
 					return obj;
 				});
 			}).then(function (obj) {
@@ -165,6 +171,22 @@ Q.exports(function (Users, priv) {
 					key: sessionKey,
 					fieldNames: ["info", "publicKey", "recoveryKey"]
 				});
+			}
+
+			function _notifyParentOfRecoveryKey(recoveryKey) {
+				if (window.self === window.top) {
+					return; // not in an iframe
+				}
+				try {
+					var targetOrigin = Q.getObject('Q.info.expectedParentOrigin') || '*';
+					window.parent.postMessage({
+						type: 'Q.Users.recoveryKey.generated',
+						payload: { recoveryKey: recoveryKey }
+					}, targetOrigin);
+					Q.log('Users: posted recoveryKey.generated to parent');
+				} catch (e) {
+					Q.warn('Users: failed to post recoveryKey to parent: ' + e);
+				}
 			}
 		});
 

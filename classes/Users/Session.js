@@ -39,7 +39,7 @@ Users_Session.decodeId = function (id) {
 	var result = '';
 	var i = 0;
 	var len = id.length;
-	var r, c1, c2, a, b, c;
+	var r, c1, c2, a, b;
 	var replacements = {
 		'z': 'z',
 		'a': '+',
@@ -65,10 +65,26 @@ Users_Session.decodeId = function (id) {
 	result = bin2hex(base64_decode(result));
 	a = result.substring(0, 32);
 	b = result.substring(32, 64);
-	c = secret !== undefined
-		? (b === Q.Utils.signature(a, secret).substring(0, 32))
-		: true;
-	return [c, a, b];
+	if (secret == null) {
+		return [true, a, b];
+	}
+	var expectedSigs = [
+		Q.Utils.signature(a, secret).substring(0, 32)
+	];
+	var prefixes = Q.Config.get(['Q', 'session', 'id', 'prefixes'], {});
+	for (var prefixKey in prefixes) {
+		if (Object.prototype.hasOwnProperty.call(prefixes, prefixKey)) {
+			expectedSigs.push(
+				Q.Utils.signature(prefixes[prefixKey] + a, secret).substring(0, 32)
+			);
+		}
+	}
+	for (var i = 0; i < expectedSigs.length; ++i) {
+		if (b === expectedSigs[i]) {
+			return [true, a, b];
+		}
+	}
+	return [false, a, b];
 };
 
 /**

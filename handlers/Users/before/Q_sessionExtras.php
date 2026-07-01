@@ -3,7 +3,7 @@
 function Users_before_Q_sessionExtras()
 {
 	if ($uri = Q_Dispatcher::uri()) {
-		if ($permissions = Q_Config::get('Users', 'capability', 'public', $uri->route(), null)) {
+		if ($permissions = Q_Config::get('Users', 'capability', 'public', $uri->action, null)) {
 			Users::capability()->addPermission($permissions);
 		}
 		if ($permissions = Q_Config::get('Users', 'capability', 'public', '*', null)) {

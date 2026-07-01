@@ -405,7 +405,7 @@ class Users_Label extends Base_Users_Label
 		}
 		$userCommunityRoles = Users::roles($communityId, null, array(), $userId);
 		$userCommunityRoleNames = array_merge(array(""), array_keys(Users::roles($communityId, null, array(), $userId)));
-        $communityRoles = self::ofCommunity($communityId);
+		$communityRoles = self::ofCommunity($communityId);
 		$communityLabels = Users_Label::fetch($communityId, "", array("skipAccess" => true));
 		$labelsCanManageIcon = Q_Config::get("Users", "icon", "canManage", array());
 		$result = array(

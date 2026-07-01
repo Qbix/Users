@@ -179,6 +179,12 @@
 			"website": "https://engageusers.ai"
 		}
 	},
+	"bridgeConflict": {
+		"title": "Choose your account",
+		"message": "You arrived here through an embedded view where you were signed in as a different account. Which one would you like to keep?",
+		"keepCurrent": "Stay as current user",
+		"switchToBridge": "Switch to the other account"
+	},
 	"errors": {
 		"NotEnoughPermissionsWallet": "Not enough permissions to read wallet of this user",
 		"ThisUserHaveNoWallet": "This user has no wallet assigned",

@@ -3,6 +3,13 @@
 /**
  * Handle recovery of a user session using a previously registered recovery key.
  *
+ * Looks up the Users_Intent created by Users_key_post by re-deriving the same
+ * token (Q_Utils::signature over the recoveryKey array), then resumes the
+ * original PHP session ID. The signed-request middleware verifies the
+ * cryptographic signature against the public key in the request before this
+ * handler runs, so reaching here implies the caller holds the recovery
+ * private key.
+ *
  * @method Users_recover_post
  * @throws Q_Exception_RequiredField
  * @throws Q_Exception_MissingRow
@@ -23,19 +30,17 @@ function Users_recover_post()
 		throw new Q_Exception_RequiredField(array('field' => 'recoveryKey'));
 	}
 
-	// Normalize recoveryKey to string for consistent hashing
-	if (!is_string($recoveryKey)) {
-		$recoveryKey = json_encode($recoveryKey);
-	}
-
-	// Step 2 — find matching Users_Intent by token = sha256(recoveryKey)
-	$hash = hash('sha256', $recoveryKey);
+	// Step 2 — find matching Users_Intent by token (must match Users_key_post derivation).
+	// Both handlers pass the raw $recoveryKey value through Q_Utils::signature so
+	// the resulting token is byte-identical. Do NOT json_encode beforehand — that
+	// would change the signature input shape and the lookup would fail.
+	$token = Q_Utils::signature(array('recoveryKey' => $recoveryKey));
 	$intent = new Users_Intent();
-	$intent->token = $hash;
+	$intent->token = $token;
 	if (!$intent->retrieve()) {
 		throw new Q_Exception_MissingRow(array(
 			'table' => 'Users_Intent',
-			'criteria' => "token=$hash"
+			'criteria' => "token=$token"
 		));
 	}
 
