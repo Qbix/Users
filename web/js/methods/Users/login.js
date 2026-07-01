@@ -21,6 +21,7 @@ Q.exports(function (Users, priv) {
 	*  @param {Q.Event|Function} [options.onCancel] event that occurs when login or authentication "using" a platform was canceled.
 	*  @param {Q.Event|Function} [options.onResult] event that occurs before either onSuccess, onCancel, or onRequireComplete
 	*  @param {String} [options.successUrl] If the default onSuccess implementation is used, the browser is redirected here. Defaults to Q.uris[Q.info.app+'/home']
+	*  @param {String} [options.onboardingUrl] If the default onSuccess implementation is used and the user is registering, uses this URL instead of onSuccess
 	*  @param {String} [options.accountStatusURL] if passed, this URL is hit to determine if the account is complete
 	*  @param {Function} [options.onRequireComplete] function to call if the user logged in but account is incomplete.
 	*  It is passed the user information as well as the response from hitting accountStatusURL

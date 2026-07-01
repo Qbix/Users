@@ -30,28 +30,23 @@ var Users = Q.Users;
  *         @param {String} [options.templates.contents.fields.tag="span"]
  *   @param {Object} [options.templates]
  *     @param {Object} [options.templates.icon]
- *       @param {String} [options.templates.icon.dir='{{Users}}/views']
  *       @param {String} [options.templates.icon.name='Users/avatar/icon']
  *       @param {Object} [options.templates.icon.fields]
  *         @param {String} [options.templates.icon.fields.alt="user icon"]
  *     @param {Object} [options.templates.contents]
- *       @param {String} [options.templates.contents.dir='{{Users}}/views']
  *       @param {String} [options.templates.contents.name='Users/avatar/contents']
  *       @param {Object} [options.templates.contents.fields]
  *         @param {String} [options.templates.contents.fields.tag="span"]
  *     @param {Object} [options.templates.loading]
- *       @param {String} [options.templates.loading.dir='{{Users}}/views']
  *       @param {String} [options.templates.loading.name='Users/avatar/loading']
  *       @param {Object} [options.templates.loading.fields]
  *         @param {String} [options.templates.loading.fields.tag="span"]
  *     @param {Object} [options.templates.blank]
  *     @param {Object} [options.templates.blank.icon]
- *       @param {String} [options.templates.blank.icon.dir='{{Users}}/views']
  *       @param {String} [options.templates.blank.icon.name='Users/avatar/blank/icon']
  *       @param {Object} [options.templates.blank.icon.fields]
  *         @param {String} [options.templates.blank.icon.fields.tag="span"]
  *     @param {Object} [options.templates.blank.contents]
- *       @param {String} [options.templates.blank.contents.dir='{{Users}}/views']
  *       @param {String} [options.templates.blank.contents.name='Users/avatar/blank/icon']
  *       @param {Object} [options.templates.blank.contents.fields]
  *         @param {String} [options.templates.blank.contents.fields.tag="span"]
@@ -129,6 +124,12 @@ Q.Tool.define("Users/avatar", function Users_avatar_tool(options) {
 			var icon = state.icon ? params.icon[0] : '';
 			var contents = state.contents ? params.contents[0] : '';
 			tool.element.innerHTML = icon + contents;
+			var img = tool.element.querySelector('img');
+			if (img) {
+				img.addEventListener('error', function () {
+					img.setAttribute('src', Users.iconUrl("{{Users}}/img/icons/default", 400));
+				});
+			}
 		});
 	
 		if (state.userId === '') {
