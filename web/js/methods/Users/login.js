@@ -420,7 +420,7 @@ Q.exports(function (Users, priv) {
 			}
 
 			function setupLoginForm() {
-				var username_input = $('<input type="text" name="username" autocomplete="username" style="position: absolute; top: 0; left: -1000px; width: 1000px;" tabindex="-1" aria-hidden="true">')
+				var username_input = $('<input type="text" name="username" autocomplete="username" style="position: absolute; top: 0; left: -1000px; width: 10px;" tabindex="-1" aria-hidden="true">')
 					.val(identifier_input.val());
 				var passphrase_input = $('<input type="password" name="passphrase" id="current-password" class="Q_password" />')
 					.attr('tabindex', 1010)
