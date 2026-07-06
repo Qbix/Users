@@ -1,18 +1,16 @@
 /**
  * Apple Messages for Business (AMB) model.
+ * JS counterpart of Amb.php. Named after the platform, ships in the Users plugin.
+ * Sending lives in Amb.Client (Amb/Client.js); delivery in Users.ExternalFrom.Amb.
  *
- * JS counterpart of Users_Amb.php: shared config + crypto for the AMB channel.
- * Sending lives in Users.Amb.Client (see Amb/Client.js), delivery in
- * Users.ExternalFrom.Amb (see ExternalFrom/Amb.js).
- *
- * @module Users
- * @class Users.Amb
+ * @module Amb
+ * @class Amb
  */
 var Q = require('Q');
 var Users = Q.require('Users');
 var crypto = require('crypto');
 
-var Users_Amb = {
+var Amb = {
 
 	BID: 'com.apple.messages.MSMessageExtensionBalloonPlugin:0000000000:com.apple.icloud.apps.messages.business.extension',
 
@@ -20,10 +18,17 @@ var Users_Amb = {
 	ENDPOINT_STAGING: 'https://mspgw-int.push.apple.com/v1/message',
 
 	/**
+	 * Required opt-in disclosure text keyed by 2-letter language. Add languages.
+	 * @property NOTICE
+	 */
+	NOTICE: {
+		en: "We will send important notifications related to your account status or transactions. Send 'Unsubscribe' to manage your message preferences."
+	},
+
+	/**
 	 * Read and validate config for an AMB app.
 	 * @method appInfo
 	 * @static
-	 * @param {String} appId
 	 * @return {Object} { appId, info }
 	 */
 	appInfo: function (appId) {
@@ -38,37 +43,42 @@ var Users_Amb = {
 	},
 
 	/**
-	 * The endpoint URL for an app (config override or production default).
 	 * @method endpoint
 	 * @static
 	 */
 	endpoint: function (info) {
-		return info.endpoint || Users_Amb.ENDPOINT_PRODUCTION;
+		return info.endpoint || Amb.ENDPOINT_PRODUCTION;
 	},
 
 	/**
-	 * "Authorization: Bearer <jwt>" value for OUTBOUND messages.
-	 * claims { iss: MSP-ID, iat: unix seconds }, HS256, secret is Base64-decoded.
+	 * The required opt-in disclosure, in the customer's language.
+	 * @method notificationNotice
+	 * @static
+	 */
+	notificationNotice: function (locale) {
+		var lang = locale ? String(locale).slice(0, 2).toLowerCase() : 'en';
+		return Amb.NOTICE[lang] || Amb.NOTICE.en;
+	},
+
+	/**
+	 * "Authorization: Bearer <jwt>" for OUTBOUND messages.
 	 * @method authorizationHeader
 	 * @static
 	 */
 	authorizationHeader: function (info) {
 		var key = Buffer.from(info.secret, 'base64');
-		var header = Users_Amb.base64url(Buffer.from(JSON.stringify({ alg: 'HS256' })));
-		var claims = Users_Amb.base64url(Buffer.from(JSON.stringify({
+		var header = Amb.base64url(Buffer.from(JSON.stringify({ alg: 'HS256' })));
+		var claims = Amb.base64url(Buffer.from(JSON.stringify({
 			iss: info.mspId,
 			iat: Math.floor(Date.now() / 1000)
 		})));
 		var signingInput = header + '.' + claims;
-		var sig = Users_Amb.base64url(
-			crypto.createHmac('sha256', key).update(signingInput).digest()
-		);
+		var sig = Amb.base64url(crypto.createHmac('sha256', key).update(signingInput).digest());
 		return 'Bearer ' + signingInput + '.' + sig;
 	},
 
 	/**
 	 * Verify the Authorization header on an INBOUND request from Apple.
-	 * Inbound claims: { aud: <our MSP-ID>, iat }.
 	 * @method verifyAuthorization
 	 * @static
 	 * @return {Boolean}
@@ -79,9 +89,9 @@ var Users_Amb = {
 		if (parts.length !== 3) {
 			return false;
 		}
-		var info = Users_Amb.appInfo(appId).info;
+		var info = Amb.appInfo(appId).info;
 		var key = Buffer.from(info.secret, 'base64');
-		var expected = Users_Amb.base64url(
+		var expected = Amb.base64url(
 			crypto.createHmac('sha256', key).update(parts[0] + '.' + parts[1]).digest()
 		);
 		var a = Buffer.from(expected), b = Buffer.from(parts[2]);
@@ -90,7 +100,7 @@ var Users_Amb = {
 		}
 		var claims;
 		try {
-			claims = JSON.parse(Users_Amb.base64urlDecode(parts[1]).toString('utf8'));
+			claims = JSON.parse(Amb.base64urlDecode(parts[1]).toString('utf8'));
 		} catch (e) {
 			return false;
 		}
@@ -101,7 +111,6 @@ var Users_Amb = {
 	},
 
 	/**
-	 * Generate a version-4 UUID.
 	 * @method uuid
 	 * @static
 	 */
@@ -115,10 +124,8 @@ var Users_Amb = {
 	},
 
 	/**
-	 * URL-safe base64 without padding.
 	 * @method base64url
 	 * @static
-	 * @param {Buffer|String} data
 	 */
 	base64url: function (data) {
 		var b = Buffer.isBuffer(data) ? data : Buffer.from(String(data));
@@ -126,7 +133,6 @@ var Users_Amb = {
 	},
 
 	/**
-	 * Decode URL-safe base64 to a Buffer.
 	 * @method base64urlDecode
 	 * @static
 	 */
@@ -137,6 +143,6 @@ var Users_Amb = {
 	}
 };
 
-module.exports = Users.Amb = Users_Amb;
+module.exports = Amb;
 
-Q.require('Users/Amb/Client');
+Q.require('Amb/Client');

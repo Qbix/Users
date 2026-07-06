@@ -1,26 +1,25 @@
 <?php
 /**
- * @module Users
+ * @module Amb
  */
 /**
  * Apple Messages for Business (AMB) model.
  *
- * Holds the shared configuration and crypto for the AMB channel, the way the
- * Telegram model holds Telegram::verifyData() etc. The message-sending methods
- * live in Users_Amb_Client (analogous to Telegram_Bot), and the delivery
- * adapter lives in Users_ExternalFrom_Amb (analogous to Users_ExternalFrom_Telegram).
+ * Named after the platform (like Telegram, Facebook), but ships inside the
+ * Users plugin. Holds shared config + crypto + policy text for the AMB channel.
+ * Sending lives in Amb_Client (like Telegram_Bot); delivery in
+ * Users_ExternalFrom_Amb (like Users_ExternalFrom_Telegram).
  *
  * Config lives under Users/apps/amb/$appName (same shape as telegram, twitter):
- *   mspId       - the MSP ID; used as JWT "iss" outbound and "aud" inbound.
- *                 NOT the business id.
+ *   mspId       - the MSP ID; JWT "iss" (out) / "aud" (in). NOT the business id.
  *   businessId  - the business id (urn:biz:...); the Source-Id when sending.
  *   secret      - the Messaging API secret key, Base64-encoded. Decode before use.
  *   endpoint    - optional; defaults to production. Staging: mspgw-int...
  *
- * @class Users_Amb
+ * @class Amb
  * @abstract
  */
-abstract class Users_Amb
+abstract class Amb
 {
 	/**
 	 * The business-chat extension bundle id required on every interactive message.
@@ -30,6 +29,16 @@ abstract class Users_Amb
 
 	const ENDPOINT_PRODUCTION = 'https://mspgw.push.apple.com/v1/message';
 	const ENDPOINT_STAGING    = 'https://mspgw-int.push.apple.com/v1/message';
+
+	/**
+	 * The disclosure Apple's policy requires before sending account/transaction
+	 * notifications, keyed by 2-letter language. Send it (in the user's language)
+	 * when a customer opts in. Add languages as needed.
+	 * @property $NOTICE
+	 */
+	static $NOTICE = array(
+		'en' => "We will send important notifications related to your account status or transactions. Send 'Unsubscribe' to manage your message preferences."
+	);
 
 	/**
 	 * Read and validate config for an AMB app.
@@ -53,11 +62,9 @@ abstract class Users_Amb
 	}
 
 	/**
-	 * Return the endpoint URL for an app (config override or production default).
+	 * The endpoint URL for an app (config override or production default).
 	 * @method endpoint
 	 * @static
-	 * @param {array} $info the appInfo array
-	 * @return {string}
 	 */
 	static function endpoint($info)
 	{
@@ -65,13 +72,23 @@ abstract class Users_Amb
 	}
 
 	/**
-	 * Build the "Authorization: Bearer <jwt>" header value for OUTBOUND messages.
-	 * header { "alg": "HS256" }; claims { "iss": MSP-ID, "iat": unix seconds }.
-	 * Signed with the Base64-decoded secret. Regenerate at least hourly.
+	 * The required opt-in disclosure text, in the customer's language.
+	 * @method notificationNotice
+	 * @static
+	 * @param {string} [$locale] e.g. "en_US" (from the inbound message)
+	 * @return {string}
+	 */
+	static function notificationNotice($locale = null)
+	{
+		$lang = $locale ? strtolower(substr($locale, 0, 2)) : 'en';
+		return Q::ifset(self::$NOTICE, $lang, self::$NOTICE['en']);
+	}
+
+	/**
+	 * "Authorization: Bearer <jwt>" for OUTBOUND messages.
+	 * claims { iss: MSP-ID, iat: unix seconds }, HS256, secret Base64-decoded.
 	 * @method authorizationHeader
 	 * @static
-	 * @param {array} $info the appInfo array (mspId, secret)
-	 * @return {string}
 	 */
 	static function authorizationHeader($info)
 	{
@@ -87,13 +104,11 @@ abstract class Users_Amb
 	}
 
 	/**
-	 * Verify the "Authorization" header on an INBOUND request from Apple.
-	 * The inbound JWT carries claims { "aud": <our MSP-ID>, "iat": ... }.
+	 * Verify the Authorization header on an INBOUND request from Apple.
+	 * Inbound claims: { aud: <our MSP-ID>, iat }.
 	 * @method verifyAuthorization
 	 * @static
-	 * @param {string} $appId
-	 * @param {string} $authorizationHeader the raw header value, e.g. "Bearer x.y.z"
-	 * @return {boolean} true when the signature, audience and freshness all pass
+	 * @return {boolean}
 	 */
 	static function verifyAuthorization($appId, $authorizationHeader)
 	{
@@ -119,13 +134,8 @@ abstract class Users_Amb
 
 	/**
 	 * Insert or fetch a Users_User for an AMB opaque customer id.
-	 * The opaque id carries no profile data, so nothing is imported.
 	 * @method futureUser
 	 * @static
-	 * @param {string} $appId
-	 * @param {string} $xid the customer's opaque id
-	 * @param {&string} [$status=null]
-	 * @param {&boolean} [$inserted=null]
 	 * @return {Users_User}
 	 */
 	static function futureUser($appId, $xid, &$status = null, &$inserted = null)
@@ -134,10 +144,9 @@ abstract class Users_Amb
 	}
 
 	/**
-	 * Generate a version-4 UUID (message id / requestIdentifier).
+	 * Generate a version-4 UUID.
 	 * @method uuid
 	 * @static
-	 * @return {string}
 	 */
 	static function uuid()
 	{
@@ -149,11 +158,9 @@ abstract class Users_Amb
 	}
 
 	/**
-	 * URL-safe base64 without padding (for JWT segments).
+	 * URL-safe base64 without padding.
 	 * @method base64url
 	 * @static
-	 * @param {string} $data
-	 * @return {string}
 	 */
 	static function base64url($data)
 	{
@@ -164,8 +171,6 @@ abstract class Users_Amb
 	 * Decode URL-safe base64.
 	 * @method base64urlDecode
 	 * @static
-	 * @param {string} $data
-	 * @return {string}
 	 */
 	static function base64urlDecode($data)
 	{
