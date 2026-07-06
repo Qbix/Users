@@ -51,8 +51,8 @@ Users_ExternalFrom.prototype.setUp = function () {
  *   @param {Object} [notification.payload]
  * @param {Function} [callback]
  */
-Users_ExternalFrom.prototype.pushNotification = function (notification, callback) {
-	return this.handlePushNotification(notification, callback);
+Users_ExternalFrom.prototype.pushNotification = function (notification, options, callback) {
+	return this.handlePushNotification(notification, options, callback);
 };
 
 /**
@@ -64,7 +64,7 @@ Users_ExternalFrom.prototype.pushNotification = function (notification, callback
  *
  * @method handlePushNotification
  */
-Users_ExternalFrom.prototype.handlePushNotification = function (notification, callback) {
+Users_ExternalFrom.prototype.handlePushNotification = function (notification, options, callback) {
 	throw new Q.Error(
 		"Users.ExternalFrom.prototype.handlePushNotification: not implemented"
 	);

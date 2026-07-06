@@ -22,7 +22,7 @@ class Users_Device_Android extends Users_Device
 		}
 		self::$push[] = array(
 			'title' => $notification['alert']['title'],
-			'body' => $notification['alert'],
+			'body' => $notification['alert']['body'],
 			'icon' => empty($notification['icon']) ? '' : $notification['icon'],
 			'click_action' => empty($notification['url']) ? null : $notification['url'],
 			'sound' => empty($notification['sound']) ? 'default' : $notification['sound']

@@ -40,7 +40,7 @@ Users_ExternalTo_Facebook.client = function (appId) {
  * @param {String} notification.href Will be prefixed by app's base url
  * @param {String} notification.ref For tracking notification performance in analytics
  */
-Users_ExternalTo_Facebook.prototype.handlePushNotification = function (notification, callback) {
+Users_ExternalTo_Facebook.prototype.handlePushNotification = function (notification, options, callback) {
 	if (!this.fields.xid) {
 		return Q.handle(callback, this, [new Q.Error("Users.ExternalTo.prototype.pushNotification: empty xid")]);
 	}

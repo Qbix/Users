@@ -123,7 +123,7 @@ Users_Device_Ios.provider = function (appId, providerOptions) {
  		ssl.ca = Q.pluginInfo.Users.FILES_DIR + '/Users/certs/EntrustRootCA.pem';
  		var keys = ['cert', 'key', 'ca'];
  		for (var i=0, l=keys.length; i<l; ++i) {
- 			var k = files[i];
+ 			var k = keys[i];
  			if (!ssl[k] || !fs.existsSync(ssl[k])) {
  				console.log("WARNING: APN provider not enabled due to missing " + k + " at " + ssl[k] + "\n");
  				return;
@@ -138,7 +138,7 @@ Users_Device_Ios.provider = function (appId, providerOptions) {
  	}
  	var passphrase = Q.Config.get(["Users", "apps", "ios", appId, "passphrase"], null);
  	if (passphrase) {
- 		o.passphase = passphase;
+ 		o.passphrase = passphrase;
  	}
  	return Users_Device_Ios.provider.collection[appId] = new apn.Provider(
 		Q.extend({}, o, providerOptions)
