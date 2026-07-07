@@ -56,6 +56,7 @@ module.exports = Users_Device.Firefox = Users_Device_Firefox;
  * @param {Function} [callback] This is called after the notification was sent. The first parameter might contain any errors. The "this" object is the Users.Device
  */
 Users_Device_Firefox.prototype.handlePushNotification = function (notification, options, callback) {
+	var device = this;
 	var appConfig = Q.Config.expect(['Users', 'apps', 'firefox', Q.app.name]);
 	if (!notification.alert) {
 		return Q.handle(callback, this, [new Error('Notification alert required')]);
@@ -80,15 +81,16 @@ Users_Device_Firefox.prototype.handlePushNotification = function (notification, 
 	var webpush = require('web-push');
 	webpush.setVapidDetails(appConfig.url, appConfig.publicKey, appConfig.privateKey);
 	webpush.sendNotification({
-		endpoint: this.fields.deviceId,
+		endpoint: device.fields.deviceId,
 		keys: {
-			auth: this.fields.auth,
-			p256dh: this.fields.p256dh
+			auth: device.fields.auth,
+			p256dh: device.fields.p256dh
 		}
 	}, JSON.stringify(message)).then(function () {
-		Q.handle(callback, this);
+		Q.handle(callback, device);
 	}).catch(function (err) {
-		Q.handle(callback, this, [err]);
+		device.removeIfStalePushError(err);
+		Q.handle(callback, device, [err]);
 	});
 };
 
