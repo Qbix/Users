@@ -376,16 +376,33 @@ Users.pushNotifications = function (userIds, notifications, callback, options, f
 		if (err) {
 			return callback && callback(err);
 		}
+		var targets = [];
 		Q.each(devices, function (i) {
 			if (filter && filter(this) === false) {
 				return;
 			}
-			this.pushNotification(
-				isArrayLike ? notifications[this.fields.userId] : notifications,
-				options
+			targets.push(this);
+		});
+		if (!targets.length) {
+			return Q.handle(callback, Users, [null, [], notifications]);
+		}
+		var delivered = [];
+		var pending = targets.length;
+		Q.each(targets, function (i) {
+			var device = this;
+			device.pushNotification(
+				isArrayLike ? notifications[device.fields.userId] : notifications,
+				options,
+				function (pushErr) {
+					if (!pushErr) {
+						delivered.push(device);
+					}
+					if (--pending === 0) {
+						Q.handle(callback, Users, [null, delivered, notifications]);
+					}
+				}
 			);
 		});
-		Q.handle(callback, Users, [null, devices, notifications]);
 	});
 };
 
