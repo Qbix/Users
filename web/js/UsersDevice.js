@@ -231,11 +231,7 @@
 					return;
 				}
 				this.adapter = adapterPushNotification;
-			} else if ((Q.info.browser.name === 'chrome') || (Q.info.browser.name === 'firefox')) {
-				// Chrome and Firefox
-				this.adapter = adapterWeb;
-			} else if (Q.info.browser.name === 'safari') {
-				// TODO implement adapter for Safari Browser
+			} else if (['chrome', 'firefox', 'safari'].includes(Q.info.browser.name)) {
 				this.adapter = adapterWeb;
 			}
 			if (this.adapter) {

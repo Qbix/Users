@@ -53,11 +53,46 @@ module.exports = Users_Device.Safari = Users_Device_Safari;
  * @param {String} [options.collapseId] A string under 64 bytes for collapsing notifications
  * @param {String} [options.id] You can provide your own uuid for the notification
  * @param {boolean} [options.silent=false] Deliver a silent notification, may throw an exception
+ * @param {boolean} [options.update] Force update web service worker via push notification
  * @param {Function} [callback] This is called after the notification was sent. The first parameter might contain any errors. The "this" object is the Users.Device
  */
 Users_Device_Safari.prototype.handlePushNotification = function (notification, options, callback) {
 	var device = this;
-	// TODO: add support for web push in Safari
+	var appConfig = Q.Config.expect(['Users', 'apps', 'safari', Q.app.name]);
+	if (!notification.alert) {
+		return Q.handle(callback, this, [new Error('Notification alert required')]);
+	}
+	if (!notification.alert.title || !notification.alert.body) {
+		return Q.handle(callback, this, [new Error('Notification title and body are required')]);
+	}
+	var message = {
+		title: notification.alert.title,
+		body: notification.alert.body
+	};
+	Q.each(['collapseId', 'update'], function (i, item) {
+		if (options[item] !== undefined) {
+			message[item] = options[item];
+		}
+	});
+	Q.each(['payload', 'collapseId', 'update', 'url', 'sound', 'color', 'icon', 'requireInteraction', 'renotify', 'silent', 'tag', 'vibrate', 'badge', 'dir', 'actions'], function (i, item) {
+		if (notification[item] !== undefined) {
+			message[item] = notification[item];
+		}
+	});
+	var webpush = require('web-push');
+	webpush.setVapidDetails(appConfig.url, appConfig.publicKey, appConfig.privateKey);
+	webpush.sendNotification({
+		endpoint: device.fields.deviceId,
+		keys: {
+			auth: device.fields.auth,
+			p256dh: device.fields.p256dh
+		}
+	}, JSON.stringify(message)).then(function () {
+		Q.handle(callback, device);
+	}).catch(function (err) {
+		device.removeIfStalePushError(err);
+		Q.handle(callback, device, [err]);
+	});
 };
 
 Q.mixin(Users_Device_Safari, Users_Device, Q.require('Base/Users/Device'));
