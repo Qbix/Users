@@ -13,9 +13,11 @@ class Users_Device_Safari extends Users_Device
 	 */
 	function handlePushNotification($notification, $options = array())
 	{
-		// todo: implement this using documented arguments sent to for pushNotification
+		self::$push[] = Users_Device_Web::prepare($notification);
+		self::$device = $this;
+		self::sendPushNotifications();
 	}
-	
+
 	/**
 	 * Sends all scheduled push notifications
 	 * @method sendPushNotifications
@@ -24,8 +26,14 @@ class Users_Device_Safari extends Users_Device
 	 */
 	static function sendPushNotifications()
 	{
-		// todo: implement this using documented arguments sent to for pushNotification
+		if (!self::$push) {
+			return;
+		}
+		Users_Device_Web::send(self::$device, self::$push);
+		self::$push = [];
 	}
-	
-	static protected $push = null;
+
+	static protected $push = [];
+
+	static $device = null;
 }

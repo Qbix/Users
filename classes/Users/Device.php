@@ -39,7 +39,7 @@ class Users_Device extends Base_Users_Device
 	 */
 	static function add($device, $skipNotification=true)
 	{
-		if (($device['platform'] === 'chrome') || ($device['platform'] === 'firefox')) {
+		if (in_array($device['platform'], array('chrome', 'firefox', 'safari'))) {
 			$fields = array('userId', 'deviceId', 'platform', 'appId', 'formFactor', 'version', 'auth', 'p256dh');
 		} else {
 			$fields = array('userId', 'deviceId', 'platform', 'appId', 'formFactor', 'version');
@@ -74,6 +74,9 @@ class Users_Device extends Base_Users_Device
 			'appId' => $platformAppId,
 			'p256dh' => $p256dh
 		);
+		if (!empty($device['vapidPublicKey']) && in_array($platform, array('chrome', 'firefox', 'safari'))) {
+			$info['version'] = $device['vapidPublicKey'];
+		}
 		if ($userId === $liu->id) {
 			$info = array_merge(Q_Request::userAgentInfo(), $info);
 		}
