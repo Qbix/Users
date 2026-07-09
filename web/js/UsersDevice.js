@@ -231,11 +231,7 @@
 					return;
 				}
 				this.adapter = adapterPushNotification;
-			} else if ((Q.info.browser.name === 'chrome') || (Q.info.browser.name === 'firefox')) {
-				// Chrome and Firefox
-				this.adapter = adapterWeb;
-			} else if (Q.info.browser.name === 'safari') {
-				// TODO implement adapter for Safari Browser
+			} else if (['chrome', 'firefox', 'safari'].includes(Q.info.browser.name)) {
 				this.adapter = adapterWeb;
 			}
 			if (this.adapter) {
@@ -298,10 +294,19 @@
 					return Q.handle(callback, null, [err]);
 				}
 
-				sw.pushManager.subscribe({
-					userVisibleOnly: true,
-					applicationServerKey: _urlB64ToUint8Array(appConfig.publicKey)
-				}).then(function (subscription) {
+				sw.pushManager.getSubscription()
+				.then(function (existing) {
+					if (existing) {
+						return existing.unsubscribe();
+					}
+				})
+				.then(function () {
+					return sw.pushManager.subscribe({
+						userVisibleOnly: true,
+						applicationServerKey: _urlB64ToUint8Array(appConfig.publicKey)
+					});
+				})
+				.then(function (subscription) {
 					_saveSubscription(subscription, appConfig, function (err, res) {
 						Q.handle(callback, null, [err, res]);
 					});

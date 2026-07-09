@@ -39,7 +39,7 @@ class Users_Device extends Base_Users_Device
 	 */
 	static function add($device, $skipNotification=true)
 	{
-		if (($device['platform'] === 'chrome') || ($device['platform'] === 'firefox')) {
+		if (in_array($device['platform'], array('chrome', 'firefox', 'safari'))) {
 			$fields = array('userId', 'deviceId', 'platform', 'appId', 'formFactor', 'version', 'auth', 'p256dh');
 		} else {
 			$fields = array('userId', 'deviceId', 'platform', 'appId', 'formFactor', 'version');
