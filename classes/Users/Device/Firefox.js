@@ -57,7 +57,7 @@ module.exports = Users_Device.Firefox = Users_Device_Firefox;
  */
 Users_Device_Firefox.prototype.handlePushNotification = function (notification, options, callback) {
 	var device = this;
-	var appConfig = Users_Device.resolveWebPushConfig('firefox', device.fields.version);
+	var appConfig = Users_Device.resolveWebPushConfig('firefox');
 	if (!notification.alert) {
 		return Q.handle(callback, this, [new Error('Notification alert required')]);
 	}
