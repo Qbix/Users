@@ -58,7 +58,7 @@ module.exports = Users_Device.Safari = Users_Device_Safari;
  */
 Users_Device_Safari.prototype.handlePushNotification = function (notification, options, callback) {
 	var device = this;
-	var appConfig = Users_Device.resolveWebPushConfig('safari', device.fields.version);
+	var appConfig = Users_Device.resolveWebPushConfig('safari');
 	if (!notification.alert) {
 		return Q.handle(callback, this, [new Error('Notification alert required')]);
 	}

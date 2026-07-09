@@ -58,7 +58,7 @@ module.exports = Users_Device.Chrome = Users_Device_Chrome;
  */
 Users_Device_Chrome.prototype.handlePushNotification = function (notification, options, callback) {
 	var device = this;
-	var appConfig = Users_Device.resolveWebPushConfig('chrome', device.fields.version);
+	var appConfig = Users_Device.resolveWebPushConfig('chrome');
 	if (!notification.alert) {
 		return Q.handle(callback, this, [new Error('Notification alert required')]);
 	}

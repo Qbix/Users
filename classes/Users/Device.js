@@ -124,31 +124,13 @@ Users_Device.prototype.handlePushNotification = function () {
 };
 
 /**
- * Resolves the VAPID app config for a web push device.
- * Uses the public key stored at subscribe time (device.fields.version) when available.
+ * Resolves the VAPID app config for a web push device from app config.
  * @method resolveWebPushConfig
  * @static
  * @param {String} platform
- * @param {String} [vapidPublicKey]
  * @return {Object}
  */
-Users_Device.resolveWebPushConfig = function (platform, vapidPublicKey) {
-	var platforms = [platform, 'safari', 'chrome', 'firefox'];
-	var seen = {};
-	for (var i = 0; i < platforms.length; i++) {
-		var p = platforms[i];
-		if (seen[p]) {
-			continue;
-		}
-		seen[p] = true;
-		var cfg = Q.Config.get(['Users', 'apps', p, Q.app.name]);
-		if (!cfg || !cfg.publicKey || !cfg.privateKey) {
-			continue;
-		}
-		if (!vapidPublicKey || cfg.publicKey === vapidPublicKey) {
-			return cfg;
-		}
-	}
+Users_Device.resolveWebPushConfig = function (platform) {
 	return Q.Config.expect(['Users', 'apps', platform, Q.app.name]);
 };
 
