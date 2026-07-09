@@ -615,6 +615,9 @@ html.Users_loggedIn .Users_whenLoggedOut {
 	display: inline-block;
 	color: var(--dialog-color);
 	font-size: 18px;
+	text-decoration: none;
+    line-height: 30px;
+	margin: 10px;
 }
 
 .Users_login_connectPlatforms {
