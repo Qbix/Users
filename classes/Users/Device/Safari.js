@@ -58,7 +58,7 @@ module.exports = Users_Device.Safari = Users_Device_Safari;
  */
 Users_Device_Safari.prototype.handlePushNotification = function (notification, options, callback) {
 	var device = this;
-	var appConfig = Q.Config.expect(['Users', 'apps', 'safari', Q.app.name]);
+	var appConfig = Users_Device.resolveWebPushConfig('safari', device.fields.version);
 	if (!notification.alert) {
 		return Q.handle(callback, this, [new Error('Notification alert required')]);
 	}
@@ -80,7 +80,14 @@ Users_Device_Safari.prototype.handlePushNotification = function (notification, o
 		}
 	});
 	var webpush = require('web-push');
-	webpush.setVapidDetails(appConfig.url, appConfig.publicKey, appConfig.privateKey);
+	var subject = appConfig.vapidSubject || appConfig.url;
+	if (subject && subject.indexOf('mailto:') !== 0 && subject.indexOf('http') === 0) {
+		var emailFrom = Q.Config.get(['Users', 'email', 'from', 0]);
+		if (emailFrom) {
+			subject = 'mailto:' + emailFrom;
+		}
+	}
+	webpush.setVapidDetails(subject, appConfig.publicKey, appConfig.privateKey);
 	webpush.sendNotification({
 		endpoint: device.fields.deviceId,
 		keys: {

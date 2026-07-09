@@ -124,6 +124,35 @@ Users_Device.prototype.handlePushNotification = function () {
 };
 
 /**
+ * Resolves the VAPID app config for a web push device.
+ * Uses the public key stored at subscribe time (device.fields.version) when available.
+ * @method resolveWebPushConfig
+ * @static
+ * @param {String} platform
+ * @param {String} [vapidPublicKey]
+ * @return {Object}
+ */
+Users_Device.resolveWebPushConfig = function (platform, vapidPublicKey) {
+	var platforms = [platform, 'safari', 'chrome', 'firefox'];
+	var seen = {};
+	for (var i = 0; i < platforms.length; i++) {
+		var p = platforms[i];
+		if (seen[p]) {
+			continue;
+		}
+		seen[p] = true;
+		var cfg = Q.Config.get(['Users', 'apps', p, Q.app.name]);
+		if (!cfg || !cfg.publicKey || !cfg.privateKey) {
+			continue;
+		}
+		if (!vapidPublicKey || cfg.publicKey === vapidPublicKey) {
+			return cfg;
+		}
+	}
+	return Q.Config.expect(['Users', 'apps', platform, Q.app.name]);
+};
+
+/**
  * Returns whether a push provider error indicates the registration is stale
  * and should be removed from the database.
  * @method isStalePushError
@@ -136,7 +165,7 @@ Users_Device.isStalePushError = function (err) {
 		return false;
 	}
 	var statusCode = err.statusCode || err.status;
-	if ([401, 404, 410].includes(parseInt(statusCode))) {
+	if ([401, 403, 404, 410].includes(parseInt(statusCode))) {
 		return true;
 	}
 	var msg = (err.message || err.body || String(err)).toLowerCase();
@@ -145,7 +174,8 @@ Users_Device.isStalePushError = function (err) {
 		|| msg.indexOf('baddevicetoken') >= 0
 		|| msg.indexOf('unregistered') >= 0
 		|| msg.indexOf('expired') >= 0
-		|| msg.indexOf('gone') >= 0;
+		|| msg.indexOf('gone') >= 0
+		|| msg.indexOf('vapidpkhashmismatch') >= 0;
 };
 
 /**

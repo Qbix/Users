@@ -294,10 +294,22 @@
 					return Q.handle(callback, null, [err]);
 				}
 
-				sw.pushManager.subscribe({
-					userVisibleOnly: true,
-					applicationServerKey: _urlB64ToUint8Array(appConfig.publicKey)
-				}).then(function (subscription) {
+				var storageKey = 'Users.Device.vapidPublicKey.' + Q.info.app;
+
+				sw.pushManager.getSubscription()
+				.then(function (existing) {
+					if (existing) {
+						return existing.unsubscribe();
+					}
+				})
+				.then(function () {
+					return sw.pushManager.subscribe({
+						userVisibleOnly: true,
+						applicationServerKey: _urlB64ToUint8Array(appConfig.publicKey)
+					});
+				})
+				.then(function (subscription) {
+					localStorage.setItem(storageKey, appConfig.publicKey);
 					_saveSubscription(subscription, appConfig, function (err, res) {
 						Q.handle(callback, null, [err, res]);
 					});
@@ -557,7 +569,8 @@
 				deviceId: subscription.endpoint,
 				auth: subscription.keys.auth,
 				p256dh: subscription.keys.p256dh,
-				appId: appConfig.appId
+				appId: appConfig.appId,
+				vapidPublicKey: appConfig.publicKey
 			}
 		});
 	}
