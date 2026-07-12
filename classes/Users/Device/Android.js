@@ -87,7 +87,22 @@ Users_Device_Android.prototype.handlePushNotification = function (notification, 
 		}
 	});
 	fcm.send(message, function (err, response) {
-		Q.handle(callback, this, [err, response]);
+		if (!err && response) {
+			try {
+				var parsed = typeof response === 'string' ? JSON.parse(response) : response;
+				if (parsed.failure > 0 && parsed.results) {
+					Q.each(parsed.results, function (i, result) {
+						if (result.error) {
+							err = err || new Error(result.error);
+						}
+					});
+				}
+			} catch (e) {}
+		}
+		if (err) {
+			device.removeIfStalePushError(err);
+		}
+		Q.handle(callback, device, [err, response]);
 	});
 };
 

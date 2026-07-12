@@ -1,11 +1,21 @@
 'use strict';
 
+self.addEventListener('install', function (event) {
+	event.waitUntil(self.skipWaiting());
+});
+
 self.addEventListener('activate', function (event) {
 	event.waitUntil(clients.claim());
 });
 
 self.addEventListener('push', function (event) {
-	let data = JSON.parse(event.data.text());
+	var data;
+	try {
+		data = event.data ? JSON.parse(event.data.text()) : {};
+	} catch (e) {
+		console.error('[Service Worker] Push parse error', e);
+		data = {};
+	}
 	console.log('[Service Worker] Push received', data);
 	if (data.update) {
 		// force service worker to update via push
@@ -13,16 +23,27 @@ self.addEventListener('push', function (event) {
 		return;
 	}
 
-	let options = Object.assign({
-		body: data.body,
-		data: data
-	}, data);
-
-	data.requireInteraction = !!data.requireInteraction;
-
-	if (data.collapseId) {
-		options.tag = data.collapseId;
+	var title = data.title || (data.alert && data.alert.title) || 'Notification';
+	var body = data.body || (data.alert && data.alert.body) || 'New notification';
+	// Safari rejects showNotification when unsupported/invalid options are passed.
+	var options = {
+		body: body,
+		tag: data.collapseId || data.tag,
+		data: {
+			title: title,
+			body: body,
+			url: data.url,
+			payload: data.payload
+		}
+	};
+	if (data.icon && typeof data.icon === 'string') {
+		options.icon = data.icon;
 	}
+	Object.keys(options).forEach(function (key) {
+		if (options[key] === undefined || options[key] === null || options[key] === '') {
+			delete options[key];
+		}
+	});
 
 	sendMessageToAllClients({
 		Q: {
@@ -32,7 +53,12 @@ self.addEventListener('push', function (event) {
 		}
 	});
 
-	event.waitUntil(self.registration.showNotification(data.title, options));
+	event.waitUntil(
+		self.registration.showNotification(title, options).catch(function (err) {
+			console.error('[Service Worker] showNotification failed', err, title, options);
+			return self.registration.showNotification(title, { body: body });
+		})
+	);
 });
 
 self.addEventListener('notificationclick', function (event) {

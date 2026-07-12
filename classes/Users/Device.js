@@ -124,6 +124,69 @@ Users_Device.prototype.handlePushNotification = function () {
 };
 
 /**
+ * Resolves the VAPID app config for a web push device from app config.
+ * @method resolveWebPushConfig
+ * @static
+ * @param {String} platform
+ * @return {Object}
+ */
+Users_Device.resolveWebPushConfig = function (platform) {
+	return Q.Config.expect(['Users', 'apps', platform, Q.app.name]);
+};
+
+/**
+ * Returns whether a push provider error indicates the registration is stale
+ * and should be removed from the database.
+ * @method isStalePushError
+ * @static
+ * @param {Error|Object} err
+ * @return {Boolean}
+ */
+Users_Device.isStalePushError = function (err) {
+	if (!err) {
+		return false;
+	}
+	var statusCode = err.statusCode || err.status;
+	if ([401, 403, 404, 410].includes(parseInt(statusCode))) {
+		return true;
+	}
+	var msg = (err.message || err.body || String(err)).toLowerCase();
+	return msg.indexOf('notregistered') >= 0
+		|| msg.indexOf('invalidregistration') >= 0
+		|| msg.indexOf('baddevicetoken') >= 0
+		|| msg.indexOf('unregistered') >= 0
+		|| msg.indexOf('expired') >= 0
+		|| msg.indexOf('gone') >= 0
+		|| msg.indexOf('vapidpkhashmismatch') >= 0;
+};
+
+/**
+ * Removes this device row if the push error indicates a stale registration.
+ * @method removeIfStalePushError
+ * @param {Error|Object} err
+ * @return {Boolean} Whether the device was removed
+ */
+Users_Device.prototype.removeIfStalePushError = function (err) {
+	if (!Users_Device.isStalePushError(err)) {
+		return false;
+	}
+	var fields = this.fields;
+	setTimeout(function () {
+		Users.Device.DELETE()
+			.where({
+				userId: fields.userId,
+				deviceId: fields.deviceId
+			})
+			.execute(function (deleteErr) {
+				if (deleteErr) {
+					Q.log('Users.Device: failed to remove stale registration', deleteErr);
+				}
+			});
+	}, 0);
+	return true;
+};
+
+/**
  * Called by various Db methods to get a custom row object
  * @param {Object} fields Any fields to set in the row
  * @param {Boolean} retrieved whether the row is retrieved

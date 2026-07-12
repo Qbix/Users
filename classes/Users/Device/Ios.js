@@ -74,11 +74,10 @@ Users_Device_Ios.prototype.handlePushNotification = function (notification, opti
 	.then(function (responses) {
 		var errors = null;
 		responses.failed.forEach(function (result) {
-			if (result.status === '401') {
-				setTimeout(function () {
-					device.remove();
-				}, 0);
-			}
+			device.removeIfStalePushError({
+				status: result.status,
+				message: Q.getObject(['response', 'reason'], result)
+			});
 			errors = errors || [];
 			errors.push(result);
 		});

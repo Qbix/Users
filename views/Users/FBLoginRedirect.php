@@ -7,7 +7,7 @@
 	<meta name="viewport" content="minimal-ui, shrink-to-fit=no, width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0<?php if (Q_Request::platform() == 'android'): ?>, target-densitydpi=medium-dpi<?php endif ?>" />
 	<meta name="mobile-web-app-capable" content="yes" />
 	<link rel="manifest" href="<?php echo Q_Html::themedUrl('manifest.json') ?>">
-	<meta name="apple-mobile-web-app-status-bar-style" content="translucent" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-title" content="<?php Q_Html::text(Users::communityName()) ?>">
 	<title id="title_slot"><?php echo $title; ?></title>
