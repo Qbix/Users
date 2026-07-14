@@ -617,7 +617,10 @@ html.Users_loggedIn .Users_whenLoggedOut {
 	font-size: 18px;
 	text-decoration: none;
     line-height: 30px;
-	margin: 10px;
+	margin-bottom: 5px;
+}
+#Users_login_usingPlatforms a:not(:last-of-type) {
+	margin-right: 10px;
 }
 
 .Users_login_connectPlatforms {
