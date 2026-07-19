@@ -112,7 +112,7 @@
 		"emailExists": "Czy pr\u00f3bowa\u0142e\u015b wcze\u015bniej zarejestrowa\u0107 si\u0119 za pomoc\u0105 tego adresu e-mail? Je\u015bli tak, sprawd\u017a swoj\u0105 skrzynk\u0119 odbiorcz\u0105, aby aktywowa\u0107 konto. <a href='#resend' class='Q_button Users_activation_resend'>Kliknij, aby ponownie wys\u0142a\u0107 wiadomo\u015b\u0107</a>",
 		"mobileExists": "Czy pr\u00f3bowa\u0142e\u015b wcze\u015bniej zarejestrowa\u0107 si\u0119 przy u\u017cyciu tego numeru telefonu kom\u00f3rkowego? Je\u015bli tak, sprawd\u017a wiadomo\u015b\u0107 SMS, aby aktywowa\u0107 konto. <a href='#resend' class='Q_button Users_activation_resend'>Kliknij, aby ponownie wys\u0142a\u0107 wiadomo\u015b\u0107</a>",
 		"usingOther": "albo mo\u017cesz",
-		"connectPlatforms": "lub po\u0142\u0105cz za pomoc\u0105:",
+		"connectPlatforms": "Jak chcesz si\u0119 po\u0142\u0105czy\u0107?",
 		"prompt": "Wybierz nazw\u0119 u\u017cytkownika:",
 		"newUser": "lub utw\u00f3rz nowe konto poni\u017cej",
 		"placeholders": {
@@ -131,7 +131,8 @@
 				"content": "Po zamkni\u0119ciu tego okna dialogowego zostaniesz przeniesiony do swojego portfela. Po zalogowaniu wr\u00f3\u0107 na t\u0119 stron\u0119."
 			},
 			"ConnectWallet": "Po\u0142\u0105cz portfel"
-		}
+		},
+		"orConnectPlatforms": "lub po\u0142\u0105cz si\u0119 za pomoc\u0105:"
 	},
 	"setIdentifier": {
 		"title": "Dodaj spos\u00f3b logowania",
@@ -195,5 +196,11 @@
 	},
 	"dialogs": {
 		"Apply": "Kontynuowa\u0107"
+	},
+	"bridgeConflict": {
+		"title": "Wybierz swoje konto",
+		"message": "Trafi\u0142e\u015b tutaj przez osadzony widok, w kt\u00f3rym by\u0142e\u015b zalogowany na inne konto. Kt\u00f3re chcesz zachowa\u0107?",
+		"keepCurrent": "Pozosta\u0144 obecnym u\u017cytkownikiem",
+		"switchToBridge": "Prze\u0142\u0105cz si\u0119 na inne konto"
 	}
 }

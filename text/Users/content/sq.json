@@ -112,7 +112,7 @@
 		"emailExists": "A keni provuar t\u00eb regjistroheni me k\u00ebt\u00eb email m\u00eb par\u00eb? N\u00ebse po, kontrolloni kutin\u00eb tuaj hyr\u00ebse p\u00ebr t\u00eb aktivizuar llogarin\u00eb tuaj. <a href='#resend' class='Q_button Users_activation_resend'>Klikoni p\u00ebr t\u00eb rid\u00ebrguar mesazhin</a>",
 		"mobileExists": "A keni provuar t\u00eb regjistroheni me k\u00ebt\u00eb num\u00ebr celular m\u00eb par\u00eb? N\u00ebse po, kontrolloni SMS p\u00ebr t\u00eb aktivizuar llogarin\u00eb tuaj. <a href='#resend' class='Q_button Users_activation_resend'>Klikoni p\u00ebr t\u00eb rid\u00ebrguar mesazhin</a>",
 		"usingOther": "ose mundesh",
-		"connectPlatforms": "ose lidheni duke p\u00ebrdorur:",
+		"connectPlatforms": "Si doni t\u00eb lidheni?",
 		"prompt": "Zgjidhni nj\u00eb em\u00ebr p\u00ebrdoruesi:",
 		"newUser": "ose krijoni nj\u00eb llogari t\u00eb re m\u00eb posht\u00eb",
 		"placeholders": {
@@ -131,7 +131,8 @@
 				"content": "Pasi t\u00eb mbyllni k\u00ebt\u00eb dialog, do t\u00eb \u00e7oheni n\u00eb portofolin tuaj. Pasi t\u00eb identifikoheni, kthehuni n\u00eb k\u00ebt\u00eb faqe."
 			},
 			"ConnectWallet": "Lidhni portofolin"
-		}
+		},
+		"orConnectPlatforms": "ose lidheni duke p\u00ebrdorur:"
 	},
 	"setIdentifier": {
 		"title": "Shtoni nj\u00eb m\u00ebnyr\u00eb p\u00ebr t&#39;u identifikuar",
@@ -195,5 +196,11 @@
 	},
 	"dialogs": {
 		"Apply": "Vazhdo"
+	},
+	"bridgeConflict": {
+		"title": "Zgjidhni llogarin\u00eb tuaj",
+		"message": "Ke mb\u00ebrritur k\u00ebtu n\u00ebp\u00ebrmjet nj\u00eb pamjeje t\u00eb integruar ku ishe identifikuar si nj\u00eb llogari tjet\u00ebr. Cil\u00ebn d\u00ebshiron ta mbash?",
+		"keepCurrent": "Q\u00ebndro si p\u00ebrdorues aktual",
+		"switchToBridge": "Kalo n\u00eb llogarin\u00eb tjet\u00ebr"
 	}
 }

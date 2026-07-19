@@ -112,7 +112,7 @@
 		"emailExists": "Voc\u00ea tentou se registrar com este e-mail antes? Nesse caso, verifique sua caixa de entrada para ativar sua conta. <a href='#resend' class='Q_button Users_activation_resend'>Clique para reenviar a mensagem</a>",
 		"mobileExists": "Voc\u00ea tentou se registrar com este n\u00famero de celular antes? Nesse caso, verifique seu SMS para ativar sua conta. <a href='#resend' class='Q_button Users_activation_resend'>Clique para reenviar a mensagem</a>",
 		"usingOther": "ou voc\u00ea pode",
-		"connectPlatforms": "ou conecte usando:",
+		"connectPlatforms": "Como voc\u00ea deseja se conectar?",
 		"prompt": "Escolha um nome de usu\u00e1rio:",
 		"newUser": "ou crie uma nova conta abaixo",
 		"placeholders": {
@@ -131,7 +131,8 @@
 				"content": "Depois de fechar esta caixa de di\u00e1logo, voc\u00ea ser\u00e1 levado \u00e0 sua carteira. Depois de entrar, retorne a esta p\u00e1gina."
 			},
 			"ConnectWallet": "Conectar carteira"
-		}
+		},
+		"orConnectPlatforms": "ou conecte-se usando:"
 	},
 	"setIdentifier": {
 		"title": "Adicionar uma maneira de fazer login",
@@ -195,5 +196,11 @@
 	},
 	"dialogs": {
 		"Apply": "Continuar"
+	},
+	"bridgeConflict": {
+		"title": "Escolha sua conta",
+		"message": "Voc\u00ea chegou aqui por meio de uma visualiza\u00e7\u00e3o incorporada, na qual estava conectado com uma conta diferente. Qual delas voc\u00ea gostaria de manter?",
+		"keepCurrent": "Permanecer como usu\u00e1rio atual",
+		"switchToBridge": "Mude para a outra conta."
 	}
 }

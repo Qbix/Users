@@ -112,7 +112,7 @@
 		"emailExists": "Haben Sie schon einmal versucht, sich mit dieser E-Mail zu registrieren? \u00dcberpr\u00fcfen Sie in diesem Fall Ihren Posteingang, um Ihr Konto zu aktivieren. <a href='#resend' class='Q_button Users_activation_resend'>Klicken Sie auf , um die Nachricht erneut zu senden</a>",
 		"mobileExists": "Haben Sie schon einmal versucht, sich mit dieser Handynummer zu registrieren? \u00dcberpr\u00fcfen Sie in diesem Fall Ihre SMS, um Ihr Konto zu aktivieren. <a href='#resend' class='Q_button Users_activation_resend'>Klicken Sie auf , um die Nachricht erneut zu senden</a>",
 		"usingOther": "oder du kannst",
-		"connectPlatforms": "oder verbinden Sie sich mit:",
+		"connectPlatforms": "Wie m\u00f6chten Sie Kontakt aufnehmen?",
 		"prompt": "W\u00e4hlen Sie einen Benutzernamen:",
 		"newUser": "oder erstellen Sie unten ein neues Konto",
 		"placeholders": {
@@ -131,7 +131,8 @@
 				"content": "Sobald Sie diesen Dialog schlie\u00dfen, werden Sie zu Ihrer Brieftasche weitergeleitet. Kehren Sie nach der Anmeldung zu dieser Seite zur\u00fcck."
 			},
 			"ConnectWallet": "Wallet verbinden"
-		}
+		},
+		"orConnectPlatforms": "oder verbinden Sie sich \u00fcber:"
 	},
 	"setIdentifier": {
 		"title": "F\u00fcgen Sie eine M\u00f6glichkeit hinzu, sich anzumelden",
@@ -195,5 +196,11 @@
 	},
 	"dialogs": {
 		"Apply": "Weitermachen"
+	},
+	"bridgeConflict": {
+		"title": "W\u00e4hlen Sie Ihr Konto aus",
+		"message": "Sie sind \u00fcber eine eingebettete Ansicht hierher gelangt, in der Sie mit einem anderen Konto angemeldet waren. Welches Konto m\u00f6chten Sie behalten?",
+		"keepCurrent": "Als aktueller Benutzer bleiben",
+		"switchToBridge": "Wechseln Sie zum anderen Konto"
 	}
 }

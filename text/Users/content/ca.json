@@ -112,7 +112,7 @@
 		"emailExists": "Has provat de registrar-te amb aquest correu electr\u00f2nic abans? Si \u00e9s aix\u00ed, comproveu la vostra safata d&#39;entrada per activar el vostre compte. <a href='#resend' class='Q_button Users_activation_resend'>Feu clic per tornar a enviar el missatge</a>",
 		"mobileExists": "Has provat de registrar-te amb aquest n\u00famero de m\u00f2bil abans? Si \u00e9s aix\u00ed, comproveu el vostre SMS per activar el vostre compte. <a href='#resend' class='Q_button Users_activation_resend'>Feu clic per tornar a enviar el missatge</a>",
 		"usingOther": "o pots",
-		"connectPlatforms": "o connectar amb:",
+		"connectPlatforms": "Com vols connectar-te?",
 		"prompt": "Escull un nom d&#39;usuari:",
 		"newUser": "o crea un compte nou a continuaci\u00f3",
 		"placeholders": {
@@ -131,7 +131,8 @@
 				"content": "Un cop tanqueu aquest di\u00e0leg, se us dirigir\u00e0 a la vostra cartera. Despr\u00e9s d&#39;iniciar la sessi\u00f3, torneu a aquesta p\u00e0gina."
 			},
 			"ConnectWallet": "Connecta Wallet"
-		}
+		},
+		"orConnectPlatforms": "o connectar-se mitjan\u00e7ant:"
 	},
 	"setIdentifier": {
 		"title": "Afegiu una manera d&#39;iniciar sessi\u00f3",
@@ -195,5 +196,11 @@
 	},
 	"dialogs": {
 		"Apply": "Continua"
+	},
+	"bridgeConflict": {
+		"title": "Tria el teu compte",
+		"message": "Has arribat aqu\u00ed a trav\u00e9s d&#39;una vista incrustada on tenies la sessi\u00f3 iniciada amb un compte diferent. Quin vols conservar?",
+		"keepCurrent": "Mantenir-se com a usuari actual",
+		"switchToBridge": "Canvia a l&#39;altre compte"
 	}
 }

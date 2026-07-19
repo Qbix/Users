@@ -112,7 +112,7 @@
 		"emailExists": "Apakah Anda mencoba mendaftar dengan email ini sebelumnya? Jika demikian, periksa kotak masuk Anda untuk mengaktifkan akun Anda. <a href='#resend' class='Q_button Users_activation_resend'>Klik untuk mengirim ulang pesan</a>",
 		"mobileExists": "Apakah Anda mencoba mendaftar dengan nomor ponsel ini sebelumnya? Jika demikian, periksa SMS Anda untuk mengaktifkan akun Anda. <a href='#resend' class='Q_button Users_activation_resend'>Klik untuk mengirim ulang pesan</a>",
 		"usingOther": "atau kamu bisa",
-		"connectPlatforms": "atau terhubung menggunakan:",
+		"connectPlatforms": "Bagaimana Anda ingin terhubung?",
 		"prompt": "Pilih nama pengguna:",
 		"newUser": "atau buat akun baru di bawah ini",
 		"placeholders": {
@@ -131,7 +131,8 @@
 				"content": "Setelah Anda menutup dialog ini, Anda akan dibawa ke dompet Anda. Setelah Anda masuk, kembali ke halaman ini."
 			},
 			"ConnectWallet": "Hubungkan Dompet"
-		}
+		},
+		"orConnectPlatforms": "atau terhubung menggunakan:"
 	},
 	"setIdentifier": {
 		"title": "Tambahkan cara untuk masuk",
@@ -195,5 +196,11 @@
 	},
 	"dialogs": {
 		"Apply": "Melanjutkan"
+	},
+	"bridgeConflict": {
+		"title": "Pilih akun Anda",
+		"message": "Anda sampai di sini melalui tampilan tersemat tempat Anda masuk sebagai akun yang berbeda. Akun mana yang ingin Anda pertahankan?",
+		"keepCurrent": "Tetap sebagai pengguna saat ini",
+		"switchToBridge": "Beralih ke akun lain"
 	}
 }

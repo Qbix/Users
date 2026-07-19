@@ -112,7 +112,7 @@
 		"emailExists": "Vai iepriek\u0161 m\u0113\u0123in\u0101j\u0101t re\u0123istr\u0113ties, izmantojot \u0161o e-pastu? Ja t\u0101, p\u0101rbaudiet savu ies\u016btni, lai aktiviz\u0113tu savu kontu. <a href='#resend' class='Q_button Users_activation_resend'>Noklik\u0161\u0137iniet, lai atk\u0101rtoti nos\u016bt\u012btu zi\u0146ojumu</a>",
 		"mobileExists": "Vai iepriek\u0161 m\u0113\u0123in\u0101j\u0101t re\u0123istr\u0113ties ar \u0161o mobil\u0101 t\u0101lru\u0146a numuru? Ja t\u0101, p\u0101rbaudiet savu SMS, lai aktiviz\u0113tu savu kontu. <a href='#resend' class='Q_button Users_activation_resend'>Noklik\u0161\u0137iniet, lai atk\u0101rtoti nos\u016bt\u012btu zi\u0146ojumu</a>",
 		"usingOther": "vai ar\u012b j\u016bs varat",
-		"connectPlatforms": "vai izveidojiet savienojumu, izmantojot:",
+		"connectPlatforms": "K\u0101 v\u0113laties izveidot savienojumu?",
 		"prompt": "Izv\u0113lies lietot\u0101jv\u0101rdu:",
 		"newUser": "vai izveidojiet jaunu kontu t\u0101l\u0101k",
 		"placeholders": {
@@ -131,7 +131,8 @@
 				"content": "Kad aizv\u0113rsit \u0161o dialoglodzi\u0146u, tiksit novirz\u012bts uz maku. P\u0113c pierakst\u012b\u0161an\u0101s atgriezieties \u0161aj\u0101 lap\u0101."
 			},
 			"ConnectWallet": "Savienojiet maku"
-		}
+		},
+		"orConnectPlatforms": "vai izveidojiet savienojumu, izmantojot:"
 	},
 	"setIdentifier": {
 		"title": "Pievienojiet veidu, k\u0101 pieteikties",
@@ -195,5 +196,11 @@
 	},
 	"dialogs": {
 		"Apply": "Turpin\u0101t"
+	},
+	"bridgeConflict": {
+		"title": "Izv\u0113lieties savu kontu",
+		"message": "J\u016bs non\u0101c\u0101t \u0161eit, izmantojot iegultu skatu, kur\u0101 bij\u0101t pierakst\u012bjies cit\u0101 kont\u0101. Kuru kontu v\u0113laties patur\u0113t?",
+		"keepCurrent": "Palikt k\u0101 pa\u0161reiz\u0113jam lietot\u0101jam",
+		"switchToBridge": "P\u0101rsl\u0113gties uz otru kontu"
 	}
 }

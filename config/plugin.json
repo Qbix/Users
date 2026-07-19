@@ -65,6 +65,12 @@
 			"Users/contractMetadata/:communityId.json": { "module": "Users", "action": "contractMetadata" },
             "URI/:userId/:chainId/:roleId.json": { "module": "Users", "action": "labels" }
 		},
+		"webserver": {
+			"preload": [
+				"Users", "Users_User", "Users_Session", "Users_Vote",
+				"Users_Total", "Users_Label", "Users_Contact"
+			]
+		},
 		"username": {
 			"unique": true,
 			"conflict": {

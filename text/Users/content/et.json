@@ -112,7 +112,7 @@
 		"emailExists": "Kas proovisite varem selle meiliga registreeruda? Kui jah, siis kontrollige oma konto aktiveerimiseks oma postkasti. <a href='#resend' class='Q_button Users_activation_resend'>Kl\u00f5psake s\u00f5numi uuesti saatmiseks</a>",
 		"mobileExists": "Kas proovisite varem selle mobiilinumbriga registreeruda? Kui jah, kontrollige oma konto aktiveerimiseks SMS-i. <a href='#resend' class='Q_button Users_activation_resend'>Kl\u00f5psake s\u00f5numi uuesti saatmiseks</a>",
 		"usingOther": "v\u00f5i saate",
-		"connectPlatforms": "v\u00f5i \u00fchendage kasutades:",
+		"connectPlatforms": "Kuidas soovite \u00fchendust luua?",
 		"prompt": "Vali kasutajanimi:",
 		"newUser": "v\u00f5i looge allpool uus konto",
 		"placeholders": {
@@ -131,7 +131,8 @@
 				"content": "Kui olete selle dialoogi sulgenud, suunatakse teid oma rahakotti. P\u00e4rast sisselogimist naaske sellele lehele."
 			},
 			"ConnectWallet": "\u00dchendage Wallet"
-		}
+		},
+		"orConnectPlatforms": "v\u00f5i \u00fchendage, kasutades:"
 	},
 	"setIdentifier": {
 		"title": "Lisage sisselogimisviis",
@@ -195,5 +196,11 @@
 	},
 	"dialogs": {
 		"Apply": "J\u00e4tka"
+	},
+	"bridgeConflict": {
+		"title": "Valige oma konto",
+		"message": "Sa j\u00f5udsid siia manustatud vaate kaudu, kuhu olid sisse logitud teise kontoga. Millise konto soovid alles j\u00e4tta?",
+		"keepCurrent": "J\u00e4\u00e4 praeguseks kasutajaks",
+		"switchToBridge": "L\u00fclitu teisele kontole"
 	}
 }

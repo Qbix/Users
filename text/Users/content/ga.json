@@ -112,7 +112,7 @@
 		"emailExists": "An ndearna t\u00fa iarracht cl\u00e1r\u00fa leis an r\u00edomhphost seo roimhe seo? M\u00e1s ea, seice\u00e1il do bhosca isteach chun do chuntas a ghn\u00edomhacht\u00fa. <a href='#resend' class='Q_button Users_activation_resend'>Clice\u00e1il chun an teachtaireacht a athsheoladh</a>",
 		"mobileExists": "An ndearna t\u00fa iarracht cl\u00e1r\u00fa leis an uimhir ghuth\u00e1in seo roimhe seo? M\u00e1s amhlaidh, seice\u00e1il do SMS chun do chuntas a ghn\u00edomhacht\u00fa. <a href='#resend' class='Q_button Users_activation_resend'>Clice\u00e1il chun an teachtaireacht a athsheoladh</a>",
 		"usingOther": "n\u00f3 is f\u00e9idir leat",
-		"connectPlatforms": "n\u00f3 ceangail ag baint \u00fas\u00e1ide as:",
+		"connectPlatforms": "C\u00e9n chaoi ar mhaith leat ceangal a dh\u00e9anamh?",
 		"prompt": "Roghnaigh ainm \u00fas\u00e1ideora:",
 		"newUser": "n\u00f3 cruthaigh cuntas nua th\u00edos",
 		"placeholders": {
@@ -131,7 +131,8 @@
 				"content": "Nuair a dh\u00fanann t\u00fa an dial\u00f3g seo, t\u00f3gfar chuig do spar\u00e1n th\u00fa. Tar \u00e9is duit s\u00edni\u00fa isteach, fill ar an leathanach seo."
 			},
 			"ConnectWallet": "Ceangail Spar\u00e1n"
-		}
+		},
+		"orConnectPlatforms": "n\u00f3 ceangail ag baint \u00fas\u00e1ide as:"
 	},
 	"setIdentifier": {
 		"title": "Cuir bealach le log\u00e1il isteach",
@@ -195,5 +196,11 @@
 	},
 	"dialogs": {
 		"Apply": "Lean ar aghaidh"
+	},
+	"bridgeConflict": {
+		"title": "Roghnaigh do chuntas",
+		"message": "Th\u00e1inig t\u00fa anseo tr\u00ed radharc leabaithe inar log\u00e1ladh isteach th\u00fa mar chuntas difri\u00fail. C\u00e9n ceann ba mhaith leat a choinne\u00e1il?",
+		"keepCurrent": "Fan mar \u00fas\u00e1ideoir reatha",
+		"switchToBridge": "Athraigh go dt\u00ed an cuntas eile"
 	}
 }

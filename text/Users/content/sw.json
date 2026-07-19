@@ -112,7 +112,7 @@
 		"emailExists": "Je, ulijaribu kujisajili kwa barua pepe hii hapo awali? Ikiwa ndivyo, angalia kisanduku pokezi chako ili kuamilisha akaunti yako. <a href='#resend' class='Q_button Users_activation_resend'>Bofya ili kutuma tena ujumbe</a>",
 		"mobileExists": "Je, ulijaribu kujisajili kwa nambari hii ya simu hapo awali? Ikiwa ndivyo, angalia SMS yako ili kuwezesha akaunti yako. <a href='#resend' class='Q_button Users_activation_resend'>Bofya ili kutuma tena ujumbe</a>",
 		"usingOther": "au unaweza",
-		"connectPlatforms": "au unganisha kwa kutumia:",
+		"connectPlatforms": "Unataka kuungana vipi?",
 		"prompt": "Chagua jina la mtumiaji:",
 		"newUser": "au fungua akaunti mpya hapa chini",
 		"placeholders": {
@@ -131,7 +131,8 @@
 				"content": "Mara tu ukifunga kidirisha hiki, utachukuliwa hadi kwenye mkoba wako. Baada ya kuingia, rudi kwenye ukurasa huu."
 			},
 			"ConnectWallet": "Unganisha Wallet"
-		}
+		},
+		"orConnectPlatforms": "au unganisha kwa kutumia:"
 	},
 	"setIdentifier": {
 		"title": "Ongeza njia ya kuingia",
@@ -195,5 +196,11 @@
 	},
 	"dialogs": {
 		"Apply": "Endelea"
+	},
+	"bridgeConflict": {
+		"title": "Chagua akaunti yako",
+		"message": "Ulifika hapa kupitia mwonekano uliopachikwa ambapo uliingizwa kama akaunti tofauti. Ungependa kuweka akaunti gani?",
+		"keepCurrent": "Endelea kama mtumiaji wa sasa",
+		"switchToBridge": "Badilisha hadi akaunti nyingine"
 	}
 }

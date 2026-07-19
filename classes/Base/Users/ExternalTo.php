@@ -363,7 +363,7 @@ abstract class Base_Users_ExternalTo extends Db_Row
 		}
 		if (!is_string($value) and !is_numeric($value))
 			throw new Exception('Must pass a string to '.$this->getTable().".userId");
-		if (strlen($value) > 31)
+		if (mb_strlen($value) > 31)
 			throw new Exception('Exceedingly long value being assigned to '.$this->getTable().".userId");
 		return array('userId', $value);			
 	}
@@ -418,7 +418,7 @@ return array (
 		}
 		if (!is_string($value) and !is_numeric($value))
 			throw new Exception('Must pass a string to '.$this->getTable().".platform");
-		if (strlen($value) > 31)
+		if (mb_strlen($value) > 31)
 			throw new Exception('Exceedingly long value being assigned to '.$this->getTable().".platform");
 		return array('platform', $value);			
 	}
@@ -473,7 +473,7 @@ return array (
 		}
 		if (!is_string($value) and !is_numeric($value))
 			throw new Exception('Must pass a string to '.$this->getTable().".appId");
-		if (strlen($value) > 200)
+		if (mb_strlen($value) > 200)
 			throw new Exception('Exceedingly long value being assigned to '.$this->getTable().".appId");
 		return array('appId', $value);			
 	}
@@ -628,7 +628,7 @@ return array (
 		}
 		if (!is_string($value) and !is_numeric($value))
 			throw new Exception('Must pass a string to '.$this->getTable().".xid");
-		if (strlen($value) > 200)
+		if (mb_strlen($value) > 200)
 			throw new Exception('Exceedingly long value being assigned to '.$this->getTable().".xid");
 		return array('xid', $value);			
 	}
@@ -725,7 +725,7 @@ return array (
 		}
 		if (!is_string($value) and !is_numeric($value))
 			throw new Exception('Must pass a string to '.$this->getTable().".accessToken");
-		if (strlen($value) > 1023)
+		if (mb_strlen($value) > 1023)
 			throw new Exception('Exceedingly long value being assigned to '.$this->getTable().".accessToken");
 		return array('accessToken', $value);			
 	}
@@ -830,7 +830,7 @@ return array (
 		}
 		if (!is_string($value) and !is_numeric($value))
 			throw new Exception('Must pass a string to '.$this->getTable().".extra");
-		if (strlen($value) > 1023)
+		if (mb_strlen($value) > 1023)
 			throw new Exception('Exceedingly long value being assigned to '.$this->getTable().".extra");
 		return array('extra', $value);			
 	}

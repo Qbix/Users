@@ -112,7 +112,7 @@
 		"emailExists": "Sinubukan mo bang magrehistro sa email na ito dati? Kung gayon, suriin ang iyong inbox upang i-activate ang iyong account. <a href='#resend' class='Q_button Users_activation_resend'>I-click upang muling ipadala ang mensahe</a>",
 		"mobileExists": "Nasubukan mo na bang magrehistro sa mobile number na ito dati? Kung gayon, suriin ang iyong SMS upang i-activate ang iyong account. <a href='#resend' class='Q_button Users_activation_resend'>I-click upang muling ipadala ang mensahe</a>",
 		"usingOther": "o kaya mo",
-		"connectPlatforms": "o kumonekta gamit ang:",
+		"connectPlatforms": "Paano mo gustong kumonekta?",
 		"prompt": "Pumili ng username:",
 		"newUser": "o gumawa ng bagong account sa ibaba",
 		"placeholders": {
@@ -131,7 +131,8 @@
 				"content": "Sa sandaling isara mo ang dialog na ito, dadalhin ka sa iyong wallet. Pagkatapos mong mag-sign in, bumalik sa page na ito."
 			},
 			"ConnectWallet": "Ikonekta ang Wallet"
-		}
+		},
+		"orConnectPlatforms": "o kumonekta gamit ang:"
 	},
 	"setIdentifier": {
 		"title": "Magdagdag ng paraan para mag-log in",
@@ -195,5 +196,11 @@
 	},
 	"dialogs": {
 		"Apply": "Magpatuloy"
+	},
+	"bridgeConflict": {
+		"title": "Piliin ang iyong account",
+		"message": "Nakarating ka rito sa pamamagitan ng isang naka-embed na view kung saan ka naka-sign in bilang ibang account. Alin ang gusto mong panatilihin?",
+		"keepCurrent": "Manatili bilang kasalukuyang gumagamit",
+		"switchToBridge": "Lumipat sa ibang account"
 	}
 }

@@ -112,7 +112,7 @@
 		"emailExists": "Har du pr\u00f8vet at registrere dig med denne e-mail f\u00f8r? Hvis ja, tjek din indbakke for at aktivere din konto. <a href='#resend' class='Q_button Users_activation_resend'>Klik for at sende beskeden igen</a>",
 		"mobileExists": "Har du pr\u00f8vet at registrere dig med dette mobilnummer f\u00f8r? Hvis ja, tjek din SMS for at aktivere din konto. <a href='#resend' class='Q_button Users_activation_resend'>Klik for at sende beskeden igen</a>",
 		"usingOther": "eller du kan",
-		"connectPlatforms": "eller tilslut ved hj\u00e6lp af:",
+		"connectPlatforms": "Hvordan vil du oprette forbindelse?",
 		"prompt": "V\u00e6lg et brugernavn:",
 		"newUser": "eller opret en ny konto nedenfor",
 		"placeholders": {
@@ -131,7 +131,8 @@
 				"content": "N\u00e5r du lukker denne dialog, vil du blive f\u00f8rt til din tegnebog. N\u00e5r du har logget ind, skal du vende tilbage til denne side."
 			},
 			"ConnectWallet": "Tilslut tegnebog"
-		}
+		},
+		"orConnectPlatforms": "eller opret forbindelse ved hj\u00e6lp af:"
 	},
 	"setIdentifier": {
 		"title": "Tilf\u00f8j en m\u00e5de at logge ind p\u00e5",
@@ -195,5 +196,11 @@
 	},
 	"dialogs": {
 		"Apply": "Forts\u00e6tte"
+	},
+	"bridgeConflict": {
+		"title": "V\u00e6lg din konto",
+		"message": "Du kom hertil via en integreret visning, hvor du var logget ind som en anden konto. Hvilken vil du beholde?",
+		"keepCurrent": "Forbliv som nuv\u00e6rende bruger",
+		"switchToBridge": "Skift til den anden konto"
 	}
 }

@@ -112,7 +112,7 @@
 		"emailExists": "Het jy al voorheen met hierdie e-pos probeer registreer? Indien wel, gaan jou inkassie na om jou rekening te aktiveer. <a href='#resend' class='Q_button Users_activation_resend'>Klik om die boodskap weer te stuur</a>",
 		"mobileExists": "Het jy voorheen met hierdie selfoonnommer probeer registreer? Indien wel, gaan jou SMS na om jou rekening te aktiveer. <a href='#resend' class='Q_button Users_activation_resend'>Klik om die boodskap weer te stuur</a>",
 		"usingOther": "of jy kan",
-		"connectPlatforms": "of verbind met behulp van:",
+		"connectPlatforms": "Hoe wil jy konnekteer?",
 		"prompt": "Kies &#39;n gebruikers naam:",
 		"newUser": "of skep &#39;n nuwe rekening hieronder",
 		"placeholders": {
@@ -131,7 +131,8 @@
 				"content": "Sodra jy hierdie dialoog toegemaak het, sal jy na jou beursie geneem word. Nadat jy aangemeld het, keer terug na hierdie bladsy."
 			},
 			"ConnectWallet": "Koppel Wallet"
-		}
+		},
+		"orConnectPlatforms": "of verbind met behulp van:"
 	},
 	"setIdentifier": {
 		"title": "Voeg &#39;n manier by om aan te meld",
@@ -195,5 +196,11 @@
 	},
 	"dialogs": {
 		"Apply": "Gaan voort"
+	},
+	"bridgeConflict": {
+		"title": "Kies jou rekening",
+		"message": "Jy het hier aangekom deur &#39;n ingebedde aansig waar jy as &#39;n ander rekening aangemeld was. Watter een wil jy behou?",
+		"keepCurrent": "Bly as huidige gebruiker",
+		"switchToBridge": "Skakel oor na die ander rekening"
 	}
 }

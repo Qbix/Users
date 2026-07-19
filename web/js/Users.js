@@ -75,7 +75,8 @@
 			emailExists: "Did you try to register with this email before? If so, check your inbox to activate your account. <a href='#resend' class='Q_button Users_activation_resend'>Click to re-send the message</a>",
 			mobileExists: "Did you try to register with this mobile number before? If so, check your SMS to activate your account. <a href='#resend' class='Q_button Users_activation_resend'>Click to re-send the message</a>",
 			usingOther: "or you can ",
-			connectPlatforms: "or connect using:",
+			orConnectPlatforms: "or connect using:",
+			connectPlatforms: "How do you want to connect?",
 			facebook: {
 				src: null,
 				noEmail: "Your facebook account is missing a confirmed email address. Simply log in the native way.",

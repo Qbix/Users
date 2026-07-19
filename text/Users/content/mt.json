@@ -112,7 +112,7 @@
 		"emailExists": "Ippruvajt tirre\u0121istra b&#39;din l-email qabel? Jekk iva, i\u010b\u010bekkja l-inbox tieg\u0127ek biex tattiva l-kont tieg\u0127ek. <a href='#resend' class='Q_button Users_activation_resend'>Ikklikkja biex ter\u0121a&#39; tibg\u0127at il-messa\u0121\u0121</a>",
 		"mobileExists": "Ippruvajt tirre\u0121istra ma&#39; dan in-numru tal-mobile qabel? Jekk iva, i\u010b\u010bekkja l-SMS tieg\u0127ek biex tattiva l-kont tieg\u0127ek. <a href='#resend' class='Q_button Users_activation_resend'>Ikklikkja biex ter\u0121a&#39; tibg\u0127at il-messa\u0121\u0121</a>",
 		"usingOther": "jew tista&#39;",
-		"connectPlatforms": "jew qabbad billi tu\u017ca:",
+		"connectPlatforms": "Kif trid tikkonnettja?",
 		"prompt": "G\u0127a\u017cel Username:",
 		"newUser": "jew o\u0127loq kont \u0121did hawn ta\u0127t",
 		"placeholders": {
@@ -131,7 +131,8 @@
 				"content": "Ladarba tag\u0127laq dan id-djalogu, tittie\u0127ed fil-kartiera tieg\u0127ek. Wara li tid\u0127ol, er\u0121a&#39; lura g\u0127al din il-pa\u0121na."
 			},
 			"ConnectWallet": "Qabbad Kartiera"
-		}
+		},
+		"orConnectPlatforms": "jew qabbad billi tu\u017ca:"
 	},
 	"setIdentifier": {
 		"title": "\u017bid mod biex tid\u0127ol",
@@ -195,5 +196,11 @@
 	},
 	"dialogs": {
 		"Apply": "Kompli"
+	},
+	"bridgeConflict": {
+		"title": "Ag\u0127\u017cel il-kont tieg\u0127ek",
+		"message": "Wasalt hawn permezz ta&#39; veduta inkorporata fejn kont illoggjat b\u0127ala kont differenti. Liema wie\u0127ed tixtieq i\u017c\u017comm?",
+		"keepCurrent": "Ibqa&#39; b\u0127ala l-utent attwali",
+		"switchToBridge": "Aqleb g\u0127all-kont l-ie\u0127or"
 	}
 }

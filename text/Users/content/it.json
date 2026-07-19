@@ -112,7 +112,7 @@
 		"emailExists": "Hai gi\u00e0 provato a registrarti con questa email? In tal caso, controlla la tua casella di posta per attivare il tuo account. <a href='#resend' class='Q_button Users_activation_resend'>Fare clic per inviare nuovamente il messaggio</a>",
 		"mobileExists": "Hai gi\u00e0 provato a registrarti con questo numero di cellulare? In tal caso, controlla il tuo SMS per attivare il tuo account. <a href='#resend' class='Q_button Users_activation_resend'>Fare clic per inviare nuovamente il messaggio</a>",
 		"usingOther": "o puoi",
-		"connectPlatforms": "o connettiti usando:",
+		"connectPlatforms": "Come preferisci connetterti?",
 		"prompt": "Scegli un nome utente:",
 		"newUser": "o crea un nuovo account qui sotto",
 		"placeholders": {
@@ -131,7 +131,8 @@
 				"content": "Una volta chiusa questa finestra di dialogo, verrai indirizzato al tuo portafoglio. Dopo aver effettuato l&#39;accesso, torna a questa pagina."
 			},
 			"ConnectWallet": "Connetti il portafoglio"
-		}
+		},
+		"orConnectPlatforms": "oppure connettiti tramite:"
 	},
 	"setIdentifier": {
 		"title": "Aggiungi un modo per accedere",
@@ -195,5 +196,11 @@
 	},
 	"dialogs": {
 		"Apply": "Continuare"
+	},
+	"bridgeConflict": {
+		"title": "Scegli il tuo account",
+		"message": "Sei arrivato qui tramite una vista incorporata in cui hai effettuato l&#39;accesso con un account diverso. Quale desideri conservare?",
+		"keepCurrent": "Rimani l&#39;utente attuale",
+		"switchToBridge": "Passa all&#39;altro account"
 	}
 }

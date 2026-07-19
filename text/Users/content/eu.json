@@ -112,7 +112,7 @@
 		"emailExists": "Saiatu al zara aurretik mezu elektroniko honekin erregistratzen? Hala bada, egiaztatu sarrera-ontzia zure kontua aktibatzeko. <a href='#resend' class='Q_button Users_activation_resend'>Egin klik mezua berriro bidaltzeko</a>",
 		"mobileExists": "Saiatu al zara aurretik mugikor zenbaki honekin erregistratzen? Hala bada, egiaztatu zure SMSa zure kontua aktibatzeko. <a href='#resend' class='Q_button Users_activation_resend'>Egin klik mezua berriro bidaltzeko</a>",
 		"usingOther": "edo ahal duzu",
-		"connectPlatforms": "edo konektatu erabiliz:",
+		"connectPlatforms": "Nola konektatu nahi duzu?",
 		"prompt": "Erabiltzaile izena aukeratu:",
 		"newUser": "edo sortu kontu berri bat behean",
 		"placeholders": {
@@ -131,7 +131,8 @@
 				"content": "Elkarrizketa hau ixten duzunean, zure zorrora eramango zaitugu. Saioa hasi ondoren, itzuli orri honetara."
 			},
 			"ConnectWallet": "Konektatu Wallet"
-		}
+		},
+		"orConnectPlatforms": "edo konektatu erabiliz:"
 	},
 	"setIdentifier": {
 		"title": "Gehitu saioa hasteko modu bat",
@@ -195,5 +196,11 @@
 	},
 	"dialogs": {
 		"Apply": "Jarraitu"
+	},
+	"bridgeConflict": {
+		"title": "Aukeratu zure kontua",
+		"message": "Beste kontu batekin saioa hasita zenuen ikuspegi txertatu baten bidez iritsi zara hona. Zein gorde nahi duzu?",
+		"keepCurrent": "Egon uneko erabiltzaile gisa",
+		"switchToBridge": "Aldatu beste kontura"
 	}
 }

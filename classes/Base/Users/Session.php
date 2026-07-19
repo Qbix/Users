@@ -414,7 +414,7 @@ abstract class Base_Users_Session extends Db_Row
 		}
 		if (!is_string($value) and !is_numeric($value))
 			throw new Exception('Must pass a string to '.$this->getTable().".id");
-		if (strlen($value) > 255)
+		if (mb_strlen($value) > 255)
 			throw new Exception('Exceedingly long value being assigned to '.$this->getTable().".id");
 		return array('id', $value);			
 	}
@@ -469,7 +469,7 @@ return array (
 		}
 		if (!is_string($value) and !is_numeric($value))
 			throw new Exception('Must pass a string to '.$this->getTable().".content");
-		if (strlen($value) > 4095)
+		if (mb_strlen($value) > 4095)
 			throw new Exception('Exceedingly long value being assigned to '.$this->getTable().".content");
 		return array('content', $value);			
 	}
@@ -524,7 +524,7 @@ return array (
 		}
 		if (!is_string($value) and !is_numeric($value))
 			throw new Exception('Must pass a string to '.$this->getTable().".php");
-		if (strlen($value) > 4095)
+		if (mb_strlen($value) > 4095)
 			throw new Exception('Exceedingly long value being assigned to '.$this->getTable().".php");
 		return array('php', $value);			
 	}
@@ -579,7 +579,7 @@ return array (
 		}
 		if (!is_string($value) and !is_numeric($value))
 			throw new Exception('Must pass a string to '.$this->getTable().".userId");
-		if (strlen($value) > 31)
+		if (mb_strlen($value) > 31)
 			throw new Exception('Exceedingly long value being assigned to '.$this->getTable().".userId");
 		return array('userId', $value);			
 	}
@@ -634,7 +634,7 @@ return array (
 		}
 		if (!is_string($value) and !is_numeric($value))
 			throw new Exception('Must pass a string to '.$this->getTable().".deviceId");
-		if (strlen($value) > 700)
+		if (mb_strlen($value) > 700)
 			throw new Exception('Exceedingly long value being assigned to '.$this->getTable().".deviceId");
 		return array('deviceId', $value);			
 	}
@@ -799,7 +799,7 @@ return array (
 		}
 		if (!is_string($value) and !is_numeric($value))
 			throw new Exception('Must pass a string to '.$this->getTable().".platform");
-		if (strlen($value) > 31)
+		if (mb_strlen($value) > 31)
 			throw new Exception('Exceedingly long value being assigned to '.$this->getTable().".platform");
 		return array('platform', $value);			
 	}
@@ -854,7 +854,7 @@ return array (
 		}
 		if (!is_string($value) and !is_numeric($value))
 			throw new Exception('Must pass a string to '.$this->getTable().".appId");
-		if (strlen($value) > 200)
+		if (mb_strlen($value) > 200)
 			throw new Exception('Exceedingly long value being assigned to '.$this->getTable().".appId");
 		return array('appId', $value);			
 	}
@@ -909,7 +909,7 @@ return array (
 		}
 		if (!is_string($value) and !is_numeric($value))
 			throw new Exception('Must pass a string to '.$this->getTable().".version");
-		if (strlen($value) > 34)
+		if (mb_strlen($value) > 34)
 			throw new Exception('Exceedingly long value being assigned to '.$this->getTable().".version");
 		return array('version', $value);			
 	}
@@ -1006,7 +1006,7 @@ return array (
 		}
 		if (!is_string($value) and !is_numeric($value))
 			throw new Exception('Must pass a string to '.$this->getTable().".ipv4");
-		if (strlen($value) > 16)
+		if (mb_strlen($value) > 16)
 			throw new Exception('Exceedingly long value being assigned to '.$this->getTable().".ipv4");
 		return array('ipv4', $value);			
 	}
@@ -1061,7 +1061,7 @@ return array (
 		}
 		if (!is_string($value) and !is_numeric($value))
 			throw new Exception('Must pass a string to '.$this->getTable().".ipv6");
-		if (strlen($value) > 64)
+		if (mb_strlen($value) > 64)
 			throw new Exception('Exceedingly long value being assigned to '.$this->getTable().".ipv6");
 		return array('ipv6', $value);			
 	}

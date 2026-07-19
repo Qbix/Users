@@ -112,7 +112,7 @@
 		"emailExists": "Hefur \u00fe\u00fa reynt a\u00f0 skr\u00e1 \u00feig me\u00f0 \u00feessum t\u00f6lvup\u00f3sti \u00e1\u00f0ur? Ef svo er skaltu athuga p\u00f3sth\u00f3lfi\u00f0 \u00feitt til a\u00f0 virkja reikninginn \u00feinn. <a href='#resend' class='Q_button Users_activation_resend'>Smelltu til a\u00f0 endursenda skilabo\u00f0in</a>",
 		"mobileExists": "Hefur \u00fe\u00fa reynt a\u00f0 skr\u00e1 \u00feig me\u00f0 \u00feessu fars\u00edman\u00fameri \u00e1\u00f0ur? Ef svo er skaltu athuga SMS til a\u00f0 virkja reikninginn \u00feinn. <a href='#resend' class='Q_button Users_activation_resend'>Smelltu til a\u00f0 endursenda skilabo\u00f0in</a>",
 		"usingOther": "e\u00f0a \u00fe\u00fa getur",
-		"connectPlatforms": "e\u00f0a tengdu me\u00f0:",
+		"connectPlatforms": "Hvernig viltu tengjast?",
 		"prompt": "Veldu notendanafn:",
 		"newUser": "e\u00f0a stofna\u00f0u n\u00fdjan reikning h\u00e9r a\u00f0 ne\u00f0an",
 		"placeholders": {
@@ -131,7 +131,8 @@
 				"content": "\u00deegar \u00fe\u00fa lokar \u00feessum glugga ver\u00f0ur\u00f0u f\u00e6r\u00f0ur \u00ed veski\u00f0 \u00feitt. Eftir a\u00f0 \u00fe\u00fa hefur skr\u00e1\u00f0 \u00feig inn skaltu fara aftur \u00e1 \u00feessa s\u00ed\u00f0u."
 			},
 			"ConnectWallet": "Tengdu veski"
-		}
+		},
+		"orConnectPlatforms": "e\u00f0a tengjast me\u00f0:"
 	},
 	"setIdentifier": {
 		"title": "B\u00e6ttu vi\u00f0 lei\u00f0 til a\u00f0 skr\u00e1 \u00feig inn",
@@ -195,5 +196,11 @@
 	},
 	"dialogs": {
 		"Apply": "Halda \u00e1fram"
+	},
+	"bridgeConflict": {
+		"title": "Veldu reikninginn \u00feinn",
+		"message": "\u00de\u00fa komst hinga\u00f0 \u00ed gegnum innbygg\u00f0a s\u00fdn \u00fear sem \u00fe\u00fa varst skr\u00e1\u00f0(ur) inn sem annan a\u00f0gang. Hvorn viltu halda?",
+		"keepCurrent": "Vera \u00e1fram sem n\u00faverandi notandi",
+		"switchToBridge": "Skipta yfir \u00e1 hinn reikninginn"
 	}
 }

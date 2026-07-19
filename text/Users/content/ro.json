@@ -112,7 +112,7 @@
 		"emailExists": "A\u021bi \u00eencercat s\u0103 v\u0103 \u00eenregistra\u021bi cu acest e-mail \u00eenainte? Dac\u0103 da, verifica\u021bi c\u0103su\u021ba de e-mail pentru a v\u0103 activa contul. <a href='#resend' class='Q_button Users_activation_resend'>Face\u021bi clic pentru a retrimite mesajul</a>",
 		"mobileExists": "A\u021bi \u00eencercat s\u0103 v\u0103 \u00eenregistra\u021bi cu acest num\u0103r de mobil \u00eenainte? Dac\u0103 da, verifica\u021bi SMS-ul pentru a v\u0103 activa contul. <a href='#resend' class='Q_button Users_activation_resend'>Face\u021bi clic pentru a retrimite mesajul</a>",
 		"usingOther": "sau pute\u021bi",
-		"connectPlatforms": "sau conecta\u021bi-v\u0103 folosind:",
+		"connectPlatforms": "Cum vrei s\u0103 te conectezi?",
 		"prompt": "Alege\u021bi un nume de utilizator:",
 		"newUser": "sau crea\u021bi un cont nou mai jos",
 		"placeholders": {
@@ -131,7 +131,8 @@
 				"content": "Dup\u0103 ce \u00eenchide\u021bi acest dialog, ve\u021bi fi dus la portofel. Dup\u0103 ce v\u0103 conecta\u021bi, reveni\u021bi la aceast\u0103 pagin\u0103."
 			},
 			"ConnectWallet": "Connect Wallet"
-		}
+		},
+		"orConnectPlatforms": "sau conecta\u021bi-v\u0103 folosind:"
 	},
 	"setIdentifier": {
 		"title": "Ad\u0103uga\u021bi o modalitate de a v\u0103 conecta",
@@ -195,5 +196,11 @@
 	},
 	"dialogs": {
 		"Apply": "Continua"
+	},
+	"bridgeConflict": {
+		"title": "Alege\u021bi-v\u0103 contul",
+		"message": "Ai ajuns aici printr-o vizualizare \u00eencorporat\u0103 \u00een care erai conectat cu un alt cont. Pe care dore\u0219ti s\u0103-l p\u0103strezi?",
+		"keepCurrent": "R\u0103m\u00e2ne\u021bi ca utilizator curent",
+		"switchToBridge": "Trece\u021bi la cel\u0103lalt cont"
 	}
 }

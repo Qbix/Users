@@ -112,7 +112,7 @@
 		"emailExists": "F\u00f6rs\u00f6kte du registrera dig med detta e-postmeddelande tidigare? Om s\u00e5 \u00e4r fallet, kontrollera din inkorg f\u00f6r att aktivera ditt konto. <a href='#resend' class='Q_button Users_activation_resend'>Klicka f\u00f6r att skicka meddelandet igen</a>",
 		"mobileExists": "Har du f\u00f6rs\u00f6kt registrera dig med detta mobilnummer tidigare? Om s\u00e5 \u00e4r fallet, kontrollera ditt SMS f\u00f6r att aktivera ditt konto. <a href='#resend' class='Q_button Users_activation_resend'>Klicka f\u00f6r att skicka meddelandet igen</a>",
 		"usingOther": "Eller kan du",
-		"connectPlatforms": "eller anslut med:",
+		"connectPlatforms": "Hur vill du ansluta?",
 		"prompt": "V\u00e4lj ett anv\u00e4ndarnamn:",
 		"newUser": "eller skapa ett nytt konto nedan",
 		"placeholders": {
@@ -131,7 +131,8 @@
 				"content": "N\u00e4r du st\u00e4nger den h\u00e4r dialogrutan tas du till din pl\u00e5nbok. N\u00e4r du har loggat in g\u00e5r du tillbaka till den h\u00e4r sidan."
 			},
 			"ConnectWallet": "Anslut pl\u00e5nbok"
-		}
+		},
+		"orConnectPlatforms": "eller anslut med:"
 	},
 	"setIdentifier": {
 		"title": "L\u00e4gg till ett s\u00e4tt att logga in",
@@ -195,5 +196,11 @@
 	},
 	"dialogs": {
 		"Apply": "Forts\u00e4tta"
+	},
+	"bridgeConflict": {
+		"title": "V\u00e4lj ditt konto",
+		"message": "Du kom hit via en inb\u00e4ddad vy d\u00e4r du var inloggad som ett annat konto. Vilket vill du beh\u00e5lla?",
+		"keepCurrent": "Beh\u00e5ll som nuvarande anv\u00e4ndare",
+		"switchToBridge": "Byt till det andra kontot"
 	}
 }

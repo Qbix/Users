@@ -112,7 +112,7 @@
 		"emailExists": "Zkou\u0161eli jste se registrovat pomoc\u00ed tohoto e-mailu d\u0159\u00edve? Pokud ano, zkontrolujte svou doru\u010denou po\u0161tu a aktivujte sv\u016fj \u00fa\u010det. <a href='#resend' class='Q_button Users_activation_resend'>Kliknut\u00edm zpr\u00e1vu znovu ode\u0161lete</a>",
 		"mobileExists": "Zkou\u0161eli jste se d\u0159\u00edve registrovat pomoc\u00ed tohoto mobiln\u00edho \u010d\u00edsla? Pokud ano, zkontrolujte svou SMS a aktivujte sv\u016fj \u00fa\u010det. <a href='#resend' class='Q_button Users_activation_resend'>Kliknut\u00edm zpr\u00e1vu znovu ode\u0161lete</a>",
 		"usingOther": "nebo m\u016f\u017eete",
-		"connectPlatforms": "nebo se p\u0159ipojte pomoc\u00ed:",
+		"connectPlatforms": "Jak se chcete p\u0159ipojit?",
 		"prompt": "Vyberte si u\u017eivatelsk\u00e9 jm\u00e9no:",
 		"newUser": "nebo si n\u00ed\u017ee vytvo\u0159te nov\u00fd \u00fa\u010det",
 		"placeholders": {
@@ -131,7 +131,8 @@
 				"content": "Jakmile tento dialog zav\u0159ete, budete p\u0159esm\u011brov\u00e1ni do sv\u00e9 pen\u011b\u017eenky. Po p\u0159ihl\u00e1\u0161en\u00ed se vra\u0165te na tuto str\u00e1nku."
 			},
 			"ConnectWallet": "P\u0159ipojte Pen\u011b\u017eenku"
-		}
+		},
+		"orConnectPlatforms": "nebo se p\u0159ipojte pomoc\u00ed:"
 	},
 	"setIdentifier": {
 		"title": "P\u0159idejte zp\u016fsob p\u0159ihl\u00e1\u0161en\u00ed",
@@ -195,5 +196,11 @@
 	},
 	"dialogs": {
 		"Apply": "Pokra\u010dovat"
+	},
+	"bridgeConflict": {
+		"title": "Vyberte si sv\u016fj \u00fa\u010det",
+		"message": "Dostali jste se sem p\u0159es vlo\u017een\u00e9 zobrazen\u00ed, kde jste byli p\u0159ihl\u00e1\u0161eni jako jin\u00fd \u00fa\u010det. Kter\u00fd si chcete ponechat?",
+		"keepCurrent": "Z\u016fstat jako st\u00e1vaj\u00edc\u00ed u\u017eivatel",
+		"switchToBridge": "P\u0159epnout na druh\u00fd \u00fa\u010det"
 	}
 }

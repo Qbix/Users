@@ -121,7 +121,7 @@ abstract class Zend_Validate_Barcode_AdapterAbstract
             }
         }
 
-        if (strlen($value) > 0) {
+        if (mb_strlen($value) > 0) {
             return false;
         }
 

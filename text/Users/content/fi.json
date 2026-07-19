@@ -112,7 +112,7 @@
 		"emailExists": "Yrititk\u00f6 rekister\u00f6ity\u00e4 t\u00e4ll\u00e4 s\u00e4hk\u00f6postilla aiemmin? Jos n\u00e4in on, tarkista postilaatikkosi aktivoidaksesi tilisi. <a href='#resend' class='Q_button Users_activation_resend'>Napsauta l\u00e4hett\u00e4\u00e4ksesi viestin uudelleen</a>",
 		"mobileExists": "Yrititk\u00f6 rekister\u00f6ity\u00e4 t\u00e4ll\u00e4 matkapuhelinnumerolla aiemmin? Jos n\u00e4in on, tarkista tekstiviestisi aktivoidaksesi tilisi. <a href='#resend' class='Q_button Users_activation_resend'>Napsauta l\u00e4hett\u00e4\u00e4ksesi viestin uudelleen</a>",
 		"usingOther": "tai voit",
-		"connectPlatforms": "tai yhdist\u00e4 k\u00e4ytt\u00e4m\u00e4ll\u00e4:",
+		"connectPlatforms": "Miten haluat muodostaa yhteyden?",
 		"prompt": "Valitse k\u00e4ytt\u00e4j\u00e4nimi:",
 		"newUser": "tai luo uusi tili alla",
 		"placeholders": {
@@ -131,7 +131,8 @@
 				"content": "Kun suljet t\u00e4m\u00e4n valintaikkunan, sinut ohjataan lompakkoosi. Kun olet kirjautunut sis\u00e4\u00e4n, palaa t\u00e4lle sivulle."
 			},
 			"ConnectWallet": "Yhdist\u00e4 lompakko"
-		}
+		},
+		"orConnectPlatforms": "tai yhdist\u00e4 k\u00e4ytt\u00e4m\u00e4ll\u00e4:"
 	},
 	"setIdentifier": {
 		"title": "Lis\u00e4\u00e4 sis\u00e4\u00e4nkirjautumistapa",
@@ -195,5 +196,11 @@
 	},
 	"dialogs": {
 		"Apply": "Jatkaa"
+	},
+	"bridgeConflict": {
+		"title": "Valitse tilisi",
+		"message": "Saavuit t\u00e4nne upotetun n\u00e4kym\u00e4n kautta, jossa olit kirjautuneena sis\u00e4\u00e4n eri tilill\u00e4. Kumman haluat s\u00e4ilytt\u00e4\u00e4?",
+		"keepCurrent": "Pysy nykyisen\u00e4 k\u00e4ytt\u00e4j\u00e4n\u00e4",
+		"switchToBridge": "Vaihda toiselle tilille"
 	}
 }

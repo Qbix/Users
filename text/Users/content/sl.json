@@ -112,7 +112,7 @@
 		"emailExists": "Ste se \u017ee posku\u0161ali registrirati s tem e-po\u0161tnim naslovom? \u010ce je tako, preverite svoj nabiralnik, da aktivirate svoj ra\u010dun. <a href='#resend' class='Q_button Users_activation_resend'>Kliknite za ponovno po\u0161iljanje sporo\u010dila</a>",
 		"mobileExists": "Ste se \u017ee posku\u0161ali registrirati s to mobilno \u0161tevilko? \u010ce je tako, preverite svoj SMS, da aktivirate svoj ra\u010dun. <a href='#resend' class='Q_button Users_activation_resend'>Kliknite za ponovno po\u0161iljanje sporo\u010dila</a>",
 		"usingOther": "ali lahko",
-		"connectPlatforms": "ali se pove\u017eite z:",
+		"connectPlatforms": "Kako se \u017eelite povezati?",
 		"prompt": "Izberi uporabni\u0161ko ime:",
 		"newUser": "ali ustvarite nov ra\u010dun spodaj",
 		"placeholders": {
@@ -131,7 +131,8 @@
 				"content": "Ko zaprete to pogovorno okno, boste preusmerjeni v svojo denarnico. Ko se prijavite, se vrnite na to stran."
 			},
 			"ConnectWallet": "Pove\u017eite denarnico"
-		}
+		},
+		"orConnectPlatforms": "ali se pove\u017eite z uporabo:"
 	},
 	"setIdentifier": {
 		"title": "Dodajte na\u010din za prijavo",
@@ -195,5 +196,11 @@
 	},
 	"dialogs": {
 		"Apply": "Nadaljuj"
+	},
+	"bridgeConflict": {
+		"title": "Izberite svoj ra\u010dun",
+		"message": "Pri\u0161li ste sem prek vdelanega pogleda, kjer ste bili prijavljeni z drugim ra\u010dunom. Katerega \u017eelite obdr\u017eati?",
+		"keepCurrent": "Ostani kot trenutni uporabnik",
+		"switchToBridge": "Preklopi na drug ra\u010dun"
 	}
 }

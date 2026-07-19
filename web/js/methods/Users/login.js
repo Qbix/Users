@@ -27,7 +27,11 @@ Q.exports(function (Users, priv) {
 	*  It is passed the user information as well as the response from hitting accountStatusURL
 	*  @param {Q.Event|Function} [options.onDialog] often used for provisioning intents, etc.
 	*  @param {String|Element} [options.explanation] Explanation to prepend to the dialog, inside a container with class Users_login_explanation
-	*  @param {String|Array} [options.using] can be "native", "facebook" or "native,facebook", or an array of strings
+	*  @param {String|Array} [options.using] can be "native", "facebook" or "native,facebook", or an array of strings.
+	*   If "native" is not included and more than one platform is listed, a dialog appears
+	*   asking how the user wants to connect, with buttons in the order listed here.
+	*   The entries "email" and "mobile" can be used as pseudo-platforms, opening the
+	*   identifier form with that identifierType.
 	*  @param {Boolean} [options.skipHint] pass true here to skip calling Users.Pointer.hint when login dialog appears without textbox focus
 	*  @param {Boolean} [options.tryQuietly] if true, this is same as Users.authenticate, with platform = "using" option
 	*  @param {Boolean} [options.unlessLoggedIn] if true, this only proceeds with the login flow if the user isn't already logged in. Can be combined with tryQuietly option.
@@ -97,6 +101,12 @@ Q.exports(function (Users, priv) {
 			Users.login.occurring = true; // login flow started
 			Users.login.interacting = !o.tryQuietly; // it is interactive
 
+			if (typeof o.using === 'string') {
+				// in case _doLogin was reached before o.using was normalized,
+				// e.g. from the autoAuthenticatePlatform failure callback
+				o.using = o.using.split(',');
+			}
+
 			// try quietly, possible only with one of "facebook" or "web3"
 			if (o.tryQuietly) {
 				var platform = (typeof o.tryQuietly === 'string') ? o.tryQuietly : '';
@@ -142,6 +152,20 @@ Q.exports(function (Users, priv) {
 				$('#Users_login_usingPlatforms').show();
 				$('#Users_login_step1_form *').removeAttr('disabled');
 				$('#Users_login_identifierType').val(o.identifierType);
+			} else if (o.using.length > 1) {
+				// "native" was skipped and more than one platform was passed:
+				// show a dialog asking how the user wants to connect,
+				// with buttons in the order they appear in o.using
+				var usingPlatforms = {};
+				for (var i=0; i<o.using.length; ++i) {
+					var platform = o.using[i];
+					var appId = (o.appIds && o.appIds[platform]) || Q.info.app;
+					usingPlatforms[platform] = appId;
+				}
+				priv.linkToken = null;
+				priv.scope = o.scope;
+				priv.activation = o.activation;
+				login_setupPlatformsDialog(usingPlatforms, o.using.slice(), o);
 			} else if (o.using[0] === 'facebook') { // only facebook used. Open facebook login right away
 				var appId = (o.appIds && o.appIds.facebook) || Q.info.app;
 				Users.init.facebook(function () {
@@ -186,6 +210,17 @@ Q.exports(function (Users, priv) {
 					},
 					dontUpdateXid: true
 				});
+			} else if (o.using[0] === 'mobile' || o.using[0] === 'email') {
+				// pseudo-platform: open the identifier form with this identifierType
+				priv.linkToken = null;
+				priv.scope = o.scope;
+				priv.activation = o.activation;
+				login_setupDialog({}, Q.extend({}, o, {
+					identifierType: o.using[0]
+				}));
+				$('#Users_login_step1').show();
+				$('#Users_login_step1_form *').removeAttr('disabled');
+				$('#Users_login_identifierType').val(o.using[0]);
 			} else {
 				var platform = o.using[0];
 				_authenticate(platform);
@@ -814,99 +849,17 @@ Q.exports(function (Users, priv) {
 			var step1_usingPlatforms_div = $('<div id="Users_login_usingPlatforms" />');
 			var $buttons = $([]);
 			for (var platform in usingPlatforms) {
-				var appId = usingPlatforms[platform];
-				var platformAppId = Users.getPlatformAppId(platform, appId);
-				var $button = null;
-				switch (platform) {
-					case 'facebook':
-						if (!platformAppId) {
-							console.warn("Users.login: missing Users.apps.facebook." + appId + ".appId");
-							break;
-						}
-						$button = $('<a href="#login_facebook" id="Users_login_with_facebook" />').append(
-							$('<img />').attr({
-								alt: Q.text.Users.login.facebook.alt,
-								src: Q.text.Users.login.facebook.src || Q.url('{{Users}}/img/platforms/facebook.png')
-							}),
-							$('<div />').text('Facebook')
-						).attr('tabindex', 1002)
-							.css({'display': 'inline-block', 'vertical-align': 'middle'})
-							.click(function () {
-								if (location.search.includes('handoff=yes')) {
-									var scheme = Q.getObject([Q.info.platform, Q.info.app, 'scheme'], Users.apps);
-									location.href = scheme + '#facebookLogin=1';
-								} else {
-									Users.init.facebook(function () {
-										Users.Facebook.usingPlatforms = usingPlatforms;
-										Users.Facebook.scope = options.scope;
-										Users.Facebook.login();
-									}, {
-										appId: appId
-									});
-								}
-								return false;
-							});
-						// Load the facebook script now, so clicking on the facebook button
-						// can trigger a popup directly, otherwise popup blockers may complain:
-						Q.addScript('https://connect.facebook.net/en_US/sdk.js');
-						break;
-					case 'web3':
-						$button = $('<a href="#login_web3" id="Users_login_with_web3" />').append(
-							$('<img />').attr({
-								alt: Q.text.Users.login.web3.alt,
-								src: Q.text.Users.login.web3Src || Q.url('{{Users}}/img/platforms/web3.png')
-							}),
-							$('<div />').text(Q.text.Users.platforms.Wallet)
-						).attr('tabindex', '1001')
-							.css({'display': 'inline-block', 'vertical-align': 'middle'})
-							.click(function () {
-								if (login_setupDialog.dialog) {
-									Q.Dialogs.pop();
-								}
-								Users.Web3.login({
-									onSigned: function (result) {
-										if (!result) {
-											_onCancel();
-										} else {
-											// do nothing, since we already executed this:
-											// _authenticate('web3');
-										}
-									},
-									dontUpdateXid: true
-								});
-								return false;
-							});
-							break;
-					default:
-						var text = Q.text.Users.login[platform];
-						$button = $('<a href="#login_' + platform + '" id="Users_login_with_' + platform + '" />').append(
-							$('<img />').attr({
-								alt: (text && text.alt) || "login with " + platform,
-								src: (text && text.src) || Q.url('{{Users}}/img/platforms/' + platform + '.png')
-							}),
-							$('<div />').text((Q.text.Users.platforms[platform] || platform).toCapitalized())
-						).attr('tabindex', 1000)
-						.css({'display': 'inline-block', 'vertical-align': 'middle'})
-						.click(function () {
-							if (location.search.includes('handoff=yes')) {
-								var scheme = Q.getObject([Q.info.platform, Q.info.app, 'scheme'], Users.apps);
-								location.href = scheme + '#' + platform + 'Login=1';
-							} else {
-								Users.authenticate(platform, _onConnect, _onCancel, {
-									scope: options.scope,
-									appId: appId
-								});
-							}
-							return false;
-						});
-
+				var $button = login_platformButton(
+					platform, usingPlatforms[platform], usingPlatforms, options
+				);
+				if ($button) {
+					$buttons = $buttons.add($button);
 				}
-				$buttons = $buttons.add($button);
 			}
 			if ($buttons.length > 0) {
 				step1_usingPlatforms_div.append(
-					$("<div class='Users_login_connectPlatforms'> />")
-						.text(Q.text.Users.login.connectPlatforms)
+					$("<div class='Users_login_connectPlatforms' />")
+						.text(Q.text.Users.login.orConnectPlatforms)
 				);
 				$buttons.each(function () {
 					step1_usingPlatforms_div.append(this);
@@ -932,7 +885,7 @@ Q.exports(function (Users, priv) {
 				title: title,
 				content: $('<div />').append($explanation, step1_div, step2_div),
 				elementId: 'Users_login_dialog',
-				className: 'Users_login_dialog Q_scrollToBottom ' + options.className,
+				className: 'Users_login_dialog Q_scrollToBottom ' + (options.className || ''),
 				fullscreen: !!options.fullscreen,
 				noClose: !!options.noClose,
 				closeOnEsc: Q.typeOf(options.closeOnEsc) === 'undefined' ? true : !!options.closeOnEsc,
@@ -972,13 +925,19 @@ Q.exports(function (Users, priv) {
 						$(this).plugin('Q/validator', 'reset');
 					});
 					$('#Users_login_step1').nextAll().hide();
-					if (!priv.login_connected
+					var switching = priv.login_switching;
+					priv.login_switching = null;
+					if (!switching
+						&& !priv.login_connected
 						&& !priv.login_resent
 						&& priv.login_onCancel) {
 						priv.login_onCancel();
 					}
 					$(this).remove();
 					login_setupDialog.dialog = null;
+					if (switching) {
+						switching();
+					}
 				}
 			});
 			function hideForm2() {
@@ -1002,6 +961,217 @@ Q.exports(function (Users, priv) {
 				}
 				$(login_setupDialog.dialog).removeClass('Users_login_expanded');
 			}
+		}
+
+		/**
+		 * Create a login button for a platform.
+		 * Used by both login_setupDialog and login_setupPlatformsDialog,
+		 * so buttons look and behave identically in both dialogs.
+		 * The pseudo-platforms "native", "email" and "mobile" open the
+		 * identifier form instead of authenticating with an external platform.
+		 * Returns the jQuery button element, or null if it couldn't be created.
+		 */
+		function login_platformButton(platform, appId, usingPlatforms, options) {
+			var platformAppId = Users.getPlatformAppId(platform, appId);
+			var $button = null;
+			var text, label, identifierType;
+			switch (platform) {
+				case 'facebook':
+					if (!platformAppId) {
+						console.warn("Users.login: missing Users.apps.facebook." + appId + ".appId");
+						break;
+					}
+					$button = $('<a href="#login_facebook" id="Users_login_with_facebook" />').append(
+						$('<img />').attr({
+							alt: Q.text.Users.login.facebook.alt,
+							src: Q.text.Users.login.facebook.src || Q.url('{{Users}}/img/platforms/facebook.png')
+						}),
+						$('<div />').text('Facebook')
+					).attr('tabindex', 1002)
+						.css({'display': 'inline-block', 'vertical-align': 'middle'})
+						.click(function () {
+							if (location.search.includes('handoff=yes')) {
+								var scheme = Q.getObject([Q.info.platform, Q.info.app, 'scheme'], Users.apps);
+								location.href = scheme + '#facebookLogin=1';
+							} else {
+								Users.init.facebook(function () {
+									Users.Facebook.usingPlatforms = usingPlatforms;
+									Users.Facebook.scope = options.scope;
+									Users.Facebook.login();
+								}, {
+									appId: appId
+								});
+							}
+							return false;
+						});
+					// Load the facebook script now, so clicking on the facebook button
+					// can trigger a popup directly, otherwise popup blockers may complain:
+					Q.addScript('https://connect.facebook.net/en_US/sdk.js');
+					break;
+				case 'web3':
+					$button = $('<a href="#login_web3" id="Users_login_with_web3" />').append(
+						$('<img />').attr({
+							alt: Q.text.Users.login.web3.alt,
+							src: Q.text.Users.login.web3Src || Q.url('{{Users}}/img/platforms/web3.png')
+						}),
+						$('<div />').text(Q.text.Users.platforms.Wallet)
+					).attr('tabindex', '1001')
+						.css({'display': 'inline-block', 'vertical-align': 'middle'})
+						.click(function () {
+							if (login_setupDialog.dialog) {
+								Q.Dialogs.pop();
+							}
+							Users.Web3.login({
+								onSigned: function (result) {
+									if (!result) {
+										_onCancel();
+									} else {
+										// do nothing, since we already executed this:
+										// _authenticate('web3');
+									}
+								},
+								dontUpdateXid: true
+							});
+							return false;
+						});
+					break;
+				case 'native':
+				case 'email':
+				case 'mobile':
+					// pseudo-platforms: clicking opens the identifier form
+					text = Q.text.Users.login[platform];
+					label = (Q.getObject(['platforms', platform], Q.text.Users) || platform).toCapitalized();
+					identifierType = (platform === 'native')
+						? options.identifierType : platform;
+					$button = $('<a href="#login_' + platform + '" id="Users_login_with_' + platform + '" />').append(
+						$('<img />').attr({
+							alt: (text && text.alt) || label,
+							src: (text && text.src) || Q.url('{{Users}}/img/platforms/' + platform + '.png')
+						}),
+						$('<div />').text(label)
+					).attr('tabindex', 1000)
+						.css({'display': 'inline-block', 'vertical-align': 'middle'})
+						.click(function () {
+							login_switchToNative(identifierType, options);
+							return false;
+						});
+					break;
+				default:
+					text = Q.text.Users.login[platform];
+					$button = $('<a href="#login_' + platform + '" id="Users_login_with_' + platform + '" />').append(
+						$('<img />').attr({
+							alt: (text && text.alt) || "login with " + platform,
+							src: (text && text.src) || Q.url('{{Users}}/img/platforms/' + platform + '.png')
+						}),
+						$('<div />').text((Q.text.Users.platforms[platform] || platform).toCapitalized())
+					).attr('tabindex', 1000)
+					.css({'display': 'inline-block', 'vertical-align': 'middle'})
+					.click(function () {
+						if (location.search.includes('handoff=yes')) {
+							var scheme = Q.getObject([Q.info.platform, Q.info.app, 'scheme'], Users.apps);
+							location.href = scheme + '#' + platform + 'Login=1';
+						} else {
+							Users.authenticate(platform, _onConnect, _onCancel, {
+								scope: options.scope,
+								appId: appId
+							});
+						}
+						return false;
+					});
+
+			}
+			return $button;
+		}
+
+		/**
+		 * Close the currently open login dialog (if any) and open the
+		 * identifier-based login dialog with the given identifierType.
+		 * Uses priv.login_switching so the close isn't treated as a cancel.
+		 */
+		function login_switchToNative(identifierType, options) {
+			function _open() {
+				var o2 = Q.extend({}, options, {
+					identifierType: identifierType
+				});
+				login_setupDialog({}, o2);
+				priv.linkToken = null;
+				priv.scope = o2.scope;
+				priv.activation = o2.activation;
+				$('#Users_login_step1').show();
+				$('#Users_login_step1_form *').removeAttr('disabled');
+				$('#Users_login_identifierType').val(identifierType);
+			}
+			if (login_setupDialog.dialog) {
+				priv.login_switching = _open; // onClose will call it
+				Q.Dialogs.pop();
+			} else {
+				_open();
+			}
+		}
+
+		/**
+		 * Set up the platforms-only login dialog, shown when "native" is not
+		 * among the "using" option and more than one platform was passed.
+		 * Buttons appear in the order they were listed in the "using" option.
+		 * The prompt text comes from Q.text.Users.login.connectPlatforms.
+		 * login_setupDialog.dialog will contain the dialog
+		 */
+		function login_setupPlatformsDialog(usingPlatforms, order, options) {
+			options = options || {};
+			if (login_setupDialog.dialog) {
+				return;
+			}
+			var $prompt = $('<div class="Users_login_connectPlatforms Users_login_connectPlatforms_prompt" />')
+				.text(Q.text.Users.login.connectPlatforms);
+			var $platforms = $('<div id="Users_login_usingPlatforms" class="Users_login_platformsOnly" />');
+			var found = 0;
+			for (var i = 0; i < order.length; ++i) {
+				var $button = login_platformButton(
+					order[i], usingPlatforms[order[i]], usingPlatforms, options
+				);
+				if ($button) {
+					$platforms.append($button);
+					++found;
+				}
+			}
+			if (!found) {
+				console.warn("Users.login: no platform buttons could be created");
+			}
+			var step1_div = $('<div id="Users_login_step1" class="Q_big_prompt Users_login_platformsStep" />')
+				.append($prompt, $platforms);
+			var $explanation = options.explanation
+				? $('<div class="Users_login_explanation" />').append(options.explanation)
+				: null;
+			var title = (options.title || Q.text.Users.login.title).interpolate({
+				CommunityName: Q.Users.communityName
+			});
+
+			Q.handle(options.onDialog, this, [step1_div, null]);
+
+			Q.Users.login.dialog = login_setupDialog.dialog = Q.Dialogs.push({
+				title: title,
+				content: $('<div />').append($explanation, step1_div),
+				elementId: 'Users_login_dialog',
+				className: 'Users_login_dialog Users_login_platformsDialog ' + (options.className || ''),
+				fullscreen: !!options.fullscreen,
+				noClose: !!options.noClose,
+				closeOnEsc: Q.typeOf(options.closeOnEsc) === 'undefined' ? true : !!options.closeOnEsc,
+				onClose: function () {
+					var switching = priv.login_switching;
+					priv.login_switching = null;
+					if (!switching
+						&& !priv.login_connected
+						&& !priv.login_resent
+						&& priv.login_onCancel) {
+						priv.login_onCancel();
+					}
+					$(this).remove();
+					login_setupDialog.dialog = null;
+					if (switching) {
+						switching();
+					}
+				}
+			});
 		}
 	};
 

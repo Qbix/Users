@@ -112,7 +112,7 @@
 		"emailExists": "A wnaethoch chi geisio cofrestru gyda&#39;r e-bost hwn o&#39;r blaen? Os felly, gwiriwch eich mewnflwch i actifadu eich cyfrif. <a href='#resend' class='Q_button Users_activation_resend'>Cliciwch i ail-anfon y neges</a>",
 		"mobileExists": "A wnaethoch chi geisio cofrestru gyda&#39;r rhif ff\u00f4n symudol hwn o&#39;r blaen? Os felly, gwiriwch eich SMS i actifadu eich cyfrif. <a href='#resend' class='Q_button Users_activation_resend'>Cliciwch i ail-anfon y neges</a>",
 		"usingOther": "neu gallwch chi",
-		"connectPlatforms": "neu gysylltu gan ddefnyddio:",
+		"connectPlatforms": "Sut ydych chi eisiau cysylltu?",
 		"prompt": "Dewiswch enw defnyddiwr:",
 		"newUser": "neu greu cyfrif newydd isod",
 		"placeholders": {
@@ -131,7 +131,8 @@
 				"content": "Unwaith y byddwch chi&#39;n cau&#39;r deialog hwn, byddwch chi&#39;n cael eich tywys i&#39;ch waled. Ar \u00f4l i chi fewngofnodi, dychwelwch i&#39;r dudalen hon."
 			},
 			"ConnectWallet": "Cyswllt Waled"
-		}
+		},
+		"orConnectPlatforms": "neu gysylltu gan ddefnyddio:"
 	},
 	"setIdentifier": {
 		"title": "Ychwanegu ffordd i fewngofnodi",
@@ -195,5 +196,11 @@
 	},
 	"dialogs": {
 		"Apply": "Parhau"
+	},
+	"bridgeConflict": {
+		"title": "Dewiswch eich cyfrif",
+		"message": "Fe gyrhaeddoch chi yma drwy olygfa fewnosodedig lle roeddech chi wedi mewngofnodi fel cyfrif gwahanol. Pa un hoffech chi ei gadw?",
+		"keepCurrent": "Aros fel defnyddiwr presennol",
+		"switchToBridge": "Newid i&#39;r cyfrif arall"
 	}
 }

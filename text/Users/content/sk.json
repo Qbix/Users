@@ -112,7 +112,7 @@
 		"emailExists": "Sk\u00fa\u0161ali ste sa u\u017e zaregistrova\u0165 pomocou tohto e-mailu? Ak \u00e1no, skontrolujte si doru\u010den\u00fa po\u0161tu a aktivujte si \u00fa\u010det. <a href='#resend' class='Q_button Users_activation_resend'>Kliknut\u00edm spr\u00e1vu znova odo\u0161lete</a>",
 		"mobileExists": "Sk\u00fa\u0161ali ste sa u\u017e predt\u00fdm zaregistrova\u0165 pomocou tohto mobiln\u00e9ho \u010d\u00edsla? Ak \u00e1no, skontrolujte svoju SMS a aktivujte svoj \u00fa\u010det. <a href='#resend' class='Q_button Users_activation_resend'>Kliknut\u00edm spr\u00e1vu znova odo\u0161lete</a>",
 		"usingOther": "alebo m\u00f4\u017ee\u0161",
-		"connectPlatforms": "alebo sa pripojte pomocou:",
+		"connectPlatforms": "Ako sa chcete pripoji\u0165?",
 		"prompt": "Vyber si meno:",
 		"newUser": "alebo si vytvorte nov\u00fd \u00fa\u010det ni\u017e\u0161ie",
 		"placeholders": {
@@ -131,7 +131,8 @@
 				"content": "Po zatvoren\u00ed tohto dial\u00f3gov\u00e9ho okna sa dostanete do svojej pe\u0148a\u017eenky. Po prihl\u00e1sen\u00ed sa vr\u00e1\u0165te na t\u00fato str\u00e1nku."
 			},
 			"ConnectWallet": "Pripoji\u0165 Pe\u0148a\u017eenku"
-		}
+		},
+		"orConnectPlatforms": "alebo sa pripojte pomocou:"
 	},
 	"setIdentifier": {
 		"title": "Pridajte sp\u00f4sob prihl\u00e1senia",
@@ -195,5 +196,11 @@
 	},
 	"dialogs": {
 		"Apply": "Pokra\u010dova\u0165"
+	},
+	"bridgeConflict": {
+		"title": "Vyberte si svoj \u00fa\u010det",
+		"message": "Dostali ste sa sem cez vlo\u017een\u00e9 zobrazenie, kde ste boli prihl\u00e1sen\u00ed ako in\u00fd \u00fa\u010det. Ktor\u00fd si chcete ponecha\u0165?",
+		"keepCurrent": "Zosta\u0165 ako aktu\u00e1lny pou\u017e\u00edvate\u013e",
+		"switchToBridge": "Prepn\u00fa\u0165 na druh\u00fd \u00fa\u010det"
 	}
 }

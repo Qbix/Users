@@ -112,7 +112,7 @@
 		"emailExists": "Adakah anda cuba mendaftar dengan e-mel ini sebelum ini? Jika ya, semak peti masuk anda untuk mengaktifkan akaun anda. <a href='#resend' class='Q_button Users_activation_resend'>Klik untuk menghantar semula mesej</a>",
 		"mobileExists": "Adakah anda cuba mendaftar dengan nombor telefon bimbit ini sebelum ini? Jika ya, semak SMS anda untuk mengaktifkan akaun anda. <a href='#resend' class='Q_button Users_activation_resend'>Klik untuk menghantar semula mesej</a>",
 		"usingOther": "atau anda boleh",
-		"connectPlatforms": "atau sambung menggunakan:",
+		"connectPlatforms": "Macam mana nak sambung?",
 		"prompt": "Pilih nama pengguna:",
 		"newUser": "atau buat akaun baharu di bawah",
 		"placeholders": {
@@ -131,7 +131,8 @@
 				"content": "Sebaik sahaja anda menutup dialog ini, anda akan dibawa ke dompet anda. Selepas anda log masuk, kembali ke halaman ini."
 			},
 			"ConnectWallet": "Sambung Wallet"
-		}
+		},
+		"orConnectPlatforms": "atau sambungkan menggunakan:"
 	},
 	"setIdentifier": {
 		"title": "Tambah cara untuk log masuk",
@@ -195,5 +196,11 @@
 	},
 	"dialogs": {
 		"Apply": "Teruskan"
+	},
+	"bridgeConflict": {
+		"title": "Pilih akaun anda",
+		"message": "Anda tiba di sini melalui paparan terbenam di mana anda telah log masuk sebagai akaun yang berbeza. Yang manakah anda ingin kekalkan?",
+		"keepCurrent": "Kekal sebagai pengguna semasa",
+		"switchToBridge": "Tukar ke akaun lain"
 	}
 }

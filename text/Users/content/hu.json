@@ -112,7 +112,7 @@
 		"emailExists": "Pr\u00f3b\u00e1lt\u00e1l kor\u00e1bban regisztr\u00e1lni ezzel az e-mail c\u00edmmel? Ha igen, ellen\u0151rizze a be\u00e9rkezett \u00fczeneteket a fi\u00f3k aktiv\u00e1l\u00e1s\u00e1hoz. <a href='#resend' class='Q_button Users_activation_resend'>Kattintson az \u00fczenet \u00fajb\u00f3li elk\u00fcld\u00e9s\u00e9hez</a>",
 		"mobileExists": "Pr\u00f3b\u00e1lt\u00e1l kor\u00e1bban regisztr\u00e1lni ezzel a mobilsz\u00e1mmal? Ha igen, ellen\u0151rizze az SMS-t a fi\u00f3k aktiv\u00e1l\u00e1s\u00e1hoz. <a href='#resend' class='Q_button Users_activation_resend'>Kattintson az \u00fczenet \u00fajb\u00f3li elk\u00fcld\u00e9s\u00e9hez</a>",
 		"usingOther": "vagy tudsz",
-		"connectPlatforms": "vagy csatlakoztassa a k\u00f6vetkez\u0151t:",
+		"connectPlatforms": "Hogyan szeretn\u00e9l csatlakozni?",
 		"prompt": "V\u00e1lasszon felhaszn\u00e1l\u00f3i nevet:",
 		"newUser": "vagy hozzon l\u00e9tre egy \u00faj fi\u00f3kot al\u00e1bb",
 		"placeholders": {
@@ -131,7 +131,8 @@
 				"content": "A p\u00e1rbesz\u00e9dpanel bez\u00e1r\u00e1sa ut\u00e1n a p\u00e9nzt\u00e1rc\u00e1j\u00e1hoz ker\u00fcl. Bejelentkez\u00e9s ut\u00e1n t\u00e9rjen vissza erre az oldalra."
 			},
 			"ConnectWallet": "Wallet csatlakoztat\u00e1sa"
-		}
+		},
+		"orConnectPlatforms": "vagy csatlakozzon a k\u00f6vetkez\u0151vel:"
 	},
 	"setIdentifier": {
 		"title": "Adjon meg egy bejelentkez\u00e9si m\u00f3dot",
@@ -195,5 +196,11 @@
 	},
 	"dialogs": {
 		"Apply": "Folytat\u00e1s"
+	},
+	"bridgeConflict": {
+		"title": "V\u00e1lassza ki a fi\u00f3kj\u00e1t",
+		"message": "Egy be\u00e1gyazott n\u00e9zeten kereszt\u00fcl \u00e9rkezett ide, ahol egy m\u00e1sik fi\u00f3kkal volt bejelentkezve. Melyiket szeretn\u00e9 megtartani?",
+		"keepCurrent": "Maradj jelenlegi felhaszn\u00e1l\u00f3k\u00e9nt",
+		"switchToBridge": "V\u00e1lt\u00e1s a m\u00e1sik fi\u00f3kra"
 	}
 }

@@ -353,7 +353,7 @@ abstract class Base_Users_Web3 extends Db_Row
 		}
 		if (!is_string($value) and !is_numeric($value))
 			throw new Exception('Must pass a string to '.$this->getTable().".chainId");
-		if (strlen($value) > 10)
+		if (mb_strlen($value) > 10)
 			throw new Exception('Exceedingly long value being assigned to '.$this->getTable().".chainId");
 		return array('chainId', $value);			
 	}
@@ -408,7 +408,7 @@ return array (
 		}
 		if (!is_string($value) and !is_numeric($value))
 			throw new Exception('Must pass a string to '.$this->getTable().".contract");
-		if (strlen($value) > 42)
+		if (mb_strlen($value) > 42)
 			throw new Exception('Exceedingly long value being assigned to '.$this->getTable().".contract");
 		return array('contract', $value);			
 	}
@@ -463,7 +463,7 @@ return array (
 		}
 		if (!is_string($value) and !is_numeric($value))
 			throw new Exception('Must pass a string to '.$this->getTable().".methodName");
-		if (strlen($value) > 63)
+		if (mb_strlen($value) > 63)
 			throw new Exception('Exceedingly long value being assigned to '.$this->getTable().".methodName");
 		return array('methodName', $value);			
 	}
@@ -518,7 +518,7 @@ return array (
 		}
 		if (!is_string($value) and !is_numeric($value))
 			throw new Exception('Must pass a string to '.$this->getTable().".params");
-		if (strlen($value) > 1023)
+		if (mb_strlen($value) > 1023)
 			throw new Exception('Exceedingly long value being assigned to '.$this->getTable().".params");
 		return array('params', $value);			
 	}
@@ -573,7 +573,7 @@ return array (
 		}
 		if (!is_string($value) and !is_numeric($value))
 			throw new Exception('Must pass a string to '.$this->getTable().".fromAddress");
-		if (strlen($value) > 42)
+		if (mb_strlen($value) > 42)
 			throw new Exception('Exceedingly long value being assigned to '.$this->getTable().".fromAddress");
 		return array('fromAddress', $value);			
 	}
@@ -628,7 +628,7 @@ return array (
 		}
 		if (!is_string($value) and !is_numeric($value))
 			throw new Exception('Must pass a string to '.$this->getTable().".result");
-		if (strlen($value) > 65535)
+		if (mb_strlen($value) > 65535)
 			throw new Exception('Exceedingly long value being assigned to '.$this->getTable().".result");
 		return array('result', $value);			
 	}

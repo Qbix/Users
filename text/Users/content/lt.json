@@ -112,7 +112,7 @@
 		"emailExists": "Ar band\u0117te registruotis \u0161iuo el. pa\u0161to adresu anks\u010diau? Jei taip, patikrinkite gautuosius, kad suaktyvintum\u0117te paskyr\u0105. <a href='#resend' class='Q_button Users_activation_resend'>Spustel\u0117kite nor\u0117dami i\u0161si\u0173sti prane\u0161im\u0105 dar kart\u0105</a>",
 		"mobileExists": "Ar band\u0117te registruotis \u0161iuo mobiliojo telefono numeriu anks\u010diau? Jei taip, patikrinkite savo SMS, kad suaktyvintum\u0117te paskyr\u0105. <a href='#resend' class='Q_button Users_activation_resend'>Spustel\u0117kite nor\u0117dami i\u0161si\u0173sti prane\u0161im\u0105 dar kart\u0105</a>",
 		"usingOther": "arba tu gali",
-		"connectPlatforms": "arba prisijunkite naudodami:",
+		"connectPlatforms": "Kaip norite prisijungti?",
 		"prompt": "Pasirinkite vartotojo vard\u0105:",
 		"newUser": "arba toliau sukurkite nauj\u0105 paskyr\u0105",
 		"placeholders": {
@@ -131,7 +131,8 @@
 				"content": "Kai u\u017edarysite \u0161\u012f dialogo lang\u0105, b\u016bsite nukreipti \u012f savo pinigin\u0119. Prisijung\u0119 gr\u012f\u017ekite \u012f \u0161\u012f puslap\u012f."
 			},
 			"ConnectWallet": "Prijunkite Pinigin\u0119"
-		}
+		},
+		"orConnectPlatforms": "arba prisijunkite naudodami:"
 	},
 	"setIdentifier": {
 		"title": "Prid\u0117kite prisijungimo b\u016bd\u0105",
@@ -195,5 +196,11 @@
 	},
 	"dialogs": {
 		"Apply": "T\u0119sti"
+	},
+	"bridgeConflict": {
+		"title": "Pasirinkite savo paskyr\u0105",
+		"message": "Atvykote \u010dia per \u012fterpt\u0105j\u012f rodin\u012f, kuriame buvote prisijung\u0119 kaip kita paskyra. Kuri\u0105 paskyr\u0105 nor\u0117tum\u0117te pasilikti?",
+		"keepCurrent": "Likti dabartiniu vartotoju",
+		"switchToBridge": "Perjungti \u012f kit\u0105 paskyr\u0105"
 	}
 }

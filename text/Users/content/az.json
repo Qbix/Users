@@ -112,7 +112,7 @@
 		"emailExists": "Daha \u0259vv\u0259l bu e-po\u00e7tla qeydiyyatdan ke\u00e7m\u0259y\u0259 \u00e7al\u0131\u015fm\u0131s\u0131n\u0131z? \u018fg\u0259r bel\u0259dirs\u0259, hesab\u0131n\u0131z\u0131 aktivl\u0259\u015fdirm\u0259k \u00fc\u00e7\u00fcn g\u0259l\u0259nl\u0259r qutusunu yoxlay\u0131n. <a href='#resend' class='Q_button Users_activation_resend'>Mesaj\u0131 yenid\u0259n g\u00f6nd\u0259rm\u0259k \u00fc\u00e7\u00fcn klikl\u0259yin</a>",
 		"mobileExists": "Daha \u0259vv\u0259l bu mobil n\u00f6mr\u0259 il\u0259 qeydiyyatdan ke\u00e7m\u0259y\u0259 \u00e7al\u0131\u015fm\u0131s\u0131n\u0131z? \u018fg\u0259r bel\u0259dirs\u0259, hesab\u0131n\u0131z\u0131 aktivl\u0259\u015fdirm\u0259k \u00fc\u00e7\u00fcn SMS-i yoxlay\u0131n. <a href='#resend' class='Q_button Users_activation_resend'>Mesaj\u0131 yenid\u0259n g\u00f6nd\u0259rm\u0259k \u00fc\u00e7\u00fcn klikl\u0259yin</a>",
 		"usingOther": "ya da bil\u0259rs\u0259n",
-		"connectPlatforms": "v\u0259 ya istifad\u0259 ed\u0259r\u0259k qo\u015fulun:",
+		"connectPlatforms": "Nec\u0259 qo\u015fulmaq ist\u0259yirsiniz?",
 		"prompt": "\u0130stifad\u0259\u00e7i ad\u0131 se\u00e7in:",
 		"newUser": "v\u0259 ya a\u015fa\u011f\u0131da yeni hesab yarad\u0131n",
 		"placeholders": {
@@ -131,7 +131,8 @@
 				"content": "Bu dialoqu ba\u011flad\u0131qdan sonra c\u00fczdan\u0131n\u0131za apar\u0131lacaqs\u0131n\u0131z. Daxil olduqdan sonra bu s\u0259hif\u0259y\u0259 qay\u0131d\u0131n."
 			},
 			"ConnectWallet": "Pul kis\u0259sini birl\u0259\u015fdirin"
-		}
+		},
+		"orConnectPlatforms": "v\u0259 ya istifad\u0259 ed\u0259r\u0259k qo\u015fulun:"
 	},
 	"setIdentifier": {
 		"title": "Daxil olmaq \u00fc\u00e7\u00fcn bir yol \u0259lav\u0259 edin",
@@ -195,5 +196,11 @@
 	},
 	"dialogs": {
 		"Apply": "Davam et"
+	},
+	"bridgeConflict": {
+		"title": "Hesab\u0131n\u0131z\u0131 se\u00e7in",
+		"message": "Ba\u015fqa hesabla daxil oldu\u011funuz daxili g\u00f6r\u00fcn\u00fc\u015f vasit\u0259sil\u0259 buraya g\u0259lmisiniz. Hans\u0131n\u0131 saxlamaq ist\u0259rdiniz?",
+		"keepCurrent": "Cari istifad\u0259\u00e7i olaraq qal\u0131n",
+		"switchToBridge": "Dig\u0259r hesaba ke\u00e7in"
 	}
 }
