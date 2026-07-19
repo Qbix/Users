@@ -63,10 +63,9 @@ Users_Mobile.sendMessage = function (to, view, fields, options, callback) {
 	if (!twilioClient && config) {
 		var twilio = require('twilio');
 		// try twilio config
-		var sid, token;
 		if (config.sid && config.token) {
 			// twilio config is given. Let's create transport to use it
-			twilioClient = new twilio.RestClient(config.sid, config.token);
+			twilioClient = twilio(config.sid, config.token);
 		}
 	}
 	
@@ -79,12 +78,16 @@ Users_Mobile.sendMessage = function (to, view, fields, options, callback) {
 	content = entities.decode(content);
 	var from = options.from || Q.Config.get(['Users', 'mobile', 'from'], null);
 	if (twilioClient && from) {
-		twilioClient.sendSms(from, number, content, {}, function (res) {
+		twilioClient.messages.create({
+			to: number,
+			from: from,
+			body: content
+		}).then(function (res) {
 			if (key) {
 				Q.log('sent mobile message (via twilio) to '+number+":\n"+content, key);
 			}
 			callback(null, 'twilio', res);
-		}, function (err) {
+		}).catch(function (err) {
 			callback(err, 'twilio');
 		});
 		// we are done! Skip smtp method
