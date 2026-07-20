@@ -508,11 +508,10 @@ Users.Socket = {
 			next();
 		});
 		socket.io.of('/Q').on('connection', function(client) {
-			Q.log("Socket.IO client connected " + client.id);
-			if (client.alreadyListening) {
+			if (client.alreadyListeningUsers) {
 				return;
 			}
-			client.alreadyListening = true;
+			client.alreadyListeningUsers = true;
 			client.on('Users/clients', function (callback) {
 				var userId = client.capability && client.capability.userId;
 				if (!userId) {
