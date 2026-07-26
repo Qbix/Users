@@ -1381,7 +1381,8 @@ class Users_User extends Base_Users_User
 	}
 
 	/**
-	 * Remove users from system
+	 * Remove users from system, including their upload directory
+	 * under files/{app}/uploads/Users.
 	 * @method removeUser
 	 * @static
 	 * @param {string|array} $userId Array of id's or single id
@@ -1425,6 +1426,10 @@ class Users_User extends Base_Users_User
 		Users_User::delete()
 			->where(array('id' => $userIds))
 			->execute();
+
+		$uploadsDir = APP_FILES_DIR.DS.Q::app().DS.'uploads'.DS.'Users'
+			.DS.Q_Utils::splitId($userIds);
+		Q_Utils::rmdir($uploadsDir);
 	}
 
 	/**
