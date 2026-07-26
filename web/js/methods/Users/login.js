@@ -468,7 +468,7 @@ Q.exports(function (Users, priv) {
 							.css('display', $(this).val() ? 'none' : 'inline');
 					});
 				var passphrase_hashed_input = $('<input type="hidden" name="passphrase_hashed" id="hashed-password" />');
-				var $b = $('<a class="Q_button Users_login_start Q_main_button" />')
+				var $b = $('<button class="Q_button Users_login_start Q_main_button" />')
 					.html(Q.text.Users.login.loginButton)
 					.on(Q.Pointer.click, function () {
 						Users.submitClosestForm.apply(this, arguments);
