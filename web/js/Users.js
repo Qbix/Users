@@ -645,6 +645,11 @@
 	});
 	Users.onComplete = new Q.Event();
 
+	/**
+	 * Logs out the current user.
+	 * @method logout
+	 * @static
+	 */
 	Users.logout = function () { } // temporarily
 
 	/**
@@ -2032,7 +2037,16 @@
 			}
 		},
         
-        getExplorerLink: function(address, chainId, partPrepend = 'token/') {
+		/**
+		 * Builds a block explorer link for a Web3 address or token path.
+		 * @method getExplorerLink
+		 * @static
+		 * @param {String} address A string such as a token address or hash.
+		 * @param {Number} chainId The chain id used to look up explorer URLs.
+		 * @param {String} [partPrepend='token/'] Path prefix to insert before the address.
+		 * @return {String|null} The explorer URL, the address itself if no explorer is configured, or null.
+		 */
+		getExplorerLink: function(address, chainId, partPrepend = 'token/') {
 			if (!Q.Users.Web3.chains[chainId]) {
 				return null;
 			}
@@ -2046,6 +2060,7 @@
 			}
             return t + partPrepend + address;
         },
+		
 		/**
 		 * Abbreviates a Web3 address
 		 * @param {String} address A string of the form "0x..."
@@ -2097,6 +2112,14 @@
 			return new ethers.providers.JsonRpcBatchProvider(url);
 		},
 
+		/**
+		 * Parses a MetaMask / ethers error into a readable message or custom error string.
+		 * @method parseMetamaskError
+		 * @static
+		 * @param {Object} err The error object returned from the wallet or RPC call.
+		 * @param {Array} [contracts=[]] Contracts used to decode custom revert errors.
+		 * @return {String} A human-readable error message.
+		 */
 		parseMetamaskError: function (err, contracts=[]) {
             if (err.code != '-32603' || Q.isEmpty(err.data)) {
 				return err.message;
