@@ -75,7 +75,7 @@
 			"unique": true,
 			"conflict": {
 				"increment": false,
-				"null": true
+				"null": false
 			}
 		},
 		"session": {

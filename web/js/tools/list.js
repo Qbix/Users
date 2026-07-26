@@ -95,26 +95,27 @@ Q.Tool.define('Users/list', function () {
 		tool.loaded = length;
 		Q.activate(tool.element.children || tool.element.childNodes, function () {
 			tool.loading = false;
-			if (state.clickable) {
-				if (state.clickable === true) {
-					state.clickable = {};
-				}
-				Q.each(elements, function () {
-					var $te = $(this);
-					var avatar = this.Q.tool;
-					avatars.push(avatar)
+			var clickableOptions = state.clickable;
+			if (clickableOptions === true) {
+				clickableOptions = state.clickable = {};
+			}
+			Q.each(elements, function () {
+				var $te = $(this);
+				var avatar = this.Q.tool;
+				avatars.push(avatar);
+				if (clickableOptions) {
 					avatar.state.onRefresh.add(function () {
 						if ($te.closest('html').length) {
 							return;
 						}
 						$te.find('img').on('load', function () {
-							$te.plugin('Q/clickable', state.clickable);
+							$te.plugin('Q/clickable', clickableOptions);
 						});
 					}, tool);
-				});
-				Q.handle(callback, tool);
-				Q.handle(state.onLoadMore, tool, [avatars, elements]);
-			}
+				}
+			});
+			Q.handle(callback, tool);
+			Q.handle(state.onLoadMore, tool, [avatars, elements]);
 		});
 		return count;
 	}
