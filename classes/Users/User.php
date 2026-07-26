@@ -376,17 +376,21 @@ class Users_User extends Base_Users_User
 					$identify = new Users_Identify();
 					$identify->identifier = "username_hashed:$username_hashed";
 					if ($identify->retrieve()) {
-						$originalUsername = $username;
-						for ($attemptIndex=0; $attemptIndex<10; ++$attemptIndex) {
-							if ($identify->userId === $this->id) {
-								break;
-							}
-							$attemptsRemaining = 10 - $attemptIndex;
-							$username = Q::event('Users/username/conflict', compact(
-								'user', 'identify', 'originalUsername',
-								'attemptIndex', 'attemptsRemaining'
-							), $username);
-							$username_hashed = Q_Utils::hash(Q_Utils::normalize($username));
+						if ($identify->userId !== $this->id) {
+							$user = $this;
+							$originalUsername = $username;
+							$attemptIndex = 0;
+							$attemptsRemaining = 0;
+							// Allow before-handlers to customize; default is to reject the taken username
+							Q::event(
+								'Users/username/conflict',
+								compact(
+									'user', 'identify', 'originalUsername',
+									'attemptIndex', 'attemptsRemaining'
+								),
+								'before'
+							);
+							throw new Users_Exception_UsernameExists(compact('username'));
 						}
 					} else {
 						$identify = new Users_Identify();
