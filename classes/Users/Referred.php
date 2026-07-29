@@ -31,8 +31,8 @@ class Users_Referred extends Base_Users_Referred
 	 * May cause qualifiedTime to be set, in which case justQualified = true in Users/referred "after" hook
 	 * @param {string} $userId The user that was referred
 	 * @param {string} $communityId The community or publisher of content the user was referred to
-	 * @param {string} $referredAction The type of entity the user was referred to
-	 * @param {string} $referredType The type of entity the user was referred to
+	 * @param {string} $referredAction The type of action the referred user took
+	 * @param {string} $referredType The type of entity (e.g. stream) the user was referred to
 	 * @param {array} [$options=array()]
 	 * @param {string} [$options.byUserId] You can explicitly override the user to reward for the referring
 	 * @param {array} [$options.extras] Pass any extras to this referral, e.g. to retain metadata for other plugins
