@@ -80,3 +80,8 @@
 .Q_overlay > .Users_labels_tool {
     margin: 10px;
 }
+@media (prefers-color-scheme: dark) {
+    .Users_labels_tool .Users_labels_icon {
+        filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.8));
+    }
+}
