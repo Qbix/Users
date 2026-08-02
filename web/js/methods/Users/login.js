@@ -30,8 +30,10 @@ Q.exports(function (Users, priv) {
 	*  @param {String} [options.successUrl] If the default onSuccess implementation is used, the browser is redirected here. Defaults to Q.uris[Q.info.app+'/home']
 	*  @param {String} [options.onboardingUrl] If the default onSuccess implementation is used and the user is registering, uses this URL instead of onSuccess
 	*  @param {String} [options.accountStatusURL] if passed, this URL is hit to determine if the account is complete
-	*  @param {Q.Event|Function} [options.onActivated] event that occurs when user user has logged in
-	*  @param {Q.Event|Function} [options.onRequireComplete] event that occurs if the user logged in but account is incomplete.
+	*  @param {Q.Event|Function} [options.onActivated] after activation finishes (and any script data/lines from the
+	*    login/register response have been applied). Handlers receive (proceed, user, options, priv).
+	*    Return false and call proceed() later to pause before accountStatus / onRequireComplete / onSuccess.
+	*  @param {Function} [options.onRequireComplete] function to call if the user logged in but account is incomplete.
 	*    It is passed the user information as well as the response from hitting accountStatusURL.
 	*    The first argument is a callback it should call to signal that the login is complete.
 	*  @param {Q.Event|Function} [options.onDialog] often used for provisioning intents, etc.
@@ -288,14 +290,8 @@ Q.exports(function (Users, priv) {
 
 		function _activationComplete(data, user) {
 			user = Q.getObject('slots.user', data) || user;
-			// Let plugins interject before onboarding — e.g. Streams showing an
-			// invite accept dialog. A handler that wants to gate returns false
-			// and calls _proceed() itself when it's done.
-			if (false === Q.handle(o.onActivated, this, [_proceed, user, o, priv])) {
-				return;
-			}
-			_proceed();
-			function _proceed() {
+			var p = Q.copy(priv);
+			function _afterActivated() {
 				if (!o.accountStatusURL) {
 					_onComplete(user);
 					return;
@@ -328,6 +324,12 @@ Q.exports(function (Users, priv) {
 					}
 				});
 			}
+			// Script data from setLoggedInUser (e.g. Streams invite dialog) is
+			// already applied by processScriptDataAndLines before we get here.
+			if (false === Q.handle(o.onActivated, this, [_afterActivated, user, o, p])) {
+				return; // a handler will call proceed later
+			}
+			_afterActivated();
 		}
 
 		function login_callback(err, response) {
