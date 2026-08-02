@@ -7,11 +7,18 @@ Q.exports(function (Users, priv) {
      * @class Users
      */
 	/**
-	* Log the user in
+	* Log the user in. There are various events that you can hook into, including, in order:
+	*   onActivated: after a way to contact them is confirmed,
+	*   onRequireComplete: if there is a need to complete some onboarding,
+	*   onSuccess: after the entire flow is done, and user can focus on the next thing
+	* There are also events:
+	*   onCancel: if the flow was canceled at some point
+	*   onResult: which happens in the case of either onSuccess or onCancel
 	* @method login
 	* @static
 	* @param {Object} [options] You can pass several options here
-	*  @param {Q.Event|Function} [options.onSuccess] event that occurs when login or authentication "using" a platform is successful. It is passed (user, options, result, used) where user is the Users.User object (null if it was unchanged),
+	*  @param {Q.Event|Function} [options.onSuccess] event that occurs when login or authentication "using" a platform is successful.
+	*   It is passed (user, options, result, used) where user is the Users.User object (null if it was unchanged),
 	*   options were the options used in the call to Users.login, result is one of "registered", "adopted", "connected" or "authorized" (see Users::authenticate)
 	*   and 'used' is "native", "web3", or the name of the platform used, such as "facebook".
 	*   The default handler for this event, added under "Users" key, redirects to a URL.
@@ -23,7 +30,8 @@ Q.exports(function (Users, priv) {
 	*  @param {String} [options.successUrl] If the default onSuccess implementation is used, the browser is redirected here. Defaults to Q.uris[Q.info.app+'/home']
 	*  @param {String} [options.onboardingUrl] If the default onSuccess implementation is used and the user is registering, uses this URL instead of onSuccess
 	*  @param {String} [options.accountStatusURL] if passed, this URL is hit to determine if the account is complete
-	*  @param {Function} [options.onRequireComplete] function to call if the user logged in but account is incomplete.
+	*  @param {Q.Event|Function} [options.onActivated] event that occurs when user user has logged in
+	*  @param {Q.Event|Function} [options.onRequireComplete] event that occurs if the user logged in but account is incomplete.
 	*    It is passed the user information as well as the response from hitting accountStatusURL.
 	*    The first argument is a callback it should call to signal that the login is complete.
 	*  @param {Q.Event|Function} [options.onDialog] often used for provisioning intents, etc.
@@ -280,37 +288,46 @@ Q.exports(function (Users, priv) {
 
 		function _activationComplete(data, user) {
 			user = Q.getObject('slots.user', data) || user;
-			if (!o.accountStatusURL) {
-				_onComplete(user);
+			// Let plugins interject before onboarding — e.g. Streams showing an
+			// invite accept dialog. A handler that wants to gate returns false
+			// and calls _proceed() itself when it's done.
+			if (false === Q.handle(o.onActivated, this, [_proceed, user, o, priv])) {
 				return;
 			}
-			Q.req(o.accountStatusURL, 'accountStatus', function (err, response2) {
-				var fem = Q.firstErrorMessage(err, response2);
-				if (fem) {
-					return alert(fem);
-				}
-				// DEBUGGING: For debugging purposes
-				Users.login.occurring = Users.login.interacting = false;
-				if (!o.onRequireComplete
-				|| response2.slots.accountStatus === 'complete') {
+			_proceed();
+			function _proceed() {
+				if (!o.accountStatusURL) {
 					_onComplete(user);
-				} else if (response2.slots.accountStatus === 'refresh') {
-					// we are logged in, refresh the page
-					Q.handle(window.location.href);
 					return;
-				} else {
-					// If o.onRequireComplete is a string URL,
-					// take the user to the onboarding page which will ask
-					// the user to complete their registration process
-					// by entering additional information.
-					// But if o.onRequireComplete is a Q.Event, then
-					// one of its handlers should call _onComplete to signal
-					// that the login process is complete.
-					if (false !== Q.handle(o.onResult, this, [user, response2, o])) {
-						Q.handle(o.onRequireComplete, this, [_onComplete, user, response2, o]);
-					}
 				}
-			});
+				Q.req(o.accountStatusURL, 'accountStatus', function (err, response2) {
+					var fem = Q.firstErrorMessage(err, response2);
+					if (fem) {
+						return alert(fem);
+					}
+					// DEBUGGING: For debugging purposes
+					Users.login.occurring = Users.login.interacting = false;
+					if (!o.onRequireComplete
+					|| response2.slots.accountStatus === 'complete') {
+						_onComplete(user);
+					} else if (response2.slots.accountStatus === 'refresh') {
+						// we are logged in, refresh the page
+						Q.handle(window.location.href);
+						return;
+					} else {
+						// If o.onRequireComplete is a string URL,
+						// take the user to the onboarding page which will ask
+						// the user to complete their registration process
+						// by entering additional information.
+						// But if o.onRequireComplete is a Q.Event, then
+						// one of its handlers should call _onComplete to signal
+						// that the login process is complete.
+						if (false !== Q.handle(o.onResult, this, [user, response2, o])) {
+							Q.handle(o.onRequireComplete, this, [_onComplete, user, response2, o]);
+						}
+					}
+				});
+			}
 		}
 
 		function login_callback(err, response) {

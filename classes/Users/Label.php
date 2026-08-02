@@ -419,8 +419,7 @@ class Users_Label extends Base_Users_Label
         
 		foreach ($userCommunityRoleNames as $role) {
 			$result["roles"][] = $role;
-			//foreach ($communityRoles as $keyLabel => $label) {
-			foreach ($communityLabels as $keyLabel => $label) {
+			foreach ($communityRoles as $keyLabel => $label) {
 				if (Users_Label::canGrantLabel($role, $keyLabel, $communityRoles)) {
 					if (!in_array($keyLabel, $result['grant'])) {
 						$result["grant"][] = $keyLabel;
