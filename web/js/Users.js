@@ -627,6 +627,7 @@
 			onResult: new Q.Event(function Users_login_onResult(user, options, priv) {
 				Q.Dialogs.close(Q.Users.login.dialog);
 			}),
+			onActivated: new Q.Event(),
 			onRequireComplete: new Q.Event(),
 			onComplete: new Q.Event(),
 			onDialog: new Q.Event(),
