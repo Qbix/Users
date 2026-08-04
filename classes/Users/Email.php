@@ -163,6 +163,13 @@ class Users_Email extends Base_Users_Email
 					$email->addTo($emailAddress);
 				}
 				$email->setSubject(mb_encode_mimeheader($subject, 'UTF-8', 'B'));
+
+				// telemetry: identifies which app, host and code path sent this
+				$tag = preg_replace('/[^A-Za-z0-9_-]/', '_', $view);
+				$email->addHeader('X-Q-App', $app);
+				$email->addHeader('X-Q-Host', gethostname());
+				$email->addHeader('X-Q-View', $view);
+				$email->addHeader('X-SES-MESSAGE-TAGS', "app=$app, view=$tag");
 				if (empty($options['html'])) {
 					$email->setBodyText($body);
 				} else {
