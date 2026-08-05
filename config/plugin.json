@@ -468,6 +468,13 @@
 				"canRevoke": ["Users/members", "Users/guests"],
 				"canSee": ["Users/owners", "Users/admins", "Users/members", "Users/guests", "Users/speakers"]
 			},
+			"Users/hidden": {
+				"title": "Hidden",
+				"icon": "{{baseUrl}}/Q/plugins/Users/img/icons/labels/Users/hidden",
+				"canGrant": [],
+				"canRevoke": [],
+				"canSee": []
+			},
 			"": {
 				"canSee": ["Users/admins"]
 			}
