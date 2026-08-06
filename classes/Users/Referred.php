@@ -136,7 +136,7 @@ class Users_Referred extends Base_Users_Referred
 		$referred->setExtra('byType', $byType);
 
 		// Save the row
-		$referred->save();
+		$referred->save(true);
 
 		/**
 		 * @event Users/referred {after}

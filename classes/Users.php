@@ -2705,8 +2705,10 @@ abstract class Users extends Base_Users
 				// TODO: check deliverability in the future
 				continue;
 			}
-			$externalFrom = $ef;
-			break;
+			if ($ef->canPushNotifications()) {
+				$externalFrom = $ef;
+				break;
+			}
 		}
 
 		$device = null;

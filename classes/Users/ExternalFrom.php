@@ -250,7 +250,17 @@ class Users_ExternalFrom extends Base_Users_ExternalFrom
 		return $result;
 	}
 
-/**
+	/**
+	 * Whether this platform can push notifications
+	 * @method canPushNotifications
+	 * @return {boolean} By default, it returns false
+	 */
+	static function canPushNotifications()
+	{
+		return false;
+	}
+
+	/**
 	 * You can use this method to send push notifications.
 	 * It is far better, however, to use the Qbix Platform's offline notification
 	 * mechanisms using Node.js instead of PHP. That way, you can be sure of re-using
