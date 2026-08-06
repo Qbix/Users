@@ -299,7 +299,18 @@ Q.exports(function (Users, priv) {
 				Q.req(o.accountStatusURL, 'accountStatus', function (err, response2) {
 					var fem = Q.firstErrorMessage(err, response2);
 					if (fem) {
-						return alert(fem);
+						// DO NOT return here. The old code did return alert(fem),
+						// which killed the entire login chain: _onComplete never
+						// ran, Users.onLogin never fired, loginOccurring stayed
+						// true forever, and the user was logged in with no
+						// onboarding and no invite dialog. An accountStatus
+						// error is not fatal — log it and continue to _onComplete
+						// so the rest of the login flow (onboarding, invite
+						// consent) still runs.
+						console.warn('accountStatus error (continuing):', fem);
+						_onComplete(user);
+						return;
+						// Previously: return alert(fem);
 					}
 					// DEBUGGING: For debugging purposes
 					Users.login.occurring = Users.login.interacting = false;
