@@ -87,7 +87,13 @@ function Users_before_Q_initialExtras()
 		Q_Response::setScriptData("Q.plugins.Users.$k", $apps);
 	}
 
-	if (Q::autoloadRequirementsMet('Users_Web3')) {
+	// Users_Web3 pulls in the Composer autoloader at the top of its class file,
+	// and this probe runs on EVERY page load. Check the vendor dir first so a
+	// deployment without composer packages doesn't fatal on every request,
+	// and so the ones that do have them don't pay for loading the whole
+	// autoloader just to answer this question.
+	if (file_exists(USERS_PLUGIN_DIR.DS.'vendor'.DS.'autoload.php')
+	and Q::autoloadRequirementsMet('Users_Web3')) {
 		Q_Response::setScriptData('Q.plugins.Users.Web3.chains', Users_Web3::getChains());
 		Q_Response::setScriptData('Q.plugins.Users.Web3.contracts', Users_Web3::getContracts());
 	} else {

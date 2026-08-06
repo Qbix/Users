@@ -1,5 +1,8 @@
 <?php
-require_once USERS_PLUGIN_DIR.'/vendor/autoload.php';
+$_composerAutoload = USERS_PLUGIN_DIR.'/vendor/autoload.php';
+if (file_exists($_composerAutoload)) {
+	require_once $_composerAutoload; // optional: plugin works without it
+}
 //use Web3\Web3;
 //use Web3\Contract;
 //use Crypto\Keccak;

@@ -1675,7 +1675,10 @@ abstract class Users extends Base_Users
 				
 			}
 			if (pathinfo($source, PATHINFO_EXTENSION) == 'ico') {
-				require_once USERS_PLUGIN_DIR.DS.'vendor'.DS.'autoload.php';
+				$_composerAutoload = USERS_PLUGIN_DIR.DS.'vendor'.DS.'autoload.php';
+				if (file_exists($_composerAutoload)) {
+					require_once $_composerAutoload; // optional: plugin works without it
+				}
 				$icoFileService = new Elphin\IcoFileLoader\IcoFileService;
 				$largestImage = $icoFileService->extractIcon($data, 32, 32);
 			} else {
@@ -1702,7 +1705,10 @@ abstract class Users extends Base_Users
 						$data = file_get_contents($source);
 					}
 					if (pathinfo($source, PATHINFO_EXTENSION) == 'ico') {
-						require_once USERS_PLUGIN_DIR.DS.'vendor'.DS.'autoload.php';
+						$_composerAutoload = USERS_PLUGIN_DIR.DS.'vendor'.DS.'autoload.php';
+						if (file_exists($_composerAutoload)) {
+							require_once $_composerAutoload; // optional: plugin works without it
+						}
 						$icoFileService = new Elphin\IcoFileLoader\IcoFileService;
 						$source = $icoFileService->extractIcon($data, 32, 32);
 					} else {

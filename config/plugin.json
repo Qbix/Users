@@ -193,7 +193,7 @@
 		},
 		"socket": {
 			"disconnectTimeout": 1500,
-			"permissions": ["u"]
+			"permissions": ["u", "i"]
 		}
 	},
 	"Users": {

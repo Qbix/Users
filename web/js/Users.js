@@ -2221,6 +2221,17 @@
 		}
 	};
 
+	Users.Socket = {
+		join: function (topicId, callback) {
+			var s = Q.Socket.get('/Q');
+			s && s.socket.emit('Users/Socket/join', topicId, callback);
+		},
+		leave: function (topicId, callback) {
+			var s = Q.Socket.get('/Q');
+			s && s.socket.emit('Users/Socket/leave', topicId, callback);
+		}
+	};
+
 	/**
 	 * Disconnect external platforms
 	 */

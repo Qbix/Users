@@ -36,7 +36,7 @@ Q.exports(function (Users, priv) {
 				var info = Q.getObject(
 					[options.action, options.platform, appId],
 					Users.Intent.provision.results
-				);
+				) || {};
 				capability = capability || info.capability;
 				token = token || info.token;
 			}
@@ -64,8 +64,12 @@ Q.exports(function (Users, priv) {
 				'Q.clientId': Q.clientId()
 			};
 
-			// Generate intent server-side (idempotent)
-			Q.req('Users/intent', function (err, response) {
+			// Generate intent server-side (idempotent).
+			// NOTE: slot names MUST be passed explicitly. Q.request() sets
+			// slotNames = [] when the second argument is a function, so
+			// omitting them makes the server return no slots at all and
+			// response.slots.capability comes back undefined.
+			Q.req('Users/intent', ['capability', 'token'], function (err, response) {
 				if (err) {
 					console.warn('Intent start failed:', err);
 					_reject(err);
@@ -74,6 +78,8 @@ Q.exports(function (Users, priv) {
 
 				Users.Intent.onStarted(fields.platform).handle.call(Users.Intent, fields);
 				_resolve(response);
+
+				token = token || Q.getObject('slots.token', response);
 
 				var socketCapability = Q.getObject('slots.capability', response);
 				if (!socketCapability) {
@@ -138,14 +144,19 @@ Q.exports(function (Users, priv) {
 								.append(element);
 						});
 
+						// Distinct key: this used to reuse 'Q.Intent.start',
+						// which silently replaced the handler registered by
+						// _waitAndReload(), so on desktop the reload never ran.
 						Q.onVisibilityChange.set(function (isShown) {
 							if (!isShown) return;
 							Q.Dialogs.close(dialog);
 							_reload();
-							Q.onVisibilityChange.remove('Q.Intent.start');
-						}, 'Q.Intent.start');
+						}, 'Q.Intent.start.QR');
 					},
-					onClose: _reload
+					onClose: function () {
+						Q.onVisibilityChange.remove('Q.Intent.start.QR');
+						_reload();
+					}
 				});
 			}
 
@@ -161,19 +172,25 @@ Q.exports(function (Users, priv) {
 	};
 
 	function _waitAndReload(options) {
+		var key = 'Q.Intent.start';
 		// make a debounced function just in case it's hit
 		// from more than one approach
 		var _reload = Q.debounce(function () {
 			if (Q.isDocumentHidden()) {
 				return;
 			}
-			// Check if user changed before reload
-			Q.req('Users/loggedInUser', function (err, response) {
+			// Check if user changed before reload.
+			// NOTE: ['user'] MUST be passed. Without it Q.request() uses
+			// slotNames = [], the server returns {} for slots, and the
+			// check below silently bailed out every single time --
+			// which is why returning to the browser never refreshed.
+			Q.req('Users/loggedInUser', ['user'], function (err, response) {
 				var user = Q.getObject('slots.user', response);
 				if (!user || Users.loggedInUserId() == user.id) {
 					return;
 				}
-				Users.loggedInUser = new Users.User(response.slots.user);
+				_stopWaiting();
+				Users.loggedInUser = new Users.User(user);
 				Q.loadUrl(location.href, {
 					slotNames: Q.info.slotNames,
 					loadExtras: 'all',
@@ -182,20 +199,36 @@ Q.exports(function (Users, priv) {
 					ignoreHistory: true,
 					quiet: true,
 					onActivate: function () {
+						Q.handle(Users.onLogin, Users, [Users.loggedInUser]);
 						if (options && options.onActivate) {
 							Q.handle(options.onActivate, Users.Intent, [options]);
 						}
 					}
 				});
 			});
-			window.removeEventListener('focus', _reload);
 		}, 500);
+
+		function _stopWaiting() {
+			Q.onVisibilityChange.remove(key);
+			window.removeEventListener('focus', _reload);
+			window.removeEventListener('pageshow', _reload);
+		}
+
+		// Stay registered until we actually observe a login, not until the
+		// first visibility change. On iOS, handing off to another app fires
+		// hidden -> visible during the launch animation, which used to
+		// consume and remove this handler before the user ever left.
 		Q.onVisibilityChange.set(function (isShown) {
 			if (!isShown) return;
 			_reload();
-			Q.onVisibilityChange.remove('Q.Intent.start');
-		}, 'Q.Intent.start');
+		}, key);
+
+		// pageshow is the one that reliably fires when iOS Safari restores
+		// the page from bfcache on return from another app; visibilitychange
+		// and focus are both unreliable in that path.
+		window.addEventListener('pageshow', _reload);
 		window.addEventListener('focus', _reload);
+
 		Q.Socket.onEvent('Users/intentComplete', '/Q')
 			.setOnce(_reload, 'Users.Intent.start');
 		return _reload;
