@@ -1587,6 +1587,11 @@
 		}
 		ddc.className = ddc.className.replace(' Users_loggedOut', '') + ' Users_loggedIn';
 
+		// close all dialogs
+		while (Q.Dialogs.dialogs.length) {
+			Q.Dialogs.pop(true);
+		}
+
 		// set language
 		var preferredLanguage = Q.getObject("loggedInUser.preferredLanguage", Users);
 		var info = preferredLanguage ? [preferredLanguage] : Q.first(Q.info.languages);
