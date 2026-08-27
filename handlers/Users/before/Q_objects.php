@@ -128,12 +128,24 @@ function Users_before_Q_objects(&$params)
 		if (!$intent->isValid()) {
 			throw new Q_Exception_Expired();
 		}
-		// SECURITY DECISION: evenIfCompleted=true allows replay of leaked
-		// intent tokens. Remove unless a specific flow requires re-acceptance,
-		// in which case bind to session/origin to prevent replay from elsewhere.
-		$intent->accept(array(
+		// This answers the SECURITY DECISION comment that used to be here.
+		// evenIfCompleted has to stay: the external-platform return leg lands
+		// on this URL *after* Users/intent PUT has stamped completedTime, so
+		// removing it breaks Telegram/Web3 login. Instead the replay is closed
+		// one level down - accept() now also requires
+		// Users_Intent::authorizeAcceptingSession(), so this token only logs in
+		// the session that opened the intent, or (for actions that declare
+		// "handoff") the first single other session it is handed to.
+		//
+		// The script data is published only on a SUCCESSFUL accept. Published
+		// unconditionally, a session that was refused the login still received
+		// the intent's instructions - which for an Assets/charge intent carry
+		// the payer's userId, the community, the reason and the amount. A token
+		// holder who may not accept has no business seeing any of it.
+		if ($intent->accept(array(
 			'evenIfCompleted' => true
-		));
-		Q_Response::setScriptData('Q.plugins.Users.intent', $intent->exportArray());
+		))) { // authenticates this session, and logs user in
+			Q_Response::setScriptData('Q.plugins.Users.intent', $intent->exportArray());
+		}
 	}
 }

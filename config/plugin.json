@@ -343,6 +343,13 @@
 			"actions": {
 				"Users/authenticate": {
 					"duration": 300,
+					/* handoff: this action's whole purpose is authenticating a
+					   SECOND session (QR scan, Telegram deep link), so a session
+					   other than the one that opened the intent may accept it -
+					   exactly once. Every other action defaults to false, which
+					   means its token can only ever log in its own session.
+					   See Users_Intent::authorizeAcceptingSession(). */
+					"handoff": true,
 					"instructions": {
 						"platform": true
 					}

@@ -170,6 +170,9 @@ class Users_Intent extends Base_Users_Intent
 	 * @param {array} [$options.evenIfCompleted] Pass true to log user in even if intent
 	 *   was already completed before (e.g. into for authenticating yet another session),
 	 *   but the intent's endTime is still used to prevent attackers re-using old intents.
+	 *   NOTE: this no longer makes the token a replayable bearer login - see
+	 *   {{#crossLink "Users_Intent/authorizeAcceptingSession"}}{{/crossLink}},
+	 *   which is enforced on every accept whether or not this option is passed.
 	 * @return {boolean} true if successful, false otherwise
 	 */
 	function accept($options = array())
@@ -180,7 +183,13 @@ class Users_Intent extends Base_Users_Intent
 		}
 		if ((!$intent->wasRetrieved() and !$intent->retrieve())
 		or Users::db()->fromDateTime($intent->endTime) < time()
-		or (!$options['evenIfCompleted'] and !empty($intent->completedTime))) {
+		or (empty($options['evenIfCompleted']) and !empty($intent->completedTime))) {
+			return false;
+		}
+		// SECURITY: the token alone is not enough. It only logs in the session
+		// that opened the intent, or - for actions that declare "handoff" - the
+		// first other session it is handed to. See authorizeAcceptingSession().
+		if (!$intent->authorizeAcceptingSession()) {
 			return false;
 		}
 		$userId = $content = $session = null;
@@ -212,6 +221,152 @@ class Users_Intent extends Base_Users_Intent
 		Q::event('Users/intent/accept', compact('intent', 'options', 'session', 'userId'), 'after');
 		return true;
 	}
+
+	/**
+	 * The name of the instruction under which an intent remembers which foreign
+	 * session consumed it. Stripped from exportArray(), so it never reaches a client.
+	 */
+	const INSTRUCTION_ACCEPTED_BY = 'acceptedBy';
+
+	/** This session may not be logged in as the intent's user. */
+	const ACCEPT_DENY = 0;
+	/** This session may be logged in, and nothing needs to be written. */
+	const ACCEPT_ALLOW = 1;
+	/** This session may be logged in, and consumes the intent's one handoff. */
+	const ACCEPT_CLAIM = 2;
+
+	/**
+	 * The acceptance policy, as a pure function - see
+	 * {{#crossLink "Users_Intent/authorizeAcceptingSession"}}{{/crossLink}}
+	 * for why it exists and what it is defending against.
+	 * @method acceptDecision
+	 * @static
+	 * @param {string} $action the intent's action
+	 * @param {string} $openedBySessionId the sessionId stored on the intent
+	 * @param {string} $sessionId the session making the current request
+	 * @param {string} [$acceptedBy] fingerprint of the session that already
+	 *   consumed this intent's handoff, if any
+	 * @return {integer} one of ACCEPT_DENY, ACCEPT_ALLOW, ACCEPT_CLAIM
+	 */
+	static function acceptDecision(
+		$action,
+		$openedBySessionId,
+		$sessionId,
+		$acceptedBy = null
+	) {
+		if (!$sessionId) {
+			return self::ACCEPT_DENY; // nothing to bind the acceptance to
+		}
+		if ($openedBySessionId and $openedBySessionId === $sessionId) {
+			return self::ACCEPT_ALLOW; // case 1: the session that opened it
+		}
+		// case 2: a different session. The action has to have asked for this.
+		$info = Q_Config::get('Users', 'intents', 'actions', $action, false);
+		if (!is_array($info) or empty($info['handoff'])) {
+			return self::ACCEPT_DENY;
+		}
+		if (!$acceptedBy) {
+			return self::ACCEPT_CLAIM;
+		}
+		// the same handed-to session may reload the page it landed on
+		return hash_equals($acceptedBy, self::sessionFingerprint($sessionId))
+			? self::ACCEPT_ALLOW
+			: self::ACCEPT_DENY;
+	}
+
+	/**
+	 * Decide whether the session making the current request may be logged in
+	 * as this intent's user.
+	 *
+	 * Without this, possession of the token was the whole credential: accept()
+	 * called Users::setLoggedInUser() for anyone who presented it, an unbounded
+	 * number of times, for the whole life of endTime - and the token travels in
+	 * a URL query parameter (Q.Users.intent), which leaks through Referer
+	 * headers, access logs, browser history and pasted links.
+	 *
+	 * Two acceptances are legitimate, and only two:
+	 *
+	 * 1. The session that opened the intent. Re-accepting there grants nothing
+	 *    it does not already have, and the external-platform return leg
+	 *    genuinely lands on the same session more than once (that is why
+	 *    Users/before/Q_objects.php passes evenIfCompleted). Unlimited.
+	 * 2. Exactly one other session, and only when the intent's action declares
+	 *    "handoff": true in Users/intents/actions config. This is the QR /
+	 *    second-device case ("log my phone in as the user on my desktop").
+	 *    The first such session is remembered by fingerprint; every later
+	 *    session is refused, so a leaked token is dead once it has been used.
+	 *
+	 * Handoff is opt-in per action rather than the default, because most
+	 * actions never need it - Assets' "Assets/charge", for instance, is opened
+	 * server-side by Assets::pay() and its token is never meant to
+	 * authenticate a second device at all. An app or plugin that does need
+	 * cross-device acceptance says so in its own config.
+	 *
+	 * Known limit, stated rather than papered over: this makes a leaked token
+	 * single-use, not unusable. An attacker who steals a handoff token *before*
+	 * the real second device uses it still wins the race - but the theft then
+	 * becomes visible (the real device is refused) instead of silent and
+	 * repeatable. Closing that needs the accepting device to prove something
+	 * the token does not carry, which the QR flow has no channel for.
+	 *
+	 * Deliberately does NOT call Q_Session::isValidId() on the accepting
+	 * session: it would add nothing (an attacker already holds a session the
+	 * server issued) and it fails *open* when Q/internal/secret is unset, so
+	 * it would read as a gate while gating nothing.
+	 *
+	 * The decision itself lives in the static acceptDecision() below, which is a
+	 * pure function of (action, opening session, current session, prior claim).
+	 * Splitting it is not ceremony: constructing a Db_Row opens a database
+	 * connection, so a policy expressed only as an instance method cannot be
+	 * pinned by a test until there is a database - and this policy is exactly
+	 * the kind that has to be pinned.
+	 *
+	 * @method authorizeAcceptingSession
+	 * @return {boolean} true if the current session may accept this intent
+	 */
+	function authorizeAcceptingSession()
+	{
+		// Q_Session::id() is '' until a session has started, and the Telegram
+		// bot path starts an internal session before accepting, so try it
+		// first and fall back to what the client presented.
+		$sessionId = Q_Session::id();
+		if (!$sessionId) {
+			$sessionId = Q_Session::requestedId();
+		}
+		$decision = self::acceptDecision(
+			$this->action,
+			$this->sessionId,
+			$sessionId,
+			$this->getInstruction(self::INSTRUCTION_ACCEPTED_BY)
+		);
+		if ($decision === self::ACCEPT_CLAIM) {
+			// first foreign session to arrive consumes the intent
+			$this->setInstruction(
+				self::INSTRUCTION_ACCEPTED_BY,
+				self::sessionFingerprint($sessionId)
+			);
+			$this->save();
+			return true;
+		}
+		return $decision === self::ACCEPT_ALLOW;
+	}
+
+	/**
+	 * A non-reversible fingerprint of a session id, so that consuming an intent
+	 * does not store a live session credential in a row that is read by token.
+	 * @method sessionFingerprint
+	 * @static
+	 * @param {string} $sessionId
+	 * @return {string}
+	 */
+	static function sessionFingerprint($sessionId)
+	{
+		$secret = Q_Config::get('Q', 'internal', 'secret', null);
+		return isset($secret)
+			? hash_hmac('sha256', $sessionId, $secret)
+			: hash('sha256', $sessionId);
+	}
+
 	/**
 	 * Mark intent completed, and set logged-in user in original session
 	 * if no one was logged in there yet.
@@ -392,6 +547,14 @@ class Users_Intent extends Base_Users_Intent
 	/**
 	 * Returns the fields and values we can export to clients, excluding sessionId.
 	 * Can also contain "instructions", which will contain all the instructions.
+	 *
+	 * SECURITY: withholding sessionId is load-bearing, not tidiness.
+	 * Users/before/Q_objects.php puts this array into Q.plugins.Users.intent
+	 * script data for whoever presented the token, so exporting it would hand
+	 * out the *originating* session's id - a longer-lived credential than the
+	 * intent itself, and one that survives endTime. The acceptedBy fingerprint
+	 * recorded by authorizeAcceptingSession() is withheld for the same reason.
+	 *
 	 * @method exportArray
 	 * @param {$array} [$options=null]
 	 * @return {array}
@@ -400,7 +563,9 @@ class Users_Intent extends Base_Users_Intent
 	{
 		$fields = $this->fields;
 		unset($fields['sessionId']);
-		$fields['instructions'] = $this->getAllInstructions();
+		$instructions = $this->getAllInstructions();
+		unset($instructions[self::INSTRUCTION_ACCEPTED_BY]);
+		$fields['instructions'] = $instructions;
 		return $fields;
 	}
 
