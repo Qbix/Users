@@ -22,7 +22,9 @@
  * @module Users
  */
 
-include dirname(dirname(dirname(__FILE__))).'/scripts/Q.inc.php';
+if (!defined('Q_DIR')) {
+	include dirname(dirname(dirname(dirname(dirname(__FILE__))))).'/scripts/Q.inc.php';
+}
 
 $maxAge    = Q_Config::get('Users', 'web3', 'transactions', 'poll', 'maxAge', 3600);
 $batchSize = Q_Config::get('Users', 'web3', 'transactions', 'poll', 'batchSize', 50);
@@ -34,7 +36,7 @@ $pending = Users_Web3Transaction::select()
 	->where(array(
 		'status' => array('pending', 'signed')
 	))
-	->andWhere('insertedTime >= :cutoff', compact('cutoff'))
+	->andWhere(array('insertedTime >=' => $cutoff))
 	->orderBy('insertedTime', true)
 	->limit($batchSize)
 	->fetchDbRows();
