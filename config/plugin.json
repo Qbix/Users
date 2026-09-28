@@ -486,6 +486,26 @@
 			"admins": ["Users/owners", "Users/admins"]
 		},
 		"web3": {
+			"transactions": {
+				"receipt": {
+					"attempts": 3
+				},
+				"poll": {
+					"maxAge": 3600,
+					"batchSize": 50
+				}
+			},
+			"webhooks": {
+				"alchemy": {
+					"signingKey": ""
+				},
+				"moralis": {
+					"signingKey": ""
+				},
+				"quicknode": {
+					"signingKey": ""
+				}
+			},
 			"contracts": {
                 "Users/templates/R1/Community/factory": {
                     "0x38": "0x01010100521733fb2Df131535B7E5063276d22C5",

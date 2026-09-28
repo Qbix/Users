@@ -1,0 +1,26 @@
+{
+	"Users": {
+		"web3": {
+			"transactions": {
+				"receipt": {
+					"attempts": 3
+				},
+				"poll": {
+					"maxAge": 3600,
+					"batchSize": 50
+				}
+			},
+			"webhooks": {
+				"alchemy": {
+					"signingKey": ""
+				},
+				"moralis": {
+					"signingKey": ""
+				},
+				"quicknode": {
+					"signingKey": ""
+				}
+			}
+		}
+	}
+}
