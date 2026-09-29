@@ -2113,6 +2113,7 @@ abstract class Users extends Base_Users
 	 * @static
 	 * @param {string|false} $asUserId The user who would be doing the managing.
 	 *   If it equals false or Q::app() then the function always returns true.
+	 *   If null, the logged-in user (or nobody) is used.
 	 * @param {string} $userId The user whose contact labels they are
 	 * @param {string} $label The label to be managed. Pass empty string to test whether at least some labels can be managed.
 	 * @param {boolean} $throwIfNotAuthorized Throw an exception if not authorized
@@ -2130,9 +2131,18 @@ abstract class Users extends Base_Users
 		if ($asUserId === false || $asUserId === Q::app()) {
 			return true;
 		}
+		if (!isset($asUserId)) {
+			$user = Users::loggedInUser();
+			$asUserId = $user ? $user->id : '';
+		}
 		$authorized = false;
-		$roles = Users::roles($userId);
-        
+		// The roles of $asUserId in $userId's community -- not of whoever is
+		// logged in, which is what Users::roles() returns without its 4th
+		// argument (and nothing at all from the command line).
+		$roles = $asUserId
+			? Users::roles($userId, null, array(), $asUserId)
+			: array();
+
         $permissions = Users_Label::ofCommunity($userId);
 		foreach ($roles as $role) {
 
