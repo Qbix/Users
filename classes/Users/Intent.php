@@ -95,7 +95,8 @@ class Users_Intent extends Base_Users_Intent
 	 * @param {array} [$instructions=array()] any additional instructions to use with the action
 	 *   such as the platform to authenticate with, etc.
 	 * @param {string} [$token] optionally specify the exact token of the intent,
-	 *   this is mostly for use by internal handlers like Users/intent/post.php
+	 *   this is mostly for use by internal handlers like Users/intent/post.php.
+	 *   If a row with this token already exists, that row is returned unchanged.
 	 * @param {string} [$url] url of page the user was on when the intent was generated,
 	 *   useful for returning to this page in another session after intent was completed
 	 * @return {Users_Intent}
@@ -156,7 +157,29 @@ class Users_Intent extends Base_Users_Intent
 			if ($duration = Q::ifset($info, 'duration', 600)) {
 				$intent->endTime = new Db_Expression("CURRENT_TIMESTAMP + INTERVAL $duration SECOND");
 			}
-			$intent->save(true);
+			// A plain INSERT, not save(true)'s INSERT ... ON DUPLICATE KEY
+			// UPDATE. $token can come from the caller (Users/intent/post.php
+			// passes the capability's), whose check that no row has it yet is
+			// a separate SELECT: two requests with one capability can both
+			// pass it, and an upsert then lets the second rewrite the first
+			// one's row wholesale - sessionId, endTime, and the instructions
+			// column. An intent is never updated through this method.
+			try {
+				$intent->save();
+			} catch (Exception $e) {
+				// Lost that race: return the row that won it, which is what
+				// the caller's check would have found a moment later. Only
+				// for a token the caller named - a server-generated token that
+				// collides must not hand anyone another session's intent.
+				if (!$token) {
+					throw $e;
+				}
+				$existing = new Users_Intent(array('token' => $token));
+				if (!$existing->retrieve(null, array('ignoreCache' => true, 'caching' => false))) {
+					throw $e;
+				}
+				$intent = $existing;
+			}
 		}
 		return $intent;
 	}
