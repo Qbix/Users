@@ -11,7 +11,10 @@ function Users_permissions_response_result($params = array())
 {
 	$user = Users::loggedInUser(true);
 	$req = array_merge($_REQUEST, $params);
-	Q_Valid::requireFields(array('userId', 'label'), $req, true);
+	// Empty means missing: an empty userId would make Users::roles() judge
+	// the current community, and an empty label passes canManageLabels()
+	// as "some label".
+	Q_Valid::requireFields(array('userId', 'label'), $req, true, true);
 	if (!is_string($req['userId']) or !is_string($req['label'])) {
 		throw new Q_Exception_WrongType(array(
 			'field' => 'userId and label',

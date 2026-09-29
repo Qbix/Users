@@ -9,7 +9,9 @@
  * @param {array} [$_REQUEST.toRevoke] Labels that holders of $label may no longer grant or revoke
  * @throws {Users_Exception_NotAuthorized} unless the logged-in user can manage
  *   $label and every label in toGrant and toRevoke in that community
- *   (Users::canManageLabels, which by default means its Users/owners)
+ *   (Users::canManageLabels: by default only its Users/owners hold a
+ *   canManageLabels prefix; Users/admins reach the Communities labels tab
+ *   but are refused here)
  */
 function Users_permissions_put($params = array())
 {
