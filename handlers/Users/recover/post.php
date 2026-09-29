@@ -18,7 +18,9 @@
  */
 function Users_recover_post()
 {
-	Q_Valid::requireOrigin(true);
+	// Q_Request::requireOrigin($throwIfInvalid), not Q_Valid::requireOrigin($url, ...):
+	// passing true to the latter sets $url and leaves the check non-throwing.
+	Q_Request::requireOrigin(true);
 
 	// Step 1 — extract recoveryKey from signed request
 	$sigField = Q_Config::get('Users', 'signatures', 'sigField', null);
