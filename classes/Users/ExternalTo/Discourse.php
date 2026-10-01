@@ -22,7 +22,9 @@ class Users_ExternalTo_Discourse extends Users_ExternalTo implements Users_Exter
             $this->apiKey = $apiKey;
         }
         if ($baseUrl = $this->getExtra('baseUrl')) {
-            $this->baseUrl = $baseUrl;
+            // The extra can come from a request: only a configured forum is
+            // ever contacted, and always at its configured address.
+            $this->baseUrl = self::requireConfiguredBaseUrl($baseUrl);
         }
 		$this->apiUsername = 'system';
         if (empty($this->apiKey)) {
@@ -33,9 +35,98 @@ class Users_ExternalTo_Discourse extends Users_ExternalTo implements Users_Exter
                 ));
             }
             $this->apiKey = $appInfo['keys']['system'];
-            $this->baseUrl = $appInfo['baseUrl'];
+            $this->baseUrl = rtrim($appInfo['baseUrl'], '/');
+        }
+        if (empty($this->baseUrl)) {
+            throw new Q_Exception_MissingConfig(array(
+                'fieldpath' => 'Users/apps/'.$this->platform.'/'.$this->appId.'/baseUrl'
+            ));
         }
 	}
+
+    /**
+     * The forums this server may contact are the ones configured under
+     * Users/apps/discourse/<appId>/baseUrl. A base URL that comes from a
+     * request is only accepted when its scheme, host and port match one of
+     * them, and the configured value is what gets used from then on, so
+     * nothing else in the request URL (path, credentials, odd characters a
+     * URL parser might read differently) reaches an outgoing request.
+     * Nothing is configured by default, so nothing is accepted.
+     * @method configuredBaseUrl
+     * @static
+     * @param {string} $url
+     * @return {string|null} The configured base URL, without a trailing slash,
+     *   or null if $url does not name a configured forum.
+     */
+    static function configuredBaseUrl($url)
+    {
+        $origin = self::_origin($url);
+        if (!$origin) {
+            return null;
+        }
+        $apps = Q_Config::get('Users', 'apps', 'discourse', array());
+        if (!is_array($apps)) {
+            return null;
+        }
+        foreach ($apps as $appId => $info) {
+            if ($appId === '*' || !is_array($info) || empty($info['baseUrl'])) {
+                continue;
+            }
+            if (self::_origin($info['baseUrl']) === $origin) {
+                return rtrim($info['baseUrl'], '/');
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Like configuredBaseUrl, but throws when $url names no configured forum.
+     * Call it before anything is fetched or saved.
+     * @method requireConfiguredBaseUrl
+     * @static
+     * @param {string} $url
+     * @param {string} [$field='baseUrl'] Field name for the exception
+     * @return {string} The configured base URL, without a trailing slash
+     * @throws {Q_Exception_WrongValue}
+     */
+    static function requireConfiguredBaseUrl($url, $field = 'baseUrl')
+    {
+        $baseUrl = self::configuredBaseUrl($url);
+        if (!$baseUrl) {
+            throw new Q_Exception_WrongValue(array(
+                'field' => $field,
+                'range' => 'a forum configured in Users/apps/discourse',
+                'value' => is_string($url) ? substr($url, 0, 100) : gettype($url)
+            ));
+        }
+        return $baseUrl;
+    }
+
+    /**
+     * "scheme://host:port" in lower case, or null for anything that is not a
+     * plain http(s) URL (credentials, whitespace, backslashes and control
+     * characters are refused rather than interpreted).
+     */
+    protected static function _origin($url)
+    {
+        if (!is_string($url) || $url === ''
+        || preg_match('/[\s\\\\\x00-\x1f\x7f]/', $url)) {
+            return null;
+        }
+        $parts = parse_url($url);
+        if (!$parts || empty($parts['scheme']) || empty($parts['host'])
+        || isset($parts['user']) || isset($parts['pass'])) {
+            return null;
+        }
+        $scheme = strtolower($parts['scheme']);
+        if ($scheme !== 'http' && $scheme !== 'https') {
+            return null;
+        }
+        $port = isset($parts['port'])
+            ? (int)$parts['port']
+            : ($scheme === 'https' ? 443 : 80);
+        return $scheme . '://' . strtolower($parts['host']) . ':' . $port;
+    }
 
     /**
      * @method getTopic
@@ -45,7 +136,19 @@ class Users_ExternalTo_Discourse extends Users_ExternalTo implements Users_Exter
     public function getTopic($source)
     {
         $this->_loadConfig();
-        $url = Q_Valid::url($source) ? $source : $this->baseUrl."t/$source.json";
+        if (Q_Valid::url($source)) {
+            // A topic URL must be on this row's (configured) forum.
+            if (self::_origin($source) !== self::_origin($this->baseUrl)) {
+                throw new Q_Exception_WrongValue(array(
+                    'field' => 'topicUrl',
+                    'range' => 'a topic URL on '.$this->baseUrl,
+                    'value' => substr($source, 0, 100)
+                ));
+            }
+            $url = $source;
+        } else {
+            $url = $this->baseUrl."/t/".rawurlencode($source).".json";
+        }
         if (substr($url, -5) !== '.json') {
             $url .= '.json';
         }
