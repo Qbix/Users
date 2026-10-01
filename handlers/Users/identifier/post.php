@@ -11,7 +11,9 @@
  * and that user must have given them one of the labels in
  * Users/identifier/canManage (as with Users/icon/canManage: the caller holds
  * the label in that user's contacts). Nothing is configured by default, so
- * nobody can do it until an app opts in.
+ * nobody can do it until an app opts in. Community accounts are never a
+ * subject here. Naming yourself is the ordinary path; the "already able to
+ * log in" guard applies only to other users.
  */
 function Users_identifier_post()
 {
@@ -19,8 +21,13 @@ function Users_identifier_post()
 	$loggedInUser = Users::loggedInUser(true);
 	if (isset($userId) and $userId !== $loggedInUser->id) {
 		$labels = Q_Config::get('Users', 'identifier', 'canManage', array());
-		// Users::roles('') would judge the current community instead.
-		if (!is_string($userId) or $userId === '' or !$labels
+		// Users::roles() of an empty id ('' or '0') would judge the current
+		// community instead. A community account is refused outright: its
+		// roles are the very rows that make the caller an owner or admin of
+		// it, and activating an identifier on it would log them in as the
+		// community.
+		if (!is_string($userId) or empty($userId) or !$labels
+		or Users::isCommunityId($userId)
 		or !Users::roles($userId, $labels, array(), $loggedInUser->id)) {
 			throw new Users_Exception_NotAuthorized();
 		}
