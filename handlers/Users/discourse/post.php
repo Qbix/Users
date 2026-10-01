@@ -14,15 +14,12 @@ function Users_discourse_post($params)
     // contacted, at its configured address; with none configured this always
     // refuses. Checked before anything is fetched or saved.
     $baseUrl = Users_ExternalTo_Discourse::requireConfiguredBaseUrl($baseUrl);
-    if (isset($r['apiKey']))  {
-        $apiKey = $r['apiKey'];
-    }
     $uxt = new Users_ExternalTo_Discourse(array(
         'userId' => $userId,
         'platform' => 'discourse',
         'appId' => $baseUrl
     ));
-    $uxt->setExtra(@compact('baseUrl', 'apiKey'));
+    $uxt->setExtra(compact('baseUrl'));
     $ret = $uxt->create();
 
     // Q_Request::requireFields(array(

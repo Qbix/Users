@@ -17,32 +17,88 @@ class Users_ExternalTo_Discourse extends Users_ExternalTo implements Users_Exter
     protected $apiUsername = null;
 
 	protected function _loadConfig () {
-        // list($appId, $appInfo) = Users::appInfo($this->platform, $this->appId);
-        if ($apiKey = $this->getExtra('apiKey')) {
-            $this->apiKey = $apiKey;
-        }
+        // Everything that leaves this server -- the forum's address and the
+        // API key sent to it -- comes from one configured, named entry under
+        // Users/apps/discourse, never from a request or the "*" defaults.
+        // The extra's baseUrl (set from a request when the row was made) only
+        // selects which configured forum; an "apiKey" extra is ignored.
         if ($baseUrl = $this->getExtra('baseUrl')) {
-            // The extra can come from a request: only a configured forum is
-            // ever contacted, and always at its configured address.
-            $this->baseUrl = self::requireConfiguredBaseUrl($baseUrl);
-        }
-		$this->apiUsername = 'system';
-        if (empty($this->apiKey)) {
-            list($appId, $appInfo) = Users::appInfo($this->platform, $this->appId);
-            if (empty($appInfo)) {
+            list($appId, $info) = self::_requireConfiguredForum($baseUrl);
+        } else {
+            $appId = $this->appId;
+            $apps = Q_Config::get('Users', 'apps', 'discourse', array());
+            if (!is_string($appId) || $appId === '' || $appId === '*'
+            || strpos($appId, '/') !== false || strpos($appId, ':') !== false
+            || !is_array($apps) || empty($apps[$appId]) || !is_array($apps[$appId])) {
                 throw new Q_Exception_MissingConfig(array(
-                    'fieldpath' => 'Users/apps/'.$this->platform.'/'.$this->appId.'/keys/system'
+                    'fieldpath' => 'Users/apps/'.$this->platform.'/'.$appId
                 ));
             }
-            $this->apiKey = $appInfo['keys']['system'];
-            $this->baseUrl = rtrim($appInfo['baseUrl'], '/');
+            $info = $apps[$appId];
+            self::_requireOrigin($appId, $info);
         }
-        if (empty($this->baseUrl)) {
+		$this->apiUsername = 'system';
+        $this->baseUrl = rtrim($info['baseUrl'], '/');
+        $this->apiKey = Q::ifset($info, 'keys', 'system', null);
+        if (empty($this->apiKey) || !is_string($this->apiKey)) {
             throw new Q_Exception_MissingConfig(array(
-                'fieldpath' => 'Users/apps/'.$this->platform.'/'.$this->appId.'/baseUrl'
+                'fieldpath' => 'Users/apps/'.$this->platform.'/'.$appId.'/keys/system'
             ));
         }
 	}
+
+    /**
+     * The configured entry whose baseUrl has the same origin as $url.
+     * @return {array|null} array($appId, $info), or null
+     * @throws {Q_Exception_MissingConfig} if a configured baseUrl is not an
+     *   absolute http(s) URL (a configuration error, not the caller's)
+     */
+    protected static function _configuredForum($url)
+    {
+        $origin = self::_origin($url);
+        if (!$origin) {
+            return null;
+        }
+        $apps = Q_Config::get('Users', 'apps', 'discourse', array());
+        if (!is_array($apps)) {
+            return null;
+        }
+        foreach ($apps as $appId => $info) {
+            if ($appId === '*' || !is_array($info) || empty($info['baseUrl'])) {
+                continue;
+            }
+            if (self::_requireOrigin($appId, $info) === $origin) {
+                return array($appId, $info);
+            }
+        }
+        return null;
+    }
+
+    protected static function _requireConfiguredForum($url, $field = 'baseUrl')
+    {
+        $forum = self::_configuredForum($url);
+        if (!$forum) {
+            throw new Q_Exception_WrongValue(array(
+                'field' => $field,
+                'range' => 'a forum configured in Users/apps/discourse',
+                'value' => is_string($url) ? substr($url, 0, 100) : gettype($url)
+            ));
+        }
+        return $forum;
+    }
+
+    /** The origin of a configured entry's baseUrl, or a configuration error. */
+    protected static function _requireOrigin($appId, $info)
+    {
+        $origin = empty($info['baseUrl']) ? null : self::_origin($info['baseUrl']);
+        if (!$origin) {
+            throw new Q_Exception_MissingConfig(array(
+                'fieldpath' => "Users/apps/discourse/$appId/baseUrl"
+                    . ' (must be an absolute http:// or https:// URL)'
+            ));
+        }
+        return $origin;
+    }
 
     /**
      * The forums this server may contact are the ones configured under
@@ -60,23 +116,8 @@ class Users_ExternalTo_Discourse extends Users_ExternalTo implements Users_Exter
      */
     static function configuredBaseUrl($url)
     {
-        $origin = self::_origin($url);
-        if (!$origin) {
-            return null;
-        }
-        $apps = Q_Config::get('Users', 'apps', 'discourse', array());
-        if (!is_array($apps)) {
-            return null;
-        }
-        foreach ($apps as $appId => $info) {
-            if ($appId === '*' || !is_array($info) || empty($info['baseUrl'])) {
-                continue;
-            }
-            if (self::_origin($info['baseUrl']) === $origin) {
-                return rtrim($info['baseUrl'], '/');
-            }
-        }
-        return null;
+        $forum = self::_configuredForum($url);
+        return $forum ? rtrim($forum[1]['baseUrl'], '/') : null;
     }
 
     /**
@@ -91,15 +132,8 @@ class Users_ExternalTo_Discourse extends Users_ExternalTo implements Users_Exter
      */
     static function requireConfiguredBaseUrl($url, $field = 'baseUrl')
     {
-        $baseUrl = self::configuredBaseUrl($url);
-        if (!$baseUrl) {
-            throw new Q_Exception_WrongValue(array(
-                'field' => $field,
-                'range' => 'a forum configured in Users/apps/discourse',
-                'value' => is_string($url) ? substr($url, 0, 100) : gettype($url)
-            ));
-        }
-        return $baseUrl;
+        list($appId, $info) = self::_requireConfiguredForum($url, $field);
+        return rtrim($info['baseUrl'], '/');
     }
 
     /**
