@@ -112,11 +112,53 @@ Users_Email.sendMessage = function (to, subject, view, fields, options, callback
 			host = {
 				host: host
 			};
-			if (smtp.port) host.port = smtp.port;
+			// TLS mode. Users_Email.php hands the same `smtp` config to
+			// Zend_Mail_Transport_Smtp, whose Zend_Mail_Protocol_Smtp
+			// constructor defines `ssl` as a three-valued string -- absent
+			// (plaintext, opportunistic STARTTLS), "tls" (STARTTLS required)
+			// and "ssl" (implicit TLS) -- and raises on any other value. Map
+			// those three onto nodemailer's own option names so that one
+			// config key means one thing in both halves of the platform.
+			//
+			// Previously this set `secureConnection`, which is nodemailer 1.x
+			// naming and is not read by any client this code has run against:
+			// smtp-connection (used by nodemailer-smtp-transport) and
+			// nodemailer's own client both do
+			//   this.secureConnection = !!this.options.secure;
+			// so `secureConnection` is an output of parsing `secure`, never an
+			// input. The result was that `ssl` did nothing here -- the
+			// connection was made in plaintext, and only opportunistic STARTTLS
+			// kept that from being obvious. Against a server that speaks
+			// implicit TLS (port 465) there is no fallback at all: the client
+			// waits for a banner that never arrives.
+			var ssl = (smtp.ssl === true) ? "ssl" : smtp.ssl;
+			ssl = ssl ? String(ssl).toLowerCase() : null;
+			switch (ssl) {
+				case null:
+					host.secure = false;
+					break;
+				case "tls":
+					host.secure = false;
+					host.requireTLS = true;
+					break;
+				case "ssl":
+					host.secure = true;
+					break;
+				default:
+					throw new Q.Exception(
+						smtp.ssl + ' is unsupported SSL type in Users/email/smtp.ssl'
+						+ ' (expected "tls", "ssl", or nothing)'
+					);
+			}
+			// State the port rather than letting the client derive one from
+			// `secure`, so that honouring the flag above cannot silently move
+			// the connection to a different port. These defaults are Zend's.
+			host.port = smtp.port || (host.secure ? 465 : 25);
+			// So that implicit TLS pointed at a plaintext listener reaches the
+			// callback as an error instead of sitting on the socket.
+			host.connectionTimeout = smtp.connectionTimeout || 15000;
+			host.greetingTimeout = smtp.greetingTimeout || 15000;
 			if (smtp.auth === "login") {
-				if (smtp.ssl) {
-					host.secureConnection = true;
-				}
 				host.auth = {
 					user: smtp.username,
 					pass: smtp.password
