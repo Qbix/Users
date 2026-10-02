@@ -43,6 +43,15 @@ class Users_Device_Android extends Users_Device
 			return;
 		}
 		$apiKey = Q_Config::expect('Users', 'apps', 'android', Q::app(), "key");
+		// A push notification must never be able to outlive the request that
+		// triggered it. curl's default CURLOPT_TIMEOUT is 0 = infinite, so
+		// without these one unresponsive FCM endpoint holds a php-fpm worker
+		// until something outside PHP kills it (e.g. request_terminate_timeout),
+		// mid-loop, with some notifications sent and no record of which.
+		// Both are per notification, in seconds, and overridable per app under
+		// Users/apps/android/<app>/connectTimeout and .../timeout.
+		$connectTimeout = Q_Config::get('Users', 'apps', 'android', Q::app(), 'connectTimeout', 5);
+		$timeout = Q_Config::get('Users', 'apps', 'android', Q::app(), 'timeout', 10);
 		foreach (self::$push as $notification) {
 			$fields = array(
 				'to' => self::$device->deviceId,
@@ -59,6 +68,8 @@ class Users_Device_Android extends Users_Device
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 			curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
+			curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $connectTimeout);
+			curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
 			$result = curl_exec($ch);
 			curl_close($ch);
 		}

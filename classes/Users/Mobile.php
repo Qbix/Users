@@ -138,6 +138,12 @@ class Users_Mobile extends Base_Users_Mobile
 						$smtp = array();
 					}
 					if (isset($host)) {
+						// Same bound as Users_Email::sendMessage, for the same
+						// reason: Zend's RFC timeouts (300s/600s per reply) outlive
+						// any sane web request timeout.
+						if (!isset($smtp['timeout'])) {
+							$smtp['timeout'] = 20;
+						}
 						$transport = new Zend_Mail_Transport_Smtp($host, $smtp);
 					} else {
 						$transport = null;

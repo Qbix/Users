@@ -116,7 +116,9 @@ class Zend_Mail_Protocol_Smtp extends Zend_Mail_Protocol_Abstract
      *
      * @param  string  $host
      * @param  integer $port
-     * @param  array   $config
+     * @param  array   $config  Keys: 'ssl' ('tls'|'ssl'), and 'timeout' -- a
+     *                           wall-clock budget in seconds for the whole
+     *                           connection (see Zend_Mail_Protocol_Abstract::$_timeout)
      * @return void
      * @throws Zend_Mail_Protocol_Exception
      */
@@ -144,6 +146,11 @@ class Zend_Mail_Protocol_Smtp extends Zend_Mail_Protocol_Abstract
                     throw new Zend_Mail_Protocol_Exception($config['ssl'] . ' is unsupported SSL type');
                     break;
             }
+        }
+
+        // Optional wall-clock budget for the whole connection, in seconds
+        if (isset($config['timeout'])) {
+            $this->setTimeout($config['timeout']);
         }
 
         // If no port has been specified then check the master PHP ini file. Defaults to 25 if the ini setting is null.
