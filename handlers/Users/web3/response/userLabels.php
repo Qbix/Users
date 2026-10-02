@@ -53,7 +53,11 @@ function Users_web3_response_userLabels($params = array())
         $ret['userRoles'] = $tmp[0];
         
     } catch (Exception $e) {
-        die('[ERROR] ' . $e->getMessage() . PHP_EOL . $e->getTraceAsString() . PHP_EOL);
+        // Rethrow instead of die()ing with getTraceAsString(): that wrote absolute
+        // file paths and the whole call stack straight into the HTTP response,
+        // ignoring the app's Q/exception/showTrace and showFileAndLine settings.
+        // Q/errors renders it under the configured policy instead.
+        throw $e;
     }
 //	if (!isset($req['userId']) and !isset($req['userIds'])) {
 //		throw new Q_Exception_RequiredField(array(
