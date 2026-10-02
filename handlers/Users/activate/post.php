@@ -26,7 +26,10 @@ function Users_activate_post()
 		// Save the pass phrase even if there may be a problem adding an email later.
 		// At least the user will be able to log in.
 		$passphrase = $user->preparePassphrase($_REQUEST['passphrase'], $isHashed);
-		$user->passphraseHash = $user->hashPassphrase($passphrase, $user->passphraseHash);
+		// hashPassphrase()'s second parameter is the ALGORITHM (default
+		// 'password_hash'). This used to pass the existing hash there, which
+		// only worked because no hash equals 'hash_pbkdf2' (ro#579).
+		$user->passphraseHash = $user->hashPassphrase($passphrase);
 		Q_Response::setNotice("Users/activate/passphrase",  $text['notifications']['PassphraseSaved'], array(
 			'timeout' => Q_Config::get('Users', 'notices', 'timeout', 5)
 		));
