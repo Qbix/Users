@@ -105,24 +105,52 @@ Users_Email.sendMessage = function (to, subject, view, fields, options, callback
 		// Set up the default mail transport
 		var host = smtp.host || 'sendmail';
 		if (host === "sendmail") {
-			var sendmailTransport = require("nodemailer-sendmail-transport");
-			_transport = mailer.createTransport(sendmailTransport());
+			// nodemailer's own sendmail transport, replacing the deprecated
+			// nodemailer-sendmail-transport@1.0.2 shim. The shim's defaults
+			// (binary "sendmail", args "-i -f <envelope.from> <envelope.to...>")
+			// are already what the built-in does with no options. The one thing
+			// it did that the built-in does NOT do by default is rewrite the
+			// message's CRLF line endings to LF before piping to the binary --
+			// that is what `newline: 'unix'` restores here. Dropping it would
+			// hand sendmail a raw CRLF stream.
+			_transport = mailer.createTransport({
+				sendmail: true,
+				newline: 'unix'
+			});
 		} else {
-			var smtpTransport = require("nodemailer-smtp-transport");
-			host = {
+			// nodemailer's own SMTP transport, replacing the deprecated
+			// nodemailer-smtp-transport@2.7.4 shim -- whose only real job was
+			// to hand these same options to its bundled smtp-connection@2.12,
+			// and which dragged in the vulnerable
+			// smtp-connection -> httpntlm -> underscore subtree.
+			var smtpOptions = {
 				host: host
 			};
-			if (smtp.port) host.port = smtp.port;
+			// smtp-connection@2.12 defaulted the unencrypted port to 25;
+			// nodemailer's own client defaults it to 587. Pin 25 explicitly so
+			// removing the shim cannot silently move the port out from under an
+			// existing config, and so the node side keeps agreeing with
+			// Users_Email.php's Zend_Mail_Transport_Smtp (also port 25).
+			smtpOptions.port = smtp.port || 25;
 			if (smtp.auth === "login") {
 				if (smtp.ssl) {
-					host.secureConnection = true;
+					// GOTCHA: this option is dead, and is preserved verbatim on
+					// purpose. Neither smtp-connection@2.12 (what the shim used)
+					// nor nodemailer's own client ever reads `secureConnection` --
+					// both read `secure` -- so a Users/email/smtp config with
+					// "ssl" set has never actually turned on implicit TLS here.
+					// Renaming it to `secure` is a real behaviour change (it would
+					// flip a live deployment from plaintext to TLS and, with no
+					// port set, from 25 to 465), so it belongs in its own issue
+					// rather than in this shim removal.
+					smtpOptions.secureConnection = true;
 				}
-				host.auth = {
+				smtpOptions.auth = {
 					user: smtp.username,
 					pass: smtp.password
 				};
 			}
-			_transport = mailer.createTransport(smtpTransport(host));
+			_transport = mailer.createTransport(smtpOptions);
 		}
 	}
 	
