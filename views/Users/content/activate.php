@@ -66,7 +66,7 @@
                         value="<?php echo Q_Html::text($identifier) ?>"
                         hidden="hidden"
                         autocomplete="username <?php echo $autocompleteType ?>">
-                    <input type="password" id='new-password' name="passphrase" class='password' autofocus placeholder="Enter a passphrase" autocomplete="new-password" /><br>
+                    <input type="password" id='new-password' name="passphrase" class='password' autofocus placeholder="Enter a password" autocomplete="new-password" /><br>
                     <input type="hidden" name="afterActivate" value="<?php echo $afterActivate ?>">
                     <input type="hidden" id="activate_identifier" name="<?php echo $t ?>"
                         value="<?php echo Q_Html::text($identifier) ?>"
