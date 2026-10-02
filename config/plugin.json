@@ -338,7 +338,12 @@
 		},
 		"session": {
 			"redirectSecondsMax" : 300,
-			"createSecondsMax": 0
+			"createSecondsMax": 0,
+			/* changing a passphrase invalidates the user's other sessions
+			   (Users::logoutOtherSessions). Only turn this off if an app has
+			   a deliberate reason to leave old session cookies working after
+			   a password reset. */
+			"invalidateOthersOnPassphraseChange": true
 		},
 		"intents": {
 			"actions": {
