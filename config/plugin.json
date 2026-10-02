@@ -39,6 +39,7 @@
 			"Q/image/save": ["Users/after/Q_image_save"],
 			"Q/sessionExtras": ["Users/after/Q_sessionExtras"],
 			"Q/session/start": ["Users/after/Q_session_start"],
+			"Users/icon/changed": ["Users/after/Users_icon_changed"],
 			"Users/filter/users": ["Users/after/Users_filter_users"],
 			"Users/setEmailAddress": ["Users/after/Users_setEmailAddress"],
 			"Users/setMobileNumber": ["Users/after/Users_setMobileNumber"],
