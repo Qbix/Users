@@ -281,12 +281,25 @@ class Users_ExternalTo_Discourse extends Users_ExternalTo implements Users_Exter
             "Content-Type: multipart/form-data"
         );
 
+        // This runs from the Users_User_saveExecute after-hook, i.e. inside
+        // whatever web request saved the user. curl's default CURLOPT_TIMEOUT
+        // is 0 = infinite, so without these an unresponsive Discourse holds
+        // the PHP worker until something outside PHP (e.g. php-fpm's
+        // request_terminate_timeout) kills it mid-request.
+        // The total leaves room for the two Q_Utils::put calls that follow.
+        // In seconds, overridable under Users/discourse/connectTimeout and
+        // Users/discourse/uploadTimeout.
+        $connectTimeout = Q_Config::get('Users', 'discourse', 'connectTimeout', 5);
+        $timeout = Q_Config::get('Users', 'discourse', 'uploadTimeout', 15);
+
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $uploadsUrl);
         curl_setopt($ch, CURLOPT_HTTPHEADER,$headers);
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $connectTimeout);
+        curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
         $response = curl_exec($ch);
         curl_close($ch);
         $result = json_decode($response);
