@@ -64,7 +64,14 @@ Q.Tool.define("Users/status", function (options) {
 		var state = tool.state;
 		var loggedIn = !!Users.loggedInUser;
 
-		$(tool.element).empty();
+		// .empty() removes the children, but NOT handlers bound on
+		// tool.element itself -- and CASE 1 and CASE 2 below bind
+		// Q.Pointer.click there. Passing `tool` to .on() only unbinds when
+		// the tool is REMOVED, which a refresh is not, so without this .off()
+		// every refresh() leaves another handler on the same element and one
+		// click fires state.onInvoke once per refresh that has happened.
+		// (CASE 3 escapes it only because it binds on a freshly-built child.)
+		$(tool.element).empty().off(Q.Pointer.click);
 
 		// ================
 		// CASE 1: REAL USER
