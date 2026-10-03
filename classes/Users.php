@@ -1607,12 +1607,48 @@ abstract class Users extends Base_Users
 	}
 
 	/**
+	 * Reads the bytes of one importIcon() source. A value with a URL scheme
+	 * is fetched only through Q_Fetch: http/https, public targets, every
+	 * redirect re-checked. So file://, php:// and other stream wrappers are
+	 * never opened, and a URL cannot reach this server's own network.
+	 * A value without a scheme is read as a local file: only server code
+	 * passes paths (generated faces, Q_Fetch::toTempFile() results), never
+	 * request input.
+	 * @method _importIconData
+	 * @static
+	 * @private
+	 * @param {string} $source
+	 * @param {array} [$headers=array()] extra request header lines, e.g. a cookie
+	 * @return {string|false}
+	 */
+	private static function _importIconData($source, $headers = array())
+	{
+		if (preg_match('#^[a-z][a-z0-9+.-]*:#i', $source)) {
+			try {
+				$response = Q_Fetch::get($source, array(
+					'maxBytes' => 5242880,
+					'headers' => $headers
+				));
+				if ($response['status'] === 200 && !$response['truncated']) {
+					return $response['body'];
+				}
+			} catch (Exception $e) {
+				Q::log("Users::importIcon: " . $e->getMessage());
+			}
+			return false;
+		}
+		return is_file($source) ? file_get_contents($source) : false;
+	}
+
+	/**
 	 * Imports an icon and sets $user->icon to the new icon's url.
 	 * @method importIcon
 	 * @static
 	 * @param {Users_User|object} $obj An object on which this function will set ->icon field.
-	 * @param {array} [$sources=array()] Array of $basename => $filename (of an existing file)
-	 *   or $basename => $url to download from, or
+	 * @param {array} [$sources=array()] Array of $basename => $filename (of an existing
+	 *   file; a path must never come from request input)
+	 *   or $basename => $url to download from (through Q_Fetch: http/https,
+	 *   public targets only), or
 	 *   of $basename => arrays("hash"=>..., "size"=>...) for gravatar icons.
 	 *   If this object is empty, then the function returns null
 	 * @param {string} [$directory=null] Set this unless $obj is a Users_User, in which case it will
@@ -1664,17 +1700,11 @@ abstract class Users extends Base_Users
 			}
 		}
 		if ($largestSource) {
-			$data = null;
-			try {
-				if (Q_Valid::url($largestSource)) {
-					$data = Q_Utils::get($largestSource, null, true, $o);
-				} else {
-					$data = file_get_contents($largestSource);
-				}
-			} catch (Exception $e) {
-				
-			}
-			if (pathinfo($source, PATHINFO_EXTENSION) == 'ico') {
+			$data = self::_importIconData($largestSource, $o);
+			if (!$data) {
+				// refused or unreadable: fall through to the per-size sources
+				$largestImage = null;
+			} else if (pathinfo($source, PATHINFO_EXTENSION) == 'ico') {
 				$_composerAutoload = USERS_PLUGIN_DIR.DS.'vendor'.DS.'autoload.php';
 				if (file_exists($_composerAutoload)) {
 					require_once $_composerAutoload; // optional: plugin works without it
@@ -1699,10 +1729,9 @@ abstract class Users extends Base_Users
 				} else {
 					$cookie = is_string($cookies) ? $cookies : Q::ifset($cookies, $basename, null);
 					$o = $cookie ? array("cookie: $largestCookie") : array();
-					if (Q_Valid::url($source)) {
-						$data = Q_Utils::get($source, null, true, $o);
-					} else {
-						$data = file_get_contents($source);
+					$data = self::_importIconData($source, $o);
+					if (!$data) {
+						return null; // refused or unreadable: no icon imported
 					}
 					if (pathinfo($source, PATHINFO_EXTENSION) == 'ico') {
 						$_composerAutoload = USERS_PLUGIN_DIR.DS.'vendor'.DS.'autoload.php';
@@ -1712,7 +1741,10 @@ abstract class Users extends Base_Users
 						$icoFileService = new Elphin\IcoFileLoader\IcoFileService;
 						$source = $icoFileService->extractIcon($data, 32, 32);
 					} else {
-						$source = imagecreatefromstring($data);
+						$source = @imagecreatefromstring($data);
+					}
+					if (!$source) {
+						return null;
 					}
 					$sw = imagesx($source);
 					$sh = imagesy($source);
