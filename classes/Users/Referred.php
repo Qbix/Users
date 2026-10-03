@@ -90,18 +90,27 @@ class Users_Referred extends Base_Users_Referred
 			'referredByUserId' => $byUserId
 		));
 
-		// Apply extra metadata
-		if (!empty($fields['extras']) && is_array($fields['extras'])) {
-			$referred->setExtra($fields['extras']);
-		}
-
-		// Update or set points
-		if ($referred->retrieve()) {
+		// Update or set points. Look the row up by its primary key only, past
+		// the per-request query cache (ignoreCache) and without storing the
+		// result in it (caching(false)). Two ways this read used to miss an
+		// existing row, and the save below then INSERTed it again and failed
+		// on the duplicate key (ro#1068):
+		// - extras were applied first, so retrieve() also matched on the
+		//   `extra` column, which never equals the stored history;
+		// - an earlier referral in this request inserted the row after a
+		//   cached "missing" read (Assets_Credits::spend() paying one
+		//   publisher twice in a request).
+		if ($referred->retrieve(null, true, array('ignoreCache' => true, 'caching' => false))) {
 			$prevPoints = $referred->points;
 			$referred->points = max($referred->points, $points);
 		} else {
 			$prevPoints = 0;
 			$referred->points = $points;
+		}
+
+		// Apply extra metadata, merged into what the row already holds
+		if (!empty($fields['extras']) && is_array($fields['extras'])) {
+			$referred->setExtra($fields['extras']);
 		}
 
 		// Determine if this qualifies the referrer now
