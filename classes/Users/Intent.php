@@ -213,11 +213,84 @@ class Users_Intent extends Base_Users_Intent
 		return true;
 	}
 	/**
+	 * Set by claimCompletion() on the one object that won the claim, so that
+	 * its own complete() is not refused by the completedTime the claim wrote.
+	 * A declared property, so Db_Row::__set() never treats it as a field.
+	 * @property $completionClaimed
+	 * @type boolean
+	 * @private
+	 */
+	private $completionClaimed = false;
+
+	/**
+	 * Claim the right to carry out this intent's continuation, atomically:
+	 * stamp completedTime if, and only if, nobody has.
+	 *
+	 * isValid() checks the time window only, and must keep doing so: the
+	 * Users/intent return leg (Users/before/Q_objects) accepts an intent
+	 * AFTER Users/intent PUT completed it. So a continuation that spends
+	 * something - Assets' Stripe webhook and Assets/update/paymentSucceeded,
+	 * which move credits and then complete() - ran again for a redelivered
+	 * event and spent the credits twice (ro#1070 R04). Checking completedTime
+	 * as read is not enough either: two deliveries in flight both read it
+	 * empty. This is a compare-and-set, like claimHandoff():
+	 *
+	 *     UPDATE users_intent SET completedTime = CURRENT_TIMESTAMP
+	 *     WHERE token = ? AND completedTime IS NULL
+	 *
+	 * Exactly one caller sees a changed row. Claim first, act, then call
+	 * complete() on the same object to store the results; if the action
+	 * fails, releaseCompletion() lets a later delivery try again.
+	 *
+	 * @method claimCompletion
+	 * @return {boolean} true if this object now holds the claim; false if the
+	 *  intent was already completed or claimed (or is not in the database)
+	 */
+	function claimCompletion()
+	{
+		if (!empty($this->completedTime) || empty($this->token)) {
+			return false;
+		}
+		$changed = Users_Intent::update()
+			->set(array('completedTime' => new Db_Expression('CURRENT_TIMESTAMP')))
+			->where(array(
+				'token' => $this->token,
+				'completedTime' => null
+			))
+			->execute()
+			->rowCount();
+		$this->completionClaimed = ($changed > 0);
+		return $this->completionClaimed;
+	}
+
+	/**
+	 * Give back a claim taken by claimCompletion() whose action failed, so
+	 * that the intent can be continued by a later delivery. Does nothing
+	 * unless this object holds the claim and has not completed.
+	 * @method releaseCompletion
+	 * @return {boolean} whether a claim was released
+	 */
+	function releaseCompletion()
+	{
+		if (!$this->completionClaimed) {
+			return false;
+		}
+		$this->completionClaimed = false;
+		return Users_Intent::update()
+			->set(array('completedTime' => null))
+			->where(array('token' => $this->token))
+			->execute()
+			->rowCount() > 0;
+	}
+
+	/**
 	 * Mark intent completed, and set logged-in user in original session
 	 * if no one was logged in there yet.
 	 * @method complete
 	 * @param {array} $results Any additional results to store in instructions
-	 * @return {boolean} true if successful, false otherwise
+	 * @return {boolean} true if successful, false otherwise; false if the
+	 *  intent was already completed, unless this object holds the claim from
+	 *  claimCompletion()
 	 */
 	function complete($results = array())
 	{
@@ -226,9 +299,10 @@ class Users_Intent extends Base_Users_Intent
 			return false;
 		}
 		if ((!$intent->wasRetrieved() and !$intent->retrieve())
-		or !empty($intent->completedTime)) {
+		or (!empty($intent->completedTime) and !$intent->completionClaimed)) {
 			return false;
 		}
+		$intent->completionClaimed = false;
 		$user = Users::loggedInUser(false, false);
 		if ($user and !$intent->userId) {
 			$intent->userId = $user->id;
