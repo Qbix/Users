@@ -298,8 +298,12 @@ class Users_Intent extends Base_Users_Intent
 		if (false === Q::event('Users/intent/complete', compact('intent', 'results'), 'before')) {
 			return false;
 		}
-		if ((!$intent->wasRetrieved() and !$intent->retrieve())
-		or (!empty($intent->completedTime) and !$intent->completionClaimed)) {
+		if (!$intent->wasRetrieved() and !$intent->retrieve()) {
+			return false;
+		}
+		// Completing is itself a claim: a second object read before the
+		// first completed must not complete again (ro#1070).
+		if (!$intent->completionClaimed and !$intent->claimCompletion()) {
 			return false;
 		}
 		$intent->completionClaimed = false;
