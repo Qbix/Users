@@ -31,7 +31,12 @@ function Users_before_Q_objects(&$params)
 	$sigField = Q_Config::get('Users', 'signatures', 'sigField', null);
 	$nonceField = Q_Config::get('Users', 'signatures', 'nonceField', null);
 
-	if ($sigField && !empty($_SESSION['Users']['publicKey'])) {
+	// Only enforce on requests that can change state. A plain page load
+	// (GET/HEAD) of a requireLogin page carries no signed POST fields,
+	// so demanding the nonce there would fail every page view.
+	$method = Q_Request::method();
+	if ($sigField && !empty($_SESSION['Users']['publicKey'])
+	&& $method !== 'GET' && $method !== 'HEAD') {
 		$sigField = str_replace('.', '_', $sigField);
 		$rl = Q_Config::get('Users', 'requireLogin', array());
 
