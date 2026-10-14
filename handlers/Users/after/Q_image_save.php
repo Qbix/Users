@@ -31,6 +31,9 @@ function Users_after_Q_image_save($params, &$authorized)
                 ));
                 $user->save(); // triggers any registered hooks
                 Users::$cache['iconUrlWasChanged'] = true;
+                Q::event('Users/icon/changed', @compact(
+                    'user', 'path', 'subpath'
+                ), 'after');
             } else {
                 Users::$cache['iconUrlWasChanged'] = false;
             }
@@ -61,6 +64,9 @@ function Users_after_Q_image_save($params, &$authorized)
 				));
                 $anotherUser->save(); // triggers any registered hooks
                 Users::$cache['iconUrlWasChanged'] = true;
+                Q::event('Users/icon/changed', array(
+                    'user' => $anotherUser, 'path' => $path, 'subpath' => $subpath
+                ), 'after');
             } else {
                 Users::$cache['iconUrlWasChanged'] = false;
             }
