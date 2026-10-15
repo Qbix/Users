@@ -38,6 +38,7 @@ Q.uuid = function () {
 };
 
 // Detect Qbix origin from this script's own src
+Q.Users = Q.Users || {};
 Q.Users.Embed = Q.Users.Embed || {};
 Q.Users.Embed.origin = (function () {
     var scripts = document.getElementsByTagName('script');

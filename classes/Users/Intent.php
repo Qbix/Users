@@ -180,7 +180,7 @@ class Users_Intent extends Base_Users_Intent
 		}
 		if ((!$intent->wasRetrieved() and !$intent->retrieve())
 		or Users::db()->fromDateTime($intent->endTime) < time()
-		or (!$options['evenIfCompleted'] and !empty($intent->completedTime))) {
+		or (!empty($options['evenIfCompleted']) and !empty($intent->completedTime))) {
 			return false;
 		}
 		$userId = $content = $session = null;

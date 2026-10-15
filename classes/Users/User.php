@@ -1477,7 +1477,7 @@ class Users_User extends Base_Users_User
 	 * @param string $sessionId The session to update
 	 * @param string $userId The user to switch to
 	 */
-	function pushIntoSession($sessionId, $userId)
+	static function pushIntoSession($sessionId, $userId)
 	{
 		if (!$sessionId || !$userId) return;
 		$session = new Users_Session();

@@ -39,7 +39,7 @@ function Users_bridgeResolve_post()
         $intent->accept(array('copySessionFields' => array('Users')));
         $intent->complete(array('mode' => 'manual_chose_bridge'));
     } else {
-        $currentUser = Users::loggedInUser(true);
+        $currentUser = Users::loggedInUser(false, true);
         if ($currentUser && $intent->sessionId) {
             Users_User::pushIntoSession($intent->sessionId, $currentUser->id);
         }

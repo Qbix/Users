@@ -1476,11 +1476,10 @@ abstract class Users extends Base_Users
 	 * @param {string} [$state='verified'] The state of the identifier => userId mapping.
 	 *  Could also be 'future' to find identifiers attached to a "future user",
 	 *  and can also be null (in which case we find mappings in all states)
-	 * @param {&string} [$normalized=null]
 	 * @return {Users_Identify|null}
 	 *  The row corresponding to this type and value, otherwise null
 	 */
-	static function identify($type, $value, $state = 'verified', &$normalized=null)
+	static function identify($type, $value, $state = 'verified')
 	{
 		$type = Q_Utils::normalize($type);
 		$identifiers = array();
