@@ -1500,6 +1500,30 @@ abstract class Users extends Base_Users
 	}
 
 	/**
+	 * Resolves a URL segment that could be either a chosen username or a
+	 * raw userId — for pretty-URL routes (e.g. Media's /:usernameOrId
+	 * channel route) that need to accept either without the caller having
+	 * to know which one they got. Tries username first (the human-facing
+	 * case), falls back to treating it as a literal userId.
+	 * @method userIdFromUsernameOrId
+	 * @static
+	 * @param {string} $segment
+	 * @return {string|null} The userId, or null if neither resolves.
+	 */
+	static function userIdFromUsernameOrId($segment)
+	{
+		if (empty($segment)) {
+			return null;
+		}
+		$identify = self::identify('username', $segment);
+		if ($identify) {
+			return $identify->userId;
+		}
+		$user = Users_User::fetch($segment, false);
+		return $user ? $user->id : null;
+	}
+
+	/**
 	 * Returns a user in the database that will correspond to a new user in the future
 	 * once they authenticate or follow an invite.
 	 * Inserts a new user if one doesn't already exist.

@@ -96,9 +96,19 @@ function Users_before_Q_initialExtras()
 	and Q::autoloadRequirementsMet('Users_Web3')) {
 		Q_Response::setScriptData('Q.plugins.Users.Web3.chains', Users_Web3::getChains());
 		Q_Response::setScriptData('Q.plugins.Users.Web3.contracts', Users_Web3::getContracts());
+		// Client code (e.g. Assets/web3/balance.js, Assets/web3/invoice.js)
+		// reads this off the bare Q.Users namespace, not Q.plugins.Users --
+		// same gap as Q.Assets.currencies.tokens elsewhere; without this,
+		// Q.Users.Web3.chains is always empty, which silently disables the
+		// chain-picker UI and any read-only (no wallet) contract call that
+		// resolves its RPC URL through Web3.chains client-side.
+		Q_Response::setScriptData('Q.Users.Web3.chains', Users_Web3::getChains());
+		Q_Response::setScriptData('Q.Users.Web3.contracts', Users_Web3::getContracts());
 	} else {
 		Q_Response::setScriptData('Q.plugins.Users.Web3.chains', array());
 		Q_Response::setScriptData('Q.plugins.Users.Web3.contracts', array());
+		Q_Response::setScriptData('Q.Users.Web3.chains', array());
+		Q_Response::setScriptData('Q.Users.Web3.contracts', array());
 	}
 
 	// add apple signIn js lib

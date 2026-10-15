@@ -63,7 +63,10 @@ foreach ($pending as $tx) {
 	} elseif ($updated && $tx->status === 'failed') {
 		$failed++;
 	} elseif (strtotime($tx->insertedTime) < time() - $maxAge) {
-		$tx->status = 'expired';
+		// 'expired' is not a legal status in the DB enum
+		// (only signed|pending|mined|rejected) — treat a tx that
+		// never mined within maxAge as rejected.
+		$tx->status = 'rejected';
 		$tx->save(true);
 		$expired++;
 	} else {

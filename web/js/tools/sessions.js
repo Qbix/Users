@@ -20,7 +20,7 @@ Q.Tool.define("Users/sessions", function Users_sessions_tool(options) {
 		state.userId = Users.loggedInUserId();
 	}
 
-	Q.addStylesheet('{{Users}}/css/tools/sessions.css', 'Users');
+	Q.addStylesheet('{{Users}}/css/tools/sessions.css');
 
 	// Handle delete session button
 	tool.$("button[name=delete]").on(Q.Pointer.fastclick, function (e) {
