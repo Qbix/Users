@@ -64,8 +64,11 @@ class Users_Web3 extends Base_Users_Web3
 		if ($cacheDuration === null) {
 			$cacheDuration = Q::ifset($appInfo, 'cacheDuration', 3600);
 		}
-		$chainId = Q::ifset($appInfo, 'chainId', Q::ifset($appInfo, 'appId', null));
-		
+		// Same fallback as objects(): $appId passed into execute() is
+		// itself the chain id in every real call site; nothing in shipped
+		// config ever sets an explicit "chainId" key.
+		$chainId = Q::ifset($appInfo, 'chainId', Q::ifset($appInfo, 'appId', $appId));
+
 		if (!$chainId) {
 			throw new Q_Exception_MissingConfig(array(
 				'fieldpath' => "'Users/apps/$appId/chainId'"
@@ -200,12 +203,27 @@ class Users_Web3 extends Base_Users_Web3
 			$web3Transaction->extra = '';
 			$web3Transaction->result = Q::json_encode($result);
 			$web3Transaction->save();
-	
+
+			// $result here is the raw JSON-RPC envelope ({jsonrpc, id, result}),
+			// not a decoded return value -- the adjust()/cache logic below is
+			// written for view-call return values (and caching a transaction
+			// hash by its call params would be actively wrong: the "same"
+			// params called again produce a brand new, different hash every
+			// time). Every real caller of a signed execute() expects back the
+			// plain transaction hash string, so return it directly here.
+			return $result->result;
+
 		} else {
             $result = $contract->call($methodName, $params);
         }
         
-        if (count($result) == 0) {
+        // count() throws on a decoded single-value result, which can come
+        // back as a stdClass rather than an array outside of batch mode
+        // (e.g. a plain, non-batched balanceOf/transfer call); empty()
+        // handles both shapes without throwing, with the same semantics
+        // (an empty array -- zero return values -- is the only "no data"
+        // case; a result object is never semantically empty here).
+        if (empty($result)) {
 			return null;
 		}
         
@@ -410,7 +428,14 @@ class Users_Web3 extends Base_Users_Web3
 
 		list($appId, $appInfo) = Users::appInfo('web3', $appId, true);
 		$appInfo = array_merge($usersWeb3Config, $appInfo);
-		$chainId = Q::ifset($appInfo, 'chainId', Q::ifset($appInfo, 'appId', null));
+		// Every caller of execute()/objects() passes a chain id (hex string
+		// like "0x38") as $appId, and nothing in the shipped config (platform
+		// defaults or app overrides) ever sets an explicit "chainId" key on
+		// Users/apps/web3/<id> or Users/web3/chains/<id> -- only $appId itself
+		// (now resolved by appInfo() above) actually carries it. Falling back
+		// to it here is what the "appId" fallback one step before it already
+		// intended; without this, every chain throws MissingConfig.
+		$chainId = Q::ifset($appInfo, 'chainId', Q::ifset($appInfo, 'appId', $appId));
 		if (!$chainId) {
 			throw new Q_Exception_MissingConfig(array(
 				'fieldpath' => "'Users/apps/web3/$appId/chainId'"
@@ -451,18 +476,25 @@ class Users_Web3 extends Base_Users_Web3
 	 */
 	static function getChains($needChainId = null)
 	{
-		$chains = Q_Config::get("Users", "apps", "web3", array());
+		// Users/apps/web3 normally only ever holds the "*" wildcard
+		// (no chainId/appId field on it at all, by design -- see
+		// Users_Web3::objects()/execute()), so iterating it directly
+		// (as this used to) always finds zero chains. The real,
+		// per-chain-id definitions live under Users/web3/chains; a
+		// matching Users/apps/web3/<chainId> entry, when present, is
+		// used as an optional override layer on top of it.
+		$usersWeb3Chains = Q_Config::get("Users", "web3", "chains", array());
+		$appsWeb3 = Q_Config::get("Users", "apps", "web3", array());
 		$result = array();
 		$defaultAppId = Q_Config::get('Users', 'apps', 'defaultApps', 'web3', Q::app());
-		foreach ($chains as $i => $chain) {
-			$chainId = Q::ifset($chain, 'chainId', Q::ifset($chain, 'appId', null));
-			if (!$chainId or ($needChainId && $chainId != $needChainId)) {
+		foreach ($usersWeb3Chains as $chainId => $usersWeb3Config) {
+			if ($needChainId && $chainId != $needChainId) {
 				continue;
 			}
+			$chain = Q::ifset($appsWeb3, $chainId, array());
 
-			$name = Q::ifset($chain, "name", null);
-			$default = ($i == $defaultAppId);
-			$usersWeb3Config = Q_Config::get("Users", "web3", "chains", $chainId, null);
+			$name = Q::ifset($chain, "name", Q::ifset($usersWeb3Config, "name", null));
+			$default = ($chainId == $defaultAppId);
 			$rpcUrl = Q::ifset($chain, "rpcUrl", Q::ifset($usersWeb3Config, "rpcUrl", null));
 			$infuraId = Q::ifset(
 				$chain, "providers", "walletconnect", "infura", "projectId",
