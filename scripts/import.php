@@ -114,6 +114,11 @@ foreach ($userInfos as $email => $userInfo) {
 			$user->salt = $userInfo [ $columnsFlipped['salt'] ];
 			$user->passphraseHash = $userInfo [ $columnsFlipped['password_hash'] ];
 			$user->save();
+			// this is a password change like any other, so it has to end the
+			// user's existing sessions - otherwise a bulk re-import of hashes
+			// leaves every old session cookie working. No session to
+			// preserve here: this runs from the command line, not a request.
+			Users::logoutOtherSessions($user, false);
 		}
 	} else {
 		$nameIndex = $columnsFlipped['name'];

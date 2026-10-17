@@ -868,6 +868,138 @@ abstract class Users extends Base_Users
 	}
 
 	/**
+	 * Invalidates every server-side session belonging to a user, except
+	 * (optionally) one. Use this on credential changes: until this is called,
+	 * a session cookie copied from a lost phone, a shared laptop or a backup
+	 * keeps working for the full remaining session lifetime, which is exactly
+	 * what changing a passphrase is supposed to end.
+	 *
+	 * Each session is torn down the same way Users::logout() tears down the
+	 * current one - the session's devices forgotten so push notifications
+	 * stop, the row removed, and its sockets disconnected on the node side -
+	 * because removing the row alone would leave a live socket and a device
+	 * that still receives notifications.
+	 *
+	 * It is all-or-nothing if the request dies partway (ro#728): both deletes
+	 * happen in one transaction before any node call, so a kill can only lose
+	 * notifications, never leave some sessions valid or orphan device rows.
+	 *
+	 * @method logoutOtherSessions
+	 * @static
+	 * @param {Users_User|string} [$user=null] The user, or user id.
+	 *   Defaults to the logged-in user, if any.
+	 * @param {string|false} [$exceptSessionId=null] Session id to keep alive.
+	 *   Defaults to the current session, so the caller isn't logged out of the
+	 *   tab they are using. Pass false to invalidate every session.
+	 * @return {integer} The number of sessions that were invalidated
+	 */
+	static function logoutOtherSessions($user = null, $exceptSessionId = null)
+	{
+		if (!isset($user)) {
+			$user = self::loggedInUser(false, false);
+		} else if (is_string($user)) {
+			$user = Users_User::fetch($user, true);
+		}
+		if (!$user) {
+			return 0;
+		}
+		if (!isset($exceptSessionId)) {
+			$exceptSessionId = Q_Session::id();
+		}
+		// only the fields we need: a session's content can be sizable, and
+		// remove() below goes by the retrieved row's primary key
+		$sessions = Users_Session::select('id, deviceId')
+			->where(array('userId' => $user->id))
+			->fetchDbRows();
+		$sessionIds = array();
+		$ending = array(); // the rows being ended, kept for the notifications
+		foreach ($sessions as $session) {
+			if ($exceptSessionId and $session->id === $exceptSessionId) {
+				continue;
+			}
+			$sessionIds[] = $session->id;
+			$ending[] = $session;
+		}
+		if (!$sessionIds) {
+			return 0;
+		}
+		/**
+		 * Before other sessions of a user are invalidated
+		 * @event Users/logoutOtherSessions {before}
+		 * @param {Users_User} user
+		 * @param {array} sessionIds
+		 * @param {string|false} exceptSessionId
+		 */
+		Q::event('Users/logoutOtherSessions',
+			@compact('user', 'sessionIds', 'exceptSessionId'), 'before'
+		);
+		// ORDER IS LOAD-BEARING (ro#728). The durable part comes first and is
+		// all-or-nothing; the node calls, which are what make this slow when
+		// node is wedged, come last. A request killed partway (a php-fpm
+		// request cap, ro#581) then either ends every one of these sessions or
+		// none of them. The old per-session "notify, remove" loop could stop
+		// with some sessions gone, the rest still valid, and the device DELETE
+		// never run - and a retry rebuilds $sessionIds from the SURVIVING
+		// sessions, so those device rows were orphaned for good.
+		//
+		// No transactionKey: this commits or rolls back on every path, and a
+		// key would make the commit throw if a handler nested inside began a
+		// keyed transaction of its own. begin(false): the empty raw query
+		// carrying the clause has nothing to lock. An unresolved transaction
+		// is rolled back at shutdown, and by the server if the worker dies.
+		Users_Session::begin(false)->execute();
+		try {
+			// forget the devices registered against those sessions, so a
+			// stolen session can't keep receiving push notifications
+			Users_Device::delete()->where(array(
+				'userId' => $user->id,
+				'sessionId' => $sessionIds
+			))->execute();
+			// one statement, not a remove() per row: nothing listens for
+			// Users_Session row events, and each row is one more round trip
+			// inside the transaction
+			Users_Session::delete()->where(array(
+				'userId' => $user->id,
+				'id' => $sessionIds
+			))->execute();
+			Users_Session::commit()->execute();
+		} catch (Exception $e) {
+			try {
+				Users_Session::rollback()->execute();
+			} catch (Exception $e2) {
+				// Db_Query_Mysql::execute() already rolls back and resets its
+				// nesting counter when the failure came from a query, so this
+				// second ROLLBACK may find no open transaction. The original
+				// exception is the useful one.
+			}
+			throw $e;
+		}
+		// Only now tell node. Losing any of these degrades safely: the rows
+		// are gone, so that socket's next authenticated action fails anyway,
+		// and repeating one for a session that is already gone is harmless.
+		foreach ($ending as $session) {
+			// disconnect that session's sockets and clear its push badge
+			Q_Utils::sendToNode(array(
+				"Q/method" => "Users/logout",
+				"sessionId" => $session->id,
+				"userId" => $user->id,
+				"deviceId" => isset($session->deviceId) ? $session->deviceId : null
+			));
+		}
+		/**
+		 * After other sessions of a user have been invalidated
+		 * @event Users/logoutOtherSessions {after}
+		 * @param {Users_User} user
+		 * @param {array} sessionIds
+		 * @param {string|false} exceptSessionId
+		 */
+		Q::event('Users/logoutOtherSessions',
+			@compact('user', 'sessionIds', 'exceptSessionId'), 'after'
+		);
+		return count($sessionIds);
+	}
+
+	/**
 	 * Get the logged-in user's information
 	 * @method loggedInUser
 	 * @static
