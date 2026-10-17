@@ -224,7 +224,15 @@ class Users_Contact extends Base_Users_Contact
 		if (empty($userId)) {
 			throw new Q_Exception_RequiredField(array('field' => 'userId'));
 		}
-		if (empty($options['skipAccess']) and $labels) {
+		// The access check runs whether or not $labels was supplied. It used to
+		// be conditioned on `and $labels`, which made the filter the
+		// authorization: omitting "labels" from the HTTP query
+		// (Users/contact?userId=<community>&Q.slotNames=contacts) skipped
+		// canManageContacts entirely and returned every contact row of that
+		// user -- for a community, its whole membership with each person's
+		// label -- to any caller, logged in or not. A request for everything
+		// cannot be more privileged than a request for one label of it.
+		if (empty($options['skipAccess'])) {
 			$asUserId = Q::ifset($options, 'asUserId', null);
 			if (!$asUserId) {
 				$liu = Users::loggedInUser();
@@ -233,11 +241,18 @@ class Users_Contact extends Base_Users_Contact
 			if (is_string($labels)) {
 				$labels = array($labels);
 			}
-			if (is_array($labels)) {
+			if (is_array($labels) and $labels) {
 				// check ability to fetch specific labels
 				foreach ($labels as $label) {
 					Users::canManageContacts($asUserId, $userId, $label, true, true);
 				}
+			} else {
+				// No label filter, or one this method cannot enumerate (a
+				// Db_Range or Db_Expression): check with a null label, which
+				// canManageContacts already handles -- its readOnly path
+				// authorizes asUserId === userId, and the Streams handler falls
+				// back to the publisher's Streams/contacts stream.
+				Users::canManageContacts($asUserId, $userId, null, true, true);
 			}
 		}
 		$limit = isset($options['limit']) ? $options['limit'] : null;
