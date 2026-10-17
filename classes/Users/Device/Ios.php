@@ -37,6 +37,13 @@ class Users_Device_Ios extends Users_Device
 			$logger = new Users_ApnsPHP_Logger();
 			$push = self::$push = new ApnsPHP_Push($env, $cert);
 			$push->setLogger($logger);
+			// ApnsPHP defaults its connect timeout to default_socket_timeout
+			// (60s) and makes 1 + 3 retry attempts 1s apart, so an unreachable
+			// gateway costs ~243s before connect() gives up -- on a web request,
+			// via Users::deliver. That outlives any sane request timeout.
+			// 3s per attempt bounds the worst case at 4*3 + 3*1 = 15s.
+			// Overridable per app as Users/apps/ios/<appId>/connectTimeout.
+			$push->setConnectTimeout(Q::ifset($appInfo, 'connectTimeout', 3));
 			$push->setRootCertificationAuthority($authority);
 			if (isset($ssl['passphrase'])) {
 				$push->setProviderCertificatePassphrase($ssl['passphrase']);

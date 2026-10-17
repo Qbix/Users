@@ -61,6 +61,28 @@ abstract class Zend_Mail_Protocol_Abstract
     const TIMEOUT_CONNECTION = 30;
 
     /**
+     * Wall-clock budget in seconds for one whole connection -- from connect()
+     * through every command and reply until disconnect -- or null for the
+     * library's own behaviour, where each reply may take as long as its RFC 2821
+     * timeout (up to 300s per command and 600s after DATA).
+     *
+     * Those RFC timeouts are right for an MTA and wrong for a web request: one
+     * slow SMTP host blocks the calling request for minutes. Set it with the
+     * 'timeout' config key (see Zend_Mail_Protocol_Smtp) or setTimeout(). Once
+     * the budget is spent, the next read or write throws
+     * Zend_Mail_Protocol_Exception instead of blocking.
+     *
+     * @var float|null
+     */
+    protected $_timeout = null;
+
+    /**
+     * microtime(true) at which the current connection's budget runs out, or null
+     * @var float|null
+     */
+    protected $_deadline = null;
+
+    /**
      * Maximum of the transaction log
      * @var integer
      */
@@ -159,6 +181,67 @@ abstract class Zend_Mail_Protocol_Abstract
     {
         $this->_disconnect();
     }
+
+    /**
+     * Bound the whole connection to a wall-clock budget (see $_timeout).
+     *
+     * @param  float|null $seconds Budget in seconds; null or <= 0 restores the
+     *                             library's per-command RFC timeouts
+     * @return void
+     */
+    public function setTimeout($seconds)
+    {
+        $this->_timeout = ($seconds > 0) ? (float) $seconds : null;
+    }
+
+
+    /**
+     * Get the wall-clock budget for a whole connection, or null if unbounded
+     *
+     * @return float|null
+     */
+    public function getTimeout()
+    {
+        return $this->_timeout;
+    }
+
+
+    /**
+     * Clamp a per-operation timeout to what is left of the connection budget.
+     *
+     * @param  float|null $timeout The timeout the caller would otherwise use
+     * @throws Zend_Mail_Protocol_Exception when the budget is already spent
+     * @return float|null
+     */
+    protected function _boundedTimeout($timeout = null)
+    {
+        if ($this->_deadline === null) {
+            return $timeout;
+        }
+        $remaining = $this->_deadline - microtime(true);
+        if ($remaining <= 0) {
+            /**
+             * @see Zend_Mail_Protocol_Exception
+             */
+            require_once 'Zend/Mail/Protocol/Exception.php';
+            throw new Zend_Mail_Protocol_Exception($this->_host . ' has timed out');
+        }
+        return ($timeout === null) ? $remaining : min($timeout, $remaining);
+    }
+
+
+    /**
+     * stream_set_timeout() with a fractional number of seconds
+     *
+     * @param  float $seconds
+     * @return boolean
+     */
+    protected function _setStreamTimeout($seconds)
+    {
+        $whole = (int) floor($seconds);
+        return stream_set_timeout($this->_socket, $whole, (int) (($seconds - $whole) * 1000000));
+    }
+
 
     /**
      * Set the maximum log size 
@@ -263,8 +346,16 @@ abstract class Zend_Mail_Protocol_Abstract
         $errorNum = 0;
         $errorStr = '';
 
+        // Start the connection's wall-clock budget, if one is set
+        $this->_deadline = null;
+        $connectTimeout = self::TIMEOUT_CONNECTION;
+        if ($this->_timeout !== null) {
+            $this->_deadline = microtime(true) + $this->_timeout;
+            $connectTimeout = min($connectTimeout, $this->_timeout);
+        }
+
         // open connection
-        $this->_socket = @stream_socket_client($remote, $errorNum, $errorStr, self::TIMEOUT_CONNECTION);
+        $this->_socket = @stream_socket_client($remote, $errorNum, $errorStr, $connectTimeout);
 
         if ($this->_socket === false) {
             if ($errorNum == 0) {
@@ -277,7 +368,7 @@ abstract class Zend_Mail_Protocol_Abstract
             throw new Zend_Mail_Protocol_Exception($errorStr);
         }
 
-        if (($result = stream_set_timeout($this->_socket, self::TIMEOUT_CONNECTION)) === false) {
+        if (($result = $this->_setStreamTimeout($this->_boundedTimeout(self::TIMEOUT_CONNECTION))) === false) {
             /**
              * @see Zend_Mail_Protocol_Exception
              */
@@ -321,6 +412,12 @@ abstract class Zend_Mail_Protocol_Abstract
 
         $this->_request = $request;
 
+        // A blocked write waits on the stream timeout too, so it gets the
+        // same budget as a read
+        if ($this->_deadline !== null) {
+            $this->_setStreamTimeout($this->_boundedTimeout());
+        }
+
         $result = fwrite($this->_socket, $request . self::EOL);
 
         // Save request to internal log
@@ -355,9 +452,11 @@ abstract class Zend_Mail_Protocol_Abstract
             throw new Zend_Mail_Protocol_Exception('No connection has been established to ' . $this->_host);
         }
 
-        // Adapters may wish to supply per-commend timeouts according to appropriate RFC
+        // Adapters may wish to supply per-commend timeouts according to appropriate RFC,
+        // clamped to what is left of the connection's budget if it has one
+        $timeout = $this->_boundedTimeout($timeout);
         if ($timeout !== null) {
-           stream_set_timeout($this->_socket, $timeout);
+           $this->_setStreamTimeout($timeout);
         }
 
         // Retrieve response
