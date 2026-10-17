@@ -236,7 +236,7 @@ class Users_Email extends Base_Users_Email
 		if (!isset($subject)) {
 			$subject = Q_Config::get('Users', 'transactional', 'resend', 'subject', Q_Config::get(
 				'Users', 'transactional', 'activation', 'subject', 
-				'Did you forget your passphrase?'
+				'Did you forget your password?'
 			));
 		}
 		if (!isset($view)) {

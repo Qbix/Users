@@ -4,7 +4,7 @@
 		"ClickHere": "Click here to activate your account: {{1}}"
 	},
 	"resend": {
-		"DidYouWant": "Did you want to reset your passphrase in {{1}}?",
+		"DidYouWant": "Did you want to reset your password in {{1}}?",
 		"ClickHere": "Then click here: {{1}}",
 		"OrEnterCode": "or enter code:"
 	},
