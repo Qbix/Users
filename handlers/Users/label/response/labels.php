@@ -33,9 +33,19 @@ function Users_label_response_labels($params = array())
 	}
 	$rows = array();
 	if (isset($req['batch'])) {
-		// expects batch format, i.e. $userIds and $filter arrays
+		// Batch format: $userIds and $filter are PARALLEL arrays, one entry per
+		// sub-request, and the caller (Users_label_response_batch) wraps each
+		// element of what comes back as one sub-response. So the result has to
+		// stay index-aligned with the input, which array_merge() cannot be:
+		// Users_Label::fetch() returns zero rows for a label the user does not
+		// have, and every later sub-response then shifts up one. Emit exactly
+		// one entry per index, null for a miss -- the same shape
+		// Users_contact_response_contacts() already produces for its own batch
+		// branch. (only Users/label's batch slot passes 'batch', so
+		// nothing else sees this.)
 		foreach ($userIds as $i => $userId) {
-			$rows = array_merge($rows, Users_Label::fetch($userId, $filter[$i]));
+			$fetched = Users_Label::fetch($userId, $filter[$i]);
+			$rows[] = $fetched ? reset($fetched) : null;
 		}
 	} else {
 		foreach ($userIds as $i => $userId) {
