@@ -66,7 +66,11 @@ function Users_roles_tool($options) {
             $tx = Users_Web3::execute($abiPathCommunity, $communityAddress, "isOwner", array($userWallet), $chainId, $caching, $cacheDuration);
             $canAddWeb3 = ($tx == 1) ? true : false;
         } catch (Exception $e) {
-            die('[ERROR] ' . $e->getMessage() . PHP_EOL . $e->getTraceAsString() . PHP_EOL);
+            // Rethrow instead of die()ing with getTraceAsString(): that wrote absolute
+            // file paths and the whole call stack straight into the HTTP response,
+            // ignoring the app's Q/exception/showTrace and showFileAndLine settings.
+            // Q/errors renders it under the configured policy instead.
+            throw $e;
         }
     }
     //These options are used just to pre-check, draw the button, 
