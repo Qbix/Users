@@ -134,10 +134,12 @@ foreach ($userInfos as $email => $userInfo) {
 		$experience->subscribe(array('userId' => $user->id));
 	}
 	// Create Users_ExternalTo_Discourse rows
+	// A command-line import, run by the operator: no user is logged in.
 	Q::event('Users/discourse/post', array(
 		'userId' => $user->id,
 		'baseUrl' => $discourseUrl,
-		'apiKey' => $key
+		'apiKey' => $key,
+		'skipAccess' => true
 	));
 }
 
