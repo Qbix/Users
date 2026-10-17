@@ -4,7 +4,16 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<?php echo Q_Response::metas(true, "\n\t") ?>
 	<meta name="HandheldFriendly" content="True" />
-	<meta name="viewport" content="minimal-ui, shrink-to-fit=no, width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0<?php if (Q_Request::platform() == 'android'): ?>, target-densitydpi=medium-dpi<?php endif ?>" />
+	<?php
+	// No maximum-scale / user-scalable=0 here. Both suppress pinch zoom, which is
+	// WCAG 2.1 AA 1.4.4 (Resize Text) and the most-used accessibility affordance on
+	// a phone. Do not add them back: the correct fix for whatever they were papering
+	// over is a layout that survives being zoomed. The one behaviour they did
+	// suppress is iOS auto-zooming a focused input whose font-size is under 16px; if
+	// that shows up on a real device, set the font-size on the input rather than
+	// locking the viewport for every user.
+	?>
+	<meta name="viewport" content="minimal-ui, shrink-to-fit=no, width=device-width, initial-scale=1.0<?php if (Q_Request::platform() == 'android'): ?>, target-densitydpi=medium-dpi<?php endif ?>" />
 	<meta name="mobile-web-app-capable" content="yes" />
 	<link rel="manifest" href="<?php echo Q_Html::themedUrl('manifest.json') ?>">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
